@@ -1,0 +1,79 @@
+/* Toolbox, a container for all toolbars (toolbox#navigator-toolbox):
+ * - menu bar (toolbar#toolbar-menubar)
+ * - tab bar (toolbar#TabsToolbar)
+ * - header bar (toolbar#nav-bar)
+ * - bookmark bar (toolbar#PersonalToolbar)
+ * - add-ons can add their own toolbars (toolbar) */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Toolbox colors */
+#navigator-toolbox {
+	border: 0 !important;
+	background: none !important;
+}
+
+#nav-bar, #PersonalToolbar, #toolbar-menubar, #TabsToolbar, findbar {
+	border: 0 !important;
+	background: var(--sweet-toolbar-background) !important;
+	border-bottom: 1px solid var(--sweet-toolbar-border-color) !important;
+}
+#nav-bar:-moz-window-inactive,
+#PersonalToolbar:-moz-window-inactive, #toolbar-menubar:-moz-window-inactive, 
+#TabsToolbar:-moz-window-inactive, findbar:-moz-window-inactive {
+	background: var(--sweet-inactive-toolbar-background) !important;
+	border-bottom: 1px solid var(--sweet-inactive-toolbar-border-color) !important;
+}
+
+#navigator-toolbox:-moz-window-inactive label, #navigator-toolbox:-moz-window-inactive image, 
+#downloads-indicator-anchor:-moz-window-inactive,
+findbar:-moz-window-inactive image:not(#hack),
+findbar:-moz-window-inactive label,
+#viewButton:-moz-window-inactive dropmarker {
+	opacity: 0.7 !important;
+}
+
+#toolbar-menubar:not([inactive=true]) {
+	margin-bottom: 0 !important;
+}
+#PersonalToolbar {
+	padding-top: 2px !important;
+	height: 32px;
+}
+
+/* Overrides: Remove border below the menu bar / above the header bar */
+#TabsToolbar:not([collapsed="true"]) + #nav-bar {
+	border-top-width: 0 !important;
+}
+#navigator-toolbox::after {
+	border-bottom-width: 0 !important;
+}
+
+/* Reorder toolbars */
+#navigator-toolbox #nav-bar, findbar {
+	-moz-box-ordinal-group: 0;
+}
+#navigator-toolbox #PersonalToolbar {
+	-moz-box-ordinal-group: 1;
+}
+#navigator-toolbox #titlebar {
+	-moz-box-ordinal-group: 2;
+}
+#navigator-toolbox toolbar {
+	-moz-box-ordinal-group: 10;
+}
+#navigator-toolbox #TabsToolbar {
+	-moz-box-ordinal-group: 100;
+}
+
+/* Overrides: Don't shift other toolbars on tab drag and drop */
+#TabsToolbar[movingtab] {
+	padding-bottom: 0 !important;
+}
+#TabsToolbar[movingtab] > .tabbrowser-tabs {
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+}
+#TabsToolbar[movingtab] + #nav-bar {
+	margin-top: 0 !important;
+}

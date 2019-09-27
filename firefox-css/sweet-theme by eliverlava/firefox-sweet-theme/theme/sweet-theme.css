@@ -1,0 +1,48 @@
+@import "parts/buttons.css";
+@import "parts/entries.css";
+@import "parts/toolbox.css";
+@import "parts/headerbar.css";
+@import "parts/csd.css";
+@import "parts/tabsbar.css";
+@import "parts/findbar.css";
+/*@import "parts/sidebar.css";*/
+@import "parts/popups.css";
+@import "parts/remove-white-flash.css";
+@import "parts/scrollbars.css";
+@import "parts/icons.css";
+/* @import "colors/light.css"; */
+@import "colors/dark.css";
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+:root {
+	--space-above-tabbar: 0 !important;
+}
+
+/* Sidebar */
+#sidebar-box, .sidebar-panel {
+	background: var(--sweet-sidebar-background) !important;
+}
+#sidebar-box:-moz-window-inactive, .sidebar-panel:-moz-window-inactive {
+	background: var(--sweet-inactive-sidebar-background) !important;
+}
+#sidebar-box:-moz-window-inactive label, #sidebar-box:-moz-window-inactive image,
+.sidebar-panel:-moz-window-inactive label, .sidebar-panel:-moz-window-inactive image,
+.sidebar-placesTreechildren:-moz-window-inactive {
+	opacity: 0.7 !important;
+}
+#sidebar-splitter {
+	background: var(--sweet-toolbar-border-color) !important;
+	border: 0 !important;
+	width: 1px !important;
+}
+#sidebar-splitter:-moz-window-inactive {
+	background: var(--sweet-inactive-toolbar-border-color) !important;
+}
+
+#sidebar-header {
+	padding: 6px !important;
+	border-bottom: 1px solid var(--sweet-toolbar-border-color) !important;
+}
+#sidebar-search-container {
+	padding: 6px !important;
+}

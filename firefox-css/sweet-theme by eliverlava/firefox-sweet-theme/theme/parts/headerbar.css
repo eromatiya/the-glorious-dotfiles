@@ -1,0 +1,22 @@
+/* Header bar */
+@import "headerbar-urlbar.css";
+@import "headerbar-private-urlbar.css";
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Headerbar */
+#nav-bar {
+	padding: 6px 3px !important;
+}
+
+/* Headerbar CSD colors */
+:root[tabsintitlebar] #nav-bar {
+	background: var(--sweet-headerbar-background) !important;
+	border: none !important;
+	border-bottom: 1px solid var(--sweet-headerbar-border-color) !important;
+	box-shadow: var(--sweet-headerbar-box-shadow) !important;
+}
+:root[tabsintitlebar] #nav-bar:-moz-window-inactive {
+	background: var(--sweet-inactive-headerbar-background) !important;
+	border-bottom-color: var(--sweet-inactive-headerbar-border-color) !important;
+	box-shadow: var(--sweet-inactive-headerbar-box-shadow) !important;
+}

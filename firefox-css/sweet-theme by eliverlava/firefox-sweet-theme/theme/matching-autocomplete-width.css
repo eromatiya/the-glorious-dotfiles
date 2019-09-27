@@ -1,0 +1,165 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Set popover size and position */
+#urlbar-results {
+	--box-width: calc(100vw - var(--item-padding-start) - var(--item-padding-end) + 8px);
+	--fixed-widths: calc((6px + 16px + 6px) + (16px + 9px) + 11px);
+	border-radius: 9px;
+	margin-left: 0 !important;
+	margin-top: 0 !important;	
+	max-width: var(--box-width) !important;
+}
+
+/* Style as regular popover */
+#urlbar-results {
+	background: var(--sweet-popover-background) !important;
+	border: 1px solid !important;
+	border-color: var(--sweet-popover-border-color) !important;
+	border-radius: 9px;
+	box-shadow: var(--sweet-popover-shadow) !important; /* BUG: Not showing any shadow at all */
+	color: var(--sweet-toolbar-color) !important;
+	padding: 8px;
+}
+
+/* Results box */
+#urlbar-results .urlbarView-body-inner {
+	max-width: calc(var(--box-width) - 18px) !important;
+}
+
+#urlbarView-results {	
+  --item-padding-start: 0 !important;
+	--item-padding-end: 0 !important;
+	max-height: 35vh !important;
+	overflow-x: auto;
+}
+
+/* Search panel  */
+#urlbar-results .search-panel-one-offs-header, #urlbar-results .search-panel-one-offs {
+	background: transparent !important;
+	border: 0 !important;
+}
+#urlbar-results .search-panel-one-offs-header {
+	border-top: 1px solid var(--sweet-popover-separator-color) !important;
+}
+#urlbar-results .search-panel-one-offs {
+	--item-padding-start: 0 !important;
+	--item-padding-end: 0 !important;
+}
+
+/* Search engines buttons */
+#urlbar-results .searchbar-engine-one-off-item:not(.dummy) {
+	-moz-appearance: none !important;
+	--toolbarbutton-active-background: transparent !important;
+	--toolbarbutton-hover-background: transparent !important;
+	background: var(--sweet-button-background) !important;
+	box-shadow: var(--sweet-button-box-shadow);
+	border-width: 1px 1px 1px 0;
+	border-style: solid;
+	border-color: var(--sweet-button-border-color) !important;
+	border-bottom-color: var(--sweet-button-border-accent-color) !important;
+	padding: 0 2px !important;
+	height: 34px !important;
+	color: var(--sweet-toolbar-color) !important;
+	box-sizing: border-box !important;
+}
+#urlbar-results .searchbar-engine-one-off-item:hover, #urlbar-results .searchbar-engine-one-off-item[selected] {	
+	background: var(--sweet-button-hover-background) !important;
+	color: unset !important;
+}
+#urlbar-results .searchbar-engine-one-off-item:first-child {	
+	border-radius: 5px 0 0 5px;
+	border-left-width: 1px !important;
+}
+#urlbar-results .searchbar-engine-one-off-item.last-engine {	
+	border-radius: 0 5px 5px 0;
+}
+#urlbar-results .searchbar-engine-one-off-item.dummy {
+	display: none !important;
+}
+#urlbar-results .searchbar-engine-one-off-item:not(.last-row) {
+	box-sizing: border-box !important;
+}
+#urlbar-anon-search-settings-compact {
+	border-left-width: 1px !important;
+	border-bottom: 1px solid var(--sweet-button-border-accent-color) !important;
+	border-radius: 5px;	
+	margin-left: 6px !important;
+}
+
+/* Convert search engines icons to symbolic */
+#urlbar-results .searchbar-engine-one-off-item:not(.search-setting-button-compact) .button-icon {
+	filter: var(--sweet-convert-icon-to-symbolic-hack-filter);
+}
+
+/* Firefox 67 */
+/* TODO: Remove when FF =< 67 is deprecated or merge 69+ code. */
+#PopupAutoCompleteRichResult {
+	margin-left: 0 !important;
+	margin-top: -7px;
+}
+#PopupAutoCompleteRichResult {
+  background: var(--sweet-popover-background) !important;
+	border: 1px solid !important;
+	border-color: var(--sweet-popover-border-color) !important;
+	border-radius: 9px;
+	box-shadow: var(--sweet-popover-shadow) !important; /* BUG: Not showing any shadow at all */
+	color: var(--sweet-toolbar-color) !important;
+	padding: 8px !important;
+}
+#PopupAutoCompleteRichResult .autocomplete-richlistbox {
+	--box-width: calc(100vw - var(--item-padding-start) - var(--item-padding-end) - 42px);
+	max-width: var(--box-width);
+}
+#PopupAutoCompleteRichResult .autocomplete-richlistitem {
+	padding-left: 0 !important;
+	padding-right: 5px !important;
+	border-inline-end-width: 0 !important;
+	max-width: calc(var(--box-width) - 5px);
+	display: flex;
+	align-items: center;
+}
+/* Search panel  */
+#PopupAutoCompleteRichResult .search-panel-one-offs-header, #PopupAutoCompleteRichResult .search-panel-one-offs {
+	background: transparent !important;
+	border: 0 !important;
+}
+#PopupAutoCompleteRichResult .search-panel-one-offs-header {
+	border-top: 1px solid var(--sweet-popover-separator-color) !important;
+}
+#PopupAutoCompleteRichResult .search-panel-one-offs {
+	--item-padding-start: 0 !important;
+	--item-padding-end: 0 !important;
+}
+/* Search engines buttons */
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item:not(.dummy) {
+	-moz-appearance: none !important;
+	--toolbarbutton-active-background: transparent !important;
+	--toolbarbutton-hover-background: transparent !important;
+	background: var(--sweet-button-background) !important;
+	box-shadow: var(--sweet-button-box-shadow);
+	border-width: 1px 1px 1px 0;
+	border-style: solid;
+	border-color: var(--sweet-button-border-color) !important;
+	border-bottom-color: var(--sweet-button-border-accent-color) !important;
+	padding: 0 2px !important;
+	height: 34px !important;
+	color: var(--sweet-toolbar-color) !important;
+	box-sizing: border-box !important;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item:hover, #PopupAutoCompleteRichResult .searchbar-engine-one-off-item[selected] {	
+	background: var(--sweet-button-hover-background) !important;
+	color: unset !important;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item:first-child {	
+	border-radius: 5px 0 0 5px;
+	border-left-width: 1px !important;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item.last-engine {	
+	border-radius: 0 5px 5px 0;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item.dummy {
+	display: none !important;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item:not(.last-row) {
+	box-sizing: border-box !important;
+}

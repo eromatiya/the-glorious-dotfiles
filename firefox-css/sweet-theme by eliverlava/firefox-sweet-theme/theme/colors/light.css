@@ -1,0 +1,98 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Variables that start with --gnome- are added by me and are assigned
+ * to elements somewhere in this code. The rest of the variables are
+ * built-in in Firefox, so you need to add an !important if you wanna
+ * override them. */
+
+	:root {
+		/* Browser area before a page starts loading */
+		--gnome-browser-before-load-background: #0C0E14;
+
+		/* Toolbars */
+		--gnome-toolbar-background: #0C0E14;	
+		--gnome-toolbar-color: #C3C7D1;
+		--gnome-toolbar-border-color: #0c0e15;
+		--gnome-inactive-toolbar-background: #0C0E14;	
+		--gnome-inactive-toolbar-border-color: #202020;
+
+		/* Sidebar */
+		--gnome-sidebar-background: #0C0E14;
+		--gnome-inactive-sidebar-background: #323232;
+
+		/* Popups */
+		--gnome-menu-background: #0C0E14;
+		--gnome-menu-border-color: #0c0e15;
+		--gnome-popover-background: #0C0E14;
+		--gnome-popover-border-color: #0c0e15;
+		--gnome-popover-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+		--gnome-popover-button-hover-background: #252a3f;
+		--gnome-popover-separator-color: rgba(0, 0, 0, 0.1);
+
+		/* Header bar */
+		--gnome-headerbar-background: linear-gradient(to top, #0C0E14, #0C0E14);
+		--gnome-headerbar-border-color: #070707;
+		--gnome-headerbar-box-shadow: inset 0 1px rgba(238, 238, 236, 0.07);
+		--gnome-inactive-headerbar-background: linear-gradient(#0C0E14, #0C0E14);
+		--gnome-inactive-headerbar-border-color: #202020;
+		--gnome-inactive-headerbar-box-shadow: inset 0 1px rgba(238, 238, 236, 0.07);
+
+		/* Buttons */	
+		--gnome-button-background: linear-gradient(to top, #161925 2px, #161925);
+		--gnome-button-border-color: #0c0e15;
+		--gnome-button-border-accent-color: #070707;	
+		--gnome-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);	
+		--gnome-button-hover-background: linear-gradient(to top, #252a3f, #252a3f 1px);	
+		--gnome-button-active-background: linear-gradient(45deg,#5800E2, #FF00E6);
+		--gnome-button-active-border-color: #0c0e15;
+		--gnome-button-active-border-accent-color: #000000;
+		--gnome-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);	
+		--gnome-button-disabled-background: #252a3f;
+		--gnome-button-disabled-border-color: #0C0E14;
+		--gnome-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+		--gnome-inactive-button-background: linear-gradient(#0C0E14, #0C0E14);
+		--gnome-inactive-button-border-color: #0C0E14;
+		--gnome-inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+		--gnome-button-suggested-action-background: linear-gradient(to top, #654ea3 2px, #eaafc8);
+		--gnome-button-suggested-action-border-color: #0f3b71;
+		--gnome-button-suggested-action-border-accent-color: #092444;;
+		--gnome-button-suggested-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);
+		--gnome-button-suggested-action-hover-background: linear-gradient(to top, #654ea3ec, #eaafc8ec 1px);
+		--gnome-button-suggested-action-active-background: #103e75;
+		--gnome-button-suggested-action-active-border-color: #0f3b71;
+		--gnome-button-suggested-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);	
+		--gnome-button-destructive-action-background: linear-gradient(to top, #FF416C 2px, #FF4B2B);
+		--gnome-button-destructive-action-border-color: #851015;
+		--gnome-button-destructive-action-border-accent-color: #570b0e;
+		--gnome-button-destructive-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);
+		--gnome-button-destructive-action-hover-background: linear-gradient(to top, #ae151c, #b7161d 1px);
+		--gnome-button-destructive-action-active-background: #8a1116;
+		--gnome-button-destructive-action-active-border-color: #851015;
+		--gnome-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+
+		/* URL bar */
+		--gnome-urlbar-background: linear-gradient(#161925, #161925);
+		--gnome-urlbar-border-color: #0c0e15;
+		--gnome-urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
+		--gnome-urlbar-color: #C3C7D1;
+		--gnome-inactive-urlbar-background: linear-gradient(#252a3f, #252a3f);
+		--gnome-inactive-urlbar-border-color: #202020;
+		--gnome-inactive-urlbar-box-shadow: none;
+		--gnome-inactive-urlbar-color: #d6d6d6;
+		--gnome-focused-urlbar-border-color: #C50ED2;
+		--gnome-private-urlbar-background: #25003e;
+
+		/* Tabs */
+		--gnome-tabbar-tab-color: rgb(141, 144, 145);
+		--gnome-tabbar-tab-hover-background: #0C0E14;
+		--gnome-tabbar-tab-hover-border-bottom-color: #0c0e15;
+		--gnome-tabbar-tab-hover-color: rgb(200, 200, 200);
+		--gnome-tabbar-tab-active-background: #2e2e2e;
+		--gnome-tabbar-tab-active-border-bottom-color: #C50ED2;
+		--gnome-tabbar-tab-active-color: #C3C7D1;
+		--gnome-tabbar-tab-active-hover-background: #0C0E14;
+		--gnome-inactive-tabbar-tab-color: rgb(141, 144, 145);
+		--gnome-inactive-tabbar-tab-active-background: #0C0E14;
+		--gnome-inactive-tabbar-tab-active-border-bottom-color: #C50ED2;
+		--gnome-inactive-tabbar-tab-active-color: rgb(141, 144, 145);  
+	}

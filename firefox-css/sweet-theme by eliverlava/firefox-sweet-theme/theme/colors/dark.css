@@ -1,0 +1,98 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Variables that start with --sweet- are added by me and are assigned
+ * to elements somewhere in this code. The rest of the variables are
+ * built-in in Firefox, so you need to add an !important if you wanna
+ * override them. */
+
+:root {
+	/* Browser area before a page starts loading */
+	--sweet-browser-before-load-background: #0C0E14;
+
+	/* Toolbars */
+	--sweet-toolbar-background: #0C0E14;	
+	--sweet-toolbar-color: #C3C7D1;
+	--sweet-toolbar-border-color: #0c0e15;
+	--sweet-inactive-toolbar-background: #0C0E14;	
+	--sweet-inactive-toolbar-border-color: #202020;
+
+	/* Sidebar */
+	--sweet-sidebar-background: #0C0E14;
+	--sweet-inactive-sidebar-background: #252a3f;
+
+	/* Popups */
+	--sweet-menu-background: #0C0E14;
+	--sweet-menu-border-color: #0c0e15;
+	--sweet-popover-background: #0C0E14;
+	--sweet-popover-border-color: #0c0e15;
+	--sweet-popover-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	--sweet-popover-button-hover-background: #252a3f;
+	--sweet-popover-separator-color: rgba(0, 0, 0, 0.1);
+
+	/* Header bar */
+	--sweet-headerbar-background: linear-gradient(to top, #0C0E14, #0C0E14);
+	--sweet-headerbar-border-color: #070707;
+	--sweet-headerbar-box-shadow: inset 0 1px rgba(238, 238, 236, 0.07);
+	--sweet-inactive-headerbar-background: linear-gradient(#0C0E14, #0C0E14);
+	--sweet-inactive-headerbar-border-color: #202020;
+	--sweet-inactive-headerbar-box-shadow: inset 0 1px rgba(238, 238, 236, 0.07);
+
+	/* Buttons */	
+	--sweet-button-background: linear-gradient(to top, #161925 2px, #161925);
+	--sweet-button-border-color: #0c0e15;
+	--sweet-button-border-accent-color: #070707;	
+	--sweet-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);	
+	--sweet-button-hover-background: linear-gradient(to top, #252a3f, #252a3f 1px);	
+	--sweet-button-active-background: linear-gradient(45deg,#5800E2, #FF00E6);
+	--sweet-button-active-border-color: #0c0e15;
+	--sweet-button-active-border-accent-color: #000000;
+	--sweet-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);	
+	--sweet-button-disabled-background: #252a3f;
+	--sweet-button-disabled-border-color: #0C0E14;
+	--sweet-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+	--sweet-inactive-button-background: linear-gradient(#0C0E14, #0C0E14);
+	--sweet-inactive-button-border-color: #0C0E14;
+	--sweet-inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+	--sweet-button-suggested-action-background: linear-gradient(to top, #654ea3 2px, #eaafc8);
+	--sweet-button-suggested-action-border-color: #654ea3;
+	--sweet-button-suggested-action-border-accent-color: #092444;;
+	--sweet-button-suggested-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);
+	--sweet-button-suggested-action-hover-background: linear-gradient(to top, #654ea3ec, #eaafc8ec 1px);
+	--sweet-button-suggested-action-active-background: #654ea3;
+	--sweet-button-suggested-action-active-border-color: #654ea3;
+	--sweet-button-suggested-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);	
+	--sweet-button-destructive-action-background: linear-gradient(to top, #FF416C 2px, #FF4B2B);
+	--sweet-button-destructive-action-border-color: #FF416C;
+	--sweet-button-destructive-action-border-accent-color: #570b0e;
+	--sweet-button-destructive-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07);
+	--sweet-button-destructive-action-hover-background: linear-gradient(to top, #FF416Cec, #FF4B2Bec 1px);
+	--sweet-button-destructive-action-active-background: #FF416C;
+	--sweet-button-destructive-action-active-border-color: #FF416C;
+	--sweet-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
+
+	/* URL bar */
+	--sweet-urlbar-background: linear-gradient(#161925, #161925);
+	--sweet-urlbar-border-color: #0c0e15;
+	--sweet-urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
+	--sweet-urlbar-color: #C3C7D1;
+	--sweet-inactive-urlbar-background: linear-gradient(#252a3f, #252a3f);
+	--sweet-inactive-urlbar-border-color: #202020;
+	--sweet-inactive-urlbar-box-shadow: none;
+	--sweet-inactive-urlbar-color: #d6d6d6;
+	--sweet-focused-urlbar-border-color: #C50ED2;
+	--sweet-private-urlbar-background: #25003e;
+
+	/* Tabs */
+	--sweet-tabbar-tab-color: rgb(141, 144, 145);
+	--sweet-tabbar-tab-hover-background: #0C0E14;
+	--sweet-tabbar-tab-hover-border-bottom-color: #0c0e15;
+	--sweet-tabbar-tab-hover-color: rgb(200, 200, 200);
+	--sweet-tabbar-tab-active-background: #2e2e2e;
+	--sweet-tabbar-tab-active-border-bottom-color: #C50ED2;
+	--sweet-tabbar-tab-active-color: #C3C7D1;
+	--sweet-tabbar-tab-active-hover-background: #0C0E14;
+	--sweet-inactive-tabbar-tab-color: rgb(141, 144, 145);
+	--sweet-inactive-tabbar-tab-active-background: #0C0E14;
+	--sweet-inactive-tabbar-tab-active-border-bottom-color: #C50ED2;
+	--sweet-inactive-tabbar-tab-active-color: rgb(141, 144, 145);  
+}

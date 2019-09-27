@@ -1,0 +1,37 @@
+*colorUL:       #18B218
+
+! Colors
+*.background: #000000
+*.foreground: #B2B2B2
+
+! black
+*.color0:  #080808
+*.color8:  #686868
+
+! red
+*.color1:  #B21818
+*.color9:  #FF5454
+
+! green
+*.color2:  #18B218
+*.color10: #54FF54
+
+! yellow
+*.color3:  #B26818
+*.color11: #FFFF54
+
+! blue
+*.color4:  #1818B2
+*.color12: #5454FF
+
+! purple
+*.color5:  #B218B2
+*.color13: #FF54FF
+
+! cyan
+*.color6:  #18B2B2
+*.color14: #54FFFF
+
+! white
+*.color7:  #B2B2B2
+*.color15: #FFFFFF

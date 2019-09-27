@@ -1,0 +1,35 @@
+*.foreground:   #98d1ce
+*.background:   #0a0f14
+*.cursorColor:  #98d1ce
+*colorUL:       #d26939
+
+*.color0:       #0a0f14
+*.color8:       #10151b
+
+*.color1:       #c33027
+*.color9:       #d26939
+
+*.color2:       #26a98b
+*.color10:      #081f2d
+
+*.color3:       #edb54b
+*.color11:      #245361
+
+*.color4:       #195465
+*.color12:      #093748
+
+*.color5:       #4e5165
+*.color13:      #888ba5
+
+*.color6:       #33859d
+*.color14:      #599caa
+
+*.color7:       #98d1ce
+*.color15:      #d3ebe9
+
+
+! Rofi colors.
+rofi.color-window: #0a0f14, #0a0f14, #26a98b
+rofi.color-normal: #0a0f14, #98d1ce, #0a0f14, #26a98b, #0a0f14
+rofi.color-active: #0a0f14, #98d1ce, #0a0f14, #26a98b, #0a0f14
+rofi.color-urgent: #0a0f14, #d26939, #0a0f14, #d26939, #98d1ce

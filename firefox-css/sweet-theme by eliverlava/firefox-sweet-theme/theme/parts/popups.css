@@ -1,0 +1,116 @@
+/* Popup menus and context menus */
+
+@import "popups-contents.css";
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Style menus */
+menupopup {
+	-moz-appearance: none !important;
+	background: none !important;
+	border: 0 !important;
+	padding: 2px;
+}
+
+menupopup menupopup {
+	margin: -7px 0 0 -4px;
+}
+
+menupopup .popup-internal-box {
+	background: var(--sweet-menu-background);
+	border: 1px solid var(--sweet-menu-border-color);
+	border-radius: 5px;
+	padding: 4px 0;
+	color: var(--sweet-toolbar-color) !important;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Context menu seperator */
+menupopup menuseparator {
+	-moz-appearance: none !important;
+	border: none !important;
+	background-color: var(--sweet-headerbar-background) !important;
+}
+
+/* Context menu */
+menupopup menu, menupopup menuitem {
+	-moz-appearance: none !important;
+	background: var(--sweet-toolbar-background) !important;
+	color: var(--sweet-toolbar-color);
+	padding: 4px 12px !important;
+}
+
+menupopup menu:hover ,menupopup menuitem:hover {
+	background-color: var(--sweet-popover-button-hover-background) !important;
+}
+
+/* Adjust popovers position */
+panel[type=arrow] {
+	margin-top: 9px !important;
+	max-height: 80vh !important;
+}
+
+/* Style popovers */
+.panel-arrowcontent .panel-arrowcontent,
+.panel-header, .PanelUI-subView,
+.panel-subview-body, #widget-overflow-mainView,
+panelview {
+	background: transparent !important;
+}
+panel:not(.tooltip-xul-wrapper) .panel-arrowcontent {
+	background: var(--sweet-popover-background) !important;
+	border: 1px solid !important;
+	border-color: var(--sweet-popover-border-color) !important;
+	border-radius: 9px;
+	box-shadow: var(--sweet-popover-shadow) !important;
+	padding: 8px 12px !important;
+	color: var(--sweet-toolbar-color) !important;
+}
+
+.panel-arrow {
+	fill: var(--sweet-popover-background) !important;
+	stroke: var(--sweet-popover-border-color) !important;
+}
+
+.panel-footer {
+	background-color: transparent !important;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.panel-footer toolbarseparator {
+	display: none !important;
+}
+
+/* Style popovers menu buttons */
+.subviewbutton, .toolbarbutton-1 {
+	border-radius: 3px !important;
+	color: var(--sweet-toolbar-color) !important;
+}
+
+.subviewbutton[disabled], .toolbarbutton-1[disabled] {
+	opacity: 0.5 !important;
+}
+
+.subviewbutton[shortcut]:after {
+	opacity: 0.5 !important;
+}
+
+.subviewbutton:not([disabled]):hover, .toolbarbutton-1:not([disabled]):hover {
+	background: var(--sweet-popover-button-hover-background) !important;
+}
+
+/* Style popover separators */
+toolbarseparator, menuseparator {
+	border-color: var(--sweet-popover-separator-color) !important;
+}
+toolbarseparator:not([orient="vertical"]) {
+	margin: 8px 0 !important;
+}
+toolbarseparator[orient="vertical"] {
+	margin: 0 3px !important;
+}
+
+/* Remove popover header separator */
+.panel-header {
+	border-bottom: 0 !important;
+}

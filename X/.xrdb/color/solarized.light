@@ -1,0 +1,55 @@
+!
+! A slight modification of solarized.light
+!
+
+! special
+!*.foreground:   #586e75
+*.foreground:   #586e75
+*.background:   #dfddd5
+*.cursorColor:  #586e75
+*colorUL:       #6c71c4
+
+! black
+*.color0:       #d3d2d0
+*.color8:       #abaeaf
+
+! red
+*.color1:       #e5322f
+*.color9:       #d44d15
+
+! green
+*.color2:       #198844
+*.color10:      #586e75
+
+! yellow
+*.color3:       #e69014
+*.color11:      #657b83
+
+! blue
+*.color4:       #268bd2
+*.color12:      #839496
+
+! magenta
+*.color5:       #d33682
+*.color13:      #6c71c4
+
+! cyan
+*.color6:       #2aa198
+*.color14:      #93a1a1
+
+! white
+!*.color7:       #dfddd5
+!*.color15:      #dfddd5
+*.color7:       #586e75
+*.color15:      #586e75
+
+
+! Rofi colors.
+!rofi.color-window: #dfddd5, #dfddd5, #268bd2
+!rofi.color-normal: #dfddd5, #586e75, #dfddd5, #268bd2, #dfddd5
+!rofi.color-active: #dfddd5, #586e75, #dfddd5, #268bd2, #dfddd5
+!rofi.color-urgent: #dfddd5, #ac9b9d, #dfddd5, #ac9b9d, #586e75
+
+
+
+

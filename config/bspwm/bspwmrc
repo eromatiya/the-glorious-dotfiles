@@ -1,0 +1,157 @@
+#! /bin/sh
+
+
+#                    ___           ___         ___           ___
+#     _____         /  /\         /  /\       /__/\         /__/\
+#    /  /::\       /  /:/_       /  /::\     _\_ \:\       |  |::\
+#   /  /:/\:\     /  /:/ /\     /  /:/\:\   /__/\ \:\      |  |:|:\  
+#  /  /:/~/::\   /  /:/ /::\   /  /:/~/:/  _\_ \:\ \:\   __|__|:|\:\
+# /__/:/ /:/\:| /__/:/ /:/\:\ /__/:/ /:/  /__/\ \:\ \:\ /__/::::| \:\ 
+# \  \:\/:/~/:/ \  \:\/:/~/:/ \  \:\/:/   \  \:\ \:\/:/ \  \:\~~\__\/ 
+#  \  \::/ /:/   \  \::/ /:/   \  \::/     \  \:\ \::/   \  \:\
+#   \  \:\/:/     \__\/ /:/     \  \:\      \  \:\/:/     \  \:\
+#    \  \::/        /__/:/       \  \:\      \  \::/       \  \:\
+#     \__\/         \__\/         \__\/       \__\/         \__\/
+
+###################
+## configuration ##
+###################
+
+#bspc monitor -d 一 二 三 四 五 六 七 八 九 十
+
+#bspc monitor -d    
+
+
+#bspc monitor -d          
+
+#bspc monitor -d          
+
+#bspc monitor -d       
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+
+#bspc monitor -d     V     
+
+
+#source "${HOME}/.local/bin/color-parser"
+
+
+bspc config gapless_monocle      false
+bspc config borderless_monocle  true
+bspc config single_monocle true
+bspc config paddingless_monocle false
+#bspc config top_padding 0
+#bspc config right_padding 0
+#bspc config bottom_padding 0
+#bspc config left_padding 0
+
+
+
+
+
+bspc config normal_border_color '#c4c4c4';
+bspc config active_border_color '#c4c4c4';
+bspc config focused_border_color '#c4c4c4';
+
+
+
+
+
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
+
+
+bspc config border_width         0
+bspc config window_gap         	 10
+
+
+bspc config focus_follows_pointer true
+bspc config split_ratio          0.50
+
+
+# Misc
+bspc config auto_alternate true
+bspc config auto_cancel true
+bspc config initial_polarity first_child
+
+
+
+#-------------------------------------------
+#			Universal RULINGS
+#-------------------------------------------
+
+ 
+bspc rule -a conky sticky=on manage=off lower=on
+bspc rule -a Tint2 sticky=on manage=off lower=on
+bspc rule -a Lxappearance state=floating focus=on
+bspc rule -a Pavucontrol state="floating" center=true
+bspc rule -a feh state="floating" center=true
+bspc rule -a Sxiv state="floating" center=true
+bspc rule -a Gnome-system-monitor state="floating" center=true
+bspc rule -a stalonetray border=off
+bspc rule -a Xfce4-taskmanager state="floating" center=true
+bspc rule -a Nm-connection-editor state="floating" center=true
+bspc rule -a Blueman-manage state="floating" center=true
+bspc rule -a Gnome-calculator state="floating" border=off center=true
+bspc rule -a Xarchiver state=floating center=true
+bspc rule -a Nitrogen state=floating focus=on
+bspc rule -a Uget-gtk state="floating" center=true
+bspc rule -a Leafpad state="floating" center=true
+bspc rule -a Gufy.py state="floating" center=true
+bspc rule -a Oblogout state=fullscreen layer=above manage=on border=off
+bspc rule -a Viewnior state="floating"
+#bspc rule -a Plank layer=above manage=on border=off
+
+#------------------------------------------
+#			Workspaces Rulings
+#------------------------------------------
+
+
+#Workspace1
+bspc rule -a URxvt desktop="^1" state="floating" 
+bspc rule -a XTerm desktop="^1" state="tiled" center=true
+bspc rule -a UXTerm desktop="^1" state="tiled" center=true
+
+#Workspace2
+bspc rule -a Firefox private=on desktop="^2" state="fullscreen"
+bspc rule -a Opera private=on desktop="^2"
+
+#Workspace3
+bspc rule -a Subl3 desktop="^3"
+
+#Workspace4
+bspc rule -a Nemo desktop="^4"
+bspc rule -a File-roller state=floating center=true follow=on desktop="^4"
+
+#Workspace5
+bspc rule -a Gimp-2.10 desktop="^5"
+
+#Workspace6
+bspc rule -a Wine desktop="^6" follow=on
+bspc rule -a SummertimeSaga follow=on desktop="^6"
+bspc rule -a PPSSPPSDL follow=on desktop="^6"
+bspc rule -a SuperTuxKart follow=on desktop="^6"
+
+#Workspace7
+bspc rule -a PacketTracer7 follow=on desktop="^7"
+bspc rule -a jetbrains-pycharm-ce follow=on desktop="^7"
+
+#Workspace8
+bspc rule -a "VirtualBox Manager" state="floating" desktop="^8"
+bspc rule -a "VirtualBox Machine" state="floating" desktop="^8"
+
+#Workspace9
+bspc rule -a vlc desktop="^9" border=off follow=on
+bspc rule -a mpv desktop="^9" border=off follow=on
+
+#Workspace10
+bspc rule -a Transmission-gtk state=pseudo_tiled desktop="^10"
+
+
+
+
+sh $HOME/.config/bspwm/apps-start.sh
+
+
+
