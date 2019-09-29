@@ -3,24 +3,55 @@ local gears = require('gears')
 local mat_list_item = require('widget.material.list-item')
 local beautiful = require('beautiful')
 
+local separator = wibox.widget {
+  orientation = 'vertical',
+  forced_height = 16,
+  opacity = 0.00,
+  widget = wibox.widget.separator
+}
+
 local actionTitle = wibox.widget {
   text = 'Action Center',
-  font = 'Roboto medium 12',
-  align = 'center',
+  font = 'Iosevka Regular 10',
+  align = 'left',
   widget = wibox.widget.textbox
 }
 
-return wibox.widget {
+local actionWidget = require('widget.action-center')
+
+
+return wibox.widget{
+  spacing = 1,
   wibox.widget {
     wibox.widget {
+      separator,
       actionTitle,
       bg = '#ffffff20',
-      shape = gears.shape.rounded_rect,
-      widget = wibox.container.background(actionTitle)
+      layout = wibox.layout.fixed.vertical
     },
-    widget = mat_list_item
+    widget = mat_list_item,
   },
-  require('widget.action-center'),
   layout = wibox.layout.fixed.vertical,
-  spacing = 10,
+  {
+    actionWidget,
+    layout = wibox.layout.align.vertical
+   }
 }
+
+-- return wibox.widget {
+--   wibox.widget {
+--     wibox.widget {
+--       actionTitle,
+--       bg = '#ffffff20',
+--       layout = wibox.layout.fixed.vertical
+--     },
+--
+--     widget = mat_list_item,
+--   },
+--   layout = wibox.layout.align.vertical,
+--   {
+--
+--     actionWidget,
+--     layout = wibox.layout.align.vertical
+--   }
+-- }

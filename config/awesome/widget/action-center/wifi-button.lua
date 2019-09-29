@@ -123,7 +123,7 @@ watch(
 
 local settingsName = wibox.widget {
   text = 'Wireless Connection',
-  font = 'Roboto medium 12',
+  font = 'Iosevka Regular 10',
   align = 'left',
   widget = wibox.widget.textbox
 }

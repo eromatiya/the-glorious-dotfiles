@@ -5,6 +5,7 @@ local mat_list_item = require('widget.material.list-item')
 local mat_icon = require('widget.material.icon')
 local dpi = require('beautiful').xresources.apply_dpi
 local icons = require('theme.icons')
+local gears = require('gears')
 
 return function(_, panel)
   local search_button =
@@ -16,9 +17,11 @@ return function(_, panel)
     },
     wibox.widget {
       text = 'Search Applications',
-      font = 'Roboto medium 13',
-      widget = wibox.widget.textbox
+      font = 'Iosevka Regular 12',
+      widget = wibox.widget.textbox,
+      align = center
     },
+    forced_height = dpi(12),
     clickable = true,
     widget = mat_list_item
   }
@@ -44,11 +47,11 @@ return function(_, panel)
     },
     wibox.widget {
       text = 'End work session',
-      font = 'Roboto medium 13',
+      font = 'Iosevka Regular 12',
       widget = wibox.widget.textbox
     },
     clickable = true,
-    divider = true,
+    divider = false,
     widget = mat_list_item
   }
 
@@ -73,14 +76,36 @@ return function(_, panel)
     widget = wibox.widget.separator
   }
 
+  local topSeparator = wibox.widget {
+    orientation = 'horizontal',
+    forced_height = 20,
+    opacity = 0,
+    widget = wibox.widget.separator,
+  }
+
+  local bottomSeparator = wibox.widget {
+    orientation = 'horizontal',
+    forced_height = 5,
+    opacity = 0,
+    widget = wibox.widget.separator,
+
+  }
+
   return wibox.widget {
     layout = wibox.layout.align.vertical,
     {
+      topSeparator,
       layout = wibox.layout.fixed.vertical,
       {
-        search_button,
-        bg = beautiful.background.hue_800,
-        widget = wibox.container.background
+        wibox.widget {
+          search_button,
+          bg = '#ffffff20',     --beautiful.background.hue_800,
+          shape = function(cr, w, h)
+                    gears.shape.rounded_rect(cr, w, h, 28)
+                  end,
+          widget = wibox.container.background,
+        },
+        widget = mat_list_item,
       },
       separator,
       require('layout.left-panel.dashboard.quick-settings'),
@@ -89,12 +114,20 @@ return function(_, panel)
     },
     nil,
     {
+
       layout = wibox.layout.fixed.vertical,
-      {
-        exit_button,
-        bg = beautiful.background.hue_800,
-        widget = wibox.container.background
-      }
+      wibox.widget{
+        wibox.widget{
+          exit_button,
+          bg = '#ffffff20',--beautiful.background.hue_800,
+          widget = wibox.container.background,
+          shape = function(cr, w, h)
+                    gears.shape.rounded_rect(cr, w, h, 12)
+                  end,
+        },
+        widget = mat_list_item,
+      },
+      bottomSeparator
     }
   }
 end

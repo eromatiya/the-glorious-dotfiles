@@ -125,7 +125,7 @@ watch(
 
 local settingsName = wibox.widget {
   text = 'Bluetooth Connection',
-  font = 'Roboto medium 12',
+  font = 'Iosevka Regular 10',
   align = 'left',
   widget = wibox.widget.textbox
 }

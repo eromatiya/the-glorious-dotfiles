@@ -38,6 +38,15 @@ local function update_icon()
 end
 
 ------
+
+-- The cmd variable is declared above
+-- It checks the line "blur-background-frame: false;"
+-- I use 'tr' shell command to remove the special characters
+-- because lua is choosy on MATCH method
+-- So the output will be 'blurbackgroundframefalse'
+-- if it matches the assigned value inside the match method below
+-- then it will declared as value of frameCheker
+-- The rest is history
 local frameChecker
 function checkFrame()
   awful.spawn.easy_async_with_shell(cmd, function( stdout )
@@ -52,13 +61,13 @@ function checkFrame()
   end)
 end
 
-blurDisable = {
 
+-- Commands that will be executed when I toggle the button
+blurDisable = {
   'sed -i -e "s/blur-background-frame = true/blur-background-frame = false/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
   'notify-send "Blur effect disabled"'
 }
-
 blurEnable = {
   'sed -i -e "s/blur-background-frame = false/blur-background-frame = true/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
@@ -76,7 +85,7 @@ local function run_once(cmd)
 end
 
 
-local function toggle_wifi()
+local function toggle_compositor()
   if(frameStatus == true) then
     awful.spawn.with_shell('kill -9 $(pidof compton)')
     for _, app in ipairs(blurDisable) do
@@ -97,15 +106,16 @@ end
 checkFrame()
 -----------------------------------------------------------------------------------------------------------------
 
-local wifi_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin
-wifi_button:buttons(
+
+local compton_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin
+compton_button:buttons(
   gears.table.join(
     awful.button(
       {},
       1,
       nil,
       function()
-        toggle_wifi()
+        toggle_compositor()
       end
     )
   )
@@ -113,14 +123,14 @@ wifi_button:buttons(
 
 local settingsName = wibox.widget {
   text = 'Window Effects',
-  font = 'Roboto medium 12',
+  font = 'Iosevka Regular 10',
   align = 'left',
   widget = wibox.widget.textbox
 }
 
 local content =   wibox.widget {
     settingsName,
-    wifi_button,
+    compton_button,
     bg = '#ffffff20',
     shape = gears.shape.rounded_rect,
     widget = wibox.container.background(settingsName),
@@ -129,7 +139,7 @@ local content =   wibox.widget {
   }
 content:set_ratio(1, .85)
 
-local wifiButton =  wibox.widget {
+local comptonButton =  wibox.widget {
   wibox.widget {
     content,
     widget = mat_list_item
@@ -137,4 +147,4 @@ local wifiButton =  wibox.widget {
   layout = wibox.layout.fixed.vertical
 }
 
-return wifiButton
+return comptonButton
