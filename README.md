@@ -39,7 +39,7 @@ If you notice that something is missing, please open an issue so I can add the d
 
 
 ##### Monospace
-+ **Iosevka** - [download elenapan's custom build](https://www.dropbox.com/s/nqyurzy8wcupkkz/
++ **Iosevka** - [download elenapan's custom build](https://www.dropbox.com/s/nqyurzy8wcupkkz/)
 
 
 ##### Sans from Undertale
