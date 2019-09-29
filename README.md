@@ -49,13 +49,14 @@ If you notice that something is missing, please open an issue so I can add the d
 
 ## Theme preview  
 #### Clean
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/desktop.png)  
+![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/desktop.png)    
 #### Dirty
 ![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty.png)  
+![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty2.png)  
 #### Dashboard
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png)  
+![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png)    
 #### Wallpaper(ctto)
-![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/wallpaper.jpg)
+![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/wallpaper.jpg)  
 
 
 
