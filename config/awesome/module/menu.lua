@@ -12,12 +12,14 @@ editor_cmd = terminal .. " -e " .. editor
 
 
 -- Theming Menu
-beautiful.menu_font = "Google Sans Bold 10"
-beautiful.menu_height = 28
+beautiful.menu_font = "Iosevka Custom Regular 10"
+beautiful.menu_height = 34
 beautiful.menu_width = 180
 beautiful.menu_bg_focus = '#8AB4F8AA'
 beautiful.menu_bg_normal = '#00000044'
-beautiful.menu_submenu = ''
+beautiful.menu_submenu = '➤'
+beautiful.menu_border_width = 20
+beautiful.menu_border_color = '#00000075'
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -29,7 +31,7 @@ myawesomemenu = {
 }
 
 myterminalmenu = {
-  { "URxvt", function() awful.spawn('urxvt') end },
+  { "Kitty", function() awful.spawn('kitty') end },
   { "XTerm", function() awful.spawn('xterm') end },
   { "UXTerm", function() awful.spawn('uxterm') end }
 }
