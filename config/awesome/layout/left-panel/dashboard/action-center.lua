@@ -1,30 +1,26 @@
 local wibox = require('wibox')
 local gears = require('gears')
-
 local mat_list_item = require('widget.material.list-item')
+local beautiful = require('beautiful')
 
-local hardwareTitle = wibox.widget
-{
-  text = 'Hardware monitor',
+local actionTitle = wibox.widget {
+  text = 'Action Center',
   font = 'Roboto medium 12',
   align = 'center',
   widget = wibox.widget.textbox
-
 }
 
 return wibox.widget {
   wibox.widget {
     wibox.widget {
-      hardwareTitle,
+      actionTitle,
       bg = '#ffffff20',
       shape = gears.shape.rounded_rect,
-      widget = wibox.container.background(hardwareTitle)
+      widget = wibox.container.background(actionTitle)
     },
     widget = mat_list_item
   },
-  require('widget.cpu.cpu-meter'),
-  require('widget.ram.ram-meter'),
-  require('widget.temperature.temperature-meter'),
-  require('widget.harddrive.harddrive-meter'),
-  layout = wibox.layout.fixed.vertical
+  require('widget.action-center'),
+  layout = wibox.layout.fixed.vertical,
+  spacing = 10,
 }

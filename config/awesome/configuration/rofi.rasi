@@ -47,7 +47,7 @@ window {
 	anchor:		 west;
 	x-offset: 0px;
 	height:		 100%;
-	width:		 400px;
+	width:		 425px;
 	margin-right: 60px;
 	orientation: horizontal;
 	children:	 [mainbox];

@@ -98,7 +98,7 @@ local left_panel = function(screen)
     nil,
     {
       id = 'panel_content',
-      bg = beautiful.background.hue_900, -- Background color of Dashboard
+      bg = beautiful.background.hue_800 .. '66', -- Background color of Dashboard
       widget = wibox.container.background,
       visible = false,
       forced_width = panel_content_width,

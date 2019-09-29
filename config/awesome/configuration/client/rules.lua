@@ -158,7 +158,7 @@ awful.rules.rules = {
 
   -- Dialogs
   {
-    rule_any = {type = {'dialog', 'Popup'}, class = {'Wicd-client.py', 'calendar.google.com'}},
+    rule_any = {type = {'dialog'}, class = {'Wicd-client.py', 'calendar.google.com'}},
     properties = {
       placement = awful.placement.centered,
       ontop = true,
@@ -175,6 +175,7 @@ awful.rules.rules = {
 
 
   -- Intstances
+  -- Network Manager Editor
   {
     rule = {
       instance = 'nm-connection-editor'
@@ -190,7 +191,7 @@ awful.rules.rules = {
       buttons = client_buttons
     }
   },
-
+-- For nemo progress bar when copying or moving
   {
     rule = {
       instance = 'file_progress'
@@ -205,6 +206,23 @@ awful.rules.rules = {
       keys = client_keys,
       buttons = client_buttons
     }
+  }
+},
+
+-- For Firefox Popup when you install extension
+{
+  rule = {
+    instance = 'Popup'
+  },
+  properties = {
+    skip_decoration = true,
+    ontop= true,
+    floating = true,
+    drawBackdrop = false,
+    focus = awful.client.focus.filter,
+    raise = true,
+    keys = client_keys,
+    buttons = client_buttons
   }
 }
 

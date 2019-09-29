@@ -65,6 +65,14 @@ return function(_, panel)
     )
   )
 
+
+  local separator = wibox.widget {
+    orientation = 'vertical',
+    forced_height = 10,
+    opacity = 0.00,
+    widget = wibox.widget.separator
+  }
+
   return wibox.widget {
     layout = wibox.layout.align.vertical,
     {
@@ -74,8 +82,10 @@ return function(_, panel)
         bg = beautiful.background.hue_800,
         widget = wibox.container.background
       },
+      separator,
       require('layout.left-panel.dashboard.quick-settings'),
-      require('layout.left-panel.dashboard.hardware-monitor')
+      require('layout.left-panel.dashboard.hardware-monitor'),
+      require('layout.left-panel.dashboard.action-center'),
     },
     nil,
     {
