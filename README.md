@@ -48,13 +48,19 @@ If you notice that something is missing, please open an issue so I can add the d
 
 
 ## Theme preview  
-#### Clean(as white)
+#### Clean
 ![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/desktop.png)  
-#### Dirty(as joe, joe momma)
+#### Dirty
 ![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty.png)  
+#### Dashboard
+![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png)  
 #### Wallpaper(ctto)
 ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/wallpaper.jpg)
 
 
+
+
 **If you are the owner of one of my config and want to take it down, just tell me. Otherwise, thank you.
-Credits to the owners. The awesome theme itself is a fork of PapaElGringo's** [material-awesome](https://github.com/PapyElGringo/material-awesome) **Check his repos, he got some awesome sh*ts. No pun intended.**
+Credits to the owners. The awesome theme itself is a fork of PapaElGringo's** [material-awesome](https://github.com/PapyElGringo/material-awesome) **Check his repos, he got some awesome sh*ts. No pun intended.**  
+
+**If you have a question, feel free to open an issue.**
