@@ -21,6 +21,6 @@ return {
     'xrdb $HOME/.Xresources',
     'nm-applet',
     'mpd',
-    'redshift-gtk -l 14.45:121.05'
+    'redshift -l 14.45:121.05'
   }
 }
