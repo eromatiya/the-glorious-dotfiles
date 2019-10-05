@@ -23,7 +23,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | Dependency | Description | Why/Where is it needed? |
 | --- | --- | --- |
 | `awesome` | Window manager | yeah awesome |
-| `rofi` | Window switcher, application launcher and dmenu replacement | yes |
+| `rofi-git` | Window switcher, application launcher and dmenu replacement | Application launcher |
 | `Compton-tryone` | A compositor for X11 | compositor with kawase-blur |
 | `blueman` | Manages bluetooth | For bluetooth widgets |
 | `xfce4-settings-manager` | Manages basic settings | System Settings |
@@ -58,7 +58,9 @@ If you notice that something is missing, please open an issue so I can add the d
 #### Dashboard in action
 I also added a bunch of useless buttons in dashboard.
 ![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif)    
-#### Wallpaper(ctto)
+#### Rofi Application Dashboard
+![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/application-dashboard.png)
+#### Wallpaper. Credits to the owner!
 ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/wallpaper.jpg)  
 
 

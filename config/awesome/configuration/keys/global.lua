@@ -19,6 +19,13 @@ local globalKeys =
     end,
     { description = "Open Terminal", group = "launcher"}),
 
+    awful.key(
+      {modkey}, 'r',
+      function()
+        awful.util.spawn(apps.default.rofiappmenu)
+      end,
+      { description = "Open Rofi", group = "launcher"}),
+
   awful.key(
     {modkey, "Shift"}, 'f',
     function()

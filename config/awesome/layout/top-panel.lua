@@ -146,6 +146,7 @@ local TopPanel = function(s, offset)
       require('widget.bluetooth'),
       require('widget.wifi'),
       require('widget.battery'),
+      require('widget.search'),
     }
   }
 
