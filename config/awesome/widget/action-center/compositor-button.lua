@@ -1,3 +1,5 @@
+-- This widget is messy AF
+-- It uses unix command to change some strings in compton config
 local awful = require('awful')
 local naughty = require('naughty')
 local wibox = require('wibox')
@@ -45,7 +47,7 @@ end
 -- because lua is choosy on MATCH method
 -- So the output will be 'blurbackgroundframefalse'
 -- if it matches the assigned value inside the match method below
--- then it will declared as value of frameCheker
+-- then it will declared as value of frameChecker
 -- The rest is history
 local frameChecker
 function checkFrame()
@@ -74,7 +76,7 @@ blurEnable = {
   'notify-send "Blur effect enabled"'
 }
 
-
+-- This runs all the commands above
 local function run_once(cmd)
   local findme = cmd
   local firstspace = cmd:find(' ')
@@ -85,6 +87,7 @@ local function run_once(cmd)
 end
 
 
+-- The Toggle button backend
 local function toggle_compositor()
   if(frameStatus == true) then
     awful.spawn.with_shell('kill -9 $(pidof compton)')
