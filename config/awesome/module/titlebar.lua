@@ -2,7 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-local theme_name = "macos"
+local theme_name = "macos-small"
 local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/theme/barthemes/" .. theme_name .. "/titlebar/"
 local tip = titlebar_icon_path --alias to save time/space
 local titlebars = {}
@@ -30,7 +30,7 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, {position = 'left'}) : setup {
+    awful.titlebar(c, {position = 'left', size = 29}) : setup {
         { -- Left
         --  awful.titlebar.widget.floatingbutton (c),
             awful.titlebar.widget.closebutton    (c),
@@ -60,8 +60,6 @@ client.connect_signal("request::titlebars", function(c)
         },
         layout = wibox.layout.align.vertical
     }
-
-
 end)
 
 
@@ -111,10 +109,11 @@ beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focu
 
 
 -- CUSTOM TITLE BAR FOR TERMINALS -----------------------------------------------------------------
+-- You need XPROP for this to work----
 local kittyBar = function(c)
 
   if c.class == "kitty" then
-      awful.titlebar(c, {position = "left", bg = '#000000BF'}) : setup {
+      awful.titlebar(c, {position = "left", bg = '#000000AA', size = 29}) : setup {
           { -- Left
           --  awful.titlebar.widget.floatingbutton (c),
               awful.titlebar.widget.closebutton    (c),
@@ -147,10 +146,15 @@ local kittyBar = function(c)
   end
 
 end
+
+
+client.connect_signal("request::titlebars", function(c)
+  kittyBar(c)
+end)
 -- CUSTOM TITLE BAR FOR KITTY TERMINAL ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
--- Titlebar only if not max
+-- Show the titlebar if it's not maximized layout
 _G.tag.connect_signal("property::layout", function(t)
     local clients = t:clients()
     for k,c in pairs(clients) do
@@ -163,14 +167,13 @@ _G.tag.connect_signal("property::layout", function(t)
 end)
 
 
-
-
 -- On Spawn
 _G.client.connect_signal("manage", function(c)
     if c.first_tag.layout.name ~= "max" then
         awful.titlebar.show(c, 'left')
     --    kittyBar(c) -- CALL CUSTOM TERMINAL
     else
+
         awful.titlebar.hide(c, 'left')
     end
 end)

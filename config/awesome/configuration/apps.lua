@@ -20,7 +20,7 @@ return {
     'nitrogen --restore', -- Wallpaper
     'xrdb $HOME/.Xresources',
     'nm-applet',
-    'mpd',
-    'redshift -l 14.45:121.05'
+    'mpd'
+    --'redshift -l 14.45:121.05'
   }
 }
