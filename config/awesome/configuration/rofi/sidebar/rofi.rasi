@@ -36,7 +36,7 @@ configuration {
 	hide-scrollbar:              "true";
 	margin:                      0px;
 	padding:                     0px;
-	font:            "Roboto medium 10";
+	font:												"Roboto medium 10";
 }
 
 window {

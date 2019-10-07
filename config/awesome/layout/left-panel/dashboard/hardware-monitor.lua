@@ -1,6 +1,5 @@
 local wibox = require('wibox')
 local gears = require('gears')
-
 local mat_list_item = require('widget.material.list-item')
 
 local hardwareTitle = wibox.widget
