@@ -147,6 +147,10 @@ _G.client.connect_signal("manage", function(c)
     end
 end)
 
+
+-- This is a messy script on manipulating titlebars and window shape.
+-- If you can fixed it please send a PR HAHAHA
+-- Plan: If first_tag.layout.name is not max and tiled_clients >1 : Show Titlebars and make client shape rounded ? Hide and make the c.shape rectangle
 _G.screen.connect_signal("arrange", function(s)
 
   for _, c in pairs(s.clients) do
@@ -162,7 +166,13 @@ _G.screen.connect_signal("arrange", function(s)
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
-
+    elseif #s.tiled_clients >= 1 and c.maximized == true then
+      if c.maximized then
+      awful.titlebar.show(c, 'left')
+      c.shape = function(cr, w, h)
+        gears.shape.rectangle(cr, w, h)
+      end
+    end
     elseif #s.tiled_clients == 1 and c.first_tag.layout.name == 'dwindle' then
       awful.titlebar.hide(c, 'left')
       c.shape = function(cr, w, h)
