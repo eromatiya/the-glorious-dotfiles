@@ -1,0 +1,329 @@
+/*
+ * Deb10 Plymouth script
+ * Debian à la Windows 10 boot splash theme for Plymouth
+ *
+ * Copyright (c) 2018, Mauro A. Meloni <maumeloni@gmail.com>
+ * https://maurom.com/
+  * 
+ * based on
+ *     - Pure CSS Windows10 Loader by Fernando de Almeida Faria  
+ *       https://codepen.io/feebaa/pen/PPrLQP
+ * and
+ *     - Plymouth theming guide (part 4)  
+ *       http://brej.org/blog/?p=238
+ *
+ * documentation about scripting available at
+ *     - https://www.freedesktop.org/wiki/Software/Plymouth/Scripts/
+ * and
+ *     - https://sources.debian.org/src/plymouth/0.9.2-4/src/plugins/splash/script/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
+
+CURVE_FUNCTION_LINEAR = 0;
+CURVE_FUNCTION_EASE_IN = 1;
+CURVE_FUNCTION_EASE_OUT = 2;
+CURVE_FUNCTION_EASE_IN_OUT = 3;
+DEG2RAD_FACTOR = Math.Pi / 180;
+M_PI_2 = Math.Pi / 2;
+
+DOTS = 5;
+SHOW_PROGRESS = 0;
+FADE_OUT_DOTS = 1;
+
+fps = 13;
+anim_duration = 16087;   // miliseconds
+anim_frames = anim_duration / 1000 * fps;   // duration in seconds * frames per second
+
+// precomputed values
+percent_00 = 0;
+percent_07 = Math.Int( 7 / 100 * anim_frames);
+percent_30 = Math.Int(30 / 100 * anim_frames);
+percent_39 = Math.Int(39 / 100 * anim_frames);
+percent_70 = Math.Int(70 / 100 * anim_frames);
+percent_75 = Math.Int(75 / 100 * anim_frames);
+percent_76 = Math.Int(76 / 100 * anim_frames);
+percent_100 = anim_frames;
+
+angle_225 = 225 * DEG2RAD_FACTOR - M_PI_2;
+angle_345 = 345 * DEG2RAD_FACTOR - M_PI_2;
+angle_455 = 455 * DEG2RAD_FACTOR - M_PI_2;
+angle_690 = 690 * DEG2RAD_FACTOR - M_PI_2;
+angle_815 = 815 * DEG2RAD_FACTOR - M_PI_2;
+angle_945 = 945 * DEG2RAD_FACTOR - M_PI_2;
+
+
+// animation curve
+fun curve (value, functype, input_from, input_to, output_from, output_to) {
+    input_range = input_to - input_from;
+    output_range = output_to - output_from;
+    linear_value = (value - input_from) / input_range;
+    if (functype == CURVE_FUNCTION_LINEAR) {
+        return output_from + linear_value * output_range;
+    } else if (functype == CURVE_FUNCTION_EASE_OUT) {
+        return output_from + Math.Sin(linear_value * M_PI_2) * output_range;
+    } else if (functype == CURVE_FUNCTION_EASE_IN) {
+        return output_from + (1 - Math.Sin(M_PI_2 + linear_value * M_PI_2)) * output_range;
+    } else if (functype == CURVE_FUNCTION_EASE_IN_OUT) {
+        return output_from + (1 - Math.Sin(M_PI_2 + linear_value * Math.Pi)) / 2 * output_range;
+    } else {
+        return 0;
+    }
+}
+
+
+// dots
+dot_image = Image("dot.png");
+for (i = 0; i < DOTS; i++){
+    dot[i].sprite = Sprite(dot_image);
+    dot[i].sprite.SetOpacity(0.0);
+    dot[i].sprite.SetZ(0);
+}
+
+// debian logo
+logo.image = Image("logo.png");
+logo.sprite = Sprite(logo.image);
+logo.sprite.SetX(Window.GetWidth()  / 2 - logo.image.GetWidth()  / 2);
+logo.sprite.SetY(Window.GetHeight() / 3 - logo.image.GetHeight() / 3);
+logo.sprite.SetOpacity(0.0);
+logo.sprite.SetZ(10);
+
+dot_gap = Math.Int(fps - 1);
+progress = 0.0;
+center_x = Window.GetWidth() / 2;
+center_y = Window.GetHeight() * 3 / 4;
+// radius = 25;
+// radius = Math.Max(15, Math.Int(Window.GetWidth()  * 25 / 1920));   // adapt to screen width (highly dependant on aspect ratio)
+radius = Math.Max(15, Math.Int(Window.GetHeight() * 25 / 1080));   // adapt to screen height (better than width)
+opacity = 0;
+angle = 0;
+frame = 0;
+loop_count = 0;
+
+// precalculate values of x, y & opacity
+computed_x[0] = 0;
+computed_y[0] = 0;
+computed_o[0] = 0;
+for (f = 0; f < anim_frames; f++) {
+    if (f < percent_07) {
+        angle = curve(f, CURVE_FUNCTION_EASE_OUT, percent_00, percent_07, angle_225, angle_345);
+        if (FADE_OUT_DOTS) {
+            opacity = curve(f, CURVE_FUNCTION_EASE_OUT, percent_00, percent_07, 0, 1);
+        } else {
+            opacity = 1;
+        }
+    } else if (f < percent_30) {
+        angle = curve(f, CURVE_FUNCTION_LINEAR, percent_07, percent_30, angle_345, angle_455);
+        opacity = 1;    // keep
+    } else if (f < percent_39) {
+        angle = curve(f, CURVE_FUNCTION_EASE_IN_OUT, percent_30, percent_39, angle_455, angle_690);
+        opacity = 1;    // keep
+    } else if (f <= percent_70) {
+        angle = curve(f, CURVE_FUNCTION_LINEAR, percent_39, percent_70, angle_690, angle_815);
+        opacity = 1;    // keep
+    } else if (f <= percent_75) {
+        angle = curve(f, CURVE_FUNCTION_EASE_OUT, percent_70, percent_75, angle_815, angle_945);
+        if (FADE_OUT_DOTS) {
+            opacity = curve(f, CURVE_FUNCTION_EASE_OUT, percent_70, percent_75, 1, 0);
+        } else {
+            opacity = 1;
+        }
+    } else if (f <= percent_76) {
+        angle = angle_945;
+        opacity = 0;
+    } else if (f <= percent_100) {
+        angle = angle_945;
+        opacity = 0;
+    }
+    computed_x[f] = center_x + radius * Math.Sin(angle);
+    computed_y[f] = center_y - radius * Math.Cos(angle);
+    computed_o[f] = opacity;
+}
+
+
+fun refresh () {
+    inc = progress;
+
+    // logo fade-in
+    if ((loop_count == 0) && (frame < percent_30))
+        logo.sprite.SetOpacity(Math.Clamp(frame / percent_30, 0, 1));
+
+    if (inc < 0.80){
+        // startup not yet finished
+        for (i = 0; i < DOTS; i++){
+            // animation delay for each dot
+            f = Math.Min(Math.Max(0, frame - i * dot_gap), anim_frames); 
+            dot[i].sprite.SetX(computed_x[f]);
+            dot[i].sprite.SetY(computed_y[f]);
+            dot[i].sprite.SetOpacity(computed_o[f]);
+        }
+    } else {
+        opacity = curve(inc, CURVE_FUNCTION_LINEAR, 0.8, 1.0, 1.0, 0.0);
+        // startup is about to end
+        for (i = 0; i < DOTS; i++){
+            // animation delay for each dot
+            f = Math.Min(Math.Max(0, frame - i * dot_gap), anim_frames);
+            dot[i].sprite.SetX(computed_x[f]);
+            dot[i].sprite.SetY(computed_y[f]);
+            dot[i].sprite.SetOpacity(computed_o[f] * opacity);
+        }
+        // logo fade-out
+        logo.sprite.SetOpacity(opacity);
+    }
+    if (frame >= anim_frames) {
+        loop_count++;
+        frame = 0;
+    } else {
+        frame++;
+    }
+}
+
+Plymouth.SetRefreshFunction(refresh);
+
+
+// ----------------------------------------- Dialogue --------------------------------
+
+status = "normal";
+
+fun dialog_setup()
+  {
+    local.box;
+    local.lock;
+    local.entry;
+    
+    box.image = Image("box.png");
+    lock.image = Image("lock.png");
+    entry.image = Image("entry.png");
+    
+    box.sprite = Sprite(box.image);
+    box.x = Window.GetWidth()  / 2 - box.image.GetWidth ()/2;
+    box.y = Window.GetHeight() / 2 - box.image.GetHeight()/2;
+    box.z = 10000;
+    box.sprite.SetPosition(box.x, box.y, box.z);
+    
+    lock.sprite = Sprite(lock.image);
+    lock.x = box.x + box.image.GetWidth()/2 - (lock.image.GetWidth() + entry.image.GetWidth()) / 2;
+    lock.y = box.y + box.image.GetHeight()/2 - lock.image.GetHeight()/2;
+    lock.z = box.z + 1;
+    lock.sprite.SetPosition(lock.x, lock.y, lock.z);
+    
+    entry.sprite = Sprite(entry.image);
+    entry.x = lock.x + lock.image.GetWidth();
+    entry.y = box.y + box.image.GetHeight()/2 - entry.image.GetHeight()/2;
+    entry.z = box.z + 1;
+    entry.sprite.SetPosition(entry.x, entry.y, entry.z);
+    
+    global.dialog.box = box;
+    global.dialog.lock = lock;
+    global.dialog.entry = entry;
+    global.dialog.bullet_image = Image("bullet.png");
+    dialog_opacity (1);
+  }
+    
+fun dialog_opacity(opacity)
+  {
+    dialog.box.sprite.SetOpacity (opacity);
+    dialog.lock.sprite.SetOpacity (opacity);
+    dialog.entry.sprite.SetOpacity (opacity);
+    for (index = 0; dialog.bullet[index]; index++)
+      {
+        dialog.bullet[index].sprite.SetOpacity(opacity);
+      }
+  }
+
+fun display_normal_callback ()
+  {
+    global.status = "normal";
+    if (global.dialog)
+      dialog_opacity (0);
+  }
+
+fun display_password_callback (prompt, bullets)
+  {
+    global.status = "password";
+    if (!global.dialog)
+	dialog_setup();
+    else
+	dialog_opacity(1);
+    for (index = 0; dialog.bullet[index] || index < bullets; index++)
+      {
+        if (!dialog.bullet[index])
+          {
+            dialog.bullet[index].sprite = Sprite(dialog.bullet_image);
+            dialog.bullet[index].x = dialog.entry.x + index * dialog.bullet_image.GetWidth();
+            dialog.bullet[index].y = dialog.entry.y + dialog.entry.image.GetHeight() / 2 - dialog.bullet_image.GetHeight() / 2;
+            dialog.bullet[index].z = dialog.entry.z + 1;
+            dialog.bullet[index].sprite.SetPosition(dialog.bullet[index].x, dialog.bullet[index].y, dialog.bullet[index].z);
+          }
+        if (index < bullets)
+          dialog.bullet[index].sprite.SetOpacity(1);
+        else
+          dialog.bullet[index].sprite.SetOpacity(0);
+      }
+  }
+
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+Plymouth.SetDisplayPasswordFunction(display_password_callback);
+
+// ----------------------------------------- Progress Bar --------------------------------
+
+if (SHOW_PROGRESS) {
+    progress_bar_w = 0;
+    progress_bar_h = 3;
+    window_width = Window.GetWidth();
+    progress_bar.original_image = Image("progress_box.png");
+    progress_bar_l = Sprite(progress_bar.original_image);
+    progress_bar_l.SetX(window_width / 2);
+    progress_bar_l.SetY(Window.GetHeight() - progress_bar_h);
+    progress_bar_r = Sprite(progress_bar.original_image);
+    progress_bar_r.SetX(window_width / 2);
+    progress_bar_r.SetY(Window.GetHeight() - progress_bar_h);
+
+    fun progress_callback (duration, progress) {
+        if (progress < 0.5) {
+            progress_bar_w = Math.Int(curve(progress, CURVE_FUNCTION_LINEAR, 0, 1, 0, window_width));
+            progress_bar_l.SetX(window_width / 2 - progress_bar_w);
+        } else {
+            progress_bar_w = Math.Int(curve(progress, CURVE_FUNCTION_LINEAR, 0, 1, window_width, 0));
+            progress_bar_r.SetX(window_width - progress_bar_w);
+        }
+        progress_bar.image = progress_bar.original_image.Scale(progress_bar_w, progress_bar_h);
+        progress_bar_l.SetImage(progress_bar.image);
+        progress_bar_r.SetImage(progress_bar.image);
+    }
+
+    Plymouth.SetBootProgressFunction(progress_callback);
+}
+
+// ----------------------------------------- Quit --------------------------------
+
+fun quit_callback () {
+    logo.sprite.SetOpacity (1);
+}
+
+Plymouth.SetQuitFunction(quit_callback);
+
+// ----------------------------------------- Message --------------------------------
+
+message_sprite = Sprite();
+message_sprite.SetPosition(10, 10, 10000);
+
+fun message_callback (text) {
+    my_image = Image.Text(text, 1, 1, 1);
+    message_sprite.SetImage(my_image);
+}
+
+Plymouth.SetMessageFunction(message_callback);

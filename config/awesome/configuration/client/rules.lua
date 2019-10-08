@@ -100,7 +100,8 @@ awful.rules.rules = {
 
 		class = {
 			"Wine",
-      "dolphin-emu"
+      "dolphin-emu",
+      "Steam"
 		},
   --s  instance = { 'SuperTuxKart' }
 	},
@@ -129,7 +130,9 @@ awful.rules.rules = {
   {
   rule_any = {
     class = {
-      "feh"
+      "feh",
+      "Mugshot",
+      "Pulseeffects",
     },
   },
     properties = {

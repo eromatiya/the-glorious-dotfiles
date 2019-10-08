@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Deb10
+Description=Debian a la Windows 10 boot splash theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/deb10
+ScriptFile=/usr/share/plymouth/themes/deb10/deb10.script
