@@ -17,7 +17,7 @@ return function(_, panel)
     },
     wibox.widget {
       text = 'Search Applications',
-      font = 'Iosevka Regular 12',
+      font = 'SFNS Display Regular 12',
       widget = wibox.widget.textbox,
       align = center
     },
@@ -47,7 +47,7 @@ return function(_, panel)
     },
     wibox.widget {
       text = 'End work session',
-      font = 'Iosevka Regular 12',
+      font = 'SFNS Display Regular 12',
       widget = wibox.widget.textbox
     },
     clickable = true,
