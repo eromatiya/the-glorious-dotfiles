@@ -20,9 +20,10 @@ local globalKeys =
     { description = "Open Terminal", group = "launcher"}),
 
     awful.key(
-      {modkey}, 'r',
+      {modkey}, 'e',
       function()
         awful.util.spawn(apps.default.rofiappmenu)
+        _G.screen.primary.left_panel:HideDashboard()
       end,
       { description = "Open Rofi", group = "launcher"}),
 
@@ -83,7 +84,7 @@ local globalKeys =
   ),
   awful.key(
     {modkey},
-    'e',
+    'r',
     function()
       _G.screen.primary.left_panel:toggle(true)
     end,

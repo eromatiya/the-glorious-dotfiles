@@ -66,12 +66,18 @@ end
 
 -- Commands that will be executed when I toggle the button
 blurDisable = {
+  'kill -9 $(pidof compton)',
+  'kill -9 $(pidof compton)',
   'sed -i -e "s/blur-background-frame = true/blur-background-frame = false/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
+  'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
   'notify-send "Blur effect disabled"'
 }
 blurEnable = {
+  'kill -9 $(pidof compton)',
+  'kill -9 $(pidof compton)',
   'sed -i -e "s/blur-background-frame = false/blur-background-frame = true/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
+  'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
   'notify-send "Blur effect enabled"'
 }
@@ -90,14 +96,12 @@ end
 -- The Toggle button backend
 local function toggle_compositor()
   if(frameStatus == true) then
-    awful.spawn.with_shell('kill -9 $(pidof compton)')
     for _, app in ipairs(blurDisable) do
       run_once(app)
     end
     frameStatus = false
     update_icon()
   else
-    awful.spawn.with_shell('kill -9 $(pidof compton)')
     for _, app in ipairs(blurEnable) do
       run_once(app)
     end

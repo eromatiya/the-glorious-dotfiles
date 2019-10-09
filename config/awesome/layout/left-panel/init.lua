@@ -72,6 +72,11 @@ local left_panel = function(screen)
     panel:emit_signal('closed')
   end
 
+  -- Hide this panel when app dashboard is called.
+  function panel:HideDashboard()
+    closePanel()
+  end
+
   function panel:toggle(should_run_rofi)
     self.opened = not self.opened
     if self.opened then

@@ -8,10 +8,10 @@ export LD_PRELOAD=/lib/libgtk3-nocsd.so.0
 export EDITOR='nvim'
 
 # Include ~/.local/bin into PATH
-export PATH="${PATH}:$HOME/.local/bin/"
+export PATH=$PATH:$HOME/.local/bin/
 
 # Include ruby gems bin into PATH
-export PATH="#{PATH}:$HOME/.gem/ruby/2.6.0/bin/"
+export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin/
 
 RANGER_LOAD_DEFAULT_RC=FALSE
 

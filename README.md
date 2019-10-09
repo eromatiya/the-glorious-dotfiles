@@ -20,6 +20,7 @@ Here is a complete list of dependencies needed for making these AwesomeWM setup 
 
 If you notice that something is missing, please open an issue so I can add the dependency to this table.
 
+**Make sure that you installed them before using this setup**
 | Dependency | Description | Why/Where is it needed? |
 | --- | --- | --- |
 | `awesome` | Window manager | yeah awesome |
@@ -67,6 +68,6 @@ I also added a bunch of useless buttons in dashboard.
 
 
 **If you are the owner of one of my config and want to take it down, just tell me. Otherwise, thank you.
-Credits to the owners. The awesome theme itself is a fork of PapaElGringo's** [material-awesome](https://github.com/PapyElGringo/material-awesome) **Check his repos, he got some awesome sh*ts. No pun intended.**  
+Credits to the owners. The awesome theme itself is a fork of PapyElGringo's** [material-awesome](https://github.com/PapyElGringo/material-awesome) **Check his repos, he got some awesome sh*ts. No pun intended.**  
 
 **If you have a question, feel free to open an issue.**

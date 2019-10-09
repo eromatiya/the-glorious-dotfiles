@@ -9,9 +9,9 @@ function Album-Cover-Notif() {
   isDunst=$(which dunstify)
   if [ ! -z $isDunst ]
   then
-    dunstify --icon $TMP_COVER_PATH "$(mpc -f %title% current)" "$(mpc -f %artist% current)"  --replace 23
+    dunstify --appname 'nmpcpp' --replace 3 --icon $TMP_COVER_PATH "$(mpc -f %title% current)" "$(mpc -f %artist% current)"
   else
-    notify-send -i $TMP_COVER_PATH "$(mpc -f %title% current)" "$(mpc -f %artist% current)"
+    notify-send -i $TMP_COVER_PATH $(mpc -f %title% current) $(mpc -f %artist% current)
   fi
 
 }
