@@ -8,10 +8,12 @@
 + **OS**: I use Arch, btw
 + **WM**: AwesomeWM
 + **Terminal**: Kitty, URxvt-pixbuf
++ **Compositor**: Compton-tryone-git
 + **File Manager**: Nemo
-+ **Launcher**: Rofi
++ **Launcher**: Rofi-git
 + **Editor**: Neovim
 + **Browser**: Firefox
++ **Music Player**: ncmpcpp, mpd, mpc
 
 
 
@@ -20,7 +22,8 @@ Here is a complete list of dependencies needed for making these AwesomeWM setup 
 
 If you notice that something is missing, please open an issue so I can add the dependency to this table.
 
-**Make sure that you installed them before using this setup**
+**Make sure that you installed them before using this setup**  
+
 | Dependency | Description | Why/Where is it needed? |
 | --- | --- | --- |
 | `awesome` | Window manager | yeah awesome |
@@ -40,10 +43,10 @@ If you notice that something is missing, please open an issue so I can add the d
 
 
 ##### Monospace
-+ **Iosevka** - [download elenapan's custom build](https://www.dropbox.com/s/nqyurzy8wcupkkz/)
++ **Iosevka** - [download elenapan's custom build](https://github.com/elenapan/dotfiles/)
 
 
-##### Sans from Undertale
+##### Sans
 + **Google Sans**
 + **San Francisco Display**
 
@@ -66,8 +69,7 @@ I also added a bunch of useless buttons in dashboard.
 
 
 
-
-**If you are the owner of one of my config and want to take it down, just tell me. Otherwise, thank you.
-Credits to the owners. The awesome theme itself is a fork of PapyElGringo's** [material-awesome](https://github.com/PapyElGringo/material-awesome) **Check his repos, he got some awesome sh*ts. No pun intended.**  
-
-**If you have a question, feel free to open an issue.**
+**Special Thanks**
++ **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome)
++ **elenapan** [Dotfiles](https://github.com/elenapan/dotfiles)
++ **addyfe** [Dotfiles](https://github.com/addy-dclxvi/almighty-dotfiles)
