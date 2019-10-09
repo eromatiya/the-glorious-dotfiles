@@ -37,7 +37,16 @@ awful.tooltip(
 
 
 local cal_shape = function(cr, width, height)
-    gears.shape.infobubble(cr, width, height, 12)
+  --gears.shape.infobubble(cr, width, height, 12)
+  gears.shape.partially_rounded_rect(
+    cr,
+    width,
+    height,
+    false,
+    false,
+    true,
+    true,
+    12)
 end
 
 -- Calendar Widget
@@ -46,7 +55,7 @@ local month_calendar = awful.widget.calendar_popup.month({
 	spacing = 10,
 	font = 'SFNS Display 10',
 	long_weekdays = true,
-	margin = 10,
+	margin = 0, -- 10
 	style_month = { border_width = 0, padding = 12, shape = cal_shape, padding = 25},
 	style_header = { border_width = 0, bg_color = '#00000000'},
 	style_weekday = { border_width = 0, bg_color = '#00000000' },

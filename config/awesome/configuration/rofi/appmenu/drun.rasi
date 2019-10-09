@@ -40,11 +40,11 @@ entry  {
     background-color:               #ffffff20;
     border:                         0px 0px solid 0px 0px;
     border-color:                   @text-color;
-    font:                           "SFNS Display 12";
+    font:                           "SFNS Display 10";
 }
 
 listview {
-    columns:                        6;
+    columns:                        5;
     margin:                         40px 120px 40px 120px;
 }
 

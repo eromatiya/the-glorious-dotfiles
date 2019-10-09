@@ -6,7 +6,7 @@ local tags = {
   {
     icon = icons.terminal,
     type = 'terminal',
-    defaultApp = 'urxvt',
+    defaultApp = 'kitty',
     screen = 1
   },
   {
@@ -18,7 +18,7 @@ local tags = {
   {
     icon = icons.code,
     type = 'code',
-    defaultApp = 'geany',
+    defaultApp = 'atom',
     screen = 1
   },
  --[[ {
@@ -36,13 +36,13 @@ local tags = {
   {
     icon = icons.music,
     type = 'music',
-    defaultApp = 'youtube-music',
+    defaultApp = 'kitty -e ncmpcpp',
     screen = 1
   },
   {
     icon = icons.game,
     type = 'game',
-    defaultApp = '',
+    defaultApp = 'supertuxkart',
     screen = 1
   },
   {
