@@ -18,6 +18,8 @@ require('module.exit-screen')
 require('module.quake-terminal')
 require('module.titlebar')
 require('module.menu')
+require('module.volume-osd')
+require('module.brightness-osd')
 
 local wibox = require("wibox")
 

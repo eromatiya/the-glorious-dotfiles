@@ -61,12 +61,13 @@ If you notice that something is missing, please open an issue so I can add the d
 ![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png)    
 #### Dashboard in action
 I also added a bunch of useless buttons in dashboard.
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif)    
+![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif)  
+### **NEW** Brightness/Volume OSDs!!!
+![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/OSDs.gif)  
 #### Rofi Application Dashboard
 ![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/application-dashboard.png)
 #### Wallpaper. Credits to the owner!
 ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/wallpaper.jpg)  
-
 
 
 **Special Thanks**

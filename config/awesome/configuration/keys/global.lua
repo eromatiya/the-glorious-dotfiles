@@ -234,6 +234,7 @@ local globalKeys =
     'XF86MonBrightnessUp',
     function()
       awful.spawn('xbacklight -inc 10')
+      _G.toggleBriOSD(true)
     end,
     {description = '+10%', group = 'hotkeys'}
   ),
@@ -242,6 +243,7 @@ local globalKeys =
     'XF86MonBrightnessDown',
     function()
       awful.spawn('xbacklight -dec 10')
+      _G.toggleBriOSD(true)
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
@@ -251,6 +253,7 @@ local globalKeys =
     'XF86AudioRaiseVolume',
     function()
       awful.spawn('amixer -D pulse sset Master 5%+')
+      _G.toggleVolOSD(true)
     end,
     {description = 'volume up', group = 'hotkeys'}
   ),
@@ -259,6 +262,7 @@ local globalKeys =
     'XF86AudioLowerVolume',
     function()
       awful.spawn('amixer -D pulse sset Master 5%-')
+        _G.toggleVolOSD(true)
     end,
     {description = 'volume down', group = 'hotkeys'}
   ),
