@@ -4,7 +4,7 @@ configuration {
 	show-icons:                     true;
 	sidebar-mode:                   true;
   icon-theme:                     "Flat-Remix-Blue-Dark";
-  font:                           "SFNS Display 9";
+  font:                           "SFNS Display 10";
 }
 
 * {
@@ -36,7 +36,7 @@ configuration {
 	hide-scrollbar:              "true";
 	margin:                      0px;
 	padding:                     0px;
-	font:												"Roboto medium 10";
+	font:												"SFNS Display 10";
 }
 
 window {
@@ -44,7 +44,7 @@ window {
 	anchor:		 west;
 	x-offset: 0px;
 	height:		 100%;
-	width:		 400px;
+	width:		 350px;
 	margin-right: 60px;
 	orientation: horizontal;
 	children:	 [mainbox];
@@ -92,7 +92,7 @@ entry {
 	background-color: rgb(26, 26, 26, 0.10);
 	vertical-align: 1;
 	padding:        12px;
-	font:            "Roboto medium 13";
+	font:            "SFNS Display 10";
 }
 
 element normal.normal {

@@ -69,32 +69,24 @@ return function(_, panel)
   )
 
 
-  local separator = wibox.widget {
+  local quickSearchSeparator = wibox.widget {
     orientation = 'vertical',
     forced_height = 10,
     opacity = 0.00,
     widget = wibox.widget.separator
   }
 
-  local topSeparator = wibox.widget {
+  local topBotSeparator = wibox.widget {
     orientation = 'horizontal',
-    forced_height = 20,
+    forced_height = 15,
     opacity = 0,
     widget = wibox.widget.separator,
-  }
-
-  local bottomSeparator = wibox.widget {
-    orientation = 'horizontal',
-    forced_height = 5,
-    opacity = 0,
-    widget = wibox.widget.separator,
-
   }
 
   return wibox.widget {
     layout = wibox.layout.align.vertical,
     {
-      topSeparator,
+      topBotSeparator,
       layout = wibox.layout.fixed.vertical,
       {
         wibox.widget {
@@ -107,7 +99,7 @@ return function(_, panel)
         },
         widget = mat_list_item,
       },
-      separator,
+      quickSearchSeparator,
       require('layout.left-panel.dashboard.quick-settings'),
       require('layout.left-panel.dashboard.hardware-monitor'),
       require('layout.left-panel.dashboard.action-center'),
@@ -127,7 +119,7 @@ return function(_, panel)
         },
         widget = mat_list_item,
       },
-      bottomSeparator
+      topBotSeparator
     }
   }
 end
