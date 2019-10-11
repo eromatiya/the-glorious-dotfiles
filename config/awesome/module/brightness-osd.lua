@@ -67,7 +67,6 @@ local hideOSD = gears.timer {
 function toggleBriOSD(bool)
   brightnessOverlay.visible = bool
   if bool then
-
     hideOSD:again()
     if toggleVolOSD ~= nil then
       _G.toggleVolOSD(false)
