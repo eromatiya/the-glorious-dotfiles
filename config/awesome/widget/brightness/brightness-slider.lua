@@ -6,6 +6,7 @@ local clickable_container = require('widget.material.clickable-container')
 local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local spawn = require('awful.spawn')
+local awful = require('awful')
 
 local slider =
   wibox.widget {
@@ -30,6 +31,14 @@ watch(
     collectgarbage('collect')
   end
 )
+
+function UpdateBrOSD()
+  awful.spawn.easy_async_with_shell("xbacklight -get", function( stdout )
+    local brightness = string.match(stdout, '(%d+)')
+    slider:set_value(tonumber(brightness))
+  end)
+end
+
 
 local icon =
   wibox.widget {

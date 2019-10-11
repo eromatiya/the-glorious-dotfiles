@@ -5,6 +5,7 @@ local mat_icon_button = require('widget.material.icon-button')
 local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local spawn = require('awful.spawn')
+local awful = require('awful')
 
 local slider =
   wibox.widget {
@@ -29,6 +30,14 @@ watch(
     collectgarbage('collect')
   end
 )
+
+function UpdateVolOSD()
+  awful.spawn.easy_async_with_shell("bash -c 'amixer -D pulse sget Master'", function( stdout )
+    local mute = string.match(stdout, '%[(o%D%D?)%]')
+    local volume = string.match(stdout, '(%d?%d?%d)%%')
+    slider:set_value(tonumber(volume))
+  end)
+end
 
 local icon =
   wibox.widget {

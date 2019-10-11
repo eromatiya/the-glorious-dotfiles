@@ -6,7 +6,7 @@ local beautiful = require('beautiful')
 local dpi = require('beautiful').xresources.apply_dpi
 
 
-local vol_osd = require('widget.brightness.brightness-slider-osd')
+local vol_osd = require('widget.brightness.brightness-slider')
 
 
 awful.screen.connect_for_each_screen(
@@ -67,7 +67,7 @@ local hideOSD = gears.timer {
 function toggleBriOSD(bool)
   brightnessOverlay.visible = bool
   if bool then
-    _G.UpdateBrOSD()
+
     hideOSD:again()
     toggleVolOSD(false)
   else

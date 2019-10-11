@@ -235,6 +235,7 @@ local globalKeys =
     function()
       awful.spawn('xbacklight -inc 10')
       _G.toggleBriOSD(true)
+      _G.UpdateBrOSD()
     end,
     {description = '+10%', group = 'hotkeys'}
   ),
@@ -244,6 +245,7 @@ local globalKeys =
     function()
       awful.spawn('xbacklight -dec 10')
       _G.toggleBriOSD(true)
+      _G.UpdateBrOSD()
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
@@ -254,6 +256,7 @@ local globalKeys =
     function()
       awful.spawn('amixer -D pulse sset Master 5%+')
       _G.toggleVolOSD(true)
+      _G.UpdateVolOSD()
     end,
     {description = 'volume up', group = 'hotkeys'}
   ),
@@ -263,6 +266,7 @@ local globalKeys =
     function()
       awful.spawn('amixer -D pulse sset Master 5%-')
         _G.toggleVolOSD(true)
+        _G.UpdateVolOSD()
     end,
     {description = 'volume down', group = 'hotkeys'}
   ),
