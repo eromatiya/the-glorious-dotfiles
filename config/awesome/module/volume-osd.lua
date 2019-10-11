@@ -70,7 +70,9 @@ function toggleVolOSD(bool)
   if bool then
 
     hideOSD:again()
-    toggleBriOSD(false)
+    if toggleBriOSD ~= nil then
+      _G.toggleBriOSD(true)
+    end
   else
     hideOSD:stop()
   end
