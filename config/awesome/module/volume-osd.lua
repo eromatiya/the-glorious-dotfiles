@@ -57,7 +57,7 @@ volumeOverlay:setup {
 
 
 local hideOSD = gears.timer {
-    timeout = 3,
+    timeout = 5,
     autostart = true,
     callback  = function()
       volumeOverlay.visible = false

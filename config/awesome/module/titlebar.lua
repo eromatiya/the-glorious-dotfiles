@@ -140,9 +140,7 @@ end)
 _G.client.connect_signal("manage", function(c)
     if c.first_tag.layout.name ~= "max" then
         awful.titlebar.show(c, 'left')
-    --    kittyBar(c) -- CALL CUSTOM TERMINAL
     else
-
         awful.titlebar.hide(c, 'left')
     end
 end)
@@ -205,7 +203,7 @@ _G.client.connect_signal("property::floating", function(c)
 
     if c.floating then
       awful.titlebar.show(c, 'left')
-      awful.placement.centered(c)
+      --awful.placement.centered(c)
       c.shape = function(cr, w, h)
         gears.shape.rounded_rect(cr, w, h, 12)
       end

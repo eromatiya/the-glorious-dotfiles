@@ -33,7 +33,7 @@ awful.rules.rules = {
     }
   },
   { rule_any = { name = {'QuakeTerminal'} },
-    properties = { skip_decoration = true, titlebars_enabled = false }
+    properties = { skip_decoration = true }
   },
 
   -- Terminals
@@ -202,27 +202,48 @@ awful.rules.rules = {
       focus = awful.client.focus.filter,
       raise = true,
       keys = client_keys,
+      buttons = client_buttons,
+      placement = awful.placement.centered
+    }
+  },
+
+  -- For nemo overwrite
+    {
+      rule = {
+        instance = 'nemo'
+      },
+      properties = {
+        skip_decoration = true,
+        ontop= true,
+        floating = true,
+        drawBackdrop = false,
+        focus = awful.client.focus.filter,
+        raise = true,
+        keys = client_keys,
+        buttons = client_buttons,
+        placement = awful.placement.centered
+      }
+    },
+
+  {
+    -- For Firefox Popup when you open incognito mode
+    rule = {
+      instance = 'Popup'
+    },
+    properties = {
+      skip_decoration = true,
+      ontop= true,
+      floating = true,
+      drawBackdrop = false,
+      focus = awful.client.focus.filter,
+      raise = true,
+      keys = client_keys,
       buttons = client_buttons
     }
   }
-},
-
--- For Firefox Popup when you install extension
-{
-  rule = {
-    instance = 'Popup'
-  },
-  properties = {
-    skip_decoration = true,
-    ontop= true,
-    floating = true,
-    drawBackdrop = false,
-    focus = awful.client.focus.filter,
-    raise = true,
-    keys = client_keys,
-    buttons = client_buttons
-  }
 }
+
+
 
 
 -- Normally we'd do this with a rule but Spotify and SuperTuxKart doesnt set

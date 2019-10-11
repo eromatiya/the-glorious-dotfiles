@@ -25,7 +25,7 @@ local globalKeys =
         awful.util.spawn(apps.default.rofiappmenu)
         _G.screen.primary.left_panel:HideDashboard()
       end,
-      { description = "Open Rofi", group = "launcher"}),
+      { description = "Open Application Drawer", group = "launcher"}),
 
   awful.key(
     {modkey, "Shift"}, 'f',
@@ -48,13 +48,21 @@ local globalKeys =
     end,
     { description = "Open system monitor", group = "launcher"}),
 
-
   -- Screen Shots
-  -- Screen Shot and Save
-  awful.key({ }, "Print", function () awful.util.spawn("snap full") end),
+  awful.key(
+  { }, "Print",
+  function ()
+    awful.util.spawn("snap full")
+  end,
+  { description = "Fullscreen screenshot", group = "Miscellaneous"}),
 
   -- Screen Shot Area and Save
-  awful.key({modkey, "Shift"}, 's', function () awful.util.spawn("snap area") end),
+  awful.key(
+  {modkey, "Shift"}, 's',
+  function ()
+    awful.util.spawn("snap area")
+  end,
+  { description = "Area screenshot", group = "Miscellaneous"}),
 
   -- Toggle System Tray
   awful.key({ modkey }, '=', function ()
@@ -88,7 +96,7 @@ local globalKeys =
     function()
       _G.screen.primary.left_panel:toggle(true)
     end,
-    {description = 'show main menu', group = 'awesome'}
+    {description = 'Open Sidebar', group = 'launcher'}
   ),
   awful.key({modkey}, 'u', awful.client.urgent.jumpto, {description = 'jump to urgent client', group = 'client'}),
   awful.key(
