@@ -141,7 +141,10 @@ local function list_update(w, buttons, label, data, objects)
     end
     bgb:set_bgimage(bg_image)
     if icon then
-      ib.image = icon
+      -- if using the awesome v4.3 use this line
+      -- ib.image = icon
+      -- if you're using the git master use this
+      ib.image = gears.surface(icon)
     else
       ibm:set_margins(0)
     end
