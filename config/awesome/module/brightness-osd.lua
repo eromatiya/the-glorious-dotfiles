@@ -2,12 +2,11 @@
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
-local watch = require('awful.widget.watch')
 local beautiful = require('beautiful')
 local dpi = require('beautiful').xresources.apply_dpi
 
 
-local vol_osd = require('widget.brightness.brightness-slider')
+local vol_osd = require('widget.brightness.brightness-slider-osd')
 
 
 awful.screen.connect_for_each_screen(
@@ -68,6 +67,7 @@ local hideOSD = gears.timer {
 function toggleBriOSD(bool)
   brightnessOverlay.visible = bool
   if bool then
+    _G.UpdateBrOSD()
     hideOSD:again()
     toggleVolOSD(false)
   else

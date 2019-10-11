@@ -7,7 +7,7 @@ local beautiful = require('beautiful')
 local dpi = require('beautiful').xresources.apply_dpi
 
 
-local vol_osd = require('widget.volume.volume-slider')
+local vol_osd = require('widget.volume.volume-slider-osd')
 
 
 awful.screen.connect_for_each_screen(
@@ -62,12 +62,13 @@ local hideOSD = gears.timer {
     callback  = function()
       volumeOverlay.visible = false
     end
-  }
+}
 
 
 function toggleVolOSD(bool)
   volumeOverlay.visible = bool
   if bool then
+    _G.UpdateVolOSD()
     hideOSD:again()
     toggleBriOSD(false)
   else
