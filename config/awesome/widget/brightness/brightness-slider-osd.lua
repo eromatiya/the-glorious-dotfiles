@@ -16,10 +16,9 @@ local slider =
 slider:connect_signal(
   'property::value',
   function()
-    spawn('xbacklight -set ' .. slider.value .. '%')
+    spawn('xbacklight -set ' .. math.max(slider.value, 5))
   end
 )
-
 
 function UpdateBrOSD()
   awful.spawn.easy_async_with_shell("xbacklight -get", function( stdout )
