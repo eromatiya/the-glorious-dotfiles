@@ -297,6 +297,14 @@ local globalKeys =
       _G.exit_screen_show()
     end,
     {description = 'toggle exit screen', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86Display',
+    function()
+      awful.spawn('arandr')
+    end,
+    {description = 'arandr', group = 'hotkeys'}
   )
 )
 

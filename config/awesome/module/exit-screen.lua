@@ -8,7 +8,7 @@ local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Appearance
-local icon_size = beautiful.exit_screen_icon_size or dpi(140)
+local icon_size = beautiful.exit_screen_icon_size or dpi(90)
 
 local buildButton = function(icon)
   local abutton =

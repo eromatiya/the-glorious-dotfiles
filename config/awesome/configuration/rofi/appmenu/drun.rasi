@@ -44,7 +44,7 @@ entry  {
 }
 
 listview {
-    columns:                        5;
+    columns:                        6;
     margin:                         40px 120px 40px 120px;
 }
 

@@ -167,11 +167,6 @@ awful.rules.rules = {
       ontop = true,
       floating = true,
       drawBackdrop = false, -- TRUE if you want to add blur backdrop
-      shape = function()
-        return function(cr, w, h)
-          gears.shape.rounded_rect(cr, w, h, 12)
-        end
-      end,
       skip_decoration = true
     }
   },
