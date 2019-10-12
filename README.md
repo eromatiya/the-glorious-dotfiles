@@ -3,12 +3,12 @@
 ## Details
 + **OS**: I use Arch, btw
 + **WM**: AwesomeWM
-+ **Terminal Emulators**: Kitty, urxvt-pixbuf, xterm
-+ **Compositor**: Compton-tryone-git
-+ **File Manager**: Nemo
-+ **Launcher**: Rofi-git
-+ **Editor**: Neovim, Atom
-+ **Browser**: Firefox
++ **Terminal Emulators**: kitty, urxvt-pixbuf, xterm
++ **Compositor**: compton-tryone-git
++ **File Manager**: nemo
++ **Launcher**: rofi-git
++ **Editor**: neovim, atom
++ **Browser**: firefox
 + **Music Player**: ncmpcpp, mpd, mpc
 
 # Floppy - An AwesomeWM Setup
@@ -16,9 +16,9 @@
 ## NEW FEATURES!
 + **Brightness and Volume OSDs**
 + **Dynamic Wallpaper Module**
-  - Wallpaper changes based on time. The module is `$HOME/.config/awesome/module/wallchange.lua`
+  - Wallpaper changes based on time. You can modify it here `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
-+ **BUGS. A LOT OF BUGS**
++ **BUGS. A LOT OF BUGS.**
 
 ## Theme Preview  
 
@@ -30,6 +30,7 @@
 | Dashboard in Action | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif) |
 | App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/application-dashboard.png) |
 | OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/OSDs.gif) |
+| Exit Screen | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/exit-screen.png) |
 | Day Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/day-wallpaper.jpg)  
 | Night Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/night-wallpaper.jpg)  
 
@@ -67,14 +68,11 @@ If you notice that something is missing, please open an issue so I can add the d
 + **San Francisco Display**
 
 #### Installation
-+ **Download the dotfiles or clone it**
-+ **Extract it you have downloaded it**
-+ **Back-up your setup first**
-+ **Copy Glorious-Dotfiles/config/awesome to $HOME/.config**
-+ **Reload Awesome**
++ Copy `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
++ Reload Awesome
 
-# Got a problem? Just open an ![issue](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new)
-
+# Got a problem? Just open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
+#### Suggestion? If you have any suggestion on how to improve this setup, please open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
 
 **Special thanks**
 + **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome)
