@@ -63,7 +63,6 @@ If you notice that something is missing, please open an issue so I can add the d
 ##### Monospace
 + **Iosevka Custom** - [Link](https://github.com/elenapan/dotfiles/)
 
-
 ##### Sans
 + **Google Sans**
 + **San Francisco Display**
