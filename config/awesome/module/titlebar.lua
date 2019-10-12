@@ -9,6 +9,11 @@ local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
 
+
+local roundCorners = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, 12)
+end
+
 -- Titlebar Colors
 beautiful.titlebar_bg_focus = '#000000'
 beautiful.titlebar_bg_normal = '#000000'
@@ -152,8 +157,9 @@ end)
 _G.screen.connect_signal("arrange", function(s)
 
   for _, c in pairs(s.clients) do
-    if #s.tiled_clients >= 1 and (c.floating or c.first_tag.layout.name == 'floating') then
+    if #s.tiled_clients >= 0 and (c.floating or c.first_tag.layout.name == 'floating') then
       awful.titlebar.show(c, 'left')
+      c.shape = roundCorners
     elseif #s.tiled_clients == 1 and c.fullscreen == true then
       awful.titlebar.show(c, 'left')
       c.shape = function(cr, w, h)
@@ -178,9 +184,7 @@ _G.screen.connect_signal("arrange", function(s)
       end
     elseif #s.tiled_clients > 1 and c.first_tag.layout.name == 'dwindle' then
       awful.titlebar.show(c, 'left')
-      c.shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, 12)
-      end
+      c.shape = roundCorners
     elseif #s.tiled_clients == 1 and c.first_tag.layout.name == 'tile' then
       awful.titlebar.hide(c, 'left')
       c.shape = function(cr, w, h)
@@ -188,9 +192,7 @@ _G.screen.connect_signal("arrange", function(s)
       end
     elseif #s.tiled_clients > 1 and c.first_tag.layout.name == 'tile' then
       awful.titlebar.show(c, 'left')
-      c.shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, 12)
-      end
+      c.shape = roundCorners
 
     end
 
@@ -200,17 +202,13 @@ end)
 
 
 _G.client.connect_signal("property::floating", function(c)
-
     if c.floating then
       awful.titlebar.show(c, 'left')
-      --awful.placement.centered(c)
-      c.shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, 12)
-      end
+      awful.placement.centered(c)
+
     else
       awful.titlebar.hide(c, 'left')
     end
-
 end)
 
 

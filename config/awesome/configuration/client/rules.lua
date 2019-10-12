@@ -2,7 +2,7 @@ local awful = require('awful')
 local gears = require('gears')
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
-local edgeShape = function(cr, width, height)
+local roundCorners = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 12)
 end
 
@@ -171,7 +171,7 @@ awful.rules.rules = {
       floating = true,
       drawBackdrop = true, -- TRUE if you want to add blur backdrop
       skip_decoration = true,
-      shape = edgeShape,
+      shape = roundCorners,
     }
   },
 
