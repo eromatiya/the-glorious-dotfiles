@@ -11,12 +11,12 @@
 + **Browser**: Firefox
 + **Music Player**: ncmpcpp, mpd, mpc
 
-## Floppy - An AwesomeWM Setup
+# Floppy - An AwesomeWM Setup
 
 ## NEW FEATURES!
 + **Brightness and Volume OSDs**
 + **Dynamic Wallpaper Module**
-  - Changes wallpaper based on time. You can change the time on `$HOME/.config/awesome/module/wallchange.lua`
+  - Wallpaper changes based on time. The module is `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
 + **BUGS. A LOT OF BUGS**
 
@@ -27,16 +27,15 @@
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/desktop.png) |
 | Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty.png)   |
 | Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png) |
-|  | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif) |
+| Dashboard in Action | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif) |
 | App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/application-dashboard.png) |
 | OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/OSDs.gif) |
-| Day Wall | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/day-wallpaper.jpg)  
-| Night Wall | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/night-wallpaper.jpg)  
+| Day Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/day-wallpaper.jpg)  
+| Night Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/night-wallpaper.jpg)  
 
 
 ## Dependencies
 Here is a complete list of dependencies needed for making these AwesomeWM setup to work.
-
 If you notice that something is missing, please open an issue so I can add the dependency to this table.
 
 **Make sure that you installed them before using this setup**  
@@ -56,7 +55,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `mpc` | Minimalist command line interface to MPD | Music widgets |
 | `maim` | Takes screenshots (improved `scrot`) | Screenshot keybinds |
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
-| `xorg-xwininfo` | Vital app | it just works |
+| `xorg-xwininfo` | Window information utility for X | it just works |
 
 
 
@@ -74,9 +73,11 @@ If you notice that something is missing, please open an issue so I can add the d
 + **Copy Glorious-Dotfiles/config/awesome to $HOME/.config
 + **Reload Awesome**
 
-# Got a problem? Just open an issue.
+# Got a problem? Just open an ![issue](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new)
 
-**Special Thanks**
+
+**Special thanks**
 + **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome)
 + **elenapan** [Dotfiles](https://github.com/elenapan/dotfiles)
 + **addyfe** [Dotfiles](https://github.com/addy-dclxvi/almighty-dotfiles)
++ **myself, of course**
