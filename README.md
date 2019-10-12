@@ -1,20 +1,37 @@
-
 # Glorious Dotfiles
-## A Stolen configs from different people
-## **some are mine tho**
-## **feel free to steal it**  
 
 ## Details
 + **OS**: I use Arch, btw
 + **WM**: AwesomeWM
-+ **Terminal**: Kitty, URxvt-pixbuf
++ **Terminal Emulators**: Kitty, urxvt-pixbuf, xterm
 + **Compositor**: Compton-tryone-git
 + **File Manager**: Nemo
 + **Launcher**: Rofi-git
-+ **Editor**: Neovim
++ **Editor**: Neovim, Atom
 + **Browser**: Firefox
 + **Music Player**: ncmpcpp, mpd, mpc
 
+## Floppy - An AwesomeWM Setup
+
+## NEW FEATURES!
++ **Brightness and Volume OSDs**
++ **Dynamic Wallpaper Module**
+  - Changes wallpaper based on time. You can change the time on `$HOME/.config/awesome/module/wallchange.lua`
+  - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
++ **BUGS. A LOT OF BUGS**
+
+## Theme Preview  
+
+| Floppy | Preview |
+| --- | --- |
+| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/desktop.png) |
+| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty.png)   |
+| Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png) |
+|  | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif) |
+| App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/application-dashboard.png) |
+| OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/OSDs.gif) |
+| Day Wall | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/day-wallpaper.jpg)  
+| Night Wall | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/night-wallpaper.jpg)  
 
 
 ## Dependencies
@@ -26,7 +43,7 @@ If you notice that something is missing, please open an issue so I can add the d
 
 | Dependency | Description | Why/Where is it needed? |
 | --- | --- | --- |
-| `awesome` | Window manager | yeah awesome |
+| `awesome-git` | Window manager | yeah awesome |
 | `rofi-git` | Window switcher, application launcher and dmenu replacement | Application launcher |
 | `Compton-tryone` | A compositor for X11 | compositor with kawase-blur |
 | `blueman` | Manages bluetooth | For bluetooth widgets |
@@ -39,36 +56,26 @@ If you notice that something is missing, please open an issue so I can add the d
 | `mpc` | Minimalist command line interface to MPD | Music widgets |
 | `maim` | Takes screenshots (improved `scrot`) | Screenshot keybinds |
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
+| `xorg-xwininfo` | Vital app | it just works |
 
 
 
 ##### Monospace
-+ **Iosevka** - [download elenapan's custom build](https://github.com/elenapan/dotfiles/)
++ **Iosevka Custom** - [Link](https://github.com/elenapan/dotfiles/)
 
 
 ##### Sans
 + **Google Sans**
 + **San Francisco Display**
 
+#### Installation
++ **Download the dotfiles or clone it**
++ **Extract it you have downloaded it**
++ **Back-up your setup first**
++ **Copy Glorious-Dotfiles/config/awesome to $HOME/.config
++ **Reload Awesome**
 
-## Theme preview  
-#### Clean
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/desktop.png)    
-#### Dirty
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty.png)  
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty2.png)  
-#### Dashboard
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png)    
-#### Dashboard in action
-I also added a bunch of useless buttons in dashboard.
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif)  
-### **NEW** Brightness/Volume OSDs!!!
-![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/OSDs.gif)  
-#### Rofi Application Dashboard
-![](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/application-dashboard.png)
-#### Wallpaper. Credits to the owner!
-![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/wallpaper.jpg)  
-
+# Got a problem? Just open an issue.
 
 **Special Thanks**
 + **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome)
