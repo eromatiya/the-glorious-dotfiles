@@ -60,7 +60,7 @@ If you notice that something is missing, please open an issue so I can add the d
 
 
 ##### Monospace
-+ **Iosevka Custom** - [Link](https://github.com/elenapan/dotfiles/)
++ **[Iosevka Custom](https://github.com/elenapan/dotfiles/)**
 
 ##### Sans
 + **Google Sans**
@@ -70,7 +70,7 @@ If you notice that something is missing, please open an issue so I can add the d
 + **Download the dotfiles or clone it**
 + **Extract it you have downloaded it**
 + **Back-up your setup first**
-+ **Copy Glorious-Dotfiles/config/awesome to $HOME/.config
++ **Copy Glorious-Dotfiles/config/awesome to $HOME/.config**
 + **Reload Awesome**
 
 # Got a problem? Just open an ![issue](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new)
