@@ -20,8 +20,7 @@ require('module.titlebar')
 require('module.menu')
 require('module.volume-osd')
 require('module.brightness-osd')
-
-local wibox = require("wibox")
+require('module.wallchange')
 
 -- Setup all configurations
 require('configuration.client')

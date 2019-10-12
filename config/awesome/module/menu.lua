@@ -13,8 +13,6 @@ editor_cmd = terminal .. " -e " .. editor
 
 -- Theming Menu
 beautiful.menu_font = "SFNS Display Regular 11"
-beautiful.menu_height = 34
-beautiful.menu_width = 180
 beautiful.menu_bg_focus = '#8AB4F8AA'
 beautiful.menu_bg_normal = '#00000044'
 beautiful.menu_submenu = '➤'

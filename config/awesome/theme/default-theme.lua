@@ -24,11 +24,12 @@ theme.background = mat_colors.grey
 local awesome_overrides =
   function(theme)
   theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
-  --theme.dir             = os.getenv("HOME") .. "/code/awesome-pro/themes/pro-dark"
 
   theme.icons = theme.dir .. '/icons/'
-  theme.wallpaper = theme.dir .. '/wallpapers/wallpaper.jpg'
-  --theme.wallpaper = '#e0e0e0'
+
+  -- Default Wallpaper if Dynamic wallpaper module is not loaded
+  theme.wallpaper = theme.dir .. '/wallpapers/day-wallpaper.jpg'
+
   theme.font = 'Roboto medium 10'
   theme.title_font = 'Roboto medium 14'
 
@@ -52,11 +53,11 @@ local awesome_overrides =
 
   -- Menu
 
-  theme.menu_height = dpi(16)
-  theme.menu_width = dpi(160)
+  theme.menu_height = 34
+  theme.menu_width = 180
 
   -- Tooltips
-  theme.tooltip_bg = '#232323' .. '99'
+  theme.tooltip_bg = '#000000' .. '66'
   --theme.tooltip_border_color = '#232323'
   theme.tooltip_border_width = 0
   theme.tooltip_shape = function(cr, w, h)
