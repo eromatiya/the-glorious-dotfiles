@@ -2,6 +2,9 @@ local awful = require('awful')
 local gears = require('gears')
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
+local edgeShape = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, 12)
+end
 
 -- Rules
 awful.rules.rules = {
@@ -166,8 +169,9 @@ awful.rules.rules = {
       placement = awful.placement.centered,
       ontop = true,
       floating = true,
-      drawBackdrop = false, -- TRUE if you want to add blur backdrop
-      skip_decoration = true
+      drawBackdrop = true, -- TRUE if you want to add blur backdrop
+      skip_decoration = true,
+      shape = edgeShape,
     }
   },
 
@@ -206,24 +210,6 @@ awful.rules.rules = {
       placement = awful.placement.centered
     }
   },
-
-  -- For nemo overwrite
-    {
-      rule = {
-        instance = 'nemo'
-      },
-      properties = {
-        skip_decoration = true,
-        ontop= true,
-        floating = true,
-        drawBackdrop = false,
-        focus = awful.client.focus.filter,
-        raise = true,
-        keys = client_keys,
-        buttons = client_buttons,
-        placement = awful.placement.centered
-      }
-    },
 
   {
     -- For Firefox Popup when you open incognito mode
