@@ -15,6 +15,7 @@
 
 ## NEW FEATURES!
 + **Brightness and Volume OSDs**
++ **Sidebar rofi changed from searching apps to searching the web**
 + **Dynamic Wallpaper Module**
   - Wallpaper changes based on time. You can modify it here `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`

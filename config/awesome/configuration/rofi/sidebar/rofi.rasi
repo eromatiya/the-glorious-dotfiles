@@ -1,10 +1,7 @@
 configuration {
-	display-drun:                   "Activate";
-	display-run:                    "Execute";
-	show-icons:                     true;
-	sidebar-mode:                   true;
-  icon-theme:                     "Flat-Remix-Blue-Dark";
-  font:                           "SFNS Display 10";
+	show-icons:                    true;
+	sidebar-mode:                  true;
+  font:                          "SFNS Display 10";
 }
 
 * {
@@ -58,11 +55,11 @@ mainbox {
 	expand: true;
 }
 
-button { padding: 5px 2px; }
+button { padding: 10px 2px; }
 
 button selected {
-	background-color: @active-background;
-	text-color:       @background-color;
+	background-color: @act-bg;
+	text-color:       @text-color;
 }
 
 inputbar {
