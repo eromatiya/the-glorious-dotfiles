@@ -107,7 +107,7 @@ active_column_color = red
 window_border_color = yellow
 
 ## you have dunst? use this
-execute_on_song_change = kitty_ncmpcppp_cover.sh
+execute_on_song_change = kitty_ncmpcppp_cover.sh &> /dev/null
 #execute_on_song_change = ~/.ncmpcpp/art-dark.sh && notify-send "Now Playing ♫" "$(mpc current)"
 #execute_on_song_change = extract-cover
 
