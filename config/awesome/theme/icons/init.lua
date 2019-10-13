@@ -1,4 +1,4 @@
-local leftpanel_icon_theme = 'macos' -- Available Themes: 'lines', 'original', 'macos'
+local leftpanel_icon_theme = 'macos' -- Available Themes: 'drops', 'original', 'macos'
 local lit_dir = os.getenv('HOME') .. '/.config/awesome/theme/icons/themes/' .. leftpanel_icon_theme
 
 local dir = os.getenv('HOME') .. '/.config/awesome/theme/icons'

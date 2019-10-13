@@ -6,7 +6,7 @@ temp_song="/tmp/current-song"
 coverExtractingPackage=$(which exiftool)
 
 function Album-Cover-Notif() {
-  isDunst=$(which dunstify)
+  isDunst=$(which dunstify > /dev/null 2>&1)
   if [ ! -z $isDunst ]
   then
     dunstify --appname 'nmpcpp' --replace 3 --icon $TMP_COVER_PATH "$(mpc -f %title% current)" "$(mpc -f %artist% current)"

@@ -114,8 +114,11 @@ def main():
         for r in results:
             print(html.unescape(r))
     elif search_string == '':
-        print('Type something and search it with %s' % CONFIG['SEARCH_ENGINE_NAME'][SEARCH_ENGINE])
+        print('Search the web with %s' % CONFIG['SEARCH_ENGINE_NAME'][SEARCH_ENGINE])
         print('Close search string with "!" to get suggestions')
+        print('Search engine can be change in the config')
+        print('This script is made by pdonadeo')
+        print('https://github.com/pdonadeo/rofi-web-search')
     else:
         url = CONFIG['SEARCH_URL'][SEARCH_ENGINE] + urllib.parse.quote_plus(search_string)
         sp.Popen([CONFIG['BROWSER_PATH'][BROWSER], url], stdout=sp.DEVNULL, stderr=sp.DEVNULL, shell=False)

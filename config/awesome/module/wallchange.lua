@@ -17,7 +17,7 @@ function timeChecker()
   time = os.date("*t")
     time = time.hour
     -- Change to night-wallpaper when it's 7PM.
-        if tonumber(time) >= hour then
+    if tonumber(time) >= hour then
       gears.wallpaper.maximized (wall_dir .. 'night-wallpaper.jpg', s)
     else
       gears.wallpaper.maximized (wall_dir .. 'day-wallpaper.jpg', s)

@@ -1,13 +1,14 @@
 configuration {
     show-icons:                     true;
-    icon-theme:                     "McMojave-circle-blue-dark";
+    icon-theme:                     "Flat-Remix-Blue-Dark";
     font:                           "SFNS Display 9";
+    drun-display-format:            "{name}";
 }
 
 
 * {
     background-color:               transparent;
-    background:                     #00000066;
+    background:                     #00000070;
     background-alt:                 #E5E9F047;
     text-color:                     #D8DEE9;
     selected-text-color:            #000000;
@@ -44,8 +45,9 @@ entry  {
 }
 
 listview {
-    columns:                        6;
+    columns:                        5;
     margin:                         40px 120px 40px 120px;
+    spacing:                        4;
 }
 
 element {
@@ -74,6 +76,7 @@ element normal.active, element alternate.active {
 element selected {
     background-color:               @background-alt;
     color:                          @selected-text-color;
+    border-radius:                  6;
 }
 
 element selected.urgent {
@@ -93,4 +96,5 @@ element-icon {
 element-text {
     expand:                         true;
     horizontal-align:               0.5;
+    margin:                         5px 0px 0px 0px;
 }

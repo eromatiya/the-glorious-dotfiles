@@ -1,21 +1,23 @@
 configuration {
-	show-icons:                    true;
+	show-icons:                    false;
 	sidebar-mode:                  true;
   font:                          "SFNS Display 10";
+	hide-scrollbar: true;
 }
 
 * {
-	background-color:             rgba(26, 26, 26, 0.10);
+  background-color:             transparent;
+	background:          				  rgba(26, 26, 26, 0.50);
 	text-color:                   rgb(255, 255, 255);
 	selbg:                        rgb(138, 180, 248);
-	actbg:                        rgba(0, 0, 0, 0.75);
+	actbg:                        #E5E9F047;
 	urgbg:                        #e53935;
 	winbg:			     		          #26c6da;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
 	selected-normal-background:  @actbg;
-	normal-background:           @background-color;
+	normal-background:           @background;
 
 	selected-urgent-foreground:  @background-color;
 	urgent-foreground:           @text-color;
@@ -73,23 +75,28 @@ textbox-prompt-colon {
  }
 
 listview {
-	spacing: 0em;
+	spacing: 4px;
 	dynamic: false;
 	cycle:   true;
 }
 
 element {
-	padding: 16px;
-	border:  0 0 0 5px solid;
+	padding:							16px;
+	border: 						 	0 0 0 0px solid;
+	border-radius:				12;
+	margin:								0 17 0 17;
+	background-color: 		rgba(28, 26, 20, 1);
 }
 
 entry {
-	expand:         true;
-	text-color:     @normal-foreground;
-	background-color: rgb(26, 26, 26, 0.10);
-	vertical-align: 1;
-	padding:        12px;
-	font:            "SFNS Display 10";
+	expand:         			true;
+	text-color:						@normal-foreground;
+	background-color:		 	#ffffff20;
+	vertical-align: 			0.5;
+	padding:        			12px;
+	font:            			"SFNS Display 14";
+	margin:								16 16 16 16;
+	border-radius:				28;
 }
 
 element normal.normal {
@@ -109,9 +116,9 @@ element normal.active {
 
 element selected.normal {
 	background-color: @selected-normal-background;
-	text-color:       @selected-normal-foreground;
+	text-color:      #000000;
 	padding: 16px;
-	border:           0 0 0 5px solid;
+	border:           0 0 0 0px solid;
 	border-color:	    @active-background;
 }
 
@@ -143,4 +150,9 @@ element alternate.active {
 element-icon {
     size:                           24;
     border:                         0px;
+}
+
+element-text {
+    expand:                         true;
+    horizontal-align:               0.5;
 }

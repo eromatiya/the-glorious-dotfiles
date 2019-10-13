@@ -28,6 +28,7 @@
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/desktop.png) |
 | Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty.png)   |
 | Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png) |
+| Web Search | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/rofi-searchweb.png) |
 | Dashboard in Action | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif) |
 | App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/application-dashboard.png) |
 | OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/OSDs.gif) |
@@ -58,6 +59,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `maim` | Takes screenshots (improved `scrot`) | Screenshot keybinds |
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
 | `xorg-xwininfo` | Window information utility for X | it just works |
+| `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend | 
 
 
 
@@ -75,8 +77,10 @@ If you notice that something is missing, please open an issue so I can add the d
 # Got a problem? Just open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
 #### Suggestion? If you have any suggestion on how to improve this setup, please open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
 
+
 **Special thanks**
 + **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome)
-+ **elenapan** [Dotfiles](https://github.com/elenapan/dotfiles)
-+ **addyfe** [Dotfiles](https://github.com/addy-dclxvi/almighty-dotfiles)
-+ **myself, of course**
++ **pdonadeo** for the [rofi-web-search.py](https://github.com/pdonadeo/rofi-web-search)
++ **[elenapan](https://github.com/elenapan/dotfiles)**
++ **[addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)**
++ **Myself, for not giving up**
