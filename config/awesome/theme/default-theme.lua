@@ -73,24 +73,24 @@ local awesome_overrides =
   -- Taglist
 
   theme.taglist_bg_empty = theme.background.hue_800 .. '99'
-  theme.taglist_bg_occupied = -- blank theme.background.hue_800
-    'linear:0,0:' ..
-    dpi(48) ..
-      ',0:0,' ..
-        '#ffffff' ..
-          ':0.08,' .. '#ffffff' .. ':0.08,' .. theme.background.hue_800 .. '99' .. theme.background.hue_800
-  theme.taglist_bg_urgent =
-    'linear:0,0:' ..
-    dpi(48) ..
-      ',0:0,' ..
-        theme.accent.hue_500 ..
-          ':0.08,' .. theme.accent.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
-  theme.taglist_bg_focus =
-    'linear:0,0:' ..
-    dpi(48) ..
-      ',0:0,' ..
-        theme.primary.hue_500 ..
-          ':0.08,' .. theme.primary.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' --[[':1,']] .. theme.background.hue_800
+  theme.taglist_bg_occupied =  '#ffffff' .. '1A'  --theme.background.hue_800
+    -- 'linear:0,0:' ..
+    -- dpi(48) ..
+    --   ',0:0,' ..
+    --     '#ffffff' ..
+    --       ':0.08,' .. '#ffffff' .. ':0.08,' .. theme.background.hue_800 .. '99' .. theme.background.hue_800
+  theme.taglist_bg_urgent = theme.accent.hue_500 .. '99'
+    -- 'linear:0,0:' ..
+    -- dpi(48) ..
+    --   ',0:0,' ..
+    --     theme.accent.hue_500 ..
+    --       ':0.08,' .. theme.accent.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
+  theme.taglist_bg_focus = theme.background.hue_800
+    -- 'linear:0,0:' ..
+    -- dpi(48) ..
+    --   ',0:0,' ..
+    --     theme.primary.hue_500 ..
+    --       ':0.08,' .. theme.primary.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' --[[':1,']] .. theme.background.hue_800
 
   -- Tasklist
 

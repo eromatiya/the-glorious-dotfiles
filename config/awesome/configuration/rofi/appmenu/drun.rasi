@@ -1,6 +1,6 @@
 configuration {
     show-icons:                     true;
-    icon-theme:                     "Flat-Remix-Blue-Dark";
+    icon-theme:                     "McMojave-circle-blue-dark";
     font:                           "SFNS Display 9";
 }
 
