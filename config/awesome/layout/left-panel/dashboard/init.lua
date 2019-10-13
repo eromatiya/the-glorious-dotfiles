@@ -114,7 +114,7 @@ return function(_, panel)
           bg = '#ffffff20',--beautiful.background.hue_800,
           widget = wibox.container.background,
           shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, 12)
+                    gears.shape.rounded_rect(cr, w, h, 6)
                   end,
         },
         widget = mat_list_item,

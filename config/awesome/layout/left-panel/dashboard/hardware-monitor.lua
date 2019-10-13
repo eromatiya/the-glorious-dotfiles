@@ -50,7 +50,7 @@ return wibox.widget {
                   true,
                   false,
                   false,
-                  12)
+                  6)
               end,
       widget = wibox.container.background
     },
@@ -90,7 +90,7 @@ return wibox.widget {
                   false,
                   false,
                   false,
-                  12)
+                  6)
               end,
       widget = wibox.container.background
     },
@@ -130,7 +130,7 @@ return wibox.widget {
                   false,
                   false,
                   false,
-                  12)
+                  6)
               end,
       widget = wibox.container.background
     },
