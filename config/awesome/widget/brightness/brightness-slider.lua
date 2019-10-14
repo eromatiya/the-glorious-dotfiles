@@ -23,7 +23,7 @@ slider:connect_signal(
 
 watch(
   [[bash -c "xbacklight -get"]],
-  1,
+  2,
   function(widget, stdout, stderr, exitreason, exitcode)
     local brightness = string.match(stdout, '(%d+)')
 

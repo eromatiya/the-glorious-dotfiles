@@ -43,17 +43,6 @@ slider_osd:connect_signal(
   end
 )
 
-watch(
-  [[bash -c "amixer -D pulse sget Master"]],
-  1,
-  function(_, stdout)
-    local mute = string.match(stdout, '%[(o%D%D?)%]')
-    local volume = string.match(stdout, '(%d?%d?%d)%%')
-    slider_osd:set_value(tonumber(volume))
-    collectgarbage('collect')
-  end
-)
-
 function UpdateVolOSD()
   awful.spawn.easy_async_with_shell("bash -c 'amixer -D pulse sget Master'", function( stdout )
     local mute = string.match(stdout, '%[(o%D%D?)%]')

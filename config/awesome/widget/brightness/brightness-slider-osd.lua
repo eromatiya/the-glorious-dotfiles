@@ -33,17 +33,6 @@ slider_osd:connect_signal(
   end
 )
 
-watch(
-  [[bash -c "xbacklight -get"]],
-  1,
-  function(widget, stdout, stderr, exitreason, exitcode)
-    local brightness = string.match(stdout, '(%d+)')
-
-    slider_osd:set_value(tonumber(brightness))
-    collectgarbage('collect')
-  end
-)
-
 function UpdateBrOSD()
   awful.spawn.easy_async_with_shell("xbacklight -get", function( stdout )
     local brightness = string.match(stdout, '(%d+)')

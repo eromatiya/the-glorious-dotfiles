@@ -22,7 +22,7 @@ slider:connect_signal(
 
 watch(
   [[bash -c "amixer -D pulse sget Master"]],
-  1,
+  2,
   function(_, stdout)
     local mute = string.match(stdout, '%[(o%D%D?)%]')
     local volume = string.match(stdout, '(%d?%d?%d)%%')
