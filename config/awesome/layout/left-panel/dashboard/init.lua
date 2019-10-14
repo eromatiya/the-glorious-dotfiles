@@ -91,7 +91,7 @@ return function(_, panel)
       {
         wibox.widget {
           search_button,
-          bg = '#ffffff20',     --beautiful.background.hue_800,
+          bg = beautiful.bg_modal,     --beautiful.background.hue_800,
           shape = function(cr, w, h)
                     gears.shape.rounded_rect(cr, w, h, 28)
                   end,
@@ -111,7 +111,7 @@ return function(_, panel)
       wibox.widget{
         wibox.widget{
           exit_button,
-          bg = '#ffffff20',--beautiful.background.hue_800,
+          bg = beautiful.bg_modal,--beautiful.background.hue_800,
           widget = wibox.container.background,
           shape = function(cr, w, h)
                     gears.shape.rounded_rect(cr, w, h, 6)

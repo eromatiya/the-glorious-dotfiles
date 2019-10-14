@@ -11,7 +11,7 @@ local quickTitle = wibox.widget {
   widget = wibox.widget.textbox
 }
 
-local barColor = '#ffffff20'
+local barColor = beautiful.bg_modal
 local volSlider = require('widget.volume.volume-slider')
 local brightnessSlider = require('widget.brightness.brightness-slider')
 

@@ -26,7 +26,7 @@ local separator = wibox.widget{
   widget = wibox.widget.separator
 }
 
-local barColor = '#ffffff20'
+local barColor = beautiful.bg_modal
 local wifibutton = require('widget.action-center.wifi-button')
 local bluebutton = require('widget.action-center.bluetooth-button')
 local comptonbutton = require('widget.action-center.compositor-button')

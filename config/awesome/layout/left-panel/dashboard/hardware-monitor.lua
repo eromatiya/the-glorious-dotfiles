@@ -22,7 +22,7 @@ local separator = wibox.widget {
         widget = wibox.widget.separator
 }
 
-local barColor = '#ffffff20'
+local barColor = beautiful.bg_modal
 local cpu = require('widget.cpu.cpu-meter')
 local ram = require('widget.ram.ram-meter')
 local temp = require('widget.temperature.temperature-meter')

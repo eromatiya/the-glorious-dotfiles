@@ -44,6 +44,8 @@ local awesome_overrides =
   theme.bg_urgent = '#3F3F3F'
   theme.bg_systray = theme.background.hue_800
 
+  theme.bg_modal = "#ffffff20"
+
   -- Borders
 
   theme.border_width = dpi(2)
