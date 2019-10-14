@@ -1,3 +1,0 @@
-#!/bin/bash
-
-tdrop -a -w 709 -h 282 -x 328 -y 49 -f "-c stna -e bash -c 'bspc node -g sticky && ncmpcpp -c ~/.ncmpcpp/config'" urxvt &>/dev/null

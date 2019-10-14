@@ -1,6 +1,0 @@
-#!/bin/bash
-if  amixer get Master | grep -Fq "[off]"; then
-	dunstify -r 240 -u low "" "Sound MUTED!"
-else
-	dunstify -r 240 -u low "" "Sound UNMUTED!"
-fi

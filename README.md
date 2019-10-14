@@ -25,16 +25,16 @@
 
 | Floppy | Preview |
 | --- | --- |
-| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/desktop.png) |
-| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dirty.png)   |
-| Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboard.png) |
-| Web Search | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/rofi-searchweb.png) |
-| Dashboard in Action | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/dashboardinaction.gif) |
-| App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/application-dashboard.png) |
-| OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/OSDs.gif) |
-| Exit Screen | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/exit-screen.png) |
-| Day Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/day-wallpaper.jpg)  
-| Night Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/night-wallpaper.jpg)  
+| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/desktop.png) |
+| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/dirty.png)   |
+| Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/dashboard.png) |
+| Web Search | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rofi-searchweb.gif) |
+| Dashboard in Action | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/dashboardinaction.gif) |
+| App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/application-dashboard.png) |
+| OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/OSDs.gif) |
+| Exit Screen | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/exit-screen.png) |
+| Day Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/day-wallpaper.jpg)  
+| Night Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/night-wallpaper.jpg)  
 
 
 ## Dependencies
@@ -59,7 +59,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `maim` | Takes screenshots (improved `scrot`) | Screenshot keybinds |
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
 | `xorg-xwininfo` | Window information utility for X | it just works |
-| `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend | 
+| `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend |
 
 
 
@@ -76,6 +76,7 @@ If you notice that something is missing, please open an issue so I can add the d
 
 # Got a problem? Just open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
 #### Suggestion? If you have any suggestion on how to improve this setup, please open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
+
 
 
 **Special thanks**

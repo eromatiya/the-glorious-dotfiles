@@ -1,4 +1,0 @@
-#!/bin/bash
-
-
-xwinwrap -ov -fs -- mplayer -wid WID -quiet -loop 0 $HOME/Pictures/GIFs/pixels10.gif

@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+mplayer /usr/share/sounds/fx/startingup.mp3 

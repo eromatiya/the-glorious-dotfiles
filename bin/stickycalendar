@@ -1,3 +1,0 @@
-#!/bin/bash
-
-tdrop -a -w 222 -h 180 -x 571 -y 52 -f "-c stna -e bash -c 'bspc node -g sticky && $1'" gsimplecal

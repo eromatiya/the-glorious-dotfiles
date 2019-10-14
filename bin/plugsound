@@ -1,5 +1,0 @@
-#!/bin/bash
-notify-send -u low "" "Power Up!" & PIDIOS=$!
-mplayer /usr/share/sounds/fx/zap.mp3 & PIDMIX=$!
-wait $PIDIOS
-wait $PIDMIX
