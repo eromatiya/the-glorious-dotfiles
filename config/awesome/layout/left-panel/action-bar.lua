@@ -23,7 +23,7 @@ return function(screen, panel, action_bar_width)
       menu_icon,
       widget = clickable_container
     },
-    bg = beautiful.background.hue_800 .. '99', -- beautiful.primary.hue_500,
+    bg = beautiful.background.hue_800 .. '66', -- beautiful.primary.hue_500,
     widget = wibox.container.background
   }
 

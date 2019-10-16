@@ -8,7 +8,7 @@ configuration {
 * {
   background-color:               transparent;
   background:                     #00000066;
-  background-alt:                 #00000066;
+  background-alt:                 #f2f2f233;
   text-color:                     #D8DEE9;
   selected-text-color:            #ffffff;
   primary:                        #A3BE8C;

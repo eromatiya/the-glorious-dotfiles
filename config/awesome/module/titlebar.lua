@@ -9,50 +9,14 @@ local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
 
+local titleBarSize = 30
 
-local roundCorners = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 12)
-end
 
 -- Titlebar Colors
 beautiful.titlebar_bg_focus = '#000000'
 beautiful.titlebar_bg_normal = '#000000'
 beautiful.titlebar_fg_focus = '#ffffff00'
 beautiful.titlebar_fg_normal = '#00000000'
-local titleBarSize = 30
-
-
--- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-    -- buttons for the titlebar
-    local buttons = gears.table.join(
-        awful.button({ }, 1, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.move(c)
-        end),
-        awful.button({ }, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.resize(c)
-        end)
-    )
-
-    awful.titlebar(c, {position = 'left', size = titleBarSize}) : setup {
-        { -- Top
-            awful.titlebar.widget.closebutton    (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.minimizebutton (c),
-
-            layout  = wibox.layout.fixed.vertical
-        },
-          nil,
-        { -- Bottom
-			      awful.titlebar.widget.floatingbutton (c),
-            layout = wibox.layout.fixed.vertical()
-        },
-        layout = wibox.layout.align.vertical
-    }
-end)
-
 
 
 -- Define the images to load
@@ -97,6 +61,43 @@ beautiful.titlebar_maximized_button_normal_inactive_hover = tip .. "maximized_no
 beautiful.titlebar_maximized_button_focus_inactive_hover  = tip .. "maximized_focus_inactive_hover.svg"
 beautiful.titlebar_maximized_button_normal_active_hover = tip .. "maximized_normal_active_hover.svg"
 beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focus_active_hover.svg"
+
+
+local roundCorners = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, 12)
+end
+
+
+-- Add a titlebar if titlebars_enabled is set to true in the rules.
+client.connect_signal("request::titlebars", function(c)
+    -- buttons for the titlebar
+    local buttons = gears.table.join(
+        awful.button({ }, 1, function()
+            c:emit_signal("request::activate", "titlebar", {raise = true})
+            awful.mouse.client.move(c)
+        end),
+        awful.button({ }, 3, function()
+            c:emit_signal("request::activate", "titlebar", {raise = true})
+            awful.mouse.client.resize(c)
+        end)
+    )
+
+    awful.titlebar(c, {position = 'left', size = titleBarSize}) : setup {
+        { -- Top
+            awful.titlebar.widget.closebutton    (c),
+            awful.titlebar.widget.maximizedbutton(c),
+            awful.titlebar.widget.minimizebutton (c),
+
+            layout  = wibox.layout.fixed.vertical
+        },
+          nil,
+        { -- Bottom
+			      awful.titlebar.widget.floatingbutton (c),
+            layout = wibox.layout.fixed.vertical()
+        },
+        layout = wibox.layout.align.vertical
+    }
+end)
 
 
 -- CUSTOM TITLEBAR FOR TERMINALS
