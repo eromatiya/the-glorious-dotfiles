@@ -46,7 +46,7 @@ entry {
 listview {
   columns: 6;
   spacing: 4;
-  dynamic: true;
+  dynamic: false;
 }
 
 element {
