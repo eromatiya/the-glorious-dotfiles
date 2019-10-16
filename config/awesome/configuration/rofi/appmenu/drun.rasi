@@ -1,67 +1,62 @@
 configuration {
-    show-icons:                     true;
-    icon-theme:                     "Flat-Remix-Blue-Dark";
-    font:                           "SFNS Display 9";
-    drun-display-format:            "{name}";
+  show-icons:                     true;
+  icon-theme:                     "Flat-Remix-Blue-Dark";
+  font:                           "SFNS Display 9";
+  drun-display-format:            "{name}";
 }
-
 
 * {
-    background-color:               transparent;
-    background:                     #00000066;
-    background-alt:                 #E5E9F047;
-    text-color:                     #D8DEE9;
-    selected-text-color:            #000000;
-    primary:                        #A3BE8C;
-    urgent:                         #BF616A;
+  background-color:               transparent;
+  background:                     #00000066;
+  background-alt:                 #E5E9F047;
+  text-color:                     #D8DEE9;
+  selected-text-color:            #ffffff;
+  primary:                        #A3BE8C;
+  urgent:                         #BF616A;
 }
 
-
 window {
-    transparency:                   "real";
-    background-color:               @background;
-    height:                         742px;
-    width:                          1321px;
-    location:                       northwest;
-    anchor:                         northwest;
-    x-offset:                       45;
-    y-offset:                       26;
+  transparency:                   "real";
+  background-color:               @background;
+  height:                         742px;
+  width:                          1321px;
+  location:                       northwest;
+  anchor:                         northwest;
+  x-offset:                       45;
+  y-offset:                       26;
 }
 
 prompt {
-    enabled:                        false;
+  enabled: false;
 }
 
-entry  {
-    expand:                         false;
-    width:                          36em;
-    margin:                         40px -250px 20px 470px;
-    border-radius:                  12;
-    padding:                        10px 10px 10px 10px;
-    background-color:               #ffffff20;
-    border:                         0px 0px solid 0px 0px;
-    border-color:                   @text-color;
-    font:                           "SFNS Display 10";
+entry {
+  expand:                         false;
+  width:                          20em;
+  margin:                         40px -410px 20px 410px;
+  border-radius:                  12;
+  padding:                        10px 10px 10px 10px;
+  background-color:               #ffffff20;
+  border:                         0px 0px solid 0px 0px;
+  border-color:                   @text-color;
+  font:                           "SFNS Display 10";
 }
+
 
 listview {
-    columns:                        5;
-    margin:                         40px 120px 40px 120px;
-    spacing:                        4;
+  columns: 6;
+  spacing: 4;
 }
 
 element {
-    orientation:                    vertical;
-    padding:                        8px;
-    margin:                         8px;
+  border-radius: 4;
+  orientation: vertical;
+  padding: 36 0;
 }
+
 
 mainbox {
-    padding:                        10px 40px 10px 40px;
-}
-
-element {
-    padding:                        8px;
+  padding: 10px 100px 10px 100px;
 }
 
 element normal.urgent, element alternate.urgent {
