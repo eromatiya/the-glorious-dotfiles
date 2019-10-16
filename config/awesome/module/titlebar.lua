@@ -19,6 +19,7 @@ beautiful.titlebar_bg_focus = '#000000'
 beautiful.titlebar_bg_normal = '#000000'
 beautiful.titlebar_fg_focus = '#ffffff00'
 beautiful.titlebar_fg_normal = '#00000000'
+local titleBarSize = 30
 
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
@@ -35,7 +36,7 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, {position = 'left', size = 29}) : setup {
+    awful.titlebar(c, {position = 'left', size = titleBarSize}) : setup {
         { -- Top
             awful.titlebar.widget.closebutton    (c),
             awful.titlebar.widget.maximizedbutton(c),
@@ -103,7 +104,7 @@ beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focu
 local kittyBar = function(c)
 
   if c.class == "kitty" or c.class == "XTerm" then
-      awful.titlebar(c, {position = "left", bg = '#000000AA', size = 29}) : setup {
+      awful.titlebar(c, {position = "left", bg = '#000000AA', size = titleBarSize}) : setup {
           { -- Top
               awful.titlebar.widget.closebutton    (c),
               awful.titlebar.widget.maximizedbutton(c),
