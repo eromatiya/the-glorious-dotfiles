@@ -18,8 +18,8 @@ import html
 #####                      C O N F I G U R A T I O N                      ######
 ################################################################################
 SEARCH_ENGINE = 'google'            # or 'duckduckgo'
-BROWSER = 'chrome'                  # or 'firefox', 'chromium', 'brave', 'lynx'
-TERMINAL = ['gnome-terminal', '--'] # or ['st', '-e'] or something like that
+BROWSER = 'firefox'                  # or 'firefox', 'chromium', 'brave', 'lynx'
+TERMINAL = ['kitty', '--'] # or ['st', '-e'] or something like that
 ################################################################################
 
 CONFIG = {
