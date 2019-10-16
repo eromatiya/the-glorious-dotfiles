@@ -8,7 +8,7 @@ configuration {
 * {
   background-color:               transparent;
   background:                     #00000066;
-  background-alt:                 #E5E9F047;
+  background-alt:                 #00000066;
   text-color:                     #D8DEE9;
   selected-text-color:            #ffffff;
   primary:                        #A3BE8C;
@@ -33,7 +33,7 @@ prompt {
 entry {
   expand:                         false;
   width:                          20em;
-  margin:                         40px -410px 20px 410px;
+  margin:                         40px -355px 20px 355px;
   border-radius:                  12;
   padding:                        10px 10px 10px 10px;
   background-color:               #ffffff20;
@@ -46,17 +46,18 @@ entry {
 listview {
   columns: 6;
   spacing: 4;
+  dynamic: true;
 }
 
 element {
   border-radius: 4;
   orientation: vertical;
-  padding: 36 0;
+  padding: 30 0 30 0;
 }
 
 
 mainbox {
-  padding: 10px 100px 10px 100px;
+  padding: 10px 160px 10px 160px;
 }
 
 element normal.urgent, element alternate.urgent {
@@ -91,5 +92,5 @@ element-icon {
 element-text {
     expand:                         true;
     horizontal-align:               0.5;
-    margin:                         5px 0px 0px 0px;
+    margin:                         10px 15px 0px 15px;
 }
