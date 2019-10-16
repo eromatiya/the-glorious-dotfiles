@@ -67,7 +67,7 @@ local globalKeys =
   -- Toggle System Tray
   awful.key({ modkey }, '=', function ()
       awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
-    end, {description = "Toggle systray visibility", group = "custom"}),
+    end, {description = "Toggle systray visibility", group = "Miscellaneous"}),
 
   -- Tag browsing
   awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),

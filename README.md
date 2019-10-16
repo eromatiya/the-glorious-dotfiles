@@ -60,7 +60,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
 | `xorg-xwininfo` | Window information utility for X | it just works |
 | `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend |
-
+| `xdg_menu` | Generates a list of installed applications | Useful for menu generation |
 
 
 ##### Monospace
@@ -74,9 +74,22 @@ If you notice that something is missing, please open an issue so I can add the d
 + Copy `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
 + Reload Awesome
 
-# Got a problem? Just open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
-#### Suggestion? If you have any suggestion on how to improve this setup, please open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
+# NOTE  
++ This setup will not mostly work out of the box because:  
+  - It is only tested and configured on a 1366x768 resolution (Lenovo x230)  
+  - Some dependencies are not currently installed  
+  - Some of the tweaks are configured to match my likings haha  
 
++ Generating an application menu  
+  - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.  
+  - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua  
+  - You can just invoke it or substitute its value to `awesome/module/menu.lua`  
+
+**So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
+
+
+# Got a problem? Just open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
+#### Suggestion? If you have any suggestion on how to improve this setup, please open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).  
 
 
 **Special thanks**
