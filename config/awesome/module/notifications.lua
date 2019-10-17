@@ -138,18 +138,18 @@ awesome.connect_signal("module::battery", function(battery)
         icon = icons.battery
         if battery < 6 and not battery_critical_already_notified then
             battery_critical_already_notified = true
-            text = helpers.colorize_text("CRITICAL", beautiful.xcolor9)
+            text = "Battery Critical!"
             timeout = 0
         elseif battery < 16 and not battery_low_already_notified then
             battery_low_already_notified = true
-            text = helpers.colorize_text("Low", beautiful.xcolor11)
+            text = "Battery Full!"
             timeout = 6
         end
     else
         icon = icons.battery_charging
         if battery > 99 and not battery_full_already_notified then
             battery_full_already_notified = true
-            text = helpers.colorize_text("Full", beautiful.xcolor10)
+            text = "Battery Full!"
             timeout = 6
         end
     end
