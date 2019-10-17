@@ -1,5 +1,6 @@
 -- This widget is messy AF
 -- It uses unix command to change some strings in compton config
+
 local awful = require('awful')
 local naughty = require('naughty')
 local wibox = require('wibox')
@@ -9,7 +10,8 @@ local dpi = require('beautiful').xresources.apply_dpi
 local watch = require('awful.widget.watch')
 local mat_list_item = require('widget.material.list-item')
 local filesystem = require('gears.filesystem')
-
+;
+local apps = require('configuration.apps')
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/action-center/icons/'
 local cmd = 'grep -F "blur-background-frame = false;" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf ' .. "| tr -d '[\\-\\;\\=\\ ]' "
@@ -83,36 +85,36 @@ blurEnable = {
 }
 
 -- This runs all the commands above
-local function run_once(cmd)
-  local findme = cmd
-  local firstspace = cmd:find(' ')
-  if firstspace then
-    findme = cmd:sub(0, firstspace - 1)
-  end
-  awful.spawn.with_shell(string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd))
-end
-
+-- local function run_once(cmd)
+--   local findme = cmd
+--   local firstspace = cmd:find(' ')
+--   if firstspace then
+--     findme = cmd:sub(0, firstspace - 1)
+--   end
+--   awful.spawn.with_shell(string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd))
+-- end
+--
 
 -- The Toggle button backend
 local function toggle_compositor()
   if(frameStatus == true) then
-    for _, app in ipairs(blurDisable) do
-      run_once(app)
-    end
+    -- for _, app in ipairs(blurDisable) do
+    --   run_once(app)
+    -- end
+    awful.spawn.easy_async_with_shell(apps.bins.disableBlur)
     frameStatus = false
     update_icon()
   else
-    for _, app in ipairs(blurEnable) do
-      run_once(app)
-    end
+    -- for _, app in ipairs(blurEnable) do
+    --   run_once(app)
+    -- end
+    awful.spawn.easy_async_with_shell(apps.bins.enableBlur)
     frameStatus = true
     update_icon()
   end
 end
 
 checkFrame()
------------------------------------------------------------------------------------------------------------------
-
 
 local compton_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin
 compton_button:buttons(

@@ -22,5 +22,12 @@ return {
     'mpd', -- Music Server
     'pulseeffects --gapplication-service', -- Equalizer
     'redshift-gtk -l 14.45:121.05' -- Redshift
+  },
+
+  bins = {
+    fullShot = filesystem.get_configuration_dir() .. '/binaries/snap full',
+    areaShot = filesystem.get_configuration_dir() .. '/binaries/snap area',
+    enableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx enable',
+    disableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx disable'
   }
 }

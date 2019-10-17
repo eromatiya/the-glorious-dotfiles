@@ -52,7 +52,7 @@ local globalKeys =
   awful.key(
   { }, "Print",
   function ()
-    awful.util.spawn("snap full")
+    awful.spawn.easy_async_with_shell(apps.bins.fullShot)
   end,
   { description = "Fullscreen screenshot", group = "Miscellaneous"}),
 
@@ -60,7 +60,7 @@ local globalKeys =
   awful.key(
   {modkey, "Shift"}, 's',
   function ()
-    awful.util.spawn("snap area")
+    awful.spawn.easy_async_with_shell(apps.bins.areaShot)
   end,
   { description = "Area screenshot", group = "Miscellaneous"}),
 
