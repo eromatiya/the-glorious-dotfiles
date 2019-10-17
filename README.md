@@ -1,4 +1,7 @@
-# Glorious Dotfiles
+<div align="center">
+    <h1>Glorious Dotfiles</h1>
+    <p>There's no place like <b><code>~</code></b> !</p>
+</div>
 
 ## Details
 + **OS**: I use Arch, btw
@@ -13,9 +16,11 @@
 
 # Floppy - An AwesomeWM Setup
 
-## NEW FEATURES!
+## FEATURES!
 + **Brightness and Volume OSDs**
-+ **Web-search Rofi
++ **Web-Search Rofi**
++ **Deepin-Like Application Dashboard**
++ **Battery/Charger Notifications Module**
 + **Dynamic Wallpaper Module**
   - Wallpaper changes based on time. You can modify it here `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
@@ -33,8 +38,8 @@
 | App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/application-dashboard.png) |
 | OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/OSDs.gif) |
 | Exit Screen | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/exit-screen.png) |
-| Day Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/day-wallpaper.jpg)  
-| Night Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/night-wallpaper.jpg)  
+<!--- | Day Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/day-wallpaper.jpg)  
+| Night Wallpaper | ![wall](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/night-wallpaper.jpg)   -->
 
 
 ## Dependencies
@@ -51,7 +56,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `blueman` | Manages bluetooth | For bluetooth widgets |
 | `xfce4-settings-manager` | Manages basic settings | System Settings |
 | `xfce4-power-manager` | Manages battery/power settings | Power Settings |
-| `acpi` | Show battery status and other ACPI info | Charger notifications |
+| `acpi`,`acpid`,`acpi_call` | Show battery status and other ACPI info | Charger notifications |
 | `pulseaudio`, `libpulse` | Sound system | Volume widgets and keybinds |
 | `redshift` | Controls screen temperature | Night mode command |
 | `mpd` | Server-side application for playing music | Music widgets |
@@ -97,4 +102,4 @@ If you notice that something is missing, please open an issue so I can add the d
 + **pdonadeo** for the [rofi-web-search.py](https://github.com/pdonadeo/rofi-web-search)
 + **[elenapan](https://github.com/elenapan/dotfiles)**
 + **[addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)**
-+ **Myself, for not giving up**
++ **Myself, for not giving up hahaha**

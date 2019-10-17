@@ -21,6 +21,7 @@ require('module.menu')
 require('module.volume-osd')
 require('module.brightness-osd')
 require('module.wallchange')
+require('module.battery')
 
 -- Setup all configurations
 require('configuration.client')

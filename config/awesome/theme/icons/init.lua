@@ -29,5 +29,7 @@ return {
   memory = dir .. '/memory.svg',
   harddisk = dir .. '/harddisk.svg',
   thermometer = dir .. '/thermometer.svg',
-  plus = dir .. '/plus.svg'
+  plus = dir .. '/plus.svg',
+  batt_charging = dir .. '/battery-charge.svg',
+  batt_discharging = dir .. '/battery-discharge.svg',
 }

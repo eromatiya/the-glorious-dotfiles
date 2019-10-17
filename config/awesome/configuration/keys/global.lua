@@ -65,7 +65,7 @@ local globalKeys =
   { description = "Area screenshot", group = "Miscellaneous"}),
 
   -- Toggle System Tray
-  awful.key({ modkey }, '=', function ()
+  awful.key({ 'Control' }, '=', function ()
       awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
     end, {description = "Toggle systray visibility", group = "Miscellaneous"}),
 
