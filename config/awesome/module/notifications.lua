@@ -173,11 +173,11 @@ awesome.connect_signal("module::charger", function(plugged)
         battery_critical_already_notified = false
         battery_low_already_notified = false
         text = "Plugged"
-        icon = icons.batt_discharging
+        icon = icons.batt_charging
     else
         battery_full_already_notified = false
         text = "Unplugged"
-        icon = icons.batt_charging
+        icon = icons.batt_discharging
     end
 
     -- Do not send a notification the first time (when AwesomeWM (re)starts)
