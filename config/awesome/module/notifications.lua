@@ -3,25 +3,56 @@ local beautiful = require('beautiful')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 
--- Naughty presets
+-- Defaults
+naughty.config.defaults.ontop = true
+naughty.config.defaults.icon_size = dpi(32)
+naughty.config.defaults.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, dpi(6)) end
+naughty.config.defaults.screen = 1
+
+-- -- Apply theme variables
 naughty.config.padding = 8
 naughty.config.spacing = 8
-
-naughty.config.defaults.timeout = 5
-naughty.config.defaults.screen = 1
-naughty.config.defaults.position = 'top_right'
 naughty.config.defaults.margin = dpi(16)
-naughty.config.defaults.ontop = true
-naughty.config.defaults.font = 'SFNS Display 10'
-naughty.config.defaults.icon = nil
-naughty.config.defaults.icon_size = dpi(32)
-naughty.config.defaults.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, dpi(12)) end
 naughty.config.defaults.border_width = 0
-naughty.config.defaults.hover_timeout = nil
---naughty.config.defaults.height = 65
---naughty.config.defaults.width = 250
---naughty.config.defaults.max_height = 65
---naughty.config.defaults.max_width = 250
+
+-- Timeouts
+naughty.config.defaults.timeout = 5
+naughty.config.presets.low.timeout = 3
+naughty.config.presets.critical.timeout = 0
+
+naughty.config.presets.normal = {
+  font         = 'SFNS Display 10',
+  fg           = beautiful.fg_normal,
+  bg           = beautiful.background.hue_800,
+  border_width = 0,
+  margin       = dpi(16),
+  position     = 'top_right'
+}
+
+naughty.config.presets.low = {
+  font         = 'SFNS Display 10',
+  fg           = beautiful.fg_normal,
+  bg           = beautiful.background.hue_800,
+  border_width = 0,
+  margin       = dpi(16),
+  position     = 'top_right'
+}
+
+naughty.config.presets.critical = {
+  font         = 'SFNS Display Bold 10',
+  fg           = '#ffffff',
+  bg           = '#ff0000',
+  border_width = 0,
+  margin       = dpi(16),
+  position     = 'top_right'
+}
+
+
+naughty.config.presets.ok = naughty.config.presets.normal
+naughty.config.presets.info = naughty.config.presets.normal
+naughty.config.presets.warn = naughty.config.presets.critical
+
+
 -- Error handling
 if _G.awesome.startup_errors then
   naughty.notify(

@@ -56,7 +56,7 @@ end
 local function toggle_bluetooth()
   if(mode == true) then
     awful.spawn('rfkill block bluetooth')
-    awful.spawn("notify-send 'Bluetooth device disabled'")
+    awful.spawn("notify-send  'System Notification' 'Bluetooth device disabled'")
     mode = false
     update_icon()
   else

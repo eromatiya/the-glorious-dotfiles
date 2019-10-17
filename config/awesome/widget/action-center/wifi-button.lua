@@ -55,12 +55,12 @@ end
 local function toggle_wifi()
   if(mode == true) then
     awful.spawn('nmcli r wifi off')
-    awful.spawn("notify-send 'Airplane Mode Enabled'")
+    awful.spawn("notify-send 'System Notification' 'Airplane Mode Enabled!'")
     mode = false
     update_icon()
   else
     awful.spawn('nmcli r wifi on')
-    awful.spawn("notify-send 'Initializing WI-FI'")
+    awful.spawn("notify-send 'System Notification' 'Initializing Wireless Connection...'")
     mode = true
     update_icon()
   end

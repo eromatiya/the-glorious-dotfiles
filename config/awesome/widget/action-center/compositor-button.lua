@@ -67,22 +67,22 @@ end
 
 
 -- Commands that will be executed when I toggle the button
-blurDisable = {
-  'kill -9 $(pidof compton)',
-  'kill -9 $(pidof compton)',
-  'sed -i -e "s/blur-background-frame = true/blur-background-frame = false/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'notify-send "Blur effect disabled"'
-}
-blurEnable = {
-  'kill -9 $(pidof compton)',
-  'kill -9 $(pidof compton)',
-  'sed -i -e "s/blur-background-frame = false/blur-background-frame = true/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-  'notify-send "Blur effect enabled"'
-}
+-- blurDisable = {
+--   'kill -9 $(pidof compton)',
+--   'kill -9 $(pidof compton)',
+--   'sed -i -e "s/blur-background-frame = true/blur-background-frame = false/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
+--   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
+--   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
+--   'notify-send "Blur effect disabled"'
+-- }
+-- blurEnable = {
+--   'kill -9 $(pidof compton)',
+--   'kill -9 $(pidof compton)',
+--   'sed -i -e "s/blur-background-frame = false/blur-background-frame = true/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
+--   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
+--   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
+--   'notify-send "Blur effect enabled"'
+-- }
 
 -- This runs all the commands above
 -- local function run_once(cmd)
@@ -101,14 +101,14 @@ local function toggle_compositor()
     -- for _, app in ipairs(blurDisable) do
     --   run_once(app)
     -- end
-    awful.spawn.easy_async_with_shell(apps.bins.disableBlur)
+    awful.spawn(apps.bins.disableBlur)
     frameStatus = false
     update_icon()
   else
     -- for _, app in ipairs(blurEnable) do
     --   run_once(app)
     -- end
-    awful.spawn.easy_async_with_shell(apps.bins.enableBlur)
+    awful.spawn(apps.bins.enableBlur)
     frameStatus = true
     update_icon()
   end
@@ -132,7 +132,7 @@ compton_button:buttons(
 
 local settingsName = wibox.widget {
   text = 'Window Effects',
-  font = 'Iosevka Regular 10',
+  font = 'SFNS Display 10',
   align = 'left',
   widget = wibox.widget.textbox
 }
