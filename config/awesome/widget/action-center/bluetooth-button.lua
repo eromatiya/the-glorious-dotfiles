@@ -125,7 +125,7 @@ watch(
 
 local settingsName = wibox.widget {
   text = 'Bluetooth Connection',
-  font = 'Iosevka Regular 10',
+  font = 'SFNS Display 11',
   align = 'left',
   widget = wibox.widget.textbox
 }
@@ -139,7 +139,7 @@ local content =   wibox.widget {
     layout = wibox.layout.ratio.horizontal,
 
   }
-content:set_ratio(1, .85)
+content:set_ratio(1, .83)
 
 local bluetoothButton =  wibox.widget {
   wibox.widget {

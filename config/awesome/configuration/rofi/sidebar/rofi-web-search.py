@@ -126,8 +126,8 @@ def main():
         for r in results:
             print(html.unescape(r))
     elif search_string == '':
-        print('Type something and search it with %s' % CONFIG['SEARCH_ENGINE_NAME'][SEARCH_ENGINE])
-        print('Close your search string with "!" to get search suggestions')
+        print('Search with %s' % CONFIG['SEARCH_ENGINE_NAME'][SEARCH_ENGINE])
+        print('End string with "!" to your get search suggestions')
     else:
         url = CONFIG['SEARCH_URL'][SEARCH_ENGINE] + urllib.parse.quote_plus(search_string)
         sp.Popen(CONFIG['BROWSER_PATH'][BROWSER] + [url], stdout=sp.DEVNULL, stderr=sp.DEVNULL, shell=False)

@@ -132,7 +132,7 @@ compton_button:buttons(
 
 local settingsName = wibox.widget {
   text = 'Window Effects',
-  font = 'SFNS Display 10',
+  font = 'SFNS Display 11',
   align = 'left',
   widget = wibox.widget.textbox
 }
@@ -146,7 +146,7 @@ local content =   wibox.widget {
     layout = wibox.layout.ratio.horizontal,
 
   }
-content:set_ratio(1, .85)
+content:set_ratio(1, .83)
 
 local comptonButton =  wibox.widget {
   wibox.widget {

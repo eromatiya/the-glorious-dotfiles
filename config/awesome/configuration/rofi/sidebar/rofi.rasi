@@ -154,5 +154,5 @@ element-icon {
 
 element-text {
     expand:                         true;
-    horizontal-align:               0.5;
+    horizontal-align:               0.0;
 }

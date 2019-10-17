@@ -7,7 +7,7 @@ local mat_list_sep = require('widget.material.list-item-separator')
 local hardwareTitle = wibox.widget
 {
   text = 'Hardware monitor',
-  font = 'Iosevka Regular 10',
+  font = 'SFNS Display 12',
   align = 'left',
   widget = wibox.widget.textbox
 
@@ -170,7 +170,7 @@ return wibox.widget {
                   false,
                   true,
                   true,
-                  12)
+                  6)
               end,
       widget = wibox.container.background
     },

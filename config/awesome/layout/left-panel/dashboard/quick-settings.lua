@@ -6,7 +6,7 @@ local mat_list_sep = require('widget.material.list-item-separator')
 
 local quickTitle = wibox.widget {
   text = 'Quick settings',
-  font = 'Iosevka Regular 10',
+  font = 'SFNS Display 12',
   align = 'left',
   widget = wibox.widget.textbox
 }
