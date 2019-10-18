@@ -184,6 +184,6 @@ awesome.connect_signal("module::charger", function(plugged)
     if charger_first_time then
         charger_first_time = false
     else
-        send_notification("Battery status", text, icon, 3)
+        send_notification("Charger Status", text, icon, 3)
     end
 end)

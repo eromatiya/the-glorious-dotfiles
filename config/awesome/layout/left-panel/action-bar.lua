@@ -100,10 +100,10 @@ end
     forced_width = action_bar_width,
     {
       -- Left widgets
-      layout = wibox.layout.fixed.vertical,
       home_button,
       -- Create a taglist widget
       TagList(screen),
+      layout = wibox.layout.fixed.vertical,
       --[[wibox.widget {
               orientation = 'horizontal',
               forced_height = 10,
@@ -111,13 +111,12 @@ end
               widget = wibox.widget.separator
             }, ]]--
     },
-    --s.mytasklist, -- Middle widget
+     -- Middle widget
     nil,
     {
       -- Right widgets
+      LayoutBox(s),
       layout = wibox.layout.fixed.vertical,
-      LayoutBox(s)
-
     }
   }
 end
