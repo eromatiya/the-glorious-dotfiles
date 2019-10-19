@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(0 -1036.3622)">
+  <rect width="14" x="1" y="1037.36" rx="2.154" height="14" style="fill:#268bd2"/>
+ </g>
+ <g transform="matrix(0,1,-1,0,16,0)">
+  <path d="m 5 5 0 6 6 0 0 -6 -6 0 z m 1 1 4 0 0 4 -4 0 0 -4 z" style="fill:#fff;fill-opacity:0.9"/>
+  <rect y="3" x="3" height="10" width="1" style="fill:#fff;opacity:1;fill-opacity:0.902;stroke:none"/>
+  <rect width="1" height="10" x="12" y="3" style="fill:#fff;opacity:1;fill-opacity:0.902;stroke:none"/>
+ </g>
+</svg>

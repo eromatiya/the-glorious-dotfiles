@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" style="enable-background:new">
+ <circle cx="32" cy="32" r="20" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <g>
+  <path d="m 32 4 2 5 l -4 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 32 60 -2 -5 4 0" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <g transform="matrix(0,1,-1,0,64,-5.5e-7)">
+   <path d="m 32 4 2 5 l -4 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+   <path d="m 32 60 -2 -5 4 0" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  </g>
+ </g>
+ <g transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,32,-13.254834)">
+  <path d="m 32 4 2 5 l -4 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 32 60 -2 -5 4 0" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <g transform="matrix(0,1,-1,0,64,-5.5e-7)">
+   <path d="m 32 4 2 5 l -4 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+   <path d="m 32 60 -2 -5 4 0" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  </g>
+ </g>
+ <g transform="matrix(0.94280902,0.94280902,-0.94280902,0.94280902,31.999999,-13.254834)">
+  <path d="m 24 3 1.5 4 -3 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 24 45 -1.5 -4 3 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 45 24 -4 1.5 0 -3 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 3 24 4 -1.5 0 3 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+ <path d="m 30.935 33.33 c -0.414 0 -0.856 0.02 -1.305 0.077 -7.18 0.924 -6.962 7.085 -6.962 7.085 -2.941 0.5 -5.335 3.066 -5.335 5.75 0 2.683 3.063 5.059 5.638 5.75 1.531 0.411 3.538 0 3.538 0 0.909 1.603 3.907 2.672 5.997 2.672 3.408 0 6.912 -1.131 7.719 -2.672 0 0 14.12 1.13 17.05 0 4.265 -1.645 2.932 -6.781 0.095 -8.518 -2.838 -1.737 -6.546 -0.523 -6.546 -0.523 0 0 -0.016 -3.537 -4.03 -5.227 -4.01 -1.69 -7.397 2.052 -7.397 2.052 0 0 -2.249 -6.408 -8.456 -6.446 z" style="fill:#ececec;fill-opacity:1"/>
+</svg>

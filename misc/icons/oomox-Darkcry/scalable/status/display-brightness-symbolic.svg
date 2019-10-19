@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g style="fill:#bebebe;color:#bebebe">
+  <g transform="translate(-81 -277)">
+   <rect width="2.972" x="81" y="284" rx="0.562" height="2"/>
+   <rect width="3.02" x="93.98" y="284" rx="0.562" height="2"/>
+  </g>
+  <g transform="matrix(.70711 -.70711 .70711 .70711 -256.46 -130.59)">
+   <rect width="2.972" x="81" y="284" rx="0.562" height="2"/>
+   <rect width="3.02" x="93.98" y="284" rx="0.562" height="2"/>
+  </g>
+  <g transform="matrix(0 -1 1 0 -277 97)">
+   <rect width="2.972" x="81" y="284" rx="0.562" height="2"/>
+   <rect width="3.02" x="93.98" y="284" rx="0.562" height="2"/>
+  </g>
+  <g transform="matrix(-.70711 -.70711 .70711 -.70711 -130.593 272.46)">
+   <rect width="2.972" x="81" y="284" rx="0.562" height="2"/>
+   <rect width="3.02" x="93.98" y="284" rx="0.562" height="2"/>
+  </g>
+  <g>
+   <path d="m 8.4 8 0 -6 c -3.296 0 -6 2.704 -6 6 0 3.296 2.704 6 6 6 l 0 -6 z"/>
+   <path d="m 8 14 c -3.313 0 -6 -2.687 -6 -6 0 -3.313 2.687 -6 6 -6 c 3.313 0 6 2.687 6 6 0 3.313 -2.687 6 -6 6 z m 0 -10.5 c -2.485 0 -4.5 2.01 -4.5 4.5 c 0 2.485 2.01 4.5 4.5 4.5 2.485 0 4.5 -2.01 4.5 -4.5 c 0 -2.485 -2.01 -4.5 -4.5 -4.5" style="fill-rule:evenodd"/>
+  </g>
+ </g>
+</svg>

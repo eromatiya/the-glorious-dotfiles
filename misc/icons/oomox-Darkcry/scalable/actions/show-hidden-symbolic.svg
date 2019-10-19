@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="show-hidden-symbolic.svg">
+  <title
+     id="title3021">show-hidden</title>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>show-hidden</dc:title>
+        <cc:license
+           rdf:resource="https://www.gnu.org/copyleft/gpl.html" />
+        <dc:date>2015-12-22</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Germar Reitze</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>eye</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Icon for showing hidden files in BackInTime</dc:description>
+        <dc:source>https://github.com/bit-team/backintime</dc:source>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="55.625"
+     inkscape:cx="8"
+     inkscape:cy="8"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1623"
+     inkscape:window-height="1026"
+     inkscape:window-x="57"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1036.3622)">
+    <path
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#bebebe;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="m 7.9999967,1040.4095 c -3.6694277,0 -6.8487834,1.5216 -7.96841907,3.8841 l -0.031576255,0.074 0.031576255,0.063 c 1.11963687,2.3626 4.29899017,3.8843 7.96841907,3.8843 3.6694273,0 6.8382553,-1.5217 7.9578923,-3.8843 l 0.04211,-0.063 -0.04211,-0.074 c -1.119637,-2.3625 -4.288466,-3.8841 -7.9578934,-3.8841 z m 0,1.9369 c 2.4807103,0 4.5750193,0.8408 5.3473673,2.0104 -0.62533,0.9536 -2.138311,1.6749 -4.0210518,1.9157 0.4265868,-0.3761 0.7157898,-0.9142 0.7157898,-1.5261 0,-1.1309 -0.9218624,-2.0527 -2.0526321,-2.0527 -1.1307687,0 -2.0526303,0.9218 -2.0526303,2.0527 0,0.6113 0.2793022,1.1501 0.7052623,1.5261 -1.8724497,-0.2438 -3.3774467,-0.9657 -3.9999982,-1.9157 0.7720067,-1.1699 2.8767458,-2.0104 5.357893,-2.0104 z"
+       id="path4622"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccscccssccsssccs" />
+  </g>
+</svg>

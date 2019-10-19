@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.0853 16.0243">
+ <g transform="translate(-60.95223 -646.97574)" style="color:#000">
+  <g style="fill:#bebebe">
+   <path d="M 71.781 647 A 1 1 0 0 0 71 648 l 0 4 a 1 1 0 0 0 1 1 l 4 0 a 1 1 0 1 0 0 -2 l -3 0 0 -3 a 1 1 0 0 0 -1.219 -1 z"/>
+   <path d="m 75.875 647 a 1 1 0 0 0 -0.594 0.281 l -4 4 a 1.016 1.016 0 1 0 1.438 1.438 l 4 -4 A 1 1 0 0 0 75.875 647 z"/>
+  </g>
+  <rect width="1" x="71" y="652" height="1" style="fill:#bebebe"/>
+  <g style="fill:#bebebe">
+   <path d="M 61.906 653 A 1 1 0 0 0 61 654 l 0 8 a 1 1 0 0 0 1 1 l 8 0 a 1 1 0 0 0 1 -1 l 0 -8 a 1 1 0 0 0 -1 -1 l -8 0 a 1 1 0 0 0 -0.094 0 z M 63 655 l 6 0 0 6 -6 0 0 -6 z"/>
+   <path d="M 61.906 655 A 1 1 0 1 0 62 657 l 8 0 a 1 1 0 1 0 0 -2 l -8 0 a 1 1 0 0 0 -0.094 0 z" style="fill-rule:evenodd"/>
+   <rect width="1" x="76" y="652" height="1"/>
+   <rect width="1" x="71" y="647" height="1"/>
+   <rect width="1" x="70" y="662" height="1"/>
+   <rect width="1" x="61" y="662" height="1"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path d="m 12.617 4 l 38.766 0 c 4.758 0 8.617 3.855 8.617 8.613 l 0 38.77 c 0 4.758 -3.859 8.617 -8.617 8.617 l -38.766 0 c -4.758 0 -8.617 -3.859 -8.617 -8.617 l 0 -38.77 c 0 -4.758 3.859 -8.613 8.617 -8.613 Z" style="fill:#268bd2"/>
+ <g transform="matrix(0,1,-1,0,64,0)">
+  <g style="fill:#fff;fill-opacity:0.902">
+   <path d="m 20 20 0 24 24 0 0 -24 z m 4 4 16 0 0 16 -16 0 z"/>
+  </g>
+  <rect y="12" x="12" height="40" width="4" style="fill:#fff;opacity:1;fill-opacity:0.902;stroke:none"/>
+  <rect width="4" height="40" x="48" y="12" style="fill:#fff;opacity:1;fill-opacity:0.902;stroke:none"/>
+ </g>
+</svg>

@@ -1,0 +1,13 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <defs>
+  <linearGradient gradientTransform="matrix(1.42857 0 0 1.42857 -1.143 -1.143)" y1="19" id="linearGradient4178" y2="5" x1="5" gradientUnits="userSpaceOnUse" x2="19">
+   <stop style="stop-color:#268bd2;stop-opacity:1"/>
+   <stop offset="1" style="stop-color:#bbb;stop-opacity:0"/>
+  </linearGradient>
+ </defs>
+ <path d="m 6 6 0 17.857 2.143 0 0 2.143 l 17.857 0 0 -17.857 l -2.143 0 0 -2.143 z" style="fill:url(#linearGradient4178);opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 7.529 24.471 16.941 -16.941" style="stroke-opacity:1;fill:none;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+ <rect width="4" x="24" y="4" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4"/>
+ <rect width="4" x="4" y="24" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4"/>
+</svg>

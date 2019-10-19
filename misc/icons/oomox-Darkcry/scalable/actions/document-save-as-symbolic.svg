@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g style="fill:#bebebe">
+  <rect width="14" x="0.814" y="12" rx="0.5" height="3" ry="0.75"/>
+  <g transform="translate(-4 -3)" style="color:#000">
+   <path d="m 10 5 0 1 4 0 0 -1 -4 0 z m 0 2 0 2 4 0 0 -2 -4 0 z m -2.5 3 4.5 5 4.5 -5 -2.5 0 -4 0 -1 0 -1.5 0 z"/>
+  </g>
+ </g>
+</svg>

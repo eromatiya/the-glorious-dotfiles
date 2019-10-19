@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="matrix(1,0,0,0.99995,-3,-1033.3102)" style="fill:#bebebe;opacity:0.4;fill-opacity:1">
+  <path d="m 0.906 0 c -0.492 0.046 -0.908 0.506 -0.906 1 l 0 2 l 16 0 l 0 -2 c 0 -0.524 -0.476 -1 -1 -1 l -14 0 c -0.031 -0.001 -0.063 -0.001 -0.094 0 z m -0.906 9 l 0 2 c 0 0.523 0.476 1 1 1 l 8 0 l 4 4 l 0 -4 l 2 0 c 0.524 0 1 -0.477 1 -1 l 0 -2 l -16 0 z" transform="matrix(1,0,0,1.00005,3,1033.3619)" style="color:#000"/>
+ </g>
+ <circle cx="3.5" cy="6" r="1.5" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle r="1.5" cy="6" cx="8" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle cx="12.5" cy="6" r="1.5" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

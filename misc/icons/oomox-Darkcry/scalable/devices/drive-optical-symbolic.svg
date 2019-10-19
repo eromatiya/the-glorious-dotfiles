@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="matrix(.5 0 0 .5 -4 -506.1811)" style="fill:#bebebe">
+  <path d="m 14 8 c -2 0 -4 2 -4 4 l 0 16 c 0 2 2 4 4 4 l 20 0 c 2 0 4 -2 4 -4 l 0 -16 c 0 -2 -2 -4 -4 -4 z m 20 4 0 16 -20 0 0 -16 z m -19.344 22 c 1.465 3.519 5.099 6 9.344 6 4.245 0 7.879 -2.481 9.344 -6 z" transform="translate(0,1004.3622)"/>
+ </g>
+ <path d="M 10.339 7 A 0.915 1 0 1 1 8.508 7 0.915 1 0 1 1 10.339 7 z" transform="matrix(1.0925926,0,0,1,0.7037035,1)" style="fill:#bebebe"/>
+</svg>

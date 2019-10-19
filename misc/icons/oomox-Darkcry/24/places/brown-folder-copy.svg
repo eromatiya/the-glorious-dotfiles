@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+ <rect width="11" height="4" x="2.01" y="5" style="fill:#5d4037;fill-opacity:1;stroke:none"/>
+ <path d="m 3.01 5 c 0 -0.5 0 -1 0.727 -1 l 2.545 0 c 0.727 0 0.727 0.5 0.727 1 z" style="fill:#5d4037;fill-opacity:1;stroke:none"/>
+ <rect y="6" x="3.01" height="4" width="9" style="fill:#d8d8da;fill-opacity:1;stroke:none"/>
+ <rect width="8" height="2.28" x="4.01" y="7" style="fill:#f9f9f9;fill-opacity:1;stroke:none"/>
+ <path d="m 1.01 8 13 0 -0.65 7 -11.7 0 z" style="fill:#8d6e63;fill-opacity:1;stroke:none"/>
+ <path d="m 3.719 4 c -0.727 0 -0.719 0.5 -0.719 1 l -1 0 0 3 -1 0 0.656 7 11.688 0 0.656 -7 -1 0 0 -3 -6 0 c 0 -0.5 0.009 -1 -0.719 -1 l -2.563 0 z" style="fill:#000;fill-opacity:0.102;stroke:none"/>
+ <rect width="11" height="4" x="11.01" y="11" style="fill:#5d4037;fill-opacity:1;stroke:none"/>
+ <path d="m 12.01 11 c 0 -0.5 0 -1 0.727 -1 l 2.545 0 c 0.727 0 0.727 0.5 0.727 1 z" style="fill:#5d4037;fill-opacity:1;stroke:none"/>
+ <rect y="12" x="12.01" height="4" width="9" style="fill:#d8d8da;fill-opacity:1;stroke:none"/>
+ <rect width="8" height="2.28" x="13.01" y="13" style="fill:#f9f9f9;fill-opacity:1;stroke:none"/>
+ <path d="m 10.01 14 13 0 -0.65 7 -11.7 0 z" style="fill:#8d6e63;fill-opacity:1;stroke:none"/>
+</svg>

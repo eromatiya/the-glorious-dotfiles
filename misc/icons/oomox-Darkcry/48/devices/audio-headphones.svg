@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <path d="m 23.772 7.756 c 0 0 -2.946 0.217 -4.91 0.955 -1.964 0.738 -3.23 1.596 -5.892 3.56 -2.662 1.964 -1.396 2.342 -1.396 2.342 0.711 0.081 1.633 0.052 2.265 -0.38 0.806 -0.55 2.564 -1.964 4.04 -2.568 1.859 -0.761 3.884 -1.26 5.892 -1.26 2.01 0 4.03 0.5 5.892 1.26 1.478 0.605 3.236 2.02 4.04 2.568 0.632 0.431 1.554 0.461 2.265 0.38 0 0 1.266 -0.378 -1.396 -2.342 c -2.662 -1.964 -3.928 -2.822 -5.892 -3.56 -1.964 -0.738 -4.91 -0.955 -4.91 -0.955" style="fill:#89c86b;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path transform="scale(-1,-1)" d="m -8.5 -23.23 a 15.5 15.5 0 0 1 -7.75 13.423 15.5 15.5 0 0 1 -15.5 0 15.5 15.5 0 0 1 -7.75 -13.423" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#515151;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.5;stroke-dashoffset:0"/>
+ <path d="m 7.75 23.23 0.25 3 1.5 0 -0.25 -3 z" style="fill:#89c86b;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="7" height="16" x="7.684" y="24.825" rx="2" transform="matrix(0.9961947,-0.08715574,0.08715574,0.9961947,0,0)" style="fill:#515151;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 8 26.23 1.133 12.951 0.996 -0.087 -0.087 -0.996 0.996 -0.087 -1.046 -11.954 z" style="fill:#515151;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="2" height="16" x="7.684" y="24.825" transform="matrix(0.9961947,-0.08715574,0.08715574,0.9961947,0,0)" style="fill:#89c86b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 40.25 23.23 -0.25 3 -1.5 0 0.25 -3 z" style="fill:#89c86b;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect rx="2" y="20.641" x="-40.13" height="16" width="7" transform="matrix(-0.99619438,-0.08715941,-0.08715207,0.99619502,0,0)" style="fill:#515151;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 40 26.23 -1.133 12.951 -0.996 -0.087 0.087 -0.996 -0.996 -0.087 1.046 -11.954 z" style="fill:#515151;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect y="20.641" x="-40.13" height="16" width="2" transform="matrix(-0.99619438,-0.08715941,-0.08715207,0.99619502,0,0)" style="fill:#89c86b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <rect style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:23.7;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" height="5" transform="matrix(-1 0 0 1 0 0)" width="5" x="-6.5" y="9.5"/>
+ <g transform="matrix(0.70711 -0.70711 0.70711 0.70711 -4.249 21.792)">
+  <path d="m 18.5 -1.091 5.5 0" style="stroke-opacity:1;fill:none;stroke:#6c71c4;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1"/>
+  <path d="m 19 -3.091 -2 2 2 2 z" style="fill:#6c71c4;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 23.5 0.909 2 -2 -2 -2 z" style="fill:#6c71c4;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ </g>
+ <path d="m 8 15 0 -1 1 0 0 1 -1 0 z m 2 0 0 -1 1 0 0 1 -1 0 z m 2 0 0 -1 1 0 0 1 -1 0 z m 2 0 0 -1 1 0 0 1 -1 0 z m 0 -2 0 -1 1 0 0 1 -1 0 z m 0 -2 0 -1 1 0 0 1 -1 0 z m 0 -2 0 -1 1 0 0 1 -1 0 z m -13 -1 0 -1 1 0 0 1 -1 0 z m 13 -1 0 -1 1 0 0 1 -1 0 z m -13 -1 0 -1 1 0 0 1 -1 0 z m 13 -1 0 -1 1 0 0 1 -1 0 z m -13 -1 0 -1 1 0 0 1 -1 0 z m 13 -1 0 -1 -1 0 0 -1 2 0 0 2 -1 0 z m -13 -1 0 -1 1 0 0 1 -1 0 z m 2 0 0 -1 1 0 0 1 -1 0 z m 2 0 0 -1 1 0 0 1 -1 0 z m 2 0 0 -1 1 0 0 1 -1 0 z m 2 0 0 -1 1 0 0 1 -1 0 z m 2 0 0 -1 1 0 0 1 -1 0 z" style="fill:#c3c3c3;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

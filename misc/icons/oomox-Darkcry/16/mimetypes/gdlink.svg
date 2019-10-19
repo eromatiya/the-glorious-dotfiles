@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <defs>
+  
+ </defs>
+ <path d="m 2.668 0 c -0.344 0 -0.668 0.338 -0.668 0.697 l 0 14.607 c 0 0.338 0.344 0.697 0.668 0.697 l 10.664 0 c 0.324 0 0.668 -0.359 0.668 -0.697 l 0 -11.304 -4 -4 z" style="fill:#3e86fb;fill-opacity:1"/>
+ <path d="m 10.583 3.332 0.015 0.02 0.04 -0.02 z m 0.03 0.668 3.387 3.664 0 -3.664 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 10 0 3.996 4 -3.384 0 c -0.299 0 -0.613 -0.317 -0.613 -0.616 z" style="fill:#fff;fill-opacity:0.392"/>
+ <g transform="translate(-0.2004068,0)">
+  <polygon points="44385,76894 133156,76894 110963,115341 22194,115341 " transform="matrix(6.7208839e-5,0,0,5.2019663e-5,4.05074,7)" style="fill:#f9f9f9;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+  <polygon points="133156,76894 88772,0 44385,0 88772,76894 " transform="matrix(6.7589641e-5,0,0,6.5024579e-5,4.0000338,5.0000376)" style="fill:#f9f9f9;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+  <path d="m 6.518 5.03 -3.054 5.05 1.43 2.934 2.974 -5.339" style="fill:#f9f9f9;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+ </g>
+</svg>

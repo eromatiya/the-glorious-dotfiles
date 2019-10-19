@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(0,-1036.3622)">
+  <polygon transform="matrix(1.139731e-4,0,0,1.0404008e-4,0.82379851,1039.3621)" points="110963,115341 22194,115341 44385,76894 133156,76894 " style="fill:#f2bb64;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+  <polygon transform="matrix(1.1264941e-4,0,0,1.1704449e-4,1.0000561,1037.3622)" points="133156,76894 88772,0 44385,0 88772,76894 " style="fill:#f2bb64;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+  <path d="m 5.2 1038.16 -4.977 8.03 2.33 4.665 l 4.846 -8.491 z" style="fill:#f2bb64;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+ </g>
+</svg>

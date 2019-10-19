@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <rect width="8" height="28" x="20" y="-38" transform="matrix(0,1,-1,0,0,0)" style="fill:#268bd2;opacity:0.2;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 8 8 c 0 10.667 0 21.333 0 32 10.667 0 21.333 0 32 0 c 0 -10.667 0 -21.333 0 -32 -10.667 0 -21.333 0 -32 0 m 2 2 8 0 0 8 -8 0 z m 10 0 8 0 0 8 -8 0 z m 10 0 8 0 0 8 -8 0 z m -20 10 c 9.333 0 18.667 0 28 0 l 0 8 c -9.333 0 -18.667 0 -28 0 z m 0 10 8 0 0 8 -8 0 z m 10 0 8 0 0 8 -8 0 z m 10 0 8 0 0 8 -8 0 z" style="fill:#888;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 18 20 0 8 -5 -4 z" style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="m 30 20 0 8 5 -4 z" style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

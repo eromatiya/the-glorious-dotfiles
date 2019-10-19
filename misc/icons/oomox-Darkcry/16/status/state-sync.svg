@@ -1,0 +1,9 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(0.0602 0 0 0.0628 -12.88 0.203)" style="fill:#ececec;fill-opacity:1;stroke:none">
+  <path transform="matrix(16.61177 0 0 15.92256 213.95 -3.232)" d="m 7.258 2.857 c -0.884 0 -1.634 0.538 -2 1.314 c -0.21 -0.178 -0.479 -0.287 -0.771 -0.287 c -0.676 0 -1.229 0.582 -1.229 1.287 0 0.273 0.089 0.534 0.229 0.742 -0.474 0.314 -0.826 0.802 -1 1.371 c -0.084 -0.01 -0.171 -0.027 -0.258 -0.027 -1.238 0 -2.229 1.049 -2.229 2.342 c 0 1.292 0.99 2.344 2.229 2.344 0.527 0 1.017 -0.197 1.4 -0.516 0.234 0.317 0.586 0.543 1 0.543 0.57 0 1.032 -0.406 1.199 -0.941 0.557 0.567 1.333 0.914 2.172 0.914 0.084 0 0.162 -0.019 0.244 -0.025 c -0.395 -1.193 -0.296 -2.529 0.361 -3.668 0.688 -1.192 1.869 -1.966 3.168 -2.182 -0.356 -0.814 -1.148 -1.383 -2.059 -1.383 c -0.088 0 -0.172 0.019 -0.256 0.029 c -0.209 -1.066 -1.118 -1.857 -2.201 -1.857 z"/>
+ </g>
+ <g transform="matrix(1 0 0 1 9.32 -12.476)">
+  <path d="m 3.57 21.526 0.518 -1.932 c -1.525 -0.409 -3.147 0.263 -3.937 1.631 -0.79 1.368 -0.561 3.108 0.556 4.225 l 1.414 -1.414 c -0.483 -0.483 -0.58 -1.219 -0.238 -1.811 0.342 -0.592 1.027 -0.876 1.687 -0.699 z" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#ececec;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+  <path d="m 4.243 21.915 1.414 -1.414 c 1.117 1.117 1.345 2.857 0.556 4.225 -0.79 1.368 -2.411 2.04 -3.937 1.631 l 0.518 -1.932 c 0.66 0.177 1.345 -0.107 1.687 -0.699 0.342 -0.592 0.246 -1.327 -0.238 -1.811 z" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#ececec;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ </g>
+</svg>

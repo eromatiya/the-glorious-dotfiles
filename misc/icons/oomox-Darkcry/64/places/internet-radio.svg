@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <rect transform="matrix(0.25882 0.96593 -0.96593 0.25882 0 0)" style="fill:#6e6e6e;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="51.3" width="2.7" x="22.16" y="-50.54" rx="1"/>
+ <rect transform="matrix(-1 0 0 1 0 0)" style="fill:#ffd384;fill-opacity:1" height="35" width="54" x="-59" y="19" rx="2"/>
+ <circle style="fill:#434e60;opacity:1;fill-opacity:1" cx="22.5" cy="36.5" r="13.5"/>
+ <path style="fill:#383838;fill-opacity:1" d="M 12.953791 26.954032 A 13.5 13.5 0 0 0 12.057 27.966424 l 4.816 4.816 a 6.75 6.75 0 0 0 0.853915 8.49069 6.75 6.75 0 0 0 8.494335 0.857641 l 4.821 4.821 a 13.5 13.5 0 0 0 1.00308 -0.90612 13.5 13.5 0 0 0 0.896792 -1.012392 l -4.816 -4.816 a 6.75 6.75 0 0 0 -0.853916 -8.49069 6.75 6.75 0 0 0 -8.494335 -0.857641 l -4.821 -4.821 a 13.5 13.5 0 0 0 -1.00308 0.90612 z"/>
+ <circle style="fill:#fff;opacity:0.4;fill-opacity:1" cx="22.5" cy="36.5" r="2.5"/>
+ <circle style="fill:#4b3b21;fill-opacity:1" cx="47" cy="49" r="2"/>
+ <circle style="fill:#4b3b21;fill-opacity:1" cx="40" cy="49" r="2"/>
+ <circle style="fill:#4b3b21;fill-opacity:1" cx="54" cy="49" r="2"/>
+ <rect style="fill:#c1c1c1;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="19" width="13" x="41" y="24" rx="2"/>
+</svg>

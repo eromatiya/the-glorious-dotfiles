@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <circle cx="18" cy="24.5" r="7" style="fill:#262626;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle r="6" cy="24.5" cx="30" style="fill:#262626;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle cx="18" cy="24.5" r="3" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle r="3" cy="24.5" cx="30" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 5.176 13 c -0.652 0 -1.176 0.545 -1.176 1.222 l 0 19.556 c 0 0.677 0.525 1.222 1.176 1.222 l 37.647 0 c 0.652 0 1.176 -0.545 1.176 -1.222 l 0 -19.556 c 0 -0.677 -0.525 -1.222 -1.176 -1.222 l -37.647 0 m 2.684 6.111 9.08 0 0 11 -9.08 0 -0.349 -0.611 c -1.544 -3.03 -1.544 -6.753 0 -9.778 0.11 -0.209 0.226 -0.412 0.349 -0.611 z m 23.2 0 9.08 0 0.349 0.611 c 1.544 3.03 1.544 6.753 0 9.778 -0.11 0.209 -0.226 0.412 -0.349 0.611 l -9.08 0 0 -11 z" style="fill:#838488;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 4 19 1.966 0 0 -4 l 36.03 0 l 0 4 2 0 0 -6 -40 0 z" style="fill:#383838;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="12" height="10" x="18" y="20" rx="0.6" ry="0.714" style="fill:#fffcd3;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="12" height="2" x="18" y="19" rx="0.6" ry="0.5" style="fill:#f57979;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 37 13 0 6.111 3 0 l 0 -6.111 -3 0 m 0 17.11 0 4.889 l 3 0 0 -4.889 -3 0 z" style="fill:#bcbcbc;opacity:0.514;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path d="m 2.668 0 c -0.344 0 -0.668 0.338 -0.668 0.697 l 0 14.607 c 0 0.338 0.344 0.697 0.668 0.697 l 10.664 0 c 0.324 0 0.668 -0.359 0.668 -0.697 l 0 -11.304 -4 -4 z" style="fill:#e46e2e;fill-opacity:1"/>
+ <circle cx="11.25" cy="5.75" r="0.75" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="m 10.583 3.332 0.015 0.02 0.04 -0.02 z m 0.03 0.668 3.387 3.664 0 -3.664 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 10 0 3.996 4 -3.384 0 c -0.299 0 -0.613 -0.317 -0.613 -0.616 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="m 8 6 c -1.735 0.001 -3.271 1.119 -3.805 2.77 0.822 -0.727 2.259 -1.169 3.805 -1.17 1.54 0 2.972 0.438 3.797 1.16 -0.536 -1.644 -2.068 -2.757 -3.797 -2.76 m -3.695 4.521 c 0.616 1.498 2.075 2.477 3.695 2.479 1.619 -0.001 3.078 -0.978 3.695 -2.475 -0.841 0.673 -2.221 1.074 -3.695 1.074 -1.475 -0.001 -2.856 -0.404 -3.695 -1.078" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <circle cx="4.75" cy="13.25" r="0.75" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <circle cx="4.5" cy="6.5" r="0.5" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

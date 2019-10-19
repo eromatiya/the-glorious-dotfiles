@@ -1,0 +1,9 @@
+<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
+<g style="fill:#888" transform="translate(-4 -4)">
+<path d="M 17,5 17,7 5,7 5,5 z"/>
+<path d="m 19,13 0,2 -10,0 0,-2 z"/>
+<path d="M 15,9 15,11 5,11 5,9 z"/>
+<path d="m 19,17 0,2 -8,0 0,-2 z"/>
+</g>
+<path style="fill:#dc322f" d="M 5,12 1,9 1,15 z"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path d="m 0 1 5.501 -1 5 1 5.5 -1 0 15 -5.5 1 -5 -1 l -5.5 1" style="fill:#ecf0f1;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="M 5.5005,1 1,1.8 l 0,13 4.5005,-0.8 5,1 4.5,-0.8 0,-13 -4.5,0.8 z" style="fill:#2ecc71;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="M 2.917,1.417 1.25,1.75 5.5005,5.5 7.6345,9.1955 5.5005,9.5 1,12 l 0,1.75 14.0005,0 0,-7.75 -4.5,2.5 L 8.4855,9.073 5.498,3.5 2.9145,1.417 Z" style="fill:#f1c40f;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="M 5.5005,11 1,13.5 1,14.8 5.5005,14 l 5,1 4.5,-0.8 0,-6.7 -4.5,2.5" style="fill:#3498db;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 10.5005,1 5.5,-1 0,15 -5.5,1 z m -5,14 L 0,16 0,1 5.5005,0 Z" style="fill:#000;opacity:0.15;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 12 0 c -1.657 0 -3 1.343 -3 3 0.001 0.482 0.117 0.957 0.34 1.385 0.884 1.703 1.774 3.411 2.66 5.115 l 2.66 -5.115 c 0.223 -0.428 0.339 -0.902 0.34 -1.385 0 -1.657 -1.343 -3 -3 -3 z m 0 2 a 1 1 0 0 1 1 1 1 1 0 0 1 -1 1 1 1 0 0 1 -1 -1 1 1 0 0 1 1 -1 z" style="fill:#e74c3c;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

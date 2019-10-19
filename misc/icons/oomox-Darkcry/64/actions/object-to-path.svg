@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path d="m 32.367 13.692 c -13.57 -8.132 -27.14 10.843 -13.57 21.686 c 6.258 2.442 13.459 -1.526 27.601 2.02 8.324 2.088 2.254 14.243 2.254 14.243 0 0 -16.606 4.181 -16.606 -9.373 0 -13.554 0.322 -12.313 0.322 -28.578 z" style="stroke-opacity:1;fill:none;stroke:#50b34a;stroke-linejoin:miter;stroke-width:2"/>
+ <rect y="10" x="28" height="8" width="8" style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#313131;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+ <rect y="31" x="14" height="8" width="8" style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#313131;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+ <rect y="49" x="45" height="8" width="8" style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#313131;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+</svg>

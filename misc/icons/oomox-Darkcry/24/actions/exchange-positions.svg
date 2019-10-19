@@ -1,0 +1,8 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" transform="matrix(1 0 0 -1 0 0)" d="M 17.5 -12 A 5.5 5.5 0 0 1 12 -6.5"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" transform="matrix(-1 0 0 1 0 0)" d="M -6.5 12 A 5.5 5.5 0 0 1 -12 17.5"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1" d="m 12 6.5 5 0"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1" d="m 7 17.5 5 0"/>
+ <rect style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" y="3.5" x="3.5" width="7" height="7"/>
+ <rect style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" y="13.5" x="13.5" width="7" height="7"/>
+</svg>

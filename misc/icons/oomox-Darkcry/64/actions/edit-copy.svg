@@ -1,0 +1,11 @@
+<svg width="64" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g style="fill-rule:evenodd">
+<path style="fill:#aaa" d="M 7.332031 0.00390625 L 36.667969 0 C 44 0 44 0 44 6 L 44 42 C 44 48 44 48 36.667969 48 L 7.332031 48 C 0 48 0 48 0 42 L 0 6.003906 C 0 0.00390625 0 0.00390625 7.332031 0.00390625 Z "/>
+<path style="fill:#fff" d="M 27.332031 16 L 56.667969 16 C 64 16 64 16 64 22 L 64 58 C 64 64 64 64 56.667969 64 L 27.332031 64 C 20 64 20 64 20 58 L 20 22 C 20 16 20 16 27.332031 16 Z "/>
+</g>
+<g style="fill:#888">
+<path d="M 28 24 L 28 28 L 56 28 L 56 24 Z "/>
+<path d="M 28 48 L 28 52 L 44 52 L 44 48 Z "/>
+<path d="M 28 36 L 28 40 L 56 40 L 56 36 Z "/>
+</g>
+</svg>

@@ -1,0 +1,9 @@
+<svg width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16">
+<path style="fill:#268bd2;fill-rule:evenodd" d="M 16,8 A 8,8 0 0 1 0,8 8,8 0 1 1 16,8 z"/>
+<g style="word-spacing:0;line-height:125%;letter-spacing:0" transform="matrix(.5 0 0 .66667 2 .00001)">
+<path style="fill:#fff;fill-opacity:.9" d="m 14,18 -4,0 0,-6 4,0 0,6"/>
+</g>
+<g style="fill-rule:evenodd" transform="matrix(.5 0 0 .5 2 .99999)">
+<path style="fill:#fff;fill-opacity:.9" d="m 13.169492,7.6271181 c 0,0.9547974 -0.717104,1.7288137 -1.601695,1.7288137 -0.884592,0 -1.6016952,-0.7740163 -1.6016952,-1.7288137 0,-0.9547974 0.7171032,-1.7288136 1.6016952,-1.7288136 0.884591,0 1.601695,0.7740162 1.601695,1.7288136 z" transform="matrix(1.24868 0 0 1.15686 -2.44444 -.82353)"/>
+</g>
+</svg>

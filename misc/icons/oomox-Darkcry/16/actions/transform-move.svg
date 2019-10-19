@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path style="fill:#6c71c4;opacity:1;fill-opacity:1;stroke:none" d="m 5.75,12 4.5,0 L 8,15 Z"/>
+ <path style="fill:#6c71c4;opacity:1;fill-opacity:1;stroke:none" d="M 5.75,4 10.25,4 8,1 Z"/>
+ <path style="fill:#6c71c4;opacity:1;fill-opacity:1;stroke:none" d="M 4,10.25 4,5.75 1,8"/>
+ <path style="fill:#6c71c4;opacity:1;fill-opacity:1;stroke:none" d="M 12,10.25 12,5.75 15,8"/>
+ <circle cx="8" style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:23.7;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:square;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" r="1.5" cy="8"/>
+</svg>

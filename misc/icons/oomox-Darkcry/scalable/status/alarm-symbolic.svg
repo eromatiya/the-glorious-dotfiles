@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(-473.0004,401.9276)" style="display:inline">
+  <rect width="1" height="4" x="481" y="-396.93" rx="0.5" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect width="3.5" height="1" x="478.5" y="-393.93" rx="0.583" ry="0.5" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 481 -399.93 c -3.578 0 -6.5 2.922 -6.5 6.5 0 3.578 2.922 6.5 6.5 6.5 3.578 0 6.5 -2.922 6.5 -6.5 0 -3.578 -2.922 -6.5 -6.5 -6.5 z m 0 2 c 2.497 0 4.5 2 4.5 4.5 0 2.497 -2 4.5 -4.5 4.5 -2.497 0 -4.5 -2 -4.5 -4.5 0 -2.497 2 -4.5 4.5 -4.5 z" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#bebebe;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+  <rect width="2" height="3.5" x="62.16" y="-613.17" rx="1" transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" rx="1" y="67.07" x="616.08" height="3.5" width="2" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="M 4.268 1.25 A 1.853 2.912 45 0 0 3.086 1.527 A 1.853 2.912 45 0 0 1.027 3.586 A 1.853 2.912 45 0 0 1.063 5.668 C 1.827 3.812 3.314 2.324 5.17 1.561 A 1.853 2.912 45 0 0 4.268 1.25 z" transform="translate(473.0004,-401.9276)" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="M 11.85 1.252 A 2.912 1.853 45 0 0 10.83 1.563 C 12.687 2.327 14.176 3.815 14.939 5.672 A 2.912 1.853 45 0 0 14.975 3.586 A 2.912 1.853 45 0 0 12.914 1.527 A 2.912 1.853 45 0 0 11.85 1.252 z" transform="translate(473.0004,-401.9276)" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="M 7.971 0.25 A 1.25 1.25 0 0 0 7.375 0.418 A 1.25 1.25 0 0 0 6.816 1.104 C 7.203 1.041 7.597 1 8 1 C 8.404 1 8.798 1.041 9.186 1.104 A 1.25 1.25 0 0 0 8.625 0.418 A 1.25 1.25 0 0 0 7.971 0.25 z" transform="translate(473.0004,-401.9276)" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+</svg>

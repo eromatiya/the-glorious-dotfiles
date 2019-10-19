@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g transform="translate(0 -1036.3622)">
+<rect width="14" x="1" y="1037.362" rx="2.154" height="14" style="fill:#268bd2"/>
+<g style="fill-opacity:.9;fill:#fff">
+<path style="color:#000" d="M 3 3 L 3 7 L 4 7 L 4 4 L 7 4 L 7 3 L 3 3 z M 9 3 L 9 4 L 12 4 L 12 7 L 13 7 L 13 3 L 9 3 z M 3 9 L 3 13 L 7 13 L 7 12 L 4 12 L 4 9 L 3 9 z M 12 9 L 12 12 L 9 12 L 9 13 L 13 13 L 13 9 L 12 9 z " transform="translate(0 1036.3622)"/>
+<path d="M 5 5 L 5 11 L 11 11 L 11 5 L 5 5 z M 6 6 L 10 6 L 10 10 L 6 10 L 6 6 z " transform="translate(0 1036.3622)"/>
+</g>
+</g>
+</svg>

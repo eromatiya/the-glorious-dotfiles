@@ -1,0 +1,8 @@
+<svg width="48" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 48 48" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g style="fill-rule:evenodd">
+<path style="fill:#268bd2" d="M 14 4 L 34 4 C 40 4 42 6 42 12 L 42 36 C 42 42 40 44 34 44 L 14 44 C 8 44 6 42 6 36 L 6 12 C 6 6 8 4 14 4 Z "/>
+<path style="fill:#fff;fill-opacity:.102" d="M 14 4 L 34 4 C 40 4 42 6 42 12 L 42 28 C 42 34 40 36 34 36 L 14 36 C 8 36 6 34 6 28 L 6 12 C 6 6 8 4 14 4 Z "/>
+</g>
+<path style="fill:#fff" d="M 20 10 L 20 12 L 28 12 L 28 10 Z M 20 14 L 20 18 L 28 18 L 28 14 Z M 15 20 L 24 30 L 33 20 Z "/>
+<path style="fill:#268bd2;fill-opacity:.102" d="M 20 10 L 20 12 L 28 12 L 28 10 Z M 20 14 L 20 18 L 28 18 L 28 14 Z M 15 20 L 24 30 L 33 20 Z "/>
+</svg>

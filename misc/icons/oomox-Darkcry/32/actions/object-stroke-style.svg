@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <path d="m 2 29 28 0" style="stroke-dasharray:6 2;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+ <path d="m 2 21 28 0" style="stroke-opacity:1;fill:none;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+ <path d="m 2 12.5 28 0" style="stroke-dasharray:3 3;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:3;stroke-dashoffset:0"/>
+ <path d="m 2 3.5 28 0" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:3"/>
+</svg>

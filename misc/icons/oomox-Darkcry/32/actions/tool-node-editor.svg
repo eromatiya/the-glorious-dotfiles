@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new" viewBox="0 0 32 32">
+ <path d="m 7.5 23 0 -14" style="stroke-opacity:1;fill:none;stroke:#50b34a;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1"/>
+ <path d="m 23 7.5 -14 0" style="stroke-opacity:1;fill:none;stroke:#50b34a;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1"/>
+ <rect x="23" y="5" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4" width="4"/>
+ <rect x="5" y="23" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4" width="4"/>
+ <rect x="5" y="5" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4" width="4"/>
+ <g transform="matrix(0.61453 0 0 0.61453 8.313 8.616)">
+  <path d="m 6 21.835 0 -17.9 12.345 12.962 -7.16 0 z" style="fill:#313131;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ </g>
+</svg>

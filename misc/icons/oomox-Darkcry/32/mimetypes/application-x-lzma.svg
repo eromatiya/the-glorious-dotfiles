@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <path d="m 5.336 0 c -0.687 0 -1.336 0.676 -1.336 1.394 l 0 29.21 c 0 0.676 0.687 1.394 1.336 1.394 l 21.327 0 c 0.648 0 1.336 -0.717 1.336 -1.394 l 0.001 -21.606 l -9 -9 z" style="fill:#c19553;fill-opacity:1"/>
+ <path d="m 4 24 0 6.668 c 0 0.648 0.688 1.332 1.332 1.332 l 21.336 0 c 0.645 0 1.332 -0.684 1.332 -1.332 l 0 -6.668 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 21 9 7 7 0 -7 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 11.04 31 -3.042 0 l 0 -5 1.035 0 0 4.176 2.01 0 0 0.824" style="fill:#fff"/>
+ <path d="m 19 0 8.992 9 -7.613 0 c -0.673 0 -1.378 -0.713 -1.378 -1.386 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="m 14.985 26.692 c -0.782 1.152 -1.488 2.317 -2.145 3.484 l 2.219 0 0 0.824 -3.402 0 0 -0.575 c 0.654 -1.247 1.391 -2.452 2.094 -3.601 l -1.984 0 0 -0.824 3.219 0 0 0.692" style="fill:#fff"/>
+ <rect width="3" height="3" x="9" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 17.16 26 c 0.276 0.737 0.541 1.215 0.806 1.95 0.282 -0.75 0.553 -1.207 0.832 -1.95 l 1.02 0 c 0.185 1.693 0.317 3.368 0.37 5 l -1.045 0 0.025 -3.886 -0.861 1.717 l -0.668 0 l -0.831 -1.717 0.014 3.886 -1.045 0 c 0.067 -1.694 0.186 -3.346 0.367 -5 l 1.015 0" style="fill:#fff"/>
+ <rect width="3" height="3" x="12" y="3" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 23.414 31 -0.238 -1.154 -1.375 0 l -0.234 1.154 -1.066 0 c 0.424 -1.736 0.96 -3.407 1.465 -5 l 1.117 0 c 0.56 1.694 1.056 3.408 1.434 5 m -2.02 -4.03 c -0.219 0.675 -0.375 1.422 -0.508 2.055 l 1.01 0 c -0.131 -0.743 -0.322 -1.396 -0.5 -2.055" style="fill:#fff"/>
+ <rect width="3" height="3" x="9" y="6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3" height="3" x="12" y="9" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3" height="3" x="9" y="12" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="6" height="6" x="9" y="16" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+</svg>

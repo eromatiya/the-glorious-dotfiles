@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <rect width="8" height="8" x="2" y="2" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="8" x="12" y="2" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="8" x="22" y="2" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="8" x="2" y="12" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="8" x="12" y="12" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="8" x="22" y="12" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="8" x="2" y="22" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="8" x="12" y="22" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="8" x="22" y="22" style="fill:#d4ae2b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

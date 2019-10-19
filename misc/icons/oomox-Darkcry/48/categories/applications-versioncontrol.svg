@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 38.4 38.4">
+ <path d="m 5.155 4.8 28.09 0 c 0.197 0 0.355 0.158 0.355 0.355 l 0 28.09 c 0 0.197 -0.158 0.355 -0.355 0.355 l -28.09 0 c -0.197 0 -0.355 -0.158 -0.355 -0.355 l 0 -28.09 c 0 -0.197 0.158 -0.355 0.355 -0.355" style="stroke-dasharray:none;fill:none;stroke-miterlimit:4;stroke:#ca9a69;stroke-linecap:round;stroke-width:1.6"/>
+ <path d="m 8 6.5 0 35.5 1 0 0 -5 5 0 0 -1 -5 0 0 -5 5 0 0 -1 -5 0 0 -5 7 0 0 -1 -7 0 0 -5 7 0 0 -1 -7 0 0 -5 5 0 0 -1 -5 0 0 -5.5 z" transform="scale(0.8,0.8)" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#ca9a69;opacity:1;image-rendering:auto;fill-opacity:0.6;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ <rect width="2.4" height="2.4" x="12" y="8" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="2.4" height="2.4" x="12" y="27.2" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="14.4" height="2.4" x="16" y="8" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="2.4" height="2.4" x="13.6" y="12.8" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="2.4" height="2.4" x="13.6" y="17.6" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="2.4" height="2.4" x="12" y="22.4" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="14.4" height="2.4" x="16.8" y="12.8" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="14.4" height="2.4" x="16.8" y="17.6" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="14.4" height="2.4" x="15.2" y="22.4" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="14.4" height="2.4" x="15.2" y="27.2" rx="0.4" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

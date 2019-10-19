@@ -1,0 +1,5 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+ <path style="fill:#d5c7d3;fill-opacity:1;stroke:none;fill-rule:evenodd" d="M 1,12 1,4 7,1 7,9 Z"/>
+ <path style="fill:#745871;fill-opacity:1;stroke:none;fill-rule:evenodd" d="M 15,12 15,4 9,1 9,9 Z"/>
+ <path style="fill:#a78ba4;fill-opacity:1;stroke:none;fill-rule:evenodd" d="m 8 10.473 l -5.527 2.764 l 5.527 2.764 l 5.527 -2.764 l -5.527 -2.764 z"/>
+</svg>

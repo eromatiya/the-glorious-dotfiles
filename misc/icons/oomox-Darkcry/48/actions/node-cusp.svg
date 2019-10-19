@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#3daee9;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2" d="m 6 11 c 6 0 17 22.5 17 22.5"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#3daee9;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2" d="m 27 33.5 c 10 -4 14 -17.5 14 -23.5"/>
+ <rect x="-10.07" transform="matrix(0.70711 -0.70711 0.70711 0.70711 0 0)" y="40.13" width="6" height="6" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+ <path style="stroke-dasharray:2 2;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" d="m 25.5 10 0 21.5"/>
+ <path style="stroke-dasharray:2 2;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" d="m 42 35.5 -14 0"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <path d="m 26 -17 a 8 8 0 0 1 -8 8" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" transform="matrix(1 0 0 -1 0 0)"/>
+ <path d="m 18 9 8 0" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+ <rect width="12" y="3" style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" x="3" height="9"/>
+ <path d="m 20 18 l -4.998 5 l 2.826 0 l 2.172 -2.172 l 2.172 2.172 l 2.828 0 l -5 -5 z" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#888;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ <path d="m -6 15 a 8 8 0 0 1 -8 8" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" transform="matrix(-1 0 0 1 0 0)"/>
+ <path d="m 14 23 -8 0" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+ <path d="m 20 20 0 9" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#888;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+ <path d="m 27 30 -4.998 -5 2.826 0 2.172 2.172 2.172 -2.172 l 2.828 0 -5 5 z" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#888;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ <path d="m 27 28 0 -9" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#888;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+</svg>

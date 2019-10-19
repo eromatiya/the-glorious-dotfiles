@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <path d="m 8 1 c -1.029 0 -2 0.971 -2 2 l 0 42 c 0 0.971 1.029 2 2 2 l 32 0 c 0.971 0 2 -1.029 2 -2 l 0 -31 -13 -13 z" style="fill:#39a34f"/>
+ <path d="m 29 12 0.063 0.063 0.156 -0.063 -0.219 0 z m 2 2 11 11 0 -11 -11 0 z" style="fill-opacity:0.196"/>
+ <path d="m 29 1 13 13 -11 0 c -0.971 0 -2 -1.029 -2 -2 l 0 -11 z" style="fill:#fff;fill-opacity:0.392"/>
+ <g transform="matrix(0.53367457,0,0,0.5335119,11.192071,11.191446)" style="fill:#fff;fill-opacity:1">
+  <!-- color: #3d3d3d -->
+  <g style="fill:#fff">
+   <path d="M 27.08,9.641 23.471,19.793 37.705,17.43 C 35.603,13.438 31.721,10.5 27.08,9.641 m 0,0" style="fill:#fff;stroke:none;fill-rule:nonzero"/>
+   <path d="m 38.15 19.449 -10.738 1.988 9.199 10.98 c 2.457 -3.797 3.09 -8.586 1.527 -12.969 m 0.012 0" style="fill:#fff;stroke:none;fill-rule:nonzero"/>
+   <path d="m 35.07 33.809 -7.121 -8.164 -5.05 13.344 c 4.566 0.195 9.09 -1.656 12.156 -5.18 m 0.012 0" style="fill:#fff;stroke:none;fill-rule:nonzero"/>
+   <path d="m 20.922 38.36 3.617 -10.152 -14.242 2.363 c 2.109 3.996 5.996 6.934 10.625 7.789 m 0 0" style="fill:#fff;stroke:none;fill-rule:nonzero"/>
+   <path d="M 9.852,28.559 20.586,26.571 11.387,15.591 C 8.934,19.392 8.297,24.177 9.86,28.56 m -0.008,0" style="fill:#fff;stroke:none;fill-rule:nonzero"/>
+   <path d="m 12.926 14.207 7.121 8.164 5.05 -13.344 c -4.563 -0.195 -9.09 1.656 -12.152 5.18 m -0.016 0" style="fill:#fff;stroke:none;fill-rule:nonzero"/>
+  </g>
+ </g>
+ <path d="m 6 35 0 10 c 0 0.971 1.029 2 2 2 l 32 0 c 0.971 0 2 -1.029 2 -2 l 0 -10 z" style="fill-opacity:0.196"/>
+ <path d="M 18.787,45 Q 18.272,43.669 17.66,42.351 17.06,41.02 16.361,39.689 l 0,5.312 -1.36,0 0,-8 1.213,0 q 0.343,0.569 0.686,1.241 0.343,0.659 0.662,1.318 0.331,0.659 0.6,1.279 0.282,0.62 0.478,1.086 l 0,-4.924 1.36,0 0,8 -1.213,0 z" style="fill:#fff;fill-opacity:1;stroke:none"/>
+ <path d="m 21 45 0 -8 4.723 0 0 1.318 -3.174 0 0 1.796 2.758 0 0 1.318 -2.758 0 0 2.249 3.451 0 0 1.318 -5 0" style="fill:#fff;fill-opacity:1;stroke:none"/>
+ <path d="m 27 45 0 -8 5 0 0 1.318 -3.377 0 0 1.682 2.955 0 0 1.359 -2.955 0 0 3.641 z" style="fill:#fff;fill-opacity:1;stroke:none"/>
+</svg>

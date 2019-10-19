@@ -1,0 +1,5 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+ <path d="m 2.5 6 c 0 19.342 10.969 20 10.969 20" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#3daee9;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1"/>
+ <path d="m 29.5 6 c 0 19.342 -10.969 20 -10.969 20" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#3daee9;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1"/>
+ <circle cx="16" cy="26" r="2" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:round;stroke-width:2;stroke-dashoffset:0"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <rect height="7" rx="0" y="8" x="3" width="10" style="fill:#bebebe"/>
+ <rect transform="matrix(0.79988838,-0.60014879,0.60014879,0.79988838,0,0)" height="0.737" rx="0" y="8.204" x="-5.765" width="3.378" style="fill:#bebebe"/>
+ <rect transform="matrix(0.79988839,0.60014879,0.60014879,-0.79988839,0,0)" height="0.737" rx="0" y="0.678" x="15.208" width="3.378" style="fill:#bebebe"/>
+ <rect transform="matrix(0.95334222,0.30189172,-0.30189172,0.95334222,0,0)" height="1.758" y="3.235" x="4.986" width="1.758" style="fill:#bebebe"/>
+ <rect transform="matrix(0.95988029,-0.2804101,0.2804101,0.95988029,0,0)" height="2.891" y="2.823" x="4.357" width="2.891" style="fill:#bebebe"/>
+ <path d="m 10.391 5.953 -0.828 1.054 -1.327 -0.19 -0.499 -1.244 0.828 -1.054 l 1.327 0.19 z" style="fill:#bebebe"/>
+ <path d="m 12.808 3.347 -0.846 0.277 -0.251 0.854 -0.525 -0.719 -0.89 0.025 0.521 -0.721 -0.299 -0.838 l 0.847 0.273 0.705 -0.543 0.002 0.89 z" style="fill:#bebebe"/>
+</svg>

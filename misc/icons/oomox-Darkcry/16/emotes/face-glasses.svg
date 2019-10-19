@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12 12">
+ <g>
+  <path d="m 11.25 6 c 0 2.484 -2.352 4.5 -5.25 4.5 c -2.898 0 -5.25 -2.02 -5.25 -4.5 c 0 -2.484 2.348 -4.5 5.25 -4.5 c 2.902 0 5.25 2.02 5.25 4.5 m 0 0" style="fill:#ffd85b;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 3.75 7.125 c 0.188 0.941 1.137 1.594 2.25 1.594 c 1.117 0 2.066 -0.652 2.25 -1.594 l -0.375 0 c -0.137 0.563 -0.902 0.941 -1.875 0.941 c -0.969 0 -1.738 -0.379 -1.875 -0.941 m -0.375 0" style="fill:#626262;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 2.836 3.754 l 2.391 0 c 0.074 0 0.133 0.059 0.133 0.129 l 0 1.574 c 0 0.07 -0.059 0.129 -0.133 0.129 l -2.391 0 c -0.074 0 -0.133 -0.059 -0.133 -0.129 l 0 -1.574 c 0 -0.07 0.059 -0.129 0.133 -0.129 m 0 0" style="fill:#7de5ed;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 5.703 7.313 l 4.719 0 c 0.148 0 0.266 0.117 0.266 0.258 l 0 3.609 c 0 0.141 -0.117 0.258 -0.266 0.258 l -4.719 0 c -0.148 0 -0.266 -0.117 -0.266 -0.258 l 0 -3.609 c 0 -0.141 0.117 -0.258 0.266 -0.258 m 0 0" transform="matrix(0.5,0,0,0.5,0,0)" style="stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#353535;stroke-linecap:square;stroke-linejoin:miter;stroke-width:1.125"/>
+  <path d="m 5.57 3.977 l 0.785 0 c 0.074 0 0.133 0.059 0.133 0.129 l 0 0.262 c 0 0.074 -0.059 0.133 -0.133 0.133 l -0.785 0 c -0.074 0 -0.133 -0.059 -0.133 -0.133 l 0 -0.262 c 0 -0.07 0.059 -0.129 0.133 -0.129 m 0 0" style="fill:#353535;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 6.773 3.754 l 2.391 0 c 0.074 0 0.133 0.059 0.133 0.129 l 0 1.574 c 0 0.07 -0.059 0.129 -0.133 0.129 l -2.391 0 c -0.074 0 -0.133 -0.059 -0.133 -0.129 l 0 -1.574 c 0 -0.07 0.059 -0.129 0.133 -0.129 m 0 0" style="fill:#7de5ed;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 13.578 7.313 l 4.719 0 c 0.148 0 0.266 0.117 0.266 0.258 l 0 3.609 c 0 0.141 -0.117 0.258 -0.266 0.258 l -4.719 0 c -0.148 0 -0.266 -0.117 -0.266 -0.258 l 0 -3.609 c 0 -0.141 0.117 -0.258 0.266 -0.258 m 0 0" transform="matrix(0.5,0,0,0.5,0,0)" style="stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#353535;stroke-linecap:square;stroke-linejoin:miter;stroke-width:1.125"/>
+ </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <g>
+  <path d="m 10.672 0 c -1.375 0 -2.672 1.355 -2.672 2.789 l 0 58.42 c 0 1.355 1.375 2.789 2.672 2.789 l 42.656 0 c 1.297 0 2.672 -1.434 2.672 -2.789 l 0 -43.21 l -18 -18 m -27.328 0" style="fill:#c19553;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 8 48 l 0 13.336 c 0 1.297 1.375 2.664 2.664 2.664 l 42.672 0 c 1.289 0 2.664 -1.367 2.664 -2.664 l 0 -13.336 m -48 0" style="fill:#000;fill-opacity:0.196;stroke:none;fill-rule:nonzero"/>
+  <path d="m 42 18 l 14 14 l 0 -14 m -14 0" style="fill:#000;fill-opacity:0.196;stroke:none;fill-rule:nonzero"/>
+  <path d="m 38 0 l 17.984 18 l -15.227 0 c -1.348 0 -2.758 -1.426 -2.758 -2.773 m 0 -15.227" style="fill:#fff;fill-opacity:0.392;stroke:none;fill-rule:nonzero"/>
+  <path d="m 18 0 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 24 6 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 18 12 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 24 18 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 18 24 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 18 32 l 12 0 l 0 12 l -12 0 m 0 -12" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ </g>
+ <path d="m 22.691 51 0 1.817 -2.68 0 0 9.183 -2.031 0 0 -9.183 -2.68 0 0 -1.817 7.391 0" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 30.484 61.996 -6.484 0 0 -10.992 2.07 0 0 9.18 4.414 0 0 1.812" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 38.47 52.53 c -1.564 2.54 -2.982 5.096 -4.288 7.658 l 4.438 0 0 1.812 -6.805 0 0 -1.265 c 1.319 -2.729 2.761 -5.401 4.188 -7.92 l -3.969 0 0 -1.812 6.438 0 0 1.522" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 42.37 51.01 c 0.551 1.619 1.054 3.253 1.587 4.864 0.57 -1.644 1.068 -3.239 1.639 -4.865 l 1.861 0 c 0.336 3.724 0.602 7.406 0.666 10.993 l -2.057 0 0.111 -8.544 -1.383 4.655 -1.639 0 l -1.332 -4.655 0.094 8.544 -2.057 0 c 0.144 -3.723 0.285 -7.356 0.658 -10.993 l 1.852 0" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

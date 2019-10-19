@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.0002 16.0001">
+ <g transform="translate(-161 -866.99988)" style="fill:#bebebe;color:#bebebe">
+  <g>
+   <path d="m 162 867 0 1 0 11 0 1 1 0 10 0 1 0 0 -1 0 -11 0 -1 -1 0 -10 0 -1 0 z m 2 2 8 0 0 9 -8 0 0 -9 z"/>
+   <path d="m 175 870 0 11 -10 0 0 2 12 0 0 -13 z"/>
+  </g>
+  <rect width="4" x="-170" y="871" rx="0.375" height="2" transform="scale(-1 1)" style="opacity:0.35"/>
+  <rect width="4" x="-170" y="874" rx="0.375" height="2" transform="scale(-1 1)" style="opacity:0.35"/>
+ </g>
+</svg>

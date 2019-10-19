@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path d="m 5 2 -2 3 4.5 0 0 -3 m 1 0 0 3 4.5 0 -2 -3 m -8 4 l 0 7 5.139 0 0.281 -0.951 -0.186 -0.072 0.377 -0.939 c 0.053 -0.132 0.147 -0.234 0.213 -0.357 l 0.021 -0.068 0.016 0.008 c 0.717 -1.29 2.079 -2.119 3.594 -2.119 0.185 0 0.366 0.015 0.545 0.039 l 0 -2.539" style="fill:#c28e5c"/>
+ <g transform="matrix(0.54545454,0,0,0.54545454,6.4545455,6.5000001)" style="fill:#4db147;fill-opacity:1">
+  <g transform="matrix(0.34782609,0,0,0.34782609,2.6435901,2.6456559)">
+   <path transform="matrix(2.875,0,0,2.875,97.067647,-33.481261)" d="m -25.406 14.5 c 2.304 0 4.367 1.303 5.281 3.313 l 1.219 -0.469 -1 3.469 -3.313 -1.844 1.281 -0.5 c -0.621 -1.31 -1.954 -2.125 -3.469 -2.125 -1.573 0 -2.996 0.94 -3.563 2.344 l -1.781 -0.688 c 0.845 -2.104 2.985 -3.5 5.344 -3.5 z m -5.5 4.719 3.313 1.781 -1.281 0.5 c 0.613 1.305 1.964 2.156 3.469 2.156 1.576 0 2.979 -0.91 3.563 -2.313 l 1.781 0.688 c -0.877 2.103 -2.979 3.469 -5.344 3.469 -2.292 0 -4.387 -1.339 -5.281 -3.344 l -1.219 0.438 z"/>
+  </g>
+  <g transform="matrix(0.49988464,0,0,0.49988464,-37.411065,7.9950011)">
+   <!-- color: #004794 -->
+  </g>
+ </g>
+ <g transform="matrix(1.3636364,0,0,1.3636364,-107.91151,-16.294995)" style="stroke-dasharray:none;stroke-opacity:1;fill:#4db147;stroke-miterlimit:4;fill-opacity:1;stroke:#000;stroke-width:4.4">
+  <g transform="matrix(0.49988464,0,0,0.49988464,-37.411065,7.9950011)" style="stroke:#000;stroke-width:8.802">
+   <!-- color: #004794 -->
+  </g>
+ </g>
+ <g transform="matrix(0.9090909,0,0,0.9090909,-66.124999,-1.687499)" style="stroke-dasharray:none;stroke-opacity:1;fill:#4db147;stroke-miterlimit:4;fill-opacity:1;stroke:#000;stroke-width:4.4">
+  <g transform="matrix(0.49988464,0,0,0.49988464,-37.411065,7.9950011)" style="stroke:#000;stroke-width:8.802">
+   <!-- color: #004794 -->
+  </g>
+ </g>
+ <g transform="matrix(0.63636363,0,0,0.63636363,-22.386364,-0.9375)" style="stroke-dasharray:none;stroke-opacity:1;fill:#4db147;stroke-miterlimit:4;fill-opacity:1;stroke:#000;stroke-width:6.286">
+  <g transform="matrix(0.49988464,0,0,0.49988464,-37.411065,7.9950011)" style="stroke:#000;stroke-width:12.574">
+   <!-- color: #004794 -->
+  </g>
+ </g>
+ <g transform="matrix(0.54545454,0,0,0.54545454,6.4545455,6.5000001)" style="stroke-dasharray:none;stroke-opacity:1;fill:#4db147;stroke-miterlimit:4;fill-opacity:1;stroke:#000;stroke-width:3.667">
+  <g transform="matrix(0.49988464,0,0,0.49988464,-37.411065,7.9950011)" style="stroke:#000;stroke-width:7.335">
+   <!-- color: #004794 -->
+  </g>
+ </g>
+</svg>

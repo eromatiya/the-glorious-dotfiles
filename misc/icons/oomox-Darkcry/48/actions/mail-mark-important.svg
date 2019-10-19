@@ -1,0 +1,14 @@
+<svg width="48" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 48 48" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g style="fill:#268bd2">
+<path d="M 6 14 C 2 14 2 14 2 18 L 2 42 C 2 46 2 46 6 46 L 42 46 C 46 46 46 46 46 42 C 46 33.148438 46 23.117188 46 18 C 46 14 46 14 42 14 Z "/>
+<path d="M 6 46 L 42 46 C 46 46 46 46 46 42 L 46 18 L 2 42 C 2 46 2 46 6 46 Z "/>
+</g>
+<path style="fill:#000;fill-opacity:.102" d="M 6 46 L 42 46 C 46 46 46 46 46 42 L 46 18 L 2 42 C 2 46 2 46 6 46 Z "/>
+<path style="fill:#268bd2" d="M 42 46 L 6 46 C 2 46 2 46 2 42 L 2 18 L 46 42 C 46 46 46 46 42 46 Z "/>
+<path style="fill:#fff;fill-opacity:.102" d="M 2 18 L 24 30 L 46 18 C 46 14 46 14 42 14 L 6 14 C 2 14 2 14 2 18 Z "/>
+<path style="fill:#dc322f;fill-rule:evenodd" d="M 46 14 C 46 20.628906 40.628906 26 34 26 C 27.371094 26 22 20.628906 22 14 C 22 7.371094 27.371094 2 34 2 C 40.628906 2 46 7.371094 46 14 Z "/>
+<g style="fill:#fff;fill-opacity:.902">
+<path d="M 32 6 L 36 6 L 36 18 L 32 18 Z "/>
+<path d="M 32 20 L 36 20 L 36 22 L 32 22 Z "/>
+</g>
+</svg>

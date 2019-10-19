@@ -1,0 +1,7 @@
+<svg width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16">
+<g transform="matrix(-1 0 0 1 16 0)">
+<path style="fill:#268bd2" d="M 15,1 15,15 6,8 z"/>
+<path style="fill-opacity:.1" d="M 15,1 15,15 6,8 z"/>
+<path style="fill:#268bd2" d="M 10,1 10,15 1,8 z"/>
+</g>
+</svg>

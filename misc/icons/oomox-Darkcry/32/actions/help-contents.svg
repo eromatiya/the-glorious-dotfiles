@@ -1,0 +1,8 @@
+<svg width="32" xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path style="fill:#268bd2;fill-rule:evenodd" d="M 32 16.003906 C 32 24.839844 24.835938 32 16 32 C 7.164062 32 0 24.839844 0 16.003906 C 0 7.164062 7.164062 0 16 0 C 24.835938 0 32 7.164062 32 16.003906 Z "/>
+<g style="fill:#fff;fill-opacity:.902">
+<path d="M 8 9 L 24 9 L 24 11 L 8 11 Z "/>
+<path d="M 8 15 L 24 15 L 24 17 L 8 17 Z "/>
+<path d="M 8 21 L 24 21 L 24 23 L 8 23 Z "/>
+</g>
+</svg>

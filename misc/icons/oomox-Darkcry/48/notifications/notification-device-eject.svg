@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48">
+ <defs>
+  <linearGradient y1="92.54" x2="0" y2="7.02" id="ButtonShadow-9" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.0058652,0.994169)">
+   <stop style="stop-color:#000;stop-opacity:1"/>
+   <stop offset="1" style="stop-color:#000;stop-opacity:0.588"/>
+  </linearGradient>
+  <filter style="color-interpolation-filters:sRGB">
+   <feGaussianBlur stdDeviation="1.71"/>
+  </filter>
+  <linearGradient y1="92.54" x2="0" y2="7.02" xlink:href="#ButtonShadow-9" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.0058652,0.994169)"/>
+  <linearGradient y1="92.54" x2="0" y2="7.02" xlink:href="#ButtonShadow-9" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.0058652,0.994169)"/>
+ </defs>
+ <path d="m 24 11 -15 15 30 0 m -30 5 0 6 30 0 0 -6 z" style="visibility:visible;fill:#ececec;fill-opacity:1;stroke:none;display:inline;color:#bebebe;fill-rule:nonzero"/>
+</svg>

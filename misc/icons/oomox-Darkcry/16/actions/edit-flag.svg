@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path d="M 12,1 4,1.03125 4,14 l 4,-4 4,4 z" style="fill:#dc322f;fill-rule:evenodd"/>
+ <path d="m 4 1 0 13 1 -1 0 -12 m 6 0 0 12 1 1 0 -13 z" style="fill-opacity:0.1;fill-rule:evenodd"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <rect width="3" height="48" x="15" y="-54" transform="matrix(0,1,-1,0,0,0)" style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path transform="matrix(2.3094012,0,0,-2.6666666,-24.896412,101.67128)" d="m 35.895 31 -1.732 -3 3.464 0 z" style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="16" height="36" x="8" y="-48" transform="matrix(0,1,-1,0,0,0)" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect y="-54" x="46" height="48" width="3" transform="matrix(0,1,-1,0,0,0)" style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect y="-44" x="40" height="28" width="16" transform="matrix(0,1,-1,0,0,0)" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 10 7 0 19 40 0 0 -19 z m 3 3 l 34 0 l 0 13 -34 0 m 1 15 0 19 32 0 0 -19 z m 3 3 l 26 0 0 13 -26 0 z" style="fill:#888;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="m 35.895 31 -1.732 -3 3.464 0 z" transform="matrix(2.3094012,0,0,2.6666666,-24.896412,-37.671278)" style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

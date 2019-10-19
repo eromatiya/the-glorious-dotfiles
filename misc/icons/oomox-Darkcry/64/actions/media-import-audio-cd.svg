@@ -1,0 +1,8 @@
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path d="m 32 27.5 c 2.484 0 4.5 2.02 4.5 4.5 0 2.484 -2.02 4.5 -4.5 4.5 -2.484 0 -4.5 -2.02 -4.5 -4.5 0 -2.484 2.02 -4.5 4.5 -4.5 z" style="stroke-opacity:1;fill:none;fill-opacity:1;stroke:#888;stroke-linejoin:round;stroke-width:1"/>
+ <path d="m 32 6.25 c -14.278 0 -25.75 11.477 -25.75 25.75 0 14.278 11.477 25.75 25.75 25.75 14.278 0 25.75 -11.477 25.75 -25.75 0 -14.278 -11.477 -25.75 -25.75 -25.75 m 0 15.45 c 5.673 0 10.3 4.627 10.3 10.3 0 5.673 -4.627 10.3 -10.3 10.3 -5.673 0 -10.3 -4.627 -10.3 -10.3 0 -5.673 4.627 -10.3 10.3 -10.3 z" style="fill:#d1d1d1;fill-opacity:1;stroke:none"/>
+ <circle cx="32" cy="32" r="26" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:round;stroke-width:2;stroke-dashoffset:0"/>
+ <circle r="11" cy="32" cx="32" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:round;stroke-width:2;stroke-dashoffset:0"/>
+ <path d="M 59,48 48,59 37,48 l 6,0 0,-12 10,0 0,12 z" style="fill:#859900;fill-opacity:1;stroke:none"/>
+</svg>

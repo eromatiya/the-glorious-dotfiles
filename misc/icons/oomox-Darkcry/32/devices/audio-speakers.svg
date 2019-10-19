@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <path d="M 11 6 A 3 3 0 1 1 5 6 3 3 0 1 1 11 6 z" transform="matrix(0.9999998,0,0,1.0000055,16.000002,17.999967)" style="fill:#073642;fill-opacity:1;stroke:none"/>
+ <path d="M 11 6 A 3 3 0 1 1 5 6 3 3 0 1 1 11 6 z" transform="matrix(0.9999998,0,0,1.0000055,16.000002,1.999967)" style="fill:#073642;fill-opacity:1;stroke:none"/>
+ <path d="M 11 6 A 3 3 0 1 1 5 6 3 3 0 1 1 11 6 z" transform="matrix(0.9999998,0,0,1.0000055,1e-6,17.999967)" style="fill:#073642;fill-opacity:1;stroke:none"/>
+ <path d="M 11 6 A 3 3 0 1 1 5 6 3 3 0 1 1 11 6 z" transform="matrix(0.9999998,0,0,1.0000055,1.6e-6,1.9999835)" style="fill:#073642;fill-opacity:1;stroke:none"/>
+ <path d="M 40 24 A 16 16 0 1 1 8 24 16 16 0 1 1 40 24 z" transform="matrix(0.74999987,0,0,0.75000412,-1.9999968,-2.0001628)" style="fill:#073642;fill-opacity:1;stroke:none"/>
+ <path d="m 37 24 a 13 13 0 1 1 -26 0 13 13 0 1 1 26 0 z" transform="matrix(0.74999987,0,0,0.75000412,-1.9999968,-2.0001628)" style="fill:#657b83;fill-opacity:1;stroke:none"/>
+ <path d="m 16 16 0.798 9.701 c 2.303 -0.188 4.443 -1.189 6.06 -2.792 l -6.86 -6.909 z" style="fill:#fdf6e3;fill-opacity:0.253;stroke:none"/>
+ <path d="m 16 16 5.541 8 c 1.9 -1.314 3.253 -3.251 3.854 -5.449 l -9.395 -2.554 z" style="fill:#268bd2;fill-opacity:0.253;stroke:none"/>
+ <path d="m 37 24 a 13 13 0 1 1 -26 0 13 13 0 1 1 26 0 z" transform="matrix(0.74999987,0,0,0.75000412,-1.9999968,-2.0001628)" style="stroke-dasharray:none;stroke-opacity:0.157;fill:none;stroke-miterlimit:4;stroke:#fdf6e3;stroke-width:2"/>
+ <path d="m 16 16 -0.798 -9.701 c -2.303 0.188 -4.443 1.189 -6.06 2.792 l 6.86 6.909 z" style="fill:#073642;fill-opacity:0.261;stroke:none"/>
+ <path d="m 16 16 -5.541 -8 c -1.9 1.314 -3.253 3.251 -3.854 5.449 l 9.395 2.554 z" style="fill:#002b36;fill-opacity:0.145;stroke:none"/>
+ <path d="m 27 22.5 a 3.5 3.5 0 1 1 -7 0 3.5 3.5 0 1 1 7 0 z" transform="matrix(1.1428571,0,0,1.1428571,-10.857143,-9.7142857)" style="fill:#073642;fill-opacity:1;stroke:none"/>
+</svg>

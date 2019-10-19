@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" style="enable-background:new">
+ <circle cx="32" cy="32" r="20" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <g>
+  <path d="m 32 4 2 5 l -4 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 32 60 -2 -5 4 0" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <g transform="matrix(0,1,-1,0,64,-5.5e-7)">
+   <path d="m 32 4 2 5 l -4 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+   <path d="m 32 60 -2 -5 4 0" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  </g>
+ </g>
+ <g transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,32,-13.254834)">
+  <path d="m 32 4 2 5 l -4 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 32 60 -2 -5 4 0" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <g transform="matrix(0,1,-1,0,64,-5.5e-7)">
+   <path d="m 32 4 2 5 l -4 0 z" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+   <path d="m 32 60 -2 -5 4 0" style="fill:#dfdd41;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <path d="m 8 1 c -1.029 0 -2 0.971 -2 2 l 0 42 c 0 0.971 1.029 2 2 2 l 32 0 c 0.971 0 2 -1.029 2 -2 l 0 -31 -13 -13 z" style="fill:#7099c4"/>
+ <path d="m 29 12 0.063 0.063 0.156 -0.063 -0.219 0 z m 2 2 11 11 0 -11 -11 0 z" style="fill-opacity:0.196"/>
+ <path d="m 29 1 13 13 -11 0 c -0.971 0 -2 -1.029 -2 -2 l 0 -11 z" style="fill:#fff;fill-opacity:0.392"/>
+ <g transform="matrix(.81817 0 0 .81817 4.36383 7.36392)" style="fill:#fff;color:#000">
+  <path d="m 15 19.12 0 2 18 0 0 -2 z"/>
+  <path d="m 14 22.778 0 2.444 20 0 0 -2.444 z"/>
+  <path d="m 15 26.878 0 2 18 0 0 -2 z"/>
+  <path d="m 23 14 0 20 2 0 0 -20 z"/>
+ </g>
+ <g style="fill:none;stroke:#fff">
+  <g transform="matrix(.81817 0 0 .81817 4.36383 7.36392)" style="stroke-width:2">
+   <path d="m 20.442 33 c -2 -6 -2 -12 0 -18"/>
+   <path d="m 27.47 33 c 2 -5 2 -12 0 -18"/>
+  </g>
+  <g transform="matrix(.81817 0 0 .81817 4.36383 7.36392)">
+   <path d="m 33.06 27.317 c 0 5.03 -4.076 9.104 -9.104 9.104 -5.03 0 -9.104 -4.076 -9.104 -9.104 0 -5.03 4.076 -9.104 9.104 -9.104 5.03 0 9.104 4.076 9.104 9.104 z" transform="matrix(1.09842 0 0 1.09842 -2.31068 -6.00564)" style="stroke-linecap:round;stroke-width:1.821"/>
+  </g>
+ </g>
+</svg>

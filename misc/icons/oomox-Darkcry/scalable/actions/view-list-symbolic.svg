@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g style="fill:#bebebe;color:#bebebe">
+  <g transform="matrix(.60002 0 0 1 -18.80147 -746)">
+   <rect width="10" x="43" y="749" height="2"/>
+   <rect width="10" x="43" y="753" height="2"/>
+   <rect width="10" x="43" y="757" height="2"/>
+  </g>
+  <g transform="matrix(.19997 0 0 1 -5.59863 -746.0002)">
+   <rect width="10" x="43" y="749" height="2"/>
+   <rect width="10" x="43" y="753" height="2"/>
+   <rect width="10" x="43" y="757" height="2"/>
+  </g>
+ </g>
+</svg>

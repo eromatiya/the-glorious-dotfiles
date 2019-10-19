@@ -1,0 +1,12 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+ <path style="fill:#9a9a9a;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 14.1 0.601 c -1.052 -0.433 -2.262 -0.192 -3.067 0.613 -0.743 0.744 -1.01 1.839 -0.694 2.841 l -6.281 6.281 c -1 -0.316 -2.098 -0.049 -2.842 0.694 -0.804 0.805 -1.045 2.01 -0.612 3.066 l 1.992 -1.992 1.534 1.534 -1.994 1.994 c 1.052 0.433 2.262 0.192 3.067 -0.613 0.743 -0.744 1.01 -1.839 0.694 -2.841 l 6.281 -6.281 c 1 0.316 2.098 0.049 2.842 -0.694 0.804 -0.805 1.045 -2.01 0.612 -3.066 l -1.992 1.992 -1.534 -1.534 z"/>
+ <g transform="matrix(0.30679 -0.30679 0.30679 0.30679 -6.379 8.347)">
+  <path style="fill:#dcdcdc;fill-opacity:1;stroke:none;fill-rule:evenodd" d="m 22.5 25.292 0 -20 -1 -5 1 -2 3 0 1 2 -1 5 0 20 z"/>
+  <path style="fill:#bbb6b6;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 22.5 -1.708 -1 2 5 0 -1 -2 z"/>
+  <rect height="20" style="fill:#bbb6b6;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" width="1" x="24" y="5.292"/>
+  <rect width="6" rx="2.305" style="fill:#3aaf9c;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" x="21" y="27.29" height="20"/>
+  <rect width="9" rx="2.305" ry="1.5" style="fill:#2c937e;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" x="19.5" y="25.292" height="3"/>
+  <rect height="16" style="fill:#2c937e;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" width="1" x="22" y="29.29"/>
+  <rect height="16" style="fill:#2c937e;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" width="1" x="25" y="29.29"/>
+ </g>
+</svg>

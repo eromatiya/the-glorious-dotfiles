@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path d="m 4.111 0 7.778 0 c 2.333 0 3.111 0.8 3.111 3.2 l 0 9.6 c 0 2.4 -0.778 3.2 -3.111 3.2 l -7.778 0 c -2.333 0 -3.111 -0.8 -3.111 -3.2 l 0 -9.6 c 0 -2.4 0.778 -3.2 3.111 -3.2" style="fill:#268bd2;fill-rule:evenodd"/>
+ <path d="m 4.111 0 7.778 0 c 2.333 0 3.111 0.8 3.111 3.2 l 0 6.4 c 0 2.4 -0.778 3.4 -3.111 3.4 l -7.778 0 c -2.333 0 -3.111 -1 -3.111 -3.4 l 0 -6.4 c 0 -2.4 0.778 -3.2 3.111 -3.2" style="fill:#fff;fill-opacity:0.3;fill-rule:evenodd"/>
+ <g transform="matrix(0.5,0,0,0.5,0,0.0248856)">
+  <path d="m 16 15.95 -6 8 -6 -8 4 0 0 -6 4 0 0 6 z" style="fill:#fff;fill-opacity:0.902"/>
+  <path d="m 28 9.95 -6 8 -6 -8 4 0 0 -6 4 0 0 6 z" style="fill:#fff;fill-opacity:0.902"/>
+ </g>
+</svg>

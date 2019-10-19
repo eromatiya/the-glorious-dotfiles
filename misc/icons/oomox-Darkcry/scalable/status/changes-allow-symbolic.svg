@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <rect width="14" height="10" x="1" y="6" rx="2" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 8 0 c -0.82 0 -1.64 0.164 -2.396 0.49 -0.756 0.327 -1.407 0.818 -1.869 1.421 -0.231 0.301 -0.415 0.631 -0.541 0.981 l 1.806 1.108 c 0 -0.594 0.433 -1.258 1.396 -1.674 0.963 -0.416 2.244 -0.416 3.207 0 0.963 0.416 1.396 1.08 1.396 1.674 l 0 3 2 0 0 -3 c 0 -1.545 -1.091 -2.857 -2.604 -3.51 -0.756 -0.327 -1.576 -0.49 -2.396 -0.49" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#bebebe;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+</svg>

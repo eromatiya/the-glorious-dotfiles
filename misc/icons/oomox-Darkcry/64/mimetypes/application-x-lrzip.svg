@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <g>
+  <path d="m 10.672 0 c -1.375 0 -2.672 1.355 -2.672 2.789 l 0 58.42 c 0 1.355 1.375 2.789 2.672 2.789 l 42.656 0 c 1.297 0 2.672 -1.434 2.672 -2.789 l 0 -43.21 l -18 -18 m -27.328 0" style="fill:#c19553;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 8 48 l 0 13.336 c 0 1.297 1.375 2.664 2.664 2.664 l 42.672 0 c 1.289 0 2.664 -1.367 2.664 -2.664 l 0 -13.336 m -48 0" style="fill:#000;fill-opacity:0.196;stroke:none;fill-rule:nonzero"/>
+  <path d="m 42 18 l 14 14 l 0 -14 m -14 0" style="fill:#000;fill-opacity:0.196;stroke:none;fill-rule:nonzero"/>
+  <path d="m 38 0 l 17.984 18 l -15.227 0 c -1.348 0 -2.758 -1.426 -2.758 -2.773 m 0 -15.227" style="fill:#fff;fill-opacity:0.392;stroke:none;fill-rule:nonzero"/>
+  <path d="m 46.31 52.52 c -1.921 2.527 -3.666 5.085 -5.293 7.664 l 5.481 0 0 1.807 -8.4 0 0 -1.262 c 1.619 -2.755 3.433 -5.402 5.171 -7.923 l -4.905 0 0 -1.815 7.95 0 0 1.529" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 18 0 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 24 6 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 18 12 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 24 18 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 18 24 l 6 0 l 0 6 l -6 0 m 0 -6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <path d="m 18 32 l 12 0 l 0 12 l -12 0 m 0 -12" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ </g>
+ <path d="m 31.11 50.9 c 0.731 0 1.385 0.062 1.981 0.209 0.591 0.139 1.107 0.36 1.534 0.658 0.427 0.294 0.752 0.67 0.968 1.131 0.24 0.449 0.354 0.984 0.354 1.596 0 0.643 -0.152 1.22 -0.452 1.739 -0.304 0.523 -0.806 0.918 -1.508 1.189 c 1.124 1.453 2 2.994 2.809 4.578 l -2.669 0 c -0.667 -1.475 -1.605 -2.807 -2.462 -4.04 l -1.496 0 0 4.04 -2.373 0 0 -10.817 c 1.107 -0.221 2.205 -0.257 3.316 -0.283 m 2.409 3.579 c 0 -0.577 -0.286 -1 -0.692 -1.278 -0.418 -0.267 -1.041 -0.407 -1.717 -0.407 -0.266 -0.008 -0.699 0.04 -0.943 0.058 l 0 3.292 0.732 0 c 0.87 0 1.581 -0.139 1.962 -0.422 c 0.392 -0.294 0.658 -0.709 0.658 -1.243" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 25.668,61.998995 -7.668,0 L 18,51 l 2.349,0 0,9 5.319,0 0,2" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

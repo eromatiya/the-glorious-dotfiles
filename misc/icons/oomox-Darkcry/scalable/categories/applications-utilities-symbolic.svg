@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="matrix(0.50704483,0,0,0.50690683,-4.0578981,-513.39296)" style="stroke-opacity:1;stroke:#bebebe">
+  <path d="m 38.572 1028.58 a 14.791 14.791 0 1 1 -29.583 0 14.791 14.791 0 1 1 29.583 0 z" style="stroke-dasharray:none;fill:none;stroke-miterlimit:4;stroke-width:1.972"/>
+ </g>
+ <path d="m 5.25 8 c 0 0.69 -0.56 1.25 -1.25 1.25 -0.69 0 -1.25 -0.56 -1.25 -1.25 0 -0.69 0.56 -1.25 1.25 -1.25 0.69 0 1.25 0.56 1.25 1.25 z" style="fill:#bebebe;fill-opacity:1"/>
+ <path d="m 9.25 8 c 0 0.69 -0.56 1.25 -1.25 1.25 -0.69 0 -1.25 -0.56 -1.25 -1.25 0 -0.69 0.56 -1.25 1.25 -1.25 0.69 0 1.25 0.56 1.25 1.25 z" style="fill:#bebebe;fill-opacity:1"/>
+ <path d="m 13.25 8 c 0 0.69 -0.56 1.25 -1.25 1.25 -0.69 0 -1.25 -0.56 -1.25 -1.25 0 -0.69 0.56 -1.25 1.25 -1.25 0.69 0 1.25 0.56 1.25 1.25 z" style="fill:#bebebe;fill-opacity:1"/>
+</svg>

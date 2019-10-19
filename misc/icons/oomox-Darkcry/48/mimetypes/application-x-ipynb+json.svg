@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <path d="m 8 1 c -1.029 0 -2 0.971 -2 2 l 0 42 c 0 0.971 1.029 2 2 2 l 32 0 c 0.971 0 2 -1.029 2 -2 l 0 -31 -13 -13 z" style="fill:#e46e2e;fill-opacity:1"/>
+ <path d="m 29 12 0.063 0.063 0.156 -0.063 -0.219 0 z m 2 2 11 11 0 -11 -11 0 z" style="fill-opacity:0.196"/>
+ <path d="m 29 1 13 13 -11 0 c -0.971 0 -2 -1.029 -2 -2 l 0 -11 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="M 24,19 C 19.624,19 15.678,21.434 14,25.168 16.468,23.794 20.134,23 24,23 c 3.866,0.002 7.53,0.798 9.996,2.172 C 32.32,21.438 28.376,19.004 24,19 Z m -9.996,12.914 c 1.676,3.734 5.62,6.168 9.996,6.172 4.376,0 8.322,-2.434 10,-6.168 -2.468,1.374 -6.134,2.168 -10,2.168 -3.866,-0.002 -7.53,-0.798 -9.996,-2.172 z" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <circle cx="16" cy="39" r="2" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <circle cx="32" cy="18" r="2" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <circle cx="15.5" cy="18.5" r="1.5" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

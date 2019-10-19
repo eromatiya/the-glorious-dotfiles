@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(-373.00061,-168)" style="display:inline">
+  <path d="m 385 178 0 2 -2 0 0 2 2 0 0 2 2 0 0 -2 2 0 0 -2 -2 0 0 -2 z" style="fill:#bebebe;fill-opacity:1;stroke:none"/>
+  <path d="m 375 170 c -1 0 -1 1 -1 1 l 0 10 c 0 0.524 0.476 1 1 1 l 7 0 0 -1 -7 0 0 -8 12 0 0 4 1 0 0 -6 c 0 -0.524 -0.476 -1 -1 -1 z" style="visibility:visible;fill:#bebebe;fill-opacity:1;stroke:none;color:#000"/>
+ </g>
+</svg>

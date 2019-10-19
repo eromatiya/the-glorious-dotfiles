@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <path d="m 5.336 0 c -0.687 0 -1.336 0.676 -1.336 1.394 l 0 29.21 c 0 0.676 0.687 1.394 1.336 1.394 l 21.327 0 c 0.648 0 1.336 -0.717 1.336 -1.394 l 0.001 -21.606 -9 -9 z" style="fill:#3468ce;fill-opacity:1"/>
+ <path d="m 21 9 7 7 0 -7 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 19 0 8.992 9 -7.613 0 c -0.673 0 -1.378 -0.713 -1.378 -1.386 z" style="fill:#fff;fill-opacity:0.392"/>
+ <rect width="6" height="5" x="10" y="11" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="5" height="1" x="17" y="11" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 4 24 0 6.668 c 0 0.648 0.687 1.332 1.332 1.332 l 21.336 0 c 0.645 0 1.332 -0.684 1.332 -1.332 l 0 -6.668 z" style="fill:#000;fill-opacity:0.196"/>
+ <rect width="5" height="1" x="17" y="13" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <g transform="matrix(1.0497949,0,0,1.1252748,-0.79671876,-2.758244)" style="fill:#fff">
+  <path d="m 10.7 24.668 c 0.34 0 0.645 0.031 0.922 0.102 0.273 0.066 0.512 0.172 0.711 0.316 0.199 0.141 0.348 0.32 0.449 0.543 0.109 0.215 0.164 0.473 0.164 0.766 0 0.309 -0.07 0.586 -0.211 0.836 -0.141 0.25 -0.375 0.441 -0.699 0.57 0.109 0.148 0.223 0.313 0.344 0.496 0.121 0.176 0.242 0.363 0.355 0.563 0.117 0.191 0.227 0.387 0.328 0.586 0.109 0.195 0.199 0.379 0.277 0.555 l -1.238 0 c -0.148 -0.34 -0.32 -0.668 -0.52 -0.98 -0.191 -0.316 -0.398 -0.637 -0.625 -0.961 l -0.72 0 0 1.941 -1.076 0 0 -5.195 c 0.513 -0.112 1.024 -0.116 1.539 -0.137 m 1.047 1.719 c 0 -0.277 -0.098 -0.48 -0.289 -0.613 -0.191 -0.129 -0.445 -0.195 -0.758 -0.195 -0.123 -0.003 -0.348 0.018 -0.463 0.027 l 0 1.582 0.365 0 c 0.402 0 0.695 -0.066 0.875 -0.203 0.18 -0.141 0.27 -0.34 0.27 -0.598"/>
+  <path d="m 17.938 24.668 0 0.889 -1.748 0 0 4.443 -1.12 0 0 -4.443 -1.738 0 0 -0.889 4.606 0"/>
+  <path d="m 19.03 30 0 -5.332 3.4 0 0 0.889 -2.366 0 0 1.728 1.962 0 0 0.877 -1.962 0 0 1.838 -1.034 0"/>
+ </g>
+ <rect width="5" height="1" x="17" y="15" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="12" height="1" x="10" y="17" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="12" height="1" x="10" y="19" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="12" height="1" x="10" y="21" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+</svg>

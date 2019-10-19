@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <rect y="18" x="14" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="28" width="2"/>
+ <rect y="18" x="-16" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" transform="matrix(0 -1 1 0 0 0)" height="28" width="2"/>
+ <circle style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:round;stroke-width:2;stroke-dashoffset:0" cy="14" r="4" cx="14"/>
+ <rect y="18" x="48" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="16" width="2"/>
+ <rect y="10" x="46" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="8" width="8"/>
+ <path style="fill:#859900" d="m 61 45 -8 0 0 -8 -8 0 0 8 -8 0 0 8 8 0 0 8 8 0 0 -8 8 0 z"/>
+ <rect y="18" x="-50" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" transform="matrix(0 -1 1 0 0 0)" height="16" width="2"/>
+ <rect y="46" x="10" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="8" width="8"/>
+</svg>

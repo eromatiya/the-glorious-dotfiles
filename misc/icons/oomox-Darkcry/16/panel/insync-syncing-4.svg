@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(0,-48)">
+  <circle cx="8" cy="56.5" r="1.5" style="fill:#ececec;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect width="2" height="4" x="7" y="59" rx="0.336" ry="0.247" style="fill:#ececec;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 9 51 c -3.302 0 -6 2.698 -6 6 l 2 0 c 0 -2.221 1.779 -4 4 -4 l 0 -2 z" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#ececec;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+  <path d="m 9 48 c -4.959 0 -9 4.04 -9 9 l 2 0 c 0 -3.878 3.122 -7 7 -7 l 0 -2 z" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#ececec;opacity:0.4;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ </g>
+</svg>

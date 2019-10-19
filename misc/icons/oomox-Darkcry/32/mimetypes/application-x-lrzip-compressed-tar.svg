@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <path d="m 5.336 0 c -0.687 0 -1.336 0.676 -1.336 1.394 l 0 29.21 c 0 0.676 0.687 1.394 1.336 1.394 l 21.327 0 c 0.648 0 1.336 -0.717 1.336 -1.394 l 0.001 -21.606 -9 -9 z" style="fill:#c19553;fill-opacity:1"/>
+ <path d="m 4 24 0 6.668 c 0 0.648 0.688 1.332 1.332 1.332 l 21.336 0 c 0.645 0 1.332 -0.684 1.332 -1.332 l 0 -6.668 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 21 9 7 7 0 -7 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 19 0 8.992 9 -7.613 0 c -0.673 0 -1.378 -0.713 -1.378 -1.386 z" style="fill:#fff;fill-opacity:0.392"/>
+ <rect width="3" height="3" x="9" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3" height="3" x="12" y="3" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3" height="3" x="9" y="6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3" height="3" x="12" y="9" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3" height="3" x="9" y="12" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="6" height="6" x="9" y="16" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 23.924 26.698 c -0.807 1.153 -1.531 2.315 -2.207 3.478 l 2.283 0 0 0.824 -3.5 0 0 -0.573 c 0.669 -1.246 1.429 -2.453 2.154 -3.601 l -2.046 0 0 -0.82 3.315 0 0 0.693" style="fill:#fff"/>
+ <path d="m 15 31 -3 0 0 -5 1 0 0 4.1 2 0 0 0.9" style="fill:#fff"/>
+ <path d="m 11.441 26 0 0.9 -1.441 0 0 4.1 -1 0 0 -4.1 -1.4 0 0 -0.9 3.839 0" style="fill:#fff"/>
+ <path d="m 17.385 25.95 c 0.315 0 0.605 0.034 0.861 0.097 0.255 0.063 0.478 0.161 0.66 0.292 0.188 0.131 0.328 0.299 0.423 0.505 0.103 0.202 0.154 0.438 0.154 0.711 0 0.288 -0.069 0.546 -0.196 0.778 -0.132 0.232 -0.465 0.467 -0.771 0.587 0.496 0.646 1.026 1.433 1.408 2.08 l -1.155 0 c -0.354 -0.655 -0.872 -1.342 -1.239 -1.9 l -0.477 0 0 1.9 -1.102 0 0 -4.923 c 0.478 -0.098 0.95 -0.105 1.432 -0.127 m 1.046 1.598 c 0 -0.258 -0.101 -0.465 -0.279 -0.588 -0.178 -0.12 -0.472 -0.159 -0.765 -0.159 -0.115 -0.003 -0.226 0.015 -0.332 0.023 l 0 1.447 0.243 0 c 0.375 0 0.707 -0.023 0.873 -0.151 0.166 -0.131 0.262 -0.331 0.262 -0.57" style="fill:#fff"/>
+</svg>

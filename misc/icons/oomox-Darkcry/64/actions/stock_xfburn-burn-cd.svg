@@ -1,0 +1,13 @@
+
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path style="stroke-opacity:1;fill:none;stroke:#888;stroke-linejoin:round;stroke-width:1" d="m 32 27.5 c 2.484 0 4.5 2.02 4.5 4.5 0 2.484 -2.02 4.5 -4.5 4.5 -2.484 0 -4.5 -2.02 -4.5 -4.5 0 -2.484 2.02 -4.5 4.5 -4.5 z"/>
+ <path style="fill:#d1d1d1;fill-opacity:1;stroke:none" d="m 32 6.25 c -14.278 0 -25.75 11.477 -25.75 25.75 0 14.278 11.477 25.75 25.75 25.75 14.278 0 25.75 -11.477 25.75 -25.75 0 -14.278 -11.477 -25.75 -25.75 -25.75 m 0 15.45 c 5.673 0 10.3 4.627 10.3 10.3 0 5.673 -4.627 10.3 -10.3 10.3 -5.673 0 -10.3 -4.627 -10.3 -10.3 0 -5.673 4.627 -10.3 10.3 -10.3 z"/>
+ <circle cx="32" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#888;stroke-linecap:butt;stroke-linejoin:round;stroke-width:2;stroke-dashoffset:0" r="26" cy="32"/>
+ <circle cx="32" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#888;stroke-linecap:butt;stroke-linejoin:round;stroke-width:2;stroke-dashoffset:0" r="11" cy="32"/>
+ <g transform="matrix(1 0 0 1 17.338 20.362)">
+  <path style="fill:#ff6f03;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 40.662 -9.525 c 0 0 0.002 -1.559 -3.473 -3.565 -3.353 -1.936 -4.916 -1.085 -4.916 -1.085 l -18.08 31.32 -0.998 11.329 9.304 -6.534"/>
+  <path style="fill:#ffc13d;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 14.192 17.15 -0.998 11.329 9.304 -6.534"/>
+  <path style="fill:#2d2d2d;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 13.644 23.19 -0.45 5.282 4.355 -3.03 m -3.905 -2.255"/>
+ </g>
+</svg>

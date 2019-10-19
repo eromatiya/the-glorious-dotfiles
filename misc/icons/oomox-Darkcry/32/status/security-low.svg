@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <path d="m 16 4 c 6.923 0 10 3.355 10 3.355 l 0 8.786 c 0 8.06 -10 11.791 -10 11.791 0 0 -10 -3.735 -10 -11.791 l 0 -8.786 c 0 0 3.077 -3.355 10 -3.355 z" style="visibility:visible;stroke-dasharray:none;stroke-opacity:1;fill:#ee545b;stroke-miterlimit:4;fill-opacity:1;stroke:#c94b51;display:inline;color:#000;fill-rule:nonzero;stroke-width:2"/>
+ <g transform="matrix(0.50000001,0,0,0.50000001,23.190057,11.477496)">
+  <rect transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" y="-7.449" x="-26.22" height="5.333" width="21.333" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" width="21.333" height="5.333" x="-15.449" y="12.888" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+</svg>

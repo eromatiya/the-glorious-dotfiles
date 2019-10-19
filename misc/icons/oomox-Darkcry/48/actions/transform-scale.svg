@@ -1,0 +1,7 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+ <path d="m 6 6 0 4 2 0 0 -2 2 0 0 -2 z m 8 0 0 2 4 0 0 -2 z m 8 0 0 2 4 0 0 -2 z m 8 0 0 2 4 0 0 -2 z m 8 0 0 2 2 0 0 2 2 0 0 -4 z m -32 8 0 4 2 0 0 -4 m 32 0 0 4 2 0 0 -4 z m -34 8 0 4 2 0 0 -4 z m 34 0 0 4 2 0 0 -4 z m 0 8 0 4 2 0 0 -4 z m 0 8 0 2 -2 0 0 2 4 0 0 -4 z m -18 2 0 2 4 0 0 -2 z m 8 0 0 2 4 0 0 -2 z" style="fill:#c3c3c3;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect transform="matrix(-1 0 0 1 0 0)" height="12" x="-19" y="29" style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:23.7;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" width="12"/>
+ <path d="m 23 25 14.14 -14.14" style="stroke-opacity:1;fill:none;stroke:#6c71c4;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+ <path d="m 22 18.929 0 7.07 l 7.07 0 z" style="fill:#6c71c4;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 37.999 17.07 0 -7.07 -7.07 0 z" style="fill:#6c71c4;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+</svg>

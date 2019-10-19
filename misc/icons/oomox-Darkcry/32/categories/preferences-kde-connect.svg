@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <g>
+  <rect y="4.631" x="9.875" height="23.13" width="12.25" rx="1.595" style="fill:#5aa9e1;fill-opacity:1;stroke:none"/>
+  <path d="m 12.5 27.375 7 -22.75 2.625 0 0 22.75 z" style="fill:#fdf6e3;fill-opacity:0.189;stroke:none"/>
+  <rect y="26.29" x="14.25" height="2.11" width="3.5" rx="1.055" style="fill:#002b36;fill-opacity:1;stroke:none"/>
+  <rect y="3.803" x="12.5" height="1.447" width="7" rx="0.482" style="fill:#002b36;fill-opacity:1;stroke:none"/>
+  <g transform="matrix(0.87499616,0,0,0.87499616,-4.9999084,-883.81304)" style="fill:#073642">
+   <path transform="matrix(1.1428622,0,0,1.1428622,5.7142054,1010.0765)" d="m 11.297 3 c -1.255 0 -2.297 1.014 -2.297 2.27 l 0 21.434 c 0 1.255 1.042 2.297 2.297 2.297 l 9.406 0 c 1.255 0 2.297 -1.042 2.297 -2.297 l 0 -21.434 c 0 -1.255 -1.042 -2.27 -2.297 -2.27 m -6.203 1 3 0 c 0.277 0 0.5 0.223 0.5 0.5 0 0.277 -0.223 0.5 -0.5 0.5 l -3 0 c -0.277 0 -0.5 -0.223 -0.5 -0.5 0 -0.277 0.223 -0.5 0.5 -0.5 z m -3.5 2 10 0 0 20 -10 0 z m 5 20.75 c 0.414 0 0.75 0.336 0.75 0.75 0 0.414 -0.336 0.75 -0.75 0.75 -0.414 0 -0.75 -0.336 -0.75 -0.75 0 -0.414 0.336 -0.75 0.75 -0.75 z" style="color:#000"/>
+  </g>
+  <rect y="3" x="19" height="26" width="2" style="fill:#eee8d5;fill-opacity:0.149;stroke:none"/>
+ </g>
+</svg>

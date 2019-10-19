@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path d="m 20 10 -10 12 20 0 0 -12 m 4 0 l 0 12 20 0 -10 -12 m -34 16 l 0 28 26.387 0 c -0.993 -4.247 0.138 -8.908 3.422 -12.191 2.521 -2.521 5.857 -3.781 9.191 -3.781 1.703 0 3.405 0.335 5 0.992 l 0 -13.02" style="fill:#c28e5c"/>
+ <path d="m 51 -56.625 a 7.626 7.625 0 0 1 7.05 4.707 7.626 7.625 0 0 1 -1.653 8.31 7.626 7.625 0 0 1 -8.31 1.653 7.626 7.625 0 0 1 -4.707 -7.05" transform="matrix(0,1,-1,0,0,0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#4db147;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2.75;stroke-dashoffset:0"/>
+</svg>

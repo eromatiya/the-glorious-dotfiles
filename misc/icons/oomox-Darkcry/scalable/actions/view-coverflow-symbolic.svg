@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <defs>
+  <radialGradient cx="8" cy="12" gradientTransform="matrix(1.5 0 0 1.5 -4 -7)" r="4" id="radialGradient3842" gradientUnits="userSpaceOnUse">
+   <stop style="stop-color:#bebebe;stop-opacity:0.698"/>
+   <stop offset="1" style="stop-color:#bebebe"/>
+  </radialGradient>
+ </defs>
+ <g style="color:#000">
+  <g style="fill:#bebebe">
+   <rect width="1" y="3" height="10"/>
+   <rect width="1" x="2" y="4" height="8"/>
+   <path d="m 4 4 l 0 8 l 8 0 l 0 -8 l -8 0 z m 1 1 l 6 0 l 0 6 l -6 0 l 0 -6 z"/>
+   <rect width="1" x="13" y="4" height="8"/>
+   <rect width="1" x="15" y="3" height="10"/>
+  </g>
+  <rect width="6" x="5" y="5" height="6" style="fill:url(#radialGradient3842)"/>
+ </g>
+</svg>

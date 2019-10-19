@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#bebebe;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB" d="M 2.5,0 C 2.224,0 2,0.224 2,0.5 L 2,7 0.5,7 C 0.223,7 0,7.223 0,7.5 l 0,6 C 0,13.777 0.223,14 0.5,14 L 2,14 2,15.5 C 2,15.777 2.223,16 2.5,16 l 4.7832031,0 C 7.1077387,15.703481 7,15.363969 7,15 L 3,15 3,12 7,12 7,11 1,11 1,8 7.2832031,8 C 7.633551,7.4079429 8.2732665,7 9,7 l -6,0 0,-6 8,0 0,2 2,0 0,4 1,0 0,-5 -2,-2 z"/>
+ <path style="fill:#ff8000;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 9 8 c -0.554 0 -1 0.446 -1 1 l 0 6 c 0 0.554 0.446 1 1 1 l 6 0 c 0.554 0 1 -0.446 1 -1 l 0 -6 c 0 -0.554 -0.446 -1 -1 -1 l -6 0 m 2 1 2 0 l 0 4 -2 0 0 -4 z m 0 5 l 2 0 0 1 -2 0 0 -1 z"/>
+</svg>

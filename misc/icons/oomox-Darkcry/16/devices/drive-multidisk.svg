@@ -1,0 +1,8 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+ <rect rx="1" style="fill:#839496;fill-opacity:1" width="4" x="-9" y="-16" transform="matrix(0 -1 -1 0 0 0)" height="16"/>
+ <path d="m 2 13.5 0 2.5 2 0 0 -2.5 z m 10 0 0 2.5 2 0 0 -2.5 z" style="fill:#073642;fill-opacity:1"/>
+ <rect rx="1" style="fill:#839496;fill-opacity:1" width="4" x="-14" y="-16" transform="matrix(0 -1 -1 0 0 0)" height="16"/>
+ <rect rx="1" style="fill:#839496;fill-opacity:1" width="4" x="-4" y="-16" transform="matrix(0 -1 -1 0 0 0)" height="16"/>
+ <path d="m 11 0 0 4 2 0 0 -4 -2 0 z m 0 5 0 4 2 0 0 -4 -2 0 z m 0 5 0 4 2 0 0 -4 -2 0 z" style="fill:#fff;opacity:0.4;fill-opacity:1"/>
+ <circle cx="2" cy="12" style="fill:#6bdd33;fill-opacity:1" r="1"/>
+</svg>

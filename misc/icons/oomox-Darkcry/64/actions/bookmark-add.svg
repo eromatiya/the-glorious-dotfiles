@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path d="m 8 0 0 52 16 -16 16 16 0 -16 0 -4 -8 0 0 -16 8 0 0 -16 z" style="fill:#bebebe"/>
+ <path d="m 44 12 0 8 -8 0 0 8 8 0 0 8 8 0 0 -8 8 0 0 -8 -8 0 0 -8 -8 0 z" style="fill:#859900;fill-opacity:1"/>
+ <path d="M 40,0 8,0 8,52 24,36 l 16,16 0,-20 -8,0 0,-16 8,0 z" style="fill:#dc322f;fill-rule:evenodd"/>
+ <path d="m 8 0 0 52 4 -4 0 -48 z m 28 0 0 16 4 0 0 -16 z m 0 32 0 16 4 4 0 -20 z" style="fill-opacity:0.1;fill-rule:evenodd"/>
+</svg>

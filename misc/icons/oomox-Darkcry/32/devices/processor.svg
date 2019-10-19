@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+ <path d="m 6.288 5.25 11.423 0 c 0.574 0 1.038 0.464 1.038 1.038 l 0 11.423 c 0 0.574 -0.464 1.038 -1.038 1.038 l -11.423 0 c -0.574 0 -1.038 -0.464 -1.038 -1.038 l 0 -11.423 c 0 -0.574 0.464 -1.038 1.038 -1.038 z m 0 0" style="stroke-dasharray:none;stroke-opacity:1;fill:#579ccf;stroke-miterlimit:4;fill-opacity:1;stroke:#858585;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1.5"/>
+ <path d="m 17.25 7.5 c 0 0.414 -0.336 0.75 -0.75 0.75 -0.414 0 -0.75 -0.336 -0.75 -0.75 0 -0.414 0.336 -0.75 0.75 -0.75 0.414 0 0.75 0.336 0.75 0.75 z m 0 0" style="fill:#dedede;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 8.25 2.25 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 10.5 14.832 c 0 0.047 -0.016 0.088 -0.045 0.119 -0.029 0.031 -0.066 0.049 -0.113 0.049 l -1.184 0 c -0.045 0 -0.084 -0.018 -0.113 -0.053 -0.031 -0.033 -0.045 -0.072 -0.045 -0.115 l 0 -3.424 c 0 -0.041 0.014 -0.08 0.045 -0.111 0.029 -0.031 0.068 -0.047 0.113 -0.047 l 1.184 0 c 0.049 0 0.088 0.016 0.115 0.043 0.029 0.029 0.043 0.068 0.043 0.115 z m 0 -4.492 c 0 0.047 -0.016 0.086 -0.047 0.117 -0.031 0.029 -0.066 0.043 -0.111 0.043 l -1.174 0 c -0.043 0 -0.08 -0.014 -0.115 -0.043 -0.035 -0.031 -0.053 -0.07 -0.053 -0.117 l 0 -1.181 c 0 -0.041 0.018 -0.078 0.053 -0.111 0.035 -0.029 0.072 -0.047 0.115 -0.047 l 1.174 0 c 0.045 0 0.08 0.016 0.111 0.047 0.031 0.031 0.047 0.068 0.047 0.111 z" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 15 10.342 c 0 0.047 -0.047 0.168 -0.143 0.363 l -1.764 4.145 c -0.029 0.059 -0.057 0.098 -0.088 0.119 -0.029 0.021 -0.072 0.031 -0.125 0.031 l -1.326 0 c -0.074 0 -0.111 -0.041 -0.111 -0.121 0 -0.02 0.008 -0.043 0.02 -0.068 l 1.897 -4.256 0 -0.016 c 0 -0.01 -0.002 -0.02 -0.008 -0.027 -0.006 -0.008 -0.016 -0.012 -0.031 -0.012 l -1.912 0 c -0.041 0 -0.078 -0.014 -0.109 -0.041 -0.033 -0.029 -0.049 -0.063 -0.049 -0.102 l 0 -1.207 c 0 -0.041 0.016 -0.076 0.049 -0.107 0.031 -0.027 0.068 -0.043 0.109 -0.043 l 3.275 0 c 0.088 0 0.162 0.031 0.223 0.094 c 0.062 0.061 0.094 0.137 0.094 0.223" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 17.25 2.25 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 14.25 2.25 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 11.25 2.25 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 14.25 4.5 1.5 0 0 15 -1.5 0 z m 0 0" style="fill:#fff;fill-opacity:0.259;stroke:none;fill-rule:nonzero"/>
+ <path d="m 8.25 2.25 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 17.25 2.25 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 14.25 2.25 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 11.25 2.25 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 8.25 19.12 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 17.25 19.12 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 14.25 19.12 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 11.25 19.12 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 8.25 19.12 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 17.25 19.12 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 14.25 19.12 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 11.25 19.12 0 2.625 -1.5 0 0 -2.625 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.25 15.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.25 6.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.25 9.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.25 12.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.25 15.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.25 6.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.25 9.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.25 12.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.12 15.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.12 6.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.12 9.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.12 12.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.12 15.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.12 6.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.12 9.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.12 12.75 2.625 0 0 1.5 -2.625 0 z m 0 0" style="fill:#858585;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

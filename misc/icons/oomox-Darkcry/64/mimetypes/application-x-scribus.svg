@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <g>
+  <path d="m 10.672 0 c -1.375 0 -2.672 1.355 -2.672 2.789 l 0 58.42 c 0 1.355 1.375 2.789 2.672 2.789 l 42.656 0 c 1.297 0 2.672 -1.434 2.672 -2.789 l 0 -43.21 l -18 -18 m -27.328 0" style="fill:#eb1a22;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 42 18 l 14 14 l 0 -14 m -14 0" style="fill:#000;fill-opacity:0.196;stroke:none;fill-rule:nonzero"/>
+  <path d="m 38 0 l 17.984 18 l -15.227 0 c -1.348 0 -2.758 -1.426 -2.758 -2.773 m 0 -15.227" style="fill:#fff;fill-opacity:0.392;stroke:none;fill-rule:nonzero"/>
+ </g>
+ <path d="m 38.33 22.07 c -0.854 -0.096 -1.54 -0.097 -2.169 0.026 -0.629 0.123 -1.212 0.423 -1.558 0.8 -0.346 0.377 -0.455 0.748 -0.509 0.928 -1.22 2.396 -2.662 4.775 -3.982 6.811 -1.629 2.414 -3.53 5.225 -4.522 7.492 -0.603 1.385 -1.254 3.054 -1.894 4.793 c -1.331 3.645 -2.53 7.287 -3.697 10.949 1.899 0.131 1.899 0.121 3.364 0.131 c 1.079 -1.981 2.868 -3.864 4.365 -5.24 2.59 -2.364 6.327 -4.781 9.896 -5.321 l 1.202 -0.179 c 0.067 -3.734 0.408 -7.776 2.253 -11.05 0.757 -1.361 1.812 -2.442 2.79 -3.678 0.252 -0.203 0.054 -0.443 0.081 -0.664 -0.73 -3.625 -3.205 -5.424 -5.55 -5.789 -0.026 0.004 -0.05 -0.006 -0.071 -0.009 z" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#f3ffff;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:evenodd;color-rendering:auto;color-interpolation:sRGB"/>
+</svg>

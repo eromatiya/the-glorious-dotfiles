@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <defs>
+  
+ </defs>
+ <path d="m 10.672 0 c -1.375 0 -2.672 1.355 -2.672 2.789 l 0 58.42 c 0 1.355 1.375 2.789 2.672 2.789 l 42.656 0 c 1.297 0 2.672 -1.434 2.672 -2.789 l 0 -43.21 -18 -18 m -27.328 0" style="fill:#3e86fb;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 42 18 14 14 0 -14 z m 0 0" style="fill:#000;fill-opacity:0.196;stroke:none;fill-rule:nonzero"/>
+ <path d="m 38 0 17.984 18 -15.227 0 c -1.348 0 -2.758 -1.426 -2.758 -2.773 m 0 -15.227" style="fill:#fff;fill-opacity:0.392;stroke:none;fill-rule:nonzero"/>
+ <polygon transform="matrix(2.2794641e-4,0,0,2.0808036e-4,17.695171,24.999803)" points="22194,115341 44385,76894 133156,76894 110963,115341 " style="fill:#f9f9f9;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+ <polygon transform="matrix(2.2529903e-4,0,0,2.340892e-4,18.047685,20.999999)" points="88772,0 44385,0 88772,76894 133156,76894 " style="fill:#f9f9f9;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+ <path d="m 26.448 22.6 -9.954 16.05 l 4.661 9.33 9.693 -16.982 z" style="fill:#f9f9f9;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+</svg>

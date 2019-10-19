@@ -1,0 +1,12 @@
+
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <g>
+  <path d="m 24 20.5 c 1.932 0 3.5 1.568 3.5 3.5 0 1.932 -1.568 3.5 -3.5 3.5 -1.932 0 -3.5 -1.568 -3.5 -3.5 0 -1.932 1.568 -3.5 3.5 -3.5 z" style="stroke-opacity:1;fill:none;stroke:#888;stroke-linejoin:round;stroke-width:1"/>
+  <path d="m 24 4 c -11.09 0 -20 8.914 -20 20 0 11.09 8.914 20 20 20 11.09 0 20 -8.914 20 -20 0 -11.09 -8.914 -20 -20 -20 m 0 12 c 4.406 0 8 3.594 8 8 0 4.406 -3.594 8 -8 8 -4.406 0 -8 -3.594 -8 -8 0 -4.406 3.594 -8 8 -8 z" style="fill:#d1d1d1;fill-opacity:1;stroke:none"/>
+  <path white-space="normal" mix-blend-mode="normal" d="m 24 3 c -11.622 0 -21 9.378 -21 21 0 11.622 9.378 21 21 21 11.622 0 21 -9.378 21 -21 0 -11.622 -9.378 -21 -21 -21 m 0 2 c 10.55 0 19 8.45 19 19 0 10.55 -8.45 19 -19 19 -10.55 0 -19 -8.45 -19 -19 0 -10.55 8.45 -19 19 -19 m 0 10 c -4.95 0 -9 4.05 -9 9 0 4.95 4.05 9 9 9 4.95 0 9 -4.05 9 -9 0 -4.95 -4.05 -9 -9 -9 z m 0 2 c 3.863 0 7 3.137 7 7 0 3.863 -3.137 7 -7 7 -3.863 0 -7 -3.137 -7 -7 0 -3.863 3.137 -7 7 -7 z" isolation="auto" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#888;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+  <path d="m 44 7.839 c 0 0 0.001 -1.237 -2.757 -2.83 -2.661 -1.537 -3.903 -0.861 -3.903 -0.861 l -14.352 24.859 -0.793 8.993 7.385 -5.187" style="fill:#ff6f03;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 22.989 29.01 -0.793 8.993 7.385 -5.187" style="fill:#ffc13d;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 22.549 33.806 -0.357 4.192 3.457 -2.403 m -3.1 -1.79" style="fill:#2d2d2d;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+</svg>

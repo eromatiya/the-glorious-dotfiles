@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 12.8 12.8">
+ <path d="m 0.8 8.8 4 0.6 l 0 -2 -4 -0.2 0 -1.6 l 4 -0.2 l 0 -2 -4 0.6 0 -1.6 l 5.6 -1.305 0 10.611 -5.6 -1.305" style="fill:#c18eb2;fill-rule:evenodd"/>
+ <path d="m 7.2 1.095 0 5.305 0 5.305 c 0.589 0 1.314 -0.224 2.151 -0.568 0.702 -0.288 1.393 -0.607 1.92 -1.227 c 0.729 -0.858 0.729 -2.921 0.729 -3.511 0 -0.589 0 -2.653 -0.729 -3.511 -0.527 -0.62 -1.217 -0.938 -1.92 -1.227 -0.838 -0.344 -1.562 -0.568 -2.151 -0.568 m 1.6 2.358 c 0.589 0.012 1.085 0.413 1.379 0.812 0.347 0.471 0.347 1.84 0.347 2.135 0 0.295 0 1.665 -0.347 2.135 c -0.295 0.399 -0.79 0.8 -1.379 0.812 l 0 -2.947 z" style="fill:#c18eb2"/>
+ <flowRoot transform="translate(0,-25.6)" line-height="125%" style="letter-spacing:0;word-spacing:0;font-size:30;font-family:Ubuntu;fill:#000;fill-opacity:1;font-weight:normal;stroke:none;font-style:normal;font-variant:normal;font-stretch:normal">
+  <flowRegion>
+   <rect width="17.6" height="37.6" x="-39.2" y="-7.2"/>
+  </flowRegion>
+  <flowPara>DD</flowPara>
+ </flowRoot>
+</svg>

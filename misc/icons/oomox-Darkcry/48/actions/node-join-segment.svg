@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <rect width="2" transform="matrix(0 -1 -1 0 0 0)" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="24" x="-39" y="-36"/>
+ <rect width="2" transform="matrix(0 -1 -1 0 0 0)" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="8.5" x="-11" y="-20"/>
+ <rect width="4" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4" x="8" y="36"/>
+ <path d="m 24 28 5 -6 -10 0 z" style="fill:#cb4b16"/>
+ <rect width="2" transform="matrix(0 -1 -1 0 0 0)" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="8.5" x="-11" y="-36.5"/>
+ <rect width="4" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4" x="36" y="36"/>
+ <rect width="4" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4" x="8" y="8"/>
+ <rect width="4" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" height="4" x="36" y="8"/>
+</svg>

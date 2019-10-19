@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#3daee9;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2" d="m 8 15 c 8.06 0 22.523 30.04 22.523 30.04"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#3daee9;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2" d="m 36.759 45.3 c 13.429 -5.386 18.241 -18.297 18.241 -31.3"/>
+ <path style="stroke-dasharray:2 2;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" d="m 33.5 14 0 28.5"/>
+ <path style="stroke-dasharray:2 2;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" d="m 56 47.5 -18 0"/>
+ <rect transform="matrix(0.70711 0.70711 -0.70711 0.70711 0 0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" width="8" height="8" x="53.28" y="5.9"/>
+</svg>

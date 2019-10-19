@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path d="M 7,1 7,6.465 4.115,4.414 3.064,5.201 7,8 3.064,10.799 4.115,11.586 7,9.535 7,15 13,10.75 9.178,8 13,5.25 7,1 Z M 8,2.936 11.27,5.25 8,7.564 8,2.935 Z m 0,5.5 3.27,2.314 L 8,13.064 8,8.435 Z" style="fill:#bebebe;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 11 8 3 -2 0 4 z" style="fill:#bebebe;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="M 5,8 2,6 2,10 Z" style="fill:#bebebe;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+</svg>

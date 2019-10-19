@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <g transform="translate(0,-1030.3622)">
+  <rect width="20" height="5" x="1" y="1033.36" style="fill:#d32f2f;fill-opacity:1;stroke:none"/>
+  <path d="m 4 1034.36 c 0 -1 0 -2 0.909 -2 l 3.182 0 c 0.909 0 0.909 1 0.909 2 z" style="fill:#d32f2f;fill-opacity:1;stroke:none"/>
+  <path d="m 2 1034.36 18 0 0 4 -18 0 z" style="fill:#95989f;fill-opacity:1;stroke:none"/>
+  <rect y="1034.36" x="5" height="6" width="14" style="fill:#d8d8da;fill-opacity:1;stroke:none"/>
+  <rect width="14" height="3" x="3" y="1035.36" style="fill:#f9f9f9;fill-opacity:1;stroke:none"/>
+  <path d="m 0 1036.36 22 0 -1 14 -20 0 z" style="fill:#ef5350;fill-opacity:1;stroke:none"/>
+  <polygon transform="matrix(7.6973814e-5,0,0,7.8029168e-5,5.7504748,1039.3622)" points="133156,76894 110963,115341 22194,115341 44385,76894 " style="fill:#ab3634;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+  <polygon transform="matrix(7.8854581e-5,0,0,7.8029495e-5,5.5000394,1038.3622)" points="133156,76894 88772,0 44385,0 88772,76894 " style="fill:#ab3634;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+  <path d="m 8.536 1038.93 -3.313 5.733 1.551 3.332 l 3.226 -6.07 z" style="fill:#ab3634;opacity:1;fill-opacity:1;fill-rule:evenodd"/>
+ </g>
+</svg>

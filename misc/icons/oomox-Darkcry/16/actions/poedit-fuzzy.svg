@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g style="fill-rule:evenodd">
+  <path d="m 16 8 a 8 8 0 0 1 -16 0 8 8 0 1 1 16 0 z" style="fill:#dc322f"/>
+ </g>
+ <path d="m 6.345 4.801 c -1.015 -0.031 -2.029 0.53 -3.145 1.728 l 1.311 1.036 c 0.957 -1.028 1.497 -1.182 1.777 -1.174 0.28 0.009 0.641 0.233 1.159 0.631 0.518 0.397 1.193 0.967 2.208 0.999 1.015 0.031 2.029 -0.53 3.145 -1.728 l -1.311 -1.036 c -0.957 1.028 -1.497 1.182 -1.777 1.174 -0.28 -0.009 -0.641 -0.233 -1.159 -0.631 -0.518 -0.397 -1.193 -0.967 -2.208 -0.999 m 0 3.18 c -1.015 -0.031 -2.029 0.53 -3.145 1.728 l 1.311 1.035 c 0.957 -1.028 1.497 -1.182 1.777 -1.174 0.28 0.009 0.641 0.233 1.159 0.631 0.518 0.397 1.193 0.967 2.208 0.999 c 1.015 0.031 2.029 -0.53 3.145 -1.728 l -1.311 -1.035 c -0.957 1.028 -1.497 1.182 -1.777 1.174 -0.28 -0.009 -0.641 -0.233 -1.159 -0.631 -0.518 -0.397 -1.193 -0.967 -2.208 -0.999" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#fff;opacity:1;image-rendering:auto;fill-opacity:0.902;stroke:none;display:inline;color:#000;fill-rule:evenodd;color-rendering:auto;color-interpolation:sRGB"/>
+</svg>

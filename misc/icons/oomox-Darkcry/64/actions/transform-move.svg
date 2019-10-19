@@ -1,0 +1,8 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <path style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none" d="m 48 24 0 16 12 -8 z"/>
+ <path style="fill:#6c71c4;opacity:1;fill-opacity:1;stroke:none" d="m 48 40 0 -16 12 8"/>
+ <circle style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:23.7;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:square;stroke-linejoin:miter;stroke-width:3;stroke-dashoffset:0" r="6.5" cy="32" cx="32"/>
+ <path style="fill:#6c71c4;opacity:1;fill-opacity:1;stroke:none" d="M 16,40 16,24 4,32"/>
+ <path style="fill:#6c71c4;opacity:1;fill-opacity:1;stroke:none" d="M 40,16 24,16 32,4"/>
+ <path style="fill:#6c71c4;opacity:1;fill-opacity:1;stroke:none" d="m 40 48 -16 0 8 12"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg style="enable-background:new" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="matrix(1 0 0 1 -605 119)" style="display:inline">
+  <path transform="matrix(1 0 0 1 605 -119)" style="fill:#bebebe;fill-opacity:1;stroke:none" d="M 4,0 C 4,0 2,0 2,2 l 0,12 0,2 12,0 0,-2 0,-12 C 14,0 12,0 12,0 L 4,0 Z M 10,2 9,7 12,7 6,14 7,9 4,9 10,2 Z m 1,10 c 0.554,0 1,0.449 1,1 0,0.551 -0.446,1 -1,1 -0.554,0 -1,-0.449 -1,-1 0,-0.551 0.446,-1 1,-1 z"/>
+ </g>
+</svg>

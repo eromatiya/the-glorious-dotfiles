@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <rect width="22" height="6" x="5" y="13" style="fill:#cecece;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="22" height="6" x="5" y="21" style="fill:#79d073;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="m 3 3 0 26 26 0 0 -26 z m 2 2 6 0 0 6 -6 0 z m 8 0 6 0 0 6 -6 0 z m 8 0 6 0 0 6 -6 0 z m -16 8 6 0 0 6 -6 0 z m 8 0 6 0 0 6 -6 0 z m 8 0 6 0 0 6 -6 0 z m -16 8 6 0 0 6 -6 0 z m 8 0 6 0 0 6 -6 0 z m 8 0 6 0 0 6 -6 0 z" style="fill:#888"/>
+</svg>

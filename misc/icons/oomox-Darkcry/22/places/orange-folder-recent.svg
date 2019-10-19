@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <g transform="translate(0,-1030.3622)">
+  <rect width="20" height="5" x="1" y="1033.36" style="fill:#e65100;fill-opacity:1;stroke:none"/>
+  <path d="m 4 1034.36 c 0 -1 0 -2 0.909 -2 l 3.182 0 c 0.909 0 0.909 1 0.909 2 z" style="fill:#e65100;fill-opacity:1;stroke:none"/>
+  <path d="m 2 1034.36 18 0 0 4 -18 0 z" style="fill:#95989f;fill-opacity:1;stroke:none"/>
+  <rect y="1034.36" x="5" height="6" width="14" style="fill:#d8d8da;fill-opacity:1;stroke:none"/>
+  <rect width="14" height="3" x="3" y="1035.36" style="fill:#f9f9f9;fill-opacity:1;stroke:none"/>
+  <path d="m 0 1036.36 22 0 -1 14 -20 0 z" style="fill:#f57c00;fill-opacity:1;stroke:none"/>
+  <path d="m 6 8 l 0 4 l 4 0 l -1.094 -1.094 c 0.542 -0.544 1.265 -0.906 2.094 -0.906 c 1.657 0 3 1.343 3 3 c 0 1.657 -1.343 3 -3 3 c -0.884 0 -1.67 -0.391 -2.219 -1 l -2.344 0 c 0.774 1.759 2.517 3 4.563 3 c 2.761 0 5 -2.239 5 -5 c 0 -2.761 -2.239 -5 -5 -5 c -1.382 0 -2.6 0.59 -3.5 1.5 l -1.5 -1.5 z" transform="translate(0,1030.3622)" style="fill:#ab5d0b;opacity:1;fill-opacity:1;stroke:none"/>
+ </g>
+</svg>

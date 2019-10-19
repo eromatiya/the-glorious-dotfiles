@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path d="M 32.819 4.02 A 27.999 27.999 0 0 0 4 32 27.999 27.999 0 0 0 6.906 44.37 L 44.37 6.908 A 27.999 27.999 0 0 0 32.819 4.02 M 57.1 19.634 19.64 57.09 A 27.999 27.999 0 0 0 59.998 32 27.999 27.999 0 0 0 57.1 19.634" style="fill:#dc322f;fill-rule:evenodd"/>
+ <rect width="78.51" height="12" x="-39.25" y="39.25" transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" style="fill:#888;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

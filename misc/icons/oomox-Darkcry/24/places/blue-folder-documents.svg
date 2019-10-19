@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+ <rect width="20" height="5" x="2" y="4" style="fill:#1976d2;fill-opacity:1;stroke:none"/>
+ <path d="m 5 5 c 0 -1 0 -2 0.909 -2 l 3.182 0 c 0.909 0 0.909 1 0.909 2 z" style="fill:#1976d2;fill-opacity:1;stroke:none"/>
+ <path d="m 3 5 18 0 0 4 l -18 0 z" style="fill:#95989f;fill-opacity:1;stroke:none"/>
+ <rect y="5" x="6" height="6" width="14" style="fill:#d8d8da;fill-opacity:1;stroke:none"/>
+ <rect width="14" height="3" x="4" y="6" style="fill:#f9f9f9;fill-opacity:1;stroke:none"/>
+ <path d="m 1 7 22 0 -1 14 -20 0 z" style="fill:#42a5f5;fill-opacity:1;stroke:none"/>
+ <path d="M 9,9 C 8.446,9 8,9.446 8,10 l 0,8 c 0,0.554 0.446,1 1,1 l 6,0 c 0.554,0 1,-0.446 1,-1 l 0,-8 C 16,9.446 15.554,9 15,9 L 9,9 z m 1,1 4,0 0,1 1,0 0,6 c 0,0.554 -0.446,1 -1,1 l -4,0 C 9.446,18 9,17.554 9,17 l 0,-6 c 0,-0.554 0.446,-1 1,-1 z m 0.25,2 C 10.1115,12 10,12.1115 10,12.25 l 0,0.5 c 0,0.1385 0.1115,0.25 0.25,0.25 l 3.5,0 C 13.8885,13 14,12.8885 14,12.75 l 0,-0.5 C 14,12.1115 13.8885,12 13.75,12 l -3.5,0 z m 0,2 C 10.1115,14 10,14.1115 10,14.25 l 0,0.5 c 0,0.1385 0.1115,0.25 0.25,0.25 l 3.5,0 C 13.8885,15 14,14.8885 14,14.75 l 0,-0.5 C 14,14.1115 13.8885,14 13.75,14 l -3.5,0 z m 0,2 C 10.1115,16 10,16.1115 10,16.25 l 0,0.5 c 0,0.1385 0.1115,0.25 0.25,0.25 l 3.5,0 C 13.8885,17 14,16.8885 14,16.75 l 0,-0.5 C 14,16.1115 13.8885,16 13.75,16 l -3.5,0 z" style="fill:#2a74b9;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

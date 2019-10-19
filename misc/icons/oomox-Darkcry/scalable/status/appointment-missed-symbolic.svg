@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(-473.0004,401.9276)" style="display:inline">
+  <path d="m 481.5 -396.93 c -0.277 0 -0.5 0.223 -0.5 0.5 l 0 2.5 -1.5 0 c -0.277 0 -0.5 0.223 -0.5 0.5 0 0.277 0.223 0.5 0.5 0.5 l 2 0 c 0.277 0 0.5 -0.223 0.5 -0.5 l 0 -3 c 0 -0.277 -0.223 -0.5 -0.5 -0.5 z" style="fill:#bebebe;opacity:0.4;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 8 1 c -3.854 0 -7 3.146 -7 7 c 0 3.854 3.146 7 7 7 3.854 0 7 -3.146 7 -7 c 0 -0.695 -0.107 -1.366 -0.297 -2 l -2.123 0 c 0.266 0.612 0.42 1.287 0.42 2 0 2.773 -2.227 5 -5 5 -2.773 0 -5 -2.227 -5 -5 0 -2.773 2.227 -5 5 -5 0.713 0 1.388 0.152 2 0.418 l 0 -2.121 c -0.635 -0.19 -1.305 -0.297 -2 -0.297" transform="translate(473.0004,-401.9276)" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#bebebe;opacity:0.4;image-rendering:auto;fill-opacity:1;stroke:none;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+  <path d="m 484 -401.93 1.5 0 1 1 1 -1 1.5 0 0 1.5 -1 1 1 1 0 1.5 -1.5 0 -1 -1 -1 1 -1.5 0 0 -1.5 1 -1 -1 -1 z" style="visibility:visible;fill:#bebebe;fill-opacity:1;stroke:none;color:#bebebe"/>
+ </g>
+</svg>

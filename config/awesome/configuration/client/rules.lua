@@ -129,6 +129,16 @@ awful.rules.rules = {
   },
 
 
+  -- Workspace Editing
+  {
+	rule_any = {
+		class = {
+			"Oomox",
+		},
+	},
+		properties = { screen = 1, tag = '8'}
+  },
+
   -- Custom
   {
   rule_any = {

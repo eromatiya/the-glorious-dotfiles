@@ -1,0 +1,10 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <rect style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" transform="matrix(0 1 1 0 0 0)" x="13" y="16" height="11" width="2"/>
+ <rect style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" transform="matrix(0 1 1 0 0 0)" x="13" height="11" y="37" width="2"/>
+ <rect height="6" x="48" y="-17" width="6" transform="matrix(1 0 0 -1 0 0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+ <rect height="6" x="10" y="-17" width="6" transform="matrix(1 0 0 -1 0 0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+ <path style="fill:#cb4b16" d="m 32 37 7 -8 -14 0 z"/>
+ <rect style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" transform="matrix(0 1 1 0 0 0)" x="49" height="14" y="14" width="2"/>
+ <rect style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" transform="matrix(0 1 1 0 0 0)" x="49" y="36" height="14" width="2"/>
+ <rect height="8" x="28" y="-54" width="8" transform="matrix(1 0 0 -1 0 0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+</svg>

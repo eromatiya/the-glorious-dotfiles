@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(0,-1036.3622)">
+  <path d="m -5 8.259 c 0 0.962 -0.816 1.741 -1.823 1.741 -1.01 0 -1.823 -0.78 -1.823 -1.741 0 -0.962 0.816 -1.741 1.823 -1.741 1.01 0 1.823 0.78 1.823 1.741 z" transform="matrix(1.6457927,0,0,1.7226703,14.228963,1035.1355)" style="fill:#f2bb64;fill-opacity:1;stroke:none"/>
+  <path transform="matrix(1.6457927,0,0,1.7226703,24.228964,1035.1355)" d="m -5 8.259 c 0 0.962 -0.816 1.741 -1.823 1.741 -1.01 0 -1.823 -0.78 -1.823 -1.741 0 -0.962 0.816 -1.741 1.823 -1.741 1.01 0 1.823 0.78 1.823 1.741 z" style="fill:#f2bb64;fill-opacity:1;stroke:none"/>
+  <rect width="2" height="12" x="4" y="1038.36" rx="1" style="fill:#f2bb64;fill-opacity:1;stroke:none"/>
+  <rect rx="1" y="1038.36" x="14" height="12" width="2" style="fill:#f2bb64;fill-opacity:1;stroke:none"/>
+  <rect width="12" height="5" x="4" y="1036.36" rx="2" style="fill:#f2bb64;fill-opacity:1;stroke:none"/>
+ </g>
+</svg>

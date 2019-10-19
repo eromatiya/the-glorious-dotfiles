@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(-593.0002,52)" style="display:inline">
+  <path d="m 602.5 -43.999 c 0 0.827 -0.674 1.499 -1.501 1.499 -0.827 0 -1.499 -0.671 -1.499 -1.499 0 -0.827 0.671 -1.501 1.499 -1.501 0.827 0 1.501 0.674 1.501 1.501 z" style="fill:#bebebe;fill-opacity:1"/>
+  <circle cx="601" cy="-44" r="5" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#bebebe;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0"/>
+  <g transform="matrix(0.5,0,0,0.48076923,593.0002,-51.692308)" style="fill:#bebebe;fill-opacity:1">
+   <rect rx="0.5" y="3" x="14" height="3" width="4" style="opacity:1;stroke:none;fill-rule:nonzero"/>
+   <rect rx="0.5" y="26" x="14" height="3" width="4" style="opacity:1;stroke:none;fill-rule:nonzero"/>
+  </g>
+  <g transform="matrix(0,0.5,-0.48076923,0,608.69251,-52)" style="fill:#bebebe;fill-opacity:1">
+   <rect rx="0.5" y="3" x="14" height="3" width="4" style="opacity:1;stroke:none;fill-rule:nonzero"/>
+   <rect rx="0.5" y="26" x="14" height="3" width="4" style="opacity:1;stroke:none;fill-rule:nonzero"/>
+  </g>
+  <g transform="matrix(0.35355339,0.35355339,-0.33995519,0.33995519,600.78263,-55.096137)" style="fill:#bebebe;fill-opacity:1">
+   <rect rx="0.5" y="3" x="14" height="3" width="4" style="opacity:1;stroke:none;fill-rule:nonzero"/>
+   <rect rx="0.5" y="26" x="14" height="3" width="4" style="opacity:1;stroke:none;fill-rule:nonzero"/>
+  </g>
+  <g transform="matrix(0.35355339,-0.35355339,0.33995519,0.33995519,589.90406,-43.782429)" style="fill:#bebebe;fill-opacity:1">
+   <rect rx="0.5" y="3" x="14" height="3" width="4" style="opacity:1;stroke:none;fill-rule:nonzero"/>
+   <rect rx="0.5" y="26" x="14" height="3" width="4" style="opacity:1;stroke:none;fill-rule:nonzero"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+ <path transform="matrix(1 0 0 -1 0 0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" d="M 35 -25 A 11 11 0 0 1 24 -14"/>
+ <path transform="matrix(-1 0 0 1 0 0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" d="M -13 23 A 11 11 0 0 1 -24 34"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2" d="m 24 14 10 0"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2" d="m 14 34 10 0"/>
+ <rect width="15" y="8" style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0" x="6" height="12"/>
+ <path style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#888;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB" d="m 31 28 l -6 6 l 2.828 0 l 3.172 -3.172 l 3.172 3.172 l 2.828 0 l -6 -6 z"/>
+ <rect width="2" y="30" style="fill:#888;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" x="30" height="14"/>
+ <path style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#888;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB" d="m 40 44 -6 -6 2.828 0 3.172 3.172 3.172 -3.172 2.828 0 -6 6 z"/>
+ <rect transform="matrix(1 0 0 -1 0 0)" height="14" y="-42" x="39" width="2" style="fill:#888;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

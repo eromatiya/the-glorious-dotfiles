@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path d="m 10.07 2.5 0 -2.442 l -6.074 4.518 l 6.074 4.5 0 -2.576 c 3.766 -0.145 5.248 2.192 2 4.5 c 5.526 -1.667 3.593 -8.319 -2 -8.5 z" style="fill:#bebebe;color:#bebebe"/>
+ <g transform="translate(.08142 .06624)">
+  <path d="m 2 1 0 14 10.919 -0.066 0 -6 -1 -1 0 6 l -8.919 0.066 0 -12 2.919 -0.066 l 1 -1 z" style="fill:#bebebe;color:#bebebe"/>
+ </g>
+ <path d="m 11 1 2 0 0 1 -2 0 z" style="fill:#bebebe"/>
+</svg>

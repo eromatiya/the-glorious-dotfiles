@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+ <path transform="matrix(1 0 0 -1 0 0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" d="M 17.5 -12 A 5.5 5.5 0 0 1 12 -6.5"/>
+ <path transform="matrix(-1 0 0 1 0 0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" d="M -6.5 12 A 5.5 5.5 0 0 1 -12 17.5"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1" d="m 12 6.5 5 0"/>
+ <path style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#79d073;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1" d="m 7 17.5 5 0"/>
+ <rect height="7" style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" y="3.5" x="3.5" width="7"/>
+ <path style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#888;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB" d="m 15.5 13 -3 3 1.414 0 l 1.586 -1.586 1.586 1.586 1.414 0 z"/>
+ <rect height="6" style="fill:#888;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" y="14" x="15" width="1"/>
+ <path style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#888;opacity:1;image-rendering:auto;fill-opacity:1;text-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB" d="m 19.5 21 -3 -3 1.414 0 l 1.586 1.586 1.586 -1.586 1.414 0 z"/>
+ <rect y="-20" x="19" height="6" width="1" style="fill:#888;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" transform="matrix(1 0 0 -1 0 0)"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <path d="M 10.6875,0 C 9.3125,0 8,1.378906 8,2.8125 l 0,58.375 C 8,62.539062 9.390625,64 10.6875,64 l 42.625,0 C 54.609375,64 56,62.539062 56,61.1875 L 56,2.75 C 56,1.402344 54.597656,0 53.25,0 Z m 0,0" style="fill:#dcdcdc;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 20 20 12 0 0 10 -12 0 z m 0 0" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 34 20 10 0 0 2 -10 0 z m 0 0" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 34 24 10 0 0 2 -10 0 z m 0 0" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 34 28 10 0 0 2 -10 0 z m 0 0" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 20 32 24 0 0 2 -24 0 z m 0 0" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 20 36 24 0 0 2 -24 0 z m 0 0" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 20 40 24 0 0 2 -24 0 z m 0 0" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 20 44 24 0 0 2 -24 0 z m 0 0" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+</svg>

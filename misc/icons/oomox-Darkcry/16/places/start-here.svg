@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g style="fill:#dc322f;fill-opacity:1;enable-background:new">
+  <path d="m 7 13 0 -4 -4 0 -2 2 0 4 4 0 z m -2 0 -2 0 0 -2 2 0 z" style="stroke:none"/>
+  <path d="m 9 13 0 -4 4 0 2 2 0 4 -4 0 z m 2 0 2 0 0 -2 -2 0 z" style="stroke:none"/>
+  <path d="m 9 3 0 4 4 0 2 -2 0 -4 -4 0 z m 2 0 2 0 0 2 -2 0 z" style="stroke:none"/>
+  <path d="M 1,5 1,1 5,1 7,3 7,7 3,7 Z M 3,5 5,5 5,3 3,3 Z" style="stroke:none"/>
+ </g>
+</svg>

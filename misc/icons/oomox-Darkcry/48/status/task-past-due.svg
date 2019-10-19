@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <path d="m 36 10 c 2 0 2 0 2 2 l 0 28 c 0 2 0 2 -2 2 l -24 0 c -2 0 -2 0 -2 -2 l 0 -28 c 0 -2 0 -2 2 -2" style="fill:#e6b07f;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 34 10 -20 0 0 6 5 -2 5 2 5 -2 5 2" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 16,6 0,6.142857 16,0 L 32,6" style="fill:#aaa;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

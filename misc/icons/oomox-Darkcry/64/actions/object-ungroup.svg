@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <rect y="27" x="13" height="24" width="32" rx="0.5" style="fill:#268bd2;fill-opacity:1;stroke:none;display:inline;color:#000"/>
+ <path d="m 53 25 a 14 14 0 0 1 -28 0 14 14 0 1 1 28 0 z" style="fill:#dc322f;fill-opacity:1;stroke:none;display:inline;color:#000"/>
+ <path d="m 5 19 0 8 4 0 0 -4 4 0 0 -4 m -8 32 0 8 8 0 0 -4 -4 0 0 -4 z m 44 0 0 4 -4 0 0 4 8 0 0 -8 z" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-color="#000000" solid-opacity="1" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#000;opacity:0.5;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ <path white-space="normal" isolation="auto" mix-blend-mode="normal" d="m 19 5 0 8 4 0 0 -4 4 0 0 -4 m 24 0 0 4 4 0 0 4 4 0 0 -8 z m 4 32 0 4 -4 0 0 4 8 0 0 -8 z" solid-color="#000000" solid-opacity="1" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#000;opacity:0.5;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+</svg>

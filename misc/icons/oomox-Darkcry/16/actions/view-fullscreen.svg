@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g style="fill:#268bd2" transform="matrix(-1 0 0 -1 8 24)">
+<path d="M 0,13.878679 2.12132,16 6.363961,11.757359 4.242641,9.6360385 z"/>
+<path d="m 1,9 6,0 0,6 z"/>
+</g>
+<g style="fill:#268bd2" transform="translate(8 -8)">
+<path d="M 0,13.878679 2.12132,16 6.363961,11.757359 4.242641,9.6360385 z"/>
+<path d="m 1,9 6,0 0,6 z"/>
+</g>
+</svg>

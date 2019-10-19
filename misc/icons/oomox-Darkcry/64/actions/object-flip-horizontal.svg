@@ -1,0 +1,10 @@
+<svg width="64" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path style="fill:#6c71c4" d="M 28 0 L 0 56 L 28 56 Z "/>
+<path style="fill:#fff;fill-opacity:.902" d="M 20 32 L 12 48 L 20 48 Z "/>
+<path style="fill:#6c71c4" d="M 36 0 L 64 56 L 36 56 Z "/>
+<path style="fill:#fff;fill-opacity:.902" d="M 44 32 L 52 48 L 44 48 Z "/>
+<g style="fill:#6c71c4">
+<path d="M 0 60 L 28 60 L 28 64 L 0 64 Z "/>
+<path d="M 36 60 L 64 60 L 64 64 L 36 64 Z "/>
+</g>
+</svg>

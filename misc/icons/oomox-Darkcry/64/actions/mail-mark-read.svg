@@ -1,0 +1,10 @@
+<svg width="64" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path style="fill:#268bd2" d="M 4.742188 64 L 59.257812 64 C 64 64 64 64 64 59.429688 L 64 20 L 32 0 L 0 20 L 0 59.429688 C 0 64 0 64 4.742188 64 Z "/>
+<path style="fill:#000;fill-opacity:.102" d="M 4.742188 64 L 59.257812 64 C 64 64 64 64 64 59.429688 L 64 20 L 32 0 L 0 20 L 0 59.429688 C 0 64 0 64 4.742188 64 Z "/>
+<path style="fill:#fff" d="M 8 8 L 8 56 L 56 56 L 56 8 Z "/>
+<g style="fill:#268bd2">
+<path d="M 4 64 L 60 64 C 64 64 64 64 64 60 L 64 24 L 0 60 C 0 64 0 64 4 64 Z "/>
+<path d="M 60 64 L 4 64 C 0 64 0 64 0 60 L 0 24 L 64 60 C 64 64 64 64 60 64 Z "/>
+</g>
+<path style="fill:#fff;fill-opacity:.102" d="M 59.257812 64 L 4.742188 64 C 0 64 0 64 0 59.507812 L 0 24 L 64 59.507812 C 64 64 64 64 59.257812 64 Z "/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <path d="m 5.336 0 c -0.687 0 -1.336 0.676 -1.336 1.394 l 0 29.21 c 0 0.676 0.687 1.394 1.336 1.394 l 21.327 0 c 0.648 0 1.336 -0.717 1.336 -1.394 l 0.001 -21.606 l -9 -9 z" style="fill:#c19553;fill-opacity:1"/>
+ <path d="m 21 9 7 7 0 -7 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 4 24 0 6.668 c 0 0.648 0.688 1.332 1.332 1.332 l 21.336 0 c 0.645 0 1.332 -0.684 1.332 -1.332 l 0 -6.668 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 19 0 8.992 9 -7.613 0 c -0.673 0 -1.378 -0.713 -1.378 -1.386 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="m 13.211 25.836 c -0.962 1.375 -1.834 2.761 -2.648 4.164 l 2.742 0 0 1 -4.206 0 0 -0.8 c 0.813 -1.504 1.72 -2.834 2.587 -4.213 l -2.454 0 0 -0.987 3.978 0 0 0.836" style="fill:#fff"/>
+ <rect width="3" height="3" x="9" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 14.287 31 0 -1 1.463 0 0 -4 -1.463 0 0 -1 4 0 0 1 -1.287 0 0 4 1.287 0 0 1 -4 0" style="fill:#fff"/>
+ <rect width="3" height="3" x="12" y="3" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 20.805 24.95 c 0.79 0 1.403 0.155 1.84 0.474 0.437 0.306 0.655 0.816 0.655 1.525 0 0.718 -0.223 1.237 -0.664 1.556 -0.437 0.319 -1.059 0.474 -1.861 0.474 l -0.475 0 0 2.02 -1.205 0 0 -5.908 c 0.122 -0.022 0.256 -0.049 0.403 -0.066 0.155 -0.018 0.307 -0.031 0.462 -0.04 0.155 -0.013 0.307 -0.022 0.454 -0.027 0.147 -0.009 0.277 -0.009 0.391 -0.009 m 0.143 1.033 c -0.076 0 -0.181 0.005 -0.315 0.009 -0.126 0 -0.261 0.009 -0.332 0.022 l 0 1.932 0.534 0 c 0.395 0 0.693 -0.075 0.895 -0.222 0.202 -0.155 0.302 -0.417 0.302 -0.785 0 -0.35 -0.101 -0.594 -0.302 -0.736 c -0.193 -0.146 -0.454 -0.222 -0.781 -0.222" style="fill:#fff"/>
+ <rect width="3" height="3" x="9" y="6" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3" height="3" x="12" y="9" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3" height="3" x="9" y="12" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="6" height="6" x="9" y="16" style="fill:#f9f9f9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+</svg>

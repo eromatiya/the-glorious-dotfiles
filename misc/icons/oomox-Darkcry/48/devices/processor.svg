@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <rect width="26" height="26" x="11" y="11" rx="2" style="stroke-dasharray:none;stroke-opacity:1;fill:#599cd0;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#878787;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2;stroke-dashoffset:0"/>
+ <circle cx="32.5" cy="15.5" r="1.5" style="fill:#dfdfdf;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="5" height="2" x="6" y="-34" transform="matrix(0,1,-1,0,0,0)" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect y="-16" x="6" height="2" width="5" transform="matrix(0,1,-1,0,0,0)" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect transform="matrix(0,1,-1,0,0,0)" width="5" height="2" x="6" y="-22" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect y="-28" x="6" height="2" width="5" transform="matrix(0,1,-1,0,0,0)" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect transform="matrix(0,1,-1,0,0,0)" y="-34" x="37" height="2" width="5" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect transform="matrix(0,1,-1,0,0,0)" width="5" height="2" x="37" y="-16" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect y="-22" x="37" height="2" width="5" transform="matrix(0,1,-1,0,0,0)" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect transform="matrix(0,1,-1,0,0,0)" width="5" height="2" x="37" y="-28" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="5" height="2" x="-11" y="-34" transform="scale(-1,-1)" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect y="-16" x="-11" height="2" width="5" transform="scale(-1,-1)" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect transform="scale(-1,-1)" width="5" height="2" x="-11" y="-22" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect y="-28" x="-11" height="2" width="5" transform="scale(-1,-1)" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect transform="scale(-1,-1)" y="-34" x="-42" height="2" width="5" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect transform="scale(-1,-1)" width="5" height="2" x="-42" y="-16" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect y="-22" x="-42" height="2" width="5" transform="scale(-1,-1)" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect transform="scale(-1,-1)" width="5" height="2" x="-42" y="-28" style="fill:#878787;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <g transform="matrix(0.63034803,0,0,0.63034803,5.7500737,8.692094)">
+  <path d="m 22.606 33.27 c 0 0.149 -0.048 0.276 -0.142 0.377 -0.094 0.098 -0.211 0.151 -0.36 0.151 l -2.167 0 c -0.146 0 -0.266 -0.053 -0.362 -0.168 -0.096 -0.106 -0.142 -0.228 -0.142 -0.36 l 0 -13.244 c 0 -0.134 0.046 -0.257 0.142 -0.355 0.096 -0.098 0.216 -0.149 0.362 -0.149 l 2.167 0 c 0.154 0 0.278 0.048 0.367 0.137 0.089 0.091 0.134 0.216 0.134 0.367 z m 0 -15.84 c 0 0.149 -0.048 0.271 -0.146 0.367 -0.098 0.094 -0.214 0.139 -0.355 0.139 l -2.141 0 c -0.134 0 -0.252 -0.046 -0.362 -0.139 -0.113 -0.096 -0.168 -0.218 -0.168 -0.367 l 0 -2.163 c 0 -0.132 0.055 -0.247 0.168 -0.353 0.11 -0.098 0.228 -0.151 0.362 -0.151 l 2.141 0 c 0.142 0 0.257 0.05 0.355 0.149 0.098 0.098 0.146 0.216 0.146 0.355 z" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 38.471 17.439 c 0 0.144 -0.151 0.528 -0.454 1.152 l -6.787 14.735 c -0.094 0.185 -0.18 0.312 -0.278 0.379 -0.094 0.065 -0.228 0.098 -0.398 0.098 l -2.616 0 c -0.235 0 -0.358 -0.13 -0.358 -0.382 0 -0.067 0.024 -0.142 0.062 -0.221 l 7.207 -15.09 0 -0.048 c 0 -0.034 -0.007 -0.06 -0.024 -0.086 -0.017 -0.024 -0.048 -0.038 -0.098 -0.038 l -7.746 0 c -0.13 0 -0.245 -0.043 -0.348 -0.132 -0.106 -0.089 -0.154 -0.197 -0.154 -0.317 l 0 -2.246 c 0 -0.13 0.048 -0.242 0.154 -0.338 0.103 -0.091 0.218 -0.139 0.348 -0.139 l 10.485 0 c 0.278 0 0.514 0.098 0.71 0.295 0.197 0.197 0.295 0.434 0.295 0.71 z" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+ <rect width="4" height="28" x="28" y="10" style="fill:#fff;opacity:0.258;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

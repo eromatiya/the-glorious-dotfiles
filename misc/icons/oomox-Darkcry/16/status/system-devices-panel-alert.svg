@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <path d="m 5 1.75 c -2.073 1.086 -3.5 3.247 -3.5 5.75 0 3.59 2.91 6.5 6.5 6.5 0.343 0 0.672 -0.043 1 -0.094 l 0 -1.875 c -0.324 0.072 -0.655 0.125 -1 0.125 -2.564 0 -4.656 -2.092 -4.656 -4.656 0 -1.411 0.663 -2.648 1.656 -3.5 l 0 -2.25 z m 6 0 0 2.25 2.469 0 c -0.612 -0.946 -1.465 -1.724 -2.469 -2.25 z" style="fill:#ef555c;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="2" height="7" x="7" y="1" style="fill:#ef555c;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 11 11 0 0.531 0 0.938 l 0 0.531 0.531 0 1.469 0 1.469 0 c 0.297 0 0.531 -0.234 0.531 -0.531 l 0 -0.938 c 0 -0.297 -0.234 -0.531 -0.531 -0.531 l -1.469 0 -1.469 0 -0.531 0 z" style="fill:#ef555c;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 11 8 0 0.531 0 0.938 l 0 0.531 0.531 0 1.469 0 1.469 0 c 0.297 0 0.531 -0.234 0.531 -0.531 l 0 -0.938 c 0 -0.297 -0.234 -0.531 -0.531 -0.531 l -1.469 0 -1.469 0 -0.531 0 z" style="fill:#ef555c;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 11 5 0 0.531 0 0.938 0 0.531 0.531 0 1.469 0 1.469 0 c 0.297 0 0.531 -0.234 0.531 -0.531 l 0 -0.938 c 0 -0.297 -0.234 -0.531 -0.531 -0.531 l -1.469 0 -1.469 0 -0.531 0 z" style="fill:#ef555c;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+</svg>

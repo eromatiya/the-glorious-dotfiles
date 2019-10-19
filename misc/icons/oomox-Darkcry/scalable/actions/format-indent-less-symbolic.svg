@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(-181.0002 -277)" style="fill:#bebebe;color:#bebebe">
+  <rect width="5" x="183" y="280" height="2"/>
+  <rect width="6" x="183" y="284" height="2"/>
+  <rect width="7" x="186" y="288" height="2"/>
+  <path d="m 195.41 280 0 1 c 0 0.257 -0.13 0.528 -0.313 0.719 l -1.281 1.281 l 1.281 1.281 c 0.183 0.19 0.313 0.462 0.313 0.719 l 0 1 -1 0 c -0.309 0 -0.552 -0.09 -0.75 -0.281 l -2.656 -2.719 l 2.656 -2.719 c 0.198 -0.191 0.441 -0.281 0.75 -0.281 l 1 0 z"/>
+ </g>
+</svg>

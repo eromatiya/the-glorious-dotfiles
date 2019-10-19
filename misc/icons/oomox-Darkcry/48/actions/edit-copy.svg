@@ -1,0 +1,11 @@
+<svg width="48" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 0 48 48" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g style="fill-rule:evenodd">
+<path style="fill:#aaa" d="M 10 4.003906 L 26 4 C 30 4 30 4 30 8 L 30 32 C 30 36 30 36 26 36 L 10 36 C 6 36 6 36 6 32 L 6 8.003906 C 6 4.003906 6 4.003906 10 4.003906 Z "/>
+<path style="fill:#fff" d="M 22 12.003906 L 38 12.003906 C 42 12.003906 42 12.003906 42 16.003906 L 42 40 C 42 44 42 44 38 44 L 22 44 C 18 44 18 44 18 40 L 18 16.003906 C 18 12.003906 18 12.003906 22 12.003906 Z "/>
+</g>
+<g style="fill:#888">
+<path d="M 22 18 L 22 22 L 38 22 L 38 18 Z "/>
+<path d="M 22 34 L 22 38 L 30 38 L 30 34 Z "/>
+<path d="M 22 26 L 22 30 L 38 30 L 38 26 Z "/>
+</g>
+</svg>

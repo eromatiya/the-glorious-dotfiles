@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" style="enable-background:new">
+ <defs>
+  <filter id="filter7554" style="color-interpolation-filters:sRGB">
+   <feBlend in2="BackgroundImage" mode="darken"/>
+  </filter>
+ </defs>
+ <g transform="translate(-405.00211,139.00169)" style="display:inline;filter:url(#filter7554)">
+  <path d="m 421 -135 c 0 -2 -2 -2 -2 -2 l -12 0 c -2 0 -2 2 -2 2 l 0 8 c 0 0 0 2 2 2 l 11 0 3 -3 z m -6 6 0 1 c 0 1 -1 1 -1 1 l -1 0 0 -2 z m 0 -5 0 1 -2 0 0 -2 1 0 c 0 0 1 0 1 1 z m 0 2 0 2 -2 0 0 -2 z m -3 -3 0 8 -2 0 0 -8 z m -3 6 0 2 -1 0 c -1 0 -1 -1 -1 -1 l 0 -1 z m 0 -6 0 2 -2 0 0 -1 c 0 -1 1 -1 1 -1 z m 0 3 0 2 -2 0 0 -2 z" style="fill:#bebebe;fill-opacity:1;stroke:none"/>
+ </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <rect width="20" height="7" x="1" y="3" style="fill:#512da8;fill-opacity:1;stroke:none"/>
+ <path d="m 4 4 c 0 -1 0 -2 0.909 -2 l 3.182 0 c 0.909 0 0.909 1 0.909 2 z" style="fill:#512da8;fill-opacity:1;stroke:none"/>
+ <path d="m 2 4 18 0 0 6 l -18 0 z" style="fill:#95989f;fill-opacity:1;stroke:none"/>
+ <rect y="4" x="5" height="6" width="14" style="fill:#d8d8da;fill-opacity:1;stroke:none"/>
+ <rect width="14" height="5" x="3" y="5" style="fill:#f9f9f9;fill-opacity:1;stroke:none"/>
+ <path d="m 0 9 22 0 -1 11 -20 0 z" style="fill:#7e57c2;fill-opacity:1;stroke:none"/>
+ <path d="M 4,7 16,7 16,8 4,8 z" style="fill:#ccc"/>
+ <g transform="matrix(1,0,0,0.99457,-1,-0.9777947)">
+  <path d="m 20.95 13.17 a 4.881 4.831 0 1 1 -9.76 0 4.881 4.831 0 1 1 9.76 0 z" transform="translate(0.811,3.999)" style="fill:#859900;fill-rule:evenodd"/>
+  <path d="m 19.55 14.07 a 0.5 0.5 0 0 0 -0.25 0.2 l -2.66 2.6 -1.66 -1.6 a 0.5 0.5 0 1 0 -0.68 0.6 l 2 2 a 0.5 0.5 0 0 0 0.68 0 l 3 -3 a 0.5 0.5 0 0 0 -0.43 -0.8 z" style="fill:#fff;color:#000"/>
+ </g>
+</svg>

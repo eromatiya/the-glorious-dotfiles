@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <g>
+  <rect width="36" height="32" x="6" y="8" style="fill:#292929;fill-opacity:1"/>
+ </g>
+ <rect x="12" y="-19" width="3" height="8" transform="scale(1,-1)" rx="0" style="fill:#ffcb3b;opacity:1;fill-opacity:1;color:#bebebe"/>
+ <path d="M 8,43 C 4,43 3,42 3,39 L 3,9 C 3,6 4,5 8,5 l 32,0 c 4,0 5,1 5,4 l 0,30 c 0,3 -1,4 -5,4 z m 8,-9 3,0 0,4 10,0 0,-4 3,0 0,-3 7,0 0,-18 c 0,-2 0,-3 -1.5,-3 l -27,0 C 9,10 9,11 9,13 l 0,18 7,0 z" style="fill:#909ea9;fill-opacity:1;color:#bebebe"/>
+ <rect x="19" y="-19" width="3" height="8" transform="scale(1,-1)" rx="0" style="fill:#ffcb3b;opacity:1;fill-opacity:1;color:#bebebe"/>
+ <rect x="26" y="-19" width="3" height="8" transform="scale(1,-1)" rx="0" style="fill:#ffcb3b;opacity:1;fill-opacity:1;color:#bebebe"/>
+ <rect x="33" y="-19" width="3" height="8" transform="scale(1,-1)" rx="0" style="fill:#ffcb3b;opacity:1;fill-opacity:1;color:#bebebe"/>
+</svg>

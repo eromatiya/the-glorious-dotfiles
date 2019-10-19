@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
+ <defs>
+  <path id="SVGCleanerId_0" d="m 14 12 20 0 c 1.105 0 2 0.895 2 2 l 0 20 c 0 1.105 -0.895 2 -2 2 l -20 0 c -1.105 0 -2 -0.895 -2 -2 l 0 -20 c 0 -1.105 0.895 -2 2 -2 m 0 0"/>
+ </defs>
+ <use height="16" width="16" xlink:href="#SVGCleanerId_0" transform="matrix(0.52083334,0,0,0.52083334,-4.5000002,-4.5000002)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#af8566;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2.88"/>
+ <use height="16" width="16" xlink:href="#SVGCleanerId_0" transform="matrix(0.5,0,0,0.5,-4,-4)" style="fill:#fff4ab;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2 11 12 0 0 1 -12 0 z" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2 8 12 0 0 1 -12 0" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2 5 12 0 0 1 -12 0" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 5 2 1 0 0 12 -1 0" style="fill:#e6b2a9;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <g transform="matrix(-0.49999884,0,0,-0.49999884,18.000004,17.999975)" style="fill-rule:evenodd">
+  <path transform="matrix(2.0000046,0,0,2.0000046,-12.000019,3.9999593)" d="M 16 4 A 4 4 0 0 1 8 4 4 4 0 1 1 16 4" style="fill:#268bd2"/>
+  <path d="m 14 18 -4 0 0 -6 4 0 0 6" transform="matrix(1.0000023,0,0,1.0000023,8.8000204e-6,-5.0000116e-5)" style="fill:#fff;fill-opacity:0.9"/>
+  <path d="m 14 8 c 0 1.105 -0.895 2 -2 2 -1.105 0 -2 -0.895 -2 -2 0 -1.105 0.895 -2 2 -2 1.105 0 2 0.895 2 2 z" style="fill:#fff;fill-opacity:0.9"/>
+ </g>
+</svg>

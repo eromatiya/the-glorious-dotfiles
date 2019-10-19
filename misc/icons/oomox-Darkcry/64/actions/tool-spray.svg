@@ -1,0 +1,10 @@
+
+<svg viewBox="0 0 64 64" style="enable-background:new" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <radialGradient r="4" gradientTransform="matrix(7.25 0 0 7.25 -69.5 -11.5)" spreadMethod="pad" cy="6" gradientUnits="userSpaceOnUse" cx="14" id="radialGradient4329">
+   <stop style="stop-color:#2aa198;stop-opacity:1"/>
+   <stop style="stop-color:#2eb5aa;stop-opacity:0" offset="1"/>
+  </radialGradient>
+ </defs>
+ <circle r="29" style="fill:url(#radialGradient4329);opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" cy="32" cx="32"/>
+</svg>

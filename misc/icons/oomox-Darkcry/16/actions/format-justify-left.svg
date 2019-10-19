@@ -1,0 +1,8 @@
+<svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16">
+<g style="fill:#888" transform="translate(-4 -4)">
+<path d="M 5,5 5,7 19,7 19,5 z"/>
+<path d="m 5,13 0,2 10,0 0,-2 z"/>
+<path d="m 5,9 0,2 14,0 0,-2 z"/>
+<path d="m 5,17 0,2 8,0 0,-2 z"/>
+</g>
+</svg>

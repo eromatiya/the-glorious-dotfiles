@@ -1,0 +1,7 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+ <path d="m 7 18 0 20" style="stroke-opacity:1;fill:none;stroke:#6c71c4;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+ <path d="m 12 36 -5 4.999 -4.999 -4.999 z" style="fill:#6c71c4;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 46 12 -5 -4.999 -4.999 4.999 z" style="fill:#6c71c4;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 41 30 0 -20" style="stroke-opacity:1;fill:none;stroke:#6c71c4;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2"/>
+ <path d="m 15 16.5 0 24 18 -9 0 -24 z" style="stroke-opacity:1;fill:#fff;fill-opacity:1;stroke:#888;fill-rule:evenodd;stroke-linejoin:miter;stroke-width:2"/>
+</svg>

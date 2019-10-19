@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+ <rect width="12" height="14.915" x="18" y="11" rx="1.065" style="fill:#78b9e7;fill-opacity:1;stroke:none"/>
+ <rect width="12" height="12" x="18" y="26" rx="1.065" style="fill:#657b83;fill-opacity:1;stroke:none"/>
+ <path d="m 22 26 3 -16 6 0 0 16 z" style="fill:#fdf6e3;fill-opacity:0.253;stroke:none"/>
+ <g transform="translate(0 -1004.3622)" style="fill:#93a1a1">
+  <path d="m 18.656 1013.38 c -1.46 0 -2.656 1.196 -2.656 2.656 l 0 24.622 c 0 1.46 1.196 2.688 2.656 2.688 l 10.656 0 c 1.46 0 2.688 -1.227 2.688 -2.688 l 0 -24.622 c 0 -1.46 -1.227 -2.656 -2.688 -2.656 z m 1 2 8.688 0 c 0.923 0 1.656 0.733 1.656 1.656 l 0 10.747 c 0 0.923 -0.733 1.656 -1.656 1.656 l -8.688 0 c -0.923 0 -1.656 -0.733 -1.656 -1.656 l 0 -10.747 c 0 -0.923 0.733 -1.656 1.656 -1.656 z m 4.344 15.966 c 2.761 0 5 2.238 5 5 0 2.761 -2.239 5 -5 5 -2.761 0 -5 -2.239 -5 -5 0 -2.762 2.239 -5 5 -5 z" style="color:#000"/>
+ </g>
+ <path d="m 26 32 a 2 2 0 1 1 -4 0 2 2 0 1 1 4 0 z" style="fill:#073642;fill-opacity:0.41;stroke:none"/>
+ <rect width="2" height="30" x="28" y="9" style="fill:#fdf6e3;fill-opacity:0.237;stroke:none"/>
+</svg>

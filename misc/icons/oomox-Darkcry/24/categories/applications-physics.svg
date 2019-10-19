@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 19.2 19.2">
+ <ellipse cx="9.6" cy="9.6" rx="2.249" ry="6.943" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#c9a879;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:0.514;stroke-dashoffset:0"/>
+ <ellipse cx="13.12" cy="-3.522" rx="2.251" ry="6.936" transform="matrix(0.49949077,0.86631921,-0.8657311,0.50050941,0,0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#c9a879;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:0.514;stroke-dashoffset:0"/>
+ <ellipse cx="-3.506" cy="13.11" rx="2.251" ry="6.936" transform="matrix(0.49949077,-0.86631921,0.8657311,0.50050941,0,0)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#c9a879;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:0.514;stroke-dashoffset:0"/>
+ <circle cx="9.6" cy="9.6" r="1.029" style="fill:#c9a879;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle cx="5.603" cy="5.67" r="0.771" style="fill:#c9a879;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle cx="8.203" cy="15.06" r="0.771" style="fill:#c9a879;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

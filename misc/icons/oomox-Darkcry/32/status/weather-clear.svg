@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+ <path d="m 19.5 12 c 0 4.141 -3.359 7.5 -7.5 7.5 -4.141 0 -7.5 -3.359 -7.5 -7.5 0 -4.141 3.359 -7.5 7.5 -7.5 4.141 0 7.5 3.359 7.5 7.5 z m 0 0" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <g>
+  <path d="m 12 1.5 0.75 2.25 -1.5 0 z" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 12 22.5 -0.75 -2.25 1.5 0 z" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+ <g transform="matrix(0,1,-1,0,23.999999,-5e-7)">
+  <path d="m 12 1.5 0.75 2.25 -1.5 0 z" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 12 22.5 -0.75 -2.25 1.5 0 z" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+ <g transform="matrix(-0.70710678,0.70710678,-0.70710678,-0.70710678,28.970562,11.999999)">
+  <path d="m 12 1.5 0.75 2.25 -1.5 0 z" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 12 22.5 -0.75 -2.25 1.5 0 z" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+ <g transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,11.999999,-4.970563)">
+  <path d="m 12 1.5 0.75 2.25 -1.5 0 z" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 12 22.5 -0.75 -2.25 1.5 0 z" style="fill:#dedc3f;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+</svg>

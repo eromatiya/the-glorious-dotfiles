@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+ <g transform="translate(-81.0004 -847)" style="fill:#bebebe">
+  <g style="color:#bebebe">
+   <rect width="10" x="84" y="850" height="2"/>
+   <rect width="3" x="91" y="854" height="2"/>
+   <rect width="3" x="91" y="858" height="2"/>
+  </g>
+  <g style="color:#000">
+   <path d="m 82 853.06 0 0.5 0 6.969 0 0.5 0.5 0 7 0 0.5 0 0 -0.5 0 -6.969 0 -0.5 -0.5 0 -7 0 -0.5 0 z m 1 1 6 0 0 5.969 -6 0 0 -5.969 z"/>
+   <path d="m 84.03 856 0 2 4.03 0 0 -2 -4.03 0 z"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <rect rx="8" y="5" x="8" height="56" width="48" style="fill:#e5e1c7;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="40" height="48" x="12" y="9" rx="4" style="fill:#eae7d1;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="4" height="12" x="16" y="1" rx="2" style="fill:#999;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect rx="2" y="1" x="24" height="12" width="4" style="fill:#999;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect rx="2" y="1" x="36" height="12" width="4" style="fill:#999;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="4" height="12" x="44" y="1" rx="2" style="fill:#999;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="32" height="4" x="16" y="21" style="fill:#999;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect y="29" x="16" height="4" width="32" style="fill:#999;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="32" height="4" x="16" y="37" style="fill:#999;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect y="45" x="16" height="4" width="32" style="fill:#999;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

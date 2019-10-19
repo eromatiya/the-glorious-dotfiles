@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+ <g transform="matrix(2.6666667,0,0,2.6666667,-32,-30.666666)">
+  <g>
+   <!-- color: #d14040 -->
+   <g>
+    <path d="m 31.5,16 c 1.5,0 1.5,0 1.5,1.5 l 0,15 C 33,34 33,34 31.5,34 l -15,0 C 15,34 15,34 15,32.5 l 0,-15 C 15,16 15,16 16.5,16" style="fill:#e6b07f;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+    <path d="m 30 16 -12 0 0 15 12 0" style="fill:#fff;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+    <path d="m 19.5 13 0 4.5 9 0 0 -4.5" style="fill:#aaa;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+    <path d="m 19.5 25 0 1.5 9 0 0 -1.5" style="fill:#868686;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+    <path d="m 19.5 28 0 1.5 6 0 0 -1.5" style="fill:#868686;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+   </g>
+  </g>
+ </g>
+ <path d="m 20 28 0 4 24 0 0 -4" style="fill:#868686;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 60 32 -20 -20 l 0 12 -20 0 0 16 20 0 0 12 z" style="fill:#268bd2;fill-opacity:1"/>
+</svg>
