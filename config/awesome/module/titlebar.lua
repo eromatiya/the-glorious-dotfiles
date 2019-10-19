@@ -2,22 +2,14 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-local theme_name = "macos-small" -- Change Titlebar buttons theme here.
-local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/theme/barthemes/" .. theme_name .. "/titlebar/"
+local theme_name = "spotlight"
+local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/theme/icons/titlebar/" .. theme_name .. '/'
 local tip = titlebar_icon_path --alias to save time/space
 local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
 
-local titleBarSize = 30
-
-
--- Titlebar Colors
-beautiful.titlebar_bg_focus = '#000000'
-beautiful.titlebar_bg_normal = '#000000'
-beautiful.titlebar_fg_focus = '#ffffff00'
-beautiful.titlebar_fg_normal = '#00000000'
-
+local titleBarSize = beautiful.titlebar_size
 
 -- Define the images to load
 beautiful.titlebar_close_button_normal = tip .. "close_normal.svg"

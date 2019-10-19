@@ -6,9 +6,14 @@ local dpi = require('beautiful').xresources.apply_dpi
 local theme = {}
 theme.icons = theme_dir .. '/icons/'
 theme.font = 'Roboto medium 10'
---HERE
+
+-- Titlebar
 theme.titlebars_enabled = true
 theme.titlebar_size = dpi(32)
+theme.titlebar_bg_focus = '#000000'
+theme.titlebar_bg_normal = '#000000'
+theme.titlebar_fg_focus = '#000000' .. '00'
+theme.titlebar_fg_normal = '#000000' .. '00'
 -- Colors Pallets
 
 -- Primary
