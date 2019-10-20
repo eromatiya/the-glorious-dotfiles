@@ -13,6 +13,7 @@
 + **Editor**: neovim, atom
 + **Browser**: firefox
 + **Music Player**: ncmpcpp, mpd, mpc
++ **Lock Screen**: ![mantablockscreen](https://github.com/reorr/mantablockscreen)
 
 # Floppy - An AwesomeWM Setup
 
@@ -94,7 +95,6 @@ This setup is split in multiple parts:
 + This setup will not mostly work out of the box because:  
   - It is only tested and configured on a 1366x768 resolution (Lenovo x230)  
   - Some dependencies are not currently installed  
-  - Some of the tweaks are configured to match my likings haha  
 
 + Generating an application menu  
   - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.  

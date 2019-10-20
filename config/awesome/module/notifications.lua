@@ -100,7 +100,7 @@ end
 
 
 -- naughty.disconnect_signal("request::display", naughty.default_notification_handler)
-
+-- Install acpi_call and acpid and enable its service
 -- Battery notifications
 -- ===================================================================
 
