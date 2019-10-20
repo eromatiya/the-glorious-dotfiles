@@ -63,6 +63,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `mpd` | Server-side application for playing music | Music widgets |
 | `mpc` | Minimalist command line interface to MPD | Music widgets |
 | `maim` | Takes screenshots (improved `scrot`) | Screenshot keybinds |
+| `xclip` | Command line interface to the X11 clipboard | Useful in taking screenshots |
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
 | `xorg-xwininfo` | Window information utility for X | it just works |
 | `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend |
