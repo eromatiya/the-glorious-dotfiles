@@ -89,36 +89,27 @@ client.connect_signal("request::titlebars", function(c)
         },
         layout = wibox.layout.align.vertical
     }
-end)
 
 
--- CUSTOM TITLEBAR FOR TERMINALS
--- You need XPROP for this to work
-local kittyBar = function(c)
-
-  if c.class == "kitty" or c.class == "XTerm" then
+    -- CUSTOM TITLEBAR FOR TERMINALS
+    -- You need XPROP for this to work
+    if c.class == "kitty" or c.class == "XTerm" then
       awful.titlebar(c, {position = "left", bg = '#000000AA', size = titleBarSize}) : setup {
-          { -- Top
-              awful.titlebar.widget.closebutton    (c),
-              awful.titlebar.widget.maximizedbutton(c),
-              awful.titlebar.widget.minimizebutton (c),
-
-              layout  = wibox.layout.fixed.vertical
-          },
-            nil,
-          { -- Bottom
-
-              awful.titlebar.widget.floatingbutton (c),
-              layout = wibox.layout.fixed.vertical()
-          },
+        {
+          awful.titlebar.widget.closebutton    (c),
+          awful.titlebar.widget.maximizedbutton(c),
+          awful.titlebar.widget.minimizebutton (c),
+          layout  = wibox.layout.fixed.vertical
+        },
+          nil,
+        { -- Bottom
+          awful.titlebar.widget.floatingbutton (c),
+          layout = wibox.layout.fixed.vertical()
+        },
           layout = wibox.layout.align.vertical
-      }
-  end
-end
+        }
+      end
 
-
-client.connect_signal("request::titlebars", function(c)
-  kittyBar(c)
 end)
 
 
@@ -193,7 +184,6 @@ _G.screen.connect_signal("arrange", function(s)
   end
 
 end)
-
 
 _G.client.connect_signal("property::floating", function(c)
     if c.floating then
