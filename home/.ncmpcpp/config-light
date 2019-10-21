@@ -1,16 +1,15 @@
 mpd_music_dir = "~/Music"
 mpd_port  ="6600"
 mpd_host = "127.0.0.1"
-#Visualizer
-visualizer_fifo_path = ""/tmp/mpd.fifo"
-visualizer_output_name = "fifo"
-visualizer_in_stereo = "yes"
-visualizer_sync_interval = "30"
-visualizer_look = "xx"
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_output_name = "Visualizer feed"
+visualizer_in_stereo = no
+#visualizer_sample_multiplier = 1
+visualizer_sync_interval = 30
+visualizer_type = spectrum
+visualizer_look = ●┃
 visualizer_color = cyan, green, yellow, magenta, red
-
-
-
+#visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
 #system_encoding = ""
 #playlist_disable_highlight_delay = 5
 #message_delay_time = 5
@@ -64,7 +63,7 @@ follow_now_playing_lyrics = no
 #fetch_lyrics_for_current_song_in_background = no
 #store_lyrics_in_song_dir = no
 #generate_win32_compatible_filenames = yes
-allow_for_physical_item_deletion = no
+#allow_for_physical_item_deletion = no
 #lastfm_preferred_language = en
 #show_hidden_files_in_local_browser = no
 #screen_switcher_mode = playlist, browser
@@ -107,7 +106,7 @@ active_column_color = red
 window_border_color = yellow
 
 ## you have dunst? use this
-#execute_on_song_change = extract_cover.sh && set-current-cover "extract"
+execute_on_song_change = kitty_ncmpcppp_cover.sh &> /dev/null
 #execute_on_song_change = ~/.ncmpcpp/art-dark.sh && notify-send "Now Playing ♫" "$(mpc current)"
 
 ## you don't have dunst? maybe another notification daemon would work. doesn't work? use this to disable sending notification attemps
