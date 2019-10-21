@@ -1,6 +1,6 @@
 configuration {
   show-icons:                     true;
-  icon-theme:                     "Flat-Remix-Blue-Dark";
+  icon-theme:                     "la-capitaine-icon-theme";
   font:                           "SFNS Display 9";
   drun-display-format:            "{name}";
 }
