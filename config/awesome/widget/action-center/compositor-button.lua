@@ -1,4 +1,6 @@
 -- This widget is messy AF
+-- It is a hackish way to disable and enable blur effect in compton because
+-- There's no native way to do it. Implementing DBUS integration would be useful in here but it isnt supported
 -- It uses unix command to change some strings in compton config
 
 local awful = require('awful')
@@ -14,7 +16,6 @@ local filesystem = require('gears.filesystem')
 local apps = require('configuration.apps')
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/action-center/icons/'
-local cmd = 'grep -F "blur-background-frame = false;" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf ' .. "| tr -d '[\\-\\;\\=\\ ]' "
 local frameStatus
 local widgetIconName
 
@@ -43,7 +44,7 @@ end
 
 ------
 
--- The cmd variable is declared above
+local cmd = 'grep -F "blur-background-frame = false;" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf ' .. "| tr -d '[\\-\\;\\=\\ ]' "
 -- It checks the line "blur-background-frame: false;"
 -- I use 'tr' shell command to remove the special characters
 -- because lua is choosy on MATCH method

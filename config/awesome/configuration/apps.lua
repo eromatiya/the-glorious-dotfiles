@@ -28,6 +28,7 @@ return {
     fullShot = filesystem.get_configuration_dir() .. '/binaries/snap full',
     areaShot = filesystem.get_configuration_dir() .. '/binaries/snap area',
     enableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx enable',
-    disableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx disable'
+    disableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx disable',
+    coverUpdate = filesystem.get_configuration_dir() .. '/binaries/album-cover-extract'
   }
 }
