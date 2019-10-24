@@ -18,7 +18,7 @@ local apps = require('configuration.apps')
 awful.screen.connect_for_each_screen(
   function(s)
     -- Create the box
-    local offsetx = dpi(360)
+    local offsetx = dpi(350)
     musicPlayer = wibox(
       {
         bg = '#00000000',
@@ -71,6 +71,17 @@ local cover =
 }
 
 
+function checkCover()
+  local cmd = "if [[ -f /tmp/cover.jpg ]]; then print exists; fi"
+  awful.spawn.easy_async_with_shell(cmd, function(stdout)
+    if (stdout:match("%W")) then
+      cover.icon:set_image(gears.surface.load_uncached('/tmp/cover.jpg'))
+    else
+      cover.icon:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'vinyl' .. '.svg'))
+    end
+  end)
+end
+
 -- Update info
 function updateInfo()
   _G.getTitle()
@@ -84,7 +95,7 @@ musicPlayer:setup {
   expand = "none",
     {
       {
-        wibox.container.margin(cover, 15, 15, 15, 5),
+        wibox.container.margin(cover, dpi(15), dpi(15), dpi(15), dpi(5)),
         layout = wibox.layout.fixed.vertical,
       },
       nil,
@@ -126,6 +137,8 @@ local updateWidget = gears.timer {
     end
 }
 
+
+
 -- Execute if button is next/play/prev button is pressed
 awesome.connect_signal("song_changed", function()
   gears.timer {
@@ -141,10 +154,13 @@ end)
 
 widget.icon:set_image(PATH_TO_ICONS .. 'music' .. '.svg')
 
--- Update info on Initialization
-awful.spawn(apps.bins.coverUpdate, false)
-cover.icon:set_image('/tmp/cover.jpg')
-_G.getTitle()
-_G.getArtist()
+-- Update music info on Initialization
+local function initMusicInfo()
+  awful.spawn(apps.bins.coverUpdate, false)
+  cover.icon:set_image('/tmp/cover.jpg')
+  _G.getTitle()
+  _G.getArtist()
+end
+initMusicInfo()
 
 return widget_button

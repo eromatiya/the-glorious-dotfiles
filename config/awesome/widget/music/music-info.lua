@@ -33,7 +33,7 @@ function getTitle()
     if (stdout:match("%W")) then
       musicTitle.title:set_text(stdout)
     else
-      musicTitle.title:set_text("Play A")
+      musicTitle.title:set_text("Play Music :)")
     end
   end)
 end
@@ -55,7 +55,7 @@ function getArtist()
     if (stdout:match("%W")) then
       musicArtist.artist:set_text(stdout)
     else
-      musicArtist.artist:set_text('MUSIC :)')
+      musicArtist.artist:set_text("Music is love. Music is life.")
     end
   end)
 end

@@ -47,6 +47,7 @@ play_button:buttons(
         awful.spawn('mpc toggle', false)
         checkIfPlaying()
         _G.updateInfo()
+        _G.checkCover()
       end
     )
   )
@@ -76,6 +77,7 @@ next_button:buttons(
       function()
         awful.spawn('mpc next', false)
         _G.updateInfo()
+        _G.checkCover()
       end
     )
   )
@@ -100,8 +102,9 @@ prev_button:buttons(
       1,
       nil,
       function()
-        awful.spawn('mpc prev', falsef)
+        awful.spawn('mpc prev', false)
         _G.updateInfo()
+        _G.checkCover()
       end
     )
   )
