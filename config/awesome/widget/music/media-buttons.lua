@@ -44,7 +44,7 @@ play_button:buttons(
       1,
       nil,
       function()
-        awful.spawn('mpc toggle')
+        awful.spawn('mpc toggle', false)
         checkIfPlaying()
         _G.updateInfo()
       end
@@ -74,7 +74,7 @@ next_button:buttons(
       1,
       nil,
       function()
-        awful.spawn('mpc next')
+        awful.spawn('mpc next', false)
         _G.updateInfo()
       end
     )
@@ -100,7 +100,7 @@ prev_button:buttons(
       1,
       nil,
       function()
-        awful.spawn('mpc prev')
+        awful.spawn('mpc prev', falsef)
         _G.updateInfo()
       end
     )
@@ -109,9 +109,9 @@ prev_button:buttons(
 
 local mediabutton =
   wibox.widget {
-    wibox.container.margin(prev_button, 25, 15),
-    wibox.container.margin(play_button, 20, 20),
-    wibox.container.margin(next_button, 15, 25),
+    wibox.container.margin(prev_button, dpi(25), dpi(15)),
+    wibox.container.margin(play_button, dpi(20), dpi(20)),
+    wibox.container.margin(next_button, dpi(15), dpi(25)),
     layout = wibox.layout.flex.horizontal,
 }
 

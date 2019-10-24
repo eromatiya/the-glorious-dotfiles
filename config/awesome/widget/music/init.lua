@@ -26,7 +26,7 @@ awful.screen.connect_for_each_screen(
         ontop = true,
         type = "normal",
         height = dpi(380),
-        width = 260,
+        width = dpi(260),
         x = s.geometry.width - offsetx,
         y = dpi(26),
       }
@@ -70,56 +70,12 @@ local cover =
   layout = wibox.layout.fixed.vertical
 }
 
--- Music Title
-local musicTitle =
-  wibox.widget {
-  {
-    id = 'title',
-    font = 'SFNS Display Bold 12',
-    align  = 'center',
-    valign = 'bottom',
-    ellipsize = 'end',
-    widget = wibox.widget.textbox
-  },
-  layout = wibox.layout.flex.horizontal
-}
-local function getTitle()
-  awful.spawn.easy_async_with_shell('mpc -f %title% current', function( stdout )
-    if (stdout:match("%W")) then
-      musicTitle.title:set_text(stdout)
-    else
-      musicTitle.title:set_text("Play A")
-    end
-  end)
-end
-
--- Music Artist
-local musicArtist =
-  wibox.widget {
-  {
-    id = 'artist',
-    font = 'SFNS Display 9',
-    align  = 'center',
-    valign = 'top',
-    widget = wibox.widget.textbox
-  },
-  layout = wibox.layout.flex.horizontal
-}
-local function getArtist()
-  awful.spawn.easy_async_with_shell('mpc -f %artist% current', function( stdout )
-    if (stdout:match("%W")) then
-      musicArtist.artist:set_text(stdout)
-    else
-      musicArtist.artist:set_text('MUSIC :)')
-    end
-  end)
-end
 
 -- Update info
 function updateInfo()
-  getTitle()
-  getArtist()
-  awful.spawn(apps.bins.coverUpdate)
+  _G.getTitle()
+  _G.getArtist()
+  awful.spawn(apps.bins.coverUpdate, false)
   awesome.emit_signal("song_changed")
 end
 
@@ -133,9 +89,9 @@ musicPlayer:setup {
       },
       nil,
       {
+        spacing = dpi(4),
         require('widget.music.progressbar'),
-        musicTitle,
-        musicArtist,
+        require('widget.music.music-info'),
         require('widget.music.media-buttons'),
         layout = wibox.layout.flex.vertical,
       },
@@ -178,7 +134,7 @@ awesome.connect_signal("song_changed", function()
       single_shot = true,
       callback  = function()
         cover.icon:set_image(gears.surface.load_uncached('/tmp/cover.jpg'))
-        awful.spawn('rm /tmp/cover.jpg')
+        awful.spawn('rm /tmp/cover.jpg', false)
       end
     }
 end)
@@ -186,9 +142,9 @@ end)
 widget.icon:set_image(PATH_TO_ICONS .. 'music' .. '.svg')
 
 -- Update info on Initialization
-awful.spawn(apps.bins.coverUpdate)
+awful.spawn(apps.bins.coverUpdate, false)
 cover.icon:set_image('/tmp/cover.jpg')
-getTitle()
-getArtist()
+_G.getTitle()
+_G.getArtist()
 
 return widget_button
