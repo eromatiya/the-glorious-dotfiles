@@ -14,6 +14,7 @@
 + **Browser**: firefox
 + **Music Player**: ncmpcpp, mpd, mpc
 + **Lock Screen**: ![mantablockscreen](https://github.com/reorr/mantablockscreen)
++ **Display Manager**: sddm ![sugar-candy](https://www.opencode.net/marianarlt/sddm-sugar-candy)
 
 # Floppy - An AwesomeWM Setup
 
@@ -39,7 +40,8 @@
 | App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/application-dashboard.png) |
 | OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/OSDs.gif) |
 | Exit Screen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/exit-screen.png) |
-| lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lockscreen.png) |
+| Lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lockscreen.png) |
+| Greeter | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/greeter.png) |
 
 
 ## Dependencies

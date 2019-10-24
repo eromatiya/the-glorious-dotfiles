@@ -21,21 +21,15 @@ awful.screen.connect_for_each_screen(
         ontop = true,
         type = "normal",
         height = offsety,
-        width = 48,
+        width = dpi(48),
+        bg = "#00000000",
         x = s.geometry.width - offsetx,
-        y = (s.geometry.height / 2) - (offsety / 2),
+        y = (s.geometry.height / dpi(2)) - (offsety / dpi(2)),
       }
     )
   end
 )
 
-
-
--- Place it at the center of the screen
---awful.placement.centered(brightnessOverlay)
-
--- Set transparent bg
-brightnessOverlay.bg = "#00000000"
 
 -- Put its items in a shaped container
 brightnessOverlay:setup {
@@ -76,7 +70,5 @@ function toggleBriOSD(bool)
   end
 end
 
-
--- awful.widget.watch('', 5),
 
 return brightnessOverlay

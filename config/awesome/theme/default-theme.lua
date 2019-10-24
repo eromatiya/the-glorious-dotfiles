@@ -58,11 +58,17 @@ local awesome_overrides =
   theme.menu_height = 34
   theme.menu_width = 210
   theme.menu_border_width = 20
-  theme.menu_bg_focus = '#8AB4F8' .. 'AA'
+  theme.menu_bg_focus = '#8AB4F8' .. 'CC'
+  -- Dark
   theme.menu_bg_normal = '#000000' .. '44'
   theme.menu_fg_normal = '#ffffff'
   theme.menu_fg_focus = '#ffffff'
   theme.menu_border_color = '#000000' .. '75'
+  -- Light
+  -- theme.menu_bg_normal = '#ffffff' .. 'FF'
+  -- theme.menu_fg_normal = '#1a1a1a'
+  -- theme.menu_fg_focus = '#1a1a1a'
+  -- theme.menu_border_color = '#ffffff' .. 'ff'
 
 
   -- Tooltips

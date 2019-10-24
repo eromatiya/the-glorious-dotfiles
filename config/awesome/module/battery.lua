@@ -1,9 +1,5 @@
--- Provides:
--- evil::battery
---      percentage (integer)
--- evil::charger
---      plugged (boolean)
---
+-- Dependencies:
+-- acpid, upower, acpi_listens
 local awful = require("awful")
 
 local update_interval = 30
