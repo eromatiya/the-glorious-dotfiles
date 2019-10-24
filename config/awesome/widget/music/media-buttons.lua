@@ -47,7 +47,7 @@ play_button:buttons(
         awful.spawn('mpc toggle', false)
         checkIfPlaying()
         _G.updateInfo()
-        _G.checkCover()
+  --      _G.checkCover()
       end
     )
   )

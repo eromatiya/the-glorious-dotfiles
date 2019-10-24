@@ -137,8 +137,6 @@ local updateWidget = gears.timer {
     end
 }
 
-
-
 -- Execute if button is next/play/prev button is pressed
 awesome.connect_signal("song_changed", function()
   gears.timer {
@@ -157,6 +155,7 @@ widget.icon:set_image(PATH_TO_ICONS .. 'music' .. '.svg')
 -- Update music info on Initialization
 local function initMusicInfo()
   awful.spawn(apps.bins.coverUpdate, false)
+  checkCover()
   cover.icon:set_image('/tmp/cover.jpg')
   _G.getTitle()
   _G.getArtist()

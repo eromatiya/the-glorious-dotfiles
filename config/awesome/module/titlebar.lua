@@ -56,7 +56,7 @@ beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focu
 
 
 local roundCorners = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 6)
+    gears.shape.rounded_rect(cr, width, height, 12)
 end
 
 

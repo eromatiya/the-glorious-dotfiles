@@ -1,5 +1,5 @@
 -- This module changes wallpaper based on declared time
--- Note that this module will not change the wallpaper accurately
+-- Note that this module will not change the wallpaper at the exact time
 -- Because it only checks the time every 10 minutes/600 seconds
 -- So the wallpaper will change only within the first 10 mins of the hour
 
@@ -10,17 +10,27 @@ local awful = require('awful')
 
 
 -- Change hour from 00-23
-local hour = 19
+local dayTime = 6
+local noonTime = 12
+local nightTime = 18
+local midNight = 00
 local checkTimePer = 600 -- seconds
 
 function timeChecker()
   time = os.date("*t")
     time = time.hour
-    -- Change to night-wallpaper when it's 7PM.
-    if tonumber(time) >= hour then
-      gears.wallpaper.maximized (wall_dir .. 'night-wallpaper.jpg', s)
-    else
+    -- Morning
+    if tonumber(time) >= dayTime and tonumber(time) < noonTime then
       gears.wallpaper.maximized (wall_dir .. 'day-wallpaper.jpg', s)
+    -- Noon
+    elseif tonumber(time) >= noonTime and tonumber(time) < nightTime then
+      gears.wallpaper.maximized (wall_dir .. 'noon-wallpaper.jpg', s)
+    -- Evening
+    elseif tonumber(time) >= nightTime then
+      gears.wallpaper.maximized (wall_dir .. 'night-wallpaper.jpg', s)
+    -- Midnight
+    else
+      gears.wallpaper.maximized (wall_dir .. 'midnight-wallpaper.jpg', s)
     end
 end
 
