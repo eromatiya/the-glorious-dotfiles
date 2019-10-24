@@ -39,7 +39,7 @@
 | App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/application-dashboard.png) |
 | OSDs | ![GIF](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/OSDs.gif) |
 | Exit Screen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/exit-screen.png) |
-| lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/exit-screen.png) |
+| lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lockscreen.png) |
 
 
 ## Dependencies
