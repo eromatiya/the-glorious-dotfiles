@@ -16,7 +16,7 @@
 + **Lock Screen**: ![mantablockscreen](https://github.com/reorr/mantablockscreen)
 + **Display Manager**: sddm ![sugar-candy](https://www.opencode.net/marianarlt/sddm-sugar-candy)
 
-# Floppy - An AwesomeWM Setup
+# An AwesomeWM Setup
 
 ## FEATURES!
 + **Brightness and Volume OSDs**
@@ -28,8 +28,15 @@
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
 + **BUGS. A LOT OF BUGS.**
 
+Warning! Rounded is buggy af. Will fix "soon"
 ## Theme Preview  
+| Rounded | Preview |
+| --- | --- |
+| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded-desktop.png) |
+| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded-dirty.png)   |
+| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded-appdashboard.png) |
 
+# Other themes preview
 | Floppy | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/desktop.png) |
