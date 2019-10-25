@@ -1,6 +1,6 @@
 configuration {
   show-icons:                     true;
-  icon-theme:                     "la-capitaine-icon-theme";
+  icon-theme:                     "korla";
   font:                           "SFNS Display 9";
   drun-display-format:            "{name}";
 }

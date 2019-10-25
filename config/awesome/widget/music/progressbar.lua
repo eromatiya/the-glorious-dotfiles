@@ -48,6 +48,7 @@ local updateTime = gears.timer {
          else
            timeStatus.text = tostring("00:00")
          end
+         collectgarbage('collect')
       end)
     end
 }
@@ -63,6 +64,7 @@ local updateTimeDuration = gears.timer {
          else
            timeDuration.text = tostring("00:00")
          end
+         collectgarbage('collect')
       end)
     end
 }

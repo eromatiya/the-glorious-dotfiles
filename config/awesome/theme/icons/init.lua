@@ -1,5 +1,5 @@
-local leftpanel_icon_theme = 'macos' -- Available Themes: 'drops', 'original', 'macos'
-local lit_dir = os.getenv('HOME') .. '/.config/awesome/theme/icons/themes/' .. leftpanel_icon_theme
+local leftpanel_icon_theme = 'korla' -- Available Themes: 'drops', 'original', 'macos', 'korla'
+local lit_dir = os.getenv('HOME') .. '/.config/awesome/theme/icons/sidebar-themes/' .. leftpanel_icon_theme
 
 local dir = os.getenv('HOME') .. '/.config/awesome/theme/icons'
 
