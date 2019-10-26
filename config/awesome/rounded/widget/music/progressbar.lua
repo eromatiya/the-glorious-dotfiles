@@ -53,6 +53,23 @@ local updateTime = gears.timer {
       end)
     end
 }
+-- Update time once on startup
+local updateTime = gears.timer {
+    timeout = 1,
+    autostart = true,
+    single_shot = true,
+    callback  = function()
+      local cmd = "echo $(mpc status " .. " | " .. " awk 'NR==2 { split($3, a," .. ' "/"' .. "); " .. " print a[1]}') " .. " | " .. " tr -d '[\\%\\(\\)]'"
+      awful.spawn.easy_async_with_shell(cmd, function( stdout )
+         if stdout ~= nil then
+           timeStatus.text = tostring(stdout)
+         else
+           timeStatus.text = tostring("00:00")
+         end
+         collectgarbage('collect')
+      end)
+    end
+}
 
 -- Update time duration on song change
 local updateTimeDuration = gears.timer {
@@ -71,9 +88,44 @@ local updateTimeDuration = gears.timer {
     end
 }
 
+-- Update time once duration on startup
+local updateTimeDuration = gears.timer {
+    timeout = 1,
+    autostart = true,
+    single_shot = true,
+    callback  = function()
+      local cmd = "mpc --format %time% current"
+      awful.spawn.easy_async_with_shell(cmd, function( stdout )
+         if stdout ~= nil then
+           timeDuration.text = tostring(stdout)
+         else
+           timeDuration.text = tostring("00:00")
+         end
+         collectgarbage('collect')
+      end)
+    end
+}
+
 -- Get the progress percentage of music
 local updateBar = gears.timer {
     timeout = 5,
+    autostart = true,
+    callback  = function()
+      local cmd = "echo $(mpc status " .. " | " .. " awk 'NR==2 { split($4, a); " .. " print a[1]}') " .. " | " .. " tr -d '[\\%\\(\\)]'"
+      awful.spawn.easy_async_with_shell(cmd, function( stdout )
+         if stdout ~= nil then
+           progressbar.bar:set_value(tonumber(stdout))
+         else
+           progressbar.bar:set_value(0)
+         end
+      end)
+    end
+}
+
+-- Get the progress percentage of music on startup
+local updateBar = gears.timer {
+    timeout = 1,
+    single_shot = true,
     autostart = true,
     callback  = function()
       local cmd = "echo $(mpc status " .. " | " .. " awk 'NR==2 { split($4, a); " .. " print a[1]}') " .. " | " .. " tr -d '[\\%\\(\\)]'"

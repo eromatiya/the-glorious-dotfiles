@@ -160,6 +160,4 @@ end
 initMusicInfo()
 
 
-root.buttons(gears.table.join(awful.button({ }, 3, function () musicPlayer.visible = false awful.spawn('notify-send ad')end)))
-
 return widget_button
