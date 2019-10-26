@@ -70,6 +70,17 @@ awful.screen.connect_for_each_screen(function(s)
   s.systray.opacity = 0.3
 end)
 
+-- Execute if button is system tray widget is not loaded
+awesome.connect_signal("toggle_tray", function()
+  if not require('widget.systemtray') then
+    if awful.screen.focused().systray.visible ~= true then
+      awful.screen.focused().systray.visible = true
+    else
+      awful.screen.focused().systray.visible = false
+    end
+  end
+end)
+
 local add_button = mat_icon_button(mat_icon(icons.plus, dpi(16))) -- add button -- 24
 add_button:buttons(
   gears.table.join(

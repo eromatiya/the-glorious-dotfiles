@@ -32,13 +32,27 @@ widget_button:buttons(
       1,
       nil,
       function()
-        awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+        awesome.emit_signal("toggle_tray")
       end
     )
   )
 )
 
-widget.icon:set_image(PATH_TO_ICONS .. 'systray' .. '.svg')
+-- Execute if button is next/play/prev button is pressed
+awesome.connect_signal("toggle_tray", function()
+  if awful.screen.focused().systray.visible ~= true then
+    awful.screen.focused().systray.visible = true
+    widget.icon:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'left-arrow' .. '.svg'))
+  else
+    awful.screen.focused().systray.visible = false
+    widget.icon:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'right-arrow' .. '.svg'))
+  end
+  -- awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+end)
+
+if awful.screen.focused().systray.visible ~= true then
+  widget.icon:set_image(PATH_TO_ICONS .. 'right-arrow' .. '.svg')
+end
 
 
 return widget_button

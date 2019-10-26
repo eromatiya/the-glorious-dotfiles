@@ -75,14 +75,18 @@ awful.screen.connect_for_each_screen(function(s)
   s.systray.opacity = 0.3
 end)
 
---[[
--- Systray Widget
-local systray = wibox.widget.systray()
-	systray:set_horizontal(true)
-	systray:set_base_size(28)
-	beautiful.systray_icon_spacing = 24
-	opacity = 0
-]]--
+
+-- Execute if button is system tray widget is not loaded
+awesome.connect_signal("toggle_tray", function()
+  if not require('widget.systemtray') then
+    if awful.screen.focused().systray.visible ~= true then
+      awful.screen.focused().systray.visible = true
+    else
+      awful.screen.focused().systray.visible = false
+    end
+end
+  -- awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+end)
 
 local add_button = mat_icon_button(mat_icon(icons.plus, dpi(16))) -- add button -- 24
 add_button:buttons(
@@ -151,13 +155,13 @@ local TopPanel = function(s, offset)
       -- System tray and widgets
       --wibox.container.margin(systray, dpi(14), dpi(14)),
       wibox.container.margin(s.systray, dpi(14), dpi(0), dpi(4), dpi(4)),
+      require('widget.systemtray'),
       require('widget.package-updater'),
       require('widget.music'),
       require('widget.bluetooth'),
       require('widget.wifi'),
       require('widget.battery'),
       require('widget.search'),
-      require('widget.systemtray'),
     }
   }
 

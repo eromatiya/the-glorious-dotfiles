@@ -66,7 +66,7 @@ local globalKeys =
 
   -- Toggle System Tray
   awful.key({ 'Control' }, 'Escape', function ()
-      awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+      awesome.emit_signal("toggle_tray")
     end, {description = "Toggle systray visibility", group = "Miscellaneous"}),
 
   -- Tag browsing
