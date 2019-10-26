@@ -27,7 +27,6 @@
   - Wallpaper changes based on time. You can modify it here `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
 
-Warning! Rounded is buggy af. Will fix "soon"
 ## Theme Preview  
 | Rounded | Preview |
 | --- | --- |
