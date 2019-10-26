@@ -139,7 +139,7 @@ local hSeparator = wibox.widget {
 
 local BotPanel = function(s, offset)
   local offsetx = 0
-  local padding = dpi(10)
+  padding = dpi(10)
   if offset == true then
     offsety = dpi(42) -- 48
   end
@@ -148,20 +148,15 @@ local BotPanel = function(s, offset)
     {
       ontop = true,
       screen = s,
+      visible = true,
+      type = 'normal',
       height = dpi(42), -- 48
       width = s.geometry.width - padding,
       x = s.geometry.x + (padding / 2),
       y = s.geometry.height - offsety - (padding / 2),
       stretch = false,
-      shape = function(cr, width, height)
-        gears.shape.rounded_rect(
-          cr,
-          width,
-          height,
-          12)
-        end,
-      bg = beautiful.background.hue_800,
-      fg = beautiful.fg_normal,
+      -- Set transparent bg
+      bg = '#00000000',
       struts = {
         bottom = dpi(42) + padding-- 48
       }
@@ -170,7 +165,7 @@ local BotPanel = function(s, offset)
 
   panel:struts(
     {
-      bottom = dpi(42) + dpi(5)-- 48
+      bottom = dpi(42) + padding / 2-- 48
     }
   )
 
@@ -200,35 +195,51 @@ return wibox.widget {
 end
 
   panel:setup {
-	expand = "none",
-    layout = wibox.layout.align.horizontal,
     {
-      layout = wibox.layout.fixed.horizontal,
-      -- Create a taglist widget
-      require('widget.search'),
-      require('widget.music'),
-      hSeparator,
-      TagList(s),
-    },
-    -- Middle Widget
-    wibox.container.margin(clock_widget, dpi(10), dpi(10)),
-    -- nil,
-    {
-      layout = wibox.layout.fixed.horizontal,
-      wibox.container.margin(s.systray, dpi(10), dpi(10), dpi(10), dpi(10)),
+      expand = "none",
+      layout = wibox.layout.align.horizontal,
       {
-      layout = wibox.layout.fixed.horizontal,
-      genWidget(require('widget.systemtray')),
-      genWidget(require('widget.package-updater')),
-      genWidget(require('widget.bluetooth')),
-      genWidget(require('widget.wifi')),
-      genWidget(require('widget.battery')),
+        layout = wibox.layout.fixed.horizontal,
+        -- Create a taglist widget
+        require('widget.search'),
+        require('widget.music'),
+        hSeparator,
+        TagList(s),
       },
-      hSeparator,
-      genWidget(require('widget.dashboard')),
-      genWidget(LayoutBox(s)),
-
-    }
+      -- Middle Widget
+      wibox.container.margin(clock_widget, dpi(10), dpi(10)),
+      -- nil,
+      {
+        layout = wibox.layout.fixed.horizontal,
+        wibox.container.margin(s.systray, dpi(10), dpi(10), dpi(10), dpi(10)),
+      {
+        layout = wibox.layout.fixed.horizontal,
+        genWidget(require('widget.systemtray')),
+        genWidget(require('widget.package-updater')),
+        genWidget(require('widget.bluetooth')),
+        genWidget(require('widget.wifi')),
+        genWidget(require('widget.battery')),
+      },
+        hSeparator,
+        genWidget(require('widget.dashboard')),
+        genWidget(LayoutBox(s)),
+      },
+    },
+    -- The real background color
+    bg = beautiful.background.hue_800,
+    -- The real, anti-aliased shape
+    shape = function(cr, width, height)
+              gears.shape.partially_rounded_rect(
+                cr,
+                width,
+                height,
+                true,
+                true,
+                true,
+                true,
+                12)
+            end,
+    widget = wibox.container.background()
   }
 
   return panel
