@@ -14,15 +14,12 @@ local dpi = require('beautiful').xresources.apply_dpi
 local icons = require('theme.icons')
 
   -- Clock / Calendar 12h format
+  -- Check Date/Time formats in 'man strftime'
 local textclock = wibox.widget.textclock('<span font="SFNS Display Regular 12">%l:%M %p</span>')
 
-  -- Clock / Calendar 12AM/PM fornat
-  -- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
-  -- textclock.forced_height = 56
 local clock_widget = wibox.container.margin(textclock, dpi(0), dpi(0))
 
 -- Alternative to naughty.notify - tooltip. You can compare both and choose the preferred one
-
 awful.tooltip(
   {
     objects = {clock_widget},
@@ -53,7 +50,7 @@ local month_calendar = awful.widget.calendar_popup.month({
 	spacing = 10,
 	font = 'SFNS Display 10',
 	long_weekdays = true,
-	margin = 9, -- 10
+	margin = 5, -- 10
 	style_month = { border_width = 0, padding = 12, shape = cal_shape, padding = 25},
 	style_header = { border_width = 0, bg_color = '#00000000'},
 	style_weekday = { border_width = 0, bg_color = '#00000000' },
@@ -72,15 +69,6 @@ awful.screen.connect_for_each_screen(function(s)
   beautiful.systray_icon_spacing = 24
   s.systray.opacity = 0.3
 end)
-
---[[
--- Systray Widget
-local systray = wibox.widget.systray()
-	systray:set_horizontal(true)
-	systray:set_base_size(28)
-	beautiful.systray_icon_spacing = 24
-	opacity = 0
-]]--
 
 local add_button = mat_icon_button(mat_icon(icons.plus, dpi(16))) -- add button -- 24
 add_button:buttons(
@@ -221,12 +209,8 @@ end
       require('widget.music'),
       hSeparator,
       TagList(s),
-      -- TaskList(s),
-      -- add_button
     },
-	  -- Create a clock widget
-	  -- Clock
-
+    -- Middle Widget
     wibox.container.margin(clock_widget, dpi(10), dpi(10)),
     -- nil,
     {

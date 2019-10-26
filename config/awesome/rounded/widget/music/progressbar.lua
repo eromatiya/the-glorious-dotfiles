@@ -37,6 +37,7 @@ local timeDuration = wibox.widget {
     widget            = wibox.widget.textbox
 }
 
+-- Update time progress every 5 seconds
 local updateTime = gears.timer {
     timeout = 5,
     autostart = true,
@@ -53,6 +54,7 @@ local updateTime = gears.timer {
     end
 }
 
+-- Update time duration on song change
 local updateTimeDuration = gears.timer {
     timeout = 5,
     autostart = true,
@@ -69,7 +71,7 @@ local updateTimeDuration = gears.timer {
     end
 }
 
-
+-- Get the progress percentage of music
 local updateBar = gears.timer {
     timeout = 5,
     autostart = true,

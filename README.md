@@ -26,7 +26,6 @@
 + **Dynamic Wallpaper Module**
   - Wallpaper changes based on time. You can modify it here `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
-+ **BUGS. A LOT OF BUGS.**
 
 Warning! Rounded is buggy af. Will fix "soon"
 ## Theme Preview  
@@ -63,7 +62,6 @@ If you notice that something is missing, please open an issue so I can add the d
 | `rofi-git` | Window switcher, application launcher and dmenu replacement | Application launcher |
 | `Compton-tryone` | A compositor for X11 | compositor with kawase-blur |
 | `blueman` | Manages bluetooth | For bluetooth widgets |
-| `xfce4-settings-manager` | Manages basic settings | System Settings |
 | `xfce4-power-manager` | Manages battery/power settings | Power Settings |
 | `acpi`,`acpid`,`acpi_call` | Show battery status and other ACPI info | Charger notifications |
 | `pulseaudio`, `libpulse` | Sound system | Volume widgets and keybinds |
@@ -75,7 +73,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
 | `xorg-xwininfo` | Window information utility for X | it just works |
 | `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend |
-| `xdg_menu` | Generates a list of installed applications | Useful for menu generation |
+| `xdg_menu` | Generates a list of installed applications | Useful for generating app list |
 
 
 ##### Monospace
@@ -86,7 +84,19 @@ If you notice that something is missing, please open an issue so I can add the d
 + **San Francisco Display**
 
 #### Installation
-+ Copy `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
++ My setup is using the dependencies above, well if you don't want bloat you can install what you want. But these are the recommended dependencies:
+  - awesome-git master branch (window manager framework)
+  - rofi git branch (application launcher)
+  - blueman (bluetooth widgets)
+  - xfce4-power-manager (power widget)
+  - acpi, acpid, acpi_call, upower (battery notifications)
+  - pulseaudio, alsa-utils (volume/audio keybinds)
+  - mpd, mpc (music widget)
+  - maim, xclip (screenshot tool)
+  - xorg-xwininfo, xprop (custom titlebar)
+  - python3 (web-search rofi)
+  - xdg-menu (generates app list)
++ Copy the selected theme from `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
 + Reload Awesome
 
 

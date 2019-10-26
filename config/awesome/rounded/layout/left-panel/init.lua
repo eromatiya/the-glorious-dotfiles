@@ -15,7 +15,7 @@ local left_panel = function(screen)
       height = screen.geometry.height,
       x = screen.geometry.width - panel_content_width,
       bg = beautiful.background.hue_800,
-      opacity = 0.0
+      opacity = 0.0,
       -- bg = '#ff00ff'
     }
 

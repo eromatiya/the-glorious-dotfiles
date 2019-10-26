@@ -28,7 +28,7 @@ awful.screen.connect_for_each_screen(
         type = "normal",
         height = dpi(380),
         width = dpi(260),
-        x = padding,
+        x = padding / 2,
         y = s.geometry.height - dpi(380) - dpi(10) - dpi(42),
       }
     )
@@ -45,7 +45,7 @@ local widget =
   layout = wibox.layout.align.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(11), dpi(11), dpi(11), dpi(11))) -- default top bottom margin is 7
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(11), dpi(11), dpi(11), dpi(11)))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -158,5 +158,8 @@ local function initMusicInfo()
   _G.getArtist()
 end
 initMusicInfo()
+
+
+root.buttons(gears.table.join(awful.button({ }, 3, function () musicPlayer.visible = false awful.spawn('notify-send ad')end)))
 
 return widget_button
