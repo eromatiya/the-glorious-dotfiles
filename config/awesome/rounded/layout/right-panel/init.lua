@@ -11,12 +11,11 @@ local right_panel = function(screen)
     wibox {
       ontop = true,
       screen = screen,
-      width = nil,
+      width = dpi(1),
       height = screen.geometry.height,
       x = screen.geometry.width - panel_content_width,
       bg = beautiful.background.hue_800,
       opacity = 0.0,
-      -- bg = '#ff00ff'
     }
 
   panel.opened = false
@@ -60,6 +59,7 @@ local right_panel = function(screen)
   end
 
   local closePanel = function()
+    panel.width = dpi(1)
     panel.opacity = 0.0
     panel:get_children_by_id('panel_content')[1].visible = false
     backdrop.visible = false
