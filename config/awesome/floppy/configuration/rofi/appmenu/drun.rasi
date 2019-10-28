@@ -1,7 +1,7 @@
 configuration {
   show-icons:                     true;
   icon-theme:                     "korla";
-  font:                           "SFNS Display 9";
+  font:                           "Neue Haas Unica Pro Bold 9";
   drun-display-format:            "{name}";
 }
 
@@ -34,9 +34,9 @@ entry {
   expand:                         false;
   width:                          20em;
   margin:                         40px -355px 20px 355px;
-  border-radius:                  12;
+  border-radius:                  6;
   padding:                        10px 10px 10px 10px;
-  background-color:               #ffffff20;
+  background-color:               #00000020;
   border:                         0px 0px solid 0px 0px;
   border-color:                   @text-color;
   font:                           "SFNS Display 10";

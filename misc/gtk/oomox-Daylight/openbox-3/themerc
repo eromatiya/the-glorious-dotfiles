@@ -29,8 +29,8 @@ padding.height: 4
 
 window.active.border.color: #2d3036
 window.inactive.border.color: #2d3036
-window.active.title.separator.color: #f3f8f9
-window.inactive.title.separator.color: #f3f8f9
+window.active.title.separator.color: #ffffff
+window.inactive.title.separator.color: #ffffff
 window.active.client.color: #2d3036
 window.inactive.client.color: #2d3036
 
@@ -38,30 +38,30 @@ window.active.label.text.color: #1a1a1a
 window.inactive.label.text.color: #7F8388
 
 window.active.button.unpressed.image.color: #1a1a1a
-window.active.button.pressed.image.color: #8ab4f8
+window.active.button.pressed.image.color: #5294e2
 window.active.button.disabled.image.color: #2d3036
 window.active.button.hover.image.color: #1a1a1a
 window.active.button.toggled.unpressed.image.color: #1a1a1a
-window.active.button.toggled.pressed.image.color: #8ab4f8
+window.active.button.toggled.pressed.image.color: #5294e2
 window.active.button.toggled.hover.image.color: #1a1a1a
 window.inactive.button.unpressed.image.color: #1F2328
-window.inactive.button.pressed.image.color: #8ab4f8
+window.inactive.button.pressed.image.color: #5294e2
 window.inactive.button.disabled.image.color: #2d3036
 window.inactive.button.hover.image.color: #1a1a1a
 window.inactive.button.toggled.unpressed.image.color: #1F2328
-window.inactive.button.toggled.pressed.image.color: #8ab4f8
+window.inactive.button.toggled.pressed.image.color: #5294e2
 window.inactive.button.toggled.hover.image.color: #1a1a1a
 
 window.active.title.bg: flat solid
-window.active.title.bg.color: #f3f8f9
+window.active.title.bg.color: #ffffff
 window.active.label.bg: flat solid
-window.active.label.bg.color: #f3f8f9
+window.active.label.bg.color: #ffffff
 #window.active.handle.bg: texture
 #window.active.grip.bg: texture
 window.inactive.title.bg: flat solid
-window.inactive.title.bg.color: #f3f8f9
+window.inactive.title.bg.color: #ffffff
 window.inactive.label.bg: flat solid
-window.inactive.label.bg.color: #f3f8f9
+window.inactive.label.bg.color: #ffffff
 #window.inactive.handle.bg: texture
 #window.inactive.grip.bg: texture
 
@@ -104,9 +104,9 @@ menu.items.active.text.color: #ffffff
 menu.items.active.disabled.text.color: #aeb0b6
 
 menu.items.bg: flat solid
-menu.items.bg.color: #f3f8f9
+menu.items.bg.color: #ffffff
 menu.items.active.bg: flat solid
-menu.items.active.bg.color: #8ab4f8
+menu.items.active.bg.color: #5294e2
 menu.title.bg: flat solid
 menu.title.bg.color: #2d3036
 
@@ -123,11 +123,11 @@ osd.border.color: #2d3036
 osd.label.text.color: #1a1a1a
 
 osd.bg: flat solid
-osd.bg.color: #f3f8f9
+osd.bg.color: #ffffff
 osd.label.bg: flat solid
-osd.label.bg.color: #f3f8f9
+osd.label.bg.color: #ffffff
 osd.hilight.bg: flat solid
-osd.hilight.bg.color: #8ab4f8
+osd.hilight.bg.color: #5294e2
 osd.unhilight.bg: flat solid
 osd.unhilight.bg.color: #1a1a1a
 

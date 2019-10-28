@@ -22,7 +22,7 @@
        clipPathUnits="userSpaceOnUse"
        id="clipPath4228">
       <rect
-         style="opacity:1;fill:#8ab4f8;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="opacity:1;fill:#5294e2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="rect4230"
          width="38"
          height="29.000017"
@@ -34,7 +34,7 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#17171d"
+     pagecolor="#000000"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"

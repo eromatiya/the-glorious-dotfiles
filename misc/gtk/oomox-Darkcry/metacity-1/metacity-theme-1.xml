@@ -21,22 +21,22 @@
 <!-- window button colors -->
 
 <!-- close -->
-<constant name="C_button_close_bg_focused" value="#e8b4a2" />
-<constant name="C_button_close_bg_hover" value="#f8c4b2" />
-<constant name="C_button_close_bg_active" value="#d8a492" />
+<constant name="C_button_close_bg_focused" value="#b0948c" />
+<constant name="C_button_close_bg_hover" value="#c0a49c" />
+<constant name="C_button_close_bg_active" value="#a0847c" />
 
 <constant name="C_icon_close_bg" value="#000000" />
 
 <!-- minimize, maximize -->
 <constant name="C_button_bg_hover" value="#ffffff" />
-<constant name="C_button_bg_active" value="#8ab4f8" />
+<constant name="C_button_bg_active" value="#5294e2" />
 
 <constant name="C_button_border_hover" value="#000000" />
 
 <constant name="C_icon_bg_focused" value="#ffffff" />
 <constant name="C_icon_bg_unfocused" value="#bfbfbf" />
 <constant name="C_icon_bg_hover" value="#bfbfbf" />
-<constant name="C_icon_bg_active" value="#8ab4f8" />
+<constant name="C_icon_bg_active" value="#5294e2" />
 
 <!-- geometries -->
 

@@ -32,11 +32,11 @@
        inkscape:collect="always"
        id="linearGradient3762">
       <stop
-         style="stop-color:#17171d;stop-opacity:1;"
+         style="stop-color:#000000;stop-opacity:1;"
          offset="0"
          id="stop3764" />
       <stop
-         style="stop-color:#17171d;stop-opacity:0;"
+         style="stop-color:#000000;stop-opacity:0;"
          offset="1"
          id="stop3766" />
     </linearGradient>

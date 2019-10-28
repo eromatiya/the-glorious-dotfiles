@@ -24,7 +24,7 @@
        id="selected_bg_color"
        osb:paint="solid">
       <stop
-         style="stop-color:#8ab4f8;stop-opacity:1;"
+         style="stop-color:#5294e2;stop-opacity:1;"
          offset="0"
          id="stop4170" />
     </linearGradient>
@@ -42,22 +42,22 @@
     <linearGradient
        id="linearGradient4882">
       <stop
-         style="stop-color:#17171d;stop-opacity:1;"
+         style="stop-color:#000000;stop-opacity:1;"
          offset="0"
          id="stop4884" />
       <stop
-         style="stop-color:#17171d;stop-opacity:0;"
+         style="stop-color:#000000;stop-opacity:0;"
          offset="1"
          id="stop4886" />
     </linearGradient>
     <linearGradient
        id="linearGradient3784-6">
       <stop
-         style="stop-color:#17171d;stop-opacity:0.21568628;"
+         style="stop-color:#000000;stop-opacity:0.21568628;"
          offset="0"
          id="stop3786-4" />
       <stop
-         style="stop-color:#17171d;stop-opacity:0;"
+         style="stop-color:#000000;stop-opacity:0;"
          offset="1"
          id="stop3788-6" />
     </linearGradient>
@@ -230,7 +230,7 @@
                sodipodi:nodetypes="csscccsscc"
                inkscape:connector-curvature="0"
                d="m 87.799705,972 3.381737,0 c 0.450297,0 0.816227,0.36847 0.818758,0.8188 l 0,3.3817 z m 2.407413,6.00692 -3.395078,0 c -0.450346,0 -0.818758,-0.36842 -0.818758,-0.81875 l 0,-3.39509 4.213836,4.21384"
-               style="fill:#17171d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+               style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
                id="path4293-4-9-0-2" />
           </g>
         </g>

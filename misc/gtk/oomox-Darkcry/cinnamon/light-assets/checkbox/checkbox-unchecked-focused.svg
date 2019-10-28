@@ -26,7 +26,7 @@
        id="selected_bg_color"
        osb:paint="solid">
       <stop
-         style="stop-color:#8ab4f8;stop-opacity:1;"
+         style="stop-color:#5294e2;stop-opacity:1;"
          offset="0"
          id="stop4150" />
     </linearGradient>
@@ -61,7 +61,7 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#17171d"
+     pagecolor="#000000"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
@@ -145,7 +145,7 @@
              id="g5400-2">
             <rect
                ry="2"
-               style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#17171d;fill-opacity:1;stroke:url(#linearGradient4152);stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
+               style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;stroke:url(#linearGradient4152);stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
                id="rect5147-9-1-5-7-6-3"
                width="13"
                height="12.999997"

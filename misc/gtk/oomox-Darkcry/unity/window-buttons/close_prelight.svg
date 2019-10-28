@@ -32,22 +32,22 @@
     <linearGradient
        id="linearGradient4882">
       <stop
-         style="stop-color:#17171d;stop-opacity:1;"
+         style="stop-color:#000000;stop-opacity:1;"
          offset="0"
          id="stop4884" />
       <stop
-         style="stop-color:#17171d;stop-opacity:0;"
+         style="stop-color:#000000;stop-opacity:0;"
          offset="1"
          id="stop4886" />
     </linearGradient>
     <linearGradient
        id="linearGradient3784-6">
       <stop
-         style="stop-color:#17171d;stop-opacity:0.21568628;"
+         style="stop-color:#000000;stop-opacity:0.21568628;"
          offset="0"
          id="stop3786-4" />
       <stop
-         style="stop-color:#17171d;stop-opacity:0;"
+         style="stop-color:#000000;stop-opacity:0;"
          offset="1"
          id="stop3788-6" />
     </linearGradient>
@@ -152,7 +152,7 @@
              transform="translate(58,0)">
             <path
                inkscape:connector-curvature="0"
-               style="fill:#f8c4b2;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+               style="fill:#c0a49c;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
                d="m 414,92 a 7,7 0 0 0 -7,7 7,7 0 0 0 7,7 7,7 0 0 0 7,-7 7,7 0 0 0 -7,-7 z m -3,3.921875 0.75,0 c 0.008,-9e-5 0.0156,-3.45e-4 0.0234,0 0.19121,0.0084 0.3824,0.09643 0.51562,0.234375 L 414,97.867188 415.73438,96.15625 c 0.19921,-0.172875 0.335,-0.229125 0.51562,-0.234375 l 0.75,0 0,0.75 c 0,0.214853 -0.0258,0.412987 -0.1875,0.5625 l -1.71094,1.710937 1.6875,1.687498 c 0.14114,0.14113 0.21093,0.34009 0.21094,0.53907 l 0,0.75 -0.75,0 c -0.19898,-1e-5 -0.39794,-0.0698 -0.53906,-0.21094 L 414,100 l -1.71094,1.71094 c -0.14112,0.14114 -0.34009,0.21094 -0.53906,0.21094 l -0.75,0 0,-0.75 c 0,-0.19897 0.0698,-0.39794 0.21094,-0.53907 l 1.71094,-1.687498 -1.71094,-1.710937 C 411.05288,97.088403 410.98357,96.882438 411,96.671875 l 0,-0.75 z"
                transform="translate(962,156.00002)"
                id="path4068-7-5-8-2-3" />
@@ -161,45 +161,45 @@
         <g
            id="g4778-4-0-2"
            transform="translate(1323,246.86719)"
-           style="fill:#17171d;fill-opacity:1">
+           style="fill:#000000;fill-opacity:1">
           <g
-             style="display:inline;fill:#17171d;fill-opacity:1"
+             style="display:inline;fill:#000000;fill-opacity:1"
              id="layer9-9-44-1-6"
              transform="translate(-60,-518)" />
           <g
              id="layer10-2-9-3-3"
              transform="translate(-60,-518)"
-             style="fill:#17171d;fill-opacity:1" />
+             style="fill:#000000;fill-opacity:1" />
           <g
              id="layer11-16-3-1-7"
              transform="translate(-60,-518)"
-             style="fill:#17171d;fill-opacity:1" />
+             style="fill:#000000;fill-opacity:1" />
           <g
              transform="matrix(0.75,0,0,0.75,2,2.0546875)"
              id="g2996-9-3-3"
-             style="fill:#17171d;fill-opacity:1">
+             style="fill:#000000;fill-opacity:1">
             <g
                transform="translate(-60,-518)"
                id="layer12-4-7-1-2"
-               style="fill:#17171d;fill-opacity:1">
+               style="fill:#000000;fill-opacity:1">
               <g
                  transform="translate(19,-242)"
                  id="layer4-4-1-3-3-7"
-                 style="display:inline;fill:#17171d;fill-opacity:1" />
+                 style="display:inline;fill:#000000;fill-opacity:1" />
             </g>
           </g>
           <g
              id="layer13-2-02-1-6"
              transform="translate(-60,-518)"
-             style="fill:#17171d;fill-opacity:1" />
+             style="fill:#000000;fill-opacity:1" />
           <g
              id="layer14-4-7-9-6"
              transform="translate(-60,-518)"
-             style="fill:#17171d;fill-opacity:1" />
+             style="fill:#000000;fill-opacity:1" />
           <g
              id="layer15-7-4-7-9"
              transform="translate(-60,-518)"
-             style="fill:#17171d;fill-opacity:1" />
+             style="fill:#000000;fill-opacity:1" />
         </g>
       </g>
       <rect
