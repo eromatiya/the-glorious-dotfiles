@@ -23,7 +23,7 @@ local globalKeys =
       {modkey}, 'e',
       function()
         awful.util.spawn(apps.default.rofiappmenu)
-    --    _G.screen.primary.left_panel:HideDashboard()
+    --    _G.screen.primary.right_panel:HideDashboard()
       end,
       { description = "Open Application Drawer", group = "launcher"}),
 
@@ -94,7 +94,7 @@ local globalKeys =
     {modkey},
     'r',
     function()
-      _G.screen.primary.left_panel:toggle(false)
+      _G.screen.primary.right_panel:toggle(false)
     end,
     {description = 'Open Sidebar', group = 'launcher'}
   ),

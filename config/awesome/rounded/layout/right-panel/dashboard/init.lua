@@ -100,9 +100,9 @@ return function(_, panel)
         widget = mat_list_item,
       },
       quickSearchSeparator,
-      require('layout.left-panel.dashboard.quick-settings'),
-      require('layout.left-panel.dashboard.hardware-monitor'),
-      require('layout.left-panel.dashboard.action-center'),
+      require('layout.right-panel.dashboard.quick-settings'),
+      require('layout.right-panel.dashboard.hardware-monitor'),
+      require('layout.right-panel.dashboard.action-center'),
     },
     nil,
     {

@@ -13,8 +13,8 @@
 + **Editor**: neovim, atom
 + **Browser**: firefox
 + **Music Player**: ncmpcpp, mpd, mpc
-+ **Lock Screen**: ![mantablockscreen](https://github.com/reorr/mantablockscreen)
-+ **Display Manager**: sddm ![sugar-candy](https://www.opencode.net/marianarlt/sddm-sugar-candy)
++ **Lock Screen**: [mantablockscreen](https://github.com/reorr/mantablockscreen)
++ **Display Manager**: sddm with [sugar-candy](https://www.opencode.net/marianarlt/sddm-sugar-candy)
 
 # An AwesomeWM Setup
 
@@ -52,8 +52,6 @@
 ## Dependencies
 Here is a complete list of dependencies needed for making these AwesomeWM setup to work.
 If you notice that something is missing, please open an issue so I can add the dependency to this table.
-
-**Make sure that you installed them before using this setup**  
 
 | Dependency | Description | Why/Where is it needed? |
 | --- | --- | --- |
@@ -96,6 +94,7 @@ If you notice that something is missing, please open an issue so I can add the d
   - python3 (web-search rofi)
   - xdg-menu (generates app list)
 + Copy the selected theme from `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
++ Rename it to `awesome`
 + Reload Awesome
 
 
@@ -114,10 +113,14 @@ This setup is split in multiple parts:
   - It is only tested and configured on a 1366x768 resolution (Lenovo x230)  
   - Some dependencies are not currently installed  
 
+# ABOUT WIDGETS AND MODULES  
++ You need a song with hard-coded album cover for music widget to display its cover.  
++ You can disable the dialog backdrop effect in `awesome/configuration/client/rules.lua`. Just search for `dialog` and set `drawBackdrop` to false in the properties. You can also just unload the module in `rc.lua`.  
 + Generating an application menu  
   - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.  
   - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua  
-  - You can just invoke it or substitute its value to `awesome/module/menu.lua`  
+- You can just substitute its values to `awesome/module/menu.lua`  
+
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
 

@@ -32,7 +32,7 @@ widget_button:buttons(
       1,
       nil,
       function()
-        _G.screen.primary.left_panel:toggle(false)
+        _G.screen.primary.right_panel:toggle(false)
       end
     )
   )

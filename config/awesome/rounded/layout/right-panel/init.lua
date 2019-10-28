@@ -4,14 +4,14 @@ local wibox = require('wibox')
 local apps = require('configuration.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
-local left_panel = function(screen)
+local right_panel = function(screen)
   local panel_content_width = dpi(350) -- 400
 
   local panel =
     wibox {
       ontop = true,
       screen = screen,
-      width = dpi(1),
+      width = nil,
       height = screen.geometry.height,
       x = screen.geometry.width - panel_content_width,
       bg = beautiful.background.hue_800,
@@ -61,7 +61,6 @@ local left_panel = function(screen)
 
   local closePanel = function()
     panel.opacity = 0.0
-    panel.width = dpi(1)
     panel:get_children_by_id('panel_content')[1].visible = false
     backdrop.visible = false
     panel:emit_signal('closed')
@@ -103,9 +102,10 @@ local left_panel = function(screen)
       bg = beautiful.background.hue_800 .. '66', -- Background color of Dashboard
       widget = wibox.container.background,
       visible = false,
+      position = 'left',
       forced_width = panel_content_width,
       {
-        require('layout.left-panel.dashboard')(screen, panel),
+        require('layout.right-panel.dashboard')(screen, panel),
         layout = wibox.layout.stack
       }
     },
@@ -114,4 +114,4 @@ local left_panel = function(screen)
   return panel
 end
 
-return left_panel
+return right_panel
