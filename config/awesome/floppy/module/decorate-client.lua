@@ -1,6 +1,7 @@
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
+local decorExtended = require('module.decorate-client-extended')
 
 local function renderClient(client, mode)
   if client.skip_decoration or (client.rendering_mode == mode) then
@@ -25,7 +26,7 @@ local function renderClient(client, mode)
   elseif client.rendering_mode == 'tiled' or client.rendering_mode == 'floating' or client.rendering_mode == 'dwindle' then
     client.border_width = beautiful.border_width
     client.shape = function(cr, w, h)
-      gears.shape.rounded_rect(cr, w, h, 12)
+      gears.shape.rounded_rect(cr, w, h, beautiful.corner_radius)
     end
   end
 end

@@ -33,7 +33,7 @@ prompt {
 entry {
   expand:                         false;
   width:                          20em;
-  margin:                         40px -355px 20px 355px;
+  margin:                         40px -275px 20px 355px;
   border-radius:                  6;
   padding:                        10px 10px 10px 10px;
   background-color:               #00000020;
