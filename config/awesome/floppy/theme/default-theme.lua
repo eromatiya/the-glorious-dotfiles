@@ -128,11 +128,7 @@ local awesome_overrides =
   theme.border_width = dpi(0)
   theme.border_focus = theme.primary.hue_500
   theme.border_normal = theme.background.hue_800
-<<<<<<< HEAD
   theme.corner_radius = dpi(6)
-=======
-  theme.shape = dpi(6)
->>>>>>> 9c392393ef502ff97b4713c479a37b8208c6ac0a
 end
 return {
   theme = theme,

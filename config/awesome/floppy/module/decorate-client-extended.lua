@@ -15,11 +15,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 
 local roundCorners = function(cr, width, height)
-<<<<<<< HEAD
     gears.shape.rounded_rect(cr, width, height, beautiful.corner_radius)
-=======
-    gears.shape.rounded_rect(cr, width, height, beautiful.shape)
->>>>>>> 9c392393ef502ff97b4713c479a37b8208c6ac0a
 end
 --
 
@@ -57,10 +53,7 @@ end)
        c.shape = gears.shape.rectangle
      elseif #s.tiled_clients >= 2 and not c.max then
        awful.titlebar.show(c, 'left')
-<<<<<<< HEAD
        c.shape = roundCorners
-=======
->>>>>>> 9c392393ef502ff97b4713c479a37b8208c6ac0a
     end
    end
  end)
