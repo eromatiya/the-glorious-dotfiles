@@ -1,4 +1,4 @@
--- Addition to decorate-client.lua due to the addition of titlebars.
+-- Added extension of decorate-client.lua due to the addition of titlebars.
 -- Set your own rules here. This is a created for my workflow.
 -- You are free to alter the codes or completely delete this
 
