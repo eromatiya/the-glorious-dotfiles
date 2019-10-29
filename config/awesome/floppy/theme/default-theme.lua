@@ -5,7 +5,7 @@ local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 local theme = {}
 theme.icons = theme_dir .. '/icons/'
-theme.font = 'Roboto medium 10'
+theme.font = 'SFNS Display Regular 10'
 
 -- Colors Pallets
 
@@ -30,8 +30,8 @@ local awesome_overrides =
   -- Default Wallpaper if Dynamic wallpaper module is not loaded
   theme.wallpaper = theme.dir .. '/wallpapers/day-wallpaper.jpg'
 
-  theme.font = 'Roboto medium 10'
-  theme.title_font = 'Roboto medium 14'
+  theme.font = 'SFNS Display Regular 10'
+  theme.title_font = 'SFNS Display Bold 14'
 
   theme.fg_normal = '#ffffffde'
 
@@ -109,7 +109,7 @@ local awesome_overrides =
 
   -- Tasklist
 
-  theme.tasklist_font = 'Roboto Regular 10'
+  theme.tasklist_font = 'SFNS Display Regular 10'
   theme.tasklist_bg_normal = theme.background.hue_800 .. '99'
   theme.tasklist_bg_focus =
     'linear:0,0:0,' ..

@@ -18,14 +18,13 @@ local globalKeys =
       awful.spawn(apps.default.terminal)
     end,
     { description = "Open Terminal", group = "launcher"}),
-
-    awful.key(
-      {modkey}, 'e',
-      function()
-        awful.util.spawn(apps.default.rofiappmenu)
-        _G.screen.primary.left_panel:HideDashboard()
-      end,
-      { description = "Open Application Drawer", group = "launcher"}),
+  awful.key(
+    {modkey}, 'e',
+    function()
+      awful.util.spawn(apps.default.rofiappmenu)
+      _G.screen.primary.left_panel:HideDashboard()
+    end,
+  { description = "Open Application Drawer", group = "launcher"}),
 
   awful.key(
     {modkey, "Shift"}, 'f',
@@ -55,7 +54,15 @@ local globalKeys =
     awful.spawn.easy_async_with_shell(apps.bins.fullShot)
   end,
   { description = "Fullscreen screenshot", group = "Miscellaneous"}),
-
+  -- Music Widget
+  awful.key(
+    {modkey}, 'm',
+    function()
+      if require("widget.music") then
+        _G.togglePlayer()
+      end
+    end,
+  { description = "Open Terminal", group = "launcher"}),
   -- Screen Shot Area and Save
   awful.key(
   {modkey, "Shift"}, 's',
@@ -322,9 +329,26 @@ local globalKeys =
     {},
     'XF86AudioNext',
     function()
-      --
+      awful.spawn('mpc next')
     end,
-    {description = 'toggle mute', group = 'hotkeys'}
+    {description = 'next music', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPrev',
+    function()
+      awful.spawn('mpc prev')
+    end,
+    {description = 'previous music', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPlay',
+    function()
+      awful.spawn('mpc toggle')
+    end,
+    {description = 'play/pause music', group = 'hotkeys'}
+
   ),
   awful.key(
     {},

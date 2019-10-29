@@ -18,7 +18,7 @@ local apps = require('configuration.apps')
 awful.screen.connect_for_each_screen(
   function(s)
     -- Create the box
-    local offsetx = dpi(350)
+    local width = dpi(260)
     musicPlayer = wibox(
       {
         bg = '#00000000',
@@ -26,13 +26,17 @@ awful.screen.connect_for_each_screen(
         ontop = true,
         type = "normal",
         height = dpi(380),
-        width = dpi(260),
-        x = s.geometry.width - offsetx,
+        width = width,
+        x = s.geometry.width - width,
         y = dpi(26),
       }
     )
   end
 )
+
+function togglePlayer()
+  musicPlayer.visible = not musicPlayer.visible
+end
 
 local widget =
   wibox.widget {
@@ -44,7 +48,7 @@ local widget =
   layout = wibox.layout.align.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(14), dpi(14), dpi(7), dpi(7))) -- 4 is top and bottom margin
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -52,11 +56,13 @@ widget_button:buttons(
       1,
       nil,
       function()
-        musicPlayer.visible = not musicPlayer.visible
+        togglePlayer()
       end
     )
   )
 )
+
+
 
 -- Album Cover
 local cover =

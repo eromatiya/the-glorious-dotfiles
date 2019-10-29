@@ -35,7 +35,7 @@ local widget =
   layout = wibox.layout.align.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(14), dpi(14), dpi(7), dpi(7))) -- top and bottom margin  = 4
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -49,7 +49,7 @@ widget_button:buttons(
   )
 )
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(14), dpi(14), 7, 7)) -- default top bottom margin is 7
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -107,7 +107,7 @@ watch(
       -- Update popup text
       local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
       widgetIconName = widgetIconName .. '-' .. wifi_strength_rounded
-      widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')      
+      widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')
     else
       connected = false
       widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '-off' .. '.svg')
