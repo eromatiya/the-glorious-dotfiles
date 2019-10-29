@@ -94,6 +94,14 @@ end
     end
   )
 
+  local separator =  wibox.widget
+    {
+      orientation = 'horizontal',
+      forced_height = dpi(1),
+      opacity = 0.20,
+      widget = wibox.widget.separator
+    }
+
   return wibox.widget {
     id = 'action_bar',
     layout = wibox.layout.align.vertical,
@@ -103,13 +111,9 @@ end
       home_button,
       -- Create a taglist widget
       TagList(screen),
+      require("widget.xdg-folders"),
       layout = wibox.layout.fixed.vertical,
-      --[[wibox.widget {
-              orientation = 'horizontal',
-              forced_height = 10,
-              opacity = 0.50,
-              widget = wibox.widget.separator
-            }, ]]--
+
     },
      -- Middle widget
     nil,

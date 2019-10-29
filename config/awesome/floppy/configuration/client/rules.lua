@@ -85,7 +85,7 @@ awful.rules.rules = {
          "File-roller"
        },
     },
-        properties = { tag = '4' }
+        properties = { tag = '4', switchtotag = true }
   },
     -- Multimedia
   {
