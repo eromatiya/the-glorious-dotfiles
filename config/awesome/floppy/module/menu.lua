@@ -35,13 +35,16 @@ local menu98edb85b00d9527ad5acebe451b3fae6 = {
     {"Calculator", "gnome-calculator"},
     {"Disks", "gnome-disks"},
     {"Document Viewer", "xreader ", "/usr/share/icons/hicolor/16x16/apps/xreader.png" },
-    {"Nemo", "nemo "},
+    {"Nemo", "nemo ", "/usr/share/icons/gnome/16x16/places/folder.png" },
     {"Neovim", "xterm -e nvim ", "/usr/share/pixmaps/nvim.png" },
     {"Redshift", "redshift-gtk"},
+    {"Vim", "xterm -e vim ", "/usr/share/icons/hicolor/48x48/apps/gvim.png" },
     {"compton", "compton", "/usr/share/icons/hicolor/48x48/apps/compton.png" },
 }
 
 local menu251bd8143891238ecedc306508e29017 = {
+    {"ASCIIpOrtal", "asciiportal", "/usr/share/pixmaps/asciiportal.png" },
+    {"AstroMenace", "astromenace", "/usr/share/pixmaps/astromenace.png" },
     {"SuperTuxKart", "supertuxkart", "/usr/share/icons/hicolor/48x48/apps/supertuxkart.png" },
 }
 
@@ -51,8 +54,9 @@ local menud334dfcea59127bedfcdbe0a3ee7f494 = {
 }
 
 local menuc8205c7636e728d448c2774e6a4a944b = {
-    {"Avahi SSH Server Browser", "/usr/bin/bssh"},
-    {"Avahi VNC Server Browser", "/usr/bin/bvnc"},
+    {"Avahi SSH Server Browser", "/usr/bin/bssh", "/usr/share/icons/gnome/16x16/devices/network-wired.png" },
+    {"Avahi VNC Server Browser", "/usr/bin/bvnc", "/usr/share/icons/gnome/16x16/devices/network-wired.png" },
+    {"Ettercap", "ettercap-pkexec -G", "/usr/share/pixmaps/ettercap.svg" },
     {"Firefox", "/usr/lib/firefox/firefox ", "/usr/share/icons/hicolor/16x16/apps/firefox.png" },
     {"Transmission", "transmission-gtk ", "/usr/share/icons/hicolor/16x16/apps/transmission.png" },
 }
@@ -66,7 +70,7 @@ local menue6f43c40ab1c07cd29e4e83e4ef6bf85 = {
 
 local menu52dd1c847264a75f400961bfb4d1c849 = {
     {"Cheese", "cheese"},
-    {"PulseAudio Volume Control", "pavucontrol"},
+    {"PulseAudio Volume Control", "pavucontrol", "/usr/share/icons/gnome/16x16/apps/multimedia-volume-control.png" },
     {"PulseEffects", "pulseeffects"},
     {"Qt V4L2 test Utility", "qv4l2", "/usr/share/icons/hicolor/16x16/apps/qv4l2.png" },
     {"Qt V4L2 video capture utility", "qvidcap", "/usr/share/icons/hicolor/16x16/apps/qvidcap.png" },
@@ -78,8 +82,10 @@ local menu52dd1c847264a75f400961bfb4d1c849 = {
 }
 
 local menuee69799670a33f75d45c57d1d1cd0ab3 = {
-    {"Avahi Zeroconf Browser", "/usr/bin/avahi-discover"},
+    {"Avahi Zeroconf Browser", "/usr/bin/avahi-discover", "/usr/share/icons/gnome/16x16/devices/network-wired.png" },
     {"GParted", "/usr/bin/gparted ", "/usr/share/icons/hicolor/16x16/apps/gparted.png" },
+    {"OpenJDK Java 11 Console", "/usr/lib/jvm/java-11-openjdk/bin/jconsole", "/usr/share/icons/hicolor/16x16/apps/java11-openjdk.png" },
+    {"OpenJDK Java 11 Shell", "xterm -e /usr/lib/jvm/java-11-openjdk/bin/jshell", "/usr/share/icons/hicolor/16x16/apps/java11-openjdk.png" },
     {"OpenJDK Java 13 Console", "/usr/lib/jvm/java-13-openjdk/bin/jconsole"},
     {"OpenJDK Java 13 Shell", "xterm -e /usr/lib/jvm/java-13-openjdk/bin/jshell"},
     {"Oracle VM VirtualBox", "VirtualBox ", "/usr/share/icons/hicolor/16x16/mimetypes/virtualbox.png" },
