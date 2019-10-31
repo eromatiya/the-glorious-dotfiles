@@ -96,7 +96,7 @@ entry {
 	text-color:						@normal-foreground;
 	background-color:		 	#ffffff20;
 	vertical-align: 			0.5;
-	padding:        			12px;
+	padding:        			9px;
 	font:            			"SFNS Display 14";
 	margin:								16 16 16 16;
 	border-radius:				6;

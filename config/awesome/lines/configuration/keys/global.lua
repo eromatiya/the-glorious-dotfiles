@@ -110,7 +110,7 @@ local globalKeys =
     {modkey},
     'r',
     function()
-      _G.screen.primary.right_panel:toggle(false)
+      _G.screen.primary.right_panel:toggle()
     end,
     {description = 'Open Sidebar', group = 'launcher'}
   ),

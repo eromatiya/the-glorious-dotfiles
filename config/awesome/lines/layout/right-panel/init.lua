@@ -45,16 +45,13 @@ local right_panel = function(screen)
     )
   end
 
-  local openPanel = function(should_run_rofi)
+  local openPanel = function()
     panel.opacity = 1.0
     panel.width = panel_content_width
     backdrop.visible = true
     panel.visible = false
     panel.visible = true
     panel:get_children_by_id('panel_content')[1].visible = true
-    if should_run_rofi then
-      panel:run_rofi()
-    end
     panel:emit_signal('opened')
   end
 
@@ -71,10 +68,10 @@ local right_panel = function(screen)
     closePanel()
   end
 
-  function panel:toggle(should_run_rofi)
+  function panel:toggle()
     self.opened = not self.opened
     if self.opened then
-      openPanel(should_run_rofi)
+      openPanel()
     else
       closePanel()
     end

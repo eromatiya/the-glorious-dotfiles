@@ -8,35 +8,6 @@ local icons = require('theme.icons')
 local gears = require('gears')
 
 return function(_, panel)
-  local search_button =
-    wibox.widget {
-    wibox.widget {
-      icon = icons.search,
-      size = dpi(24),
-      widget = mat_icon
-    },
-    wibox.widget {
-      text = 'Search the web',
-      font = 'SFNS Display Regular 12',
-      widget = wibox.widget.textbox,
-      align = center
-    },
-    forced_height = dpi(12),
-    clickable = true,
-    widget = mat_list_item
-  }
-
-  search_button:buttons(
-    awful.util.table.join(
-      awful.button(
-        {},
-        1,
-        function()
-          panel:run_rofi()
-        end
-      )
-    )
-  )
 
   local exit_button =
     wibox.widget {
@@ -88,18 +59,7 @@ return function(_, panel)
     {
       topBotSeparator,
       layout = wibox.layout.fixed.vertical,
-      {
-        wibox.widget {
-          search_button,
-          bg = beautiful.bg_modal,     --beautiful.background.hue_800,
-          shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, 28)
-                  end,
-          widget = wibox.container.background,
-        },
-        widget = mat_list_item,
-      },
-      quickSearchSeparator,
+
       require('layout.right-panel.dashboard.quick-settings'),
       require('layout.right-panel.dashboard.hardware-monitor'),
       require('layout.right-panel.dashboard.action-center'),
