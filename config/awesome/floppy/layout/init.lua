@@ -41,7 +41,7 @@ _G.tag.connect_signal(
 _G.client.connect_signal(
   'property::fullscreen',
   function(c)
-    if first_tag then
+    if c.first_tag then
       c.first_tag.fullscreenMode = c.fullscreen
     end
     updateBarsVisibility()
