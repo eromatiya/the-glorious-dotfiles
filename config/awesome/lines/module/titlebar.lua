@@ -2,14 +2,18 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-local theme_name = "stoplight"
+local theme_name = "win10"
 local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/theme/icons/titlebar/" .. theme_name .. '/'
 local tip = titlebar_icon_path --alias to save time/space
 local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
 
+local decorExtended = require('module.decorate-client-extended')
+
 local titleBarSize = beautiful.titlebar_size
+
+
 
 -- Define the images to load
 beautiful.titlebar_close_button_normal = tip .. "close_normal.svg"
@@ -56,7 +60,7 @@ beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focu
 
 
 local roundCorners = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 12)
+    gears.shape.rounded_rect(cr, width, height, beautiful.corner_radius)
 end
 
 

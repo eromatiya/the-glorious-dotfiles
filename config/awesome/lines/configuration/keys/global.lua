@@ -64,6 +64,16 @@ local globalKeys =
   end,
   { description = "Area screenshot", group = "Miscellaneous"}),
 
+  -- Music Widget
+  awful.key(
+    {modkey}, 'm',
+    function()
+      if require("widget.music") then
+        _G.togglePlayer()
+      end
+    end,
+  { description = "Open Music Widget", group = "launcher"}),
+  
   -- Toggle System Tray
   awful.key({ 'Control' }, 'Escape', function ()
       awesome.emit_signal("toggle_tray")
@@ -322,9 +332,26 @@ local globalKeys =
     {},
     'XF86AudioNext',
     function()
-      --
+      awful.spawn('mpc next')
     end,
-    {description = 'toggle mute', group = 'hotkeys'}
+    {description = 'next music', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPrev',
+    function()
+      awful.spawn('mpc prev')
+    end,
+    {description = 'previous music', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPlay',
+    function()
+      awful.spawn('mpc toggle')
+    end,
+    {description = 'play/pause music', group = 'hotkeys'}
+
   ),
   awful.key(
     {},

@@ -255,7 +255,6 @@ end
       expand = "none",
       layout = wibox.layout.align.horizontal,
       {
-        layout = wibox.layout.fixed.horizontal,
         genWidget(require('widget.search')),
         genWidget(require('widget.music')),
         genWidget(search_button),
@@ -263,6 +262,7 @@ end
         genTasklist(TagList(s)),
         genTasklist(TaskList(s)),
         add_button,
+        layout = wibox.layout.fixed.horizontal,
 
       },
       -- Middle Widget

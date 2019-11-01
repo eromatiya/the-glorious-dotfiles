@@ -54,6 +54,13 @@ local globalKeys =
     awful.spawn.easy_async_with_shell(apps.bins.fullShot)
   end,
   { description = "Fullscreen screenshot", group = "Miscellaneous"}),
+  -- Screen Shot Area and Save
+  awful.key(
+  {modkey, "Shift"}, 's',
+  function ()
+    awful.spawn.easy_async_with_shell(apps.bins.areaShot)
+  end,
+  { description = "Area screenshot", group = "Miscellaneous"}),
   -- Music Widget
   awful.key(
     {modkey}, 'm',
@@ -62,14 +69,7 @@ local globalKeys =
         _G.togglePlayer()
       end
     end,
-  { description = "Open Terminal", group = "launcher"}),
-  -- Screen Shot Area and Save
-  awful.key(
-  {modkey, "Shift"}, 's',
-  function ()
-    awful.spawn.easy_async_with_shell(apps.bins.areaShot)
-  end,
-  { description = "Area screenshot", group = "Miscellaneous"}),
+  { description = "Open Music Widget", group = "launcher"}),
 
   -- Toggle System Tray
   awful.key({ 'Control' }, 'Escape', function ()

@@ -35,6 +35,10 @@ awful.screen.connect_for_each_screen(
   end
 )
 
+function togglePlayer()
+  musicPlayer.visible = not musicPlayer.visible
+end
+
 local widget =
   wibox.widget {
   {
@@ -53,7 +57,7 @@ widget_button:buttons(
       1,
       nil,
       function()
-        musicPlayer.visible = not musicPlayer.visible
+        togglePlayer()
       end
     )
   )
