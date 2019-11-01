@@ -117,6 +117,7 @@ This setup is split in multiple parts:
 + This setup will not mostly work out of the box because:  
   - It is only tested and configured on a 1366x768 resolution (Lenovo x230)  
   - Some dependencies are not currently installed  
++ Check keybindings using `super +  F1`
 
 # ABOUT WIDGETS AND MODULES  
 + You need a song with hard-coded album cover for music widget to display its cover.  
@@ -124,7 +125,7 @@ This setup is split in multiple parts:
 + Generating an application menu  
   - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.  
   - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua  
-- You can just substitute its values to `awesome/module/menu.lua`  
+  - You can just substitute its values to `awesome/module/menu.lua`  
 
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
