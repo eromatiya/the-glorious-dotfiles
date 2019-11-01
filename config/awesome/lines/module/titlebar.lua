@@ -9,7 +9,7 @@ local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
 
-local decorExtended = require('module.decorate-client-extended')
+local decorExtended = require('module.titlebar-decorate-client')
 
 local titleBarSize = beautiful.titlebar_size
 
