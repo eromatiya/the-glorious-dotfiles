@@ -27,14 +27,19 @@
   - Wallpaper changes based on time. You can modify it here `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
 
-## Theme Preview  
+## Latest Theme Preview  
+| Lines | Preview |
+| --- | --- |
+| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines-desktop.png) |
+| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines-dirty.png)   |
+| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines-appdashboard.png) |  
+
+# Other themes preview
 | Rounded | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded-desktop.png) |
 | Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded-dirty.png)   |
 | Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded-appdashboard.png) |
-
-# Other themes preview
 | Floppy | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/desktop.png) |
