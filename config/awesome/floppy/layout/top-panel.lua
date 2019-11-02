@@ -157,6 +157,7 @@ local TopPanel = function(s, offset)
       wibox.container.margin(s.systray, dpi(14), dpi(0), dpi(4), dpi(4)),
       require('widget.systemtray'),
       require('widget.package-updater'),
+      require('widget.removable-drive'),
       require('widget.music'),
       require('widget.bluetooth'),
       require('widget.wifi'),

@@ -29,6 +29,9 @@ return {
     areaShot = filesystem.get_configuration_dir() .. '/binaries/snap area',
     enableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx enable',
     disableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx disable',
-    coverUpdate = filesystem.get_configuration_dir() .. '/binaries/album-cover-extract'
+    coverUpdate = filesystem.get_configuration_dir() .. '/binaries/album-cover-extract',
+    mountDrive = filesystem.get_configuration_dir() .. '/binaries/system-usb-mount.sh --mount',
+    unmountDrive = filesystem.get_configuration_dir() .. '/binaries/system-usb-mount.sh --unmount',
+    openExtDrive = filesystem.get_configuration_dir() .. '/binaries/system-usb-mount.sh --point'
   }
 }

@@ -39,7 +39,8 @@
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) |
 | Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png)   |
-| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |
+| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |  
+
 | Floppy | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/desktop.png) |
@@ -73,7 +74,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend |
 | `xdg_menu` | Generates a list of installed applications | Useful for generating app list |
 | `imagemagick` | An image viewing/manipulation program | Album cover extractor |
-
+| `jq` | Command-line JSON processor | Removable Drive Widget |
 
 ##### Monospace
 + **[Iosevka Custom](https://github.com/elenapan/dotfiles/)**
@@ -96,14 +97,15 @@ If you notice that something is missing, please open an issue so I can add the d
   - python3 (web-search rofi)
   - xdg-menu (generates app list)
   - imagemagick (extract album cover, music widget)
+  - jq (removable drive widget)
 + Copy the selected theme from `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
 + Rename it to `awesome`
-+ Reload Awesome
++ Reload Awesome using `super + shift + r`
 
 
 # File Structure  
 This setup is split in multiple parts:
-+ `rc.lua`it is where all the configurations intertwine. You can enable and disable the modules here and load all your configurations.  
++ `rc.lua` the core of configuration. You can enable and disable the modules here and load all your configurations.  
 + The `layout` directory contains the panels' configurations. Change panel settings here.  
 + In `configuration` directory you can find all the configs about the key bindings, client rules, tags, starting apps and etc.  
 + The `module` consists of many files that are usually inside the `rc.lua` like notifications, app menus, etc. You can load them in the `rc.lua`.  
@@ -126,11 +128,11 @@ This setup is split in multiple parts:
   - You can just substitute its values to `awesome/module/menu.lua`  
 
 
-**So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
+**So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
 
 
-# Got a problem? Just open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
-#### Suggestion? If you have any suggestion on how to improve this setup, please open an issue ![here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).  
+# Got a problem? Just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
+#### Suggestion? If you have any suggestion on how to improve this setup, please open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).  
 
 
 **Special thanks**

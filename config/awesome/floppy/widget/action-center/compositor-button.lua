@@ -12,7 +12,6 @@ local dpi = require('beautiful').xresources.apply_dpi
 local watch = require('awful.widget.watch')
 local mat_list_item = require('widget.material.list-item')
 local filesystem = require('gears.filesystem')
-;
 local apps = require('configuration.apps')
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/action-center/icons/'
@@ -102,14 +101,14 @@ local function toggle_compositor()
     -- for _, app in ipairs(blurDisable) do
     --   run_once(app)
     -- end
-    awful.spawn(apps.bins.disableBlur)
+    awful.spawn(apps.bins.disableBlur, false)
     frameStatus = false
     update_icon()
   else
     -- for _, app in ipairs(blurEnable) do
     --   run_once(app)
     -- end
-    awful.spawn(apps.bins.enableBlur)
+    awful.spawn(apps.bins.enableBlur, false)
     frameStatus = true
     update_icon()
   end

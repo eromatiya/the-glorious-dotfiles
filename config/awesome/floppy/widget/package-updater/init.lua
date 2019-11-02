@@ -52,6 +52,8 @@ widget_button:buttons(
     )
   )
 )
+widget_button.visible = false
+
 -- Alternative to naughty.notify - tooltip. You can compare both and choose the preferred one
 awful.tooltip(
   {
@@ -99,9 +101,11 @@ watch(
     if (numOfUpdatesAvailable ~= nil) then
       updateAvailable = true
       widgetIconName = 'package-up'
+      widget_button.visible = true
     else
       updateAvailable = false
       widgetIconName = 'package'
+      widget_button.visible = true
     end
     widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')
     collectgarbage('collect')
