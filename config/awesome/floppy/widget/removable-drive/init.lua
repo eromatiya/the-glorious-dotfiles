@@ -128,11 +128,21 @@ awesome.connect_signal("drive::unmounted", function()
   awful.spawn.easy_async_with_shell("echo " .. mountStatus .. " > " .. PATH_TO_WIDGET .. "status", function(stdout) end, false)
 end)
 
+-- Drive is removed/removed without safe unmounting
+awesome.connect_signal("drive::removed", function()
+  -- Hide widget
+  widget_button.visible = false
+  -- Update status
+  mountStatus = 'none'
+  -- Preserve status by writing it in a file
+  awful.spawn.easy_async_with_shell("echo " .. mountStatus .. " > " .. PATH_TO_WIDGET .. "status", function(stdout) end, false)
+end)
+
 
 -- Monitor script
 local udisk_script = [[
     sh -c "
-    udisksctl monitor | grep -o --line-buffered 'filesystem-unmount\|filesystem-mount\|Added /org/freedesktop/UDisks2/drives/'
+    udisksctl monitor | grep -o --line-buffered 'filesystem-unmount\|filesystem-mount\|Added /org/freedesktop/UDisks2/drives/\|Removed /org/freedesktop/UDisks2/drives/'
 "]]
 
 -- Kill old udiscksctl process
@@ -149,8 +159,10 @@ awful.spawn.easy_async_with_shell("ps x | grep \"udisksctl\" | grep -v grep | aw
           elseif stdout == 'filesystem-unmount' then
             awful.spawn("notify-send 'The device can now be safely removed from the computer!'", false)
             awesome.emit_signal("drive::unmounted")
+          elseif stdout == 'Removed /org/freedesktop/UDisks2/drives/' then
+            awesome.emit_signal("drive::removed")
           end
-        end
+      end
     })
 end, false)
 
