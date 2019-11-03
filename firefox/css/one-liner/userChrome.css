@@ -4,7 +4,7 @@
 WINDOWS UWP DRAG BAR
 ################# */
 toolbarbutton#alltabs-button {
-	-moz-binding: url("userChrome.xml#js");
+  -moz-binding: url("userChrome.xml#js");
 }
 
 
@@ -90,7 +90,7 @@ toolbarbutton#alltabs-button {
 }
 /* Center */
 #urlbar .urlbar-input-box {
-	text-align: center;
+  text-align: center;
   margin-bottom: 1px;
   /*margin-left: -53px !important;*/
   box-shadow: none !important;
@@ -331,18 +331,18 @@ toolbarbutton#alltabs-button {
 
 /* Move Tab-bar beside Nav-bar */
 #TabsToolbar {
-  margin-bottom: 0px !important;             /* not needed anymore? */
+  margin-bottom: -1px !important;             /* not needed anymore? */
   margin-top: -1px !important;                /*  */
   margin-left: 35vw !important;
   margin-right: -34px !important;
   max-height: 32px !important;
 }
 #nav-bar {
-  margin-bottom: 0px !important;            /* remove navbar bottom 1px border */
-  margin-top: -31px !important;
+  margin-bottom: -1px !important;            /* remove navbar bottom 1px border */
+  margin-top: -32px !important;
   margin-right: 65vw !important;
   border: none !important;
-  max-height: 32px !important;
+  max-height: 34px !important;
 }
 /* Remove padding above tabbar in compact mode */
 #main-window[sizemode="normal"] > #titlebar {
