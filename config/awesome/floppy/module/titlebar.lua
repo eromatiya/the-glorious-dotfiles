@@ -104,6 +104,45 @@ client.connect_signal("request::titlebars", function(c)
         }
       end
 
+
+    -- CUSTOM TITLEBAR FOR Firefox
+    -- You need XPROP for this to work
+    if c.class == "firefox" then
+      awful.titlebar(c, {position = "left", bg = '#222222', size = titleBarSize}) : setup {
+        {
+          awful.titlebar.widget.closebutton    (c),
+          awful.titlebar.widget.maximizedbutton(c),
+          awful.titlebar.widget.minimizebutton (c),
+          layout  = wibox.layout.fixed.vertical
+        },
+          nil,
+        { -- Bottom
+          awful.titlebar.widget.floatingbutton (c),
+          layout = wibox.layout.fixed.vertical()
+        },
+          layout = wibox.layout.align.vertical
+        }
+      end
+
+    -- CUSTOM TITLEBAR FOR Gimp2-10
+    -- You need XPROP for this to work
+    if c.class == "Gimp-2.10" then
+      awful.titlebar(c, {position = "left", bg = '#454545', size = titleBarSize}) : setup {
+        {
+          awful.titlebar.widget.closebutton    (c),
+          awful.titlebar.widget.maximizedbutton(c),
+          awful.titlebar.widget.minimizebutton (c),
+          layout  = wibox.layout.fixed.vertical
+        },
+          nil,
+        { -- Bottom
+          awful.titlebar.widget.floatingbutton (c),
+          layout = wibox.layout.fixed.vertical()
+        },
+          layout = wibox.layout.align.vertical
+        }
+      end
+
 end)
 
 return beautiful

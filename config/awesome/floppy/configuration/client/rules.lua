@@ -129,6 +129,16 @@ awful.rules.rules = {
 		properties = { screen = 1, tag = '7'}
   },
 
+  -- Virtualbox
+  {
+  rule_any = {
+    class = {
+      "VirtualBox Manage",
+    },
+  },
+    properties = { screen = 1, tag = '8'}
+  },
+
 
   -- Workspace Editing
   {
@@ -137,7 +147,7 @@ awful.rules.rules = {
 			"Oomox",
 		},
 	},
-		properties = { screen = 1, tag = '8'}
+		properties = { screen = 1, tag = '9'}
   },
 
   -- Custom

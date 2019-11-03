@@ -52,6 +52,12 @@ local tags = {
     screen = 1
   },
   {
+    icon = icons.vbox,
+    type = 'virtualbox',
+    defaultApp = 'virtualbox',
+    screen = 1
+  },
+  {
     icon = icons.lab,
     type = 'any',
     defaultApp = '',

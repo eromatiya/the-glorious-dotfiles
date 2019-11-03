@@ -12,6 +12,7 @@ return {
   music = tit_dir .. '/music.svg',
   game = tit_dir .. '/google-controller.svg',
   lab = tit_dir .. '/flask.svg',
+  vbox = tit_dir .. '/vbox.svg',
   terminal = tit_dir .. '/terminal.svg',
   art = tit_dir .. '/art.svg',
   --others
