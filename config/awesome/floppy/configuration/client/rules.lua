@@ -71,7 +71,8 @@ awful.rules.rules = {
 	rule_any = {
 		class = {
 			"Geany",
-      "Atom"
+      "Atom",
+      "Subl3"
 		},
 	},
 		properties = { screen = 1, tag = '3' }
