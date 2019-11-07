@@ -18,9 +18,9 @@ local brightnessSlider = require('widget.brightness.brightness-slider')
 local separator = wibox.widget {
   orientation = 'horizontal',
   forced_height = 1,
-  span_ratio = 0.95,
-  opacity = 0.70,
-  color = beautiful.background.hue_800,
+  span_ratio = 0.90,
+  opacity = 0.90,
+  color = beautiful.bg_modal,
   widget = wibox.widget.separator
 }
 

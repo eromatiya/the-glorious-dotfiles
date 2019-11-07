@@ -3,7 +3,6 @@ local gears = require('gears')
 local awful = require('awful')
 local wibox = require('wibox')
 
-local naughty = require('naughty')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local clickable_container = require('widget.material.clickable-container')
@@ -34,9 +33,38 @@ awful.screen.connect_for_each_screen(
   end
 )
 
+local backdrop =
+  wibox {
+  ontop = true,
+  visible = false,
+  screen = awful.screen.focused(),
+  bg = '#00000000',
+  type = 'dock',
+  x = awful.screen.focused().geometry.x,
+  y = dpi(26),
+  width = awful.screen.focused().geometry.width,
+  height = awful.screen.focused().geometry.height - dpi(26)
+}
+
+
 function togglePlayer()
+  backdrop.visible = not backdrop.visible
   musicPlayer.visible = not musicPlayer.visible
 end
+
+
+backdrop:buttons(
+  awful.util.table.join(
+    awful.button(
+      {},
+      1,
+      function()
+        togglePlayer()
+      end
+    )
+  )
+)
+
 
 local widget =
   wibox.widget {

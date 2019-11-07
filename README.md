@@ -27,20 +27,7 @@
   - Wallpaper changes based on time. You can modify it here `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
 
-## Latest Theme Preview  
-| Lines | Preview |
-| --- | --- |
-| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/desktop.png) |
-| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/dirty.png)   |
-| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png) |  
-
-# Other themes preview
-| Rounded | Preview |
-| --- | --- |
-| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) |
-| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png)   |
-| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |  
-
+## My Current Theme
 | Floppy | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/desktop.png) |
@@ -49,6 +36,20 @@
 | App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/application-dashboard.png) |
 | Lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/lockscreen.png) |
 | Greeter | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/greeter.png) |
+
+# Other themes preview
+| Rounded | Preview |
+| --- | --- |
+| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) |
+| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png)   |
+| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |
+
+
+| Lines | Preview |
+| --- | --- |
+| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/desktop.png) |
+| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/dirty.png)   |
+| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png) |
 
 
 ## Dependencies
@@ -103,36 +104,36 @@ If you notice that something is missing, please open an issue so I can add the d
 + Reload Awesome using `super + shift + r`
 
 
-# File Structure  
+# File Structure
 This setup is split in multiple parts:
-+ `rc.lua` the core of configuration. You can enable and disable the modules here and load all your configurations.  
-+ The `layout` directory contains the panels' configurations. Change panel settings here.  
-+ In `configuration` directory you can find all the configs about the key bindings, client rules, tags, starting apps and etc.  
-+ The `module` consists of many files that are usually inside the `rc.lua` like notifications, app menus, etc. You can load them in the `rc.lua`.  
-+ The `themes` folder contains themes and colors of the setup.  
-+ The `widgets` contains all the widgets(of course). These are used in the panels and dashboard. It contains the wifi, bluetooth, battery widget and many more.  
-+ `binaries` contains bash scripts. I recently added this because running multiple bash commands inside lua is clunky at times. So I decided to split them and have their own territory. Right now, it contains the `snap` script as screenshot tool and `togglewinfx`, the script that toggles the compton blur.  
++ `rc.lua` the core of configuration. You can enable and disable the modules here and load all your configurations.
++ The `layout` directory contains the panels' configurations. Change panel settings here or load/unload modules.
++ In `configuration` directory you can find all the configs about the key bindings, client rules, tags, starting apps and etc.
++ The `module` consists of many files that are usually inside the `rc.lua` like notifications, app menus, etc. You can load them in the `rc.lua`.
++ The `themes` folder contains themes and colors of the setup.
++ The `widgets` contains all the widgets(of course). These are used in the panels and dashboard. It contains the wifi, bluetooth, battery widget and many more.
++ `binaries` contains bash scripts. I recently added this because running multiple bash commands inside lua is clunky at times. So I decided to split them and have their own territory. Right now, it contains the `snap` script as screenshot tool and `togglewinfx`, the script that toggles the compton blur.
 
-# NOTE  
-+ This setup will not mostly work out of the box because:  
-  - It is only tested and configured on a 1366x768 resolution (Lenovo x230)  
-  - Some dependencies are not currently installed  
+# NOTE
++ This setup will not mostly work out of the box because:
+  - It is only tested and configured on a 1366x768 resolution (Lenovo x230)
+  - Some dependencies are not currently installed
 + Check keybindings using `super +  F1`
 
-# ABOUT WIDGETS AND MODULES  
-+ You need a song with hard-coded album cover for music widget to display its cover.  
-+ You can disable the dialog backdrop effect in `awesome/configuration/client/rules.lua`. Just search for `dialog` and set `drawBackdrop` to false in the properties. You can also just unload the module in `rc.lua`.  
-+ Generating an application menu  
-  - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.  
-  - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua  
-  - You can just substitute its values to `awesome/module/menu.lua`  
+# ABOUT WIDGETS AND MODULES
++ You need a song with hard-coded album cover for music widget to display its cover.
++ You can disable the dialog backdrop effect in `awesome/configuration/client/rules.lua`. Just search for `dialog` and set `drawBackdrop` to false in the properties. You can also just unload the module in `rc.lua`.
++ Generating an application menu
+  - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
+  - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua
+  - You can just substitute its values to `awesome/module/menu.lua`
 
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
 
 
 # Got a problem? Just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
-#### Suggestion? If you have any suggestion on how to improve this setup, please open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).  
+#### Suggestion? If you have any suggestion on how to improve this setup, please open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
 
 
 **Special thanks**

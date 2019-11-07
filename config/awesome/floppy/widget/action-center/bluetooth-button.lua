@@ -130,16 +130,18 @@ local settingsName = wibox.widget {
   widget = wibox.widget.textbox
 }
 
-local content =   wibox.widget {
+local content = wibox.widget {
+  {
     settingsName,
+    layout = wibox.layout.fixed.horizontal,
+  },
+  nil,
+  {
     bluetooth_button,
-    bg = '#ffffff20',
-    shape = gears.shape.rounded_rect,
-    widget = wibox.container.background(settingsName),
-    layout = wibox.layout.ratio.horizontal,
-
-  }
-content:set_ratio(1, .83)
+    layout = wibox.layout.fixed.horizontal,
+  },
+  layout = wibox.layout.align.horizontal,
+}
 
 local bluetoothButton =  wibox.widget {
   wibox.widget {
