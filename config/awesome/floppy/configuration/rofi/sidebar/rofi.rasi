@@ -1,7 +1,7 @@
 configuration {
 	show-icons:                    false;
 	sidebar-mode:                  true;
-  font:                          "SFNS Display 10";
+  font:                          "Neue Haas Unica Pro Bold 10";
 	hide-scrollbar: true;
 }
 
@@ -35,7 +35,7 @@ configuration {
 	hide-scrollbar:              "true";
 	margin:                      0px;
 	padding:                     0px;
-	font:												"SFNS Display 10";
+	font:												"Neue Haas Unica Pro Bold 10";
 }
 
 window {
@@ -53,7 +53,7 @@ mainbox {
 	spacing:  0em;
 	padding: 0px;
 	width:200px;
-	children: [ inputbar, listview, sidebar ];
+	children: [ inputbar, listview ]; /* children: [ inputbar, listview, sidebar ]; */
 	expand: true;
 }
 
@@ -83,7 +83,7 @@ listview {
 element {
 	padding:							16px;
 	border: 						 	0 0 0 0px solid;
-	border-radius:				6;
+	border-radius:				0;
 	margin:								0 17 0 17;
 	background-color: 		rgba(28, 26, 20, 1);
 }
@@ -94,9 +94,9 @@ entry {
 	background-color:		 	#ffffff20;
 	vertical-align: 			0.5;
 	padding:        			12px;
-	font:            			"SFNS Display 14";
+	font:            			"Neue Haas Unica Pro Bold 9";
 	margin:								16 16 16 16;
-	border-radius:				28;
+	border-radius:				6;
 }
 
 element normal.normal {

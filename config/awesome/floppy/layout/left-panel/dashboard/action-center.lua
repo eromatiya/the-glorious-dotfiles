@@ -7,7 +7,7 @@ local mat_list_sep = require('widget.material.list-item-separator')
 local actionTitle = wibox.widget {
   text = 'Action Center',
   font = 'SFNS Display 12',
-  align = 'left',
+  align = 'center',
   widget = wibox.widget.textbox
 }
 
@@ -16,127 +16,89 @@ local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/bluetooth/icons/'
 local checker
 local mat_list_item = require('widget.material.list-item')
 
-
-local separator = wibox.widget{
-  orientation = 'horizontal',
-  forced_height = 1,
-  span_ratio = 0.90,
-  opacity = 0.90,
-  color = beautiful.bg_modal,
-  widget = wibox.widget.separator
-}
-
 local barColor = beautiful.bg_modal
-local wifibutton = require('widget.action-center.wifi-button')
-local bluebutton = require('widget.action-center.bluetooth-button')
-local comptonbutton = require('widget.action-center.compositor-button')
+
+-- local wrapped_mini_line = wibox.widget {
+--   wibox.widget {
+--     wibox.widget {
+--       orientation = 'horizontal',
+--       forced_height = 1,
+--       span_ratio = 0.90,
+--       opacity = 0.90,
+--       color = beautiful.bg_modal,
+--       widget = wibox.widget.separator
+--     },
+--     bg = barColor,
+--     shape = function(cr, width, height)
+--       gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 6) end,
+--       widget = wibox.container.background
+--     },
+--     widget = mat_list_sep,
+--   }
+
+-- local wrapped_line = wibox.widget
+-- {
+--   wibox.widget{
+--      wibox.widget {
+--       orientation = 'horizontal',
+--       forced_height = 1,
+--       span_ratio = 1.0,
+--       opacity = 0.90,
+--       color = 'beautiful.bg_modal',
+--       widget = wibox.widget.separator
+--     },
+--     bg = barColor,
+--     widget = wibox.container.background
+--   },
+--   widget = mat_list_sep,
+-- }
+
 return wibox.widget{
   spacing = 0,
+  layout = wibox.layout.fixed.vertical,
   wibox.widget {
     wibox.widget {
       actionTitle,
-      bg = '#ffffff20',
-      layout = wibox.layout.flex.vertical
+      bg = beautiful.bg_modal_title,
+      shape = function(cr, width, height)
+        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
+      widget = wibox.container.background,
     },
     widget = mat_list_item,
   },
+  -- wrapped_line,
   wibox.widget{
     wibox.widget{
-      wifibutton,
+      require('widget.action-center.wifi-button'),
       bg = barColor,
       shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  true,
-                  true,
-                  false,
-                  false,
-                  6)
-              end,
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, 6) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
   },
-  layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
-      separator,
-      bg = barColor,
-      shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  true,
-                  true,
-                  6)
-              end,
-      widget = wibox.container.background
-    },
-    widget = mat_list_sep,
-  },
+  -- wrapped_mini_line,
   -- Bluetooth Connection
   layout = wibox.layout.fixed.vertical,
   wibox.widget{
     wibox.widget{
-      bluebutton,
+      require('widget.action-center.bluetooth-button'),
       bg = barColor,
       shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  false,
-                  false,
-                  6)
-              end,
+         gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, 6) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
   },
-  layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
-      separator,
-      bg = barColor,
-      shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  true,
-                  true,
-                  6)
-              end,
-      widget = wibox.container.background
-    },
-    widget = mat_list_sep,
-  },
+  -- wrapped_mini_line,
   -- Compositor Toggle
   layout = wibox.layout.fixed.vertical,
   wibox.widget{
     wibox.widget{
-      comptonbutton,
+      require('widget.action-center.compositor-button'),
       bg = barColor,
       shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  true,
-                  true,
-                  6)
-              end,
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 6) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,

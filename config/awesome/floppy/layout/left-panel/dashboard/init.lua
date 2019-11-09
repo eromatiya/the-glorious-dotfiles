@@ -69,7 +69,7 @@ return function(_, panel)
   )
 
 
-  local quickSearchSeparator = wibox.widget {
+  local separator = wibox.widget {
     orientation = 'vertical',
     forced_height = 10,
     opacity = 0.00,
@@ -93,15 +93,17 @@ return function(_, panel)
           search_button,
           bg = beautiful.bg_modal,     --beautiful.background.hue_800,
           shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, 28)
+                    gears.shape.rounded_rect(cr, w, h, 6)
                   end,
           widget = wibox.container.background,
         },
         widget = mat_list_item,
       },
-      quickSearchSeparator,
+      separator,
       require('layout.left-panel.dashboard.quick-settings'),
+      separator,
       require('layout.left-panel.dashboard.hardware-monitor'),
+      separator,
       require('layout.left-panel.dashboard.action-center'),
     },
     nil,

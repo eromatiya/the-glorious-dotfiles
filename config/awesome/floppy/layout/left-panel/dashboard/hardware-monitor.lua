@@ -4,54 +4,83 @@ local beautiful = require('beautiful')
 local mat_list_item = require('widget.material.list-item')
 local mat_list_sep = require('widget.material.list-item-separator')
 
+
+
+local barColor = beautiful.bg_modal
+
 local hardwareTitle = wibox.widget
 {
   text = 'Hardware monitor',
   font = 'SFNS Display 12',
-  align = 'left',
+  align = 'center',
   widget = wibox.widget.textbox
 
 }
 
-local separator = wibox.widget {
-  orientation = 'horizontal',
-  forced_height = 1,
-  span_ratio = 0.90,
-  opacity = 0.90,
-  color = beautiful.bg_modal,
-  widget = wibox.widget.separator
-}
 
-local barColor = beautiful.bg_modal
-local cpu = require('widget.cpu.cpu-meter')
-local ram = require('widget.ram.ram-meter')
-local temp = require('widget.temperature.temperature-meter')
-local drive = require('widget.harddrive.harddrive-meter')
+-- local wrapped_mini_line = wibox.widget {
+--   wibox.widget {
+--     wibox.widget {
+--       orientation = 'horizontal',
+--       forced_height = 1,
+--       span_ratio = 0.90,
+--       opacity = 0.90,
+--       color = beautiful.bg_modal,
+--       widget = wibox.widget.separator
+--     },
+--     bg = barColor,
+--     shape = function(cr, width, height)
+--       gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 6) end,
+--       widget = wibox.container.background
+--     },
+--     widget = mat_list_sep,
+--   }
+
+-- local wrapped_line = wibox.widget
+-- {
+--   wibox.widget{
+--      wibox.widget {
+--       orientation = 'horizontal',
+--       forced_height = 1,
+--       span_ratio = 1.0,
+--       opacity = 0.90,
+--       color = 'beautiful.bg_modal',
+--       widget = wibox.widget.separator
+--     },
+--     bg = barColor,
+--     widget = wibox.container.background
+--   },
+--   widget = mat_list_sep,
+-- }
+
 return wibox.widget {
-  spacing = 0,
+  layout = wibox.layout.fixed.vertical,
   wibox.widget {
     wibox.widget {
       hardwareTitle,
-      bg = '#ffffff20',
-      layout = wibox.layout.flex.vertical
+      bg = beautiful.bg_modal_title,
+      shape = function(cr, width, height)
+        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
+      widget = wibox.container.background,
     },
-    widget = mat_list_item
+    widget = mat_list_item,
   },
   wibox.widget{
     wibox.widget{
-      cpu,
+      require('widget.cpu.cpu-meter'),
       bg = barColor,
       shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  true,
-                  true,
-                  false,
-                  false,
-                  6)
-              end,
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, 6) end,
+      widget = wibox.container.background
+    },
+    widget = mat_list_item,
+  },
+  wibox.widget{
+    wibox.widget{
+      require('widget.ram.ram-meter'),
+      bg = barColor,
+      shape = function(cr, width, height)
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, 6) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
@@ -59,119 +88,20 @@ return wibox.widget {
   layout = wibox.layout.fixed.vertical,
   wibox.widget{
     wibox.widget{
-      separator,
+      require('widget.temperature.temperature-meter'),
       bg = barColor,
       shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  true,
-                  true,
-                  6)
-              end,
-      widget = wibox.container.background
-    },
-    widget = mat_list_sep,
-  },
-  layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
-      ram,
-      bg = barColor,
-      shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  false,
-                  false,
-                  6)
-              end,
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, 6) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
   },
-  layout = wibox.layout.fixed.vertical,
   wibox.widget{
     wibox.widget{
-      separator,
+      require('widget.harddrive.harddrive-meter'),
       bg = barColor,
       shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  true,
-                  true,
-                  6)
-              end,
-      widget = wibox.container.background
-    },
-    widget = mat_list_sep,
-  },
-  layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
-      temp,
-      bg = barColor,
-      shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  false,
-                  false,
-                  6)
-              end,
-      widget = wibox.container.background
-    },
-    widget = mat_list_item,
-  },
-  layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
-      separator,
-      bg = barColor,
-      shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  true,
-                  true,
-                  6)
-              end,
-      widget = wibox.container.background
-    },
-    widget = mat_list_sep,
-  },
-  layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
-      drive,
-      bg = barColor,
-      shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  true,
-                  true,
-                  6)
-              end,
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 6) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
