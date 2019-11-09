@@ -16,7 +16,7 @@ return function(_, panel)
       widget = mat_icon
     },
     wibox.widget {
-      text = 'Search the web',
+      text = 'Web Search',
       font = 'SFNS Display Regular 12',
       widget = wibox.widget.textbox,
       align = center
