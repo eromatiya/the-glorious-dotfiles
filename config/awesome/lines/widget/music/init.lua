@@ -114,7 +114,7 @@ musicPlayer:setup {
       layout = wibox.layout.fixed.vertical,
     },
     -- The real background color
-    bg = "#000000".. "66",
+    bg = beautiful.background.hue_800,
     -- The real, anti-aliased shape
     shape = function(cr, width, height)
               gears.shape.partially_rounded_rect(
