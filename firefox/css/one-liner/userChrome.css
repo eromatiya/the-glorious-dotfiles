@@ -13,14 +13,17 @@
 /*@import "theme/hide-single-tab.css";
 
 /* Use system theme icons instead of Adwaita icons included by theme */
-/*@import "theme/system-icons.css";
+@import "theme/system-icons.css";
 
 /* Make all tab icons look kinda like symbolic icons */
 /*@import "theme/symbolic-tab-icons.css";
+
+/* Full width tabs and some ui enhancement */
+@import "theme/expand-tab.css";
 
 /* Import a custom stylesheet
  * Everything you add in your customChrome.css file (it doesn't exist by
  * default) will be included here and preserved between updates, so you can move
  * your configuration to that file if you don't like setting it up after every
  * update. You can also apply your own custom styles in that file. */
-@import "customChrome.css"; /**/
+@import "customChrome.css";

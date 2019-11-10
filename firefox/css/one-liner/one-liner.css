@@ -258,99 +258,6 @@ WINDOWS UWP DRAG BAR
   opacity: 1 !important;
 }
 
-/* Extra margin for the first and last tabs */
-.tabbrowser-tab[first-tab]:not([pinned=true]) {
-  margin-left: 8px !important;
-}
-
-/* New hover effect */
-#TabsToolbar toolbarbutton {
-  fill-opacity: .6 !important;
-}
-#TabsToolbar toolbarbutton:not([disabled]):hover,
-#TabsToolbar toolbarbutton[open=true] {
-  fill-opacity: 1 !important;
-}
-
-/* Force tab favicon to the center */
-.tabbrowser-tab:not([class*="identity-color-"]) .tab-throbber, .tabbrowser-tab:not([class*="identity-color-"]) .tab-throbber-fallback {
-  margin-left: auto;
-}
-.tabbrowser-tab:not([busy]):not([class*="identity-color-"]) .tab-icon-image {
-  margin-left: auto;
-}
-
-
-/* If tab favicon is not present, force tab label to the center */
-.tabbrowser-tab .tab-label-container {
-  margin-left: 0 !important;
-}
-.tabbrowser-tab:not([image]):not([busy]):not([progress]):not([class*="identity-color-"]) .tab-label-container {
-  margin-left: auto !important;
-}
-
-/* Tab close button etc. positioning */
-.tab-throbber, .tab-icon-image, .tab-sharing-icon-overlay, .tab-icon-sound, .tab-close-button {
-  margin-top: 0 !important;
-}
-
-/* Full width tabs */
-.tabbrowser-tab:not([style^="max-width"]):not([pinned]),
-.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]) {
-  max-width: 100% !important;
-}
-
-.tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]),
-.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
-  max-width: .1px !important;
-}
-
-/* removes seperators between pinned tabs */
-#TabsToolbar .tabbrowser-tab:after,
-#TabsToolbar .tabbrowser-tab:before {
-    display: none !important;
-}
-
-/* Full width tabs */
-.tabbrowser-tab:not([style^="max-width"]):not([pinned]),
-.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]) {
-  max-width: 100% !important;
-}
-
-/* Remove container bottom line indicator */
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
-  display: none;
-}
-
-/* Create new container tab indicator */
-.tabbrowser-tab[class*="identity-color-"] .tab-content::before {
-  content: "";
-  display: block;
-    background-image: var(#userContext-icons:--identity-icon);
-  background: var( --identity-tab-color);
-  -moz-context-properties: fill;
-  fill: var(--identity-icon-color);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  min-width: 10px;
-  height: 10px;
-  margin-right: 5px;
-  margin-left: auto !important;
-  border-radius: 100%;
-}
-
-.tabbrowser-tab[class*="identity-color-"][pinned] .tab-content::before,
-.tabbrowser-tab[class*="identity-color-"][image] .tab-content::before,
-.tabbrowser-tab[class*="identity-color-"][busy] .tab-content::before,
-.tabbrowser-tab[class*="identity-color-"][progress] .tab-content::before {
-  right: -10px;
-  top: -8px;
-  position: relative;
-  margin-right: -10px;
-}
-
-
 /* Center Text */
 .tab-text {
   text-align: center !important;
@@ -421,9 +328,6 @@ WINDOWS UWP DRAG BAR
   display: none !important;
 }
 #dropmarker-icon,
-
-
-
 
 
 /* #################
@@ -509,9 +413,10 @@ Delete this rule if you need a space to drag the window*/
 - - CLOSE BUTTONS
 ################# */
 
- #titlebar-buttonbox:-moz-window-inactive > * {
+/* #titlebar-buttonbox:-moz-window-inactive > * {
   list-style-image: url(buttons/nofocus.png) !important;
- }
+ } */
+
 
  .titlebar-min {
   padding: 0px  !important;
