@@ -84,48 +84,13 @@
 }
 
 
-/* Close tab button */
-:root {
-  --sweet-fill-icon: red !important;
-}
-.tab-close-button {
-  -moz-appearance: none !important;
-  border: 1px solid transparent;
-  box-sizing: content-box; /* Avoid deformation on flexbox */
-  border-radius: 5px;
-  list-style-image: url("../icons/window-close-symbolic.svg") !important;
-  height: 16px;
-  opacity: .3;
-  padding: 2px;
-  width: 16px;
-}
-@media (prefers-color-scheme: dark) {
-  .tab-close-button {
-    list-style-image: url("../icons/window-close-symbolic-light.svg") !important;
-  }
-}
-:root:-moz-window-inactive .tab-close-button:not(#hack) {
-  opacity: .18 !important;
-}
-:root:not(:-moz-window-inactive) .tab-close-button:hover {
-  background-image: var(--sweet-button-background);
-  box-shadow: var(--sweet-button-box-shadow);
-  border: 1px solid var(--sweet-button-border-color);
-  border-bottom-color: var(--sweet-button-border-accent-color);
-  opacity: 1;
-}
-:root:not(:-moz-window-inactive) .tab-close-button:active {
-  background-image: var(--sweet-button-active-background) !important;
-  box-shadow: var(--sweet-button-active-box-shadow) !important;
-  border-color: var(--sweet-button-active-border-color) !important;
-  border-bottom-color: var(--sweet-button-active-border-color) !important;
-  border-top-color: var(--sweet-button-active-border-accent-color) !important;
-}
-
 .tab-close-button:active:not(:hover) {
   background-image: none !important;
   box-shadow: none !important;
 }
+.tabbrowser-tab:not([pinned]):not(:hover) .tab-close-button { visibility: collapse !important; }
+
+.tabbrowser-tab:not([pinned]):hover .tab-close-button { visibility: visible !important; display: block !important; }
 
 /* Tab close button etc. positioning */
 .tab-throbber, .tab-icon-image, .tab-sharing-icon-overlay, .tab-icon-sound, .tab-close-button {

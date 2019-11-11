@@ -16,7 +16,7 @@
 + **Lock Screen**: [mantablockscreen](https://github.com/reorr/mantablockscreen)
 + **Display Manager**: sddm with [sugar-candy](https://www.opencode.net/marianarlt/sddm-sugar-candy)
 
-# An AwesomeWM Setup
+# An Awesome Setup
 
 ## FEATURES!
 + **Brightness and Volume OSDs**
@@ -76,7 +76,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend |
 | `xdg_menu` | Generates a list of installed applications | Useful for generating app list |
 | `imagemagick` | An image viewing/manipulation program | Album cover extractor |
-| `jq` | Command-line JSON processor | Removable Drive Widget |
+| `jq` | Command-line JSON processor | Formatting |
 
 ##### Monospace
 + **[Iosevka Custom](https://github.com/elenapan/dotfiles/)**
@@ -99,27 +99,59 @@ If you notice that something is missing, please open an issue so I can add the d
   - python3 (web-search rofi)
   - xdg-menu (generates app list)
   - imagemagick (extract album cover, music widget)
-  - jq (removable drive widget)
+  - jq (Formatting)
 + Copy the selected theme from `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
 + Rename it to `awesome`
-+ Reload Awesome using `super + shift + r`
++ Reload Awesome using `Super + shift + r`
 
 
 # File Structure
 This setup is split in multiple parts:
 + `rc.lua` the core of configuration. You can enable and disable the modules here and load all your configurations.
-+ The `layout` directory contains the panels' configurations. Change panel settings here or load/unload modules.
++ The `layout` directory contains the panel configurations. Change panel settings here or load/unload widgets.
 + In `configuration` directory you can find all the configs about the key bindings, client rules, tags, starting apps and etc.
 + The `module` consists of many files that are usually inside the `rc.lua` like notifications, app menus, etc. You can load them in the `rc.lua`.
 + The `themes` folder contains themes and colors of the setup.
 + The `widgets` contains all the widgets(of course). These are used in the panels and dashboard. It contains the wifi, bluetooth, battery widget and many more.
-+ `binaries` contains bash scripts. I recently added this because running multiple bash commands inside lua is clunky at times. So I decided to split them and have their own territory. Right now, it contains the `snap` script as screenshot tool and `togglewinfx`, the script that toggles the compton blur.
++ `binaries` contains bash scripts. I recently added this because running multiple bash commands inside lua is clunky sometimes. So, I decided to put them in a folder.
+
+# Where to edit this and that?
++ Colorschemes?
+  - `awesome/theme`
+  - Just play with `default-theme.lua` and `*setupname*-theme\init.lua`
++ Panels and bars?
+  - `awesome/layout`
++ Client behaviour?
+  - `awesome/module/decorate-client.lua`
+  - `awesome/module/titlebar-decorate-client.lua` - for titlebar behaviour. Kinda messy right now
++ Start-up Applications?
+  - `awesome/configuration/apps.lua`
++ Keybindings?
+  - `awesome/configuration/keys/`
++ Client rules?
+  - `awesome/configuration/client/keys.lua`
++ Compositor?
+  -  `awesome/configuration/compton.conf`
++ Rofi?
+  - `awesome/configuration/rofi/`
++ Tags?
+  - `awesome/configuration/tags/`
++ Icons?
+  - `awesome/theme/icons/`
++ Wallpapers?
+  - `awesome/theme/wallpapers/`
++ Modules?
+  - `awesome/modules`
++ Binaries?
+  - `awesome/binaries`
+
 
 # NOTE
++ Currently, I'm focusing on floppy setup. I'll update the other setups when I achieve my goals for floppy
 + This setup will not mostly work out of the box because:
   - It is only tested and configured on a 1366x768 resolution (Lenovo x230)
   - Some dependencies are not currently installed
-+ Check keybindings using `super +  F1`
++ Check keybindings using `Super +  F1`
 
 # ABOUT WIDGETS AND MODULES
 + You need a song with hard-coded album cover for music widget to display its cover.
@@ -142,4 +174,3 @@ This setup is split in multiple parts:
 + **pdonadeo** for the [rofi-web-search.py](https://github.com/pdonadeo/rofi-web-search)
 + **[elenapan](https://github.com/elenapan/dotfiles)**
 + **[addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)**
-+ **Myself, for not giving up hahaha**
