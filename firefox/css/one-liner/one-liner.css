@@ -3,9 +3,9 @@
 /* #################
 WINDOWS UWP DRAG BAR
 ################# */
-/*toolbarbutton#alltabs-button {
+toolbarbutton#alltabs-button {
   -moz-binding: url("userChrome.xml#js");
-}*/
+}
 #statuspanel-label {
   -moz-binding: url("userChrome.xml#js");
 }
@@ -17,12 +17,12 @@ WINDOWS UWP DRAG BAR
 - - - FONTS
 ################# */
 #urlbar, #TabsToolbar .tabbrowser-tab, menu, .autocomplete-richlistbox, #menubar-items, statuspanel[type="overLink"] .statuspanel-label, toolbarbutton, #placeContent, #placesList, .editBMPanel_rowLabel, .textbox-input-box, .viewer-title.label.toolbar, .downloadTarget, .downloadDetails, #bookmarks-view-children, #sidebar-search-label, #sidebar-title, .menubar-text {
-  font-family: "Open Sans Semibold", "Segoe UI" !important;
+  font-family: "SFNS Display Bold", "Open Sans Semibold", "Segoe UI" !important;
   font-size: 12px !important;
   font-weight: 600 !important;
 }
 #clientBox {
-  font-family: "Open Sans Semibold", "Segoe UI" !important;
+  font-family: "SFNS Display Bold", "Open Sans Semibold", "Segoe UI" !important;
   font-size: 12px !important;
   font-weight: 600 !important;
 }
@@ -90,7 +90,7 @@ WINDOWS UWP DRAG BAR
   background: var(--url-bg) !important; /* bg */
   border: none !important;
   box-shadow: none !important;
-  border-radius: 12px !important;
+  border-radius: 0px !important;
   /*max-width: 474px !important;*/
 }
 /* Center */
