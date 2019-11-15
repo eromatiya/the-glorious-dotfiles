@@ -150,5 +150,5 @@ awesome.connect_signal("widget::weather", function(temperature, description, ico
     -- Update data. Global variables stored in widget.weather.init
     _G.weather_icon_widget.icon:set_image(PATH_TO_ICONS .. widgetIconName .. '.svg')
     _G.weather_description.text = description
-    _G.weather_temperature.text = temperature .. weather_temperature_symbol
+    -- _G.weather_temperature.text = temperature .. weather_temperature_symbol
 end)

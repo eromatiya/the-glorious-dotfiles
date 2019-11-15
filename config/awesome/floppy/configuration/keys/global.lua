@@ -32,7 +32,7 @@ local globalKeys =
         _G.screen.primary.right_panel:toggle()
       end
     end,
-  { description = "Open Application Drawer", group = "launcher"}),
+  { description = "Open Notification Center", group = "launcher"}),
   awful.key(
     {modkey, "Shift"}, 'f',
     function()
