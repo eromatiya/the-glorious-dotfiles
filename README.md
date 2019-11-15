@@ -164,7 +164,7 @@ This setup is split in multiple parts:
   - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
   - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua
   - You can just substitute its values to `awesome/module/menu.lua`
-
++ You will probably have an error because of `weather-update.lua`. It is because I did not include an openweathermap API and etc.
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
 
