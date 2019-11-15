@@ -39,11 +39,13 @@ configuration {
 }
 
 window {
-	location:	 east;
-	anchor:		 east;
-	x-offset: 0px;
-	height:		 100%;
+	location:	 west;
+	anchor:		 west;
+	x-offset: 5px;
+	y-offset: 20px;
+	height:		 620px;
 	width:		 350px;
+	border-radius: 12;
 	margin-right: 60px;
 	orientation: horizontal;
 	children:	 [mainbox];

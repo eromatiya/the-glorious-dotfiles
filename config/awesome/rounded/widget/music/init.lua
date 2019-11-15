@@ -15,8 +15,7 @@ local mat_list_item = require('widget.material.list-item')
 local apps = require('configuration.apps')
 
 
-awful.screen.connect_for_each_screen(
-  function(s)
+screen.connect_signal("request::desktop_decoration", function(s)
     -- Create the box
     local offsetx = dpi(500)
     local padding = dpi(10)
@@ -32,8 +31,7 @@ awful.screen.connect_for_each_screen(
         y = s.geometry.height - dpi(380) - dpi(10) - dpi(42),
       }
     )
-  end
-)
+end)
 
 local widget =
   wibox.widget {

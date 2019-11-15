@@ -5,7 +5,7 @@ local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 local theme = {}
 theme.icons = theme_dir .. '/icons/'
-theme.font = 'Roboto medium 10'
+theme.font = 'SFNS Display Regular 10'
 
 -- Colors Pallets
 
@@ -28,10 +28,10 @@ local awesome_overrides =
   theme.icons = theme.dir .. '/icons/'
 
   -- Default Wallpaper if Dynamic wallpaper module is not loaded
-  theme.wallpaper = theme.dir .. '/wallpapers/noon-wallpaper.jpg'
+  theme.wallpaper = theme.dir .. '/wallpapers/day-wallpaper.jpg'
 
-  theme.font = 'Roboto medium 10'
-  theme.title_font = 'Roboto medium 14'
+  theme.font = 'SFNS Display Regular 10'
+  theme.title_font = 'SFNS Display Bold 14'
 
   theme.fg_normal = '#ffffffde'
 
@@ -45,7 +45,7 @@ local awesome_overrides =
   theme.bg_systray = theme.background.hue_800
 
   theme.bg_modal = "#ffffff20"
-
+  theme.bg_modal_title = "#ffffff30"
   -- Borders
 
   theme.border_width = dpi(2)
@@ -109,7 +109,7 @@ local awesome_overrides =
 
   -- Tasklist
 
-  theme.tasklist_font = 'Roboto Regular 10'
+  theme.tasklist_font = 'SFNS Display Regular 10'
   theme.tasklist_bg_normal = theme.background.hue_800 .. '99'
   theme.tasklist_bg_focus =
     'linear:0,0:0,' ..
@@ -128,7 +128,7 @@ local awesome_overrides =
   theme.border_width = dpi(0)
   theme.border_focus = theme.primary.hue_500
   theme.border_normal = theme.background.hue_800
-  theme.corner_radius = dpi(12)
+  theme.corner_radius = dpi(6)
 end
 return {
   theme = theme,

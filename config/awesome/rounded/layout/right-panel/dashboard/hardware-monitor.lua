@@ -4,14 +4,6 @@ local beautiful = require('beautiful')
 local mat_list_item = require('widget.material.list-item')
 local mat_list_sep = require('widget.material.list-item-separator')
 
-local hardwareTitle = wibox.widget
-{
-  text = 'Hardware monitor',
-  font = 'SFNS Display 12',
-  align = 'left',
-  widget = wibox.widget.textbox
-
-}
 
 local separator = wibox.widget {
         orientation = 'horizontal',
@@ -29,14 +21,6 @@ local temp = require('widget.temperature.temperature-meter')
 local drive = require('widget.harddrive.harddrive-meter')
 return wibox.widget {
   spacing = 0,
-  wibox.widget {
-    wibox.widget {
-      hardwareTitle,
-      bg = '#ffffff20',
-      layout = wibox.layout.flex.vertical
-    },
-    widget = mat_list_item
-  },
   wibox.widget{
     wibox.widget{
       cpu,

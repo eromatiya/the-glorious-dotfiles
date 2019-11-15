@@ -4,13 +4,6 @@ local beautiful = require('beautiful')
 local mat_list_item = require('widget.material.list-item')
 local mat_list_sep = require('widget.material.list-item-separator')
 
-local actionTitle = wibox.widget {
-  text = 'Action Center',
-  font = 'SFNS Display 12',
-  align = 'left',
-  widget = wibox.widget.textbox
-}
-
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/bluetooth/icons/'
 local checker
@@ -32,14 +25,6 @@ local bluebutton = require('widget.action-center.bluetooth-button')
 local comptonbutton = require('widget.action-center.compositor-button')
 return wibox.widget{
   spacing = 0,
-  wibox.widget {
-    wibox.widget {
-      actionTitle,
-      bg = '#ffffff20',
-      layout = wibox.layout.flex.vertical
-    },
-    widget = mat_list_item,
-  },
   wibox.widget{
     wibox.widget{
       wifibutton,

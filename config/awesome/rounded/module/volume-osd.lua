@@ -10,6 +10,8 @@ local dpi = require('beautiful').xresources.apply_dpi
 local vol_osd = require('widget.volume.volume-slider-osd')
 
 
+screen.connect_signal("request::desktop_decoration", function(s)
+
 awful.screen.connect_for_each_screen(
   function(s)
     -- Create the box
@@ -30,6 +32,7 @@ awful.screen.connect_for_each_screen(
     )
   end
 )
+end)
 
 -- Put its items in a shaped container
 volumeOverlay:setup {

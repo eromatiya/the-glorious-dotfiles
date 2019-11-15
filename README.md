@@ -1,6 +1,7 @@
 <div align="center">
     <h1>Glorious Dotfiles</h1>
     <p>There's no place like <b><code>~</code></b> !</p>
+    <p>Fork it. Steal it. I don't care. <b><code>Just don't make it ugly.</code></b> !</p>
 </div>
 
 ## Details

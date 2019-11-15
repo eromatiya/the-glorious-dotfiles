@@ -60,8 +60,7 @@ local month_calendar = awful.widget.calendar_popup.month({
 	})
 	month_calendar:attach( clock_widget, "bc" , { on_pressed = true, on_hover = false })
 
-
-awful.screen.connect_for_each_screen(function(s)
+screen.connect_signal("request::desktop_decoration", function(s)
   s.systray = wibox.widget.systray()
   s.systray.visible = false
   s.systray:set_horizontal(true)
@@ -214,6 +213,7 @@ end
         -- Create a taglist widget
         require('widget.search'),
         require('widget.music'),
+        require('widget.mini-settings'),
         hSeparator,
         TagList(s),
       },

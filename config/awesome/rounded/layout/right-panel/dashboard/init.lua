@@ -6,6 +6,7 @@ local mat_icon = require('widget.material.icon')
 local dpi = require('beautiful').xresources.apply_dpi
 local icons = require('theme.icons')
 local gears = require('gears')
+local apps = require('configuration.apps')
 
 return function(_, panel)
   local search_button =
@@ -32,7 +33,7 @@ return function(_, panel)
         {},
         1,
         function()
-          panel:run_rofi()
+          awful.util.spawn(apps.default.rofi)
         end
       )
     )
@@ -61,7 +62,6 @@ return function(_, panel)
         {},
         1,
         function()
-          panel:toggle()
           _G.exit_screen_show()
         end
       )
@@ -101,15 +101,17 @@ return function(_, panel)
       },
       quickSearchSeparator,
       require('layout.right-panel.dashboard.quick-settings'),
+      topBotSeparator,
       require('layout.right-panel.dashboard.hardware-monitor'),
+      topBotSeparator,
       require('layout.right-panel.dashboard.action-center'),
     },
-    nil,
+    topBotSeparator,
     {
-
       layout = wibox.layout.fixed.vertical,
       wibox.widget{
         wibox.widget{
+          separator,
           exit_button,
           bg = beautiful.bg_modal,--beautiful.background.hue_800,
           widget = wibox.container.background,

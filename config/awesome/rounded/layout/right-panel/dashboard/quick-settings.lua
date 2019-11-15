@@ -4,12 +4,6 @@ local beautiful = require('beautiful')
 local mat_list_item = require('widget.material.list-item')
 local mat_list_sep = require('widget.material.list-item-separator')
 
-local quickTitle = wibox.widget {
-  text = 'Quick settings',
-  font = 'SFNS Display 12',
-  align = 'left',
-  widget = wibox.widget.textbox
-}
 
 local barColor = beautiful.bg_modal
 local volSlider = require('widget.volume.volume-slider')
@@ -26,14 +20,6 @@ local separator = wibox.widget {
 
 return wibox.widget {
   spacing = 0,
-  wibox.widget {
-    wibox.widget {
-      quickTitle,
-      bg = '#ffffff20',
-      layout = wibox.layout.flex.vertical
-    },
-    widget = mat_list_item
-  },
   nil,
   {
     layout = wibox.layout.fixed.vertical,

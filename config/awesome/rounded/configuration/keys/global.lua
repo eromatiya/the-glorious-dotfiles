@@ -18,15 +18,19 @@ local globalKeys =
       awful.spawn(apps.default.terminal)
     end,
     { description = "Open Terminal", group = "launcher"}),
-
-    awful.key(
-      {modkey}, 'e',
-      function()
-        awful.util.spawn(apps.default.rofiappmenu)
-    --    _G.screen.primary.right_panel:HideDashboard()
-      end,
-      { description = "Open Application Drawer", group = "launcher"}),
-
+  awful.key(
+    {modkey}, 'e',
+    function()
+      awful.util.spawn(apps.default.rofiappmenu)
+      _G.screen.primary.right_panel:HideDashboard()
+    end,
+  { description = "Open Application Drawer", group = "launcher"}),
+  awful.key(
+    {modkey}, 'x',
+    function()
+        _G.screen.primary.right_panel:toggle()
+    end,
+  { description = "Open Notification Center", group = "launcher"}),
   awful.key(
     {modkey, "Shift"}, 'f',
     function()
@@ -55,7 +59,6 @@ local globalKeys =
     awful.spawn.easy_async_with_shell(apps.bins.fullShot)
   end,
   { description = "Fullscreen screenshot", group = "Miscellaneous"}),
-
   -- Screen Shot Area and Save
   awful.key(
   {modkey, "Shift"}, 's',
@@ -63,11 +66,20 @@ local globalKeys =
     awful.spawn.easy_async_with_shell(apps.bins.areaShot)
   end,
   { description = "Area screenshot", group = "Miscellaneous"}),
+  -- Music Widget
+  awful.key(
+    {modkey}, 'm',
+    function()
+      if require("widget.music") then
+        _G.togglePlayer()
+      end
+    end,
+  { description = "Open Music Widget", group = "launcher"}),
 
   -- Toggle System Tray
   awful.key({ 'Control' }, 'Escape', function ()
-      awesome.emit_signal("toggle_tray")
-    end, {description = "Toggle systray visibility", group = "Miscellaneous"}),
+    awesome.emit_signal("toggle_tray")
+  end, {description = "Toggle systray visibility", group = "Miscellaneous"}),
 
   -- Tag browsing
   awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
@@ -110,7 +122,7 @@ local globalKeys =
     {modkey},
     'r',
     function()
-      _G.screen.primary.right_panel:toggle(false)
+      mini_sett_toggle()
     end,
     {description = 'Open Sidebar', group = 'launcher'}
   ),
@@ -322,9 +334,26 @@ local globalKeys =
     {},
     'XF86AudioNext',
     function()
-      --
+      awful.spawn('mpc next')
     end,
-    {description = 'toggle mute', group = 'hotkeys'}
+    {description = 'next music', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPrev',
+    function()
+      awful.spawn('mpc prev')
+    end,
+    {description = 'previous music', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPlay',
+    function()
+      awful.spawn('mpc toggle')
+    end,
+    {description = 'play/pause music', group = 'hotkeys'}
+
   ),
   awful.key(
     {},
