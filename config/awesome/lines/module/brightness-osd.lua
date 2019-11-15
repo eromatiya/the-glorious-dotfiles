@@ -8,9 +8,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 local vol_osd = require('widget.brightness.brightness-slider-osd')
 
-
-awful.screen.connect_for_each_screen(
-  function(s)
+screen.connect_signal("request::desktop_decoration", function(s)
     -- Create the box
 
     local offsetx = dpi(56)
@@ -27,9 +25,7 @@ awful.screen.connect_for_each_screen(
         y = (s.geometry.height / dpi(2)) - (offsety / dpi(2)),
       }
     )
-  end
-)
-
+end)
 
 -- Put its items in a shaped container
 brightnessOverlay:setup {

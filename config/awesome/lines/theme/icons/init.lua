@@ -1,21 +1,22 @@
-local panel_icon_theme = 'korla' -- Available Themes: 'drops', 'original', 'macos', 'korla'
-local pit_dir = os.getenv('HOME') .. '/.config/awesome/theme/icons/panel-icon-themes/' .. panel_icon_theme
-
+local taglist_icon_theme = 'korla' -- Available Themes: 'drops', 'default', 'macos', 'korla'
+local tit_dir = os.getenv('HOME') .. '/.config/awesome/theme/icons/tag-list/tag/' .. taglist_icon_theme
 local dir = os.getenv('HOME') .. '/.config/awesome/theme/icons'
+
 
 return {
   --tags
-  chrome = pit_dir .. '/google-chrome.svg',
-  code = pit_dir .. '/code-braces.svg',
-  social = pit_dir .. '/forum.svg',
-  folder = pit_dir .. '/folder.svg',
-  music = pit_dir .. '/music.svg',
-  game = pit_dir .. '/google-controller.svg',
-  lab = pit_dir .. '/flask.svg',
-  terminal = pit_dir .. '/terminal.svg',
-  art = pit_dir .. '/art.svg',
+  chrome = tit_dir .. '/google-chrome.svg',
+  code = tit_dir .. '/code-braces.svg',
+  social = tit_dir .. '/forum.svg',
+  folder = tit_dir .. '/folder.svg',
+  music = tit_dir .. '/music.svg',
+  game = tit_dir .. '/google-controller.svg',
+  lab = tit_dir .. '/flask.svg',
+  vbox = tit_dir .. '/vbox.svg',
+  terminal = tit_dir .. '/terminal.svg',
+  art = tit_dir .. '/art.svg',
   --others
-  menu = pit_dir .. '/menu.svg',
+  menu = tit_dir .. '/menu.svg',
   close = dir .. '/close.svg',
   logout = dir .. '/logout.svg',
   sleep = dir .. '/power-sleep.svg',

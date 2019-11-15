@@ -90,8 +90,7 @@ local month_calendar = awful.widget.calendar_popup.month({
 
   searchButton.icon:set_image(icons.search)
 
-
-awful.screen.connect_for_each_screen(function(s)
+screen.connect_signal("request::desktop_decoration", function(s)
   s.systray = wibox.widget.systray()
   s.systray.visible = false
   s.systray:set_horizontal(true)
@@ -257,6 +256,7 @@ end
       {
         genWidget(require('widget.search')),
         genWidget(require('widget.music')),
+        genWidget(require('widget.mini-settings')),
         genWidget(search_button),
         hSeparator,
         genTasklist(TagList(s)),

@@ -2,18 +2,14 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-local theme_name = "win10"
+local theme_name = "stoplight"
 local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/theme/icons/titlebar/" .. theme_name .. '/'
 local tip = titlebar_icon_path --alias to save time/space
 local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
-
 local decorExtended = require('module.titlebar-decorate-client')
-
 local titleBarSize = beautiful.titlebar_size
-
-
 
 -- Define the images to load
 beautiful.titlebar_close_button_normal = tip .. "close_normal.svg"
@@ -60,7 +56,7 @@ beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focu
 
 
 local roundCorners = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, beautiful.corner_radius)
+    gears.shape.rounded_rect(cr, width, height, 12)
 end
 
 
@@ -78,39 +74,39 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, {position = 'top', size = titleBarSize}) : setup {
+    awful.titlebar(c, {position = 'left', size = titleBarSize}) : setup {
         { -- Top
+            awful.titlebar.widget.closebutton    (c),
+            awful.titlebar.widget.maximizedbutton(c),
+            awful.titlebar.widget.minimizebutton (c),
 
-          awful.titlebar.widget.floatingbutton (c),
-          layout  = wibox.layout.fixed.horizontal
+            layout  = wibox.layout.fixed.vertical
         },
           nil,
         { -- Bottom
-            awful.titlebar.widget.minimizebutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.closebutton    (c),
-            layout = wibox.layout.fixed.horizontal
+			      awful.titlebar.widget.floatingbutton (c),
+            layout = wibox.layout.fixed.vertical()
         },
-        layout = wibox.layout.align.horizontal
+        layout = wibox.layout.align.vertical
     }
 
 
     -- CUSTOM TITLEBAR FOR TERMINALS
     -- You need XPROP for this to work
     if c.class == "kitty" or c.class == "XTerm" then
-      awful.titlebar(c, {bg = '#000000AA', size = titleBarSize}) : setup {
-          {
-            awful.titlebar.widget.floatingbutton (c),
-            layout = wibox.layout.fixed.horizontal
-          },
-            nil,
-          { -- Bottom
-            awful.titlebar.widget.minimizebutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.closebutton    (c),
-            layout  = wibox.layout.fixed.horizontal
-          },
-          layout = wibox.layout.align.horizontal
+      awful.titlebar(c, {position = "left", bg = '#000000AA', size = titleBarSize}) : setup {
+        {
+          awful.titlebar.widget.closebutton    (c),
+          awful.titlebar.widget.maximizedbutton(c),
+          awful.titlebar.widget.minimizebutton (c),
+          layout  = wibox.layout.fixed.vertical
+        },
+          nil,
+        { -- Bottom
+          awful.titlebar.widget.floatingbutton (c),
+          layout = wibox.layout.fixed.vertical()
+        },
+          layout = wibox.layout.align.vertical
         }
       end
 
@@ -122,9 +118,9 @@ _G.tag.connect_signal("property::layout", function(t)
     local clients = t:clients()
     for k,c in pairs(clients) do
         if c.first_tag.layout.name ~= "max" then
-            awful.titlebar.show(c, 'top')
+            awful.titlebar.show(c, 'left')
         else
-            awful.titlebar.hide(c, 'top')
+            awful.titlebar.hide(c, 'left')
         end
     end
 end)
@@ -133,9 +129,9 @@ end)
 -- On Spawn
 _G.client.connect_signal("manage", function(c)
     if c.first_tag.layout.name ~= "max" then
-        awful.titlebar.show(c, 'top')
+        awful.titlebar.show(c, 'left')
     else
-        awful.titlebar.hide(c, 'top')
+        awful.titlebar.hide(c, 'left')
     end
 end)
 
@@ -147,40 +143,40 @@ _G.screen.connect_signal("arrange", function(s)
 
   for _, c in pairs(s.clients) do
     if #s.tiled_clients >= 0 and (c.floating or c.first_tag.layout.name == 'floating') then
-      awful.titlebar.show(c, 'top')
+      awful.titlebar.show(c, 'left')
       c.shape = roundCorners
     elseif #s.tiled_clients == 1 and c.fullscreen == true then
-      awful.titlebar.show(c, 'top')
+      awful.titlebar.show(c, 'left')
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
     elseif #s.tiled_clients >= 1 and c.fullscreen == true then
-      awful.titlebar.show(c, 'top')
+      awful.titlebar.show(c, 'left')
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
     elseif #s.tiled_clients >= 1 and c.maximized == true then
       if c.maximized then
-      awful.titlebar.show(c, 'top')
+      awful.titlebar.show(c, 'left')
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
     end
     elseif #s.tiled_clients == 1 and c.first_tag.layout.name == 'dwindle' then
-      awful.titlebar.hide(c, 'top')
+      awful.titlebar.hide(c, 'left')
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
     elseif #s.tiled_clients > 1 and c.first_tag.layout.name == 'dwindle' then
-      awful.titlebar.show(c, 'top')
+      awful.titlebar.show(c, 'left')
       c.shape = roundCorners
     elseif #s.tiled_clients == 1 and c.first_tag.layout.name == 'tile' then
-      awful.titlebar.hide(c, 'top')
+      awful.titlebar.hide(c, 'left')
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
     elseif #s.tiled_clients > 1 and c.first_tag.layout.name == 'tile' then
-      awful.titlebar.show(c, 'top')
+      awful.titlebar.show(c, 'left')
       c.shape = roundCorners
 
     end
@@ -191,11 +187,11 @@ end)
 
 _G.client.connect_signal("property::floating", function(c)
     if c.floating then
-      awful.titlebar.show(c, 'top')
+      awful.titlebar.show(c, 'left')
       awful.placement.centered(c)
 
     else
-      awful.titlebar.hide(c, 'top')
+      awful.titlebar.hide(c, 'left')
     end
 end)
 

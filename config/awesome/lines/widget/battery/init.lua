@@ -33,7 +33,7 @@ local widget =
   layout = wibox.layout.fixed.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(10), dpi(10), dpi(10), dpi(10)))
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(8), dpi(8), dpi(8), dpi(8)))
 widget_button:buttons(
   gears.table.join(
     awful.button(

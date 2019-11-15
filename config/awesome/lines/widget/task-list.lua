@@ -63,7 +63,7 @@ local function list_update(w, buttons, label, data, objects)
         )
       )
       cb.shape = gears.shape.circle
-      cbm = wibox.container.margin(cb, dpi(4), dpi(8), dpi(6), dpi(6)) -- 4, 8 ,12 ,12 -- close button
+      cbm = wibox.container.margin(cb, dpi(4), dpi(8), dpi(2), dpi(2)) -- 4, 8 ,12 ,12 -- close button
       cbm:buttons(
         gears.table.join(
           awful.button(
@@ -79,7 +79,7 @@ local function list_update(w, buttons, label, data, objects)
       bg_clickable = clickable_container()
       bgb = wibox.container.background()
       tbm = wibox.container.margin(tb, dpi(4), dpi(4))
-      ibm = wibox.container.margin(ib, dpi(10), dpi(10), dpi(10), dpi(10)) -- 12 is default top and bottom margin --app icon
+      ibm = wibox.container.margin(ib, dpi(6), dpi(6), dpi(6), dpi(6)) -- 12 is default top and bottom margin --app icon
       l = wibox.layout.fixed.horizontal()
       ll = wibox.layout.fixed.horizontal()
 

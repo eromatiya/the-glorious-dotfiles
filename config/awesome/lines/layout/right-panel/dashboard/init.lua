@@ -6,6 +6,7 @@ local mat_icon = require('widget.material.icon')
 local dpi = require('beautiful').xresources.apply_dpi
 local icons = require('theme.icons')
 local gears = require('gears')
+local apps = require('configuration.apps')
 
 return function(_, panel)
 
@@ -32,7 +33,6 @@ return function(_, panel)
         {},
         1,
         function()
-          panel:toggle()
           _G.exit_screen_show()
         end
       )
@@ -59,19 +59,23 @@ return function(_, panel)
     {
       topBotSeparator,
       layout = wibox.layout.fixed.vertical,
-
+      quickSearchSeparator,
       require('layout.right-panel.dashboard.quick-settings'),
+      topBotSeparator,
       require('layout.right-panel.dashboard.hardware-monitor'),
+      topBotSeparator,
       require('layout.right-panel.dashboard.action-center'),
     },
-    nil,
+    topBotSeparator,
     {
-
       layout = wibox.layout.fixed.vertical,
       wibox.widget{
         wibox.widget{
+          separator,
           exit_button,
-          bg = beautiful.bg_modal,--beautiful.background.hue_800,
+          border_width = dpi(1),
+          border_color = beautiful.bg_modal,
+          bg = '#00000000',--beautiful.background.hue_800,
           widget = wibox.container.background,
           shape = function(cr, w, h)
                     gears.shape.rounded_rect(cr, w, h, 6)

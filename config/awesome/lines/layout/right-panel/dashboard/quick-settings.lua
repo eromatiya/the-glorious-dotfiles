@@ -4,16 +4,12 @@ local beautiful = require('beautiful')
 local mat_list_item = require('widget.material.list-item')
 local mat_list_sep = require('widget.material.list-item-separator')
 
-local quickTitle = wibox.widget {
-  text = 'Quick settings',
-  font = 'SFNS Display 12',
-  align = 'left',
-  widget = wibox.widget.textbox
-}
 
-local barColor = beautiful.bg_modal
+local barColor = '#00000000'
 local volSlider = require('widget.volume.volume-slider')
 local brightnessSlider = require('widget.brightness.brightness-slider')
+
+local dpi = require('beautiful').xresources.apply_dpi
 
 local separator = wibox.widget {
   orientation = 'horizontal',
@@ -26,14 +22,7 @@ local separator = wibox.widget {
 
 return wibox.widget {
   spacing = 0,
-  wibox.widget {
-    wibox.widget {
-      quickTitle,
-      bg = '#ffffff20',
-      layout = wibox.layout.flex.vertical
-    },
-    widget = mat_list_item
-  },
+  layout = wibox.layout.fixed.vertical,
   nil,
   {
     layout = wibox.layout.fixed.vertical,
@@ -41,6 +30,8 @@ return wibox.widget {
       wibox.widget{
         volSlider,
         bg = barColor,
+        border_width = dpi(1),
+        border_color = beautiful.bg_modal,
         shape = function(cr, width, height)
                   gears.shape.partially_rounded_rect(
                     cr,
@@ -60,28 +51,10 @@ return wibox.widget {
   layout = wibox.layout.fixed.vertical,
   wibox.widget{
     wibox.widget{
-      separator,
-      bg = barColor,
-      shape = function(cr, width, height)
-                gears.shape.partially_rounded_rect(
-                  cr,
-                  width,
-                  height,
-                  false,
-                  false,
-                  true,
-                  true,
-                  6)
-              end,
-      widget = wibox.container.background
-    },
-    widget = mat_list_sep,
-  },
-  layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
       brightnessSlider,
       bg = barColor,
+      border_width = dpi(1),
+      border_color = beautiful.bg_modal,
       shape = function(cr, width, height)
                 gears.shape.partially_rounded_rect(
                   cr,

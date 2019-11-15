@@ -2,7 +2,6 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 
-
 local function renderClient(client, mode)
   if client.skip_decoration or (client.rendering_mode == mode) then
     return
