@@ -19,7 +19,7 @@ local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/weather/icons/'
 -- Configuration
 local key       = ""    -- openweathermap_api_key
 local city_id   = ""    -- openweathermap_city_id
-local units     = ""    -- weather_units  metric(°C)/imperial(°F)
+local units     = "metric"    -- weather_units  metric(°C)/imperial(°F)
 
 -- Don't update too often, because your requests might get blocked for 24 hours
 local update_interval = 1200
