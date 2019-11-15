@@ -1,3 +1,15 @@
+--[[
+___       ___       ___       ___       ___       ___       ___
+/\  \     /\__\     /\  \     /\  \     /\  \     /\__\     /\  \
+/::\  \   /:/\__\   /::\  \   /::\  \   /::\  \   /::L_L_   /::\  \
+/::\:\__\ /:/:/\__\ /::\:\__\ /\:\:\__\ /:/\:\__\ /:/L:\__\ /::\:\__\
+\/\::/  / \::/:/  / \:\:\/  / \:\:\/__/ \:\/:/  / \/_/:/  / \:\:\/  /
+/:/  /   \::/  /   \:\/  /   \::/  /   \::/  /    /:/  /   \:\/  /
+\/__/     \/__/     \/__/     \/__/     \/__/     \/__/     \/__/
+--]]
+
+
+
 local gears = require('gears')
 local awful = require('awful')
 require('awful.autofocus')
@@ -28,9 +40,8 @@ require('configuration.client')
 require('configuration.tags')
 _G.root.keys(require('configuration.keys.global'))
 
--- Create a wibox for each screen and add it
-awful.screen.connect_for_each_screen(
-  function(s)
+
+screen.connect_signal("request::wallpaper", function(s)
     -- If wallpaper is a function, call it with the screen
     if beautiful.wallpaper then
         if type(beautiful.wallpaper) == "string" then
@@ -43,8 +54,7 @@ awful.screen.connect_for_each_screen(
             beautiful.wallpaper(s)
         end
     end
-  end
-)
+end)
 
 -- Signal function to execute when a new client appears.
 _G.client.connect_signal(

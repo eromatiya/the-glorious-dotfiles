@@ -34,6 +34,8 @@
 | Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dirty.png)   |
 | Floating | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dirty2.png)   |
 | Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dashboard.png) |
+| Notification Center | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/notif-center.png) |
+| Widgets and a Calulator | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/widgets-center.png) |
 | App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/application-dashboard.png) |
 | Lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/lockscreen.png) |
 | Greeter | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/greeter.png) |

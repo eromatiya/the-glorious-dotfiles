@@ -66,7 +66,8 @@ local month_calendar = awful.widget.calendar_popup.month({
 	month_calendar:attach( clock_widget, "tc" , { on_pressed = true, on_hover = false })
 
 
-awful.screen.connect_for_each_screen(function(s)
+-- Create to each screen
+screen.connect_signal("request::desktop_decoration", function(s)
   s.systray = wibox.widget.systray()
   s.systray.visible = false
   s.systray:set_horizontal(true)
@@ -139,7 +140,7 @@ local TopPanel = function(s, offset)
   )
 
   panel:setup {
-	expand = "none",
+    expand = "none",
     layout = wibox.layout.align.horizontal,
     {
       layout = wibox.layout.fixed.horizontal,
@@ -163,6 +164,7 @@ local TopPanel = function(s, offset)
       require('widget.wifi'),
       require('widget.battery'),
       require('widget.search'),
+      require('widget.notification-center'),
     }
   }
 

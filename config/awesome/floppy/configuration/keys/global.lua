@@ -25,7 +25,14 @@ local globalKeys =
       _G.screen.primary.left_panel:HideDashboard()
     end,
   { description = "Open Application Drawer", group = "launcher"}),
-
+  awful.key(
+    {modkey}, 'x',
+    function()
+      if require('widget.notification-center') then
+        _G.screen.primary.right_panel:toggle()
+      end
+    end,
+  { description = "Open Application Drawer", group = "launcher"}),
   awful.key(
     {modkey, "Shift"}, 'f',
     function()

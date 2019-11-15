@@ -10,26 +10,23 @@ local dpi = require('beautiful').xresources.apply_dpi
 local vol_osd = require('widget.volume.volume-slider-osd')
 
 
-awful.screen.connect_for_each_screen(
-  function(s)
-    -- Create the box
-
-    local offsetx = dpi(56)
+screen.connect_signal("request::desktop_decoration", function(s)
+  -- Create the box
+  local offsetx = dpi(56)
     local offsety = dpi(300)
-    volumeOverlay = wibox(
-      {
-        visible = nil,
-        ontop = true,
-        type = "normal",
-        height = offsety,
-        width = dpi(48),
-        bg = "#00000000",
-        x = s.geometry.width - offsetx,
-        y = (s.geometry.height / dpi(2)) - (offsety / dpi(2)),
-      }
-    )
-  end
-)
+    volumeOverlay = wibox
+    {
+      visible = nil,
+      ontop = true,
+      type = "normal",
+      height = offsety,
+      width = dpi(48),
+      bg = "#00000000",
+      x = s.geometry.width - offsetx,
+      y = (s.geometry.height / dpi(2)) - (offsety / dpi(2)),
+    }
+end)
+
 
 -- Put its items in a shaped container
 volumeOverlay:setup {

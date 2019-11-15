@@ -10,7 +10,7 @@ local barColor = beautiful.bg_modal
 
 local hardwareTitle = wibox.widget
 {
-  text = 'Hardware monitor',
+  text = 'Hardware Monitor',
   font = 'SFNS Display 12',
   align = 'center',
   widget = wibox.widget.textbox

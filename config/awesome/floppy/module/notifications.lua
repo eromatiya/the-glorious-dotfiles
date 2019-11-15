@@ -3,12 +3,13 @@ local beautiful = require('beautiful')
 local gears = require('gears')
 local wibox = require('wibox')
 local icons = require('theme.icons')
+local awful = require('awful')
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Defaults
 naughty.config.defaults.ontop = true
 naughty.config.defaults.icon_size = dpi(32)
-naughty.config.defaults.screen = 1
+naughty.config.defaults.screen = awful.screen.focused()
 naughty.config.defaults.timeout = 5
 naughty.config.defaults.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, dpi(6)) end
 naughty.config.defaults.title = 'System Notification'
@@ -18,6 +19,7 @@ naughty.config.padding = 8
 naughty.config.spacing = 8
 naughty.config.defaults.margin = dpi(16)
 naughty.config.defaults.border_width = 0
+naughty.config.defaults.position = 'top_right'
 
 -- Timeouts
 naughty.config.presets.low.timeout = 3
@@ -111,6 +113,7 @@ local notification_bg = beautiful.notification_bg
 -- margin
 beautiful.notification_margin = dpi(5)
 naughty.connect_signal("request::display", function(n)
+
   naughty.layout.box {
     notification = n,
     type = "splash",
@@ -141,8 +144,12 @@ naughty.connect_signal("request::display", function(n)
                       -- ICON And Message
                       {
                         {
-                          resize_strategy = 'center',
-                          widget = naughty.widget.icon,
+                          {
+                            resize_strategy = 'center',
+                            widget = naughty.widget.icon,
+                          },
+                          margins = dpi(5),
+                          widget  = wibox.container.margin,
                         },
                         {
                           {
@@ -195,4 +202,14 @@ naughty.connect_signal("request::display", function(n)
        widget  = wibox.container.margin
      }
    }
+
+
+   -- Don't Show/Destroy popup notifications if notification panel is visible
+   -- And if do not dont_disturb is on
+  if _G.panel_visible or _G.dont_disturb then
+    naughty.destroy_all_notifications()
+  else
+    -- if null
+  end
+
 end)

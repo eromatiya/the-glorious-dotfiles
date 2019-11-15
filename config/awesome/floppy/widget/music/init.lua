@@ -14,24 +14,21 @@ local mat_list_item = require('widget.material.list-item')
 local apps = require('configuration.apps')
 
 
-awful.screen.connect_for_each_screen(
-  function(s)
-    -- Create the box
-    local width = dpi(260)
-    musicPlayer = wibox(
-      {
-        bg = '#00000000',
-        visible = false,
-        ontop = true,
-        type = "normal",
-        height = dpi(380),
-        width = width,
-        x = s.geometry.width - width,
-        y = dpi(26),
-      }
-    )
-  end
-)
+screen.connect_signal("request::desktop_decoration", function(s)
+  -- Create the box
+  local width = dpi(260)
+  musicPlayer = wibox
+  {
+    bg = '#00000000',
+    visible = false,
+    ontop = true,
+    type = "normal",
+    height = dpi(380),
+    width = width,
+    x = s.geometry.width - width,
+    y = dpi(26),
+  }
+end)
 
 local backdrop =
   wibox {
