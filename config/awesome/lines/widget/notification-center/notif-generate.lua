@@ -63,48 +63,36 @@ local notif_message = function(msg)
   }
 end
 
-
-
 -- Empty content
-local empty_title = wibox.widget {
-  text = "Spooky...",
-  font = 'SFNS Display regular 14',
-  align = 'center',
-  valign = 'center',
-  widget = wibox.widget.textbox
-}
-local empty_message = wibox.widget {
-  text = "There's nothing in here... Come back later.",
-  font = 'SFNS Display regular 14',
-  align = 'center',
-  valign = 'center',
-  widget = wibox.widget.textbox
+local empty_title = "Spooky..."
+local empty_message = "There's nothing in here... Come back later."
+
+local notif_delete_widget = wibox.widget {
+  {
+    id = 'icon',
+    image = PATH_TO_ICONS .. 'close' .. '.svg',
+    resize = true,
+    forced_height = dpi(8),
+    forced_width = dpi(8),
+    widget = wibox.widget.imagebox,
+  },
+  layout = wibox.layout.fixed.horizontal
 }
 
-  local notif_delete_widget = wibox.widget {
+
+local gen_button = function(widgets)
+  return wibox.widget {
     {
-      id = 'icon',
-      image = PATH_TO_ICONS .. 'close' .. '.svg',
-      resize = true,
-      forced_height = dpi(8),
-      forced_width = dpi(8),
-      widget = wibox.widget.imagebox,
+      widgets,
+      bg = beautiful.bg_modal,
+      shape = function(cr, width, height)
+       gears.shape.rounded_rect(cr, width, height, 12) end,
+      widget = wibox.container.background,
     },
-    layout = wibox.layout.fixed.horizontal
+    margins = dpi(5),
+    widget = wibox.container.margin,
   }
-  local gen_button = function(widgets)
-    return wibox.widget {
-      {
-        widgets,
-        bg = beautiful.bg_modal,
-        shape = function(cr, width, height)
-         gears.shape.rounded_rect(cr, width, height, 12) end,
-        widget = wibox.container.background,
-      },
-      margins = dpi(5),
-      widget = wibox.container.margin,
-    }
-  end
+end
 
 -- The function that generates notifications in right-panel
 local function notif_generate(title, message, icon, noti)
@@ -121,22 +109,22 @@ local function notif_generate(title, message, icon, noti)
     layout         = wibox.layout.flex.vertical
     },
     widget_template = {
+      {
         {
-            {
-                {
-                    id     = 'text_role',
-                    font   = 'SFNS Display Regular 10',
-                    widget = wibox.widget.textbox
-                },
-                widget = wibox.container.place
-            },
-            bg                 = beautiful.bg_modal,
-            shape              = gears.shape.rounded_rect,
-            forced_height      = 30,
-            widget             = wibox.container.background,
+          {
+            id     = 'text_role',
+            font   = 'SFNS Display Regular 10',
+            widget = wibox.widget.textbox
+          },
+            widget = wibox.container.place
         },
-        margins = 4,
-        widget  = wibox.container.margin,
+        bg                 = beautiful.bg_modal,
+        shape              = gears.shape.rounded_rect,
+        forced_height      = 30,
+        widget             = wibox.container.background,
+      },
+      margins = 4,
+      widget  = wibox.container.margin,
     },
     widget = naughty.list.actions,
   }
@@ -213,60 +201,47 @@ local function notif_generate(title, message, icon, noti)
 
   -- Delete button function
   notif_del_button:buttons(
-      gears.table.join(
-        awful.button(
-          {},
-          1,
-          nil,
-          function()
-            -- Dont let the user make the notification center null
-            if #notif_layout.children == 1 then
-              notif_layout:reset(notif_layout)
-              firstime = true
-              notif_layout:insert(1, notif_generate(empty_title.text, empty_message.text, PATH_TO_ICONS .. 'boo' .. '.svg'))
-            else
-              notif_layout:remove_widgets(notif_template, true)
-            end
+    gears.table.join(
+      awful.button(
+        {},
+        1,
+        nil,
+        function()
+          -- Dont let the user make the notification center null
+          if #notif_layout.children == 1 then
+            notif_layout:reset(notif_layout)
+            firstime = true
+            notif_layout:insert(1, notif_generate(empty_title, empty_message, PATH_TO_ICONS .. 'boo' .. '.svg'))
+          else
+            notif_layout:remove_widgets(notif_template, true)
           end
-        )
-     )
+        end
+      )
+    )
   )
 
+  -- Delete notification if naughty.list.actions was pressed
   notif_actions:connect_signal("button::press", function(_, _, _, button)
     -- Dont let the user make the notification center null
     if #notif_layout.children == 1 then
       notif_layout:reset(notif_layout)
       firstime = true
-      notif_layout:insert(1, notif_generate(empty_title.text, empty_message.text, PATH_TO_ICONS .. 'boo' .. '.svg'))
+      notif_layout:insert(1, notif_generate(empty_title, empty_message, PATH_TO_ICONS .. 'boo' .. '.svg'))
     else
       notif_layout:remove_widgets(notif_template, true)
     end
   end)
 
 
-
   --return template to generate
   return notif_template
-
 end
-
-
--- actions:connect_signal("button::press"), function()
---     if #notif_layout.children == 1 then
---     notif_layout:reset(notif_layout)
---     firstime = true
---     notif_layout:insert(1, notif_generate(empty_title.text, empty_message.text, PATH_TO_ICONS .. 'boo' .. '.svg'))
---     else
---       notif_layout:remove_widgets(notif_template, true)
---     end
-
---  end)
 
 
 
 -- add a message to an empty notif center
 local function add_empty()
-  notif_layout:insert(1, notif_generate(empty_title.text, empty_message.text, PATH_TO_ICONS .. 'boo' .. '.svg'))
+  notif_layout:insert(1, notif_generate(empty_title, empty_message, PATH_TO_ICONS .. 'boo' .. '.svg'))
 end
 
 -- Add empty message on startup
