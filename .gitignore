@@ -5,6 +5,8 @@ config/awesome/lines/widget/user-profile/icons
 
 # Dont include openweather api keys
 # Sorry lol
-config/awesome/floppy/widget/weather/weather-update.lua
-config/awesome/rounded/widget/weather/weather-update.lua
-config/awesome/lines/widget/weather/weather-update.lua
+# config/awesome/floppy/widget/weather/weather-update.lua
+# config/awesome/rounded/widget/weather/weather-update.lua
+# config/awesome/lines/widget/weather/weather-update.lua
+
+
