@@ -77,7 +77,7 @@ end
 -- Delete the last digit in screen
 local delete_value = function()
   -- Check string length to prevent emptying the textbox(making it nil) or if inf
-  if calculator_screen.calcu_screen.text == 'inf' or tonumber(string.len(calculator_screen.calcu_screen.text)) < 1 then
+  if calculator_screen.calcu_screen.text == 'inf' or tonumber(string.len(calculator_screen.calcu_screen.text)) == 1 then
     calculator_screen.calcu_screen:set_text('0')
   else
     -- Delete the last digit in screen
