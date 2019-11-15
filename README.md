@@ -19,6 +19,7 @@
 # An Awesome Setup
 
 ## FEATURES!
++ **Notification Center**
 + **Brightness and Volume OSDs**
 + **Web-Search Rofi**
 + **Deepin-Like Application Dashboard**
