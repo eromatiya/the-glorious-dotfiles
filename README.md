@@ -1,7 +1,7 @@
 <div align="center">
     <h1>Glorious Dotfiles</h1>
     <p>There's no place like <b><code>~</code></b> !</p>
-    <p>Fork it. Steal it. I don't care. <b><code>Just don't make it ugly.</code></b> !</p>
+    <p>Fork it. Steal it. I don't care. <b><code>Just don't make it ugly</code></b> .</p>
 </div>
 
 ## Details
@@ -42,7 +42,7 @@
 | Lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/lockscreen.png) |
 | Greeter | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/greeter.png) |
 
-+ **I will be rewriting the Rounded and Lines setups**
++ **Rounds and Lines setups are under revisions**
   - Will be back again in a few days/(weeks?)
 <!-- # Other themes preview
 | Rounded | Preview |
@@ -124,7 +124,7 @@ This setup is split in multiple parts:
 # Where to edit this and that?
 + Colorschemes?
   - `awesome/theme`
-  - Just play with `default-theme.lua` and `*setupname*-theme\init.lua`
+  - Just play with `default-theme.lua` and `SETUPNAME-theme\init.lua`
 + Panels and bars?
   - `awesome/layout`
 + Client behaviour?
@@ -150,13 +150,16 @@ This setup is split in multiple parts:
   - `awesome/modules`
 + Binaries?
   - `awesome/binaries`
++ Hotel?
+  - `Trivago`
 
 
 # NOTE
-+ Currently, I'm focusing on floppy setup. I'll update the other setups when I achieve my goals for floppy
++ I will be focusing on floppy setup right now. Other setups are under revisions.
 + This setup will not mostly work out of the box because:
   - It is only tested and configured on a 1366x768 resolution (Lenovo x230)
   - Some dependencies are not currently installed
+  - Not tested in a multi-monitor setup (please send me an extra monitor so I can test it lol)
 + Check keybindings using `Super +  F1`
 
 # ABOUT WIDGETS AND MODULES
@@ -166,7 +169,7 @@ This setup is split in multiple parts:
   - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
   - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua
   - You can just substitute its values to `awesome/module/menu.lua`
-+ You will probably have an error because of `weather-update.lua`. It is because I did not include an openweathermap API and etc.
++ You will probably have an error or the widget will not update because of `weather-update.lua`. It is because I did not include an openweathermap API keys and etc.
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
 
