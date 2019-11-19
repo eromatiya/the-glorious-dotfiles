@@ -56,8 +56,8 @@ local barColor = beautiful.bg_modal
 return wibox.widget{
   spacing = 0,
   layout = wibox.layout.fixed.vertical,
-  wibox.widget {
-    wibox.widget {
+  {
+    {
       actionTitle,
       bg = beautiful.bg_modal_title,
       shape = function(cr, width, height)
@@ -66,9 +66,9 @@ return wibox.widget{
     },
     widget = mat_list_item,
   },
-  -- wrapped_line,
-  wibox.widget{
-    wibox.widget{
+
+  {
+    {
       require('widget.action-center.wifi-button'),
       bg = barColor,
       shape = function(cr, width, height)
@@ -77,11 +77,11 @@ return wibox.widget{
     },
     widget = mat_list_item,
   },
-  -- wrapped_mini_line,
+
   -- Bluetooth Connection
   layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
+  {
+    {
       require('widget.action-center.bluetooth-button'),
       bg = barColor,
       shape = function(cr, width, height)
@@ -90,11 +90,11 @@ return wibox.widget{
     },
     widget = mat_list_item,
   },
-  -- wrapped_mini_line,
+
   -- Compositor Toggle
   layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
+  {
+    {
       require('widget.action-center.compositor-button'),
       bg = barColor,
       shape = function(cr, width, height)

@@ -68,6 +68,13 @@ local globalKeys =
     awful.spawn.easy_async_with_shell(apps.bins.areaShot)
   end,
   { description = "Area screenshot", group = "Miscellaneous"}),
+  awful.key(
+  {modkey, altkey}, 's',
+  function ()
+    awful.spawn.easy_async_with_shell(apps.bins.selectShot)
+  end,
+  { description = "Selected screenshot", group = "Miscellaneous"}),
+
   -- Music Widget
   awful.key(
     {modkey}, 'm',

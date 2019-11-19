@@ -24,4 +24,12 @@ case $1 in
 	#wait $PIDIOS
 	#wait $PIDMIX
 	;;
+	'select')
+	eval "maim -s -m 1 $dir/$(date +%Y%m%d_%H%M%S).png"
+	eval "xclip -selection clipboard -t image/png -i $dir/`ls -1 -t $dir | head -1` &"
+	#PIDMIX=$!
+	notify-send 'Snap!' 'Selected shot saved and copied to clipboard!'
+	#wait $PIDIOS
+	#wait $PIDMIX
+	;;
 esac

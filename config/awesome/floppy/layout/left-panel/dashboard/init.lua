@@ -89,7 +89,7 @@ return function(_, panel)
       topBotSeparator,
       layout = wibox.layout.fixed.vertical,
       {
-        wibox.widget {
+        {
           search_button,
           bg = beautiful.bg_modal,     --beautiful.background.hue_800,
           shape = function(cr, w, h)
@@ -110,8 +110,8 @@ return function(_, panel)
     {
 
       layout = wibox.layout.fixed.vertical,
-      wibox.widget{
-        wibox.widget{
+      {
+        {
           exit_button,
           bg = beautiful.bg_modal,--beautiful.background.hue_800,
           widget = wibox.container.background,

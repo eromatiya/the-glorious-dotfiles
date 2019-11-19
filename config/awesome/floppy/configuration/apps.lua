@@ -26,6 +26,7 @@ return {
 
   bins = {
     fullShot = filesystem.get_configuration_dir() .. '/binaries/snap full',
+    selectShot = filesystem.get_configuration_dir() .. '/binaries/snap select',
     areaShot = filesystem.get_configuration_dir() .. '/binaries/snap area',
     enableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx enable',
     disableBlur = filesystem.get_configuration_dir() .. '/binaries/togglewinfx disable',

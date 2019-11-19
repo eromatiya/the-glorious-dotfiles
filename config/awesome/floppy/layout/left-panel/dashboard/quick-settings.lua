@@ -52,8 +52,8 @@ local brightnessSlider = require('widget.brightness.brightness-slider')
 
 return wibox.widget {
   layout = wibox.layout.fixed.vertical,
-  wibox.widget {
-    wibox.widget {
+  {
+    {
       quickTitle,
       bg = beautiful.bg_modal_title,
       shape = function(cr, width, height)
@@ -64,8 +64,8 @@ return wibox.widget {
   },
   {
     layout = wibox.layout.fixed.vertical,
-    wibox.widget{
-      wibox.widget{
+    {
+      {
         volSlider,
         bg = barColor,
         shape = function(cr, width, height)
@@ -77,8 +77,8 @@ return wibox.widget {
   },
 
   layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
+  {
+    {
       brightnessSlider,
       bg = barColor,
       shape = function(cr, width, height)

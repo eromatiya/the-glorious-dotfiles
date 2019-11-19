@@ -55,8 +55,8 @@ local hardwareTitle = wibox.widget
 
 return wibox.widget {
   layout = wibox.layout.fixed.vertical,
-  wibox.widget {
-    wibox.widget {
+  {
+    {
       hardwareTitle,
       bg = beautiful.bg_modal_title,
       shape = function(cr, width, height)
@@ -65,8 +65,8 @@ return wibox.widget {
     },
     widget = mat_list_item,
   },
-  wibox.widget{
-    wibox.widget{
+  {
+    {
       require('widget.cpu.cpu-meter'),
       bg = barColor,
       shape = function(cr, width, height)
@@ -75,8 +75,8 @@ return wibox.widget {
     },
     widget = mat_list_item,
   },
-  wibox.widget{
-    wibox.widget{
+  {
+    {
       require('widget.ram.ram-meter'),
       bg = barColor,
       shape = function(cr, width, height)
@@ -86,8 +86,8 @@ return wibox.widget {
     widget = mat_list_item,
   },
   layout = wibox.layout.fixed.vertical,
-  wibox.widget{
-    wibox.widget{
+  {
+    {
       require('widget.temperature.temperature-meter'),
       bg = barColor,
       shape = function(cr, width, height)
@@ -96,8 +96,8 @@ return wibox.widget {
     },
     widget = mat_list_item,
   },
-  wibox.widget{
-    wibox.widget{
+  {
+    {
       require('widget.harddrive.harddrive-meter'),
       bg = barColor,
       shape = function(cr, width, height)

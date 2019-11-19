@@ -43,25 +43,25 @@ awful.rules.rules = {
   {
     rule_any = {
        class = {
-			"URxvt",
-			"XTerm",
-			"UXTerm",
-      "kitty"
+        "URxvt",
+  			"XTerm",
+  			"UXTerm",
+        "kitty"
        },
     },
-        properties = {
-          screen = 1, tag = '1',
-          switchtotag = true,
-          titlebars_enabled = true
-      }
+    properties = {
+      screen = 1, tag = '1',
+      switchtotag = true,
+      titlebars_enabled = true
+    }
   },
 
   -- Browsers
   {
     rule_any = {
-		class = {
-			"firefox"
-       },
+		  class = {
+			 "firefox"
+      },
     },
         properties = { screen = 1, tag = '2' }
   },
@@ -72,7 +72,8 @@ awful.rules.rules = {
 		class = {
 			"Geany",
       "Atom",
-      "Subl3"
+      "Subl3",
+      "code-oss"
 		},
 	},
 		properties = { screen = 1, tag = '3' }
@@ -95,7 +96,7 @@ awful.rules.rules = {
         "vlc"
        },
     },
-        properties = { tag = '5' }
+        properties = { tag = '5', switchtotag = true }
   },
 	-- Games
 
@@ -140,14 +141,16 @@ awful.rules.rules = {
   },
 
 
-  -- Workspace Editing
+  -- Workspace Editing and IDEs
   {
 	rule_any = {
 		class = {
 			"Oomox",
+      "Unity",
+      "UnityHub"
 		},
 	},
-		properties = { screen = 1, tag = '9'}
+		properties = { screen = 1, tag = '9', skip_decoration = true }
   },
 
   -- Custom
@@ -169,20 +172,6 @@ awful.rules.rules = {
   },
 
 
-  {
-  rule_any = {
-    class = {
-      "xlunch-fullscreen"
-    },
-  },
-    properties = {
-    skip_decoration = true,
-    fullscreen = true,
-    ontop = true
-    }
-  },
-
-
   -- Dialogs
   {
     rule_any = {type = {'dialog'}, class = {'Wicd-client.py', 'calendar.google.com'}},
@@ -190,7 +179,7 @@ awful.rules.rules = {
       placement = awful.placement.centered,
       ontop = true,
       floating = true,
-      drawBackdrop = true, -- TRUE if you want to add blur backdrop
+      drawBackdrop = true, -- TRUE if you want to add blur backdrop effect
       skip_decoration = true,
       shape = roundCorners,
     }
@@ -267,7 +256,7 @@ client.connect_signal("property::class",function(c)
       end
     end
 
-      -- Move it to the desired tag in THIS SCREEN
+    -- Move it to the desired tag in THIS SCREEN
     local tagName = ''
     if c.class == 'Spotify' then
       tagName = '5'
@@ -279,12 +268,6 @@ client.connect_signal("property::class",function(c)
     t:view_only()
 
     if c.class == 'SuperTuxKart' then
-      -- Two fullscreen mode to remove bug
-      -- Yeah it's a hackish way, but it works so whatever
-      -- Make sure to enable fullscreen in SuperTuxKart Settings
-      -- Not tested on not Fullscreen mode in Settings
-      -- Make sure! Or maybe it can delete your root directory
-      c.fullscreen = not c.fullscreen
       c.fullscreen = not c.fullscreen
       c:raise()
     end

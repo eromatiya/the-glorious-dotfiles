@@ -151,4 +151,3 @@ local bluetoothButton =  wibox.widget {
   layout = wibox.layout.fixed.vertical
 }
 return bluetoothButton
---return bluetooth_button

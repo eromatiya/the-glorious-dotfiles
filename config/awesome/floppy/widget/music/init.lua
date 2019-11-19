@@ -28,20 +28,21 @@ screen.connect_signal("request::desktop_decoration", function(s)
     x = s.geometry.width - width,
     y = dpi(26),
   }
+
+  backdrop = wibox {
+    ontop = true,
+    visible = false,
+    screen = s,
+    bg = '#00000000',
+    type = 'dock',
+    x = s.geometry.x,
+    y = dpi(26),
+    width = s.geometry.width,
+    height = s.geometry.height - dpi(26)
+  }
+
 end)
 
-local backdrop =
-  wibox {
-  ontop = true,
-  visible = false,
-  screen = awful.screen.focused(),
-  bg = '#00000000',
-  type = 'dock',
-  x = awful.screen.focused().geometry.x,
-  y = dpi(26),
-  width = awful.screen.focused().geometry.width,
-  height = awful.screen.focused().geometry.height - dpi(26)
-}
 
 
 function togglePlayer()
@@ -160,7 +161,7 @@ musicPlayer:setup {
 -- Check every X seconds if song status is
 -- Changed outside this widget
 local updateWidget = gears.timer {
-    timeout = 5,
+    timeout = 10,
     autostart = true,
     callback  = function()
       _G.checkIfPlaying()
