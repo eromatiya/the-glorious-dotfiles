@@ -108,7 +108,7 @@ def fetch_suggestions(search_string):
             'sec-fetch-mode' : 'no-cors',
             'accept' : '*/*',
             'cache-control' : 'no-cache',
-           'authority' : 'duckduckgo.com',
+            'authority' : 'duckduckgo.com',
             'referer' : 'https://duckduckgo.com/',
             'sec-fetch-site' : 'same-origin',
         }

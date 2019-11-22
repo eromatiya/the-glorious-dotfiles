@@ -43,8 +43,7 @@
 | Greeter | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/greeter.png) |
 
 + **Rounds and Lines setups are under revisions**
-  - Will be back again in a few days/(weeks?)
-<!-- # Other themes preview
+# Other themes preview
 | Rounded | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) |
@@ -57,7 +56,7 @@
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/desktop.png) |
 | Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/dirty.png)   |
 | Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png) |
- -->
+
 
 ## Dependencies
 Here is a complete list of dependencies needed for making these AwesomeWM setup to work.
@@ -155,7 +154,6 @@ This setup is split in multiple parts:
 
 
 # NOTE
-+ I will be focusing on floppy setup right now. Other setups are under revisions.
 + This setup will not mostly work out of the box because:
   - It is only tested and configured on a 1366x768 resolution (Lenovo x230)
   - Some dependencies are not currently installed

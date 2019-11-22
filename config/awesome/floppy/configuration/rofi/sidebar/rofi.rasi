@@ -83,7 +83,7 @@ listview {
 element {
 	padding:							16px;
 	border: 						 	0 0 0 0px solid;
-	border-radius:				0;
+	border-radius:				6;
 	margin:								0 17 0 17;
 	background-color: 		rgba(28, 26, 20, 1);
 }
@@ -93,14 +93,14 @@ entry {
 	text-color:						@normal-foreground;
 	background-color:		 	#ffffff20;
 	vertical-align: 			0.5;
-	padding:        			12px;
+	padding:        			14px;
 	font:            			"Neue Haas Unica Pro Bold 9";
 	margin:								16 16 16 16;
 	border-radius:				6;
 }
 
 element normal.normal {
-	background-color: @normal-background;
+	background-color: #00000000;     /*@normal-background;*/
 	text-color:       @normal-foreground;
 }
 
@@ -133,7 +133,7 @@ element selected.active {
 }
 
 element alternate.normal {
-	background-color: @normal-background;
+	background-color: #00000000;							/*@normal-background;*/
 	text-color:       @normal-foreground;
 }
 

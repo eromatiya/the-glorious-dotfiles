@@ -147,7 +147,8 @@ awful.rules.rules = {
 		class = {
 			"Oomox",
       "Unity",
-      "UnityHub"
+      "UnityHub",
+      "jetbrains-studio"
 		},
 	},
 		properties = { screen = 1, tag = '9', skip_decoration = true }

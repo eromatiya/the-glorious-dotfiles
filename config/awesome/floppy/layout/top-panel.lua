@@ -146,7 +146,6 @@ local TopPanel = function(s, offset)
       s.systray,
       require('widget.systemtray'),
       require('widget.package-updater'),
-      require('widget.removable-drive'),
       require('widget.music'),
       require('widget.bluetooth'),
       require('widget.wifi'),
