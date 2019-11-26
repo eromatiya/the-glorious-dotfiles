@@ -317,3 +317,7 @@ let g:keysound_enable = 1
 let g:keysound_volume = 1000
 let g:keysound_py_version = 3
 let g:keysound_theme = 'typewriter'
+
+
+" emmet
+let g:user_emmet_mode='a'    "enable all function in all mode.
