@@ -67,13 +67,13 @@ URxvt.matcher.button		: 1
 !*color15:	#BEBEC1
 
 !Term color
-#include ".xrdb/color/onedark"
+#include ".xrdb/color/elena"
 
 ! ------------------------------------------------------------------------------
 !									 XTerm
 ! -----	--------------------------------------------------------------------------
 XTerm*letterSpace:-1
-XTerm*faceName: xft:Pragmatapro
+XTerm*faceName: xft:Iosevka Custom
 xterm*faceSize: 9
 xterm*internalBorder: 20
 xterm*vt100*geometry: 70x13
@@ -85,7 +85,7 @@ xterm*eightBitInput: false
 
 UXTerm*termName: xterm-256color
 UXTerm*VT100.geometry:     92x17
-UXTerm*faceName:           xft:Pragmatapro
+UXTerm*faceName:           xft:Iosevka Custom
 UXTerm*faceSize:		   9
 UXTerm*dynamicColors:      true
 UXTerm*utf8:               2
