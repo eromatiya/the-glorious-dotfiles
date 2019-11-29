@@ -162,7 +162,7 @@ local social =  wibox.widget {
         wibox.container.margin(social_header, dpi(10), dpi(10), dpi(10), dpi(10)),
         bg = beautiful.bg_modal_title,
         shape = function(cr, width, height)
-          gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
+          gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
         widget = wibox.container.background,
       },
       layout = wibox.layout.fixed.vertical,
@@ -188,7 +188,7 @@ local social =  wibox.widget {
       forced_height = dpi(60),
       bg = beautiful.bg_modal,
       shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 6) end,
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
   }

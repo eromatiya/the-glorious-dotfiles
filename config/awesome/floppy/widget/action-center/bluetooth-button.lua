@@ -73,7 +73,7 @@ check_bluetooth()
 
 
 
-local bluetooth_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin
+local bluetooth_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 bluetooth_button:buttons(
   gears.table.join(
     awful.button(

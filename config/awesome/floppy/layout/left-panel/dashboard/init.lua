@@ -91,9 +91,9 @@ return function(_, panel)
       {
         {
           search_button,
-          bg = beautiful.bg_modal,     --beautiful.background.hue_800,
+          bg = beautiful.bg_modal, 
           shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, 6)
+                    gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
                   end,
           widget = wibox.container.background,
         },
@@ -113,10 +113,10 @@ return function(_, panel)
       {
         {
           exit_button,
-          bg = beautiful.bg_modal,--beautiful.background.hue_800,
+          bg = beautiful.bg_modal,
           widget = wibox.container.background,
           shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, 6)
+                    gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
                   end,
         },
         widget = mat_list_item,

@@ -71,7 +71,7 @@ local weather_details_script = [[
             local description = weather_details:match('(.*)@@')
             local temperature = weather_details:match('@@(.*)')
             if icon_code == "..." then
-                awesome.emit_signal("widget::weather", "Maybe it's 10000", "No internet connection...", "")
+                awesome.emit_signal("widget::weather", "---", "Check internet connection!", "")
             else
                 awesome.emit_signal("widget::weather", tonumber(temperature), description, icon_code)
             end
@@ -91,7 +91,7 @@ local weather_details_script = [[
     local description = weather_details:match('(.*)@@')
     local temperature = weather_details:match('@@(.*)')
     if icon_code == "..." then
-        awesome.emit_signal("widget::weather", "Maybe it's 10000", "No internet connection...", "")
+        awesome.emit_signal("widget::weather", "---", "Check internet connection!", "")
     else
         awesome.emit_signal("widget::weather", tonumber(temperature), description, icon_code)
     end

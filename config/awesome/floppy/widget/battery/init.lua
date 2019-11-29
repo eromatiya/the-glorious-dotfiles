@@ -27,6 +27,7 @@ local widget =
   wibox.widget {
   {
     id = 'icon',
+    image = PATH_TO_ICONS .. 'battery' .. '.svg',
     widget = wibox.widget.imagebox,
     resize = true
   },

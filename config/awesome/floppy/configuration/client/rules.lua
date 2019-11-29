@@ -106,7 +106,8 @@ awful.rules.rules = {
 		class = {
 			"Wine",
       "dolphin-emu",
-      "Steam"
+      "Steam",
+      "Citra"
 		},
   --s  instance = { 'SuperTuxKart' }
 	},

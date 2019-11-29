@@ -2,7 +2,7 @@
 -- Bluetooth Widget for Awesome Window Manager
 -- Shows the bluetooth status using the bluetoothctl command
 -- Better with Blueman Manager
---------------
+-------------------------------------------------
 
 local awful = require('awful')
 local naughty = require('naughty')
@@ -12,9 +12,6 @@ local clickable_container = require('widget.material.clickable-container')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 
--- acpi sample outputs
--- Battery 0: Discharging, 75%, 01:51:38 remaining
--- Battery 0: Charging, 53%, 00:57:43 until charged
 
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/bluetooth/icons/'
@@ -24,6 +21,7 @@ local widget =
   wibox.widget {
   {
     id = 'icon',
+    image = PATH_TO_ICONS .. 'bluetooth-off' .. '.svg',
     widget = wibox.widget.imagebox,
     resize = true
   },
@@ -38,7 +36,6 @@ widget_button:buttons(
       1,
       nil,
       function()
-		--awful.spawn('blueberry')
       awful.spawn('blueman-manager')
       end
     )

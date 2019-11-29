@@ -83,7 +83,7 @@ awful.spawn.easy_async_with_shell('whoami', function(out)
           -- Add a timer to a delay
           -- The cp command is not fast enough so we will need this to update image
           gears.timer {
-            timeout = 0,
+            timeout = 1,
             autostart = true,
             single_shot = true,
             callback  = function()

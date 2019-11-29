@@ -66,49 +66,15 @@ function checkFrame()
 end
 
 
--- Commands that will be executed when I toggle the button
--- blurDisable = {
---   'kill -9 $(pidof compton)',
---   'kill -9 $(pidof compton)',
---   'sed -i -e "s/blur-background-frame = true/blur-background-frame = false/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
---   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
---   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
---   'notify-send "Blur effect disabled"'
--- }
--- blurEnable = {
---   'kill -9 $(pidof compton)',
---   'kill -9 $(pidof compton)',
---   'sed -i -e "s/blur-background-frame = false/blur-background-frame = true/g" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
---   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
---   'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
---   'notify-send "Blur effect enabled"'
--- }
-
--- This runs all the commands above
--- local function run_once(cmd)
---   local findme = cmd
---   local firstspace = cmd:find(' ')
---   if firstspace then
---     findme = cmd:sub(0, firstspace - 1)
---   end
---   awful.spawn.with_shell(string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd))
--- end
---
 
 -- The Toggle button backend
 local function toggle_compositor()
   if(frameStatus == true) then
-    -- for _, app in ipairs(blurDisable) do
-    --   run_once(app)
-    -- end
-    awful.spawn(apps.bins.disableBlur, false)
+    apps.bins.disableBlur()
     frameStatus = false
     update_icon()
   else
-    -- for _, app in ipairs(blurEnable) do
-    --   run_once(app)
-    -- end
-    awful.spawn(apps.bins.enableBlur, false)
+    apps.bins.enableBlur()
     frameStatus = true
     update_icon()
   end
