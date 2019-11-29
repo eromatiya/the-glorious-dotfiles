@@ -126,7 +126,7 @@ local function notif_generate(title, message, icon, noti)
       },
       bg = beautiful.bg_modal_title,
       shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
+      gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
       widget = wibox.container.background,
     },
     {
@@ -158,12 +158,12 @@ local function notif_generate(title, message, icon, noti)
       wibox.widget {
         {
           notif_actions,
-          margins = dpi(4),
+          margins = dpi(beautiful.modal_radius),
           widget = wibox.container.margin
         },
         bg = beautiful.bg_modal,
         shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 6) end,
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
         widget = wibox.container.background,
       },
       layout = wibox.layout.flex.horizontal,

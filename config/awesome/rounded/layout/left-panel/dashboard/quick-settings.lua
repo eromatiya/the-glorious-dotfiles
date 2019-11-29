@@ -4,12 +4,12 @@ local beautiful = require('beautiful')
 local mat_list_item = require('widget.material.list-item')
 local mat_list_sep = require('widget.material.list-item-separator')
 
--- local quickTitle = wibox.widget {
---   text = 'Quick Settings',
---   font = 'SFNS Display 12',
---   align = 'center',
---   widget = wibox.widget.textbox
--- }
+local quickTitle = wibox.widget {
+  text = 'Quick Settings',
+  font = 'SFNS Display 12',
+  align = 'center',
+  widget = wibox.widget.textbox
+}
 
 local barColor = beautiful.bg_modal
 local volSlider = require('widget.volume.volume-slider')
@@ -57,7 +57,7 @@ return wibox.widget {
   --     quickTitle,
   --     bg = beautiful.bg_modal_title,
   --     shape = function(cr, width, height)
-  --       gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
+  --       gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
   --     widget = wibox.container.background,
   --   },
   --   widget = mat_list_item,
@@ -69,7 +69,7 @@ return wibox.widget {
         volSlider,
         bg = barColor,
         shape = function(cr, width, height)
-          gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.corner_radius) end,
+          gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
         widget = wibox.container.background
       },
       widget = mat_list_item
@@ -82,7 +82,7 @@ return wibox.widget {
       brightnessSlider,
       bg = barColor,
       shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.corner_radius) end,
+        gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,

@@ -25,7 +25,7 @@ local widget =
   layout = wibox.layout.align.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(8), dpi(8), dpi(8), dpi(8)))
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin
 widget_button:buttons(
   gears.table.join(
     awful.button(

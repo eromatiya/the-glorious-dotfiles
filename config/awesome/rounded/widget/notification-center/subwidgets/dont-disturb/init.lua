@@ -4,7 +4,8 @@ local wibox = require('wibox')
 local clickable_container = require('widget.action-center.clickable-container')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
-local watch = require('awful.widget.watch')
+
+
 local mat_list_item = require('widget.material.list-item')
 local beautiful = require('beautiful')
 
@@ -26,6 +27,7 @@ local widget =
   wibox.widget {
   {
     id = 'icon',
+    image = PATH_TO_ICONS .. 'toggled-on' .. '.svg',
     widget = wibox.widget.imagebox,
     resize = true
   },
@@ -93,7 +95,7 @@ local function toggle_disturb()
 end
 
 
-local disturb_button = clickable_container(widget)
+local disturb_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 disturb_button:buttons(
   gears.table.join(
     awful.button(
@@ -109,7 +111,7 @@ disturb_button:buttons(
 
 local content = wibox.widget {
   {
-    wibox.container.margin(dont_disturb_icon, dpi(12), dpi(12), dpi(5), dpi(5)),
+    wibox.container.margin(dont_disturb_icon, dpi(5), dpi(5), dpi(12), dpi(12)),
     dont_disturb_text,
     layout = wibox.layout.fixed.horizontal,
   },
@@ -122,18 +124,21 @@ local content = wibox.widget {
 }
 
 local dont_disturb_wrap =  wibox.widget {
-  wibox.widget {
+  {
     {
-    content,
-    margins = dpi(10),
-    widget = wibox.container.margin,
+      content,
+      widget = mat_list_item
     },
     bg = beautiful.bg_modal_title,
     shape = function(cr, width, height)
-      gears.shape.rounded_rect(cr, width, height, 6) end,
+    gears.shape.rounded_rect(cr, width, height, beautiful.modal_radius) end,
     widget = wibox.container.background,
+
   },
-  widget = mat_list_item
+  -- Add margins to the left and right only
+  left = dpi(15), 
+  right = dpi(15),
+  widget = wibox.container.margin,
 }
 
 

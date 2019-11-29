@@ -44,8 +44,13 @@ local awesome_overrides =
   theme.bg_urgent = '#3F3F3F'
   theme.bg_systray = theme.background.hue_800
 
-  theme.bg_modal = "#ffffff20"
-  theme.bg_modal_title = "#ffffff30"
+
+  -- Modals
+
+  theme.bg_modal_title = "#ffffff15"
+  theme.bg_modal = "#ffffff10"
+  theme.modal_radius = dpi(6)
+
   -- Borders
 
   theme.border_width = dpi(2)
@@ -128,7 +133,7 @@ local awesome_overrides =
   theme.border_width = dpi(0)
   theme.border_focus = theme.primary.hue_500
   theme.border_normal = theme.background.hue_800
-  theme.corner_radius = dpi(12)
+  theme.corner_radius = dpi(6)
 end
 return {
   theme = theme,

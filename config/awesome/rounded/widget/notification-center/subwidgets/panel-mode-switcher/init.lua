@@ -50,7 +50,7 @@ local wrap_widget = wibox.widget {
   widgets_button,
   forced_width = dpi(140),
   bg = inactive_button,
-  shape = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, true, true, false, 6) end,
+  shape = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, true, true, false, beautiful.modal_radius) end,
   widget = wibox.container.background
 }
 
