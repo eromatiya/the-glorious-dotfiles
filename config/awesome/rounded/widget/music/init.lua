@@ -113,7 +113,7 @@ end
 function updateInfo()
   _G.getTitle()
   _G.getArtist()
-  awful.spawn(apps.bins.coverUpdate, false)
+  apps.bins.coverUpdate()
   awesome.emit_signal("song_changed")
 end
 
@@ -177,7 +177,7 @@ widget.icon:set_image(PATH_TO_ICONS .. 'music' .. '.svg')
 
 -- Update music info on Initialization
 local function initMusicInfo()
-  awful.spawn(apps.bins.coverUpdate, false)
+  apps.bins.coverUpdate()
   checkCover()
   cover.icon:set_image('/tmp/cover.jpg')
   _G.getTitle()

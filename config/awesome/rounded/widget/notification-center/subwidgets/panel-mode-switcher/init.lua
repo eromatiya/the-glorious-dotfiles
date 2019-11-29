@@ -30,7 +30,7 @@ local wrap_notif = wibox.widget {
   notif_button,
   forced_width = dpi(140),
   bg = active_button,
-  shape = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, 6) end,
+  shape = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, beautiful.modal_radius) end,
   widget = wibox.container.background
 }
 

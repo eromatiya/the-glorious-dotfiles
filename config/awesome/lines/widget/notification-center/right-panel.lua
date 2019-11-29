@@ -99,32 +99,6 @@ local right_panel = function(screen)
     )
   )
 
-  local clear_all_text = wibox.widget {
-    text   = 'Clear All Notifications',
-    font   = 'SFNS Display Regular 10',
-    align  = 'center',
-    valign = 'bottom',
-    widget = wibox.widget.textbox
-  }
-  local wrap_clear_text = wibox.widget {
-    clear_all_text,
-    margins = dpi(5),
-    widget = wibox.container.margin
-  }
-  local clear_all_button = clickable_container(wibox.container.margin(wrap_clear_text, dpi(0), dpi(0), dpi(3), dpi(3)))
-  clear_all_button:buttons(
-    gears.table.join(
-      awful.button(
-        {},
-        1,
-        nil,
-        function()
-          _G.clear_all()
-          _G.firstime = true
-        end
-      )
-    )
-  )
 
   local separator = wibox.widget {
     orientation = 'horizontal',
@@ -169,19 +143,9 @@ local right_panel = function(screen)
         visible = true,
         separator,
         require('widget.notification-center.subwidgets.dont-disturb'),
-        {
-          expand = 'none',
-          layout = wibox.layout.align.horizontal,
-          {
-            nil,
-            layout = wibox.layout.fixed.horizontal,
-          },
-          nil,
-          {
-            wibox.container.margin(clear_all_button, dpi(15), dpi(15), dpi(10), dpi(0)),
-            layout = wibox.layout.fixed.horizontal,
-          },
-        },
+        separator,
+        require('widget.notification-center.subwidgets.clear-all'),
+
         {
           require('widget.notification-center.subwidgets.notif-generate'),
           margins = dpi(15),
