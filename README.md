@@ -29,7 +29,7 @@
   - Wallpaper changes based on time. You can modify it here `$HOME/.config/awesome/module/wallchange.lua`
   - Wallpapers are in `$HOME/.config/awesome/theme/wallpapers`
 
-## Workflow  
+## Floppy - Workflow  
 + https://youtu.be/GeBrIwxmdx4  
 
 ## My Current Theme
@@ -45,7 +45,6 @@
 | Lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/lockscreen.png) |
 | Greeter | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/greeter.png) |
 
-+ **Rounds and Lines setups are under revisions**
 # Other themes preview
 | Rounded | Preview |
 | --- | --- |
@@ -86,15 +85,13 @@ If you notice that something is missing, please open an issue so I can add the d
 | `imagemagick` | An image viewing/manipulation program | Album cover extractor |
 | `jq` | Command-line JSON processor | Formatting |
 
-##### Monospace
-+ **[Iosevka Custom](https://github.com/elenapan/dotfiles/)**
 
 ##### Sans
 + **Google Sans**
 + **San Francisco Display**
 
 #### Installation
-+ My setup is using the dependencies above, well if you don't want bloat you can install what you want. But these are the recommended dependencies:
++ My setups are using the dependencies above, well if you don't want a bloat(technically, not a bloat if you're using it) you can install what you want. After all, Linux is about YOUR choice. But these are the recommended dependencies:
   - awesome-git master branch (window manager framework)
   - rofi git branch (application launcher)
   - blueman (bluetooth widgets)
@@ -121,7 +118,7 @@ This setup is split in multiple parts:
 + The `module` consists of many files that are usually inside the `rc.lua` like notifications, app menus, etc. You can load them in the `rc.lua`.
 + The `themes` folder contains themes and colors of the setup.
 + The `widgets` contains all the widgets(of course). These are used in the panels and dashboard. It contains the wifi, bluetooth, battery widget and many more.
-+ `binaries` contains bash scripts. I recently added this because running multiple bash commands inside lua is clunky sometimes. So, I decided to put them in a folder.
++ `binaries` contains bash scripts wrapped in lua and awesome wm API.
 
 # Where to edit this and that?
 + Colorschemes?
@@ -158,6 +155,7 @@ This setup is split in multiple parts:
 
 # NOTE
 + This setup will not mostly work out of the box because:
+  - YOU'RE NOT USING AWESOME-GIT-MASTER version
   - It is only tested and configured on a 1366x768 resolution (Lenovo x230)
   - Some dependencies are not currently installed
   - Not tested in a multi-monitor setup (please send me an extra monitor so I can test it lol)
@@ -172,11 +170,10 @@ This setup is split in multiple parts:
   - You can just substitute its values to `awesome/module/menu.lua`
 + You will probably have an error or the widget will not update because of `weather-update.lua`. It is because I did not include an openweathermap API keys and etc.
 
-**So, you need to configure and tweak it by yourself to make it work properly. You can also just open a issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
+**So, you need to configure and tweak it by yourself to make it work properly. You can also just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
 
 
-# Got a problem? Just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
-#### Suggestion? If you have any suggestion on how to improve this setup, please open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
+#### Suggestion? If you have any suggestion on how to improve these setups, please open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
 
 
 **Special thanks**
