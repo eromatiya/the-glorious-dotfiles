@@ -76,7 +76,7 @@ mini_settings:setup {
     border_color = '#ffffff40',
     bg = beautiful.background.hue_900,
     shape = function(cr, width, height)
-    gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.corner_radius) end,
+    gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
   },
 }
 

@@ -130,9 +130,9 @@ local dont_disturb_wrap =  wibox.widget {
     },
     border_width = dpi(1),
     border_color = '#ffffff40',
-    bg = beautiful.background.hue_900,
+    bg = beautiful.modal_bg,
     shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 6) end,
+    gears.shape.rounded_rect(cr, width, height, beautiful.modal_radius) end,
     widget = wibox.container.background,
   },
   widget = mat_list_item

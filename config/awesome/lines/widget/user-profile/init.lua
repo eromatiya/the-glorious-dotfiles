@@ -83,7 +83,7 @@ awful.spawn.easy_async_with_shell('whoami', function(out)
               -- Add a timer to a delay
               -- The cp command is not fast enough so we will need this to update image
               gears.timer {
-                timeout = 0,
+                timeout = 1,
                 autostart = true,
                 single_shot = true,
                 callback  = function()
@@ -158,7 +158,7 @@ local user_profile = wibox.widget {
   },
   border_width = dpi(1),
   border_color = '#ffffff40',
-  bg = beautiful.background.hue_900,
+  bg = beautiful.modal_bg,
   shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 6) end,
   widget = wibox.container.background
 }

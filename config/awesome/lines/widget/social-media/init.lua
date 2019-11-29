@@ -20,7 +20,7 @@ local genWidget = function(widgets)
       widgets,
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       shape = function(cr, width, height)
       gears.shape.rounded_rect(cr, width, height, 12) end,
       widget = wibox.container.background,
@@ -164,7 +164,7 @@ local social =  wibox.widget {
       wibox.container.margin(social_header, dpi(10), dpi(10), dpi(10), dpi(10)),
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       shape = function(cr, width, height)
       gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
       widget = wibox.container.background,
@@ -192,7 +192,7 @@ local social =  wibox.widget {
     forced_height = dpi(60),
     border_width = dpi(1),
     border_color = '#ffffff40',
-    bg = beautiful.background.hue_900,
+    bg = beautiful.modal_bg,
     shape = function(cr, width, height)
     gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, 6) end,
     widget = wibox.container.background

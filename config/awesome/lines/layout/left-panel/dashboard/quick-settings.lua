@@ -70,9 +70,9 @@ return wibox.widget {
         volSlider,
         border_width = dpi(1),
         border_color = '#ffffff40',
-        bg = beautiful.background.hue_900,
+        bg = beautiful.modal_bg,
         shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.corner_radius) end,
+        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
         widget = wibox.container.background
       },
       widget = mat_list_item
@@ -85,9 +85,9 @@ return wibox.widget {
       brightnessSlider,
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.corner_radius) end,
+      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,

@@ -25,7 +25,7 @@ local function renderClient(client, mode)
   elseif client.rendering_mode == 'tiled' or client.rendering_mode == 'floating' or client.rendering_mode == 'dwindle' then
     client.border_width = beautiful.border_width
     client.shape = function(cr, w, h)
-      gears.shape.rounded_rect(cr, w, h, beautiful.corner_radius)
+      gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
     end
   end
 end

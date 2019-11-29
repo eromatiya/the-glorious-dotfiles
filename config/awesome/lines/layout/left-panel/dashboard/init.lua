@@ -94,9 +94,9 @@ return wibox.widget {
         search_button,
         border_width = dpi(1),
         border_color = '#ffffff40',
-        bg = beautiful.background.hue_900,
+        bg = beautiful.modal_bg,
         shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, beautiful.corner_radius)
+        gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
       end,
       widget = wibox.container.background,
     },
@@ -118,10 +118,10 @@ nil,
       exit_button,
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       widget = wibox.container.background,
       shape = function(cr, w, h)
-      gears.shape.rounded_rect(cr, w, h, beautiful.corner_radius)
+      gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
     end,
   },
   widget = mat_list_item,

@@ -16,6 +16,8 @@ configuration {
 }
 
 window {
+  border:                         1px;
+  border-color:                   #ffffff50;
   transparency:                   "real";
   background-color:               @background;
   height:                         540px;
@@ -70,6 +72,8 @@ element normal.active, element alternate.active {
 }
 
 element selected {
+    border:                         1px;
+    border-color:                   #ffffff50;
     background-color:               @background-alt;
     color:                          @selected-text-color;
     border-radius:                  6;

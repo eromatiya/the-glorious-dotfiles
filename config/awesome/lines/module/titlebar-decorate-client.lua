@@ -15,7 +15,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 
 
 local roundCorners = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, beautiful.corner_radius)
+    gears.shape.rounded_rect(cr, width, height, beautiful.modal_radius)
 end
 --
 

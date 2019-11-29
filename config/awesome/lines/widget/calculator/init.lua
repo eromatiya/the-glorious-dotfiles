@@ -36,7 +36,7 @@ local widget_wrapper = function(widget_arg, pos, rad)
     widget_arg,
           border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
     shape = gen_shape(pos, rad),
     widget = wibox.container.background
   }
@@ -670,7 +670,7 @@ local calculator_body = wibox.widget {
       calculator_header,
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       shape = function(cr, width, height)
         gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
       widget = wibox.container.background,

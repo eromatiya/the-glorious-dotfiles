@@ -71,9 +71,9 @@ return wibox.widget {
       require('widget.cpu.cpu-meter'),
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.corner_radius) end,
+      gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
@@ -83,9 +83,9 @@ return wibox.widget {
       require('widget.ram.ram-meter'),
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.corner_radius) end,
+      gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
@@ -96,9 +96,9 @@ return wibox.widget {
       require('widget.temperature.temperature-meter'),
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.corner_radius) end,
+      gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
@@ -108,9 +108,9 @@ return wibox.widget {
       require('widget.harddrive.harddrive-meter'),
       border_width = dpi(1),
       border_color = '#ffffff40',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.modal_bg,
       shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.corner_radius) end,
+      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
     widget = mat_list_item,
