@@ -79,7 +79,7 @@ local globalKeys =
     {modkey}, 'm',
     function()
       if require("widget.music") then
-        _G.togglePlayer()
+        _G.toggle_player()
       end
     end,
   { description = "Open Music Widget", group = "launcher"}),
