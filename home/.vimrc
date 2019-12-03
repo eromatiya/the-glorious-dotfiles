@@ -66,13 +66,16 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " nnoremap
 nnoremap <leader><space> :nohlsearch<CR>	" turn off search highlight
-nnoremap <space> za 						" space open/closes folds
-set foldmethod=indent   					" fold based on indent level
-nnoremap j gj								" move vertically by visual line
-nnoremap k gk								" move vertically by visual line
-nnoremap <leader>u :GundoToggle<CR>			" toggle gundo
-nnoremap <leader>a :Ag						" open ag.vim
-nnoremap <F2>      : NERDTreeToggle<cr>		" Toggle Nerdtree
+nnoremap <space> za 						          " space open/closes folds
+set foldmethod=indent   					        " fold based on indent level
+nnoremap j gj								              " move vertically by visual line
+nnoremap k gk								              " move vertically by visual line
+nnoremap <leader>u :GundoToggle<CR>			  " toggle gundo
+nnoremap <leader>a :Ag						        " open ag.vim
+nnoremap <F4>      : NERDTreeToggle<CR>		" Toggle Nerdtree
+nnoremap <F3>      : NERDTreeFocus<CR>    " Switch
+nnoremap <  :tabprevious<CR>    " TABS
+nnoremap > :tabnext<CR>
 
 " mappings
 let mapleader=","       " leader is comma instead of \
@@ -159,7 +162,8 @@ call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
+call NERDTreeHighlightFile('cpp', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('jpg', 'magenta', 'none', 'magenta', '#151515')
 
 
 set backup
