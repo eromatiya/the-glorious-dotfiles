@@ -113,7 +113,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
           widget = wibox.container.margin,
         },
         {
-          require('widget.music.content.song-slider'),
+          require('widget.music.content.volume-slider').slider_volume,
           left = dpi(15),
           right = dpi(15),
           widget = wibox.container.margin,

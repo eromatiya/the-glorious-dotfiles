@@ -11,7 +11,7 @@ local album_cover = require('widget.music.content.album-cover')
 local prog_bar = require('widget.music.content.progress-bar')
 local track_time = require('widget.music.content.track-time')
 local song_info = require('widget.music.content.song-info')
-
+local vol_slider = require('widget.music.content.volume-slider')
 
 local mpd_updater = {}
 
@@ -154,6 +154,17 @@ update_artist = function()
 end
 
 
+update_volume_slider = function()
+  -- mpd volume is set to N/A if `mpc stop` or every after login
+  -- so lets call this when play button is pressed to update the value of slider
+  awful.spawn.easy_async_with_shell('mpc volume', function(stdout) 
+    -- Get the current mpd volume
+    vol_slider.vol_slider.value = tonumber(stdout:match('%d+'))
+    vol_slider.vol_slider:get_children_by_id('sliderbar')[1].value = tonumber(stdout:match('%d+'))
+  end)
+end
+
+
 update_all_content = function()
 		
 	-- Update progress bar
@@ -185,6 +196,10 @@ check_if_playing = function()
   awful.spawn.easy_async_with_shell("mpc status | awk 'NR==2' | grep -o playing", function( stdout )
     if (stdout:match("%W")) then
       require('widget.music.content.media-buttons').play_button_image.play:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'pause.svg'))
+
+      -- Update volume slider value
+      update_volume_slider()
+      
     else
       require('widget.music.content.media-buttons').play_button_image.play:set_image(gears.surface.load_uncached(PATH_TO_ICONS .. 'play.svg'))
     end
@@ -214,6 +229,16 @@ check_random_status = function()
   end)
 end
 
+
+
+-- Volume slider 
+vol_slider.vol_slider:connect_signal(
+  'property::value',
+  function()
+    awful.spawn('mpc volume ' .. vol_slider.vol_slider.value)
+    vol_slider.vol_slider_bar:get_children_by_id('sliderbar')[1].value  = tonumber(vol_slider.vol_slider.value)
+  end
+)
 
 
 music_play_pause = function()
