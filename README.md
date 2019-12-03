@@ -179,5 +179,4 @@ This setup is split in multiple parts:
 **Special thanks**
 + **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome)
 + **pdonadeo** for the [rofi-web-search.py](https://github.com/pdonadeo/rofi-web-search)
-+ **[elenapan](https://github.com/elenapan/dotfiles)**
-+ **[addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)**
++ **[elenapan](https://github.com/elenapan/dotfiles), [addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)** and many awesome guys from r/unixporn.

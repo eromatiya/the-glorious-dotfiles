@@ -31,14 +31,17 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
 
 call plug#end()
 
 
 " General Settings
-syntax enable           " enable syntax processing
-set tabstop=4       	" number of visual spaces per TAB
-set softtabstop=4   	" number of spaces in tab when editing
+set encoding=UTF-8
+syntax on             " enable syntax processing
+set tabstop=2       	" number of visual spaces per TAB
+set softtabstop=2   	" number of spaces in tab when editing
 "set expandtab       	" tabs are spaces
 set number              " show line numbers
 set showcmd             " show command in bottom bar
@@ -52,7 +55,14 @@ set hlsearch            " highlight matches
 set foldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
-set noshowmode			" Remove status mode
+set noshowmode			    " Remove status mode
+set guifont=DroidSansMono\ Nerd\ Font\ 11
+
+
+" ColorScheme
+colorscheme purify
+hi Normal guibg=NONE ctermbg=NONE
+
 
 " nnoremap
 nnoremap <leader><space> :nohlsearch<CR>	" turn off search highlight
@@ -74,7 +84,9 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
+" Can be enabled or disabled
+" add glyphs to all modes
+let g:webdevicons_enable_ctrlp = 1
 
 call pathogen#infect()                      " use pathogen
 " call pathogen#runtime_append_all_bundles()  " use pathogen
@@ -121,6 +133,34 @@ augroup nerdtree
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
+augroup nerdtreehidecwd
+  autocmd!
+  autocmd FileType nerdtree setlocal conceallevel=3
+          \ | syntax match NERDTreeHideCWD #^[</].*$# conceal
+          \ | setlocal concealcursor=n
+augroup end
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+
 
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -152,6 +192,11 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 
+let g:lightline = {
+      \ 'colorscheme': 'purify',
+      \ }
+
+
 " lightline
 let g:lightline = {
   \     'active': {
@@ -162,15 +207,40 @@ let g:lightline = {
 
   set laststatus=2
 
+let g:lightline = {
+      \ 'component_function': {
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
+      \ }
+      \ }
+
+
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
 
 " nerdtree settings
 " nerdtree
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
 let g:NERDTreeMinimalUI           = 1
+let NERDTreeDirArrows             = 1
 let g:NERDTreeWinPos              = 'left'
 let g:NERDTreeWinSize             = 20
 let g:NERDTreeStatusline          = "  "
-let g:NERDTreeDirArrowExpandable  = '+'
-let g:NERDTreeDirArrowCollapsible = '-' 
+let g:NERDTreeDirArrowExpandable  = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾' 
 
 
 " gitgutter
@@ -219,3 +289,11 @@ let g:fzf_colors =
 " indentLine
 let g:indentLine_setColors = 0
 let g:indentLine_char      = '┊'
+
+
+" Purify colorscheme
+let g:purify_bold = 1        " default: 1
+let g:purify_italic = 1      " default: 1
+let g:purify_underline = 1   " default: 1
+let g:purify_undercurl = 1   " default: 1
+let g:purify_inverse = 1     " default: 1
