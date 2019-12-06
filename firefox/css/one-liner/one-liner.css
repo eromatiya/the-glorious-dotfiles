@@ -344,7 +344,7 @@ toolbarbutton#alltabs-button {
 }
 #nav-bar {
   margin-bottom: -1px !important;            /* remove navbar bottom 1px border */
-  margin-top: -32px !important;
+  margin-top: -31px !important;
   margin-right: 65vw !important;
   border: none !important;
   max-height: 34px !important;

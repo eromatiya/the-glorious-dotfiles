@@ -20,6 +20,8 @@ runtime! archlinux.vim
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
@@ -42,7 +44,7 @@ set encoding=UTF-8
 syntax on             " enable syntax processing
 set tabstop=2       	" number of visual spaces per TAB
 set softtabstop=2   	" number of spaces in tab when editing
-"set expandtab       	" tabs are spaces
+set expandtab       	" tabs are spaces
 set number              " show line numbers
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
@@ -57,12 +59,18 @@ set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
 set noshowmode			    " Remove status mode
 set guifont=DroidSansMono\ Nerd\ Font\ 11
+set smartindent
+set shiftwidth=2
+set clipboard=unnamed
 
 
 " ColorScheme
 colorscheme purify
 hi Normal guibg=NONE ctermbg=NONE
 
+
+" mappings
+let mapleader=","       " leader is comma instead of \
 
 " nnoremap
 nnoremap <leader><space> :nohlsearch<CR>	" turn off search highlight
@@ -76,9 +84,7 @@ nnoremap <F4>      : NERDTreeToggle<CR>		" Toggle Nerdtree
 nnoremap <F3>      : NERDTreeFocus<CR>    " Switch
 nnoremap <  :tabprevious<CR>    " TABS
 nnoremap > :tabnext<CR>
-
-" mappings
-let mapleader=","       " leader is comma instead of \
+nnoremap <Leader>z : FZF<cr>              " FZF
 
 
 " CtrlP settings
@@ -218,6 +224,27 @@ let g:lightline = {
       \ }
       \ }
 
+
+" fzf colors
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+
+" indentLine
+let g:indentLine_setColors = 0
+let g:indentLine_char      = '┊'
 
 
 function! MyFiletype()
