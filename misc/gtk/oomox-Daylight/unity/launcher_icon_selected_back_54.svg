@@ -33,7 +33,7 @@
        id="selected_bg_color"
        osb:paint="solid">
       <stop
-         style="stop-color:#5294e2;stop-opacity:1;"
+         style="stop-color:#007af7;stop-opacity:1;"
          offset="0"
          id="stop4136" />
     </linearGradient>
@@ -48,7 +48,7 @@
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
-     pagecolor="#ffffff"
+     pagecolor="#fdfdfd"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"

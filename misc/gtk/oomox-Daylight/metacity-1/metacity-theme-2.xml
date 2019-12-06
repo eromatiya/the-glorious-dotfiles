@@ -13,30 +13,30 @@
 <constant name="C_title_focused" value="#afb8c6" />
 <constant name="C_title_unfocused" value="#8a939f" />
 
-<constant name="C_wm_bg_focused" value="#ffffff" />
-<constant name="C_wm_bg_unfocused" value="#ffffff" />
+<constant name="C_wm_bg_focused" value="#fdfdfd" />
+<constant name="C_wm_bg_unfocused" value="#fdfdfd" />
 
 <constant name="C_wm_highlight" value="#353a48" />
 
 <!-- window button colors -->
 
 <!-- close -->
-<constant name="C_button_close_bg_focused" value="#b0948c" />
-<constant name="C_button_close_bg_hover" value="#c0a49c" />
-<constant name="C_button_close_bg_active" value="#a0847c" />
+<constant name="C_button_close_bg_focused" value="#6e7de8" />
+<constant name="C_button_close_bg_hover" value="#7e8df8" />
+<constant name="C_button_close_bg_active" value="#5e6dd8" />
 
-<constant name="C_icon_close_bg" value="#ffffff" />
+<constant name="C_icon_close_bg" value="#fdfdfd" />
 
 <!-- minimize, maximize -->
-<constant name="C_button_bg_hover" value="#1a1a1a" />
-<constant name="C_button_bg_active" value="#5294e2" />
+<constant name="C_button_bg_hover" value="#000309" />
+<constant name="C_button_bg_active" value="#007af7" />
 
-<constant name="C_button_border_hover" value="#ffffff" />
+<constant name="C_button_border_hover" value="#fbfbfb" />
 
-<constant name="C_icon_bg_focused" value="#1a1a1a" />
-<constant name="C_icon_bg_unfocused" value="#535353" />
-<constant name="C_icon_bg_hover" value="#535353" />
-<constant name="C_icon_bg_active" value="#5294e2" />
+<constant name="C_icon_bg_focused" value="#000309" />
+<constant name="C_icon_bg_unfocused" value="#3f4146" />
+<constant name="C_icon_bg_hover" value="#3f4146" />
+<constant name="C_icon_bg_active" value="#007af7" />
 
 <!-- geometries -->
 

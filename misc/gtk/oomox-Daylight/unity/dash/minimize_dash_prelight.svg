@@ -32,22 +32,22 @@
     <linearGradient
        id="linearGradient4882">
       <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
+         style="stop-color:#fdfdfd;stop-opacity:1;"
          offset="0"
          id="stop4884" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:0;"
+         style="stop-color:#fdfdfd;stop-opacity:0;"
          offset="1"
          id="stop4886" />
     </linearGradient>
     <linearGradient
        id="linearGradient3784-6">
       <stop
-         style="stop-color:#ffffff;stop-opacity:0.21568628;"
+         style="stop-color:#fdfdfd;stop-opacity:0.21568628;"
          offset="0"
          id="stop3786-4" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:0;"
+         style="stop-color:#fdfdfd;stop-opacity:0;"
          offset="1"
          id="stop3788-6" />
     </linearGradient>
@@ -205,7 +205,7 @@
              id="layer12-45-6-2-7">
             <path
                sodipodi:nodetypes="ccccc"
-               style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#535353;fill-opacity:1;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
+               style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#3f4146;fill-opacity:1;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
                id="rect9057-8-2-3"
                d="m 86.0002,974 0,2 6,0 0,-2 z"
                inkscape:connector-curvature="0" />

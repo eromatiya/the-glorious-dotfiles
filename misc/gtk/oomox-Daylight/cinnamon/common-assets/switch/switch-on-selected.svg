@@ -23,7 +23,7 @@
        id="selected_fg_color"
        osb:paint="solid">
       <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
+         style="stop-color:#fdfdfd;stop-opacity:1;"
          offset="0"
          id="stop4171" />
     </linearGradient>
@@ -31,7 +31,7 @@
        id="selected_bg_color"
        osb:paint="solid">
       <stop
-         style="stop-color:#5294e2;stop-opacity:1;"
+         style="stop-color:#007af7;stop-opacity:1;"
          offset="0"
          id="stop4166" />
     </linearGradient>
@@ -81,11 +81,11 @@
       <stop
          id="stop3940"
          offset="0"
-         style="stop-color:#ffffff;stop-opacity:0;" />
+         style="stop-color:#fdfdfd;stop-opacity:0;" />
       <stop
          id="stop3942"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.54901963;" />
+         style="stop-color:#fdfdfd;stop-opacity:0.54901963;" />
     </linearGradient>
     <linearGradient
        id="linearGradient6523">
@@ -107,7 +107,7 @@
       <stop
          id="stop3942-8"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:1;" />
+         style="stop-color:#fdfdfd;stop-opacity:1;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -148,7 +148,7 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#fdfdfd"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"

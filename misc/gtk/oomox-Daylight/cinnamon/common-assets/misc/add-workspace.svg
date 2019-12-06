@@ -19,7 +19,7 @@
      id="defs4" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#fdfdfd"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
@@ -94,7 +94,7 @@
        ry="2" />
     <g
        id="g3917"
-       style="fill:#1a1a1a;fill-opacity:1">
+       style="fill:#000309;fill-opacity:1">
       <rect
          ry="1.1428567"
          y="944.36218"
@@ -102,7 +102,7 @@
          height="15.999994"
          width="2.0000002"
          id="rect3897"
-         style="opacity:1;fill:#1a1a1a;fill-opacity:1;stroke:#102b68;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+         style="opacity:1;fill:#000309;fill-opacity:1;stroke:#102b68;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
       <rect
          transform="matrix(0,1,-1,0,0,0)"
          ry="1.1428567"
@@ -111,7 +111,7 @@
          height="15.999994"
          width="2.0000002"
          id="rect3897-6"
-         style="opacity:1;fill:#1a1a1a;fill-opacity:1;stroke:#102b68;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+         style="opacity:1;fill:#000309;fill-opacity:1;stroke:#102b68;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
     </g>
   </g>
 </svg>

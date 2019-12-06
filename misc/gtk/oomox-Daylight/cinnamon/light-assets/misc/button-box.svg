@@ -22,7 +22,7 @@
        clipPathUnits="userSpaceOnUse"
        id="clipPath4228">
       <rect
-         style="opacity:1;fill:#5294e2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="opacity:1;fill:#007af7;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="rect4230"
          width="38"
          height="29.000017"
@@ -34,7 +34,7 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#fdfdfd"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
@@ -83,7 +83,7 @@
      id="layer1"
      transform="translate(-5,-1027.3622)">
     <path
-       style="opacity:0.95;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:0.95;fill:#fbfbfb;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="m 27,1027.3622 0,17.9445 c 0,0.5848 -0.4906,1.0555 -1.1,1.0555 l -19.8,0 c -0.6094,0 -1.1,-0.4707 -1.1,-1.0555 l 0,-17.9445 z"
        id="rect4145-1"
        inkscape:connector-curvature="0"

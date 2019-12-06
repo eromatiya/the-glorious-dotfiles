@@ -32,22 +32,22 @@
     <linearGradient
        id="linearGradient4882">
       <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
+         style="stop-color:#fdfdfd;stop-opacity:1;"
          offset="0"
          id="stop4884" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:0;"
+         style="stop-color:#fdfdfd;stop-opacity:0;"
          offset="1"
          id="stop4886" />
     </linearGradient>
     <linearGradient
        id="linearGradient3784-6">
       <stop
-         style="stop-color:#ffffff;stop-opacity:0.21568628;"
+         style="stop-color:#fdfdfd;stop-opacity:0.21568628;"
          offset="0"
          id="stop3786-4" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:0;"
+         style="stop-color:#fdfdfd;stop-opacity:0;"
          offset="1"
          id="stop3788-6" />
     </linearGradient>
@@ -161,45 +161,45 @@
         <g
            id="g4778-2-68-8-7-6"
            transform="translate(1323,246.86719)"
-           style="fill:#ffffff;fill-opacity:1">
+           style="fill:#fdfdfd;fill-opacity:1">
           <g
-             style="display:inline;fill:#ffffff;fill-opacity:1"
+             style="display:inline;fill:#fdfdfd;fill-opacity:1"
              id="layer9-9-4-4-1-1-0"
              transform="translate(-60,-518)" />
           <g
              id="layer10-2-1-8-0-4-0"
              transform="translate(-60,-518)"
-             style="fill:#ffffff;fill-opacity:1" />
+             style="fill:#fdfdfd;fill-opacity:1" />
           <g
              id="layer11-16-4-9-6-9-6"
              transform="translate(-60,-518)"
-             style="fill:#ffffff;fill-opacity:1" />
+             style="fill:#fdfdfd;fill-opacity:1" />
           <g
              transform="matrix(0.75,0,0,0.75,2,2.0546875)"
              id="g2996-76-5-96-3-0"
-             style="fill:#ffffff;fill-opacity:1">
+             style="fill:#fdfdfd;fill-opacity:1">
             <g
                transform="translate(-60,-518)"
                id="layer12-4-5-7-9-4-0"
-               style="fill:#ffffff;fill-opacity:1">
+               style="fill:#fdfdfd;fill-opacity:1">
               <g
                  transform="translate(19,-242)"
                  id="layer4-4-1-9-5-6-3-3"
-                 style="display:inline;fill:#ffffff;fill-opacity:1" />
+                 style="display:inline;fill:#fdfdfd;fill-opacity:1" />
             </g>
           </g>
           <g
              id="layer13-2-6-11-3-1-8"
              transform="translate(-60,-518)"
-             style="fill:#ffffff;fill-opacity:1" />
+             style="fill:#fdfdfd;fill-opacity:1" />
           <g
              id="layer14-4-0-33-2-4-4"
              transform="translate(-60,-518)"
-             style="fill:#ffffff;fill-opacity:1" />
+             style="fill:#fdfdfd;fill-opacity:1" />
           <g
              id="layer15-7-3-0-6-6-6"
              transform="translate(-60,-518)"
-             style="fill:#ffffff;fill-opacity:1" />
+             style="fill:#fdfdfd;fill-opacity:1" />
         </g>
       </g>
       <rect
