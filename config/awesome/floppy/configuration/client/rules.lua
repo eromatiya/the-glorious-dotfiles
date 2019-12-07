@@ -50,9 +50,11 @@ awful.rules.rules = {
        },
     },
     properties = {
-      screen = 1, tag = '1',
+      skip_decoration = true,
+      screen = 1, 
+      tag = '1',
       switchtotag = true,
-      titlebars_enabled = true
+      hide_titlebars = false
     }
   },
 
@@ -116,7 +118,7 @@ awful.rules.rules = {
       tag = '6',
       switchtotag = true,
       floating = true,
-      titlebars_enabled = true
+      hide_titlebars = true
     }
   },
 
@@ -166,7 +168,7 @@ awful.rules.rules = {
   },
     properties = {
     skip_decoration = true,
-    titlebars_enabled = true,
+    hide_titlebars = true,
     floating = true,
     placement = awful.placement.centered,
     ontop = true

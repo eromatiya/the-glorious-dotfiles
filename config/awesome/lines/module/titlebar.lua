@@ -8,7 +8,6 @@ local tip = titlebar_icon_path --alias to save time/space
 local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
-local decorExtended = require('module.titlebar-decorate-client')
 local titleBarSize = beautiful.titlebar_size
 
 -- Define the images to load
@@ -54,95 +53,75 @@ beautiful.titlebar_maximized_button_focus_inactive_hover  = tip .. "maximized_fo
 beautiful.titlebar_maximized_button_normal_active_hover = tip .. "maximized_normal_active_hover.svg"
 beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focus_active_hover.svg"
 
+
+
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-    -- buttons for the titlebar
-    local buttons = gears.table.join(
-        awful.button({ }, 1, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.move(c)
-        end),
-        awful.button({ }, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.resize(c)
-        end)
+_G.client.connect_signal("request::titlebars", function(c)
+  -- buttons for the titlebar
+  local buttons = gears.table.join(
+    awful.button({ }, 1, function()
+      c:emit_signal("request::activate", "titlebar", {raise = true})
+      awful.mouse.client.move(c)
+    end),
+    awful.button({ }, 3, function()
+      c:emit_signal("request::activate", "titlebar", {raise = true})
+      awful.mouse.client.resize(c)
+    end)
     )
 
-    awful.titlebar(c, {position = 'top', size = titleBarSize}) : setup {
-        { -- Top
-            awful.titlebar.widget.closebutton    (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.minimizebutton (c),
+  -- General titlebar design
+  awful.titlebar(c, {position = 'top', size = titleBarSize}) : setup {
+    { 
+      awful.titlebar.widget.closebutton    (c),
+      awful.titlebar.widget.maximizedbutton(c),
+      awful.titlebar.widget.minimizebutton (c),
 
-            layout  = wibox.layout.fixed.horizontal
-        },
-          nil,
-        { -- Bottom
-			      awful.titlebar.widget.floatingbutton (c),
-            layout = wibox.layout.fixed.vertical()
-        },
-        layout = wibox.layout.align.horizontal
-    }
-
-
-    -- CUSTOM TITLEBAR FOR TERMINALS
-    -- You need XPROP for this to work
-    if c.class == "kitty" or c.class == "XTerm" then
-      awful.titlebar(c, {position = "top" , bg = '#000000AA', size = titleBarSize}) : setup {
-        {
-          awful.titlebar.widget.closebutton    (c),
-          awful.titlebar.widget.maximizedbutton(c),
-          awful.titlebar.widget.minimizebutton (c),
-          layout  = wibox.layout.fixed.horizontal
-        },
-          nil,
-        { -- Bottom
-          awful.titlebar.widget.floatingbutton (c),
-          layout = wibox.layout.fixed.horizontal()
-        },
-          layout = wibox.layout.align.horizontal
-        }
-      end
+      layout  = wibox.layout.fixed.horizontal
+    },
+    nil,
+    { 
+     awful.titlebar.widget.floatingbutton (c),
+     layout = wibox.layout.fixed.horizontal
+   },
+   layout = wibox.layout.align.horizontal
+ }
 
 
-    -- CUSTOM TITLEBAR FOR Firefox
-    -- You need XPROP for this to work
-    if c.class == "firefox" then
-      awful.titlebar(c, {position = "top", bg = '#222222', size = titleBarSize}) : setup {
-        {
-          awful.titlebar.widget.closebutton    (c),
-          awful.titlebar.widget.maximizedbutton(c),
-          awful.titlebar.widget.minimizebutton (c),
-          layout  = wibox.layout.fixed.horizontal
-        },
-          nil,
-        { -- Bottom
-          awful.titlebar.widget.floatingbutton (c),
-          layout = wibox.layout.fixed.vertical()
-        },
-          layout = wibox.layout.align.horizontal
-        }
-      end
+ -- Generate a custom titlebar for each class declared below this function
+ -- Depends: xprop
+ local custom_titlebars = function(c, pos, bg, size)
+  awful.titlebar(c, {position = pos, bg = bg, size = size}) : setup {
+    {
+      awful.titlebar.widget.closebutton    (c),
+      awful.titlebar.widget.maximizedbutton(c),
+      awful.titlebar.widget.minimizebutton (c),
+      layout  = wibox.layout.fixed.horizontal
+    },
+    nil,
+    {
+      awful.titlebar.widget.floatingbutton (c),
+      layout = wibox.layout.fixed.horizontal
+    },
+    layout = wibox.layout.align.horizontal
+  }
+  end
 
-    -- CUSTOM TITLEBAR FOR Gimp2-10
-    -- You need XPROP for this to work
-    if c.class == "Gimp-2.10" then
-      awful.titlebar(c, {position = "left", bg = '#454545', size = titleBarSize}) : setup {
-        {
-          awful.titlebar.widget.closebutton    (c),
-          awful.titlebar.widget.maximizedbutton(c),
-          awful.titlebar.widget.minimizebutton (c),
-          layout  = wibox.layout.fixed.horizontal
-        },
-          nil,
-        { -- Bottom
-          awful.titlebar.widget.floatingbutton (c),
-          layout = wibox.layout.fixed.horizontal()
-        },
-          layout = wibox.layout.align.horizontal
-        }
-      end
+  -- Generate a custom titlabar for each class
+  if c.class == "kitty" or c.class == "XTerm" then
+    custom_titlebars(c, 'top', '#000000AA', titleBarSize)
+  elseif c.class == "firefox" then
+    custom_titlebars(c, 'top', '#222222', titleBarSize)
+  elseif c.class == "Gimp-2.10" then
+    custom_titlebars(c, 'top', '#454545', titleBarSize)
+  elseif c.class == "Subl3" then
+    custom_titlebars(c, 'top', '#232830', titleBarSize)
+  end
+
 
 end)
+
+
+
+local decorExtended = require('module.titlebar-decorate-client')
 
 return beautiful

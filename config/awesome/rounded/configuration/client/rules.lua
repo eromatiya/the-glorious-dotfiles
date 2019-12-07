@@ -39,20 +39,6 @@ awful.rules.rules = {
     properties = { skip_decoration = true }
   },
 
-
-  { rule_any = { name = {'rofi - drun'} },
-    type = 'normal',
-    properties = {
-      skip_decoration = true,
-      floating = true,
-      x = 5,
-      y = awful.screen.focused().geometry.height - 490 - 10 - 42,
-      ontop = true,
-      above = true,
-      sticky = true
-    },
-  },
-
   -- Terminals
   {
     rule_any = {
@@ -64,9 +50,11 @@ awful.rules.rules = {
        },
     },
     properties = {
-      screen = 1, tag = '1',
+      skip_decoration = true,
+      screen = 1, 
+      tag = '1',
       switchtotag = true,
-      titlebars_enabled = true
+      hide_titlebars = false
     }
   },
 
@@ -120,7 +108,8 @@ awful.rules.rules = {
 		class = {
 			"Wine",
       "dolphin-emu",
-      "Steam"
+      "Steam",
+      "Citra"
 		},
   --s  instance = { 'SuperTuxKart' }
 	},
@@ -129,7 +118,7 @@ awful.rules.rules = {
       tag = '6',
       switchtotag = true,
       floating = true,
-      titlebars_enabled = true
+      hide_titlebars = true
     }
   },
 
@@ -161,7 +150,8 @@ awful.rules.rules = {
 		class = {
 			"Oomox",
       "Unity",
-      "UnityHub"
+      "UnityHub",
+      "jetbrains-studio"
 		},
 	},
 		properties = { screen = 1, tag = '9', skip_decoration = true }
@@ -178,7 +168,7 @@ awful.rules.rules = {
   },
     properties = {
     skip_decoration = true,
-    titlebars_enabled = true,
+    hide_titlebars = true,
     floating = true,
     placement = awful.placement.centered,
     ontop = true
