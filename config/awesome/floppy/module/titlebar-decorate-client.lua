@@ -33,7 +33,7 @@ _G.screen.connect_signal("arrange", function(s)
       c.shape = roundCorners
     end
 
-    if c.floating then
+    if c.floating and not c.skip_center then
       awful.placement.centered(c)
     end
 
