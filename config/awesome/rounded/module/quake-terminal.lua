@@ -49,7 +49,7 @@ _G.client.connect_signal(
       c.sticky = true
       c.hidden = not opened
       c.maximized_horizontal = true
-      c.titlebars_enabled = false
+      c.hide_titlebars = true
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
