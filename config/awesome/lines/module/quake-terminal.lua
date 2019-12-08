@@ -51,6 +51,7 @@ _G.client.connect_signal(
       c.maximized_horizontal = true
       c.hide_titlebars = true
 	  c.skip_center = true
+	  c.round_corners = false
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end

@@ -18,6 +18,7 @@ awful.rules.rules = {
       }
     },
     properties = {
+	  round_corners = true,
       focus = awful.client.focus.filter,
       raise = true,
       keys = client_keys,
@@ -31,12 +32,8 @@ awful.rules.rules = {
       ontop = false,
       sticky = false,
       maximized_horizontal = false,
-      maximized_vertical = false
-
+      maximized_vertical = false  
     }
-  },
-  { rule_any = { name = {'QuakeTerminal'} },
-    properties = { skip_decoration = true }
   },
 
   -- Terminals
@@ -46,7 +43,8 @@ awful.rules.rules = {
         "URxvt",
   			"XTerm",
   			"UXTerm",
-        "kitty"
+        "kitty",
+		"K3rmit"
        },
     },
     properties = {
@@ -54,7 +52,6 @@ awful.rules.rules = {
       screen = 1, 
       tag = '1',
       switchtotag = true,
-      hide_titlebars = false
     }
   },
 

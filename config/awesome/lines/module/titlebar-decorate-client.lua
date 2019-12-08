@@ -37,7 +37,7 @@ _G.screen.connect_signal("arrange", function(s)
 	  if c.floating and not c.skip_center then
 		awful.placement.centered(c)
 	  end
-      if c.maximized then
+      if c.maximized or not c.round_corners then
         c.shape = function(cr, w, h)
           gears.shape.rectangle(cr, w, h)
         end
