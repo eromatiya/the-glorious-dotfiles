@@ -81,7 +81,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
 | `xorg-xwininfo` | Window information utility for X | it just works |
 | `python3`| an interpreted, interactive, object-oriented programming language | Web-search Backend |
-| `xdg_menu` | Generates a list of installed applications | Useful for generating app list |
+| `xdg_menu` or `awesome-freedesktop` | Generates a list of installed applications | Useful for generating app list |
 | `imagemagick` | An image viewing/manipulation program | Album cover extractor |
 | `jq` | Command-line JSON processor | Formatting |
 
@@ -165,9 +165,12 @@ This setup is split in multiple parts:
 + You need a song with hard-coded album cover for music widget to display its cover.
 + You can disable the dialog backdrop effect in `awesome/configuration/client/rules.lua`. Just search for `dialog` and set `drawBackdrop` to false in the properties. You can also just unload the module in `rc.lua`.
 + Generating an application menu
-  - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
-  - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua
-  - You can just substitute its values to `awesome/module/menu.lua`
+  - Using `xdg-menu`:
+    - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
+    - Execute `xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua` to generate a list to archmenu.lua
+    - You can just substitute its values to `awesome/module/menu.lua`
+  - Using `awesome-freedesktop`:  
+    - Install `awesome-freedesktop`. In Arch's AUR, it is called `awesome-freedesktop-git` It generates a list of applications installed. Or better yet check the repo [here](https://github.com/lcpz/awesome-freedesktop).
 + You will probably have an error or the widget will not update because of `weather-update.lua`. It is because I did not include an openweathermap API keys and etc.
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
