@@ -1,6 +1,7 @@
 local gears = require('gears')
 local spawn = require('awful.spawn')
 local app = require('configuration.apps').default.quake
+local awful = require('awful')
 
 local quake_id = 'notnil'
 local quake_client

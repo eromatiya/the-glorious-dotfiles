@@ -1,16 +1,6 @@
--- Added extension of decorate-client.lua due to the addition of titlebars.
--- Set your own rules here. This is a created for my workflow.
--- You are free to alter the codes or completely delete this
-
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
-local wibox = require("wibox")
-local theme_name = "stoplight"
-local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/theme/icons/titlebar/" .. theme_name .. '/'
-local tip = titlebar_icon_path --alias to save time/space
-local titlebars = {}
-local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
 
 local roundCorners = function(cr, width, height)
