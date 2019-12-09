@@ -20,10 +20,10 @@ _G.screen.connect_signal("arrange", function(s)
   for _, c in pairs(s.clients) do
     if (#s.tiled_clients > 1 or c.floating) and c.first_tag.layout.name ~= 'max' then
       if not c.hide_titlebars then
-      awful.titlebar.show(c, 'left')
-    else 
-    awful.titlebar.hide(c, 'left')
-    end
+        awful.titlebar.show(c, 'left')
+      else 
+        awful.titlebar.hide(c, 'left')
+      end
     if c.floating and not c.skip_center then
     awful.placement.centered(c)
     end
