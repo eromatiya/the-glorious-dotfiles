@@ -358,6 +358,14 @@ local globalKeys =
   ),
   awful.key(
     {},
+    'XF86AudioMicMute',
+    function()
+      awful.spawn('amixer set Capture toggle', false)
+    end,
+    {description = 'Mute Microphone', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
     'XF86PowerDown',
     function()
       --

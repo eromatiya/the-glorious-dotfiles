@@ -80,7 +80,7 @@ local globalKeys =
     {modkey}, 'm',
     function()
       if require("widget.music") then
-        _G.togglePlayer()
+        _G.toggle_player()
       end
     end,
   { description = "Open Music Widget", group = "launcher"}),
@@ -270,7 +270,7 @@ local globalKeys =
     {},
     'XF86MonBrightnessUp',
     function()
-      awful.spawn('xbacklight -inc 10')
+      awful.spawn('xbacklight -inc 10', false)
       if toggleBriOSD ~= nil then
         _G.toggleBriOSD(true)
       end
@@ -284,7 +284,7 @@ local globalKeys =
     {},
     'XF86MonBrightnessDown',
     function()
-      awful.spawn('xbacklight -dec 10')
+      awful.spawn('xbacklight -dec 10', false)
       if toggleBriOSD ~= nil then
         _G.toggleBriOSD(true)
       end
@@ -294,6 +294,8 @@ local globalKeys =
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
+
+
   -- ALSA volume control
   awful.key(
     {},
@@ -331,6 +333,7 @@ local globalKeys =
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
+
   awful.key(
     {},
     'XF86AudioNext',
@@ -355,6 +358,14 @@ local globalKeys =
     end,
     {description = 'play/pause music', group = 'hotkeys'}
 
+  ),
+  awful.key(
+    {},
+    'XF86AudioMicMute',
+    function()
+      awful.spawn('amixer set Capture toggle', false)
+    end,
+    {description = 'Mute Microphone', group = 'hotkeys'}
   ),
   awful.key(
     {},
