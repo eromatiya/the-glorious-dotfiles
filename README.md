@@ -171,6 +171,7 @@ This setup is split in multiple parts:
     - You can just substitute its values to `awesome/module/menu.lua`
   - Using `awesome-freedesktop`:  
     - Install `awesome-freedesktop`. In Arch's AUR, it is called `awesome-freedesktop-git` It generates a list of applications installed. Or better yet check the repo [here](https://github.com/lcpz/awesome-freedesktop).
+    - You can change the icon theme in `awesome/theme/default-theme.lua`. Search for `theme.icon_theme`
 + You will probably have an error or the widget will not update because of `weather-update.lua`. It is because I did not include an openweathermap API keys and etc.
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
