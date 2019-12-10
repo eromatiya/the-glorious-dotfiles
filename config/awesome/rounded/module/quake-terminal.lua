@@ -18,7 +18,6 @@ end
 
 function open_quake()
   quake_client.hidden = false
-  quake_client:raise()
   quake_client:emit_signal('request::activate')
 end
 
