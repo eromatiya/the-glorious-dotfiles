@@ -1,60 +1,145 @@
 -- This module changes wallpaper based on declared time
--- Note that this module will not change the wallpaper at the exact time
--- Because it only checks the time every 10 minutes/600 seconds
--- So the wallpaper will change only within the first 10 mins of the hour
+-- It checks the difference between the current time and the incoming specified time
+-- Then convert it to seconds to set it as a countdown value
+-- Much better than my previous implementation w/c checks the time every 10 seconds
 
 local filesystem = require('gears.filesystem')
-local wall_dir = filesystem.get_configuration_dir() .. '/theme/wallpapers/'
+local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 local gears = require('gears')
-local awful = require('awful')
 
+-- Table for hour change and wallpaper string
+local wall_data = {}
 
--- Change hour from 00-23
+-- Countdown variable
+-- In seconds
+changeWallIn = nil
+
+-- Current Time
+local current_time = function()
+  return os.date("%H:%M:%S")
+end
+
+-- Variables to check the incoming specified hour
+-- Make sure to set the varieables the  same as specified hours
+local mNightTime = 0
 local dayTime = 6
 local noonTime = 12
 local nightTime = 18
-local midNight = 00
-local checkTimePer = 600 -- seconds
 
-function timeChecker()
-  time = os.date("*t")
-    time = time.hour
-    -- Morning
-    if tonumber(time) >= dayTime and tonumber(time) < noonTime then
-      gears.wallpaper.maximized (wall_dir .. 'day-wallpaper.jpg', s)
-    -- Noon
-    elseif tonumber(time) >= noonTime and tonumber(time) < nightTime then
-      gears.wallpaper.maximized (wall_dir .. 'noon-wallpaper.jpg', s)
-    -- Evening
-    elseif tonumber(time) >= nightTime then
-      gears.wallpaper.maximized (wall_dir .. 'night-wallpaper.jpg', s)
-    -- Midnight
-    else
-      gears.wallpaper.maximized (wall_dir .. 'midnight-wallpaper.jpg', s)
-    end
+-- Specified Hours
+-- Change Wall in this Hour
+-- format: `HH:MM:SS`
+-- 01:XX:XX - 24:XX:00
+changeWallDay = '06:00:00'
+changeWallNoon = '12:00:00'
+changeWallNight= '18:00:00'
+changeWallMNight = '24:00:00'
+
+-- As you can see, we use 24 in midNightChange as hour
+-- We did this to prevent negative numbers if we use 00:00:00
+
+
+dayWallpaper = 'day-wallpaper.jpg'
+noonWallpaper = 'noon-wallpaper.jpg'
+nightWallpaper = 'night-wallpaper.jpg'
+mNightWallpaper = 'midnight-wallpaper.jpg'
+
+-- Parse HH:MM:SS to seconds
+local parseToSec = function(time)
+  -- Convert to seconds --
+  -- Convert HH in HH:MM:SS
+  hourInSec = tonumber(string.sub(time, 1, 2)) * 3600
+
+  -- Convert MM in HH:MM:SS
+  minInSec = tonumber(string.sub(time, 4, 5)) * 60
+
+  -- Get SS in HH:MM:SS
+  getSec = tonumber(string.sub(time, 7, 8))
+
+  return (hourInSec + minInSec + getSec)
+
 end
 
--- Check time every 10 mins
-local runCheck = gears.timer {
-  timeout   = checkTimePer,
+
+-- We need this to load the wallpaper for the current time
+-- IDK why awesome does'nt load the `gears.wallpaper.maximized (wall_dir .. wallname, s)` alone
+-- So that's y we created this gears.timer function
+local update_current_wall = function(wallname)
+  
+  gears.timer {
+    timeout   = 0,
+    call_now  = true,
+    autostart = true,
+    callback  = function()
+      gears.wallpaper.maximized (wall_dir .. wallname, s)
+    end,
+    single_shot = true
+  }
+
+end
+
+
+-- returns time table
+time = os.date("*t")
+-- Get HH in time table
+time = tonumber(time.hour)
+
+-- Midnight
+if time >= 0 and time < dayTime then
+  -- naughty.notify({text = 'MIDNIGHT'})
+  -- Update current wallpaper
+  update_current_wall(mNightWallpaper)
+
+  -- Return day time and wall day to wall_data
+  wall_data = {changeWallDay, dayWallpaper}
+
+-- Morning/Day
+elseif time >= dayTime and time < noonTime then
+  -- naughty.notify({text = 'MORNING'})
+  -- Update current wallpaper
+  update_current_wall(dayWallpaper)
+
+  -- Return noon time and wall noon to wall_data
+  wall_data = {changeWallNoon, noonWallpaper}
+
+-- Noon/Afternoon
+elseif time >= noonTime and time < nightTime then
+  -- naughty.notify({text = 'NOON'})
+  -- Update current wallpaper
+  update_current_wall(noonWallpaper)
+
+  -- Return night time and wall night to wall_data
+    gears.wallpaper.maximized (wall_dir .. wallname, s)
+
+-- Night
+else
+  -- naughty.notify({text = 'NIGHT'})
+  -- Update current wallpaper
+  update_current_wall(nightWallpaper)
+
+  -- Return midnight time and wall midning to wall_data
+  wall_data = {changeWallMNight, mNightWallpaper}
+
+end
+
+
+-- Get the difference function
+local diffSec = function(setSec, currSec)
+  return (setSec - currSec)
+end
+
+
+changeWallIn = diffSec(parseToSec(wall_data[1]), parseToSec(current_time()))
+
+-- Update wallpaper in specified time
+gears.timer {
+  timeout   = changeWallIn,
   autostart = true,
   call_now = true,
   callback  = function()
-    timeChecker()
+    -- Update wallpaper
+    gears.wallpaper.maximized (wall_dir .. wall_data[2], s)
   end
 }
 
--- Run Once On Start-up
-local runOnce = gears.timer {
-  timeout   = 0,
-  call_now  = true,
-  autostart = true,
-  callback  = function()
-    timeChecker()
-  end,
-  single_shot = true
-}
 
---
--- run:start()
-_G.timeChecker()
