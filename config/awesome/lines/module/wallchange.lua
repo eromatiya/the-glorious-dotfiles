@@ -7,12 +7,10 @@ local filesystem = require('gears.filesystem')
 local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 local gears = require('gears')
 
--- Table for hour change and wallpaper string
-local wall_data = {}
 
 -- Countdown variable
 -- In seconds
-changeWallIn = nil
+change_wall_time = nil
 
 -- Current Time
 local current_time = function()
@@ -43,6 +41,11 @@ dayWallpaper = 'day-wallpaper.jpg'
 noonWallpaper = 'noon-wallpaper.jpg'
 nightWallpaper = 'night-wallpaper.jpg'
 mNightWallpaper = 'midnight-wallpaper.jpg'
+
+
+-- Table for hour change and wallpaper string
+local wall_data = {}
+
 
 -- Parse HH:MM:SS to seconds
 local parseToSec = function(time)
@@ -109,7 +112,7 @@ elseif time >= noonTime and time < nightTime then
   update_current_wall(noonWallpaper)
 
   -- Return night time and wall night to wall_data
-    gears.wallpaper.maximized (wall_dir .. wallname, s)
+  wall_data = {changeWallNight, nightWallpaper}
 
 -- Night
 else
@@ -128,12 +131,13 @@ local diffSec = function(setSec, currSec)
   return (setSec - currSec)
 end
 
-
-changeWallIn = diffSec(parseToSec(wall_data[1]), parseToSec(current_time()))
+-- Pass the time_data and the current time 
+-- To get the time difference
+change_wall_time = diffSec(parseToSec(wall_data[1]), parseToSec(current_time()))
 
 -- Update wallpaper in specified time
 gears.timer {
-  timeout   = changeWallIn,
+  timeout   = change_wall_time,
   autostart = true,
   call_now = true,
   callback  = function()
