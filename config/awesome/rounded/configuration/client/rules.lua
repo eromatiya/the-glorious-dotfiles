@@ -2,13 +2,11 @@ local awful = require('awful')
 local gears = require('gears')
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
-local roundCorners = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 12)
-end
 
 -- Rules
 awful.rules.rules = {
   -- All clients will match this rule.
+  -- Add `skip_decoration = true` to other rule_any to exclude that
   {
     rule = {},
     except_any = {
@@ -18,7 +16,7 @@ awful.rules.rules = {
       }
     },
     properties = {
-	  round_corners = true,
+      round_corners = true,
       focus = awful.client.focus.filter,
       raise = true,
       keys = client_keys,
@@ -41,14 +39,14 @@ awful.rules.rules = {
     rule_any = {
        class = {
         "URxvt",
-  			"XTerm",
-  			"UXTerm",
+        "XTerm",
+        "UXTerm",
         "kitty",
-		"K3rmit"
+        "K3rmit"
        },
     },
     properties = {
-      skip_decoration = true,
+      size_hints_honor = false,
       screen = 1, 
       tag = '1',
       switchtotag = true,
@@ -58,24 +56,25 @@ awful.rules.rules = {
   -- Browsers
   {
     rule_any = {
-		  class = {
-			 "firefox"
+      class = {
+        "firefox",
+        "Tor Browser"
       },
     },
-        properties = { screen = 1, tag = '2' }
+    properties = { screen = 1, tag = '2' }
   },
 
   -- Editors
   {
-	rule_any = {
-		class = {
-			"Geany",
+  rule_any = {
+    class = {
+      "Geany",
       "Atom",
       "Subl3",
       "code-oss"
-		},
-	},
-		properties = { screen = 1, tag = '3' }
+    },
+  },
+    properties = { screen = 1, tag = '3' }
   },
 
   -- File Managers
@@ -86,7 +85,7 @@ awful.rules.rules = {
          "File-roller"
        },
     },
-        properties = { tag = '4', switchtotag = true }
+    properties = { tag = '4', switchtotag = true }
   },
     -- Multimedia
   {
@@ -95,22 +94,20 @@ awful.rules.rules = {
         "vlc"
        },
     },
-        properties = { tag = '5', switchtotag = true }
+    properties = { tag = '5', switchtotag = true }
   },
-	-- Games
+  -- Games
 
   {
-	rule_any = {
-
-		class = {
-			"Wine",
+  rule_any = {
+    class = {
+      "Wine",
       "dolphin-emu",
       "Steam",
       "Citra"
-		},
-  --s  instance = { 'SuperTuxKart' }
-	},
-		properties = {
+    },
+  },
+    properties = {
       screen = 1,
       tag = '6',
       switchtotag = true,
@@ -119,15 +116,15 @@ awful.rules.rules = {
     }
   },
 
-  -- Multimedia Editing
+  -- Graphics Editing
   {
-	rule_any = {
-		class = {
-			"Gimp-2.10",
-			"Inkscape"
-		},
-	},
-		properties = { screen = 1, tag = '7'}
+  rule_any = {
+    class = {
+      "Gimp-2.10",
+      "Inkscape"
+    },
+  },
+    properties = { screen = 1, tag = '7'}
   },
 
   -- Virtualbox
@@ -135,6 +132,7 @@ awful.rules.rules = {
   rule_any = {
     class = {
       "VirtualBox Manage",
+      "VirtualBox Machine"
     },
   },
     properties = { screen = 1, tag = '8'}
@@ -143,15 +141,20 @@ awful.rules.rules = {
 
   -- Workspace Editing and IDEs
   {
-	rule_any = {
-		class = {
-			"Oomox",
+  rule_any = {
+    class = {
+      "Oomox",
       "Unity",
       "UnityHub",
       "jetbrains-studio"
-		},
-	},
-		properties = { screen = 1, tag = '9', skip_decoration = true }
+    },
+  },
+    properties = { 
+      screen = 1,
+      tag = '9', 
+      skip_decoration = true,
+      round_corners = true,
+      }
   },
 
   -- Custom
@@ -167,8 +170,8 @@ awful.rules.rules = {
     skip_decoration = true,
     hide_titlebars = true,
     floating = true,
-    placement = awful.placement.centered,
-    ontop = true
+    ontop = true,
+    placement = awful.placement.centered
     }
   },
 
@@ -181,13 +184,12 @@ awful.rules.rules = {
       ontop = true,
       floating = true,
       drawBackdrop = true, -- TRUE if you want to add blur backdrop effect
-      skip_decoration = true,
-      shape = roundCorners,
+      skip_decoration = true
     }
   },
 
 
-  -- Intstances
+  -- Instances
   -- Network Manager Editor
   {
     rule = {
@@ -195,6 +197,7 @@ awful.rules.rules = {
     },
     properties = {
       skip_decoration = true,
+      round_corners = true,
       ontop= true,
       floating = true,
       drawBackdrop = false,
@@ -204,13 +207,15 @@ awful.rules.rules = {
       buttons = client_buttons
     }
   },
--- For nemo progress bar when copying or moving
+  
+  -- For nemo progress bar when copying or moving
   {
     rule = {
       instance = 'file_progress'
     },
     properties = {
       skip_decoration = true,
+      round_corners = true,
       ontop= true,
       floating = true,
       drawBackdrop = false,
@@ -229,6 +234,7 @@ awful.rules.rules = {
     },
     properties = {
       skip_decoration = true,
+      round_corners = true,
       ontop= true,
       floating = true,
       drawBackdrop = false,
@@ -239,8 +245,6 @@ awful.rules.rules = {
     }
   }
 }
-
-
 
 
 -- Normally we'd do this with a rule but Spotify and SuperTuxKart doesnt set
