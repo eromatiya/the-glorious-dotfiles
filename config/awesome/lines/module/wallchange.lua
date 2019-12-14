@@ -43,7 +43,8 @@ nightWallpaper = 'night-wallpaper.jpg'
 mNightWallpaper = 'midnight-wallpaper.jpg'
 
 
--- Table for hour change and wallpaper string
+-- We will use an array for hour change and wallpaper string
+-- And why the f is lua's array starts with `1`? lol
 local wall_data = {}
 
 
@@ -65,8 +66,8 @@ end
 
 
 -- We need this to load the wallpaper for the current time
--- IDK why awesome does'nt load the `gears.wallpaper.maximized (wall_dir .. wallname, s)` alone
--- So that's y we created this gears.timer function
+-- IDK why awesome doesn't load the `gears.wallpaper.maximized (wall_dir .. wallname, s)` alone
+-- So that's why we created this gears.timer function
 local update_current_wall = function(wallname)
   
   gears.timer {
@@ -81,69 +82,93 @@ local update_current_wall = function(wallname)
 
 end
 
+local update_timeout = function()
+  -- returns time table
+  time = os.date("*t")
+  -- Get HH in time table
+  time = tonumber(time.hour)
 
--- returns time table
-time = os.date("*t")
--- Get HH in time table
-time = tonumber(time.hour)
+  -- Midnight
+  if time >= 0 and time < dayTime then
+    -- naughty.notify({text = 'MIDNIGHT'})
+    -- Update current wallpaper
+    update_current_wall(mNightWallpaper)
 
--- Midnight
-if time >= 0 and time < dayTime then
-  -- naughty.notify({text = 'MIDNIGHT'})
-  -- Update current wallpaper
-  update_current_wall(mNightWallpaper)
+    -- Return day time and wall day to wall_data
+    wall_data = {changeWallDay, dayWallpaper}
 
-  -- Return day time and wall day to wall_data
-  wall_data = {changeWallDay, dayWallpaper}
+  -- Morning/Day
+  elseif time >= dayTime and time < noonTime then
+    -- naughty.notify({text = 'MORNING'})
+    -- Update current wallpaper
+    update_current_wall(dayWallpaper)
 
--- Morning/Day
-elseif time >= dayTime and time < noonTime then
-  -- naughty.notify({text = 'MORNING'})
-  -- Update current wallpaper
-  update_current_wall(dayWallpaper)
+    -- Return noon time and wall noon to wall_data
+    wall_data = {changeWallNoon, noonWallpaper}
 
-  -- Return noon time and wall noon to wall_data
-  wall_data = {changeWallNoon, noonWallpaper}
+  -- Noon/Afternoon
+  elseif time >= noonTime and time < nightTime then
+    -- naughty.notify({text = 'NOON'})
+    -- Update current wallpaper
+    update_current_wall(noonWallpaper)
 
--- Noon/Afternoon
-elseif time >= noonTime and time < nightTime then
-  -- naughty.notify({text = 'NOON'})
-  -- Update current wallpaper
-  update_current_wall(noonWallpaper)
+    -- Return night time and wall night to wall_data
+    wall_data = {changeWallNight, nightWallpaper}
 
-  -- Return night time and wall night to wall_data
-  wall_data = {changeWallNight, nightWallpaper}
+  -- Night
+  else
+    -- naughty.notify({text = 'NIGHT'})
+    -- Update current wallpaper
+    update_current_wall(nightWallpaper)
 
--- Night
-else
-  -- naughty.notify({text = 'NIGHT'})
-  -- Update current wallpaper
-  update_current_wall(nightWallpaper)
+    -- Return midnight time and wall midning to wall_data
+    wall_data = {changeWallMNight, mNightWallpaper}
 
-  -- Return midnight time and wall midning to wall_data
-  wall_data = {changeWallMNight, mNightWallpaper}
+  end
+
+
+  -- Get the difference function
+  local diffSec = function(setSec, currSec)
+    return (setSec - currSec)
+  end
+
+  -- Pass the time_data and the current time 
+  -- To get the time difference
+  change_wall_time = diffSec(parseToSec(wall_data[1]), parseToSec(current_time()))
 
 end
 
 
--- Get the difference function
-local diffSec = function(setSec, currSec)
-  return (setSec - currSec)
-end
+-- Update timeout to be use by timer below
+update_timeout()
 
--- Pass the time_data and the current time 
--- To get the time difference
-change_wall_time = diffSec(parseToSec(wall_data[1]), parseToSec(current_time()))
+
 
 -- Update wallpaper in specified time
-gears.timer {
+local wall_updater = gears.timer {
   timeout   = change_wall_time,
   autostart = true,
   call_now = true,
   callback  = function()
-    -- Update wallpaper
-    gears.wallpaper.maximized (wall_dir .. wall_data[2], s)
+    -- Emit signal to update wallpaper
+    awesome.emit_signal("change_wallpaper")
   end
 }
 
+
+awesome.connect_signal("change_wallpaper", function(n)
+
+  -- Update wallpaper
+  gears.wallpaper.maximized (wall_dir .. wall_data[2], s)
+
+  -- Update time for the next specified hour
+  update_timeout()
+
+  -- Update timer timeout for the next specified hour
+  wall_updater.timeout = change_wall_time
+
+  -- Restart timer
+  wall_updater:again()
+
+end)
 
