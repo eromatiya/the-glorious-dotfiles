@@ -1,10 +1,10 @@
-#it's alive
-neofetch
+# Get Terminal Emulator
+term_emulator=$(ps -o 'cmd=' -p $(ps -o 'ppid=' -p $$))
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/gerome/.oh-my-zsh
+ export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -98,6 +98,11 @@ source $ZSH/oh-my-zsh.sh
 
 
 
+# =============================================================================
+#                                   Neofetch
+# =============================================================================
+
+neofetch
 
 
 # =============================================================================
@@ -524,32 +529,31 @@ fi
 
 
 
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 
 #============================================================
 #						Exports
 #============================================================
-export VISUAL="nvim"
-export VBOX_USB=usbfs
-export TERM="xterm-256color"
+export VISUAL="vim"
+
+if [[ "kitty" == $term_emulator ]]; then
+	export TERM="xterm-kitty"
+else
+	export TERM="xterm-256color"
+fi
 
 #============================================================
 #						Aliases
 #============================================================
 
-alias exampp="sudo /opt/lampp/lampp start"
-alias dxampp="sudo /opt/lampp/lampp stop"
 alias ytmp3="youtube-dl --extract-audio --audio-format mp3"
-alias clock="tty-clock -c -t -C 1"
 alias cls="clear"
-alias def="/usr/bin/sdcv"
-alias aur="aurman"
-alias clear="kitty icat --clear && clear"
+
+if [[ "kitty" == $term_emulator ]]; then
+	alias clear="kitty icat --clear && clear"
+fi
 
 
 
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

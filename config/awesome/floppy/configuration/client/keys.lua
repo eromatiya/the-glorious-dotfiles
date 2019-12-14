@@ -27,6 +27,8 @@ local clientKeys =
     {modkey},
     'c',
     function(c)
+      c.fullscreen = false
+      c.maximized = false
       c.floating = not c.floating
       c:raise()
     end,
