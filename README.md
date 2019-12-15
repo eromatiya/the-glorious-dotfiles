@@ -165,7 +165,7 @@ This setup is split in multiple parts:
   - You can also add an anti-aliased titlebars in these setups thanks to well-documented dotfiles of [elenepan](https://github.com/elenapan/dotfiles). *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
 
   Here is an example of an anti-aliased titlebar:
-  ```
+  ```lua
     awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}).widget = {
     {   
       {
@@ -190,8 +190,9 @@ This setup is split in multiple parts:
   shape = function(cr, width, height)
     gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, dpi(9)) end,
   widget = wibox.container.background
-}
-```
+  }
+  ```
+
 - You can use the snippet above and tweak it. It is also better if you add an empty right titlebar.
 
 # ABOUT WIDGETS AND MODULES
