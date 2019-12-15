@@ -166,7 +166,7 @@ This setup is split in multiple parts:
 
   Here is an example of an anti-aliased titlebar:
   ```lua
-    awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}).widget = {
+    awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) : setup {
     {   
       {
         awful.titlebar.widget.closebutton    (c),
