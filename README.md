@@ -161,6 +161,38 @@ This setup is split in multiple parts:
   - Some dependencies are not currently installed
   - Not tested in a multi-monitor setup (please send me an extra monitor so I can test it lol)
 + Check keybindings using `Super +  F1`
++ Anti-aliased titlebars
+  - You can also add an anti-aliased titlebars in these setups thanks to well-documented dotfiles of [elenepan](https://github.com/elenapan/dotfiles). *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
+
+  Here is an example of an anti-aliased titlebar:
+  ```
+    awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}).widget = {
+    {   
+      {
+        awful.titlebar.widget.closebutton    (c),
+        awful.titlebar.widget.maximizedbutton(c),
+        awful.titlebar.widget.minimizebutton (c),
+        layout  = wibox.layout.fixed.vertical
+      },
+      {
+        buttons = buttons,
+        layout  = wibox.layout.flex.vertical
+      },
+      { 
+        awful.titlebar.widget.floatingbutton (c),
+        layout = wibox.layout.fixed.vertical
+      },
+    layout = wibox.layout.align.vertical,
+  },
+  -- We'll use this as the titlebar's BG
+  bg = "#000000",
+  -- Shape of the left titlebar
+  shape = function(cr, width, height)
+    gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, dpi(9)) end,
+  widget = wibox.container.background
+}
+```
+- You can use the snippet above and tweak it. It is also better if you add an empty right titlebar.
 
 # ABOUT WIDGETS AND MODULES
 + You need a song with hard-coded album cover for music widget to display its cover.
