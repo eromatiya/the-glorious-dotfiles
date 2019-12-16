@@ -9,7 +9,7 @@ theme.font = 'Roboto medium 10'
 
 -- Titlebar
 theme.titlebars_enabled = true
-theme.titlebar_size = dpi(32)
+theme.titlebar_size = dpi(48)
 theme.titlebar_bg_focus = '#000000'
 theme.titlebar_bg_normal = '#000000'
 theme.titlebar_fg_focus = '#000000' .. '00'

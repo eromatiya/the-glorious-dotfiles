@@ -126,7 +126,7 @@ END
         border_width = dpi(1),
         border_color = '#ffffff40',
         shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.corner_radius) end,
+        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
         widget = wibox.container.background,
       },
       layout = wibox.layout.fixed.vertical,
@@ -158,7 +158,7 @@ END
       border_width = dpi(1),
       border_color = '#ffffff40',
       shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.corner_radius) end,
+      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
   }

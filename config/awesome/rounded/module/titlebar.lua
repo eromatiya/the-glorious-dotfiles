@@ -78,7 +78,10 @@ _G.client.connect_signal("request::titlebars", function(c)
 
       layout  = wibox.layout.fixed.vertical
     },
-    nil,
+    {
+      buttons = buttons,
+      layout  = wibox.layout.flex.vertical
+    },
     { 
      awful.titlebar.widget.floatingbutton (c),
      layout = wibox.layout.fixed.vertical
@@ -97,7 +100,10 @@ _G.client.connect_signal("request::titlebars", function(c)
       awful.titlebar.widget.minimizebutton (c),
       layout  = wibox.layout.fixed.vertical
     },
-    nil,
+    {
+      buttons = buttons,
+      layout  = wibox.layout.flex.vertical
+    },
     {
       awful.titlebar.widget.floatingbutton (c),
       layout = wibox.layout.fixed.vertical

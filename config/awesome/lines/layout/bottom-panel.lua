@@ -227,9 +227,10 @@ local BotPanel = function(s, offset)
         decorateWidget(wibox.container.margin(clock_widget, dpi(10), dpi(10))),
       },
     },
-    -- The real background color
+    -- border lines
     border_width = dpi(1),
     border_color = '#ffffff40',
+    -- The real background color
     bg = beautiful.background.hue_900,
     -- The real, anti-aliased shape
     shape = function(cr, width, height)

@@ -124,7 +124,7 @@ END
         wibox.container.margin(gmail_header, dpi(10), dpi(10), dpi(10), dpi(10)),
         bg = beautiful.bg_modal_title,
         shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.corner_radius) end,
+        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
         widget = wibox.container.background,
       },
       layout = wibox.layout.fixed.vertical,
@@ -154,7 +154,7 @@ END
       },
       bg = beautiful.bg_modal,
       shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.corner_radius) end,
+      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
       widget = wibox.container.background
     },
   }
