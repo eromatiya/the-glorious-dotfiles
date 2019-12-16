@@ -164,40 +164,46 @@ This setup is split in multiple parts:
 + Anti-aliased titlebars
   - You can also add an anti-aliased titlebars in these setups thanks to well-documented dotfiles of [elenepan](https://github.com/elenapan/dotfiles). *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
 
-  Here is an example of an anti-aliased titlebar:
-  ```lua
-    awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) : setup {
-    {   
-      {
-        awful.titlebar.widget.closebutton    (c),
-        awful.titlebar.widget.maximizedbutton(c),
-        awful.titlebar.widget.minimizebutton (c),
-        layout  = wibox.layout.fixed.vertical
-      },
-      {
-        buttons = buttons,
-        layout  = wibox.layout.flex.vertical
-      },
-      { 
-        awful.titlebar.widget.floatingbutton (c),
-        layout = wibox.layout.fixed.vertical
-      },
-    layout = wibox.layout.align.vertical,
-  },
-  -- We'll use this as the titlebar's BG
-  bg = "#000000",
-  -- Shape of the left titlebar
-  shape = function(cr, width, height)
-    gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, dpi(9)) end,
-  widget = wibox.container.background
-  }
-  ```
+  - Here is an example of an anti-aliased titlebar:
+    ```lua
+      awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) : setup {
+      {   
+        {
+          awful.titlebar.widget.closebutton    (c),
+          awful.titlebar.widget.maximizedbutton(c),
+          awful.titlebar.widget.minimizebutton (c),
+          layout  = wibox.layout.fixed.vertical
+        },
+        {
+          buttons = buttons,
+          layout  = wibox.layout.flex.vertical
+        },
+        { 
+          awful.titlebar.widget.floatingbutton (c),
+          layout = wibox.layout.fixed.vertical
+        },
+      layout = wibox.layout.align.vertical,
+    },
+    -- We'll use this as the titlebar's BG
+    bg = "#000000",
+    -- Shape of the left titlebar
+    shape = function(cr, width, height)
+      gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, dpi(9)) end,
+    widget = wibox.container.background
+    }
+    ```
 
-- You can use the snippet above and tweak it. It is also better if you add an empty right titlebar.
+  - You can use the snippet above and tweak it. It is also better if you add an empty right titlebar.
+
+  | Anti-aliased titlebars |
+  | --- |
+  | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/anti-aliased-bars.png) |
+
 
 # ABOUT WIDGETS AND MODULES
 + You need a song with hard-coded album cover for music widget to display its cover.
 + You can disable the dialog backdrop effect in `awesome/configuration/client/rules.lua`. Just search for `dialog` and set `drawBackdrop` to false in the properties. You can also just unload the module in `rc.lua`.
++ You will probably have an error or the widget will not update because of `weather-update.lua`. It is because I did not include an openweathermap API keys and etc.
 + Generating an application menu
   - Using `xdg-menu`:
     - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
@@ -206,7 +212,6 @@ This setup is split in multiple parts:
   - Using `awesome-freedesktop`:  
     - Install `awesome-freedesktop`. In Arch's AUR, it is called `awesome-freedesktop-git` It generates a list of applications installed. Or better yet check the repo [here](https://github.com/lcpz/awesome-freedesktop).
     - You can change the icon theme in `awesome/theme/default-theme.lua`. Search for `theme.icon_theme`
-+ You will probably have an error or the widget will not update because of `weather-update.lua`. It is because I did not include an openweathermap API keys and etc.
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
 
