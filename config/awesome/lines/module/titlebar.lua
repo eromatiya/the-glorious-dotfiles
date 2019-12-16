@@ -1,14 +1,23 @@
+-- Libs
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-local theme_name = "win10"
+
+-- Titlebar button themes
+local theme_name = "stoplight"
 local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/theme/icons/titlebar/" .. theme_name .. '/'
 local tip = titlebar_icon_path --alias to save time/space
+
 local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
-local titleBarSize = beautiful.titlebar_size
+
+-- Client layout handler
+local decorExtended = require('module.titlebar-decorate-client')
+
+-- Titlebar size
+local titlebar_size = beautiful.titlebar_size
 
 -- Define the images to load
 beautiful.titlebar_close_button_normal = tip .. "close_normal.svg"
@@ -56,7 +65,8 @@ beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focu
 
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
-_G.client.connect_signal("request::titlebars", function(c)
+client.connect_signal("request::titlebars", function(c)
+
   -- buttons for the titlebar
   local buttons = gears.table.join(
     awful.button({ }, 1, function()
@@ -67,16 +77,15 @@ _G.client.connect_signal("request::titlebars", function(c)
       c:emit_signal("request::activate", "titlebar", {raise = true})
       awful.mouse.client.resize(c)
     end)
-    )
+  )
 
   -- General titlebar design
-  awful.titlebar(c, {position = 'top', size = titleBarSize}) : setup {
+  awful.titlebar(c, {position = 'left', size = titlebar_size}) : setup {
     { 
-      awful.titlebar.widget.closebutton    (c),
+      awful.titlebar.widget.closebutton(c),
       awful.titlebar.widget.maximizedbutton(c),
-      awful.titlebar.widget.minimizebutton (c),
-
-      layout  = wibox.layout.fixed.horizontal
+      awful.titlebar.widget.minimizebutton(c),
+      layout  = wibox.layout.fixed.vertical
     },
     {
       buttons = buttons,
@@ -84,9 +93,9 @@ _G.client.connect_signal("request::titlebars", function(c)
     },
     { 
      awful.titlebar.widget.floatingbutton (c),
-     layout = wibox.layout.fixed.horizontal
-   },
-   layout = wibox.layout.align.horizontal
+     layout = wibox.layout.fixed.vertical
+    },
+   layout = wibox.layout.align.vertical
  }
 
 
@@ -95,10 +104,10 @@ _G.client.connect_signal("request::titlebars", function(c)
  local custom_titlebars = function(c, pos, bg, size)
   awful.titlebar(c, {position = pos, bg = bg, size = size}) : setup {
     {
-      awful.titlebar.widget.closebutton    (c),
+      awful.titlebar.widget.closebutton(c),
       awful.titlebar.widget.maximizedbutton(c),
       awful.titlebar.widget.minimizebutton (c),
-      layout  = wibox.layout.fixed.horizontal
+      layout  = wibox.layout.fixed.vertical
     },
     {
       buttons = buttons,
@@ -106,28 +115,30 @@ _G.client.connect_signal("request::titlebars", function(c)
     },
     {
       awful.titlebar.widget.floatingbutton (c),
-      layout = wibox.layout.fixed.horizontal
+      layout = wibox.layout.fixed.vertical
     },
-    layout = wibox.layout.align.horizontal
+    layout = wibox.layout.align.vertical
   }
   end
 
-  -- Generate a custom titlabar for each class
+  -- Generate a custom titlabar for each class and roles
   if c.class == "kitty" or c.class == "XTerm" then
-    custom_titlebars(c, 'top', '#000000AA', titleBarSize)
+    custom_titlebars(c, 'left', '#000000AA', titlebar_size)
+
+  elseif c.role == "GtkFileChooserDialog" then
+    custom_titlebars(c, 'left', beautiful.titlebar_bg_focus, titlebar_size)
+
   elseif c.class == "firefox" then
-    custom_titlebars(c, 'top', '#222222', titleBarSize)
+    custom_titlebars(c, 'left', '#222222', titlebar_size)
+
   elseif c.class == "Gimp-2.10" then
-    custom_titlebars(c, 'top', '#454545', titleBarSize)
+    custom_titlebars(c, 'left', '#454545', titlebar_size)
+
   elseif c.class == "Subl3" then
-    custom_titlebars(c, 'top', '#232830', titleBarSize)
+    custom_titlebars(c, 'left', '#232830', titlebar_size)
+
   end
 
-
 end)
-
-
-
-local decorExtended = require('module.titlebar-decorate-client')
 
 return beautiful
