@@ -9,7 +9,7 @@ return {
       ' -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi/sidebar/rofi.rasi',
     rofiappmenu = 'rofi -show drun -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi/appmenu/drun.rasi',
     lock = 'mantablockscreen -sc',
-    quake = 'kitty --title QuakeTerminal'
+    quake = 'kitty --name QuakeTerminal'
   },
   -- List of apps to start once on start-up
   run_on_start_up = {
@@ -24,6 +24,7 @@ return {
     'redshift-gtk -l 14.45:121.05' -- Redshift
   },
 
+  -- List of binaries and functions to execute a certain task
   bins = {
     fullShot = require('binaries.snap').fullmode,
     areaShot = require('binaries.snap').areamode,

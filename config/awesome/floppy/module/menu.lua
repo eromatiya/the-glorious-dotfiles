@@ -57,7 +57,8 @@ myawesomemenu = {
 -- Screenshot menu
 local screenshot = {
   {"Full", apps.bins.fullShot },
-  {"Area", apps.bins.areaShot }
+  {"Area", apps.bins.areaShot },
+  {"Select", apps.bins.selectShot }
 }
 
 -- Terminal menu
