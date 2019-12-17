@@ -10,6 +10,7 @@ local clientKeys =
     {modkey},
     'f',
     function(c)
+      -- Toggle fullscreen
       c.fullscreen = not c.fullscreen
       c:raise()
     end,
@@ -19,6 +20,7 @@ local clientKeys =
     {modkey},
     'q',
     function(c)
+      -- Close client
       c:kill()
     end,
     {description = 'close', group = 'client'}
@@ -27,8 +29,11 @@ local clientKeys =
     {modkey},
     'c',
     function(c)
+      -- The client just stretch when switching to floating while in maximized/fullscreen mode
+      -- So tell to client to stop being a dick err I mean fullscreen/maximized to switch to floating without the said stretching
       c.fullscreen = false
       c.maximized = false
+      -- Toggle floating
       c.floating = not c.floating
       c:raise()
     end,

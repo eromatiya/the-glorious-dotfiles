@@ -5,7 +5,7 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 
 -- Titlebar button themes
-local theme_name = "stoplight"
+local theme_name = "win10"
 local titlebar_icon_path = os.getenv("HOME") .. "/.config/awesome/theme/icons/titlebar/" .. theme_name .. '/'
 local tip = titlebar_icon_path --alias to save time/space
 
@@ -14,10 +14,8 @@ local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Client layout handler
-local decorExtended = require('module.titlebar-decorate-client')
+require('module.titlebar-decorate-client')
 
--- Titlebar size
-local titlebar_size = beautiful.titlebar_size
 
 -- Define the images to load
 beautiful.titlebar_close_button_normal = tip .. "close_normal.svg"
@@ -63,6 +61,8 @@ beautiful.titlebar_maximized_button_normal_active_hover = tip .. "maximized_norm
 beautiful.titlebar_maximized_button_focus_active_hover  = tip .. "maximized_focus_active_hover.svg"
 
 
+-- Titlebar size
+local titlebar_size = beautiful.titlebar_size
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
@@ -80,22 +80,22 @@ client.connect_signal("request::titlebars", function(c)
   )
 
   -- General titlebar design
-  awful.titlebar(c, {position = 'left', size = titlebar_size}) : setup {
+  awful.titlebar(c, {position = 'top', size = titlebar_size}) : setup {
     { 
       awful.titlebar.widget.closebutton(c),
       awful.titlebar.widget.maximizedbutton(c),
       awful.titlebar.widget.minimizebutton(c),
-      layout  = wibox.layout.fixed.vertical
+      layout  = wibox.layout.fixed.horizontal
     },
     {
       buttons = buttons,
-      layout = wibox.layout.flex.vertical
+      layout = wibox.layout.flex.horizontal
     },
     { 
-     awful.titlebar.widget.floatingbutton (c),
-     layout = wibox.layout.fixed.vertical
+     awful.titlebar.widget.floatingbutton(c),
+     layout = wibox.layout.fixed.horizontal
     },
-   layout = wibox.layout.align.vertical
+   layout = wibox.layout.align.horizontal
  }
 
 
@@ -107,35 +107,37 @@ client.connect_signal("request::titlebars", function(c)
       awful.titlebar.widget.closebutton(c),
       awful.titlebar.widget.maximizedbutton(c),
       awful.titlebar.widget.minimizebutton (c),
-      layout  = wibox.layout.fixed.vertical
+      layout  = wibox.layout.fixed.horizontal
     },
     {
       buttons = buttons,
-      layout = wibox.layout.flex.vertical
+      layout = wibox.layout.flex.horizontal
     },
     {
       awful.titlebar.widget.floatingbutton (c),
-      layout = wibox.layout.fixed.vertical
+      layout = wibox.layout.fixed.horizontal
     },
-    layout = wibox.layout.align.vertical
+    layout = wibox.layout.align.horizontal
   }
   end
 
   -- Generate a custom titlabar for each class and roles
   if c.class == "kitty" or c.class == "XTerm" then
-    custom_titlebars(c, 'left', '#000000AA', titlebar_size)
+    custom_titlebars(c, 'top', '#000000AA', titlebar_size)
 
   elseif c.role == "GtkFileChooserDialog" then
-    custom_titlebars(c, 'left', beautiful.titlebar_bg_focus, titlebar_size)
+    -- Let's use the gtk themes bg_color as titlebar's bg
+    -- isn't it neat? lol
+    custom_titlebars(c, 'top', beautiful.gtk.get_theme_variables().bg_color, titlebar_size)
 
   elseif c.class == "firefox" then
-    custom_titlebars(c, 'left', '#222222', titlebar_size)
+    custom_titlebars(c, 'top', '#252525', titlebar_size)
 
   elseif c.class == "Gimp-2.10" then
-    custom_titlebars(c, 'left', '#454545', titlebar_size)
+    custom_titlebars(c, 'top', beautiful.gtk.get_theme_variables().bg_color, titlebar_size)
 
   elseif c.class == "Subl3" then
-    custom_titlebars(c, 'left', '#232830', titlebar_size)
+    custom_titlebars(c, 'top', '#232830', titlebar_size)
 
   end
 

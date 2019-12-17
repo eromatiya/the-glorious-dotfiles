@@ -1,8 +1,11 @@
+local gears = require('gears')
+local beautiful = require('beautiful')
+
 local filesystem = require('gears.filesystem')
 local mat_colors = require('theme.mat-colors')
 local theme_dir = filesystem.get_configuration_dir() .. '/theme'
-local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
+
 local theme = {}
 theme.icons = theme_dir .. '/icons/'
 theme.font = 'SFNS Display Regular 10'
@@ -44,11 +47,19 @@ local awesome_overrides =
   theme.bg_urgent = '#3F3F3F'
   theme.bg_systray = theme.background.hue_800
 
+  -- Titlebar
+  
+  theme.titlebars_enabled = true
+  theme.titlebar_size = dpi(32)
+  theme.titlebar_bg_focus = beautiful.gtk.get_theme_variables().bg_color
+  theme.titlebar_bg_normal = beautiful.gtk.get_theme_variables().base_color
+  theme.titlebar_fg_focus = beautiful.gtk.get_theme_variables().fg_color .. '00'
+  theme.titlebar_fg_normal = beautiful.gtk.get_theme_variables().fg_color .. '00'
 
   -- Modals
 
-  theme.bg_modal_title = "#ffffff15"
-  theme.bg_modal = "#ffffff10"
+  theme.bg_modal_title = "#ffffff" .. "15"
+  theme.bg_modal = "#ffffff" .. "10"
   theme.modal_radius = dpi(6)
 
   -- Borders
@@ -77,6 +88,7 @@ local awesome_overrides =
 
 
   -- Tooltips
+
   theme.tooltip_bg = '#000000' .. '66'
   --theme.tooltip_border_color = '#232323'
   theme.tooltip_border_width = 0
