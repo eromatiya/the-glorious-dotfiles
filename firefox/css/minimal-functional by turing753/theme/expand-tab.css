@@ -1,0 +1,26 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+
+
+/* Remove tab separators */
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  border-color: transparent !important;
+  border-image: none !important;
+}
+
+/* Remove blank spaces on tabs start and end */
+#TabsToolbar .titlebar-spacer {
+  display: none !important;
+}
+
+/* Full width tabs */
+.tabbrowser-tab:not([style^="max-width"]):not([pinned]),
+.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]) {
+  max-width: 100% !important;
+}
+
+.tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]),
+.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
+  max-width: .1px !important;
+}
