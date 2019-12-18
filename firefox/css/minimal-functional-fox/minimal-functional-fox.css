@@ -13,7 +13,7 @@ window#main-window {
 	--color-2    : #fc6b89;
 	--color-3    : #bc6ccc;
 	--color-4    : #f79130;
-	--color-5    : #ead2ef;
+	--color-5    : #007af7;
 
 	--color-tab-active-end       : var(--color-4);
 	--color-tab-active-start     : var(--color-2);
@@ -24,17 +24,18 @@ window#main-window {
 	--color-tab-pinned-active    : var(--color-2);
 	--color-tab-pinned-normal    : var(--color-5);
 	--color-urlbar-buttons-bg    : #fc6b89;
-	--color-urlbar-text          : var(--color-5);
+	--color-urlbar-text          : var(--color-fg);
 
 	/* Easy way to tweak most params */
 	--gap-between-tabs                   : 10px;
-	--margin-around-urlbar               : 9px;
+	--margin-around-urlbar               : 0px;
 	--margin-before-back-button          : 9px;
 	--padding-around-searchengine-opts   : 10px;
 	--pinned-tab-favicon-dim             : 27px;
 	--tab-height                         : 35px;
-	--tabs-container-height              : 100px;
-	--tab-text-font                      : "Google Sans", "SFNS Display Bold", "Open Sans Semibold", "Segoe UI", sans-serif;
+	--tab-border-radius					 : 6px;
+	--tabs-container-height              : 85px;
+	--tab-text-font                      : "Google Sans", "SFNS Display", "Open Sans", "Segoe UI", sans-serif;
 	--tab-text-font-size                 : 10pt;
 	--margin-before-tab-list             : 16px;
 	--margin-after-tab-list              : 0px;
@@ -220,6 +221,7 @@ hbox#urlbar[focused=true] {
 	background-color: var(--color-fg);
 	background: #1a1a1a !important;
 	border: none !important;
+	border-radius: 9px !important;
 	margin: var(--margin-around-urlbar) !important;
 }
 
@@ -244,12 +246,13 @@ hbox#urlbar[focused=true] {
 
 	width: var(--urlbar-list-width) !important;
 	margin-left: calc(var(--urlbar-list-width) / 2) !important;
-	border-radius: 0 8px 8px !important;
+	border-radius: 0 0 12px 12px !important;
 	box-shadow: 0px 0px 40px rgba(0, 0, 0, 25%) !important;
 }
 
 .urlbarView-favicon {
-	display: none !important;
+	/* Uncomment to hide icons in urlbar list */
+	/*display: none !important;*/
 }
 
 .urlbarView-row {
@@ -289,7 +292,7 @@ hbox#urlbar[focused=true] {
 }
 
 .tab-loading-burst {
-	border-radius: var(--tab-height) !important;
+	border-radius: var(--tab-border-radius) !important;
 }
 
 .tabbrowser-tab {
@@ -297,7 +300,7 @@ hbox#urlbar[focused=true] {
 	--tab-line-color: none !important;
 	background-color: var(--color-bg) !important;
 	background-image: linear-gradient(to left, var(--color-tab-normal-start), var(--color-tab-normal-end)) !important;
-	border-radius: var(--tab-height) !important;
+	border-radius: var(--tab-border-radius) !important;
 	max-height: var(--tab-height) !important;
 	min-height: var(--tab-height) !important;
 }
@@ -319,7 +322,7 @@ hbox#urlbar[focused=true] {
 
 .tabbrowser-tab:hover {
 	background-image: linear-gradient(77deg, var(--color-tab-hover-start), var(--color-tab-hover-end)) !important;
-	border-radius: var(--tab-height) !important;
+	border-radius: var(--tab-border-radius) !important;
   
 }
 
@@ -339,7 +342,7 @@ hbox#urlbar[focused=true] {
 .tabbrowser-tab[selected="true"] {
 	background-image: linear-gradient(77deg, var(--color-tab-active-start), var(--color-tab-active-end)) !important;
 	border: none !important;
-	border-radius: var(--tab-height);
+	border-radius: var(--tab-border-radius);
 }
 
 /* The round pinned tab favicon */
@@ -362,8 +365,10 @@ hbox#urlbar[focused=true] {
 	) !important;
 }
 
-#tabs-newtab-button {
+.toolbarbutton#tabs-newtab-button {
 	background-image: none !important;
+	padding-left: 10px !important;
+	margin: -10px !important;
 }
 
 #tabs-newtab-button:hover {
@@ -372,10 +377,26 @@ hbox#urlbar[focused=true] {
 	border-radius: 50%;
 }
 
-.tab-close-button {
+/*.tab-close-button {
 	opacity: 0;
 	transition: opacity 0.25s;
 }
+*/
+
+.tab-close-button {
+    opacity: 0;
+    transition: opacity 1s ease;
+    -moz-transition: opacity 0.5s ease; 
+
+}
+
+.tab-close-button:hover {
+    transition: opacity 1s ease;
+    -moz-transition: opacity 0.5s ease; 
+    opacity: 100;
+}
+
+
 
 .tab-stack {
 	display: flex !important;
