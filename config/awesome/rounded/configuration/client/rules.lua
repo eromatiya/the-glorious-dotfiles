@@ -34,16 +34,42 @@ awful.rules.rules = {
     }
   },
 
+
+    -- Dialogs and modals
+  {
+    rule_any = {
+      type = { 'dialog', 'modal' },
+      class = {
+        'Wicd-client.py',
+        'calendar.google.com'
+      }
+    },
+    properties = {
+      ontop = true,
+      floating = true,
+      drawBackdrop = true,
+      skip_decoration = true,
+      placement = awful.placement.centered
+    }
+  },
+
+
   -- Terminals
   {
     rule_any = {
-       class = {
+      class = {
         "URxvt",
         "XTerm",
         "UXTerm",
         "kitty",
         "K3rmit"
        },
+    },
+    except_any = {
+      instance = {
+        -- Dont't switch to tag `1` when opening QuakeTerminal
+        'QuakeTerminal',
+      }
     },
     properties = {
       size_hints_honor = false,
@@ -64,16 +90,17 @@ awful.rules.rules = {
     properties = { screen = 1, tag = '2' }
   },
 
+
   -- Editors
   {
-  rule_any = {
-    class = {
-      "Geany",
-      "Atom",
-      "Subl3",
-      "code-oss"
+    rule_any = {
+      class = {
+        "Geany",
+        "Atom",
+        "Subl3",
+        "code-oss"
+      },
     },
-  },
     properties = { screen = 1, tag = '3' }
   },
 
@@ -87,6 +114,7 @@ awful.rules.rules = {
     },
     properties = { tag = '4', switchtotag = true }
   },
+
     -- Multimedia
   {
     rule_any = {
@@ -96,8 +124,8 @@ awful.rules.rules = {
     },
     properties = { tag = '5', switchtotag = true }
   },
-  -- Games
 
+  -- Games
   {
   rule_any = {
     class = {
@@ -121,7 +149,8 @@ awful.rules.rules = {
   rule_any = {
     class = {
       "Gimp-2.10",
-      "Inkscape"
+      "Inkscape",
+      "Flowblade"
     },
   },
     properties = { screen = 1, tag = '7'}
@@ -154,16 +183,16 @@ awful.rules.rules = {
       tag = '9', 
       skip_decoration = true,
       round_corners = true,
-      }
+    }
   },
 
-  -- Custom
+  -- Some floating apps
   {
   rule_any = {
     class = {
       "feh",
       "Mugshot",
-      "Pulseeffects",
+      "Pulseeffects"
     },
   },
     properties = {
@@ -172,19 +201,6 @@ awful.rules.rules = {
     floating = true,
     ontop = true,
     placement = awful.placement.centered
-    }
-  },
-
-
-  -- Dialogs
-  {
-    rule_any = {type = {'dialog'}, class = {'Wicd-client.py', 'calendar.google.com'}},
-    properties = {
-      placement = awful.placement.centered,
-      ontop = true,
-      floating = true,
-      drawBackdrop = true, -- TRUE if you want to add blur backdrop effect
-      skip_decoration = true
     }
   },
 
