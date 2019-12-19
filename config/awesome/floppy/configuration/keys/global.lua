@@ -93,6 +93,31 @@ local globalKeys =
   awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
   awful.key({modkey}, 's', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
   awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
+
+  -- Non-empty tag browsing
+  awful.key({ modkey, "Control" }, "w",
+    function ()
+      -- tag_view_nonempty(-1)
+      local s = sc or awful.screen.focused()
+      for i = 1, #s.tags do
+        awful.tag.viewidx(-1, s)
+        if #s.clients > 0 then
+          return
+        end
+      end
+  end, {description = "view previous non-empty tag", group = "tag"}),
+  awful.key({ modkey, "Control" }, "s",
+    function ()
+      -- tag_view_nonempty(1)
+      local s = sc or awful.screen.focused()
+      for i = 1, #s.tags do
+        awful.tag.viewidx(1, s)
+        if #s.clients > 0 then
+          return
+        end
+      end
+  end, {description = "view next non-empty tag", group = "tag"}),
+  
   -- Default client focus
   awful.key(
     {modkey},
