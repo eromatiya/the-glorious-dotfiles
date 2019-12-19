@@ -21,7 +21,8 @@ return {
     'nm-applet', -- NetworkManager Applet
     'mpd', -- Music Server
     'pulseeffects --gapplication-service', -- Equalizer
-    'redshift-gtk -l 14.45:121.05' -- Redshift
+    'redshift-gtk -l 14.45:121.05', -- Redshift
+    'xautolock -time 5 -locker "mantablockscreen -sc" -detectsleep' -- Auto lock
   },
 
   -- List of binaries and functions to execute a certain task

@@ -21,7 +21,7 @@ local slider_osd =
 slider_osd:connect_signal(
   'property::value',
   function()
-    spawn('amixer -D pulse sset Master ' .. slider_osd.value .. '%')
+    spawn('amixer -D pulse sset Master ' .. slider_osd.value .. '%', false)
   end
 )
 
@@ -48,7 +48,7 @@ function UpdateVolOSD()
     local mute = string.match(stdout, '%[(o%D%D?)%]')
     local volume = string.match(stdout, '(%d?%d?%d)%%')
     slider_osd:set_value(tonumber(volume))
-  end)
+  end, false)
 end
 
 local icon =

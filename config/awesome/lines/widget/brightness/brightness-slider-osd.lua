@@ -17,7 +17,7 @@ local slider_osd =
 slider_osd:connect_signal(
   'property::value',
   function()
-    spawn('xbacklight -set ' .. math.max(slider_osd.value, 5))
+    spawn('xbacklight -set ' .. math.max(slider_osd.value, 5), false)
   end
 )
 
@@ -37,7 +37,7 @@ function UpdateBrOSD()
   awful.spawn.easy_async_with_shell("xbacklight -get", function( stdout )
     local brightness = string.match(stdout, '(%d+)')
     slider_osd:set_value(tonumber(brightness))
-  end)
+  end, false)
 end
 
 

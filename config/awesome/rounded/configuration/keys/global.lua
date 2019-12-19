@@ -22,7 +22,7 @@ local globalKeys =
     {modkey}, 'e',
     function()
       awful.util.spawn(apps.default.rofiappmenu)
-      _G.screen.primary.right_panel:HideDashboard()
+      _G.screen.primary.left_panel:HideDashboard()
     end,
   { description = "Open Application Drawer", group = "launcher"}),
   awful.key(
@@ -61,7 +61,6 @@ local globalKeys =
     apps.bins.fullShot()
   end,
   { description = "Fullscreen screenshot", group = "Miscellaneous"}),
-  -- Screen Shot Area and Save
   awful.key(
   {modkey, "Shift"}, 's',
   function ()
@@ -71,7 +70,7 @@ local globalKeys =
   awful.key(
   {modkey, altkey}, 's',
   function ()
-    apps.bins.selectShot()
+    apps.bins.areaShot()
   end,
   { description = "Selected screenshot", group = "Miscellaneous"}),
 
@@ -127,6 +126,14 @@ local globalKeys =
         end,
         {description = "swap with next client by index", group = "client"}
       ),
+  awful.key(
+    {modkey},
+    'r',
+    function()
+      _G.mini_sett_toggle()
+    end,
+    {description = 'Open Sidebar', group = 'launcher'}
+  ),
   awful.key({modkey}, 'u', awful.client.urgent.jumpto, {description = 'jump to urgent client', group = 'client'}),
   awful.key(
     {modkey},
@@ -294,14 +301,12 @@ local globalKeys =
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
-
-
   -- ALSA volume control
   awful.key(
     {},
     'XF86AudioRaiseVolume',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%+')
+      awful.spawn('amixer -D pulse sset Master 5%+', false)
       if toggleVolOSD ~= nil then
         _G.toggleVolOSD(true)
       end
@@ -315,7 +320,7 @@ local globalKeys =
     {},
     'XF86AudioLowerVolume',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%-')
+      awful.spawn('amixer -D pulse sset Master 5%-', false)
       if toggleVolOSD ~= nil then
         _G.toggleVolOSD(true)
       end
@@ -329,16 +334,15 @@ local globalKeys =
     {},
     'XF86AudioMute',
     function()
-      awful.spawn('amixer -D pulse set Master 1+ toggle')
+      awful.spawn('amixer -D pulse set Master 1+ toggle', false)
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
-
   awful.key(
     {},
     'XF86AudioNext',
     function()
-      awful.spawn('mpc next')
+      awful.spawn('mpc next', false)
     end,
     {description = 'next music', group = 'hotkeys'}
   ),
@@ -346,7 +350,7 @@ local globalKeys =
     {},
     'XF86AudioPrev',
     function()
-      awful.spawn('mpc prev')
+      awful.spawn('mpc prev', false)
     end,
     {description = 'previous music', group = 'hotkeys'}
   ),
@@ -354,7 +358,7 @@ local globalKeys =
     {},
     'XF86AudioPlay',
     function()
-      awful.spawn('mpc toggle')
+      awful.spawn('mpc toggle', false)
     end,
     {description = 'play/pause music', group = 'hotkeys'}
 
@@ -387,7 +391,7 @@ local globalKeys =
     {},
     'XF86Display',
     function()
-      awful.spawn('arandr')
+      awful.spawn('arandr', false)
     end,
     {description = 'arandr', group = 'hotkeys'}
   )

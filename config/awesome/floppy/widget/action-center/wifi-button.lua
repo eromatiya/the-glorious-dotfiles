@@ -17,6 +17,7 @@ local widget =
   wibox.widget {
   {
     id = 'icon',
+    image = PATH_TO_ICONS .. 'toggled-off' .. '.svg',
     widget = wibox.widget.imagebox,
     resize = true
   },
@@ -35,35 +36,47 @@ local function update_icon()
 end
 
 local function check_wifi()
-  awful.spawn.easy_async_with_shell('nmcli general status', function( stdout )
-    checker = stdout:match('disabled')
-    -- IF NOT NULL THEN WIFI IS DISABLED
-    -- IF NULL IT THEN WIFI IS ENABLED
+  awful.spawn.easy_async_with_shell('rfkill list wlan', function( stdout )
+    checker = stdout:match('Soft blocked: yes')
     if(checker ~= nil) then
       mode = false
-      --awful.spawn('notify-send checker~=NOTNULL disabled')
-      update_icon()
     else
       mode = true
-    --awful.spawn('notify-send checker==NULL enabled')
-      update_icon()
     end
+    
+    -- Update icon
+    update_icon()
   end)
 
 end
 
+
+local poweroff = [[
+
+rfkill block wlan
+# notify-send 'System Notification' 'WiFi Disabled!'
+
+]]
+
+
+local poweron = [[
+
+rfkill unblock wlan
+notify-send 'System Notification' 'Initializing Wireless Connection...'
+
+]]
+
 local function toggle_wifi()
   if(mode == true) then
-    awful.spawn('nmcli r wifi off')
-    awful.spawn("notify-send 'System Notification' 'Airplane Mode Enabled!'")
+    awful.spawn.easy_async_with_shell(poweroff, function(stdout) end, false)
     mode = false
-    update_icon()
   else
-    awful.spawn('nmcli r wifi on')
-    awful.spawn("notify-send 'System Notification' 'Initializing Wireless Connection...'")
+    awful.spawn.easy_async_with_shell(poweron, function(stdout) end, false)
     mode = true
-    update_icon()
   end
+
+  -- Update icon
+  update_icon()
 end
 
 
@@ -71,7 +84,7 @@ check_wifi()
 
 
 
-local wifi_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin
+local wifi_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 wifi_button:buttons(
   gears.table.join(
     awful.button(
@@ -104,11 +117,11 @@ awful.tooltip(
 
 local last_wifi_check = os.time()
 watch(
-  'nmcli general status',
+  'rfkill list wlan',
   5,
   function(_, stdout)
    -- Check if there  bluetooth
-    checker = stdout:match('disabled') -- If 'Controller' string is detected on stdout
+    checker = stdout:match('Soft blocked: yes') -- If 'Controller' string is detected on stdout
     local widgetIconName
     if (checker == nil) then
       widgetIconName = 'toggled-on'

@@ -42,9 +42,11 @@ local function update_icon()
   end
 end
 
-------
+local check_blur_status = [[
 
-local cmd = 'grep -F "blur-background-frame = false;" ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf ' .. "| tr -d '[\\-\\;\\=\\ ]' "
+grep -F "blur-background-frame = false;" ]] .. filesystem.get_configuration_dir() .. [[/configuration/compton.conf | tr -d '[\-\;\=\ ]'
+
+]]
 -- It checks the line "blur-background-frame: false;"
 -- I use 'tr' shell command to remove the special characters
 -- because lua is choosy on MATCH method
@@ -54,15 +56,17 @@ local cmd = 'grep -F "blur-background-frame = false;" ' .. filesystem.get_config
 -- The rest is history
 local frameChecker
 function checkFrame()
-  awful.spawn.easy_async_with_shell(cmd, function( stdout )
+  awful.spawn.easy_async_with_shell(check_blur_status, function( stdout )
     frameChecker = stdout:match('blurbackgroundframefalse')
     if frameChecker == nil then
       frameStatus = true
       update_icon()
     else
       frameStatus = false
-      update_icon()
     end
+    
+    -- Update icon
+    update_icon()
   end)
 end
 
@@ -73,14 +77,17 @@ local function toggle_compositor()
   if(frameStatus == true) then
     apps.bins.disableBlur()
     frameStatus = false
-    update_icon()
   else
     apps.bins.enableBlur()
     frameStatus = true
-    update_icon()
   end
+
+  -- Update icon
+  update_icon()
+
 end
 
+-- Check blur status
 checkFrame()
 
 local compton_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin

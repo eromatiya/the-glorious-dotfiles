@@ -277,7 +277,7 @@ local globalKeys =
     {},
     'XF86MonBrightnessUp',
     function()
-      awful.spawn('xbacklight -inc 10')
+      awful.spawn('xbacklight -inc 10', false)
       if toggleBriOSD ~= nil then
         _G.toggleBriOSD(true)
       end
@@ -291,7 +291,7 @@ local globalKeys =
     {},
     'XF86MonBrightnessDown',
     function()
-      awful.spawn('xbacklight -dec 10')
+      awful.spawn('xbacklight -dec 10', false)
       if toggleBriOSD ~= nil then
         _G.toggleBriOSD(true)
       end
@@ -306,7 +306,7 @@ local globalKeys =
     {},
     'XF86AudioRaiseVolume',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%+')
+      awful.spawn('amixer -D pulse sset Master 5%+', false)
       if toggleVolOSD ~= nil then
         _G.toggleVolOSD(true)
       end
@@ -320,7 +320,7 @@ local globalKeys =
     {},
     'XF86AudioLowerVolume',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%-')
+      awful.spawn('amixer -D pulse sset Master 5%-', false)
       if toggleVolOSD ~= nil then
         _G.toggleVolOSD(true)
       end
@@ -334,7 +334,7 @@ local globalKeys =
     {},
     'XF86AudioMute',
     function()
-      awful.spawn('amixer -D pulse set Master 1+ toggle')
+      awful.spawn('amixer -D pulse set Master 1+ toggle', false)
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
@@ -342,7 +342,7 @@ local globalKeys =
     {},
     'XF86AudioNext',
     function()
-      awful.spawn('mpc next')
+      awful.spawn('mpc next', false)
     end,
     {description = 'next music', group = 'hotkeys'}
   ),
@@ -350,7 +350,7 @@ local globalKeys =
     {},
     'XF86AudioPrev',
     function()
-      awful.spawn('mpc prev')
+      awful.spawn('mpc prev', false)
     end,
     {description = 'previous music', group = 'hotkeys'}
   ),
@@ -358,7 +358,7 @@ local globalKeys =
     {},
     'XF86AudioPlay',
     function()
-      awful.spawn('mpc toggle')
+      awful.spawn('mpc toggle', false)
     end,
     {description = 'play/pause music', group = 'hotkeys'}
 
@@ -391,7 +391,7 @@ local globalKeys =
     {},
     'XF86Display',
     function()
-      awful.spawn('arandr')
+      awful.spawn('arandr', false)
     end,
     {description = 'arandr', group = 'hotkeys'}
   )

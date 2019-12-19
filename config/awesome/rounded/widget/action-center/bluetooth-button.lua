@@ -36,45 +36,56 @@ local function update_icon()
 end
 
 local function check_bluetooth()
-  awful.spawn.easy_async_with_shell('rfkill list 0', function( stdout )
+  awful.spawn.easy_async_with_shell('rfkill list bluetooth', function( stdout )
     checker = stdout:match('Soft blocked: yes')
-    -- IF NOT NULL THEN WIFI IS DISABLED
-    -- IF NULL IT THEN WIFI IS ENABLED
     if(checker ~= nil) then
       mode = false
-      --awful.spawn('notify-send checker~=NOTNULL disabled')
-      update_icon()
     else
       mode = true
-    --awful.spawn('notify-send checker==NULL enabled')
-      update_icon()
     end
+    
+    -- Update icon
+    update_icon()
   end)
 
 end
 
 
+local poweroff = [[
+
+echo 'power off' | bluetoothctl
+rfkill block bluetooth
+notify-send 'Bluetooth device disabled'
+
+]]
+
+local poweron = [[
+
+rfkill unblock bluetooth
+echo 'power on' | bluetoothctl 
+notify-send 'Initializing bluetooth Service...'
+
+]]
+
 local function toggle_bluetooth()
   if(mode == true) then
-    awful.spawn('rfkill block bluetooth')
-    awful.spawn("notify-send  'System Notification' 'Bluetooth device disabled'")
+    awful.spawn.easy_async_with_shell(poweroff, function( stdout ) end, false)
     mode = false
-    update_icon()
   else
-    awful.spawn('rfkill unblock bluetooth')
-    awful.spawn("notify-send 'Initializing Bluetooth Service' 'Enable in System Tray'")
+    awful.spawn.easy_async_with_shell(poweron, function( stdout ) end, false)
     mode = true
-    update_icon()
   end
 
+  -- Update icon
+  update_icon()
 end
 
 
+-- Check bluetooth status
 check_bluetooth()
 
 
-
-local bluetooth_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7))) -- 4 is top and bottom margin
+local bluetooth_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
 bluetooth_button:buttons(
   gears.table.join(
     awful.button(
@@ -105,13 +116,13 @@ awful.tooltip(
   }
 )
 
-local last_wifi_check = os.time()
+local last_bluetooth_check = os.time()
 watch(
-  'rfkill list 0',
+  'rfkill list bluetooth',
   5,
   function(_, stdout)
    -- Check if there  bluetooth
-    checker = stdout:match('Soft blocked: yes') -- If 'Controller' string is detected on stdout
+    checker = stdout:match('Soft blocked: yes')
     local widgetIconName
     if (checker == nil) then
       widgetIconName = 'toggled-on'
