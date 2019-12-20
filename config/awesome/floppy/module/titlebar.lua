@@ -13,6 +13,9 @@ local titlebars = {}
 local theme = {}
 local dpi = require('beautiful').xresources.apply_dpi
 
+-- Hide tooltips when hover on titlebar buttons
+awful.titlebar.enable_tooltip = false
+
 -- Client layout handler
 require('module.titlebar-decorate-client')
 

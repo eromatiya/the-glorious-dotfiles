@@ -58,6 +58,10 @@ _G.client.connect_signal("property::maximized", function(c)
     gears.shape.rectangle(cr, w, h)
   end
 
+  if not c.maximized then
+    -- Return rounded corners on unmaximized
+    c.shape = round_corner_client
+  end
 end)
 
 
