@@ -128,7 +128,7 @@ client.connect_signal("request::titlebars", function(c)
   if c.class == "kitty" or c.class == "XTerm" then
     custom_titlebars(c, 'left', '#000000AA', titlebar_size)
 
-  elseif c.role == "GtkFileChooserDialog" then
+  elseif c.role == "GtkFileChooserDialog" or c.type == 'modal' or c.type == 'dialog' then
     -- Let's use the gtk themes bg_color as titlebar's bg
     -- isn't it neat? lol
     custom_titlebars(c, 'left', beautiful.gtk.get_theme_variables().bg_color, titlebar_size)
@@ -140,7 +140,7 @@ client.connect_signal("request::titlebars", function(c)
     custom_titlebars(c, 'left', beautiful.gtk.get_theme_variables().bg_color, titlebar_size)
 
   elseif c.class == "Subl3" then
-    custom_titlebars(c, 'left', '#232830', titlebar_size)
+    custom_titlebars(c, 'left', '#252525', titlebar_size)
 
   end
 

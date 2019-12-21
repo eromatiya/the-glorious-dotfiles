@@ -41,7 +41,7 @@ _G.screen.connect_signal("arrange", function(s)
       else 
         c.shape = round_corner_client
       end
-    elseif #s.tiled_clients == 1 or c.first_tag.layout.name == 'max' then
+    elseif (#s.tiled_clients == 1 or c.first_tag.layout.name == 'max') and not c.fullscreen then
       awful.titlebar.hide(c, 'left')
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)

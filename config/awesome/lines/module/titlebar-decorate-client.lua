@@ -18,9 +18,9 @@ _G.client.connect_signal("manage", function(c)
 
   -- Hide bars when client and layout is maximized
   if not c.max then
-    awful.titlebar.show(c, 'top')
+    awful.titlebar.show(c, 'left')
   else
-    awful.titlebar.hide(c, 'top')
+    awful.titlebar.hide(c, 'left')
   end
 
 end)
@@ -30,9 +30,9 @@ _G.screen.connect_signal("arrange", function(s)
   for _, c in pairs(s.clients) do
     if (#s.tiled_clients > 1 or c.floating) and c.first_tag.layout.name ~= 'max' then
       if not c.hide_titlebars then
-        awful.titlebar.show(c, 'top')
+        awful.titlebar.show(c, 'left')
       else 
-        awful.titlebar.hide(c, 'top')
+        awful.titlebar.hide(c, 'left')
       end
       if c.maximized or not c.round_corners or c.fullscreen then
         c.shape = function(cr, w, h)
@@ -41,8 +41,8 @@ _G.screen.connect_signal("arrange", function(s)
       else 
         c.shape = round_corner_client
       end
-    elseif #s.tiled_clients == 1 or c.first_tag.layout.name == 'max' then
-      awful.titlebar.hide(c, 'top')
+    elseif (#s.tiled_clients == 1 or c.first_tag.layout.name == 'max') and not c.fullscreen then
+      awful.titlebar.hide(c, 'left')
       c.shape = function(cr, w, h)
         gears.shape.rectangle(cr, w, h)
       end
