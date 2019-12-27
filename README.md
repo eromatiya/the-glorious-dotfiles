@@ -77,6 +77,8 @@ If you notice that something is missing, please open an issue so I can add the d
 | --- | --- | --- |
 | `awesome-git` | Window manager | yeah awesome |
 | `rofi-git` | Window switcher, application launcher and dmenu replacement | Application launcher |
+| `xbacklight` | RandR-based backlight control application | Brightness widget and control |
+| `alsa-utils` | An alternative implementation of Linux sound support | Volume widget and control |
 | `Compton-tryone` | A compositor for X11 | compositor with kawase-blur |
 | `blueman` | Manages bluetooth | For bluetooth widgets |
 | `xfce4-power-manager` | Manages battery/power settings | Power Settings |
@@ -106,6 +108,8 @@ If you notice that something is missing, please open an issue so I can add the d
   - blueman (bluetooth widgets)
   - xfce4-power-manager (power widget)
   - acpi, acpid, acpi_call, upower (battery notifications)
+  - xbacklight (brightness control)
+  - alsa-utils (volume control)
   - pulseaudio, alsa-utils (volume/audio keybinds)
   - mpd, mpc (music widget)
   - maim, xclip (screenshot tool)
@@ -170,7 +174,7 @@ This setup is split in multiple parts:
   - Not tested in a multi-monitor setup (please send me an extra monitor so I can test it lol)
 + Check keybindings using `Super +  F1`
 + Anti-aliased titlebars
-  - You can also add an anti-aliased titlebars in these setups thanks to well-documented dotfiles of [elenepan](https://github.com/elenapan/dotfiles). *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
+  - You can also add an anti-aliased titlebars in these setups thanks to the well-documented dotfiles of [elenepan](https://github.com/elenapan/dotfiles). *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
 
   - Here is an example of an anti-aliased titlebar:
     ```lua
