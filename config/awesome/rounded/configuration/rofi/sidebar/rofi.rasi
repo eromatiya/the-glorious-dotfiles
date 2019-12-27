@@ -99,6 +99,9 @@ entry {
 	font:            			"SFNS Display 14";
 	margin:								16 16 16 16;
 	border-radius:				28;
+	placeholder:                "Web search";
+	placeholder-color:          @normal-foreground;
+	blink:                      true;
 }
 
 element normal.normal {

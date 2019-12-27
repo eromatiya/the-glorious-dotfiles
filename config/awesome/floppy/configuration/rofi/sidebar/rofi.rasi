@@ -1,18 +1,18 @@
 configuration {
-	show-icons:                    false;
-	sidebar-mode:                  true;
-  font:                          "Neue Haas Unica Pro Bold 10";
-	hide-scrollbar: true;
+	show-icons:                 false;
+	sidebar-mode:               true;
+  	font:                       "Neue Haas Unica Pro Bold 9";
+	hide-scrollbar: 			true;
 }
 
 * {
   background-color:             transparent;
-	background:          				  rgba(26, 26, 26, 0.50);
-	text-color:                   rgb(255, 255, 255);
-	selbg:                        rgb(138, 180, 248);
-	actbg:                        #E5E9F047;
-	urgbg:                        #e53935;
-	winbg:			     		          #26c6da;
+	background:          		 rgba(26, 26, 26, 0.50);
+	text-color:                  rgb(255, 255, 255);
+	selbg:                       rgb(138, 180, 248);
+	actbg:                       #E5E9F047;
+	urgbg:                       #e53935;
+	winbg:			     		 #26c6da;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
@@ -35,7 +35,7 @@ configuration {
 	hide-scrollbar:              "true";
 	margin:                      0px;
 	padding:                     0px;
-	font:												"Neue Haas Unica Pro Bold 10";
+	font:						 "Neue Haas Unica Pro Bold 9";
 }
 
 window {
@@ -81,22 +81,25 @@ listview {
 }
 
 element {
-	padding:							16px;
-	border: 						 	0 0 0 0px solid;
-	border-radius:				6;
-	margin:								0 17 0 17;
+	padding:				16px;
+	border: 				0 0 0 0px solid;
+	border-radius:			6;
+	margin:					0 17 0 17;
 	background-color: 		rgba(28, 26, 20, 1);
 }
 
 entry {
 	expand:         			true;
-	text-color:						@normal-foreground;
+	text-color:					@normal-foreground;
 	background-color:		 	#ffffff20;
 	vertical-align: 			0.5;
 	padding:        			14px;
-	font:            			"Neue Haas Unica Pro Bold 9";
-	margin:								16 16 16 16;
+	font:            			"Neue Haas Unica Pro Bold 10";
+	margin:						16 16 16 16;
 	border-radius:				6;
+	placeholder:                "Web search";
+	placeholder-color:          @normal-foreground;
+	blink:                      true;
 }
 
 element normal.normal {
