@@ -62,7 +62,7 @@ return wibox.widget{
 
   {
     {
-      require('widget.action-center.wifi-button'),
+      require('widget.action-center.wifi-action'),
       border_width = dpi(1),
       border_color = '#ffffff40',
       bg = beautiful.modal_bg,
@@ -77,7 +77,7 @@ return wibox.widget{
   layout = wibox.layout.fixed.vertical,
   {
     {
-      require('widget.action-center.bluetooth-button'),
+      require('widget.action-center.bluetooth-action'),
       border_width = dpi(1),
       border_color = '#ffffff40',
       bg = beautiful.modal_bg,
@@ -92,7 +92,7 @@ return wibox.widget{
   layout = wibox.layout.fixed.vertical,
   {
     {
-      require('widget.action-center.compositor-button'),
+      require('widget.action-center.compositor-action'),
       border_width = dpi(1),
       border_color = '#ffffff40',
       bg = beautiful.modal_bg,

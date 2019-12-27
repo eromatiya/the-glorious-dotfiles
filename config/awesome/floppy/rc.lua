@@ -1,19 +1,18 @@
 --[[
-___       ___       ___       ___       ___       ___       ___
-/\  \     /\__\     /\  \     /\  \     /\  \     /\__\     /\  \
-/::\  \   /:/\__\   /::\  \   /::\  \   /::\  \   /::L_L_   /::\  \
-/::\:\__\ /:/:/\__\ /::\:\__\ /\:\:\__\ /:/\:\__\ /:/L:\__\ /::\:\__\
-\/\::/  / \::/:/  / \:\:\/  / \:\:\/__/ \:\/:/  / \/_/:/  / \:\:\/  /
-/:/  /   \::/  /   \:\/  /   \::/  /   \::/  /    /:/  /   \:\/  /
-\/__/     \/__/     \/__/     \/__/     \/__/     \/__/     \/__/
+    _                                       __        ____  __ 
+   / \__      _____  ___  ___  _ __ ___   __\ \      / /  \/  |
+  / _ \ \ /\ / / _ \/ __|/ _ \| '_ ` _ \ / _ \ \ /\ / /| |\/| |
+ / ___ \ V  V /  __/\__ \ (_) | | | | | |  __/\ V  V / | |  | |
+/_/   \_\_/\_/ \___||___/\___/|_| |_| |_|\___| \_/\_/  |_|  |_|
+
 --]]
 
 
 
 local gears = require('gears')
 local awful = require('awful')
-require('awful.autofocus')
 local beautiful = require('beautiful')
+require('awful.autofocus')
 
 -- Theme
 beautiful.init(require('theme'))
@@ -29,7 +28,7 @@ require('module.decorate-client')
 require('module.exit-screen')
 require('module.quake-terminal')
 require('module.titlebar')
-require('module.menu')
+-- require('module.menu')
 require('module.volume-osd')
 require('module.brightness-osd')
 require('module.wallchange')

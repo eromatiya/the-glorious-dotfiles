@@ -69,7 +69,7 @@ return wibox.widget{
 
   {
     {
-      require('widget.action-center.wifi-button'),
+      require('widget.action-center.wifi-action'),
       bg = barColor,
       shape = function(cr, width, height)
         gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.modal_radius) end,
@@ -82,7 +82,7 @@ return wibox.widget{
   layout = wibox.layout.fixed.vertical,
   {
     {
-      require('widget.action-center.bluetooth-button'),
+      require('widget.action-center.bluetooth-action'),
       bg = barColor,
       shape = function(cr, width, height)
          gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.modal_radius) end,
@@ -95,7 +95,7 @@ return wibox.widget{
   layout = wibox.layout.fixed.vertical,
   {
     {
-      require('widget.action-center.compositor-button'),
+      require('widget.action-center.compositor-action'),
       bg = barColor,
       shape = function(cr, width, height)
         gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
