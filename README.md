@@ -33,6 +33,10 @@
 ## Floppy - Workflow  
 + https://youtu.be/GeBrIwxmdx4  
 
+## Announcement!
++ I have create a repo for the widgets I have wrote during ricing these setups. Right now, the repo only has the `dynamic wallpaper` widget. It changes wallpaper based on time. My next target is the notification center. Check it out [here](https://github.com/ilovecookieee/awesome-glorious-widgets).
+
+
 ## My Current Theme
 | Floppy | Preview |
 | --- | --- |
