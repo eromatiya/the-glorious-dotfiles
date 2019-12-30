@@ -122,24 +122,58 @@ update_time_duration = function()
 end
 
 
-update_title = function()
-	-- Update title
-	awful.spawn.easy_async_with_shell('mpc -f %title% current', function( stdout )
-    -- Check if there's alphanumeric characters
-		if (stdout:match("%W")) then
-      -- Remove new lines
-      local title = stdout:gsub('%\n','')
-      -- Truncate string
-      if(title:len() > 26) then
-        title = title:sub(1,26) .. '...'
-      end
-			 song_info.music_title.title:set_text(title)
+update_time_duration = function()
+	-- Update time duration on song change
+	awful.spawn.easy_async_with_shell(check_music_duration, function( stdout )
+		if stdout ~= nil then
+			track_time.time_duration.text = tostring(stdout)
 		else
-			song_info.music_title.title:set_text("Play Some Music!")
+			track_time.time_duration.text = tostring("99:59")
 		end
 	end)
 end
 
+update_file = function()
+	-- Save the output of "mpc -f %file% current" into a variable after new lines removal
+	-- Update file
+	awful.spawn.easy_async_with_shell('mpc -f %file% current', function( stdout )
+	-- Remove new lines
+	file = stdout:gsub('%\n','')
+	end)
+	-- Return the variable
+	return file
+end
+
+update_title = function()
+	-- Update title
+	awful.spawn.easy_async_with_shell('mpc -f %title% current', function( stdout )
+    -- Remove new lines
+    local title = stdout:gsub('%\n','')
+    -- Check if there's alphanumeric characters
+		if (stdout:match("%W")) then
+		  -- Truncate string
+		  if(title:len() > 1) then
+				-- Trim file to 26 characters
+				title = title:sub(1,26) .. ''
+				-- Set title
+				song_info.music_title.title:set_text(title)
+			else
+				-- Define file into a variable
+				local file = update_file()
+				-- Cut the .mp3 ending
+				file = file:sub(1, title:len() - 5) .. ''
+				-- Trim file to 26 characters
+				file = file:sub(1,26) .. ''
+				-- Set title and artist
+				song_info.music_title.title:set_text(file)
+		  end
+		  
+		else
+			-- Set title
+			song_info.music_title.title:set_text("Play Some Music!")
+		end
+	end)
+end
 
 update_artist = function()
 	-- Update Artist
