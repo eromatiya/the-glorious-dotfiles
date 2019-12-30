@@ -23,7 +23,7 @@ local gmail_icon_widget = wibox.widget {
 
 local gmail_header = wibox.widget {
   text   = "Gmail",
-  font   = 'SFNS Display Bold 12',
+  font   = 'SFNS Display Regular 12',
   align  = 'left',
   valign = 'center',
   widget = wibox.widget.textbox

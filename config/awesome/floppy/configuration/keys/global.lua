@@ -28,7 +28,7 @@ local globalKeys =
   awful.key(
     {modkey}, 'x',
     function()
-      if require('widget.notification-center') then
+      if require('widget.right-dashboard') then
         _G.screen.primary.right_panel:toggle()
       end
     end,

@@ -199,7 +199,7 @@ local BotPanel = function(s, offset)
           decorateWidget(require('widget.battery')),
         },
         hSeparator,
-        decorateWidget(require('widget.notification-center')),
+        decorateWidget(require('widget.right-dashboard')),
         decorateWidget(LayoutBox(s)),
       },
     },

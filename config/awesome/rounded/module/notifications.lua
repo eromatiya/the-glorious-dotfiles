@@ -114,6 +114,35 @@ local notification_bg = beautiful.notification_bg
 beautiful.notification_margin = dpi(5)
 naughty.connect_signal("request::display", function(n)
 
+  -- naughty.actions template
+  local actions_template = wibox.widget {
+    notification = notif,
+    base_layout = wibox.widget {
+      spacing        = dpi(5),
+      layout         = wibox.layout.flex.vertical
+    },
+    widget_template = {
+      {
+        {
+          {
+            id     = 'text_role',
+            font   = 'SFNS Display Regular 10',
+            widget = wibox.widget.textbox
+          },
+            widget = wibox.container.place
+        },
+        bg                 = beautiful.bg_modal,
+        shape              = gears.shape.rounded_rect,
+        forced_height      = 30,
+        widget             = wibox.container.background,
+      },
+      margins = 4,
+      widget  = wibox.container.margin,
+    },
+    style = { underline_normal = false, underline_selected = true },
+    widget = naughty.list.actions,
+  }
+
   naughty.layout.box {
     notification = n,
     type = "splash",
@@ -127,10 +156,10 @@ naughty.connect_signal("request::display", function(n)
                 {
                   {
                     {
-                      -- TITLE
                       {
                         {
                           {
+                            -- TITLE
                             align = "center",
                             widget = naughty.widget.title,
                           },
@@ -174,7 +203,8 @@ naughty.connect_signal("request::display", function(n)
                    widget  = wibox.container.background,
                  },
                  -- Notification action list
-                 naughty.list.actions,
+                 -- naughty.list.actions,
+                 actions_template,
                  spacing = dpi(4),
                  layout  = wibox.layout.fixed.vertical,
                },
@@ -209,7 +239,8 @@ naughty.connect_signal("request::display", function(n)
   if _G.panel_visible or _G.dont_disturb then
     naughty.destroy_all_notifications()
   else
-    -- if null
+    -- Add sound fx on notif
+    awful.spawn('canberra-gtk-play -i message', false)
   end
 
 end)

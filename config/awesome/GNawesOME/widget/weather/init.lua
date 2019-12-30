@@ -75,7 +75,7 @@ local weather_report =  wibox.widget {
         {
 
           layout = wibox.layout.flex.vertical,
-          weather_header,
+          -- weather_header,
           weather_description,
           weather_temperature,
         },

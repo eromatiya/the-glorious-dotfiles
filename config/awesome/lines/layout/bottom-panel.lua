@@ -222,7 +222,7 @@ local BotPanel = function(s, offset)
           decorateWidget(require('widget.battery')),
         },
         hSeparator,
-        decorateWidget(require('widget.notification-center')),
+        decorateWidget(require('widget.right-dashboard')),
         decorateWidget(LayoutBox(s)),
         decorateWidget(wibox.container.margin(clock_widget, dpi(10), dpi(10))),
       },

@@ -104,6 +104,14 @@ local date = wibox.widget {
   widget = wibox.widget.textclock
 }
 
+local widget_header = wibox.widget {
+  text = 'Widgets',
+  align = 'left',
+  valign = 'center',
+  font = 'SFNS Display Bold 14',
+  widget = wibox.widget.textbox
+}
+
 
 -- Create clock box in every screen
 screen.connect_signal("request::desktop_decoration", function(s)
@@ -153,7 +161,15 @@ clock_box:setup {
     {
       expand = "none",
       layout = wibox.layout.fixed.horizontal,
-      require('widget.notification-center'),
+      {
+        {
+          layout = wibox.layout.fixed.vertical,
+          require('widget.notif-center'),
+        },
+        left = dpi(2),
+        right = dpi(2),
+        widget = wibox.container.margin
+      },
       {
         layout = wibox.layout.fixed.horizontal,
         separator,
@@ -161,7 +177,8 @@ clock_box:setup {
           layout = wibox.layout.fixed.vertical,
           spacing = dpi(5),
           {
-            top_separator,
+            -- top_separator,
+            widget_header,
             require('widget.gmail'),
             require('widget.weather'),        
             layout = wibox.layout.fixed.vertical,
