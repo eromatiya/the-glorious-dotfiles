@@ -69,14 +69,7 @@ return function(_, panel)
   )
 
 
-  local separator = wibox.widget {
-    orientation = 'vertical',
-    forced_height = 10,
-    opacity = 0.00,
-    widget = wibox.widget.separator
-  }
-
-  local topBotSeparator = wibox.widget {
+  local topbot_separator = wibox.widget {
     orientation = 'horizontal',
     forced_height = 15,
     opacity = 0,
@@ -86,25 +79,26 @@ return function(_, panel)
   return wibox.widget {
     layout = wibox.layout.align.vertical,
     {
-      topBotSeparator,
       layout = wibox.layout.fixed.vertical,
+      topbot_separator,
       {
+        spacing = dpi(10),
+        layout = wibox.layout.fixed.vertical,
         {
-          search_button,
-          bg = beautiful.bg_modal, 
-          shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
-                  end,
-          widget = wibox.container.background,
+          {
+            search_button,
+            bg = beautiful.bg_modal, 
+            shape = function(cr, w, h)
+                      gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
+                    end,
+            widget = wibox.container.background,
+          },
+          widget = mat_list_item,
         },
-        widget = mat_list_item,
+        require('layout.left-panel.dashboard.quick-settings'),
+        require('layout.left-panel.dashboard.hardware-monitor'),
+        require('layout.left-panel.dashboard.action-center'),
       },
-      separator,
-      require('layout.left-panel.dashboard.quick-settings'),
-      separator,
-      require('layout.left-panel.dashboard.hardware-monitor'),
-      separator,
-      require('layout.left-panel.dashboard.action-center'),
     },
     nil,
     {
@@ -115,13 +109,11 @@ return function(_, panel)
           exit_button,
           bg = beautiful.bg_modal,
           widget = wibox.container.background,
-          shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
-                  end,
+          shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius) end,
         },
         widget = mat_list_item,
       },
-      topBotSeparator
+      topbot_separator
     }
   }
 end

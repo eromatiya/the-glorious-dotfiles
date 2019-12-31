@@ -70,14 +70,7 @@ exit_button:buttons(
   )
 
 
-local separator = wibox.widget {
-  orientation = 'vertical',
-  forced_height = 10,
-  opacity = 0.00,
-  widget = wibox.widget.separator
-}
-
-local topBotSeparator = wibox.widget {
+local topbot_separator = wibox.widget {
   orientation = 'horizontal',
   forced_height = 15,
   opacity = 0,
@@ -87,32 +80,33 @@ local topBotSeparator = wibox.widget {
 return wibox.widget {
   layout = wibox.layout.align.vertical,
   {
-    topBotSeparator,
     layout = wibox.layout.fixed.vertical,
+    topbot_separator,
     {
+      spacing = dpi(10),
+      layout = wibox.layout.fixed.vertical,
       {
-        search_button,
-        border_width = dpi(1),
-        border_color = '#ffffff40',
-        bg = beautiful.modal_bg,
-        shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
-      end,
-      widget = wibox.container.background,
+        {
+          search_button,
+          border_width = dpi(1),
+          border_color = '#ffffff40',
+          bg = beautiful.modal_bg,
+          shape = function(cr, w, h)
+          gears.shape.rounded_rect(cr, w, h, beautiful.modal_radius)
+        end,
+        widget = wibox.container.background,
+      },
+      widget = mat_list_item,
     },
-    widget = mat_list_item,
+    require('layout.left-panel.dashboard.quick-settings'),
+    require('layout.left-panel.dashboard.hardware-monitor'),
+    require('layout.left-panel.dashboard.action-center'),
   },
-  separator,
-  require('layout.left-panel.dashboard.quick-settings'),
-  separator,
-  require('layout.left-panel.dashboard.hardware-monitor'),
-  separator,
-  require('layout.left-panel.dashboard.action-center'),
-  separator,
 },
 nil,
 {
   layout = wibox.layout.fixed.vertical,
+  topbot_separator,
   {
     {
       exit_button,
@@ -126,7 +120,7 @@ nil,
   },
   widget = mat_list_item,
 },
-topBotSeparator
+topbot_separator
 }
 }
 end

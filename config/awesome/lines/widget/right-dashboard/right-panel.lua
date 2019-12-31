@@ -123,18 +123,12 @@ local right_panel = function(screen)
     {
       expand = 'none',
       layout = wibox.layout.align.horizontal,
-      {
-        nil,
-        layout = wibox.layout.fixed.horizontal,
-      },
+      nil,
       require('widget.right-dashboard.subwidgets.panel-mode-switcher'),
-      {
-        nil,
-        layout = wibox.layout.fixed.horizontal,
-      },
+      nil,
     },
     separator,
-    headerSeparator,
+    line_separator,
     {
       layout = wibox.layout.stack,
       -- Notification Center
@@ -160,20 +154,17 @@ local right_panel = function(screen)
         layout = wibox.layout.fixed.vertical,
         separator,
         {
-          wibox.container.margin(require('widget.user-profile'), dpi(15), dpi(15), dpi(0), dpi(10)),
-          layout = wibox.layout.fixed.vertical,
-        },
-        {
-          wibox.container.margin(require('widget.gmail'), dpi(15), dpi(15), dpi(5), dpi(5)),
-          layout = wibox.layout.fixed.vertical,
-        },
-        {
-          wibox.container.margin(require('widget.weather'), dpi(15), dpi(15), dpi(10), dpi(5)),
-          layout = wibox.layout.fixed.vertical,
-        },
-        {
-          wibox.container.margin(require('widget.calculator'), dpi(15), dpi(15), dpi(10), dpi(10)),
-          layout = wibox.layout.fixed.vertical,
+          {
+            layout = wibox.layout.fixed.vertical,
+            spacing = dpi(10),
+            require('widget.user-profile'),
+            require('widget.gmail'),
+            require('widget.weather'),
+            require('widget.calculator')
+          },
+          left = dpi(15),
+          right = dpi(15),
+          widget = wibox.container.margin
         },
 
       }
