@@ -55,26 +55,23 @@
 
 # Other themes preview
 
-| GNawesOME | Preview |
-| --- | --- |
-| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png) |
-| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dirty.png)   |
-| Dirtier | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dashboard.png) |
-| App dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/application-dashboard.png) |
+# GNawesOME
 
-| Rounded | Preview |
-| --- | --- |
-| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) |
-| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png)   |
-| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |
+| Desktop | Dirty | Dirtier | Application Dashboard |
+| --- | --- | --- | --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dashboard.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/application-dashboard.png) |
 
+# Rounded
 
-| Lines | Preview |
-| --- | --- |
-| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/desktop.png) |
-| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/dirty.png)   |
-| Application Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png) |
+| Desktop | Dirty | Application Dashboard |
+| --- | --- | --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |
 
+# Lines
+
+| Desktop | Dirty | Application Dashboard |
+| --- | --- | --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png) |
 
 ## Dependencies
 Here is a complete list of dependencies needed for making these AwesomeWM setup to work.
@@ -102,6 +99,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `xdg_menu` or `awesome-freedesktop` | Generates a list of installed applications | Useful for generating app list |
 | `imagemagick` | An image viewing/manipulation program | Album cover extractor |
 | `jq` | Command-line JSON processor | Formatting |
+| `libcanberra` | A small and lightweight implementation of the XDG Sound Theme Specification | notification pop-up sounds |
 
 
 ##### Sans
@@ -125,6 +123,7 @@ If you notice that something is missing, please open an issue so I can add the d
   - xdg-menu (generates app list)
   - imagemagick (extract album cover, music widget)
   - jq (Formatting)
+  - libcanberra (event sounds)
 + Copy the selected theme from `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
 + Rename it to `awesome`
 + Reload Awesome using `Super + shift + r`
