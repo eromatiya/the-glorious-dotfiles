@@ -100,7 +100,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `imagemagick` | An image viewing/manipulation program | Album cover extractor |
 | `jq` | Command-line JSON processor | Formatting |
 | `libcanberra` | A small and lightweight implementation of the XDG Sound Theme Specification | notification pop-up sounds |
-
+| `noto-fonts-emoji` | Google Noto emoji fonts | Emoji support |
 
 ##### Sans
 + **Google Sans**

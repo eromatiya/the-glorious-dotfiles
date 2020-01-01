@@ -241,8 +241,11 @@ naughty.connect_signal("request::display", function(n)
    -- And if do not dont_disturb is on
   if _G.panel_visible or _G.dont_disturb then
     naughty.destroy_all_notifications()
-  else
+  end
+
+  if not _G.dont_disturb then
     -- Add Sound fx to notif
+    -- Depends: canberra-gtk-play
     awful.spawn('canberra-gtk-play -i message', false)
   end
 
