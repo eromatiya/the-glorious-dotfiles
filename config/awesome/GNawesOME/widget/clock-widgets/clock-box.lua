@@ -168,6 +168,7 @@ clock_box:setup {
         },
         left = dpi(2),
         right = dpi(2),
+        forced_width = dpi(365),
         widget = wibox.container.margin
       },
       {

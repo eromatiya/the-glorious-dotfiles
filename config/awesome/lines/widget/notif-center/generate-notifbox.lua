@@ -10,7 +10,7 @@ local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/notif-center/icons/'
 
 -- Boolean variable to remove empty message
-local remove_notibox_empty = true
+local remove_notifbox_empty = true
 
 -- Notification boxes container layout
 local notifbox_layout = wibox.layout.fixed.vertical()
@@ -28,7 +28,7 @@ local notifbox_icon = function(ico_image)
       resize = true,
       forced_height = dpi(25),
       forced_width = dpi(25),
-      widget = wibox.widget.imagebox,
+      widget = wibox.widget.imagebox
     },
     layout = wibox.layout.fixed.horizontal
   }
@@ -51,7 +51,18 @@ end
 local notifbox_message = function(msg)
   return wibox.widget {
     text   = msg,
-    font   = 'SFNS Display Regular 12',
+    font   = 'SFNS Display Regular 11',
+    align  = 'left',
+    valign = 'center',
+    widget = wibox.widget.textbox
+  }
+end
+
+-- Notification app name container
+local notifbox_appname = function(app)
+  return wibox.widget {
+    text   = app,
+    font   = 'SFNS Display Bold 12',
     align  = 'left',
     valign = 'center',
     widget = wibox.widget.textbox
@@ -97,11 +108,8 @@ local notifbox_actions = function(notif)
           },
             widget = wibox.container.place
         },
-
         bg                 = beautiful.bg_modal,
         shape              = gears.shape.rounded_rect,
-        border_width       = dpi(1),
-        border_color       = '#ffffff40',
         forced_height      = 30,
         widget             = wibox.container.background,
       },
@@ -153,8 +161,6 @@ local notifbox_empty = function()
       margins = dpi(20),
       widget = wibox.container.margin
     },
-    border_width = dpi(1),
-    border_color = '#ffffff40',
     bg = beautiful.bg_modal,
     shape = function(cr, width, height)
       gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.modal_radius) end,
@@ -167,11 +173,11 @@ end
 reset_notifbox_layout = function()
   notifbox_layout:reset(notifbox_layout)
   notifbox_layout:insert(1, notifbox_empty())
-  remove_notibox_empty = true
+  remove_notifbox_empty = true
 end
 
 -- Returns the notification box
-local notifbox_box = function(icon, title, message, notif)
+local notifbox_box = function(notif, icon, title, message, app, bgcolor)
 
   -- Get current time for `this` instance of box
   local time_of_pop = current_time()
@@ -201,7 +207,7 @@ local notifbox_box = function(icon, title, message, notif)
 
       -- If seconds is less than one minute
       if time_difference < 60 then
-        notifbox_timepop.text = 'Now'
+        notifbox_timepop.text = 'now'
 
       -- If greater that one hour
       elseif time_difference >= 3600 then
@@ -232,9 +238,14 @@ local notifbox_box = function(icon, title, message, notif)
         {
           expand = 'none',
           layout = wibox.layout.align.horizontal,
-          notifbox_icon(icon),
+          {
+            layout = wibox.layout.fixed.horizontal,
+            spacing = dpi(5),
+            notifbox_icon(icon),
+            notifbox_appname(app),
+          },
           nil,
-          notifbox_timepop,
+          notifbox_timepop
         },
         {
           layout = wibox.layout.fixed.vertical,
@@ -251,9 +262,7 @@ local notifbox_box = function(icon, title, message, notif)
       margins = dpi(10),
       widget = wibox.container.margin
     },
-    border_width = dpi(1),
-    border_color = '#ffffff40',
-    bg = beautiful.bg_modal,
+    bg = bgcolor,
     shape = function(cr, width, height)
       gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.modal_radius) end,
     widget = wibox.container.background,
@@ -283,20 +292,39 @@ notifbox_layout:insert(1, notifbox_empty())
 -- Connect to naughty
 naughty.connect_signal("request::display", function(n)
 
-  -- If notifbox_layout has a child and remove_notibox_empty
-  if #notifbox_layout.children == 1 and remove_notibox_empty then
+  -- If notifbox_layout has a child and remove_notifbox_empty
+  if #notifbox_layout.children == 1 and remove_notifbox_empty then
     -- Reset layout
     notifbox_layout:reset(notifbox_layout)
-    remove_notibox_empty = false
+    remove_notifbox_empty = false
+  end
+
+
+  -- Set background color based on urgency level
+  local notifbox_color = beautiful.bg_modal
+  if n.urgency == 'critical' then
+    notifbox_color = n.bg .. '66'
+  end
+
+  -- Check if there's an icon
+  local appicon = n.icon
+  if not appicon then
+    appicon = PATH_TO_ICONS .. 'new-notif' .. '.svg'
   end
 
   -- Throw data from naughty to notifbox_layout 
   -- Generates notifbox
-  if n.icon then
-    notifbox_layout:insert(1, notifbox_box(n.icon, n.title, n.message, n))
-  else
-    notifbox_layout:insert(1, notifbox_box(PATH_TO_ICONS .. 'new-notif.svg', n.title, n.message, n))
-  end
+  notifbox_layout:insert(1, 
+    notifbox_box(
+      n, 
+      appicon, 
+      n.title, 
+      n.message, 
+      n.app_name, 
+      notifbox_color)
+    )
+
+
 end)
 
 

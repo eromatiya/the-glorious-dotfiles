@@ -33,6 +33,5 @@ return wibox.widget {
       require('widget.notif-center.clear-all')
     },
   },
-  require('widget.notif-center.generate-notifbox'),
-  forced_width = dpi(365)
+  require('widget.notif-center.generate-notifbox')
 }
