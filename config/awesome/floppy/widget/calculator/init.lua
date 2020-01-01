@@ -713,7 +713,7 @@ local calculator_body = wibox.widget {
   {
     spacing = dpi(1),
     layout = wibox.layout.flex.horizontal,
-    widget_wrapper(zero_widget_button, 'bottom_left', 6),
+    widget_wrapper(zero_widget_button, 'bottom_left', beautiful.modal_radius),
     {
       spacing = dpi(1),
       layout = wibox.layout.flex.horizontal,

@@ -37,7 +37,9 @@
 + I have created a repository for the widgets I have wrote while creating these setups. Right now, the repo only has the `dynamic wallpaper` widget. It changes wallpaper based on time. My next target is the notification center. Check it out [here](https://github.com/ilovecookieee/awesome-glorious-widgets).
 
 
-## My Current Theme
+## Screenshots
++ *All screenshots shown below are for illustration purpose only. Actual setup may vary due to rice enhancement.*
+
 | Floppy | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/desktop.png) |
@@ -50,7 +52,9 @@
 | Lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/lockscreen.png) |
 | Greeter | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/greeter.png) |
 
-# New theme
+
+# Other themes preview
+| Rounded | Preview |
 | GNawesOME | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png) |
@@ -58,8 +62,7 @@
 | Dirtier | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dashboard.png) |
 | App dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/application-dashboard.png) |
 
-# Other themes preview
-| Rounded | Preview |
+
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) |
 | Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png)   |

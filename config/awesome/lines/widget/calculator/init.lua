@@ -672,7 +672,7 @@ local calculator_body = wibox.widget {
       border_color = '#ffffff40',
       bg = beautiful.modal_bg,
       shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 6) end,
+        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
       widget = wibox.container.background,
     },
     layout = wibox.layout.flex.horizontal,
@@ -717,12 +717,12 @@ local calculator_body = wibox.widget {
   {
     spacing = dpi(1),
     layout = wibox.layout.flex.horizontal,
-    widget_wrapper(zero_widget_button, 'bottom_left', 6),
+    widget_wrapper(zero_widget_button, 'bottom_left', beautiful.modal_radius),
     {
       spacing = dpi(1),
       layout = wibox.layout.flex.horizontal,
       widget_wrapper(decimal_widget_button, 'flat', 0),
-      widget_wrapper(equals_widget_button, 'bottom_right', 6),
+      widget_wrapper(equals_widget_button, 'bottom_right', beautiful.modal_radius),
     },
   },
 }

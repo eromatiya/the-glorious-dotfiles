@@ -157,7 +157,7 @@ local user_profile = wibox.widget {
     widget = wibox.container.margin,
   },
   bg = beautiful.bg_modal,
-  shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 6) end,
+  shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, beautiful.modal_radius) end,
   widget = wibox.container.background
 }
 
