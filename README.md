@@ -54,7 +54,7 @@
 
 
 # Other themes preview
-| Rounded | Preview |
+
 | GNawesOME | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png) |
@@ -62,7 +62,7 @@
 | Dirtier | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dashboard.png) |
 | App dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/application-dashboard.png) |
 
-
+| Rounded | Preview |
 | --- | --- |
 | Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) |
 | Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png)   |
