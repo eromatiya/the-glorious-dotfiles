@@ -1,7 +1,7 @@
 # Dont overwrite icons
-config/awesome/floppy/widget/user-profile/icons/
-config/awesome/rounded/widget/user-profile/icons/
-config/awesome/lines/widget/user-profile/icons/
+config/awesome/floppy/widget/user-profile/icons/user.jpg
+config/awesome/rounded/widget/user-profile/icons/user.jpg
+config/awesome/lines/widget/user-profile/icons/user.jpg
 
 # Dont include openweather api keys
 # Sorry lol
