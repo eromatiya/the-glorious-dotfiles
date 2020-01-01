@@ -55,19 +55,19 @@
 
 # Other themes preview
 
-# GNawesOME
+## GNawesOME
 
 | Desktop | Dirty | Dirtier | Application Dashboard |
 | --- | --- | --- | --- |
 | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dashboard.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/application-dashboard.png) |
 
-# Rounded
+## Rounded
 
 | Desktop | Dirty | Application Dashboard |
 | --- | --- | --- |
 | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |
 
-# Lines
+## Lines
 
 | Desktop | Dirty | Application Dashboard |
 | --- | --- | --- |
