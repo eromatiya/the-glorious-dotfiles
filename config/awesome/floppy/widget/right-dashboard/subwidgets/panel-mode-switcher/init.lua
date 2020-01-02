@@ -24,7 +24,7 @@ local notif_text = wibox.widget
   widget = wibox.widget.textbox
 }
 
-local notif_button = clickable_container(wibox.container.margin(notif_text, dpi(0), dpi(0), dpi(7), dpi(7))) -- 4 is top and bottom margin
+local notif_button = clickable_container(wibox.container.margin(notif_text, dpi(0), dpi(0), dpi(7), dpi(7)))
 
 local wrap_notif = wibox.widget {
   notif_button,
