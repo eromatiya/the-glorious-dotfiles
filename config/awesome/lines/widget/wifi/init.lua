@@ -114,14 +114,16 @@ local notify_connection = function()
         get_essid()
         naughty.notify({ 
           text = "You're now connected to WiFi:\n" .. essid,
-          title = "System Notification",
-          icon = PATH_TO_ICONS .. 'wifi.svg',
+          title = "WiFi Connection",
+          app_name = 'System notification',
+          icon = PATH_TO_ICONS .. 'wifi.svg'
           })
       else
         naughty.notify({ 
           text = "WiFi Disconnected",
-          title = "System Notification",
-          icon = PATH_TO_ICONS .. 'wifi-off.svg',
+          title = "WiFi Connection",
+          app_name = "System Notification",
+          icon = PATH_TO_ICONS .. 'wifi-off.svg'
           })
       end
     end

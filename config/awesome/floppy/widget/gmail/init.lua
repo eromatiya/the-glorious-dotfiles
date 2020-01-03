@@ -9,6 +9,8 @@ local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/gmail/icons/'
 
 local naughty = require('naughty')
 
+local email_count = 0
+
 local gmail_icon_widget = wibox.widget {
   {
     id = 'icon',
@@ -114,72 +116,90 @@ M.logout()
 END
 ]]
 
-
-
-  local gmail_report = wibox.widget{
-    expand = 'none',
-    layout = wibox.layout.fixed.vertical,
-    {
-      wibox.widget {
-        wibox.container.margin(gmail_header, dpi(10), dpi(10), dpi(10), dpi(10)),
-        bg = beautiful.bg_modal_title,
-        shape = function(cr, width, height)
-        gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
-        widget = wibox.container.background,
-      },
-      layout = wibox.layout.fixed.vertical,
+local gmail_report = wibox.widget{
+  expand = 'none',
+  layout = wibox.layout.fixed.vertical,
+  {
+    wibox.widget {
+      wibox.container.margin(gmail_header, dpi(10), dpi(10), dpi(10), dpi(10)),
+      bg = beautiful.bg_modal_title,
+      shape = function(cr, width, height)
+      gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
+      widget = wibox.container.background,
     },
+    layout = wibox.layout.fixed.vertical,
+  },
+  {
     {
+      expand = "none",
+      layout = wibox.layout.fixed.horizontal,
       {
-        expand = "none",
-        layout = wibox.layout.fixed.horizontal,
-        {
-          wibox.widget {
-            gmail_icon_widget,
-            margins = dpi(4),
-            widget = wibox.container.margin
-          },
-          margins = dpi(5),
-          widget = wibox.container.margin
-        },
-        {
-          {
-
-            layout = wibox.layout.flex.vertical,
-            gmail_count,
-          },
+        wibox.widget {
+          gmail_icon_widget,
           margins = dpi(4),
           widget = wibox.container.margin
         },
+        margins = dpi(5),
+        widget = wibox.container.margin
       },
-      bg = beautiful.bg_modal,
-      shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
-      widget = wibox.container.background
+      {
+        {
+
+          layout = wibox.layout.flex.vertical,
+          gmail_count,
+        },
+        margins = dpi(4),
+        widget = wibox.container.margin
+      },
     },
-  }
+    bg = beautiful.bg_modal,
+    shape = function(cr, width, height)
+    gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
+    widget = wibox.container.background
+  },
+}
 
-
-
-  -- Updater
-  local updateWidget = gears.timer {
-    timeout = 60,
-    autostart = true,
-    call_now = true,
-    callback  = function()
-    awful.spawn.easy_async_with_shell(check_count, function(stdout)
-      if tonumber(stdout) ~= nil then
-        unread_count = stdout:gsub('%\n','')
-        if tonumber(unread_count) > 1 then
-          gmail_count.markup = '<span font="SFNS Display Regular 14">You have ' .. unread_count .. ' unread emails!</span>'
-        else
-          gmail_count.markup = '<span font="SFNS Display Regular 14">You have ' .. unread_count .. ' unread email!</span>'
-        end
-      else
-        gmail_count.markup = '<span font="SFNS Display Regular 14">Check internet connection!</span>'
-      end
-    end)
+local notify_new_email = function(count)
+  if tonumber(count) > tonumber(email_count) then
+    email_count = count
+    naughty.notify({ 
+      title = "Message received!",
+      text = "You have an unread email!",
+      app_name = 'Gmail',
+      icon = PATH_TO_ICONS .. 'gmail' .. '.svg'
+    })
+  else
+    email_count = count
   end
+end
+
+local update_widget = function()
+  awful.spawn.easy_async_with_shell(check_count, function(stdout)
+    if tonumber(stdout) ~= nil then
+      unread_count = stdout:gsub('%\n','')
+      if tonumber(unread_count) > 1 then
+        gmail_count.markup = '<span font="SFNS Display Regular 14">You have ' .. unread_count .. ' unread emails!</span>'
+      else
+        gmail_count.markup = '<span font="SFNS Display Regular 14">You have ' .. unread_count .. ' unread email!</span>'
+      end
+
+      -- Notify
+      notify_new_email(unread_count)
+    else
+      gmail_count.markup = '<span font="SFNS Display Regular 14">Check internet connection!</span>'
+    end
+  end)
+end
+
+-- Updater
+local update_widget_timer = gears.timer {
+  timeout = 60,
+  autostart = true,
+  call_now = true,
+  callback  = function()
+  -- Update widget
+  update_widget()
+end
 }
 
 
