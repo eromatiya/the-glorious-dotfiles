@@ -16,8 +16,9 @@ Xft.lcdfilter: lcddefault
 
 ! ===== urxvt =====
 URxvt.cursorBlink : 1
-URxvt.font        : xft:Pragmatapro:pixelsize=13:antialias=true,xft:Pragmatapro
-URxvt.italicFont  : xft:Pragmatapro:pixelsize=13:weight=bold:antialias=true,xft:Pragmatapro
+URxvt.font        : xft:Iosevka Custom:pixelsize=13:antialias=true,xft:Iosevka Custom
+URxvt.boldFont    : xft:Iosevka Custom:pixelsize=13:weight=bold:antialias=true,xft:Iosevka Custom
+URxvt.italicFont  : xft:Iosevka Custom:pixelsize=13:weight=italic:antialias=true,xft:Iosevka Custom
 
 URxvt.lineSpace           : 0
 URxvt.letterSpace         : -1
@@ -73,8 +74,8 @@ URxvt.matcher.button		: 1
 !									 XTerm
 ! -----	--------------------------------------------------------------------------
 XTerm*letterSpace:-1
-XTerm*faceName: xft:Iosevka Custom
-xterm*faceSize: 9
+XTerm*faceName: xft:Iosevka Term
+xterm*faceSize: 10
 xterm*internalBorder: 20
 xterm*vt100*geometry: 70x13
 xterm*saveLines: 16384

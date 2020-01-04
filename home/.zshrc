@@ -102,8 +102,12 @@ source $ZSH/oh-my-zsh.sh
 #                                   Neofetch
 # =============================================================================
 
-neofetch
 
+if [[ $term_emulator == *"kitty"* ]]; then
+	neofetch --backend 'kitty'
+else
+	neofetch --backend 'w3m'
+fi
 
 # =============================================================================
 #                                   Functions
@@ -538,7 +542,7 @@ fi
 #============================================================
 export VISUAL="vim"
 
-if [[ "kitty" == $term_emulator ]]; then
+if [[ $term_emulator == *"kitty"* ]]; then
 	export TERM="xterm-kitty"
 else
 	export TERM="xterm-256color"
@@ -551,7 +555,7 @@ fi
 alias ytmp3="youtube-dl --extract-audio --audio-format mp3"
 alias cls="clear"
 
-if [[ "kitty" == $term_emulator ]]; then
+if [[ $term_emulator == *"kitty"* ]]; then
 	alias clear="kitty icat --clear && clear"
 fi
 
