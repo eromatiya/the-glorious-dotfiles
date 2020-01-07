@@ -154,7 +154,7 @@ panel:setup {
           layout = wibox.layout.fixed.vertical,
           spacing = dpi(10),
           require('widget.user-profile'),
-          require('widget.gmail'),
+          require('widget.email'),
           require('widget.weather'),
           require('widget.calculator')
         },

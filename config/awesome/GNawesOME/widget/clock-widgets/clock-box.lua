@@ -180,7 +180,7 @@ clock_box:setup {
           {
             -- top_separator,
             widget_header,
-            require('widget.gmail'),
+            require('widget.email'),
             require('widget.weather'),        
             layout = wibox.layout.fixed.vertical,
             spacing = dpi(5)

@@ -5,16 +5,26 @@ local wibox = require('wibox')
 
 local dpi = require('beautiful').xresources.apply_dpi
 local HOME = os.getenv('HOME')
-local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/gmail/icons/'
+local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/email/icons/'
 
 local naughty = require('naughty')
 
-local email_count = 0
+local mail_counter = 0
 
-local gmail_icon_widget = wibox.widget {
+-- Set email account credentials here
+-- Make sure to encrypt this file
+-- Generate an app password from your email account; just google it.
+local email_account   = ''
+local app_password    = ''
+local imap_server     = ''
+local port            = ''
+
+
+
+local email_icon_widget = wibox.widget {
   {
     id = 'icon',
-    image = PATH_TO_ICONS .. 'gmail' .. '.svg',
+    image = PATH_TO_ICONS .. 'email' .. '.svg',
     resize = true,
     forced_height = dpi(45),
     forced_width = dpi(45),
@@ -23,29 +33,23 @@ local gmail_icon_widget = wibox.widget {
   layout = wibox.layout.fixed.horizontal
 }
 
-local gmail_header = wibox.widget {
-  text   = "Gmail",
+local email_header = wibox.widget {
+  text   = "Email",
   font   = 'SFNS Display Regular 14',
   align  = 'center',
   valign = 'center',
   widget = wibox.widget.textbox
 }
 
-
-local gmail_count = wibox.widget {
+local email_count = wibox.widget {
   markup = '<span font="SFNS Display Regular 14">Loading...</span>',
   align = 'left',
   valign = 'center',
   widget = wibox.widget.textbox
 }
 
--- Set email account credentials here
--- Make sure to ecrypt this file
-local gmail_account   = ''
-local gmail_password  = ''
-local imap_server     = 'imap.gmail.com'
-local port            = '993'
 
+-- Show email count
 local check_count = [[
 # A simple python script to get email count wrapped inside bash wrapped inside lua lol
 # Make sure to encrypt this
@@ -54,7 +58,7 @@ import imaplib
 import re
 
 M=imaplib.IMAP4_SSL("]] .. imap_server .. [[", ]] .. port .. [[)
-M.login("]] .. gmail_account .. [[","]] .. gmail_password .. [[")
+M.login("]] .. email_account .. [[","]] .. app_password .. [[")
 
 status, counts = M.status("INBOX","(MESSAGES UNSEEN)")
 
@@ -68,7 +72,8 @@ END
 ]]
 
 
-local read_undread = [[
+-- Show unread emails
+local read_unread = [[
 # A simple python script to get unread emails wrapped inside bash wrapped inside lua lol
 # Make sure to encrypt this
 python3 - <<END
@@ -105,7 +110,7 @@ def process_mailbox(M):
 
 
 M=imaplib.IMAP4_SSL("]] .. imap_server .. [[", ]] .. port .. [[)
-M.login("]] .. gmail_account .. [[","]] .. gmail_password .. [[")
+M.login("]] .. email_account .. [[","]] .. app_password .. [[")
 
 rv, data = M.select("INBOX")
 if rv == 'OK':
@@ -116,15 +121,14 @@ M.logout()
 END
 ]]
 
-local gmail_report = wibox.widget{
+-- Widget layout
+local email_report = wibox.widget{
   expand = 'none',
   layout = wibox.layout.fixed.vertical,
   {
     wibox.widget {
-      wibox.container.margin(gmail_header, dpi(10), dpi(10), dpi(10), dpi(10)),
-      bg = beautiful.modal_bg,
-      border_width = dpi(1),
-      border_color = '#ffffff40',
+      wibox.container.margin(email_header, dpi(10), dpi(10), dpi(10), dpi(10)),
+      bg = beautiful.bg_modal_title,
       shape = function(cr, width, height)
       gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.modal_radius) end,
       widget = wibox.container.background,
@@ -137,7 +141,7 @@ local gmail_report = wibox.widget{
       layout = wibox.layout.fixed.horizontal,
       {
         wibox.widget {
-          gmail_icon_widget,
+          email_icon_widget,
           margins = dpi(4),
           widget = wibox.container.margin
         },
@@ -148,52 +152,81 @@ local gmail_report = wibox.widget{
         {
 
           layout = wibox.layout.flex.vertical,
-          gmail_count,
+          email_count,
         },
         margins = dpi(4),
         widget = wibox.container.margin
       },
     },
-    bg = beautiful.modal_bg,
-    border_width = dpi(1),
-    border_color = '#ffffff40',
+    bg = beautiful.bg_modal,
     shape = function(cr, width, height)
     gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.modal_radius) end,
     widget = wibox.container.background
   },
 }
 
+-- Create a notification
 local notify_new_email = function(count)
-  if tonumber(count) > tonumber(email_count) then
-    email_count = count
+  if tonumber(count) > tonumber(mail_counter) then
+    mail_counter = count
     naughty.notify({ 
       title = "Message received!",
       text = "You have an unread email!",
-      app_name = 'Gmail',
-      icon = PATH_TO_ICONS .. 'gmail' .. '.svg'
+      app_name = 'Email',
+      icon = PATH_TO_ICONS .. 'email' .. '.svg'
     })
   else
-    email_count = count
+    mail_counter = count
   end
 end
+
+-- Set text
+local set_markup = function(mail_count)
+
+  if mail_count == 'no-credentials' then
+    email_count.markup = '<span font="SFNS Display Regular 14">Email credentials are required!</span>'
+    return
+  end
+
+  if mail_count == 'no-network' then
+    email_count.markup = '<span font="SFNS Display Regular 14">Check internet connection!</span>'
+    return
+  end
+
+
+  if tonumber(mail_count) <= 1 then
+    email_count.markup = '<span font="SFNS Display Regular 14">You have ' .. mail_count .. ' unread email!</span>'
+  else
+    email_count.markup = '<span font="SFNS Display Regular 14">You have ' .. mail_count .. ' unread emails!</span>'
+  end
+end
+
 
 local update_widget = function()
   awful.spawn.easy_async_with_shell(check_count, function(stdout)
     if tonumber(stdout) ~= nil then
       unread_count = stdout:gsub('%\n','')
-      if tonumber(unread_count) > 1 then
-        gmail_count.markup = '<span font="SFNS Display Regular 14">You have ' .. unread_count .. ' unread emails!</span>'
-      else
-        gmail_count.markup = '<span font="SFNS Display Regular 14">You have ' .. unread_count .. ' unread email!</span>'
-      end
-
+      -- Update textbox
+      set_markup(unread_count)
       -- Notify
       notify_new_email(unread_count)
     else
-      gmail_count.markup = '<span font="SFNS Display Regular 14">Check internet connection!</span>'
+      -- Update textbox
+      set_markup('no-network')
     end
   end)
 end
+
+
+local check_credentials = function()
+  if email_account == '' or app_password == '' or imap_server == '' or port == '' then
+    set_markup('no-credentials')
+  else
+    -- Update widget
+    update_widget()
+  end
+end
+
 
 -- Updater
 local update_widget_timer = gears.timer {
@@ -201,17 +234,17 @@ local update_widget_timer = gears.timer {
   autostart = true,
   call_now = true,
   callback  = function()
-  -- Update widget
-  update_widget()
+    -- Check if there's a credentials
+    check_credentials() 
 end
 }
 
 
-
+-- A tooltip
 local read_emails = awful.tooltip
 {
   text = 'Loading...',
-  objects = {gmail_icon_widget},
+  objects = {email_icon_widget},
   mode = 'outside',
   align = 'right',
   preferred_positions = {'right', 'left', 'top', 'bottom'},
@@ -220,9 +253,9 @@ local read_emails = awful.tooltip
 }
 
 
-
+-- Update tooltip
 function show_emails()
-  awful.spawn.easy_async_with_shell(read_undread, function(stdout, stderr, reason, exit_code)
+  awful.spawn.easy_async_with_shell(read_unread, function(stdout, stderr, reason, exit_code)
     if (stdout:match("%W")) then
       if stdout ~= nil then
         read_emails.text = stdout
@@ -236,7 +269,8 @@ function show_emails()
   )
 end
 
-gmail_icon_widget:connect_signal("mouse::enter", function() show_emails() end)
+-- Show unread emails on hover
+email_icon_widget:connect_signal("mouse::enter", function() show_emails() end)
 
 
-return gmail_report
+return email_report
