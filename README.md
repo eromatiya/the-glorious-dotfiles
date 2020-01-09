@@ -220,8 +220,8 @@ This setup is split in multiple parts:
 
 # ABOUT WIDGETS AND MODULES
 + You need a song with hard-coded album cover for music widget to display its cover.
-+ You can disable the dialog backdrop effect in `awesome/configuration/client/rules.lua`. Just search for `dialog` and set `drawBackdrop` to false in the properties. You can also just unload the module in `rc.lua`.
-+ You will probably have an error or the widget will not update because of `weather-update.lua`. It is because I did not include an openweathermap API keys and etc.
++ You can add/remove the dialog backdrop effect in `awesome/configuration/client/rules.lua`. Just search for `dialog` and set `drawBackdrop` to true/false in the properties. You can also just load/unload the module in `rc.lua`.
++ Weather and email widget requires your credentials. In weather widget, you need an openweather api. While the email widget is an IMAP client. So any email service that supports IMAP will work. Just remember to generate an app password for your account.
 + Generating an application menu
   - Using `xdg-menu`:
     - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
@@ -230,6 +230,7 @@ This setup is split in multiple parts:
   - Using `awesome-freedesktop`:  
     - Install `awesome-freedesktop`. In Arch's AUR, it is called `awesome-freedesktop-git` It generates a list of applications installed. Or better yet check the repo [here](https://github.com/lcpz/awesome-freedesktop).
     - You can change the icon theme in `awesome/theme/default-theme.lua`. Search for `theme.icon_theme`
+  - The module is disabled by default in `rc.lua`.
 
 **So, you need to configure and tweak it by yourself to make it work properly. You can also just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
 

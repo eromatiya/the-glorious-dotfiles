@@ -127,46 +127,59 @@ end
 local notifbox_empty = function()
   local empty_notifbox = wibox.widget {
     {
+      layout = wibox.layout.fixed.vertical,
+      spacing = dpi(5),
       {
-        layout = wibox.layout.fixed.vertical,
-        spacing = dpi(5),
+        expand = 'none',
+        layout = wibox.layout.align.horizontal,
+        nil, 
         {
-          expand = 'none',
-          layout = wibox.layout.align.horizontal,
-          nil, 
-          {
-            image = PATH_TO_ICONS .. 'empty-notification' .. '.svg',
-            resize = true,
-            forced_height = dpi(35),
-            forced_width = dpi(35),
-            widget = wibox.widget.imagebox,
-          },
-          nil
+          image = PATH_TO_ICONS .. 'empty-notification' .. '.svg',
+          resize = true,
+          forced_height = dpi(35),
+          forced_width = dpi(35),
+          widget = wibox.widget.imagebox,
         },
-        {
-          text = 'Wow, such empty.',
-          font = 'SFNS Display Italic 14',
-          align = 'center',
-          valign = 'center',
-          widget = wibox.widget.textbox
-        },
-        {
-          text = 'Come back later.',
-          font = 'SFNS Display Italic 10',
-          align = 'center',
-          valign = 'center',
-          widget = wibox.widget.textbox
-        },
+        nil
       },
-      margins = dpi(20),
-      widget = wibox.container.margin
+      {
+        text = 'Wow, such empty.',
+        font = 'SFNS Display Bold 14',
+        align = 'center',
+        valign = 'center',
+        widget = wibox.widget.textbox
+      },
+      {
+        text = 'Come back later.',
+        font = 'SFNS Display Regular 10',
+        align = 'center',
+        valign = 'center',
+        widget = wibox.widget.textbox
+      },
     },
-    bg = beautiful.bg_modal,
-    shape = function(cr, width, height)
-      gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.modal_radius) end,
-    widget = wibox.container.background,
+    margins = dpi(20),
+    widget = wibox.container.margin
+    
   }
-  return empty_notifbox
+
+
+  local separator_for_empty_msg =  wibox.widget
+  {
+    orientation = 'vertical',
+    opacity = 0.0,
+    widget = wibox.widget.separator
+  }
+
+  -- Make empty_notifbox center
+  local centered_empty_notifbox = wibox.widget {
+    expand = 'none',
+    layout = wibox.layout.align.vertical,
+    separator_for_empty_msg,
+    empty_notifbox,
+    separator_for_empty_msg
+  }
+
+  return centered_empty_notifbox
 end
 
 -- Reset notifbox_layout

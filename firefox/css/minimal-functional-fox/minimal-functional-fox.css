@@ -1,4 +1,4 @@
-window#main-window {
+html#main-window {
 	/* *******************************************************************
 	You can tweak the major colors here, the names should
 	be self explanatory. If you want you can also import the stylesheet
@@ -28,7 +28,7 @@ window#main-window {
 
 	/* Easy way to tweak most params */
 	--gap-between-tabs                   : 10px;
-	--margin-around-urlbar               : 0px;
+	--margin-around-urlbar               : 5px;
 	--margin-before-back-button          : 9px;
 	--padding-around-searchengine-opts   : 10px;
 	--pinned-tab-favicon-dim             : 27px;
@@ -43,7 +43,7 @@ window#main-window {
 	--urlbar-text-size                   : 10pt;
 	--urlbar-text-weight                 : 600;
 	--urlbar-list-width                  : 50%;
-	--urlbar-container-margin            : 1px;
+	--urlbar-container-margin            : 0px;
 
 
 	/* ******************************************************************* */
