@@ -39,7 +39,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     visible = false,
     screen = s,
     bg = '#00000000',
-    type = 'dock',
+    type = 'utility',
     x = s.geometry.x,
     y = dpi(26),
     width = s.geometry.width,

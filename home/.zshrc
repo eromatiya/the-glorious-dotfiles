@@ -104,9 +104,16 @@ source $ZSH/oh-my-zsh.sh
 
 
 if [[ $term_emulator == *"kitty"* ]]; then
+	# kitty
 	neofetch --backend 'kitty'
+
+elif [[  $term_emulator == *"tmux"*  ]]; then
+	# tmux
+	neofetch --backend 'w3m' --ascii_distro 'arch_small' 
+
 else
-	neofetch --backend 'w3m'
+	# xterm and rxvt
+	neofetch --backend 'w3m' --xoffset 20 --yoffset 20 --gap 0
 fi
 
 # =============================================================================
@@ -322,7 +329,7 @@ if [[ $OSTYPE = (darwin|freebsd)* ]]; then
 		alias ls='() { $(whence -p ls) -CFtr $@ }'
 	fi
 else
-	alias ls='() { $(whence -p ls) -Ctr --file-type --color=auto $@ }'
+	# alias ls='() { $(whence -p ls) -Ctr --file-type --color='auto' $@ }'
 fi
 
 # Set editor preference to nvim if available.
@@ -541,6 +548,7 @@ fi
 #						Exports
 #============================================================
 export VISUAL="vim"
+export EDITOR=$VISUAL
 
 if [[ $term_emulator == *"kitty"* ]]; then
 	export TERM="xterm-kitty"

@@ -110,6 +110,7 @@ local TopPanel = function(s, offset)
     {
       ontop = true,
       screen = s,
+      type = 'dock',
       height = dpi(26),
       width = s.geometry.width - offsetx,
       x = s.geometry.x + offsetx,

@@ -12,6 +12,7 @@ local left_panel = function(screen)
     wibox {
     screen = screen,
     width = action_bar_width,
+    type = 'dock',
     height = screen.geometry.height,
     x = screen.geometry.x,
     y = screen.geometry.y,
@@ -33,7 +34,7 @@ local left_panel = function(screen)
     ontop = true,
     screen = screen,
     bg = '#00000000',
-    type = 'dock',
+    type = 'utility',
     x = screen.geometry.x,
     y = screen.geometry.y,
     width = screen.geometry.width,

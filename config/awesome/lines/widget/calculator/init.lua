@@ -34,9 +34,9 @@ end
 local widget_wrapper = function(widget_arg, pos, rad)
   return wibox.widget {
     widget_arg,
-          border_width = dpi(1),
-      border_color = '#ffffff40',
-      bg = beautiful.modal_bg,
+    border_width = dpi(1),
+    border_color = '#ffffff40',
+    bg = beautiful.modal_bg,
     shape = gen_shape(pos, rad),
     widget = wibox.container.background
   }
@@ -71,15 +71,21 @@ local calculate = function ()
     local string_expression = calculator_screen.calcu_screen.text
     func = assert(load("return " .. string_expression))
     ans = func()
+    
     -- Set the answer in textbox
+    if tostring(ans) == '-nan' then
+      calculator_screen.calcu_screen:set_text('undefined')
+      return
+    end
     calculator_screen.calcu_screen:set_text(ans)
+
   end
 end
 
 -- Delete the last digit in screen
 local delete_value = function()
   -- Check string length to prevent emptying the textbox(making it nil) or if inf
-  if calculator_screen.calcu_screen.text == 'inf' or tonumber(string.len(calculator_screen.calcu_screen.text)) == 1 then
+  if calculator_screen.calcu_screen.text == 'inf' or calculator_screen.calcu_screen.text == 'undefined' or tonumber(string.len(calculator_screen.calcu_screen.text)) == 1 then
     calculator_screen.calcu_screen:set_text('0')
   else
     -- Delete the last digit in screen
@@ -107,7 +113,7 @@ local format_screen = function(value)
       calculator_screen.calcu_screen:set_text(value)
     end
 
-  elseif  calculator_screen.calcu_screen.text == 'inf' then
+  elseif  calculator_screen.calcu_screen.text == 'inf' or calculator_screen.calcu_screen.text == 'undefined'then
 
     -- Clear screen if an operator is selected
     if string.match(string.sub(value, -1), "[%+%-%/%*%^%.]") then
