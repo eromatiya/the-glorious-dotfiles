@@ -42,10 +42,9 @@
 
 ## Floppy
 
-| |
-| --- |
-| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dirty.png) |
-
+<kbd>
+  <img src="https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dirty.png">
+</kbd>
 
 | Desktop | Floating | Dashboard | Notification Center |
 | --- | --- | --- | --- |
@@ -58,9 +57,9 @@
 
 ## GNawesOME
 
-| |
-| --- |
-| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png) |
+<kbd>
+  <img src="https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png">
+</kbd>
 
 | Dirty | Dirtier | Application Dashboard |
 | --- | --- | --- |
@@ -68,9 +67,9 @@
 
 ## Rounded
 
-| |
-| --- |
-| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |
+<kbd>
+  <img src="https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png">
+</kbd>
 
 | Desktop | Dirty |
 | --- | --- |
@@ -78,9 +77,9 @@
 
 ## Lines
 
-| |
-| --- |
-| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png) |
+<kbd>
+  <img src="https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png">
+</kbd>
 
 | Desktop | Dirty |
 | --- | --- |
