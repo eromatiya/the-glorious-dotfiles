@@ -40,38 +40,51 @@
 ## Screenshots
 + *All screenshots shown below are for illustration purpose only. Actual setup may vary due to rice enhancement.*
 
-| Floppy | Preview |
-| --- | --- |
-| Desktop | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/desktop.png) |
-| Dirty | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dirty.png)   |
-| Floating | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dirty2.png)   |
-| Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dashboard.png) |
-| Notification Center | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/notif-center.png) |
-| Widgets and a Calulator | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/widgets-center.png) |
-| App Dashboard | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/application-dashboard.png) |
-| Lockscreen | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/lockscreen.png) |
-| Greeter | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/greeter.png) |
+## Floppy
+
+| |
+| --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dirty.png) |
 
 
-# Other themes preview
+| Desktop | Floating | Dashboard | Notification Center |
+| --- | --- | --- | --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dirty2.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/dashboard.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/notif-center.png) |
+
+| Widgets Center | Launcher | Lockscreen | Greeter |
+| --- | --- | --- | --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/widgets-center.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/application-dashboard.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/lockscreen.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/floppy/greeter.png) |
+
 
 ## GNawesOME
 
-| Desktop | Dirty | Dirtier | Application Dashboard |
-| --- | --- | --- | --- |
-| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dashboard.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/application-dashboard.png) |
+| |
+| --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/desktop.png) |
+
+| Dirty | Dirtier | Application Dashboard |
+| --- | --- | --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/dashboard.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/gnawesome/application-dashboard.png) |
 
 ## Rounded
 
-| Desktop | Dirty | Application Dashboard |
-| --- | --- | --- |
-| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |
+| |
+| --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/appdashboard.png) |
+
+| Desktop | Dirty |
+| --- | --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/rounded/dirty.png) | 
 
 ## Lines
 
-| Desktop | Dirty | Application Dashboard |
-| --- | --- | --- |
-| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/dirty.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png) |
+| |
+| --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/appdashboard.png) |
+
+| Desktop | Dirty |
+| --- | --- |
+| ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/desktop.png) | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/lines/dirty.png) |
 
 ## Dependencies
 Here is a complete list of dependencies needed for making these AwesomeWM setup to work.
