@@ -40,13 +40,14 @@ end
 
 -- Check Blur Status Commands
 local check_blur_status = [[
-grep -F "blur-background-frame = false;" ]] .. filesystem.get_configuration_dir() .. [[/configuration/compton.conf | tr -d '[\-\;\=\ ]'
+grep -F 'method = "none";' ]] .. filesystem.get_configuration_dir() .. [[/configuration/picom.conf | tr -d '[\"\;\=\ ]'
 ]]
 
 -- Check status
 local check_action_status = function()
   awful.spawn.easy_async_with_shell(check_blur_status, function(stdout)
-    if stdout:match('blurbackgroundframefalse') then
+    
+    if stdout:match('methodnone') then
       action_status = false
     else
       action_status = true

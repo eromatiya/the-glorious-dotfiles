@@ -103,18 +103,16 @@ end
 
 
 
-
--- Notification template
--- Comment this up to bottom to use default template
 -- ===================================================================
 -- Fake background, the real bg is in the template
 beautiful.notification_bg = "#00000000"
 local notification_bg = beautiful.notification_bg
 -- margin
 beautiful.notification_margin = dpi(5)
+
+
+
 naughty.connect_signal("request::display", function(n)
-
-
 
   -- naughty.actions template
   local actions_template = wibox.widget {
@@ -146,6 +144,12 @@ naughty.connect_signal("request::display", function(n)
   }
 
 
+  -- Default notification layout
+  -- naughty.connect_signal('request::display', function(n)
+  --   naughty.layout.box {notification = n}
+  -- end)
+
+  -- Custom notification layout
   naughty.layout.box {
     notification = n,
     type = "splash",
@@ -159,10 +163,10 @@ naughty.connect_signal("request::display", function(n)
                 {
                   {
                     {
-                      -- TITLE
                       {
                         {
                           {
+                            -- TITLE
                             align = "center",
                             widget = naughty.widget.title,
                           },
@@ -245,7 +249,7 @@ naughty.connect_signal("request::display", function(n)
 
   if not _G.dont_disturb then
     -- Add Sound fx to notif
-    -- Depends: canberra-gtk-play
+    -- Depends: libcanberra
     awful.spawn('canberra-gtk-play -i message', false)
   end
 

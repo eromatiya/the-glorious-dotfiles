@@ -26,6 +26,12 @@ local clientKeys =
     {description = 'close', group = 'client'}
   ),
   awful.key(
+    { modkey, "Shift" }, 
+    "c", 
+    awful.placement.centered,
+    {description = 'align a client to the center of the parent area.', group = "client"}
+  ),
+  awful.key(
     {modkey},
     'c',
     function(c)

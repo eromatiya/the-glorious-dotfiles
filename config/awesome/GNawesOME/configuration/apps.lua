@@ -13,7 +13,7 @@ return {
   },
   -- List of apps to start once on start-up
   run_on_start_up = {
-    'compton --dbus --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf', -- Compositor
+    'picom -b --experimental-backends --dbus --config ' .. filesystem.get_configuration_dir() .. '/configuration/picom.conf', -- Compositor
     'blueman-applet', -- Bluetooth tray icon
     'xfce4-power-manager --no-daemon --debug', -- Power manager
     '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager

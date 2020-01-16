@@ -1,38 +1,29 @@
--- Toggle compton blur fx
--- depends : compton-tryone
+-- Toggle picom blur fx
+-- depends : picom-tryone
 local awful = require('awful')
 
 local toggfx = {}
 
 local toggle_fx = function(togglemode)
   local toggle_fx_script = [[
-  comptonDir=$HOME/.config/awesome/configuration/compton.conf
-  compton_id=0
-
-  function kill_compton() {
-    compton_id=$(pidof compton)
-    if [ ! -z compton_id ]; then
-      kill -9 $(pidof compton)
-    fi
-  }
+  picom_dir=$HOME/.config/awesome/configuration/picom.conf
 
   case ]] .. togglemode .. [[ in
     'enable')
-    kill_compton
-    sed -i -e 's/blur-background-frame = false/blur-background-frame = true/g' "${comptonDir}"
-    compton --config ${comptonDir} &> /dev/null
-    notify-send 'System Notification' 'Blur effects are now enabled!'
+    # notify-send 'System Notification' 'Blur effects are now enabled!'
+    sed -i -e 's/method = "none"/method = "dual_kawase"/g' "${picom_dir}"
     ;;
     'disable')
-    kill_compton
-    sed -i -e 's/blur-background-frame = true/blur-background-frame = false/g' "${comptonDir}"
-    compton --config ${comptonDir} &> /dev/null
-    notify-send 'System Notification' 'Blur effects are now disabled!'
+    # notify-send 'System Notification' 'Blur effects are now disabled!'
+    sed -i -e 's/method = "dual_kawase"/method = "none"/g' "${picom_dir}"
     ;;
   esac
   ]]
 
-  awful.spawn.easy_async_with_shell(toggle_fx_script, function(stdout, stderr, out, exit) end, false)
+  --sed -i -e 's/method = "none"/method = "dual_kawase"/g' "${picom_dir}"
+  awful.spawn.easy_async_with_shell(toggle_fx_script, function(stdout, stderr)
+    -- require('naughty').notify({message = tostring(stdout .. ' + ' .. stderr)})
+  end, false)
 
 end
 

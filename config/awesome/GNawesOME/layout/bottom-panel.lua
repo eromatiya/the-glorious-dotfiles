@@ -61,7 +61,7 @@ local BotPanel = function(s, offset)
     orientation = 'vertical',
     forced_width = 16,
     opacity = 0.50,
-    span_ratio = 0.7,
+    span_ratio = 0.5,
     widget = wibox.widget.separator
   }
 

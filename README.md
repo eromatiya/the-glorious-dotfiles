@@ -8,7 +8,7 @@
 + **OS**: I use Arch, btw
 + **WM**: AwesomeWM
 + **Terminal Emulators**: kitty, urxvt-pixbuf, xterm
-+ **Compositor**: compton-tryone-git
++ **Compositor**: picom-tryone-git
 + **File Manager**: nemo
 + **Launcher**: rofi-git
 + **Editor**: neovim, atom
@@ -34,6 +34,7 @@
 + https://youtu.be/GeBrIwxmdx4  
 
 ## Announcement!
++ We're using picom now! Tryone's [feature/dual_kawase](https://github.com/tryone144/compton/tree/feature/dual_kawase) to be exact.
 + I have created a repository for the widgets I have wrote while creating these setups. Right now, the repo only has the `dynamic wallpaper` widget. It changes wallpaper based on time. My next target is the notification center. Check it out [here](https://github.com/ilovecookieee/awesome-glorious-widgets).
 
 
@@ -95,7 +96,7 @@ If you notice that something is missing, please open an issue so I can add the d
 | `rofi-git` | Window switcher, application launcher and dmenu replacement | Application launcher |
 | `xbacklight` | RandR-based backlight control application | Brightness widget and control |
 | `alsa-utils` | An alternative implementation of Linux sound support | Volume widget and control |
-| `Compton-tryone` | A compositor for X11 | compositor with kawase-blur |
+| `picom-tryone` | A compositor for X11 | compositor with kawase-blur |
 | `blueman` | Manages bluetooth | For bluetooth widgets |
 | `xfce4-power-manager` | Manages battery/power settings | Power Settings |
 | `acpi`,`acpid`,`acpi_call` | Show battery status and other ACPI info | Charger notifications |
@@ -167,7 +168,7 @@ This setup is split in multiple parts:
 + Client rules?
   - `awesome/configuration/client/keys.lua`
 + Compositor?
-  -  `awesome/configuration/compton.conf`
+  -  `awesome/configuration/picom.conf`
 + Rofi?
   - `awesome/configuration/rofi/`
 + Tags?

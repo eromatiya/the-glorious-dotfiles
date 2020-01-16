@@ -14,7 +14,7 @@ local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/xdg-folders/icons/'
     orientation = 'vertical',
     forced_width = 16,
     opacity = 0.50,
-    span_ratio = 0.7,
+    span_ratio = 0.50,
     widget = wibox.widget.separator
   }
 

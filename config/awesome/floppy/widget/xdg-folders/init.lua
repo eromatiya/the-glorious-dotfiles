@@ -14,7 +14,8 @@ local separator =  wibox.widget
   {
     orientation = 'horizontal',
     forced_height = dpi(1),
-    opacity = 0.20,
+    span_ratio = 0.60,
+    opacity = 0.40,
     widget = wibox.widget.separator
   }
 
