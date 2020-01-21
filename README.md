@@ -6,11 +6,11 @@
 
 ## Details
 + **OS**: I use Arch, btw
-+ **WM**: AwesomeWM
-+ **Terminal Emulators**: kitty, urxvt-pixbuf, xterm
-+ **Compositor**: picom-tryone-git
++ **WM**: [AwesomeWM](https://github.com/awesomeWM/awesome)
++ **Terminal Emulators**: [kitty](https://github.com/kovidgoyal/kitty), urxvt-pixbuf, xterm
++ **Compositor**: [picom-tryone-git](https://github.com/tryone144/compton/tree/feature/dual_kawase)
 + **File Manager**: nemo
-+ **Launcher**: rofi-git
++ **Launcher**: [rofi-git](https://github.com/davatorium/rofi)
 + **Editor**: neovim, atom
 + **Browser**: firefox
 + **Music Player**: ncmpcpp, mpd, mpc
@@ -137,6 +137,7 @@ If you notice that something is missing, please open an issue so I can add the d
   - imagemagick (extract album cover, music widget)
   - jq (Formatting)
   - libcanberra (event sounds)
+  - xidlehook (lockscreen timer)
 + Copy the selected theme from `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
 + Rename it to `awesome`
 + Reload Awesome using `Super + shift + r`
@@ -144,13 +145,13 @@ If you notice that something is missing, please open an issue so I can add the d
 
 # File Structure
 This setup is split in multiple parts:
-+ `rc.lua` the core of configuration. You can enable and disable the modules here and load all your configurations.
-+ The `layout` directory contains the panel configurations. Change panel settings here or load/unload widgets.
-+ In `configuration` directory you can find all the configs about the key bindings, client rules, tags, starting apps and etc.
-+ The `module` consists of many files that are usually inside the `rc.lua` like notifications, app menus, etc. You can load them in the `rc.lua`.
-+ The `themes` folder contains themes and colors of the setup.
-+ The `widgets` contains all the widgets(of course). These are used in the panels and dashboard. It contains the wifi, bluetooth, battery widget and many more.
-+ `binaries` contains bash scripts wrapped in lua and awesome wm API.
++ Configuration is about all the settings available
++ Layout hold the disposition of all the widgets
++ Module contain all the features available
++ Theme hold all the aestetic aspects
++ Widget contain all the widgets available
++ Binaries contains all the bash script wrapped in lua and AwesomeWM API
+
 
 # Where to edit this and that?
 + Colorschemes?
@@ -252,6 +253,6 @@ This setup is split in multiple parts:
 
 
 **Special thanks**
-+ **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome)
++ **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome). Floppy is based on this setup. Also, I went back from Windows10 to my beloved Archlinux just to try this. I was so amazed rofl. Try PapyElGringo's material-awesome!
 + **pdonadeo** for the [rofi-web-search.py](https://github.com/pdonadeo/rofi-web-search)
 + **[elenapan](https://github.com/elenapan/dotfiles), [addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)** and many awesome guys from r/unixporn.
