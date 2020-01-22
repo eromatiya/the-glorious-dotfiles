@@ -1,7 +1,7 @@
 <div align="center">
     <h1>Glorious Dotfiles</h1>
     <p>There's no place like <b><code>~</code></b> !</p>
-    <p>Fork it. Steal it. I don't care. <b><code>Just don't make it ugly</code></b> .</p>
+    <p>Fork it. Steal it. I don't care. <b><code>Just don't make it ugly.</code></b></p>
 </div>
 
 ## Details
@@ -148,7 +148,7 @@ This setup is split in multiple parts:
 + Configuration is about all the settings available
 + Layout hold the disposition of all the widgets
 + Module contain all the features available
-+ Theme hold all the aestetic aspects
++ Theme hold all the aesthetic aspects
 + Widget contain all the widgets available
 + Binaries contains all the bash script wrapped in lua and AwesomeWM API
 
@@ -161,7 +161,7 @@ This setup is split in multiple parts:
   - `awesome/layout`
 + Client behaviour?
   - `awesome/module/decorate-client.lua`
-  - `awesome/module/titlebar-decorate-client.lua` - for titlebar behaviour. Kinda messy right now
+  - `awesome/module/titlebar-decorate-client.lua`
 + Start-up Applications?
   - `awesome/configuration/apps.lua`
 + Keybindings?
