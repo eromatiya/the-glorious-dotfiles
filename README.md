@@ -14,8 +14,8 @@
 + **Editor**: vim, sublime text
 + **Browser**: firefox
 + **Music Player**: ncmpcpp, mpd, mpc
-+ **Lock Screen**: [mantablockscreen](https://github.com/reorr/mantablockscreen)
-+ **Display Manager**: sddm with [sugar-candy](https://www.opencode.net/marianarlt/sddm-sugar-candy)
++ **Lock Screen**: [**mantablockscreen**](https://github.com/reorr/mantablockscreen)
++ **Display Manager**: sddm with [**sugar-candy**](https://www.opencode.net/marianarlt/sddm-sugar-candy)
 + **Setup font**: **SFNS Display**  
 
 # An Awesome Setup
@@ -115,18 +115,18 @@
 | `libcanberra` |  PulseAudio plugin for libcanberra | System sounds |
 | `xidlehook` | xautolock rewrite in Rust, with a few extra features | lockscreen timer |
 
-##### Fonts
+## Fonts
 + **Google Sans**
 + **San Francisco Display**
 
-#### Installation
+## Installation
 + **Install the dependencies.**
 + Copy the selected theme from `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
 + Rename it to `awesome`
 + Reload Awesome using `Super + shift + r`
 
 
-# Basic File Structure
+## Basic File Structure
 Each setup is split in multiple parts:
 + `Configuration` is about all the settings available
 + `Layout` hold the disposition of all the widgets
@@ -136,7 +136,7 @@ Each setup is split in multiple parts:
 + `Binaries` contains all the bash script wrapped in lua and AwesomeWM API
 
 
-# Where to edit this and that?
+## Where to edit this and that?
 + Aesthetics?
   - Go to `awesome/theme`
   - Then check the `default-theme.lua` and *`setupname`*`-theme\init.lua` files
@@ -169,7 +169,7 @@ Each setup is split in multiple parts:
   - `Trivago`
 
 
-# NOTE
+## NOTE
 + This setup will not mostly work out of the box because:
   - **YOU'RE NOT USING [`awesome - git master branch`](https://github.com/awesomeWM/awesome/tree/master) version**
   - It is only tested and configured on a 1366x768 resolution (Lenovo x230)
@@ -217,13 +217,13 @@ Each setup is split in multiple parts:
   | ![Screenshot](https://github.com/ilovecookieee/Glorious-Dotfiles/blob/master/screenshots/anti-aliased-bars.png) |
 
 
-# ABOUT WIDGETS AND MODULES
+## ABOUT WIDGETS AND MODULES
 + Music Widget:
   - You need a song with hard-coded album cover for music widget to display its cover.
 + Backdrop effect or the blurring of modals/dialogs background:
- - You can add/remove the dialog backdrop effect in `awesome/configuration/client/rules.lua`. Just search for `dialog` and set `drawBackdrop` to true/false in the properties. You can also just load/unload the module in `rc.lua`.
+  - Toggle the backdrop effect by setting the `drawBackdrop` to **true/false** in rules or by adding/removing a comment of this module in `rc.lua`.
 + Weather and email widget:
- - Requires your credentials. 
+ - Credentials required.
 + Menu module:
   - Using `xdg-menu`. Requires manual intervention to generate a list of application. Instruction:
     - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
@@ -234,11 +234,10 @@ Each setup is split in multiple parts:
     - You can change the icon theme in `awesome/theme/default-theme.lua`. Search for `theme.icon_theme`
 + I have created a repository for the widgets I have wrote while creating these setups. Right now, the repo only has the `dynamic wallpaper` widget. It changes wallpaper based on time. My next target is the notification center. Check it out [here](https://github.com/ilovecookieee/awesome-glorious-widgets).
 
-**So, you need to configure and tweak it by yourself to make it work properly. You can also just open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).**
+## Having a problem or suggestion?
+You can open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
 
-#### Suggestion? If you have any suggestion on how to improve these setups, please open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
-
-**Special thanks**
+## **Special thanks**
 + **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome). Floppy is based on this setup. I highly recommend that you visit his repos!
 + **pdonadeo** for the [rofi-web-search.py](https://github.com/pdonadeo/rofi-web-search)
 + **[elenapan](https://github.com/elenapan/dotfiles), [addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)** and many awesome guys from r/unixporn.
