@@ -119,7 +119,7 @@
 + **Google Sans**
 + **San Francisco Display**
 
-## Installation
+## Getting started
 + **Install the dependencies.**
 + Copy the selected theme from `Glorious-Dotfiles/config/awesome` to `$HOME/.config/`
 + Rename it to `awesome`
@@ -172,9 +172,7 @@ Each setup is split in multiple parts:
 ## NOTE
 + This setup will not mostly work out of the box because:
   - **YOU'RE NOT USING [`awesome - git master branch`](https://github.com/awesomeWM/awesome/tree/master) version**
-  - It is only tested and configured on a 1366x768 resolution (Lenovo x230)
   - Some dependencies are not currently installed
-  - Not tested in a multi-monitor setup (please send me an extra monitor so I can test it lol)
 + Check keybindings using `Super +  F1`
 + Anti-aliased titlebars
   - You can also add an anti-aliased titlebars in these setups thanks to the well-documented dotfiles of [elenepan](https://github.com/elenapan/dotfiles). 
@@ -223,7 +221,7 @@ Each setup is split in multiple parts:
 + Backdrop effect or the blurring of modals/dialogs background:
   - Toggle the backdrop effect by setting the `drawBackdrop` to **true/false** in rules or by adding/removing a comment of this module in `rc.lua`.
 + Weather and email widget:
- - Credentials required.
+  - Credentials required.
 + Menu module:
   - Using `xdg-menu`. Requires manual intervention to generate a list of application. Instruction:
     - Install `xdg-menu`. In Arch, it is called `archlinux-xdg-menu` It generates a list of applications installed.
@@ -237,7 +235,7 @@ Each setup is split in multiple parts:
 ## Having a problem or suggestion?
 You can open an issue [here](https://github.com/ilovecookieee/Glorious-Dotfiles/issues/new).
 
-## **Special thanks**
-+ **PapyElGringo** for the awesome [material-awesome](https://github.com/PapyElGringo/material-awesome). Floppy is based on this setup. I highly recommend that you visit his repos!
+## **Acknowledgement**
++ My setups are based on **PapyElGringo**'s [material-awesome](https://github.com/PapyElGringo/material-awesome). I highly recommend that you visit his repos!
++ **[elenapan](https://github.com/elenapan/dotfiles), [addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)** and many awesome guys from r/unixporn for the inspiration.
 + **pdonadeo** for the [rofi-web-search.py](https://github.com/pdonadeo/rofi-web-search)
-+ **[elenapan](https://github.com/elenapan/dotfiles), [addyfe](https://github.com/addy-dclxvi/almighty-dotfiles)** and many awesome guys from r/unixporn.
