@@ -16,7 +16,7 @@
 + **Music Player**: ncmpcpp, mpd, mpc
 + **Lock Screen**: [**mantablockscreen**](https://github.com/reorr/mantablockscreen)
 + **Display Manager**: sddm with [**sugar-candy**](https://www.opencode.net/marianarlt/sddm-sugar-candy)
-+ **Setup font**: **SFNS Display**  
++ **Setup font**: SFNS Display  
 
 # An Awesome Setup
 

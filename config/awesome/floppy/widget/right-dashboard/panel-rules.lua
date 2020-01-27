@@ -6,10 +6,10 @@ local right_panel = require('widget.right-dashboard.right-panel')
 
 -- Create a wibox for each screen connected
 screen.connect_signal("request::desktop_decoration", function(s)
-  if s.index == 1 then
-    -- Create the right_panel
-    s.right_panel = right_panel(s)
-  end
+
+  -- Create the right_panel
+  s.right_panel = right_panel(s)
+ 
 end)
 
 -- Hide panel when clients go fullscreen
@@ -19,11 +19,11 @@ function updateRightBarsVisibility()
     if s.selected_tag then
       local fullscreen = s.selected_tag.fullscreenMode
         if s.right_panel then
-          if fullscreen and s.right_panel.visible then
-            _G.screen.primary.right_panel:toggle()
+          if fullscreen and awful.screen.focused().right_panel.visible then
+            awful.screen.focused().right_panel:toggle()
             showAgain = true
-          elseif not fullscreen and not s.right_panel.visible and showAgain then
-            _G.screen.primary.right_panel:toggle()
+          elseif not fullscreen and not awful.screen.focused().right_panel.visible and showAgain then
+            awful.screen.focused().right_panel:toggle()
             showAgain = false
           end
         end
