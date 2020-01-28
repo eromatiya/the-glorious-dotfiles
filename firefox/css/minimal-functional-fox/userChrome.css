@@ -21,6 +21,9 @@
 /* Full width tabs and some ui enhancement */
 @import "theme/expand-tab.css";
 
+/* Autohide the navbar */
+@import "theme/autohide-navbar.css";
+
 /* Import a custom stylesheet
  * Everything you add in your customChrome.css file (it doesn't exist by
  * default) will be included here and preserved between updates, so you can move

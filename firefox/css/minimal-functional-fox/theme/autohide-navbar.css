@@ -1,0 +1,34 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+/* AUTOHIDE NAV BAR */
+
+#navigator-toolbox {
+   position: relative;
+   z-index: 1;
+   height: 3px;
+   margin-bottom: -3px;
+   opacity: 0;
+   overflow: hidden;
+ }
+ #navigator-toolbox:hover {
+   height: auto;
+   margin-bottom: 0px;
+   opacity: 1;
+   overflow: show;
+ }
+#content-deck{
+   position:relative;
+   z-index: 0;
+ }
+
+/* Suppress Link
+ * Destination Overlay
+ * */
+#statuspanel[type="overLink"] {
+    display: none !important;
+ }
+
+#tracking-protection-icon-container {
+    display: none;
+ }
