@@ -1,26 +1,16 @@
-let reverseColorCookie;
-
-if (localStorage.getItem('reverseColorCookie') === null){
-  reverseColorCookie = false;
-}
-
-else {
-  reverseColorCookie = JSON.parse(localStorage.getItem('reverseColorCookie'));
-}
-
-const CONFIG = {
+let CONFIG = {
   /**
    * The category, name, key, url, search path, color, icon, and quicklaunch properties for your commands.
    * Icons must be added to "icons" folder and their values/names must be updated.
    * If none of the specified keys are matched, the '*' key is used.
    * Commands without a category don't show up in the help menu.
-   * Update line 21 and 23 if you prefer using Google.
+   * Update line 11 and 13 if you prefer using Google.
    */
   commands: [
     {
-      name: 'Google', /* 'Duckduckgo' , 'Google' */
+      name: 'Duckduckgo',
       key: '*',
-      url: 'https://google.com', /* https://duckduckgo.com, https://google.com */
+      url: 'https://duckduckgo.com',
       search: '/?q={}',
       color: '#DE5833',
     },
@@ -106,7 +96,7 @@ const CONFIG = {
     {
       category: 'Fun',
       name: 'Twitch',
-      key: 't',
+      key: 'tw',
       url: 'https://www.twitch.tv',
       search: '/directory/game/{}',
       color: 'linear-gradient(135deg, #6441a5, #4b367c)',
@@ -126,9 +116,10 @@ const CONFIG = {
     {
       category: 'Other',
       name: 'Twitter',
-      key: 'o',
+      key: 't',
       url: 'https://twitter.com',
-      color: 'linear-gradient(135deg, #C0A886, #E2DBC8)',
+      search: '/search?q={}&src=typed_query',
+      color: 'linear-gradient(135deg, #1DA1F2, #19608F)',
       icon: 'twitter',
       quickLaunch: true,
     },
@@ -189,9 +180,14 @@ const CONFIG = {
   colors: true,
 
   /**
-   * Reverse color theme
+   * Invert color theme
    */
-  reversedColors: reverseColorCookie,
+  invertedColors: false,
+
+  /**
+   * Show keys instead of icons
+   */
+  showKeys: false,
 
   /**
    * The delimiter between a command key and your search query. For example,
@@ -216,6 +212,15 @@ const CONFIG = {
   twentyFourHourClock: true,
 };
 
+// Get invertedColors preference from cookies
+CONFIG.invertedColors = localStorage.getItem('invertColorCookie') 
+                      ? JSON.parse(localStorage.getItem('invertColorCookie'))
+                      : CONFIG.invertedColors;
+
+// Get showKeys preference from cookies
+CONFIG.showKeys = localStorage.getItem('showKeysCookie') 
+                ? JSON.parse(localStorage.getItem('showKeysCookie'))
+                : CONFIG.showKeys;
 
 const $ = {
   bodyClassAdd: c => $.el('body').classList.add(c),
@@ -325,7 +330,7 @@ class Help {
     this._inputEl = $.el('#search-input');
     this._inputElVal = '';
     this._suggester = options.suggester;
-    this._reverseColors = options.reversedColors;
+    this._invertColors = options.invertedColors;
     this._buildAndAppendLists();
     this._registerEvents();
     this._invertValue;
@@ -354,7 +359,7 @@ class Help {
     }
   }
 
-  _buildAndAppendLists() {
+  _buildAndAppendLists(mode) {
     const lists = document.createElement('ul');
     lists.classList.add('categories');
 
@@ -363,7 +368,7 @@ class Help {
         'beforeend',
         `<li class="category">
           <h2 class="category-name">${category}</h2>
-          <ul>${this._buildListCommands(category)}</ul>
+          <ul>${this._buildListCommands(category, mode)}</ul>
         </li>`
       );
     });
@@ -371,16 +376,22 @@ class Help {
     this._el.appendChild(lists);
   }
 
-  _buildListCommands(currentCategory) {
-    this._invertValue = this._reverseColors ? 1: 0;
+  _buildListCommands(currentCategory, mode) {
+    let invertValue = this._invertColors ? 1: 0;
 
-    return this._commands
+    const bgcolor = invertValue ? getComputedStyle(document.documentElement).getPropertyValue('--foreground') 
+                                : getComputedStyle(document.documentElement).getPropertyValue('--background');
+
+    const fgcolor = invertValue ? getComputedStyle(document.documentElement).getPropertyValue('--background') 
+                                : getComputedStyle(document.documentElement).getPropertyValue('--foreground');
+
+    const commandListWithIcons =  this._commands
       .map(({ category, name, key, url, icon }) => {
         if (category === currentCategory) {
           return `
             <li class="command">
               <a href="${url}" target="${this._newTab ? '_blank' : '_self'}">
-                <span class="command-key"><img src='assets/icons/${icon}.png' height = 36px center style="filter: invert(${this._invertValue});"></span>
+                <span class="command-key"><img src='assets/icons/${icon}.png' height = 36px center style="filter: invert(${invertValue});"></span>
                 <span class="command-name">${name}</span>
               </a>
             </li>
@@ -388,6 +399,31 @@ class Help {
         }
       })
       .join('');
+
+    const commandListWithKeys = this._commands
+      .map(({ category, name, key, url }, i) => {
+        if (category === currentCategory) {
+          return `
+            <li class="command">
+              <a href="${url}" target="${this._newTab ? '_blank' : '_self'}">
+                    <style>
+                      .command-key-${i} {
+                        color: ${fgcolor}; 
+                        background-color:${bgcolor};
+                        border: 4px solid ${fgcolor}; 
+                        background-color: ${bgcolor};
+                      }   
+                    </style>
+                <span class="command-key command-key-${i}" style="">${key}</span>
+                <span class="command-name command-name-${i}">${name}</span>
+              </a>
+            </li>
+          `;
+        }
+      })
+      .join('');
+
+    return CONFIG.showKeys ? commandListWithKeys : commandListWithIcons;
   }
 
   _getCategories() {
@@ -798,12 +834,12 @@ class Form {
     this._previewValue = this._previewValue.bind(this);
     this._submitForm = this._submitForm.bind(this);
     this._submitWithValue = this._submitWithValue.bind(this);
-    this._reverseColors = options.reversedColors;
+    this._invertColors = options.invertedColors;
     this.hide = this.hide.bind(this);
     this.show = this.show.bind(this);
     this._registerEvents();
     this._loadQueryParam();
-    this.reverse();
+    this.invert();
   }
 
   hide() {
@@ -819,17 +855,26 @@ class Form {
     this._inputEl.focus();
   }
 
-  reverse() {
-    if (this._reverseColors) {
-      document.documentElement.style.setProperty('--background', '#F1F1F1');
-      document.documentElement.style.setProperty('--foreground', '#0e0e0e');
+  invert() {
+    if (this._invertColors) {
+      const bgcolor = getComputedStyle(document.documentElement).getPropertyValue('--background');
+      const fgcolor = getComputedStyle(document.documentElement).getPropertyValue('--foreground');
+      document.documentElement.style.setProperty('--background', fgcolor);
+      document.documentElement.style.setProperty('--foreground', bgcolor);    
     }
   }
 
-  _reverseConfig() {
-    reverseColorCookie = !reverseColorCookie;
-    localStorage.clear();
-    localStorage.setItem('reverseColorCookie', JSON.stringify(reverseColorCookie));
+  _invertConfig() {
+    let isInverted = !CONFIG.invertedColors;
+    localStorage.removeItem('invertColorCookie');
+    localStorage.setItem('invertColorCookie', JSON.stringify(isInverted));
+    location.reload();
+  }
+
+  _showKeysConfig() {
+    let isShowKeys = !CONFIG.showKeys;
+    localStorage.removeItem('showKeysCookie');
+    localStorage.setItem('showKeysCookie', JSON.stringify(isShowKeys));
     location.reload();
   }
 
@@ -842,7 +887,8 @@ class Form {
     const newQuery = this._inputEl.value;
     const isHelp = newQuery === '?';
     const isLaunch = newQuery === '!';
-    const isReverse = newQuery === 'reverse!';
+    const isInvert = newQuery === 'invert!';
+    const isShowKeys = newQuery === 'keys!';
     const { isKey } = this._parseQuery(newQuery);
     this._inputElVal = newQuery;
     this._suggester.suggest(newQuery);
@@ -850,7 +896,8 @@ class Form {
     if (!newQuery || isHelp) this.hide();
     if (isHelp) this._toggleHelp();
     if (isLaunch) this._quickLaunch();
-    if (isReverse) this._reverseConfig();
+    if (isInvert) this._invertConfig();
+    if (isShowKeys) this._showKeysConfig();
     if (this._instantRedirect && isKey) this._submitWithValue(newQuery);
   }
 
@@ -946,7 +993,8 @@ const help = new Help({
   commands: CONFIG.commands,
   newTab: CONFIG.newTab,
   suggester,
-  reversedColors: CONFIG.reversedColors,
+  invertedColors: CONFIG.invertedColors,
+  showKeys: CONFIG.showKeys
 });
 
 const form = new Form({
@@ -957,7 +1005,8 @@ const form = new Form({
   suggester,
   toggleHelp: help.toggle,
   quickLaunch: help.launch,
-  reversedColors: CONFIG.reversedColors,
+  invertedColors: CONFIG.invertedColors,
+  showKeys: CONFIG.showKeys
 });
 
 new Clock({

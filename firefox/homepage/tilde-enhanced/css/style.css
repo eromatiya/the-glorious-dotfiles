@@ -1,34 +1,13 @@
 :root {
   /* colors */
-  --background: #0e0e0e;
+  --background: #0E0E0E;
   --foreground: #F1F1F1;
 
   /* fonts */
-  --font-family: Roboto, sans-serif;
+  --font-family: Verdana, Geneva, sans-serif;
   --base-font-size: 18px;
-  --font-weight-normal: 400;
-  --font-weight-bold: 700;
-}
-
-/* to download a different font locally:
-    https://google-webfonts-helper.herokuapp.com/fonts */
-
-@font-face {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Roboto-Regular'),
-    url('../assets/fonts/Roboto-Regular.woff2') format('woff2'),
-    url('../assets/fonts/Roboto-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 900;
-  src: local('Roboto Black'), local('Roboto-Black'),
-    url('../assets/fonts/Roboto-Black.woff2') format('woff2'),
-    url('../assets/fonts/Roboto-Black.woff') format('woff');
+  --font-weight-normal: 500;
+  --font-weight-bold: 900;
 }
 
 * {
@@ -49,7 +28,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  transition: background 0.2s;
+  transition: background 0.4s;
   background: var(--background);
   color: var(--foreground);
 }
@@ -220,16 +199,13 @@ body.suggestions .search-suggestions {
 }
 
 .command-key {
-  display: block;
-  float: left;
+  border-radius: 50%;
   width: 2rem;
   height: 2rem;
   margin-right: 1rem;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--background);
   font-size: 0.75rem;
-  line-height: 2rem;
+  font-weight: 800;
+  line-height: 1.5rem;
   text-align: center;
 }
 
@@ -285,9 +261,7 @@ body.form .search-form {
     justify-content: space-around;
   }
 
-  .category:nth-last-child(2) {
-    margin-bottom: 0;
-  }
+  
 }
 
 @media (min-width: 1000px) {
