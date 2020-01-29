@@ -483,7 +483,7 @@ if zplug check "seebi/dircolors-solarized"; then
 	alias dircolors='() { $(whence -p gdircolors) }'
   fi
   if which dircolors &> /dev/null; then
-    scheme="dircolors.256dark"
+    scheme="dircolors.ansi-universal"
     eval $(dircolors ~/.zplug/repos/seebi/dircolors-solarized/$scheme)
   fi
 fi
