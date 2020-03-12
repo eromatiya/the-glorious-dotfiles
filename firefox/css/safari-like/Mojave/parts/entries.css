@@ -1,0 +1,119 @@
+/* Entries */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Entries */
+#search-box,
+.findbar-textbox {
+	-moz-appearance: none !important;
+	background: var(--gnome-urlbar-background) !important;
+	border: 1px solid var(--gnome-urlbar-border-color) !important;
+	border-radius: 5px !important;
+	box-shadow: var(--gnome-urlbar-box-shadow) !important;
+	color: var(--gnome-urlbar-color) !important;
+	height: 28px !important;
+	max-height: 28px !important;
+	margin: 0 0 !important;
+	padding: 2px 6px !important;
+	box-sizing: border-box;
+}
+
+#urlbar.megabar #urlbar-input-container,
+#urlbar:not(.megabar),
+#searchbar {
+	padding: 0 !important;
+}
+
+#searchbar,
+#urlbar.megabar #urlbar-input-container,
+#urlbar:not(.megabar),
+#urlbar {
+	-moz-appearance: none !important;
+	background: var(--gnome-button-background) !important;
+	border: none !important;
+	box-shadow: var(--gnome-headerbar-button-box-shadow) !important;
+	border-radius: 5px !important;
+	color: var(--gnome-urlbar-color) !important;
+	height: 28px !important;
+	max-height: 28px !important;
+	box-sizing: border-box;
+}
+
+/* Entries focused */
+#search-box[focused],
+.findbar-textbox[focused],
+.findbar-textbox:focus {
+	border-color: var(--gnome-focused-urlbar-border-color) !important;
+	box-shadow: 0 0 0 2px var(--gnome-focused-urlbar-highlight-color) !important;
+}
+
+#urlbar.megabar[breakout][breakout-extend],
+#urlbar:not(.megabar)[focused],
+#searchbar:focus-within,
+#urlbar[focused] {
+	background: var(--gnome-urlbar-background) !important;
+	outline: 2px solid var(--gnome-focused-urlbar-highlight-color) !important;
+	outline-offset: -2px;
+	-moz-outline-radius: 5px;
+}
+
+/* Inactive window entries */
+#search-box:-moz-window-inactive,
+.findbar-textbox:-moz-window-inactive {
+	background: var(--gnome-inactive-urlbar-background) !important;
+	border-color: var(--gnome-inactive-urlbar-border-color) !important;
+	box-shadow: var(--gnome-inactive-urlbar-box-shadow) !important;
+	color: var(--gnome-inactive-urlbar-color) !important;
+}
+
+#urlbar.megabar #urlbar-input-container:-moz-window-inactive,
+#urlbar:not(.megabar):-moz-window-inactive,
+#searchbar:-moz-window-inactive,
+#urlbar:-moz-window-inactive {
+	background: var(--gnome-inactive-button-background) !important;
+	box-shadow: inset 0 0 0 1px var(--gnome-inactive-button-border-color) !important;
+	color: var(--gnome-inactive-urlbar-color) !important;
+}
+
+/* Entries combined */
+.findbar-textbox:not(.minimal) {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	border-right-width: 0 !important;
+}
+
+.findbar-textbox:not(.minimal)[focused], .findbar-textbox:not(.minimal):focus {
+	-moz-outline-radius: 5px 0 0 5px !important;
+}
+
+/* Entries fixes */
+#urlbar-container, #search-container {
+	padding: 0 !important;
+	margin: 0 3px !important;
+}
+
+#urlbar, #searchbar {
+	margin: 0 3px !important;
+	padding: 0 !important;
+}
+
+.searchbar-textbox {
+	border: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	min-height: auto !important;
+}
+
+#searchbar > .searchbar-textbox[focused] .searchbar-search-button:not(#hack) {
+	margin: 0 !important;
+}
+
+/* Fixed for dark theme */
+@media (prefers-color-scheme: dark) {
+	#searchbar,
+	#urlbar.megabar #urlbar-input-container,
+	#urlbar:not(.megabar),
+	#urlbar {
+		box-shadow: var(--gnome-button-box-shadow) !important;
+	}
+}

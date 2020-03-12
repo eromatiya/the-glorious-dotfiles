@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Capa_1"
+   enable-background="new 0 0 515.556 515.556"
+   height="512px"
+   viewBox="0 0 515.556 515.556"
+   width="512px"
+   class=""
+   version="1.1"
+   sodipodi:docname="history.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata
+     id="metadata13">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     pagecolor="#252525"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1321"
+     inkscape:window-height="738"
+     id="namedview9"
+     showgrid="false"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="-98.711864"
+     inkscape:cy="256"
+     inkscape:window-x="45"
+     inkscape:window-y="30"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Capa_1" />
+  <g
+     id="g6"
+     style="opacity:0.8">
+    <path
+       d="m290 32.222c-113.405 0-207.262 84.222-222.981 193.333h-67.019l96.667 96.667 96.667-96.667h-61.188c14.972-73.444 80.056-128.889 157.854-128.889 88.832 0 161.111 72.28 161.111 161.111s-72.279 161.112-161.111 161.112c-51.684 0-100.6-25.079-130.84-67.056l-52.298 37.635c42.323 58.78 110.78 93.866 183.138 93.866 124.373 0 225.556-101.198 225.556-225.556s-101.183-225.556-225.556-225.556z"
+       data-original="#000000"
+       class="active-path"
+       data-old_color="#000000"
+       fill="#FFFFFF"
+       id="path2"
+       style="" />
+    <path
+       d="m257.778 161.111v131.029l96.195 57.711 33.166-55.256-64.917-38.956v-94.527z"
+       data-original="#000000"
+       class="active-path"
+       data-old_color="#000000"
+       fill="#FFFFFF"
+       id="path4"
+       style="" />
+  </g>
+</svg>

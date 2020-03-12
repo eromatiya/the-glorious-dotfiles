@@ -1,1 +1,0 @@
-yahoo.svg

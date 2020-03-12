@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+# ----------------------------------------------------------------------------
+# --- Simple screenshot script using maim
+# --
+# -- Accepts `area` and `full` string args
+# --
+# -- For more details check `man maim`
+# --
+# -- @author manilarome &lt;gerome.matilla07@gmail.com&gt;
+# -- @copyright 2020 manilarome
+# -- @script snap
+# ----------------------------------------------------------------------------
+
+
+screenshot_dir=${HOME}/Pictures/Screenshots/
+
+# Check save directory
+# Creates it if it doesn't exist
+function check_dir() {
+	if [ ! -d $screenshot_dir ]; then
+		mkdir -p $screenshot_dir
+	fi
+}
+
+
+# Main function
+function shot() {
+
+	check_dir
+
+	file_loc=$screenshot_dir$(date +%Y%m%d_%H%M%S).png
+	
+	maim_command=$1
+	notif_message=$2
+
+	# Execute maim command
+	${maim_command} "${file_loc}"
+
+	# Exit if the user cancels the screenshot
+	# So it means there's no new screenshot image file
+	if [ ! -f "${file_loc}" ]; then
+		exit
+	fi
+
+	# Copy to clipboard
+	xclip -selection clipboard -t image/png -i ${screenshot_dir}/`ls -1 -t ${screenshot_dir} | head -1` &
+
+	notify-send 'Snap!' "${notif_message}" -a 'Screenshot tool' -i "${file_loc}"
+
+}
+
+# Check the args passed
+if [ -z "$1" ] || ([ $1 != 'full' ] && [ $1 != 'area' ]) ; then
+	echo "
+	Requires an argument:
+	area 	- Area screenshot
+	full 	- Fullscreen screenshot
+
+	Example:
+	./snap area
+	./snap full
+	"
+elif [ $1 = 'full' ]; then
+	msg="Full screenshot saved and copied to clipboard!"
+	shot 'maim -u -m 1' "${msg}"
+elif [ $1 = 'area' ]; then
+	msg='Area screenshot saved and copied to clipboard!'
+	shot 'maim -u -s -n -m 1' "${msg}"
+fi
+

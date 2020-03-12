@@ -1,1 +1,0 @@
-harddrive.svg

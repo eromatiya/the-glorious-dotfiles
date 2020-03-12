@@ -1,5 +1,6 @@
 # Get Terminal Emulator
-term_emulator=$(ps -o 'cmd=' -p $(ps -o 'ppid=' -p $$))
+term_emulator=$(ps -h -o comm -p $PPID)
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -107,7 +108,7 @@ if [[ $term_emulator == *"kitty"* ]]; then
 	# kitty
 	neofetch --backend 'kitty'
 
-elif [[  $term_emulator == *"tmux"*  ]]; then
+elif [[  $term_emulator == *"tmux"*  ]] || [[ $term_emulator == "login" ]]; then
 	# tmux
 	neofetch --backend 'w3m' --ascii_distro 'arch_small' 
 
@@ -531,14 +532,6 @@ fi
 [[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 
-#autoload -Uz compinit
-#compinit
-
-#ZLE_RPROMPT_INDENT=0
-
-# vim: ft=zsh
-
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -562,10 +555,21 @@ fi
 
 alias ytmp3="youtube-dl --extract-audio --audio-format mp3"
 alias cls="clear"
+alias upd="sudo pacman -Syu --noconfirm && yay -Syu --removemake --noconfirm"
 
 if [[ $term_emulator == *"kitty"* ]]; then
 	alias clear="kitty icat --clear && clear"
 fi
 
+# Tetris game
+autoload -Uz tetriscurses
 
 
+
+
+#autoload -Uz compinit
+#compinit
+
+#ZLE_RPROMPT_INDENT=0
+
+# vim: ft=zsh

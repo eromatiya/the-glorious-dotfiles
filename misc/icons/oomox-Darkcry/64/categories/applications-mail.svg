@@ -1,4 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
- <rect width="44" height="32" x="10" y="16" rx="1" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#8eabcf;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:4;stroke-dashoffset:0"/>
- <path d="M 12,18 32,32 52,18" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;fill-opacity:1;stroke:#8eabcf;fill-rule:evenodd;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:3"/>
-</svg>
