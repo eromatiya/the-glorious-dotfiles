@@ -230,18 +230,14 @@ local locker = function(s)
 		  day = last_digit
 		end
 
-		if last_digit == '1' then
+		if last_digit == '1' and day ~= '11' then
 		  ordinal = 'st'
-
-		elseif last_digit == '2' then
+		elseif last_digit == '2' and day ~= '12' then
 		  ordinal = 'nd'
-
-		elseif last_digit == '3' then
+		elseif last_digit == '3' and day ~= '13' then
 		  ordinal = 'rd'
-
 		else
 		  ordinal = 'th'
-
 		end
 
 		date_val.day = day
