@@ -216,6 +216,19 @@ local locker = function(s)
 	)
 
 
+	local return_ordinal = function(n)
+	    last_digit = n % 10
+	    if last_digit == 1 and n ~= 11
+	        then return 'st'
+	    elseif last_digit == 2 and n ~= 12
+	        then return 'nd'
+	    elseif last_digit == 3 and n ~= 13
+	        then return 'rd'
+	    else 
+	        return 'th'
+	    end
+	end
+
 	local date_value = function()
 		local date_val = {}
 		local ordinal = nil
@@ -230,6 +243,7 @@ local locker = function(s)
 		  day = last_digit
 		end
 
+<<<<<<< HEAD
 		if last_digit == '1' and day ~= '11' then
 		  ordinal = 'st'
 		elseif last_digit == '2' and day ~= '12' then
@@ -239,6 +253,9 @@ local locker = function(s)
 		else
 		  ordinal = 'th'
 		end
+=======
+		ordinal = return_ordinal(tonumber(day))
+>>>>>>> 8d2331e97abd9a20ac58dd9b16c6619f98586656
 
 		date_val.day = day
 		date_val.month = month
