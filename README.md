@@ -512,7 +512,7 @@ $ $EDITOR $HOME/.zshrc
 	It is better if you have a music file with metadata.
 
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/screen-recorder.png" alt="recorder_img" align="right" width="350px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/screen-recorder.png" alt="recorder_img" align="right" width="350px">
 
 + **Screen Recorder Widget**
 
