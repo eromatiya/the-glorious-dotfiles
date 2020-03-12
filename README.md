@@ -57,6 +57,7 @@
 + Application Dashboard
 + Brightness and Volume OSDs
 + Functional Trash Widget
++ Built-in Screen Recorder Widget
 + Lockscreen Module with Face Capture<sup>yep. this is overkill</sup>
 
 
@@ -392,7 +393,7 @@ $ $EDITOR $HOME/.zshrc
 
 ## About Widgets and Modules
 
-<img src="https://i.imgur.com/8YoMKvF.png" alt="weather" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/weather.png" alt="weather_img" align="right" width="350px">
 
 + **Weather Widget**
 	
@@ -406,7 +407,7 @@ $ $EDITOR $HOME/.zshrc
 		`jq`
 
 
-<img src="https://i.imgur.com/ZOnb1ZH.png" alt="email" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/email.png" alt="email_img" align="right" width="350px">
 
 + **Email Widget**
 
@@ -426,7 +427,7 @@ $ $EDITOR $HOME/.zshrc
 	- Put your credentials in `awesome/secrets.lua`.
 
 
-<img src="https://i.imgur.com/KrSI42d.png" alt="calculator" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/calculator.png" alt="calculator_img" align="right" width="350px">
 
 + **Calculator Widget**
 	
@@ -455,7 +456,7 @@ $ $EDITOR $HOME/.zshrc
 		- Press `x`.
 
 
-<img src="https://i.imgur.com/y2sqvnu.png" alt="trash" align="right" width="238px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/trash.png" alt="trash_img" align="right" width="350px">
 
 + **Trash Widget**
 
@@ -474,6 +475,9 @@ $ $EDITOR $HOME/.zshrc
 		- It has a four scheduled time:
 			- `morning`, `noon`, `night`, `midnight`
 		- Right now, it only searches for `*.jpg` image format. You can change it by editing the wallpaper name in the `awesome/module/dynamic-wallpaper.lua`
+
+
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/lockscreen.png" alt="lockscreen_img" align="right" width="350px">
 
 + **Lockscreen Module**
 	
@@ -507,6 +511,21 @@ $ $EDITOR $HOME/.zshrc
 
 	It is better if you have a music file with metadata.
 
+
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/screen-recorder.png" alt="recorder_img" align="right" width="350px">
+
++ **Screen Recorder Widget**
+
+	This is actually useful for basic screen recording.
+
+	- Depends: `ffmpeg`
+
+	- Features:
+		- You can toggle microphone on and off.
+		- Change the settings on the main widget.
+
+	- Note: 
+		- You can change the default settings in `awesome/widget/screen-recorder/screen-recorder-config.lua` 
 
 + **Backdrop Module**
 
