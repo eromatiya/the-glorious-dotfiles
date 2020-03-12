@@ -175,19 +175,6 @@ local TopPanel = function(s, offset)
 		end
 	)
 
-	local return_ordinal = function(n)
-	    last_digit = n % 10
-	    if last_digit == 1 and n ~= 11
-	        then return 'st'
-	    elseif last_digit == 2 and n ~= 12
-	        then return 'nd'
-	    elseif last_digit == 3 and n ~= 13
-	        then return 'rd'
-	    else 
-	        return 'th'
-	    end
-	end
-
 	s.clock_tooltip = awful.tooltip
 	{
 		objects = {s.clock_widget},
@@ -210,7 +197,7 @@ local TopPanel = function(s, offset)
 			  day = last_digit
 			end
 
-<<<<<<< HEAD
+
 			if last_digit == '1' and day ~= '11' then
 			  ordinal = 'st'
 			elseif last_digit == '2' and day ~= '12' then
@@ -220,9 +207,6 @@ local TopPanel = function(s, offset)
 			else
 			  ordinal = 'th'
 			end
-=======
-			ordinal = return_ordinal(tonumber(day))
->>>>>>> 8d2331e97abd9a20ac58dd9b16c6619f98586656
 
 			local date_str = 'Today is the ' ..
 			'<b>' .. day .. ordinal .. 
