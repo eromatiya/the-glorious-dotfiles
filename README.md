@@ -5,13 +5,13 @@
 </div>
 
 <kbd>
-  <img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/main.png">
+  <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/main.png">
 </kbd>
 
 
 ## Table of Contents
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/main2.png" alt="sidebanner" align="right" width="300px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/main2.png" alt="sidebanner" align="right" width="300px">
 
 - [Details](#starring)
 - [Features](#features)
@@ -147,10 +147,10 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 4. Clone my repo:
 
 	```bash
-	$ git clone --depth=1 https://github.com/manilarome/the-glorious-dotfiles/
+	$ git clone --depth=1 https://github.com/manilarome/Glorious-Dotfiles/
 	```
 
-4. Just copy the `the-glorious-dotfiles/config/awesome` folder to your `$HOME/.config/`.
+4. Just copy the `Glorious-Dotfiles/config/awesome` folder to your `$HOME/.config/`.
 
 5. Reload AwesomeWM by pressing `mod + shift + r`.
 
@@ -597,7 +597,7 @@ So it means we have to add more than one titlebar around the client with transpa
 
 
 ## Having a problem?
-Having a problem, errors, bugs, suggestions? Just open an issue [here](https://github.com/manilarome/the-glorious-dotfiles/issues).
+Having a problem, errors, bugs, suggestions? Just open an issue [here](https://github.com/manilarome/Glorious-Dotfiles/issues).
 
 
 ## Acknowledgement
