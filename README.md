@@ -586,3 +586,7 @@ Having a problem, errors, bugs, suggestions? Just open an issue [here](https://g
 + [**elenapan**](https://github.com/elenapan/dotfiles), [**addyfe**](https://github.com/addy-dclxvi/almighty-dotfiles) for the inspiration.
 + **pdonadeo** for the [Rofi Web Search](https://github.com/pdonadeo/rofi-web-search) script.
 + Also thanks to the and developers of AwesomeWM and to the contributors in my repo. Haha!
+
+
+## A counter that will boost my ego
+[![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/Glorified-Dotfiles)
