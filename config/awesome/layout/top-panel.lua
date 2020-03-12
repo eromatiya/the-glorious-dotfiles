@@ -304,12 +304,11 @@ local TopPanel = function(s, offset)
 	panel : setup {
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
-		-- {
-			nil,
-			-- layout = wibox.layout.fixed.horizontal,
-			-- task_list(s),
-			-- s.add_button
-		-- }, 
+		{
+			layout = wibox.layout.fixed.horizontal,
+			task_list(s),
+			s.add_button
+		}, 
 		s.clock_widget,
 		{
 			layout = wibox.layout.fixed.horizontal,
