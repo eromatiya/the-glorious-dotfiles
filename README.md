@@ -393,7 +393,7 @@ $ $EDITOR $HOME/.zshrc
 
 ## About Widgets and Modules
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/weather.png" alt="weather_img" align="right" width="350px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/weather.png" alt="weather_img" align="right" width="350px">
 
 + **Weather Widget**
 	
@@ -407,7 +407,7 @@ $ $EDITOR $HOME/.zshrc
 		`jq`
 
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/email.png" alt="email_img" align="right" width="350px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/email.png" alt="email_img" align="right" width="350px">
 
 + **Email Widget**
 
@@ -427,7 +427,7 @@ $ $EDITOR $HOME/.zshrc
 	- Put your credentials in `awesome/secrets.lua`.
 
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/calculator.png" alt="calculator_img" align="right" width="350px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/calculator.png" alt="calculator_img" align="right" width="350px">
 
 + **Calculator Widget**
 	
@@ -456,7 +456,7 @@ $ $EDITOR $HOME/.zshrc
 		- Press `x`.
 
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/trash.png" alt="trash_img" align="right" width="350px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/trash.png" alt="trash_img" align="right" width="350px">
 
 + **Trash Widget**
 
@@ -477,7 +477,7 @@ $ $EDITOR $HOME/.zshrc
 		- Right now, it only searches for `*.jpg` image format. You can change it by editing the wallpaper name in the `awesome/module/dynamic-wallpaper.lua`
 
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/lockscreen.png" alt="lockscreen_img" align="right" width="350px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/lockscreen.png" alt="lockscreen_img" align="right" width="350px">
 
 + **Lockscreen Module**
 	
@@ -512,7 +512,7 @@ $ $EDITOR $HOME/.zshrc
 	It is better if you have a music file with metadata.
 
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/screen-recorder.png" alt="recorder_img" align="right" width="350px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/screen-recorder.png" alt="recorder_img" align="right" width="350px">
 
 + **Screen Recorder Widget**
 
