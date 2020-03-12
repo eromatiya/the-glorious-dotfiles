@@ -60,13 +60,11 @@
 + Built-in Screen Recorder Widget
 + Lockscreen Module with Face Capture<sup>yep. this is overkill</sup>
 
-
-Yep, I designed this setup to get rid of desktop environment. 
-
+I designed this setup to get rid of desktop environment. 
 
 ## Announcement
 
-**Temporarily, this repo will only contain the `Floppy` setup because I will be rewriting/replacing the other ones. Though, you can still found/clone the other setups [`here`](https://github.com/manilarome/old-awesome-dotfiles).**
+**Temporarily, this repo will only contain the `Floppy` setup because I will be rewriting/replacing the other ones. You can still found the other setups [`here`](https://github.com/manilarome/old-awesome-dotfiles), though.**
 
 
 ## Screenshots
@@ -205,7 +203,7 @@ Optional: Set it as your system font using `lxappearance` or something . I think
 
 ### Rofi Application Menu is too small/big!
 
-The rofi is configured to work zin a `1366x768` resolution laptop so it will not work out of the box in a monitor with a larger/smaller resolution. To fix that:
+The rofi is configured to work in a `1366x768` resolution laptop so it will not work out of the box in a monitor with a larger/smaller resolution. To fix that:
 
 1. Open `awesome/configuration/rofi/appmenu/rofi.rasi`
 2. In the `window {}` block, change the `height` and `width`.
@@ -216,7 +214,7 @@ The rofi is configured to work zin a `1366x768` resolution laptop so it will not
 	- It is also advisable to alter the values of `padding` in the `mainbox {}` and `element {}` block.
 
 - Note:
-	- Both rofi configuration will open only in your PRIMARY screen. You can change that by changing the `monitor` value in the `configuration {}` block. More info in `man rofi`.
+	- Both rofi configuration will only open in your PRIMARY screen. You can change that by changing the `monitor` value in the `configuration {}` block. More info in `man rofi`.
 
 
 ### Use the Powerleve10k ZSH theme?
@@ -535,7 +533,7 @@ $ $EDITOR $HOME/.zshrc
 
 + **Menu Module**
 
-	Yes, this is somewhat useless when we're using a window tiling managers, buuut... AwesomeWM is not a window tiling manager. It's a framework! And it handles floating clients pretty well. Sooo...
+	Yes, this is somewhat useless when we're using a tiling window managers, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...
 
 	- Depends:
 		- `xdg-menu` or [`awesome-freedesktop`](https://github.com/lcpz/awesome-freedesktop/). 
@@ -555,7 +553,7 @@ Anti-aliasing is pretty doable, but it requires a hackish way to do it. The code
 So it means we have to add more than one titlebar around the client with transparent background then put a *shaped container* inside it to act as the titlebar's background. 
 
 
-- Here is an example of an anti-aliased titlebar:
+- Here is an example of an anti-aliased left titlebar:
 
 	```lua
 	-- A titlebar with a color of #00000000, a black color with full transparency.
