@@ -383,7 +383,7 @@ $ $EDITOR $HOME/.zshrc
 
 + **Weather and Email Credentials**
 	
-	You can put your credentials in the `awesome/secrets.lua` file.
+	You can put your credentials in the `awesome/configuration/secrets.lua` file.
 	Notes:
 	- Your credentials are exposed.
 	- It is better to encrypt it by using GnuPG, for example.
@@ -399,7 +399,7 @@ $ $EDITOR $HOME/.zshrc
 
 	- OpenWeatherMap is our weather provider. So go to OpenWeatherMap's [website](https://home.openweathermap.org/).
 	- Register, log-in, and then go [here](https://home.openweathermap.org/api_keys) to generate your very own API keys. 
-	- Put your credentials in `awesome/secrets.lua`.
+	- Put your credentials in `awesome/configuration/secrets.lua`.
 
 	- Depends:
 		`jq`
@@ -422,7 +422,7 @@ $ $EDITOR $HOME/.zshrc
 		- Just get your email service provider's imap server. Gmail's imap server is `imap.gmail.com`. You can search it in the internet.
 	- Provide the port.
 		Again, you can just search it in the internet. Gmail's port is `993`.
-	- Put your credentials in `awesome/secrets.lua`.
+	- Put your credentials in `awesome/configuration/secrets.lua`.
 
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/calculator.png" alt="calculator_img" align="right" width="350px">
@@ -494,7 +494,7 @@ $ $EDITOR $HOME/.zshrc
 		- `background` use the `beautiful.background` as the background image.
 
 	- Note:
-		- The default password is `toor` and it's in `configuration/secrets.lua` .
+		- The default password is `toor` and it's in `awesome/configuration/secrets.lua` .
 		- Integrated with the `user-profile` widget to get the profile picture.
 		- You can also set your picture manually.
 
