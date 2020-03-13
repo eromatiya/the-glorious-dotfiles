@@ -294,35 +294,35 @@ $ $EDITOR $HOME/.zshrc
 
 ### Launchers
 
-<kbd>super + Return</kbd> - Launch default terminal
-<kbd>super + Shift + e</kbd> - Launch default file manager
-<kbd>super + Shift + f</kbd> - Launch default web browser
-<kbd>super + e</kbd> - Launch application menu
-<kbd>super + Shift + r</kbd> - Launch web search rofi
-<kbd>super + Shift + Escape</kbd> Launch system monitor
+<kbd>super + Return</kbd> - Launch default terminal  
+<kbd>super + Shift + e</kbd> - Launch default file manager  
+<kbd>super + Shift + f</kbd> - Launch default web browser  
+<kbd>super + e</kbd> - Launch application menu  
+<kbd>super + Shift + r</kbd> - Launch web search rofi  
+<kbd>super + Shift + Escape</kbd> Launch system monitor  
 
 ### Navigation
 
-<kbd>super + F2</kbd> - Open today panel
-<kbd>super + F3</kbd> - Open notification panel
-<kbd>super + r</kbd> - Open left dashboard
-<kbd>super + m</kbd> - Toggle music widget
+<kbd>super + F2</kbd> - Open today panel  
+<kbd>super + F3</kbd> - Open notification panel  
+<kbd>super + r</kbd> - Open left dashboard  
+<kbd>super + m</kbd> - Toggle music widget  
 
 ### Utilities
 
-<kbd>Control + Escape</kbd> - Toggle system tray
-<kbd>super + l</kbd> - Lock the screen
-<kbd>super + t</kbd> - Toggle redshift filter
-<kbd>super + [</kbd> - Decrease the blur effect
-<kbd>super + ]</kbd> - Increase the blur effect
-<kbd>Print</kbd> - Take a screenshot
-<kbd>Super + Shift + s</kbd> - Take a selected screenshot
+<kbd>Control + Escape</kbd> - Toggle system tray  
+<kbd>super + l</kbd> - Lock the screen  
+<kbd>super + t</kbd> - Toggle redshift filter  
+<kbd>super + [</kbd> - Decrease the blur effect  
+<kbd>super + ]</kbd> - Increase the blur effect  
+<kbd>Print</kbd> - Take a screenshot  
+<kbd>Super + Shift + s</kbd> - Take a selected screenshot  
 
 ### Awesome
 
-<kbd>Super + F1</kbd> - Show keybindings
-<kbd>Control + Super + R</kbd> - Reload awesome wm configuration
-<kbd>Control + Super + q</kbd> - Quit awesome wm
+<kbd>Super + F1</kbd> - Show keybindings  
+<kbd>Control + Super + R</kbd> - Reload awesome wm configuration  
+<kbd>Control + Super + q</kbd> - Quit awesome wm  
 
 
 ## Basic File Structure
