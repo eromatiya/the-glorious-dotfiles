@@ -9,8 +9,6 @@ local icons = require('theme.icons')
 
 local blue_light_state = nil
 
-
-
 local action_name = wibox.widget {
 	text = 'Blue Light Filter',
 	font = 'SF Pro Text Regular 11',
@@ -79,8 +77,8 @@ kill_state()
 local toggle_action = function()
 	awful.spawn.easy_async_with_shell(
 		[[
-		pgrep redshift > /dev/null && (pkill redshift && echo 'OFF') || 
-		(echo 'ON' && redshift -l 0:0 -t 3700:3700 -r &>/dev/null &)
+		pgrep redshift > /dev/null && (redshift -x && pkill redshift && echo 'OFF') || 
+		(echo 'ON' && redshift -l 0:0 -t 4500:4500 -r &>/dev/null &)
 		]],
 		function(stdout)
 			if stdout:match('ON') then
@@ -106,7 +104,6 @@ widget_button:buttons(
 		)
 	)
 )
-
 
 local action_widget =  wibox.widget {
 	{
