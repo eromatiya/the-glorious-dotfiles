@@ -96,12 +96,13 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 | `acpi`,`acpid`,`acpi_call` | Show battery status and other ACPI info | Power/Battery Widgets. No need for this if you're not using a laptop |
 | `mpd` | Server-side application for playing music | Music widget |
 | `mpc` | Minimalist command line interface to MPD | Music widget |
-| `maim` | Takes screenshots (improved `scrot`) | Screenshot keybinding |
+| `maim` | Make image | Screenshot tool |
 | `feh` | Image viewer and wallpaper setter | Screenshot previews, wallpapers |
 | `xclip` | Command line interface to the X11 clipboard | Will be used in saving the screenshots to clipboard |
 | `xprop` | Property displayer for X | Custom titlebars for each client |
 | `imagemagick` | An image viewing/manipulation program | Music widget/Extracts hardcoded album cover from songs |
 | `blueman` | Manages bluetooth | default launch application for bluetooth widget |
+| `redshift` | Sets color temperature of display according to time of day | Blue light widget |
 | `xfce4-power-manager` | Manages power | default launch application for battery widget |
 | `upower` | upower - UPower command line tool | Battery widget |
 | `xdg_menu` or `awesome-freedesktop` | Generates a list of installed applications | Menu Module/Useful for generating app list |
