@@ -88,7 +88,7 @@ I designed this setup to get rid of desktop environment.
 
 | Web Search | Dirty | Today Panel |
 | --- | --- | --- |
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/todaypanel.png) |
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/dirty.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/todaypanel.png) |
 
 ## Dependencies
 
