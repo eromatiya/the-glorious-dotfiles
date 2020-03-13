@@ -75,20 +75,20 @@ I designed this setup to get rid of desktop environment.
 
 | Lockscreen |
 | --- |
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/lockscreen.png) |
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/lockscreen.png) |
 
 | Application Menu |
 | --- | 
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/appmenu.png) |
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/appmenu.png) |
 
 | Screen Recorder |
 | --- |
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/screenrec.png) |
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/screenrec.png) |
 
 
 | Web Search | Dirty | Today Panel |
 | --- | --- | --- |
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/todaypanel.png) |
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/todaypanel.png) |
 
 ## Dependencies
 
