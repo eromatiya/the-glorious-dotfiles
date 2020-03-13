@@ -40,7 +40,7 @@
 - [`awesomewm`](https://awesomewm.org) as window manager
 - [`kitty`](https://github.com/kovidgoyal/kitty) as terminal emulator
 - [`tryone144's picom`](https://github.com/tryone144/compton/tree/feature/dual_kawase) as compositor
-- [`rofi-git branch`](https://github.com/davatorium/rofihttps://github.com/davatorium/rofi) as application launcher
+- [`rofi-git branch`](https://github.com/davatorium/rofi) as application launcher
 - [`SF Pro Text`](https://developer.apple.com/fonts/) as the setup font
 - [`trivago`](https://www.youtube.com/watch?v=dQw4w9WgXcQ) as hotel
 
