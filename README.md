@@ -71,8 +71,24 @@ I designed this setup to get rid of desktop environment.
 ## Screenshots
 
 
-While the rewrite of the other setups are not finished, the *old* screenshots can be found in the [`wiki`](https://github.com/manilarome/Glorious-Dotfiles/wiki/Gallery).
+### Floppy
 
+| Lockscreen |
+| --- |
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/lockscreen.png) |
+
+| Application Menu |
+| --- | 
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/appmenu.png) |
+
+| Screen Recorder |
+| --- |
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/screenrec.png) |
+
+
+| Web Search | Dirty | Today Panel |
+| --- | --- | --- |
+| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/testing/screenshots/setups/floppy/todaypanel.png) |
 
 ## Dependencies
 
