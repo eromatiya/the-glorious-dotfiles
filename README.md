@@ -151,7 +151,7 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 
 4. Just copy the `Glorious-Dotfiles/config/awesome` folder to your `$HOME/.config/`.
 
-5. Reload AwesomeWM by pressing `mod + shift + r`.
+5. Reload AwesomeWM by pressing `Super + shift + r`.
 
 
 ### Errors on start-up!
@@ -197,7 +197,7 @@ $ yay -S otf-san-francisco-pro
 
 	Create the folder if it doesn't exist.
 
-2. Reload `mod + ctrl + r`
+2. Reload `Super + Control + r`
 
 Optional: Set it as your system font using `lxappearance` or something . I think you can also change your system font by editing some of your gtk dotfiles. You can also follow the instructions [here](https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/) to make your font rendering better.
 
@@ -369,7 +369,7 @@ $ $EDITOR $HOME/.zshrc
 
 + **Configure Keybindings?**
 	
-	You can check keybinds by pressing `mod + F1`.
+	You can check keybinds by pressing `Super + F1`.
 
 	Client keybindings:
 	- `awesome/configuration/client/keys.lua`
