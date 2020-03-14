@@ -1,17 +1,12 @@
 <div align="center">
-    <h1>The Glorious Dotfiles</h1>
-    <p>There's no place like <b><code>~</code></b> !</p>
-    <p>Fork it. <sub>Steal it.</sub> <sup>I don't care.</sup> <b><code>Just don't make it ugly.</code></b></p>
+    <h3><img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/banner.png" align="center" height="200px"></h3>
+    <p align="center">a glorified dotfiles</p>
 </div>
-
-<kbd>
-  <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/main.png">
-</kbd>
 
 
 ## Table of Contents
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/main2.png" alt="sidebanner" align="right" width="300px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/main2.png" alt="sidebanner_img" align="right" width="300px">
 
 - [Details](#starring)
 - [Features](#features)
