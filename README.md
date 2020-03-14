@@ -22,6 +22,7 @@
 	- [Fix the font](#fix-the-font)
 	- [Fix rofi application menu size](#fix-rofi-application-menu-size)
 	- [Use Powerlevel10k prompt](#use-the-powerlevel10k-prompt)
+	- [Customize titlebars](#customize-titlebars)
 - [Keybindings](#keybindings)
 - [File Structure](#basic-file-structure)
 - [Configuration](#configuration-and-preferences)
