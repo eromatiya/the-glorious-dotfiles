@@ -26,7 +26,18 @@
 - [Keybindings](#keybindings)
 - [File Structure](#basic-file-structure)
 - [Configuration](#configuration-and-preferences)
-- [About Widgets and Modules](#about-widgets-and-modules)
+- [About Widgets](#about-widgets)
+	- [Weather Widget](#weather-widget)
+	- [Email Widget](#email-widget)
+	- [CalculatorWidget](#calculator-widget)
+	- [Trash Widget](#trash-widget)
+	- [Music Widget](#music-widget)
+	- [Screen-recorder Widget](#screen-recorder-widget)
+- [About Modules](#about-modules)
+	- [Lockscreen Module](#lockscreen-module)
+	- [Dynamic Wallpaper Module](#dynamic-wallpaper-module)
+	- [Backdrop Module](#backdrop-module)
+	- [Menu Module](#menu-module)
 - [More](#more)
 	- [Antialiasing](#anti-aliased-corners)
 - [TODOs](#todos)
@@ -469,157 +480,163 @@ I designed the titlebar module to allow the user to customize its position on th
 	- It is better to encrypt it by using GnuPG, for example.
 
 
-## About Widgets and Modules
+## About Widgets
+
+
+#### Weather Widget
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/weather.png" alt="weather_img" align="right" width="350px">
-
-+ **Weather Widget**
 	
-	How to get a credentials for weather widget?
+How to get a credentials for weather widget?
 
-	- OpenWeatherMap is our weather provider. So go to OpenWeatherMap's [website](https://home.openweathermap.org/).
-	- Register, log-in, and then go [here](https://home.openweathermap.org/api_keys) to generate your very own API keys. 
-	- Put your credentials in `awesome/configuration/secrets.lua`.
+- OpenWeatherMap is our weather provider. So go to OpenWeatherMap's [website](https://home.openweathermap.org/).
+- Register, log-in, and then go [here](https://home.openweathermap.org/api_keys) to generate your very own API keys. 
+- Put your credentials in `awesome/configuration/secrets.lua`.
 
-	- Depends:
-		`jq`
+- Depends:
+	`jq`
 
+
+#### Email Widget
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/email.png" alt="email_img" align="right" width="350px">
+	
+How to get a valid credentials for email widget?
 
-+ **Email Widget**
+The widget uses an IMAP. 
+So it means that any email service provider that provides an IMAP support is supported by the widget.
 
-	How to get a valid credentials for email widget?
-
-	The widget uses an IMAP. 
-	So it means that any email service provider that provides an IMAP support is supported by the widget.
-
-	- You need an email_address.
-	- You must generate an app password for your account. Your account password **WILL NOT WORK!** An App Password is required!
-	- Just search the instrucion in the internet on how to generate an App Password for your email account.<sup>sorry i don't have an internet connection while typing this.</sup>
-		- For example `Create an app password for gmail account.`
-	- You need an imap_server.
-		- Just get your email service provider's imap server. Gmail's imap server is `imap.gmail.com`. You can search it in the internet.
-	- Provide the port.
+- You need an email_address.
+- You must generate an app password for your account. Your account password **WILL NOT WORK!** An App Password is required!
+- Just search the instrucion in the internet on how to generate an App Password for your email account.<sup>sorry i don't have an internet connection while typing this.</sup>
+	- For example `Create an app password for gmail account.`
+- You need an imap_server.
+	- Just get your email service provider's imap server. Gmail's imap server is `imap.gmail.com`. You can search it in the internet.
+- Provide the port.
 		Again, you can just search it in the internet. Gmail's port is `993`.
-	- Put your credentials in `awesome/configuration/secrets.lua`.
+- Put your credentials in `awesome/configuration/secrets.lua`.
 
+
+#### Calculator Widget
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/calculator.png" alt="calculator_img" align="right" width="350px">
-
-+ **Calculator Widget**
 	
-	The calculator widget is the result of my boredom. 
-	- Supports:
-		- Basic math operations
-		- **Keyboard support**
+The calculator widget is the result of my boredom. 
+- Supports:
+	- Basic math operations
+	- **Keyboard support**
 
-	- Tips:
-		Enable keyboard support by hovering your mouse above the calculator.
-		Or toggle it on/off by pressing the keyboard button.
-		Only numbers, arithmetic operators, and decimal point is accepted.
+- Tips:
+	Enable keyboard support by hovering your mouse above the calculator.
+	Or toggle it on/off by pressing the keyboard button.
+	Only numbers, arithmetic operators, and decimal point is accepted.
 
-	- Keyboard Binding:
-		- `=` and `Return` to evaluate.
-		- `BackSpace` to delete the last digit.
-		- `Escape` to clear the screen.
-		- `x` stops the keygrabbing.
+- Keyboard Binding:
+	- `=` and `Return` to evaluate.
+	- `BackSpace` to delete the last digit.
+	- `Escape` to clear the screen.
+	- `x` stops the keygrabbing.
 
-	- Note:
-		- While in keygrabbing mode, your keyboard's focus will be on the calculator. So you're AwesomeWM keybinding will stop working.<sup>temporarily of course.</sup> 
+- Note:
+	- While in keygrabbing mode, your keyboard's focus will be on the calculator. So you're AwesomeWM keybinding will stop working.<sup>temporarily of course.</sup> 
 
-	- Stopping the keygrabbing mode:
-		- Move away your cursor from the calculator.
-		- Toggle it off using the keyboard button.
-		- Press `x`.
+- Stopping the keygrabbing mode:
+	- Move away your cursor from the calculator.
+	- Toggle it off using the keyboard button.
+	- Press `x`.
 
+
+#### Trash Widget
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/trash.png" alt="trash_img" align="right" width="350px">
 
-+ **Trash Widget**
+The trash widget..well errm.. is actually useful.
+It monitors your trash directory using the AwesomeWM's `awful.spawn.with_line_callback()` and `gio monitor trash:///`, then updates the icon if there is changes.
 
-	The trash widget..well errm.. is actually useful.
-	It monitors your trash directory using the AwesomeWM's `awful.spawn.with_line_callback()` and `gio monitor trash:///`, then updates the icon if there is changes.
-
-	- Tip:
-		Right-click to show the menu.
-
-+ **Dynamic Wallpaper Module**
-	
-	Another fruit of my boredom.
-
-	- Note:
-		- The wallpapers are in `awesome/theme/wallpapers/`
-		- It has a four scheduled time:
-			- `morning`, `noon`, `night`, `midnight`
-		- Right now, it only searches for `*.jpg` image format. You can change it by editing the wallpaper name in the `awesome/module/dynamic-wallpaper.lua`
+- Tip:
+	Right-click to show the menu.
 
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/lockscreen.png" alt="lockscreen_img" align="right" width="350px">
+#### Music Widget
 
-+ **Lockscreen Module**
-	
-	Inspired by [elenapan](https://github.com/elenapan/)'s lockscreen module.
-	
-	- Depends:
-		- `ffmpeg`
+- Depends:
+	- `mpd`, `mpc`
 
-	- Features:
-		- Using `ffmpeg`, it captures a picture using your webcam if the password is wrong. (Enabled by default)
-			- Will store the images to `$HOME/Pictures/Intruder/` folder.
+- Optional Depends:
+	- music file with metadata
+	- music file with hardcoded album cover
 
-	- Background modes
-		- `blur` blurred background using `imagemagick`'s `convert`. (default, integrated with `dynamic-wallpaper` module)
-		- `root` use the root background as the lockscreen's background image.
-		- `background` use the `beautiful.background` as the background image.
+It is better if you have a music file with metadata.
 
-	- Note:
-		- The default password is `toor` and it's in `awesome/configuration/secrets.lua` .
-		- Integrated with the `user-profile` widget to get the profile picture.
-		- You can also set your picture manually.
 
-+ **Music Widget**
-
-	- Depends:
-		- `mpd`, `mpc`
-
-	- Optional Depends:
-		- music file with metadata
-		- music file with hardcoded album cover
-
-	It is better if you have a music file with metadata.
-
+#### Screen Recorder Widget
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/screen-recorder.png" alt="recorder_img" align="right" width="350px">
 
-+ **Screen Recorder Widget**
+This is actually useful for basic screen recording.
 
-	This is actually useful for basic screen recording.
+- Depends: `ffmpeg`
 
-	- Depends: `ffmpeg`
+- Features:
+	- You can toggle microphone on and off.
+	- Change the settings on the main widget.
 
-	- Features:
-		- You can toggle microphone on and off.
-		- Change the settings on the main widget.
-
-	- Note: 
-		- You can change the default settings in `awesome/widget/screen-recorder/screen-recorder-config.lua` 
-
-+ **Backdrop Module**
-
-	This module is developed by [PapyElGringo](https://github.com/PapyElGringo/) for his [material-awesome](https://github.com/PapyElGringo/material-awesome). This module adds a backdrop blur to the dialogs and modals. You can disable it by setting the `drawBackdrop` to `false` in the `awesome/configuration/client/rules.lua`
+- Note: 
+	- You can change the default settings in `awesome/widget/screen-recorder/screen-recorder-config.lua` 
 
 
 
-+ **Menu Module**
+### About Modules
 
-	Yes, this is somewhat useless when we're using a tiling window managers, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...
+#### Lockscreen Module
 
-	- Depends:
-		- `xdg-menu` or [`awesome-freedesktop`](https://github.com/lcpz/awesome-freedesktop/). 
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/lockscreen.png" alt="lockscreen_img" align="right" width="350px">
+	
+Inspired by [elenapan](https://github.com/elenapan/)'s lockscreen module.
+	
+- Depends:
+	- `ffmpeg`
 
-	- `xdg-menu` needs a manual intervention. More info [here](https://wiki.archlinux.org/index.php/Awesome#Applications_menu)
-	- `awesome-freedesktop` will populate the menu for you. More info [here](https://github.com/lcpz/awesome-freedesktop/)
+- Features:
+	- Using `ffmpeg`, it captures a picture using your webcam if the password is wrong. (Enabled by default)
+		- Will store the images to `$HOME/Pictures/Intruder/` folder.
+
+- Background modes
+	- `blur` blurred background using `imagemagick`'s `convert`. (default, integrated with `dynamic-wallpaper` module)
+	- `root` use the root background as the lockscreen's background image.
+	- `background` use the `beautiful.background` as the background image.
+
+- Note:
+	- The default password is `toor` and it's in `awesome/configuration/secrets.lua` .
+	- Integrated with the `user-profile` widget to get the profile picture.
+	- You can also set your picture manually.
+
+
+#### Dynamic Wallpaper Module
+	
+Another fruit of my boredom.
+
+- Note:
+	- The wallpapers are in `awesome/theme/wallpapers/`
+	- It has a four scheduled time:
+		- `morning`, `noon`, `night`, `midnight`
+	- Right now, it only searches for `*.jpg` image format. You can change it by editing the wallpaper name in the `awesome/module/dynamic-wallpaper.lua`
+
+
+#### Backdrop Module
+
+This module is developed by [PapyElGringo](https://github.com/PapyElGringo/) for his [material-awesome](https://github.com/PapyElGringo/material-awesome). This module adds a backdrop blur to the dialogs and modals. You can disable it by setting the `drawBackdrop` to `false` in the `awesome/configuration/client/rules.lua`
+
+
+#### Menu Module
+
+Yes, this is somewhat useless when we're using a tiling window managers, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...
+
+- Depends:
+	- `xdg-menu` or [`awesome-freedesktop`](https://github.com/lcpz/awesome-freedesktop/). 
+
+- `xdg-menu` needs a manual intervention. More info [here](https://wiki.archlinux.org/index.php/Awesome#Applications_menu)
+- `awesome-freedesktop` will populate the menu for you. More info [here](https://github.com/lcpz/awesome-freedesktop/)
 
 
 ## More
