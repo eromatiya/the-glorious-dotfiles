@@ -31,7 +31,7 @@ end
 local capture_intruder = true  							-- Capture a picture using webcam 
 local background_mode = 'blur' 							-- Available background mode: `blur`, `root`, `background`
 local face_capture_dir = '${HOME}/Pictures/Intruders/'  -- Save location, auto creates
-local change_background_on_time = false
+local change_background_on_time = true					-- Dynamic background will only work with `blur` mode
 
 
 
