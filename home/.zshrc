@@ -1,37 +1,39 @@
-# Get Terminal Emulator
-term_emulator=$(ps -h -o comm -p $PPID)
-
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
- export ZSH=${HOME}/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="clair"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -52,19 +54,21 @@ ZSH_THEME="clair"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,9 +89,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -97,6 +98,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Get Terminal Emulator
+term_emulator=$(ps -h -o comm -p $PPID)
 
 
 # =============================================================================
@@ -117,30 +120,14 @@ else
 	neofetch --backend 'w3m' --xoffset 20 --yoffset 20 --gap 0
 fi
 
-# =============================================================================
-#                                   Functions
-# =============================================================================
-powerlevel9k_random_color(){
-	local code
-	#for code ({000..255}) echo -n "$%F{$code}"
-	#code=$[${RANDOM}%11+10]    # random between 10-20
-	code=$[${RANDOM}%211+20]    # random between 20-230
-	printf "%03d" $code
-}
-
-zsh_wifi_signal(){
-	local signal=$(nmcli -t device wifi | grep '^*' | awk -F':' '{print $6}')
-    local color="yellow"
-    [[ $signal -gt 75 ]] && color="green"
-    [[ $signal -lt 50 ]] && color="red"
-    echo -n "%F{$color}\uf1eb" # \uf1eb is 
-}
 
 # =============================================================================
 #                                   Variables
 # =============================================================================
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+
+
 
 # =============================================================================
 #                                   Plugins
@@ -149,6 +136,7 @@ export LC_ALL="en_US.UTF-8"
 
 [ ! -d ~/.zplug ] && git clone https://github.com/zplug/zplug ~/.zplug
 source ~/.zplug/init.zsh
+
 
 # zplug
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -159,14 +147,6 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-#zplug "zsh-users/zsh-completions",              defer:0
-#zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
-#zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
-#zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
-
-# oh-my-zsh
-#zplug "zplug/zplug"
-#zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 
 # Supports oh-my-zsh plugins and the like
 if [[ $OSTYPE = (linux)* ]]; then
@@ -179,6 +159,9 @@ if [[ $OSTYPE = (darwin)* ]]; then
 	zplug "plugins/brew",     from:oh-my-zsh, if:"which brew"
 	zplug "plugins/macports", from:oh-my-zsh, if:"which port"
 fi
+
+
+
 
 zplug "plugins/archlinux", from:oh-my-zsh
 zplug "plugins/common-aliase", from:oh-my-zsh
@@ -203,33 +186,11 @@ zplug "plugins/go", from:oh-my-zsh
 zplug "plugins/svn", from:oh-my-zsh
 zplug "plugins/node", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
-#zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/bundler", from:oh-my-zsh
 zplug "plugins/gem", from:oh-my-zsh
 zplug "plugins/rbenv", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
-#zplug "themes/gnzh", from:oh-my-zsh, as:theme
-
-#zplug "plugins/git",    from:oh-my-zsh, if:"which git"
-#zplug "plugins/go",     from:oh-my-zsh, if:"which go"
-#zplug "plugins/golang", from:oh-my-zsh, if:"which go"
-#zplug "plugins/nmap",   from:oh-my-zsh, if:"which nmap"
-#zplug "plugins/sudo",   from:oh-my-zsh, if:"which sudo"
-#zplug "plugins/tmux",   from:oh-my-zsh, if:"which tmux"
-
-#zplug "plugins/bundler", from:oh-my-zsh, if:"which bundle"
-#zplug "plugins/colored-man-pages", from:oh-my-zsh
-#zplug "plugins/extract", from:oh-my-zsh
-#zplug "plugins/fancy-ctrl-z", from:oh-my-zsh
-#zplug "plugins/git", from:oh-my-zsh, if:"which git"
-#zplug "plugins/globalias", from:oh-my-zsh
-#zplug "plugins/gpg-agent", from:oh-my-zsh, if:"which gpg-agent"
-#zplug "plugins/httpie", from:oh-my-zsh, if:"which httpie"
-#zplug "plugins/nanoc", from:oh-my-zsh, if:"which nanoc"
-#zplug "plugins/vi-mode", from:oh-my-zsh
-
-# plugins
 
 # Enhanced cd
 zplug "b4b4r07/enhancd", use:enhancd.sh
@@ -258,13 +219,11 @@ zplug "arzzen/calc.plugin.zsh"
 # Directory colors
 zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
 
-
 # Theme setup
 
 # Easily switch primary foreground/background colors
 DEFAULT_FOREGROUND=006 DEFAULT_BACKGROUND=235
 DEFAULT_COLOR=$DEFAULT_FOREGROUND
-
 
 
 
@@ -307,6 +266,8 @@ setopt pushd_ignore_dups        # Dont push copies of the same dir on stack.
 setopt pushd_minus              # Reference stack entries with "-".
 
 setopt extended_glob
+
+
 
 # =============================================================================
 #                                   Aliases
@@ -444,6 +405,7 @@ zstyle ":completion:*" matcher-list \
 
 zstyle ":completion:*:default" list-colors ${(s.:.)LS_COLORS}
 
+
 # =============================================================================
 #                                   Startup
 # =============================================================================
@@ -463,6 +425,9 @@ setup_agents() {
     fi
   fi
 }
+
+
+
 
 setup_agents
 unfunction setup_agents
@@ -523,6 +488,10 @@ if zplug check "zsh-users/zsh-syntax-highlighting"; then
 	ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=yellow,bold'
 fi
 
+
+
+
+
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 
 # Source local zsh customizations.
@@ -549,6 +518,7 @@ else
 	export TERM="xterm-256color"
 fi
 
+
 #============================================================
 #						Aliases
 #============================================================
@@ -566,10 +536,6 @@ autoload -Uz tetriscurses
 
 
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#autoload -Uz compinit
-#compinit
-
-#ZLE_RPROMPT_INDENT=0
-
-# vim: ft=zsh
