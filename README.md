@@ -40,6 +40,7 @@
 	- [Menu Module](#menu-module)
 - [More](#more)
 	- [Antialiasing](#anti-aliased-corners)
+- [Testing the setup in VMs](#testing-the-setup-in-vms)
 - [TODOs](#todos)
 - [Having a problem?](#having-a-problem?)
 - [Acknowledgement](#acknowledgement)
@@ -167,7 +168,7 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 
 2. Install the dependecies. You don't have to install it all, it's your choice after all. The only required packages are [these](#required-dependencies). You can change all the applications used in the setup with your preference.
 
-3. If you have a current awesome configuration, make sure to create a backup in case of emergency.
+3. If you have a current AwesomeWM configuration, **make sure to create a backup** in case of emergency.
 
 4. Clone my repo:
 
@@ -227,13 +228,13 @@ $ yay -S otf-san-francisco-pro
 
 	Create the folder if it doesn't exist.
 
-2. Reload <kbd>Mod4 + Control + r</kbd>.
+2. Reload <kbd>Mod4 + Control + r</kbd>. `Mod4` is the Windows key.
 
 Optional: Set it as your system font using `lxappearance` or something . I think you can also change your system font by editing some of your gtk dotfiles. You can also follow the instructions [here](https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/) to make your font rendering better.
 
 ### Fix rofi application menu size
 
-The rofi is configured to work in a `1366x768` resolution laptop so it will not work out of the box in a monitor with a larger/smaller resolution. To fix that:
+The rofi is configured to work on a `1366x768` resolution laptop so it will not work out of the box in a monitor with a larger/smaller resolution. To fix that:
 
 1. Open `awesome/configuration/rofi/appmenu/rofi.rasi`
 2. In the `window {}` block, change the `height` and `width`.
@@ -244,7 +245,7 @@ The rofi is configured to work in a `1366x768` resolution laptop so it will not 
 	- It is also advisable to alter the values of `padding` in the `mainbox {}` and `element {}` block.
 
 - Note:
-	- Both rofi configuration will only open in your PRIMARY screen. You can change that by changing the `monitor` value in the `configuration {}` block. More info in `man rofi`.
+	- In multihead setups, both rofi configuration will only open in your PRIMARY screen. You can change that by changing the `monitor` value in the `configuration {}` block. More info in `man rofi`.
 
 
 ### Use the Powerleve10k prompt
@@ -323,7 +324,7 @@ $ $EDITOR $HOME/.zshrc
 
 ### Customize titlebars
 
-I designed the titlebar module to allow the user to customize its position on the client.
+The titlebar module is quite flexible. You can set the titlebar's position, color, and size for each client by setting its class.
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/custom-titlebars.png">
 
@@ -392,7 +393,7 @@ I designed the titlebar module to allow the user to customize its position on th
 
 ## Configuration and Preferences
 
-+ **Configure theme's colors/aesthetic?**
++ **Configure theme's colors/aesthetics?**
 
 	Awesome WM uses the `beautiful` library to beautify your setup.
 
@@ -508,8 +509,7 @@ So it means that any email service provider that provides an IMAP support is sup
 
 - You need an email_address.
 - You must generate an app password for your account. Your account password **WILL NOT WORK!** An App Password is required!
-- Just search the instrucion in the internet on how to generate an App Password for your email account.<sup>sorry i don't have an internet connection while typing this.</sup>
-	- For example `Create an app password for gmail account.`
+- Just search the instruction in the internet on how to generate an App Password for your email account.
 - You need an imap_server.
 	- Just get your email service provider's imap server. Gmail's imap server is `imap.gmail.com`. You can search it in the internet.
 - Provide the port.
@@ -524,7 +524,7 @@ So it means that any email service provider that provides an IMAP support is sup
 The calculator widget is the result of my boredom. 
 - Supports:
 	- Basic math operations
-	- **Keyboard support**
+	- Keyboard support
 
 - Tips:
 	Enable keyboard support by hovering your mouse above the calculator.
@@ -550,7 +550,7 @@ The calculator widget is the result of my boredom.
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/trash.png" alt="trash_img" align="right" width="350px">
 
-The trash widget..well errm.. is actually useful.
+The trash widget.. well errm.. is actually useful.
 It monitors your trash directory using the AwesomeWM's `awful.spawn.with_line_callback()` and `gio monitor trash:///`, then updates the icon if there is changes.
 
 - Tip:
@@ -596,13 +596,14 @@ Inspired by [elenapan](https://github.com/elenapan/)'s lockscreen module.
 	
 - Depends:
 	- `ffmpeg`
+	- a webcam
 
 - Features:
 	- Using `ffmpeg`, it captures a picture using your webcam if the password is wrong. (Enabled by default)
 		- Will store the images to `$HOME/Pictures/Intruder/` folder.
 
 - Background modes
-	- `blur` blurred background using `imagemagick`'s `convert`. (default, integrated with `dynamic-wallpaper` module)
+	- `blur` blurred background using `imagemagick`'s `convert`.
 	- `root` use the root background as the lockscreen's background image.
 	- `background` use the `beautiful.background` as the background image.
 
@@ -649,7 +650,7 @@ An example of anti-aliased titlebars:
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/antialias.png" alt="antialias">
 
-Anti-aliasing is pretty doable, but it requires a hackish way to do it and the code is ugly and unmaintainable<sup>(yeah just like my code)</sup>. Implementing it will make the titlebar module more obscure and will likely break things.
+Anti-aliasing is pretty doable, but it requires a hackish way to do it and the code is ugly and unmaintainable<sup>(yeah just like my code)</sup>. Implementing it will make the titlebar module more obscure and will more likely break things.
 
 *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
 
@@ -658,37 +659,41 @@ The explanation above is from [elenapan](https://github.com/elenapan/dotfiles#an
 It means we have to add more than one titlebar around the client with transparent background then put a *shaped container* inside it to act as the titlebar's background. 
 
 
-- Code example on how to create an anti-aliased left titlebar:
+Code example on how to create an anti-aliased left titlebar:
 
-	```lua
-	-- A titlebar with a color of #00000000, a black color with full transparency.
-	awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) : setup {
-		{   
-			{
-				awful.titlebar.widget.closebutton    (c),
-				awful.titlebar.widget.maximizedbutton(c),
-				awful.titlebar.widget.minimizebutton (c),
-				layout  = wibox.layout.fixed.vertical
-			},
-			{
-				buttons = buttons,
-				layout  = wibox.layout.flex.vertical
-			},
-			{ 
-				awful.titlebar.widget.floatingbutton (c),
-				layout = wibox.layout.fixed.vertical
-			},
-			layout = wibox.layout.align.vertical,
+```lua
+-- A titlebar with a color of #00000000, a black color with full transparency.
+awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) : setup {
+	{   
+		{
+			awful.titlebar.widget.closebutton    (c),
+			awful.titlebar.widget.maximizedbutton(c),
+			awful.titlebar.widget.minimizebutton (c),
+			layout  = wibox.layout.fixed.vertical
 		},
-		-- Purple color, this will act as the titlebar's background color.
-		bg = "#ff00ff",
-		-- This is the anti-aliased shaped container that will have the purple color and will act as the titlebar's background with 9 as the corner radius.
-		shape = function(cr, width, height)
-			gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, 9) 
-		end,
-		widget = wibox.container.background
-	}
-	```
+		{
+			buttons = buttons,
+			layout  = wibox.layout.flex.vertical
+		},
+		{ 
+			awful.titlebar.widget.floatingbutton (c),
+			layout = wibox.layout.fixed.vertical
+		},
+		layout = wibox.layout.align.vertical,
+	},
+	-- Purple color, this will act as the titlebar's background color.
+	bg = "#ff00ff",
+	-- This is the anti-aliased shaped container that will have the purple color and will act as the titlebar's background with 9 as the corner radius.
+	shape = function(cr, width, height)
+		gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, 9) 
+	end,
+	widget = wibox.container.background
+}
+```
+
+## Testing the setup in VMs
+
++ If you want to try it on a virtual machine, kitty and picom's kawase blur will not likely work. It's because the said programs need a newer OpenGL support which the virtual machines doesn't have. If you're using VMWare you must set it to compatibility mode that supports OpenGL >=3.3.
 
 ## TODOs
 
@@ -700,14 +705,15 @@ It means we have to add more than one titlebar around the client with transparen
 
 
 ## Having a problem?
-Having a problem, errors, bugs, suggestions? Just open an issue [here](https://github.com/manilarome/Glorious-Dotfiles/issues).
+
+Having an issue, problem, errors, fixes, or suggestions? Just open an [issue](https://github.com/manilarome/Glorious-Dotfiles/issues) or [pull request](https://github.com/manilarome/Glorious-Dotfiles/pulls).
 
 
 ## Acknowledgement
 + [**PapyElGringo**](https://github.com/PapyElGringo/) for the inspiration. I was inspired by his [marterial-awesome](https://github.com/PapyElGringo/material-awesome) to start ricing again. `material-awesome` is one of the most functional and beautiful<sup>at the same time</sup> rice I have ever seen.
 + [**elenapan**](https://github.com/elenapan/dotfiles), [**addyfe**](https://github.com/addy-dclxvi/almighty-dotfiles) for the inspiration.
 + **pdonadeo** for the [Rofi Web Search](https://github.com/pdonadeo/rofi-web-search) script.
-+ Also thanks to the and developers of AwesomeWM and to the contributors in my repo. Haha!
++ Also thanks to the developers of AwesomeWM and to the contributors in my repo. ♥
 
 
 ## A counter that will boost my ego
