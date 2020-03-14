@@ -219,8 +219,8 @@ weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID=$KEY&id
 if [ ! -z "$weather" ]; then
 	weather_location=$(echo "$weather" | jq -r ".name")
 	weather_country=$(echo "$weather" | jq -r ".sys.country")
-	weather_sunrise=$(echo "$weather" | jq -r ".sys.sunrise" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%I:%M%p" -d)
-	weather_sunset=$(echo "$weather" | jq -r ".sys.sunset" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%I:%M%p" -d)
+	weather_sunrise=$(echo "$weather" | jq -r ".sys.sunrise" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)
+	weather_sunset=$(echo "$weather" | jq -r ".sys.sunset" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)
 	weather_data_time=$(echo "$weather" | jq -r ".dt" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)
 	weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
 	weather_icon=$(echo "$weather" | jq -r ".weather[].icon" | head -1)
