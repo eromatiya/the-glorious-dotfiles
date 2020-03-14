@@ -16,7 +16,7 @@ local widget_icon_dir = config_dir .. '/widget/user-profile/icons/'
 
 local input_password = nil
 local lock_again = nil
-local validate_again = nil
+local type_again = true
 
 -- Get pass
 
@@ -33,7 +33,9 @@ local background_mode = 'blur' 							-- Available background mode: `blur`, `roo
 local face_capture_dir = '${HOME}/Pictures/Intruders/'  -- Save location, auto creates
 local change_background_on_time = true					-- Dynamic background will only work with `blur` mode
 
-
+-- Wallpaper directory. The default is:
+local wall_dir = gears.filesystem.get_configuration_dir() .. 'theme/wallpapers/'
+local default_wall_name = 'morning-wallpaper.jpg'
 
 
 local locker = function(s)
@@ -320,10 +322,10 @@ local locker = function(s)
 	local rotation_direction = {"north", "west", "south", "east"}
 
 	-- Red, Green, Yellow, Blue
-	local red = "#EE4F84"
-	local green = "#53E2AE"
-	local yellow = "#F1FF52"
-	local blue = "#6498EF"
+	local red = beautiful.system_red_dark
+	local green = beautiful.system_green_dark
+	local yellow = beautiful.system_yello_dark
+	local blue = beautiful.system_blue_dark
 	
 	-- Color table
 	local arc_color = {red, green, yellow, blue}
@@ -365,7 +367,7 @@ local locker = function(s)
 			capture_image, 
 			function(stdout)
 				circle_container.bg = beautiful.groups_title_bg
-				validate_again = true
+				type_again = true
 					
 				-- Humiliate the intruder by showing his/her hideous face
 				wanted_image:set_image(stdout:gsub('%\n',''))
@@ -396,7 +398,7 @@ local locker = function(s)
 		else
 			gears.timer.start_new(1, function()
 				circle_container.bg = beautiful.groups_title_bg
-				validate_again = true
+				type_again = true
 			end)
 		end
 	end
@@ -424,7 +426,7 @@ local locker = function(s)
 			lock_again = true
 
 			-- Enable validation again
-			validate_again = true
+			type_again = true
 
 			if capture_intruder then
 				-- Hide wanted poster
@@ -463,6 +465,10 @@ local locker = function(s)
 	    },
 		keypressed_callback = function(self, mod, key, command) 
 
+			if not type_again then
+				return
+			end
+
 			-- Clear input string
 			if key == 'Escape' then
 				-- Clear input threshold
@@ -491,10 +497,14 @@ local locker = function(s)
 				check_caps()
 			end
 
-			-- Validation
-			if key == 'Return' and (validate_again == true or validate_again == nil) then
+			if not type_again then
+				return
+			end
 
-				validate_again = false
+			-- Validation
+			if key == 'Return' then
+
+				type_again = false
 
 				-- Validate password
 				if input_password == pass() then
@@ -599,6 +609,8 @@ local locker = function(s)
 
 		-- Why is there a lock_again variable?
 		-- Well, it fixes a bug.
+		-- What is the bug? 
+		-- It's a secret.
 
 		if lock_again == true or lock_again == nil then		
 
@@ -659,13 +671,11 @@ end)
 
 -- Dont show notification popups if screen is locked
 naughty.connect_signal("request::display", function(_)
-	-- focused = awful.screen.focused()
-	-- if focused.lockscreen and focused.lockscreen.visible  then
-	-- 	naughty.destroy_all_notifications()
-	-- end
-	-- if focused.lockscreen_extended and focused.lockscreen_extended.visible then
-	-- 	naughty.destroy_all_notifications()
-	-- end
+	focused = awful.screen.focused()
+	if (focused.lockscreen and focused.lockscreen.visible) or 
+		(focused.lockscreen_extended and focused.lockscreen_extended.visible) then
+		naughty.destroy_all_notifications()
+	end
 end)
 
 
@@ -673,12 +683,6 @@ end)
 -- Blurred background
 -- Depends:
 -- 		imagemagick
-
-
-
--- Wallpaper directory. The default is:
-local wall_dir = gears.filesystem.get_configuration_dir() .. 'theme/wallpapers/'
-local default_wall_name = 'morning-wallpaper.jpg'
 
 -- Temp dir
 local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'
