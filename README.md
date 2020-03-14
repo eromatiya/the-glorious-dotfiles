@@ -20,8 +20,8 @@
 - [How to's](#how-to's)
 	- [Fix the errors on startup](#fix-the-errors-on-start-up)
 	- [Fix the font](#fix-the-font)
-	- [Fix rofi application menu](#rofi-application-menu-is-too-small/big!)
-	- [Use Powerlevel10k prompt](#use-the-powerlevel10k-zsh-theme)
+	- [Fix rofi application menu size](#fix-rofi-application-menu-size)
+	- [Use Powerlevel10k prompt](#use-the-powerlevel10k-zsh-theme?)
 - [Keybindings](#keybindings)
 - [File Structure](#basic-file-structure)
 - [Configuration](#configuration-and-preferences)
@@ -218,7 +218,7 @@ $ yay -S otf-san-francisco-pro
 
 Optional: Set it as your system font using `lxappearance` or something . I think you can also change your system font by editing some of your gtk dotfiles. You can also follow the instructions [here](https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/) to make your font rendering better.
 
-### Rofi Application Menu is too small/big!
+### Fix rofi application menu size
 
 The rofi is configured to work in a `1366x768` resolution laptop so it will not work out of the box in a monitor with a larger/smaller resolution. To fix that:
 
