@@ -21,7 +21,7 @@
 	- [Fix the errors on startup](#fix-the-errors-on-start-up)
 	- [Fix the font](#fix-the-font)
 	- [Fix rofi application menu size](#fix-rofi-application-menu-size)
-	- [Use Powerlevel10k prompt](#use-the-powerlevel10k-zsh-theme?)
+	- [Use Powerlevel10k prompt](#use-the-powerlevel10k-prompt)
 - [Keybindings](#keybindings)
 - [File Structure](#basic-file-structure)
 - [Configuration](#configuration-and-preferences)
@@ -178,7 +178,7 @@ Are you using the **git master branch** of AwesomeWM? No? Follow the instruction
 
 ### Fix the font
 
-> **THE FONT SIZE IN THE PANELS IS TOO BIG!**
+> **THE FONT SIZE IS TOO BIG!**
 
 The setup uses the `SF Pro Text` font of Apple. You need to install it or you can just use your preferred font family.
 
@@ -234,7 +234,7 @@ The rofi is configured to work in a `1366x768` resolution laptop so it will not 
 	- Both rofi configuration will only open in your PRIMARY screen. You can change that by changing the `monitor` value in the `configuration {}` block. More info in `man rofi`.
 
 
-### Use the Powerleve10k ZSH theme?
+### Use the Powerleve10k prompt
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/powlevel10k.png" align="center" height="130px"></h3>
 
@@ -308,6 +308,27 @@ $ $EDITOR $HOME/.zshrc
 12. More info about Powerlevel10k [here](https://github.com/romkatv/powerlevel10k). 
 
 
+### Customize titlebars
+
+I designed the titlebar module to allow the user to customize its position on the client.
+
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/custom-titlebars.png">
+
+1. Open `awesome/modules/titlebar.lua`.
+2. Find the `Customize` block.
+3. You can customize the titlebar of a client using its `class`, `instance` or `name`. Use `xprop` to get the needed value.
+
+	For example, let's create a customized titlebar for kitty terminal that has a class name `kitty`:
+
+	```lua
+	if c.class == "kitty" then
+		decorate_titlebar(c, 'right', '#ff00ff', 20)
+	end
+	```
+
+	The class `kitty` will have a purple-colored right titlebar with a size of 20 pixels
+
+
 ## Keybindings
 
 **Mod4** is the Windows key.
@@ -315,7 +336,7 @@ $ $EDITOR $HOME/.zshrc
 ### Launchers
 
 <kbd>Mod4 + Return</kbd> - Launch default terminal  
-<kbd>Mod4 + \`</kbd> Launch dropdown terminal
+<kbd>Mod4 + \`</kbd> Launch dropdown terminal  
 <kbd>Mod4 + Shift + e</kbd> - Launch default file manager  
 <kbd>Mod4 + Shift + f</kbd> - Launch default web browser  
 <kbd>Mod4 + e</kbd> - Launch application menu  
@@ -601,16 +622,16 @@ $ $EDITOR $HOME/.zshrc
 
 ## More
 
-### Anti-aliasing?
+### Anti-aliased clients?
 
-Anti-aliasing is pretty doable, but it requires a hackish way to do it. The code is ugly and unmaintainable<sup>(yeah just like my code)</sup>, so I did not implement it. This is explained better in [elenapan](https://github.com/elenapan/dotfiles#anti-aliasing)'s documentation.
+Anti-aliasing is pretty doable, but it requires a hackish way to do it. The code is ugly and unmaintainable<sup>(yeah just like my code)</sup>, so I did not implement it. This was explained in [elenapan](https://github.com/elenapan/dotfiles#anti-aliasing)'s documentation.
 
 *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
 
 So it means we have to add more than one titlebar around the client with transparent background then put a *shaped container* inside it to act as the titlebar's background. 
 
 
-- Here is an example of an anti-aliased left titlebar:
+- This is an example of an anti-aliased left titlebar:
 
 	```lua
 	-- A titlebar with a color of #00000000, a black color with full transparency.
