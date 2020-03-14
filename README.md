@@ -6,7 +6,7 @@
 
 ## Table of Contents
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/main2.png" alt="sidebanner_img" align="right" width="300px">
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/sidebanner.png" alt="sidebanner_img" align="right" width="300px">
 
 - [Details](#starring)
 - [Features](#features)
@@ -624,6 +624,10 @@ I designed the titlebar module to allow the user to customize its position on th
 ## More
 
 ### Anti-aliased clients?
+
+An example of anti-aliased titlebars
+
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/antialias.png" alt="antialias">
 
 Anti-aliasing is pretty doable, but it requires a hackish way to do it. The code is ugly and unmaintainable<sup>(yeah just like my code)</sup>, so I did not implement it. This was explained in [elenapan](https://github.com/elenapan/dotfiles#anti-aliasing)'s documentation.
 
