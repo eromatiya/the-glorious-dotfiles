@@ -38,8 +38,8 @@ local sunrise_icon_widget = wibox.widget {
 		id = 'sunrise_icon',
 		image = widget_icon_dir .. 'sunrise' .. '.svg',
 		resize = true,
-		forced_height = dpi(17),
-		forced_width = dpi(17),
+		forced_height = dpi(18),
+		forced_width = dpi(18),
 		widget = wibox.widget.imagebox,
 	},
 	layout = wibox.layout.fixed.horizontal
@@ -50,8 +50,8 @@ local sunset_icon_widget = wibox.widget {
 		id = 'sunset_icon',
 		image = widget_icon_dir .. 'sunset' .. '.svg',
 		resize = true,
-		forced_height = dpi(17),
-		forced_width = dpi(17),
+		forced_height = dpi(18),
+		forced_width = dpi(18),
 		widget = wibox.widget.imagebox,
 	},
 	layout = wibox.layout.fixed.horizontal
@@ -62,8 +62,8 @@ refresh_icon_widget = wibox.widget {
 		id = 'refresh_icon',
 		image = widget_icon_dir .. 'refresh' .. '.svg',
 		resize = true,
-		forced_height = dpi(17),
-		forced_width = dpi(17),
+		forced_height = dpi(18),
+		forced_width = dpi(18),
 		widget = wibox.widget.imagebox,
 	},
 	layout = wibox.layout.fixed.horizontal
@@ -107,7 +107,7 @@ local weather_location = wibox.widget {
 }
 
 local weather_sunrise = wibox.widget {
-	text   = "00:00AM",
+	text   = "00:00",
 	font   = 'SF Pro Text Regular 10',
 	align  = 'center',
 	valign = 'center',
@@ -115,7 +115,7 @@ local weather_sunrise = wibox.widget {
 }
 
 local weather_sunset = wibox.widget {
-	text   = "00:00PM",
+	text   = "00:00",
 	font   = 'SF Pro Text Regular 10',
 	align  = 'center',
 	valign = 'center',
@@ -123,7 +123,7 @@ local weather_sunset = wibox.widget {
 }
 
 local weather_data_time = wibox.widget {
-	text   = "00:00AM",
+	text   = "00:00",
 	font   = 'SF Pro Text Regular 10',
 	align  = 'center',
 	valign = 'center',
@@ -221,7 +221,7 @@ if [ ! -z "$weather" ]; then
 	weather_country=$(echo "$weather" | jq -r ".sys.country")
 	weather_sunrise=$(echo "$weather" | jq -r ".sys.sunrise" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%I:%M%p" -d)
 	weather_sunset=$(echo "$weather" | jq -r ".sys.sunset" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%I:%M%p" -d)
-	weather_data_time=$(echo "$weather" | jq -r ".dt" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%I:%M%p" -d)
+	weather_data_time=$(echo "$weather" | jq -r ".dt" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)
 	weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
 	weather_icon=$(echo "$weather" | jq -r ".weather[].icon" | head -1)
 	weather_description=$(echo "$weather" | jq -r ".weather[].description" | head -1)
