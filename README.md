@@ -28,6 +28,7 @@
 - [Configuration](#configuration-and-preferences)
 - [About Widgets and Modules](#about-widgets-and-modules)
 - [More](#more)
+	- [Antialiasing](#anti-aliased-corners)
 - [TODOs](#todos)
 - [Having a problem?](#having-a-problem?)
 - [Acknowledgement](#acknowledgement)
@@ -623,20 +624,22 @@ I designed the titlebar module to allow the user to customize its position on th
 
 ## More
 
-### Anti-aliased clients?
+### Anti-aliased corners
 
-An example of anti-aliased titlebars
+An example of anti-aliased titlebars:
 
 <img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/antialias.png" alt="antialias">
 
-Anti-aliasing is pretty doable, but it requires a hackish way to do it. The code is ugly and unmaintainable<sup>(yeah just like my code)</sup>, so I did not implement it. This was explained in [elenapan](https://github.com/elenapan/dotfiles#anti-aliasing)'s documentation.
+Anti-aliasing is pretty doable, but it requires a hackish way to do it and the code is ugly and unmaintainable<sup>(yeah just like my code)</sup>. Implementing it will make the titlebar module more obscure and will likely break things.
 
 *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
 
-So it means we have to add more than one titlebar around the client with transparent background then put a *shaped container* inside it to act as the titlebar's background. 
+The explanation above is from [elenapan](https://github.com/elenapan/dotfiles#anti-aliasing)'s documentation.
+
+It means we have to add more than one titlebar around the client with transparent background then put a *shaped container* inside it to act as the titlebar's background. 
 
 
-- This is an example of an anti-aliased left titlebar:
+- Code example on how to create an anti-aliased left titlebar:
 
 	```lua
 	-- A titlebar with a color of #00000000, a black color with full transparency.
