@@ -1,12 +1,12 @@
 <div align="center">
-    <h3><img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/banner.png" align="center" height="200px"></h3>
+    <h3><img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/banner.png" align="center" height="200px"></h3>
     <p align="center">a glorified dotfiles</p>
 </div>
 
 
 ## Table of Contents
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/sidebanner.png" alt="sidebanner_img" align="right" width="300px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/sidebanner.png" alt="sidebanner_img" align="right" width="300px">
 
 - [Details](#starring)
 - [Features](#features)
@@ -88,20 +88,20 @@ I designed this setup to get rid of desktop environment.
 
 | Lockscreen |
 | --- |
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/lockscreen.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/lockscreen.png) |
 
 | Application Menu |
 | --- | 
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/appmenu.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/appmenu.png) |
 
 | Screen Recorder |
 | --- |
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/screenrec.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/screenrec.png) |
 
 
 | Web Search | Dirty | Today Panel |
 | --- | --- | --- |
-| ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/dirty.png) | ![Screenshot](https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/setups/floppy/todaypanel.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/dirty.png) | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/todaypanel.png) |
 
 ## Dependencies
 
@@ -173,10 +173,10 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 4. Clone my repo:
 
 	```bash
-	$ git clone --depth=1 https://github.com/manilarome/Glorious-Dotfiles/
+	$ git clone --depth=1 https://github.com/manilarome/the-glorious-dotfiles/
 	```
 
-4. Just copy the `Glorious-Dotfiles/config/awesome` folder to your `$HOME/.config/`.
+4. Just copy the `the-glorious-dotfiles/config/awesome` folder to your `$HOME/.config/`.
 
 5. Reload AwesomeWM by pressing <kbd>Mod4 + shift + r</kbd>.
 
@@ -250,7 +250,7 @@ The rofi is configured to work on a `1366x768` resolution laptop so it will not 
 
 ### Use the Powerleve10k prompt
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/powlevel10k.png" align="center" height="130px"></h3>
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/powlevel10k.png" align="center" height="130px"></h3>
 
 1. Check the $SHELL you're using right now.
 
@@ -326,7 +326,7 @@ $ $EDITOR $HOME/.zshrc
 
 The titlebar module is quite flexible. You can set the titlebar's position, color, and size for each client by setting its class.
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/custom-titlebars.png">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/custom-titlebars.png">
 
 1. Open `awesome/modules/titlebar.lua`.
 2. Find the `Customize` block.
@@ -486,7 +486,7 @@ The titlebar module is quite flexible. You can set the titlebar's position, colo
 
 #### Weather Widget
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/weather.png" alt="weather_img" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/weather.png" alt="weather_img" align="right" width="350px">
 	
 How to get a credentials for weather widget?
 
@@ -500,7 +500,7 @@ How to get a credentials for weather widget?
 
 #### Email Widget
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/email.png" alt="email_img" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/email.png" alt="email_img" align="right" width="350px">
 	
 How to get a valid credentials for email widget?
 
@@ -519,7 +519,7 @@ So it means that any email service provider that provides an IMAP support is sup
 
 #### Calculator Widget
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/calculator.png" alt="calculator_img" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/calculator.png" alt="calculator_img" align="right" width="350px">
 	
 The calculator widget is the result of my boredom. 
 - Supports:
@@ -548,7 +548,7 @@ The calculator widget is the result of my boredom.
 
 #### Trash Widget
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/trash.png" alt="trash_img" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/trash.png" alt="trash_img" align="right" width="350px">
 
 The trash widget.. well errm.. is actually useful.
 It monitors your trash directory using the AwesomeWM's `awful.spawn.with_line_callback()` and `gio monitor trash:///`, then updates the icon if there is changes.
@@ -571,7 +571,7 @@ It is better if you have a music file with metadata.
 
 #### Screen Recorder Widget
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/widgets/screen-recorder.png" alt="recorder_img" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/screen-recorder.png" alt="recorder_img" align="right" width="350px">
 
 This is actually useful for basic screen recording.
 
@@ -590,7 +590,7 @@ This is actually useful for basic screen recording.
 
 #### Lockscreen Module
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/lockscreen.png" alt="lockscreen_img" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/lockscreen.png" alt="lockscreen_img" align="right" width="350px">
 	
 Inspired by [elenapan](https://github.com/elenapan/)'s lockscreen module.
 	
@@ -633,7 +633,7 @@ Another fruit of my boredom.
 
 #### Backdrop Module
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/modules/backdrop.png" alt="lockscreen_img" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/backdrop.png" alt="lockscreen_img" align="right" width="350px">
 
 This module is developed by [PapyElGringo](https://github.com/PapyElGringo/) for his [material-awesome](https://github.com/PapyElGringo/material-awesome). This module adds a backdrop blur to the dialogs and modals. You can disable it by setting the `draw_backdrop` to `false` in the `awesome/configuration/client/rules.lua`
 
@@ -655,7 +655,7 @@ Yes, this is somewhat useless when we're using a tiling window managers, buuut..
 
 An example of anti-aliased titlebars:
 
-<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/antialias.png" alt="antialias">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/antialias.png" alt="antialias">
 
 Anti-aliasing is pretty doable, but it requires a hackish way to do it and the code is ugly and unmaintainable<sup>(yeah just like my code)</sup>. Implementing it will make the titlebar module more obscure and will more likely break things.
 
@@ -713,7 +713,7 @@ awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) 
 
 ## Having a problem?
 
-Having an issue, problem, errors, fixes, or suggestions? Just open an [issue](https://github.com/manilarome/Glorious-Dotfiles/issues) or [pull request](https://github.com/manilarome/Glorious-Dotfiles/pulls).
+Having an issue, problem, errors, fixes, or suggestions? Just open an [issue](https://github.com/manilarome/the-glorious-dotfiles/issues) or [pull request](https://github.com/manilarome/the-glorious-dotfiles/pulls).
 
 
 ## Acknowledgement
