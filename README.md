@@ -17,7 +17,11 @@
     - [Recommended Dependencies](#recommended-packages)
     - [Recommended Fonts](#recommended-fonts)
 - [Getting Started](#getting-started)
-	- [Install](#how-to-install-the-setup?)
+- [How to's](#how-to's)
+	- [Fix the errors on startup](#fix-the-errors-on-start-up)
+	- [Fix the font](#fix-the-font)
+	- [Fix rofi application menu](#rofi-application-menu-is-too-small/big!)
+	- [Use Powerlevel10k prompt](#use-the-powerlevel10k-zsh-theme)
 - [Keybindings](#keybindings)
 - [File Structure](#basic-file-structure)
 - [Configuration](#configuration-and-preferences)
@@ -138,10 +142,7 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 	- [`MesloLGS NF`](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k)
 
 
-## Getting started
-
-
-### How to install the setup?
+### Getting started
 
 1. Install the AwesomeWM **git master branch**. So if you're using the stable version or if you don't have AwesomeWM installed, install it now. Assuming you're using the elevated one - Arch Linux, you can install it by using an AUR helper. In this example let's use `yay`
 
@@ -166,12 +167,16 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 5. Reload AwesomeWM by pressing <kbd>Mod4 + shift + r</kbd>.
 
 
-### Errors on start-up!
+## How to's
+
+These are the common problems encountered.
+
+### Fix the errors on start-up
 
 Are you using the **git master branch** of AwesomeWM? No? Follow the instructions [here](#how-to-install-the-setup?).
 
 
-### Fix the font?
+### Fix the font
 
 > **THE FONT SIZE IN THE PANELS IS TOO BIG!**
 
@@ -212,7 +217,6 @@ $ yay -S otf-san-francisco-pro
 2. Reload <kbd>Mod4 + Control + r</kbd>.
 
 Optional: Set it as your system font using `lxappearance` or something . I think you can also change your system font by editing some of your gtk dotfiles. You can also follow the instructions [here](https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/) to make your font rendering better.
-
 
 ### Rofi Application Menu is too small/big!
 
