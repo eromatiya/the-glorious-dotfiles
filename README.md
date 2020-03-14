@@ -311,6 +311,7 @@ $ $EDITOR $HOME/.zshrc
 ### Launchers
 
 <kbd>Mod4 + Return</kbd> - Launch default terminal  
+<kbd>Mod4 + \`</kbd> Launch dropdown terminal
 <kbd>Mod4 + Shift + e</kbd> - Launch default file manager  
 <kbd>Mod4 + Shift + f</kbd> - Launch default web browser  
 <kbd>Mod4 + e</kbd> - Launch application menu  
