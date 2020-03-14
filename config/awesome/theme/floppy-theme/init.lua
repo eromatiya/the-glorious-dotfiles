@@ -9,24 +9,30 @@ theme.font_bold = 'SF Pro Text Bold 10'
 
 
 -- Colorscheme
-theme.system_blue_dark = '#148eff' 
-theme.system_blue_light = '#0070f5'
-theme.system_brown_dark = '#b69872'
-theme.system_brown_light = '#987a54'
-theme.system_gray_dark = '#a2a2a7'
-theme.system_gray_light = '#848489'
-theme.system_green_dark = '#3ce155'
-theme.system_green_light = '#1ec337'
-theme.system_orange_dark = '#ffa914'
-theme.system_orange_light = '#f58b00'
-theme.system_pink_dark = '#ff4169'
-theme.system_pink_light = '#f5234b'
-theme.system_purple_dark = '#cc65ff'
-theme.system_purple_light = '#9f4bc9'
-theme.system_red_dark = '#ff5044'
-theme.system_red_light = '#f53126'
-theme.system_yellow_dark = '#fff414'
-theme.system_yellow_light = '#f5c200'
+theme.system_black_dark = '#3D4C5F'
+theme.system_black_light = '#56687E'
+
+theme.system_red_dark = '#EE4F84'
+theme.system_red_light = '#F48FB1'
+
+theme.system_green_dark = '#53E2AE'
+theme.system_green_light = '#A1EFD3'
+
+theme.system_yellow_dark = '#F1FF52'
+theme.system_yellow_light = '#F1FA8C'
+
+theme.system_blue_dark = '#6498EF' 
+theme.system_blue_light = '#92B6F4'
+
+theme.system_magenta_dark = '#985EFF'
+theme.system_magenta_light = '#BD99FF'
+
+theme.system_cyan_dark = '#24D1E7'
+theme.system_cyan_light = '#87DFEB'
+
+theme.system_white_dark = '#E5E5E5'
+theme.system_white_light = '#F8F8F2'
+
 
 -- Accent color
 theme.accent = theme.system_blue_dark
