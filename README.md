@@ -29,7 +29,7 @@
 - [About Widgets](#about-widgets)
 	- [Weather Widget](#weather-widget)
 	- [Email Widget](#email-widget)
-	- [CalculatorWidget](#calculator-widget)
+	- [Calculator Widget](#calculator-widget)
 	- [Trash Widget](#trash-widget)
 	- [Music Widget](#music-widget)
 	- [Screen-recorder Widget](#screen-recorder-widget)
@@ -602,13 +602,20 @@ Inspired by [elenapan](https://github.com/elenapan/)'s lockscreen module.
 	- Using `ffmpeg`, it captures a picture using your webcam if the password is wrong. (Enabled by default)
 		- Will store the images to `$HOME/Pictures/Intruder/` folder.
 
+- Keyboard Binding:
+	- <kbd>super + l</kbd> - lock the screen
+	- <kbd>Control + u</kbd> or <kbd>Escape</kbd> - clear the typed password
+	- <kbd>Return</kbd> - validate password
+
 - Background modes
-	- `blur` blurred background using `imagemagick`'s `convert`.
-	- `root` use the root background as the lockscreen's background image.
-	- `background` use the `beautiful.background` as the background image.
+	- `blur` method uses `imagemagick`'s `convert` to blur the background. 
+		- There's also a dynamic background functionality like the one with the `dynamic-wallpaper` module. It changes the blurred background image based on time. This is enabled by default. If disabled, it will use the default wallpaper. Configure it in `awesome/module/lockscreen.lua`.
+
+	- `root` uses the root background/wallpaper as the lockscreen's background image.
+	- `background` use the `beautiful.background` color as the background image. Use it with blur and transparency to make it more beautiful.
 
 - Note:
-	- The default password is `toor` and it's in `awesome/configuration/secrets.lua` .
+	- The default password is `toor` and it's in `awesome/configuration/secrets.lua`.
 	- Integrated with the `user-profile` widget to get the profile picture.
 	- You can also set your picture manually.
 

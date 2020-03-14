@@ -31,6 +31,7 @@ end
 local capture_intruder = true  							-- Capture a picture using webcam 
 local background_mode = 'blur' 							-- Available background mode: `blur`, `root`, `background`
 local face_capture_dir = '${HOME}/Pictures/Intruders/'  -- Save location, auto creates
+local change_background_on_time = false
 
 
 
@@ -669,19 +670,69 @@ end)
 
 
 
--- Dynamic background
-
 -- Blurred background
 -- Depends:
 -- 		imagemagick
 
+
+
+-- Wallpaper directory. The default is:
+local wall_dir = gears.filesystem.get_configuration_dir() .. 'theme/wallpapers/'
+local default_wall_name = 'morning-wallpaper.jpg'
+
+-- Temp dir
+local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'
+
+
+-- Imagemagick convert command that will crop, resize and blur the background image
+local return_cmd_str_to_blur = function(wall_name, index, ap, width, height)
+	local magic = [[
+
+	if [ ! -d ]] .. tmp_wall_dir ..[[ ]; then mkdir -p ]] .. tmp_wall_dir .. [[; fi
+
+	convert -quality 100 -filter Gaussian -blur 0x10 ]] .. wall_dir .. wall_name .. 
+	[[ -gravity center -crop ]] .. ap .. [[:1 +repage -resize ]] .. width .. 'x' .. height .. 
+	[[! ]] .. tmp_wall_dir .. index .. wall_name .. [[
+	]]
+	return magic
+end
+
+
+-- Set the data
+local update_ls_bg = function(wall_name)
+
+	for s in screen do
+
+		local index = s.index .. '-'
+
+		local screen_width = s.geometry.width
+		local screen_height = s.geometry.height
+
+		local aspect_ratio = screen_width / screen_height
+
+		aspect_ratio = math.floor(aspect_ratio * 100) / 100
+
+		local cmd = return_cmd_str_to_blur(wall_name, index, aspect_ratio, screen_width, screen_height)
+
+		if s.index == 1 then
+			awful.spawn.easy_async_with_shell(cmd, function(stdout, stderr)
+				s.lockscreen.bgimage = tmp_wall_dir .. index .. wall_name
+			end)
+		else
+			awful.spawn.easy_async_with_shell(cmd, function() 
+				s.lockscreen_extended.bgimage = tmp_wall_dir .. index .. wall_name
+			end)
+		end
+
+	end
+end
+
 if background_mode == 'blur'  then
 
-	-- Wallpaper directory. The default is:
-	local wall_dir = gears.filesystem.get_configuration_dir() .. 'theme/wallpapers/'
-
-	-- Temp dir
-	local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'
+	if not change_background_on_time then
+		update_ls_bg(default_wall_name)
+		return 
+	end
 
 	-- Wallpapers filename
 	-- Note:
@@ -727,48 +778,6 @@ if background_mode == 'blur'  then
 	local time_diff = function(current, schedule)
 		local diff = parse_to_seconds(current) - parse_to_seconds(schedule)
 		return diff
-	end
-
-
-	-- Imagemagick convert command that will crop, resize and blur the background image
-	local return_cmd_str_to_blur = function(wall_name, index, ap, width, height)
-		local magic = [[
-
-		if [ ! -d ]] .. tmp_wall_dir ..[[ ]; then mkdir -p ]] .. tmp_wall_dir .. [[; fi
-
-		convert -quality 100 -filter Gaussian -blur 0x10 ]] .. wall_dir .. wall_name .. 
-		[[ -gravity center -crop ]] .. ap .. [[:1 +repage -resize ]] .. width .. 'x' .. height .. 
-		[[! ]] .. tmp_wall_dir .. index .. wall_name .. [[
-		]]
-		return magic
-	end
-
-	local update_ls_bg = function(wall_name)
-
-		for s in screen do
-
-			local index = s.index .. '-'
-
-			local screen_width = s.geometry.width
-			local screen_height = s.geometry.height
-
-			local aspect_ratio = screen_width / screen_height
-
-			aspect_ratio = math.floor(aspect_ratio * 100) / 100
-
-			local cmd = return_cmd_str_to_blur(wall_name, index, aspect_ratio, screen_width, screen_height)
-
-			if s.index == 1 then
-				awful.spawn.easy_async_with_shell(cmd, function() 
-					s.lockscreen.bgimage = tmp_wall_dir .. index .. wall_name
-				end)
-			else
-				awful.spawn.easy_async_with_shell(cmd, function() 
-					s.lockscreen_extended.bgimage = tmp_wall_dir .. index .. wall_name
-				end)
-			end
-
-		end
 	end
 
 
