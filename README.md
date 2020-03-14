@@ -187,7 +187,7 @@ These are the common problems encountered.
 
 ### Fix the errors on start-up
 
-Are you using the **git master branch** of AwesomeWM? No? Follow the instructions [here](#how-to-install-the-setup?).
+Are you using the **git master branch** of AwesomeWM? No? Follow the instructions [here](#getting-started).
 
 
 ### Fix the font
