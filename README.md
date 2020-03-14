@@ -163,7 +163,7 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 
 4. Just copy the `Glorious-Dotfiles/config/awesome` folder to your `$HOME/.config/`.
 
-5. Reload AwesomeWM by pressing `Super + shift + r`.
+5. Reload AwesomeWM by pressing <kbd>Mod4 + shift + r</kbd>.
 
 
 ### Errors on start-up!
@@ -209,7 +209,7 @@ $ yay -S otf-san-francisco-pro
 
 	Create the folder if it doesn't exist.
 
-2. Reload `Super + Control + r`
+2. Reload <kbd>Mod4 + Control + r</kbd>.
 
 Optional: Set it as your system font using `lxappearance` or something . I think you can also change your system font by editing some of your gtk dotfiles. You can also follow the instructions [here](https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/) to make your font rendering better.
 
@@ -231,6 +231,8 @@ The rofi is configured to work in a `1366x768` resolution laptop so it will not 
 
 
 ### Use the Powerleve10k ZSH theme?
+
+<img src="https://github.com/manilarome/Glorious-Dotfiles/blob/master/screenshots/powlevel10k.png" align="center" height="130px"></h3>
 
 1. Check the $SHELL you're using right now.
 
@@ -304,37 +306,39 @@ $ $EDITOR $HOME/.zshrc
 
 ## Keybindings
 
+**Mod4** is the Windows key.
+
 ### Launchers
 
-<kbd>super + Return</kbd> - Launch default terminal  
-<kbd>super + Shift + e</kbd> - Launch default file manager  
-<kbd>super + Shift + f</kbd> - Launch default web browser  
-<kbd>super + e</kbd> - Launch application menu  
-<kbd>super + Shift + r</kbd> - Launch web search rofi  
-<kbd>super + Shift + Escape</kbd> Launch system monitor  
+<kbd>Mod4 + Return</kbd> - Launch default terminal  
+<kbd>Mod4 + Shift + e</kbd> - Launch default file manager  
+<kbd>Mod4 + Shift + f</kbd> - Launch default web browser  
+<kbd>Mod4 + e</kbd> - Launch application menu  
+<kbd>Mod4 + Shift + r</kbd> - Launch web search rofi  
+<kbd>Mod4 + Shift + Escape</kbd> Launch system monitor  
 
 ### Navigation
 
-<kbd>super + F2</kbd> - Open today panel  
-<kbd>super + F3</kbd> - Open notification panel  
-<kbd>super + r</kbd> - Open left dashboard  
-<kbd>super + m</kbd> - Toggle music widget  
+<kbd>Mod4 + F2</kbd> - Open today panel  
+<kbd>Mod4 + F3</kbd> - Open notification panel  
+<kbd>Mod4 + r</kbd> - Open left dashboard  
+<kbd>Mod4 + m</kbd> - Toggle music widget  
 
 ### Utilities
 
 <kbd>Control + Escape</kbd> - Toggle system tray  
-<kbd>super + l</kbd> - Lock the screen  
-<kbd>super + t</kbd> - Toggle redshift filter  
-<kbd>super + [</kbd> - Decrease the blur effect  
-<kbd>super + ]</kbd> - Increase the blur effect  
+<kbd>Mod4 + l</kbd> - Lock the screen  
+<kbd>Mod4 + t</kbd> - Toggle redshift filter  
+<kbd>Mod4 + [</kbd> - Decrease the blur effect  
+<kbd>Mod4 + ]</kbd> - Increase the blur effect  
 <kbd>Print</kbd> - Take a screenshot  
-<kbd>Super + Shift + s</kbd> - Take a selected screenshot  
+<kbd>Mod4 + Shift + s</kbd> - Take a selected screenshot  
 
 ### Awesome
 
-<kbd>Super + F1</kbd> - Show keybindings  
-<kbd>Control + Super + R</kbd> - Reload awesome wm configuration  
-<kbd>Control + Super + q</kbd> - Quit awesome wm  
+<kbd>Mod4 + F1</kbd> - Show keybindings  
+<kbd>Control + Mod4 + R</kbd> - Reload awesome wm configuration  
+<kbd>Control + Mod4 + q</kbd> - Quit awesome wm  
 
 
 ## Basic File Structure
@@ -381,7 +385,7 @@ $ $EDITOR $HOME/.zshrc
 
 + **Configure Keybindings?**
 	
-	You can check keybinds by pressing `Super + F1`.
+	You can check keybinds by pressing `Mod4 + F1`.
 
 	Client keybindings:
 	- `awesome/configuration/client/keys.lua`
