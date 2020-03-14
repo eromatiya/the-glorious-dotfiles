@@ -168,7 +168,7 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 
 ### Errors on start-up!
 
-Are you using the **git master branch** of AwesomeWM? No? Follow the instructions [here](##how-to-install-the-setup?).
+Are you using the **git master branch** of AwesomeWM? No? Follow the instructions [here](#how-to-install-the-setup?).
 
 
 ### Fix the font?
