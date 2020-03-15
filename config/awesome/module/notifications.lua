@@ -1,11 +1,11 @@
 local naughty = require('naughty')
-local beautiful = require('beautiful')
 local gears = require('gears')
 local wibox = require('wibox')
 local awful = require('awful')
 local ruled = require('ruled')
+local beautiful = require('beautiful')
 
-local dpi = require('beautiful').xresources.apply_dpi
+local dpi = beautiful.xresources.apply_dpi
 
 -- Defaults
 naughty.config.defaults.ontop = true
@@ -22,6 +22,8 @@ naughty.config.defaults.shape = function(cr, w, h) gears.shape.rounded_rect(cr, 
 naughty.config.padding = 8
 naughty.config.spacing = 8
 naughty.config.icon_dirs = {
+	"/usr/share/icons/Tela",
+	"/usr/share/icons/Tela-blue-dark",
 	"/usr/share/icons/la-capitaine-icon-theme/",
 	"/usr/share/icons/Papirus/",
 	"/usr/share/pixmaps/"
@@ -52,7 +54,7 @@ ruled.notification.connect_signal('request::rules', function()
 		rule       = { urgency = 'normal' },
 		properties = {
 			font        		= 'SF Pro Text Regular 10',
-			bg      			= beautiful.background, 
+			bg      			= beautiful.transparent, 
 			fg 					= beautiful.fg_normal,
 			margin 				= dpi(16),
 			position 			= 'top_right',
@@ -66,7 +68,7 @@ ruled.notification.connect_signal('request::rules', function()
 		rule       = { urgency = 'low' },
 		properties = { 
 			font        		= 'SF Pro Text Regular 10',
-			bg     				= beautiful.background,
+			bg     				= beautiful.transparent,
 			fg 					= beautiful.fg_normal,
 			margin 				= dpi(16),
 			position 			= 'top_right',
@@ -106,24 +108,24 @@ naughty.connect_signal("request::display", function(n)
 						font   = 'SF Pro Text Regular 10',
 						widget = wibox.widget.textbox
 					},
-						widget = wibox.container.place
+					widget = wibox.container.place
 				},
 				bg                 = beautiful.groups_bg,
 				shape              = gears.shape.rounded_rect,
-				forced_height      = 30,
+				forced_height      = dpi(30),
 				widget             = wibox.container.background,
 			},
-			margins = 4,
+			margins = dpi(4),
 			widget  = wibox.container.margin,
 		},
 		style = { underline_normal = false, underline_selected = true },
-		widget = naughty.list.actions,
+		widget = naughty.list.actions
 	}
 
 	-- Custom notification layout
 	naughty.layout.box {
 		notification = n,
-		type = "utility",
+		type = "notification",
 		screen = awful.screen.focused(),
 		shape = gears.shape.rectangle,
 		widget_template = {
