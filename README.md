@@ -178,7 +178,7 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 
 4. Just copy the `the-glorious-dotfiles/config/awesome` folder to your `$HOME/.config/`.
 
-5. Reload AwesomeWM by pressing <kbd>Mod4 + shift + r</kbd>.
+5. Reload AwesomeWM by pressing <kbd>Mod4 + Shift + r</kbd>.
 
 
 ## How to's
@@ -228,7 +228,7 @@ $ yay -S otf-san-francisco-pro
 
 	Create the folder if it doesn't exist.
 
-2. Reload <kbd>Mod4 + Control + r</kbd>. `Mod4` is the Windows key.
+2. Reload <kbd>Mod4 + Control + r</kbd>. <kbd>Mod4</kbd> is the Windows key.
 
 Optional: Set it as your system font using `lxappearance` or something . I think you can also change your system font by editing some of your gtk dotfiles. You can also follow the instructions [here](https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/) to make your font rendering better.
 
@@ -425,7 +425,7 @@ The titlebar module is quite flexible. You can set the titlebar's position, colo
 
 + **Configure Keybindings?**
 	
-	You can check keybinds by pressing `Mod4 + F1`.
+	You can check keybinds by pressing <kbd>Mod4 + F1</kbd>.
 
 	Client keybindings:
 	- `awesome/configuration/client/keys.lua`
@@ -532,10 +532,10 @@ The calculator widget is the result of my boredom.
 	Only numbers, arithmetic operators, and decimal point is accepted.
 
 - Keyboard Binding:
-	- `=` and `Return` to evaluate.
-	- `BackSpace` to delete the last digit.
-	- `Escape` to clear the screen.
-	- `x` stops the keygrabbing.
+	- <kbd>=</kbd> and <kbd>Return</kbd> to evaluate.
+	- <kbd>BackSpace</kbd> to delete the last digit.
+	- <kbd>Escape</kbd> to clear the screen.
+	- <kbd>x</kbd> stops the keygrabbing.
 
 - Note:
 	- While in keygrabbing mode, your keyboard's focus will be on the calculator. So you're AwesomeWM keybinding will stop working.<sup>temporarily of course.</sup> 
@@ -543,7 +543,7 @@ The calculator widget is the result of my boredom.
 - Stopping the keygrabbing mode:
 	- Move away your cursor from the calculator.
 	- Toggle it off using the keyboard button.
-	- Press `x`.
+	- Press <kbd>x</kbd>.
 
 
 #### Trash Widget
@@ -603,7 +603,7 @@ Inspired by [elenapan](https://github.com/elenapan/)'s lockscreen module.
 		- Will store the images to `$HOME/Pictures/Intruder/` folder.
 
 - Keyboard Binding:
-	- <kbd>super + l</kbd> - lock the screen
+	- <kbd>Mod4 + l</kbd> - lock the screen
 	- <kbd>Control + u</kbd> or <kbd>Escape</kbd> - clear the typed password
 	- <kbd>Return</kbd> - validate password
 
@@ -724,4 +724,4 @@ Having an issue, problem, errors, fixes, or suggestions? Just open an [issue](ht
 
 
 ## A counter that will boost my ego
-[![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/Glorified-Dotfiles)
+[![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
