@@ -180,22 +180,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 		local focused = awful.screen.focused()
 		
-		local right_panel = focused.right_panel
 		local volume_osd = focused.brightness_osd_overlay
-
-		if right_panel then
-			if right_panel.visible then
-				awful.placement.bottom_left(focused.brightness_osd_overlay, { margins = { 
-					left = osd_margin,
-					right = 0,
-					top = 0,
-					bottom = osd_margin,
-					}, 
-					parent = focused }
-				)
-				return
-			end
-		end
 
 		awful.placement.bottom_right(focused.brightness_osd_overlay, { margins = { 
 			left = 0,
