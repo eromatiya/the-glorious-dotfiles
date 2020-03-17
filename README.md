@@ -86,7 +86,7 @@ I designed this setup to get rid of desktop environment.
 
 ### Floppy
 
-Floppy is meant to be a clone by design of the infamous [Flurry Desktop](https://www.reddit.com/r/unixporn/comments/apktsx/flurry_i_know_you_like_tiling_managers_and_i_want/). I named it Floppy because I thought it would flop when I first [posted](https://www.reddit.com/r/unixporn/comments/de0m3v/awesome_floppy/) it in r/unixporn.
+Floppy was meant to be a clone by design of the infamous [Flurry Desktop](https://www.reddit.com/r/unixporn/comments/apktsx/flurry_i_know_you_like_tiling_managers_and_i_want/). I named it Floppy because I thought it would flop when I first [posted](https://www.reddit.com/r/unixporn/comments/de0m3v/awesome_floppy/) it in r/unixporn.
 
 
 | Lockscreen |
