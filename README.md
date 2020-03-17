@@ -74,12 +74,7 @@
 + Built-in Screen Recorder Widget
 + Lockscreen Module with Face Capture<sup>yep. this is overkill</sup>
 
-I designed this setup to get rid of desktop environment. 
-
-## Announcement
-
-**Temporarily, this repo will only contain the `Floppy` setup because I will be rewriting/replacing the other ones. You can still found the other setups [`here`](https://github.com/manilarome/old-awesome-dotfiles), though.**
-
+I designed these setups to get rid of desktop environment and I'm loving it. 
 
 ## Screenshots
 
@@ -109,7 +104,7 @@ Floppy was meant to be a clone by design of the infamous [Flurry Desktop](https:
 
 ### GNawesOME
 
-GNawesOME is a weird name. GNawesOME was meant to be a GNOME clone by design. Instead, it became a hybrid of macOS, iOS, GNOME, and Deepin. I regret nothing.
+GNawesOME is a weird name. GNawesOME was meant to be a GNOME clone. Instead, it became a hybrid of macOS, iOS, GNOME, and Deepin. I regret nothing.
 
 | Busy |
 | --- |
@@ -584,7 +579,8 @@ It is better if you have a music file with metadata.
 
 This is actually useful for basic screen recording.
 
-- Depends: `ffmpeg`
+- Depends: 
+	- `ffmpeg`
 
 - Features:
 	- You can toggle microphone on and off.
