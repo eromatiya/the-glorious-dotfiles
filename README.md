@@ -103,6 +103,23 @@ I designed this setup to get rid of desktop environment.
 | --- | --- | --- |
 | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/dirty.png) | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/todaypanel.png) |
 
+
+### GNawesOME
+
+| Desktop |
+| --- |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/clean.png) |
+
+| Application Menu |
+| --- | 
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/appmenu.png) |
+
+| Dirty |
+| --- |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/dirty.png) |
+
+
+
 ## Dependencies
 
 
