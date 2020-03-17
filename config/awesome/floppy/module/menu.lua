@@ -15,7 +15,7 @@ terminal = apps.default.terminal
 web_browser = apps.default.web_browser
 file_manager = apps.default.file_manager
 text_editor = apps.default.text_editor
-editor_cmd = terminal .. " -e " .. (os.getenv("EDITOR") or "") or "nano"
+editor_cmd = terminal .. " -e " .. (os.getenv("EDITOR") or "nano")
 
 
 -- icon theme is in `awesome/theme/default-theme.lua`
