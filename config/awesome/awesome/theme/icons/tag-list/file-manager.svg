@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="240"
+   height="240"
+   viewBox="0 0 63.49875 63.49875"
+   version="1.1"
+   id="svg29"
+   sodipodi:docname="file-manager.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata
+     id="metadata33">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1321"
+     inkscape:window-height="740"
+     id="namedview31"
+     showgrid="false"
+     inkscape:pagecheckerboard="true"
+     inkscape:zoom="0.23046875"
+     inkscape:cx="-703.45904"
+     inkscape:cy="-446.22747"
+     inkscape:window-x="45"
+     inkscape:window-y="28"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg29" />
+  <defs
+     id="defs11">
+    <linearGradient
+       id="a">
+      <stop
+         offset="0"
+         id="stop2" />
+      <stop
+         offset="1"
+         stop-opacity="0"
+         id="stop4" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="b">
+      <rect
+         ry="0.52899998"
+         y="285.358"
+         x="0.52899998"
+         height="9.5249996"
+         width="15.875"
+         transform="rotate(45)"
+         id="rect7"
+         style="fill:#5677fc;stroke-width:0.25099999;stroke-opacity:0.19599998;paint-order:markers stroke fill" />
+    </clipPath>
+    <linearGradient
+       xlink:href="#a"
+       id="c"
+       x1="-197.10201"
+       y1="217.681"
+       x2="-196.914"
+       y2="219.36501"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     transform="matrix(3.3330578,0,0,3.3330578,3.5283746,-930.38776)"
+     id="g27">
+    <path
+       d="m 3.44,282.448 c -0.294,0 -0.395,0.269 -0.53,0.53 H 2.117 a 0.528,0.528 0 0 0 -0.53,0.528 v 5.292 c 0,0.293 0.237,0.53 0.53,0.53 h 12.7 c 0.293,0 0.529,-0.237 0.529,-0.53 v -5.292 a 0.528,0.528 0 0 0 -0.53,-0.529 H 7.674 c -0.155,-0.249 -0.236,-0.53 -0.53,-0.53 z"
+       id="path13"
+       inkscape:connector-curvature="0"
+       style="fill:#5677fc;paint-order:markers stroke fill" />
+    <path
+       d="m 3.44,282.448 c -0.294,0 -0.395,0.269 -0.53,0.53 H 2.117 a 0.528,0.528 0 0 0 -0.53,0.528 v 5.292 c 0,0.293 0.237,0.53 0.53,0.53 h 12.7 c 0.293,0 0.529,-0.237 0.529,-0.53 v -5.292 a 0.528,0.528 0 0 0 -0.53,-0.529 H 7.674 c -0.155,-0.249 -0.236,-0.53 -0.53,-0.53 z"
+       id="path15"
+       inkscape:connector-curvature="0"
+       style="opacity:0.18000004;paint-order:markers stroke fill" />
+    <rect
+       width="12.171"
+       height="5.027"
+       x="2.381"
+       y="283.771"
+       ry="0.26499999"
+       id="rect17"
+       style="fill:#ffffff;paint-order:markers stroke fill" />
+    <rect
+       width="15.875"
+       height="9.5249996"
+       x="0.52899998"
+       y="285.358"
+       ry="0.52899998"
+       id="rect19"
+       style="fill:#5677fc;paint-order:markers stroke fill" />
+    <path
+       d="m 8.467,284.3 h 7.408 c 0.293,0 0.53,0.236 0.53,0.53 v 3.968 c 0,0.293 -0.237,0.529 -0.53,0.529 H 6.152 c -0.294,0 -0.677,-0.276 -0.53,-0.53 l 2.316,-3.968 C 8.085,284.576 8.174,284.3 8.467,284.3 Z"
+       id="path21"
+       inkscape:connector-curvature="0"
+       style="fill:#5677fc;paint-order:markers stroke fill" />
+    <rect
+       width="3.175"
+       height="0.52899998"
+       x="3.704"
+       y="282.71201"
+       ry="0.26499999"
+       id="rect23"
+       style="opacity:0.25;paint-order:stroke markers fill" />
+    <rect
+       width="5.2919998"
+       height="4.7620001"
+       x="-199.58701"
+       y="217.868"
+       ry="0.132"
+       transform="rotate(-45)"
+       clip-path="url(#b)"
+       id="rect25"
+       style="opacity:0.1;fill:url(#c);paint-order:stroke markers fill" />
+  </g>
+</svg>
