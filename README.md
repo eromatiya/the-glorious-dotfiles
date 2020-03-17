@@ -22,7 +22,6 @@
 	- [Fix the font](#fix-the-font)
 	- [Fix rofi application menu size](#fix-rofi-application-menu-size)
 	- [Use Powerlevel10k prompt](#use-the-powerlevel10k-prompt)
-	- [Customize titlebars](#customize-titlebars)
 - [Keybindings](#keybindings)
 - [File Structure](#basic-file-structure)
 - [Configuration](#configuration-and-preferences)
@@ -35,6 +34,7 @@
 	- [Screen-recorder Widget](#screen-recorder-widget)
 - [About Modules](#about-modules)
 	- [Lockscreen Module](#lockscreen-module)
+	- [Titlebar Module](#titlebar-module)
 	- [Dynamic Wallpaper Module](#dynamic-wallpaper-module)
 	- [Backdrop Module](#backdrop-module)
 	- [Menu Module](#menu-module)
@@ -86,6 +86,9 @@ I designed this setup to get rid of desktop environment.
 
 ### Floppy
 
+Floppy is meant to be a clone by design of the infamous [Flurry Desktop](https://www.reddit.com/r/unixporn/comments/apktsx/flurry_i_know_you_like_tiling_managers_and_i_want/). I named it Floppy because I thought it would flop when I first [posted](https://www.reddit.com/r/unixporn/comments/de0m3v/awesome_floppy/) it in r/unixporn.
+
+
 | Lockscreen |
 | --- |
 | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/lockscreen.png) |
@@ -105,6 +108,8 @@ I designed this setup to get rid of desktop environment.
 
 
 ### GNawesOME
+
+GNawesOME is a weird name. GNawesOME was meant to be a GNOME clone by design. Instead, it became a hybrid of macOS, iOS, GNOME, and Deepin. I regret nothing.
 
 | Busy |
 | --- |
@@ -193,7 +198,15 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 	$ git clone --depth=1 https://github.com/manilarome/the-glorious-dotfiles/
 	```
 
-4. Just copy the `the-glorious-dotfiles/config/awesome` folder to your `$HOME/.config/`.
+4. Just copy the `the-glorious-dotfiles/config/awesome/SETUPNAME` folder to your `$HOME/.config/`.
+
+```bash
+# Use the Floppy setup
+$ cp -r the-glorious-dotfiles/config/awesome/floppy $HOME/.config/
+
+# Use the GNawesOME setup
+$ cp -r the-glorious-dotfiles/config/awesome/gnawesome $HOME/.config/
+```
 
 5. Reload AwesomeWM by pressing <kbd>Mod4 + Shift + r</kbd>.
 
@@ -337,27 +350,6 @@ $ $EDITOR $HOME/.zshrc
 11. Open your terminal. There should be some instructions/dialog there that will greet you and will guide you to theme your Powerlevel10k prompt.
 
 12. More info about Powerlevel10k [here](https://github.com/romkatv/powerlevel10k). 
-
-
-### Customize titlebars
-
-The titlebar module is quite flexible. You can set the titlebar's position, color, and size for each client by setting its class.
-
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/custom-titlebars.png">
-
-1. Open `awesome/modules/titlebar.lua`.
-2. Find the `Customize` block.
-3. You can customize the titlebar of a client using its `class`, `instance` or `name`. Use `xprop` to get the needed value.
-
-	For example, let's create a customized titlebar for kitty terminal that has a class name `kitty`:
-
-	```lua
-	if c.class == "kitty" then
-		decorate_titlebar(c, 'right', '#ff00ff', 20)
-	end
-	```
-
-	The class `kitty` will have a purple-colored right titlebar with a size of 20 pixels
 
 
 ## Keybindings
@@ -635,6 +627,27 @@ Inspired by [elenapan](https://github.com/elenapan/)'s lockscreen module.
 	- The default password is `toor` and it's in `awesome/configuration/secrets.lua`.
 	- Integrated with the `user-profile` widget to get the profile picture.
 	- You can also set your picture manually.
+
+
+#### Titlebar Module
+
+The titlebar module is quite flexible. You can set the titlebar's position, color, and size for each client differently.
+
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/custom-titlebars.png">
+
+1. Open `awesome/modules/titlebar.lua`.
+2. Find the `Customize` block.
+3. You can customize the titlebar of a client using its `class`, `instance` or `name`. Use `xprop` to get the needed value.
+
+	For example, let's create a customized titlebar for kitty terminal that has a class name `kitty`:
+
+	```lua
+	if c.class == "kitty" then
+		decorate_titlebar(c, 'right', '#ff00ff', 20)
+	end
+	```
+
+	The class `kitty` will have a purple-colored right titlebar with a size of 20 pixels
 
 
 #### Dynamic Wallpaper Module
