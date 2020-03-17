@@ -106,13 +106,13 @@ I designed this setup to get rid of desktop environment.
 
 ### GNawesOME
 
-| Desktop |
+| Busy |
 | --- |
-| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/clean.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/busy.png) |
 
-| Application Menu |
+| Lockscreen |
 | --- | 
-| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/appmenu.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/lockscreen.png) |
 
 | Dirty |
 | --- |
