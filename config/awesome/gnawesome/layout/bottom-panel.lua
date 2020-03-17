@@ -72,7 +72,7 @@ local bottom_panel = function(s)
 	
 	s.systray = wibox.widget {
 		{
-			base_size = 20,
+			base_size = dpi(20),
 			horizontal = true,
 			screen = 'primary',
 			widget = wibox.widget.systray
