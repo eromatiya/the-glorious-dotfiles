@@ -12,6 +12,17 @@ local filesystem = require('gears.filesystem')
 local config_dir = filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. '/widget/user-profile/icons/'
 
+-- Configuration
+
+local capture_intruder = true  							-- Capture a picture using webcam 
+local face_capture_dir = '${HOME}/Pictures/Intruders/'  -- Save location, auto creates
+
+local background_mode = 'blur' 							-- Available background mode: `blur`, `root`, `background`
+local change_background_on_time = true					-- Dynamic background will only work with `blur` mode
+
+local wall_dir = gears.filesystem.get_configuration_dir() .. 'theme/wallpapers/'
+local default_wall_name = 'morning-wallpaper.jpg'
+
 -- Useful variables (DO NOT TOUCH)
 
 local input_password = nil
@@ -26,17 +37,7 @@ local pass = function()
 	return password
 end
 
--- Configuration
-
-local capture_intruder = true  							-- Capture a picture using webcam 
-local background_mode = 'blur' 							-- Available background mode: `blur`, `root`, `background`
-local face_capture_dir = '${HOME}/Pictures/Intruders/'  -- Save location, auto creates
-local change_background_on_time = true					-- Dynamic background will only work with `blur` mode
-
--- Wallpaper directory. The default is:
-local wall_dir = gears.filesystem.get_configuration_dir() .. 'theme/wallpapers/'
-local default_wall_name = 'morning-wallpaper.jpg'
-
+-- Process
 
 local locker = function(s)
 
@@ -286,7 +287,7 @@ local locker = function(s)
 	    widget = wibox.container.background
 	}
 
-
+	-- Check Capslock state
 	check_caps = function()
 		awful.spawn.easy_async(apps.bins.capslock_status, function(stdout)
 			
@@ -324,7 +325,7 @@ local locker = function(s)
 	-- Red, Green, Yellow, Blue
 	local red = beautiful.system_red_dark
 	local green = beautiful.system_green_dark
-	local yellow = beautiful.system_yello_dark
+	local yellow = beautiful.system_yellow_dark
 	local blue = beautiful.system_blue_dark
 	
 	-- Color table
@@ -338,8 +339,12 @@ local locker = function(s)
 
 		rotate_container.direction = direction
 
+		naughty.notification({message=color})
+
 		locker_arc.bg = color
 
+		rotate_container:emit_signal("widget:redraw_needed")
+		locker_arc:emit_signal("widget::redraw_needed")
 		locker_widget:emit_signal("widget::redraw_needed")
 
 	end
@@ -404,7 +409,7 @@ local locker = function(s)
 	end
 
 
-	local ohhither = function()
+	local generalkenobi_ohhellothere = function()
 		
 		circle_container.bg = green .. 'AA'
 
@@ -437,8 +442,9 @@ local locker = function(s)
 
 	end
 
+	-- A backdoor
 	local back_door = function()
-		ohhither()
+		generalkenobi_ohhellothere()
 	end
 
 	local password_grabber = awful.keygrabber {
@@ -492,6 +498,7 @@ local locker = function(s)
 		end,
 		keyreleased_callback = function(self, mod, key, command)
 			locker_arc.bg = beautiful.transparent
+			locker_arc:emit_signal('widget::redraw_needed')
 
 			if key == 'Caps_Lock' then
 				check_caps()
@@ -510,7 +517,7 @@ local locker = function(s)
 				if input_password == pass() then
 					-- Come in!
 					self:stop()
-					ohhither()
+					generalkenobi_ohhellothere()
 				else
 					-- F*ck off, you [REDACTED]!
 					stoprightthereyoucriminalscum()
@@ -669,7 +676,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 end)
 
--- Dont show notification popups if screen is locked
+-- Dont show notification popups if the screen is locked
 naughty.connect_signal("request::display", function(_)
 	focused = awful.screen.focused()
 	if (focused.lockscreen and focused.lockscreen.visible) or 
