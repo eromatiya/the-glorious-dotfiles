@@ -685,6 +685,21 @@ Yes, this is somewhat useless when we're using a tiling window managers, buuut..
 - `awesome-freedesktop` will populate the menu for you. More info [here](https://github.com/lcpz/awesome-freedesktop/)
 
 
+#### Quake Terminal Module
+
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/quake.png" alt="quake_img">
+
+Another creation of PapyElGringo. As the name of the module says, it's a "dropdown" terminal like quake.
+
+- Depends:
+	- Any terminal
+
+- Note:
+	- This will use the default terminal set in `apps.lua`.
+
+- Keyboard bindings
+	- <kbd>Mod4 + \~</kbd>
+
 ## More
 
 ### Anti-aliased corners
