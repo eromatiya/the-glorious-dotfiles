@@ -84,22 +84,24 @@ I designed these setups to get rid of desktop environment and I'm loving it.
 Floppy was meant to be a clone by design of the infamous [Flurry Desktop](https://www.reddit.com/r/unixporn/comments/apktsx/flurry_i_know_you_like_tiling_managers_and_i_want/). I named it Floppy because I thought it would flop when I first [posted](https://www.reddit.com/r/unixporn/comments/de0m3v/awesome_floppy/) it in r/unixporn.
 
 
-| Lockscreen |
+| Busy |
 | --- |
-| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/lockscreen.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/dirty.png) |
+
 
 | Application Menu |
 | --- | 
 | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/appmenu.png) |
 
-| Screen Recorder |
+
+| Lockscreen |
 | --- |
-| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/screenrec.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/lockscreen.png) |
 
 
-| Web Search | Dirty | Today Panel |
+| Web Search | Screen Recorder | Today Panel |
 | --- | --- | --- |
-| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/dirty.png) | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/todaypanel.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/websearch.png) | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/screenrec.png) | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/floppy/todaypanel.png) |
 
 
 ### GNawesOME
@@ -110,14 +112,15 @@ GNawesOME is a weird name. GNawesOME was meant to be a GNOME clone. Instead, it 
 | --- |
 | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/busy.png) |
 
-| Lockscreen |
-| --- | 
-| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/lockscreen.png) |
 
 | Dirty |
 | --- |
 | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/dirty.png) |
 
+
+| Lockscreen |
+| --- | 
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/lockscreen.png) |
 
 
 ## Dependencies
@@ -154,6 +157,7 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 | `xdg_menu` or `awesome-freedesktop` | Generates a list of installed applications | Menu Module/Useful for generating app list |
 | `noto-fonts-emoji` | Google Noto emoji fonts | Emoji support for notification center |
 | `jq` | Command-line JSON processor | Read weather |
+
 
 ### Recommended Packages
 
@@ -197,10 +201,10 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 
 ```bash
 # Use the Floppy setup
-$ cp -r the-glorious-dotfiles/config/awesome/floppy $HOME/.config/
+$ cp -r the-glorious-dotfiles/config/awesome/floppy $HOME/.config/awesome
 
 # Use the GNawesOME setup
-$ cp -r the-glorious-dotfiles/config/awesome/gnawesome $HOME/.config/
+$ cp -r the-glorious-dotfiles/config/awesome/gnawesome $HOME/.config/awesome
 ```
 
 5. Reload AwesomeWM by pressing <kbd>Mod4 + Shift + r</kbd>.
@@ -262,7 +266,10 @@ Optional: Set it as your system font using `lxappearance` or something . I think
 The rofi is configured to work on a `1366x768` resolution laptop so it will not work out of the box in a monitor with a larger/smaller resolution. To fix that:
 
 1. Open `awesome/configuration/rofi/appmenu/rofi.rasi`
-2. In the `window {}` block, change the `height` and `width`.
+
+If you're using `Floppy`:
+
+1. Find the `window {}` block, change the `height` and `width`.
 
 - Tips:
 	- The top panel has 28px height, so `$(YOUR_SCREEN_HEIGHT) - 28 = ROFI_HEIGHT`.
@@ -271,6 +278,12 @@ The rofi is configured to work on a `1366x768` resolution laptop so it will not 
 
 - Note:
 	- In multihead setups, both rofi configuration will only open in your PRIMARY screen. You can change that by changing the `monitor` value in the `configuration {}` block. More info in `man rofi`.
+
+If you're using `GNawesOME`:
+
+- Note:
+	- Unlike in `Floppy`, the rofi will open in fullscreen mode and will open in the focused screen.
+	- It's likely that you still need to change the `paddings` in the `mainbox {}` and `element {}` block.
 
 
 ### Use the Powerleve10k prompt
