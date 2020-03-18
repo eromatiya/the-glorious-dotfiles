@@ -39,7 +39,8 @@
 	- [Backdrop Module](#backdrop-module)
 	- [Menu Module](#menu-module)
 - [More](#more)
-	- [Antialiasing](#anti-aliased-corners)
+	- [Anti-aliasing](#anti-aliased-corners)
+	- [More Awesome](#more-awesomewm-resources)
 - [Testing the setup in VMs](#testing-the-setup-in-vms)
 - [TODOs](#todos)
 - [Having a problem?](#having-a-problem?)
@@ -753,6 +754,11 @@ awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) 
 	widget = wibox.container.background
 }
 ```
+
+### More AwesomeWM resources
+
++ You can find a stash of AwesomeWM widgets [here](https://github.com/streetturtle/awesome-wm-widgets).
++ More AwesomeWM setups [here](https://github.com/PapyElGringo/material-awesome) and [here](https://github.com/elenapan/dotfiles)!
 
 ## Testing the setup in VMs
 
