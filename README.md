@@ -199,13 +199,13 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 
 4. Just copy the `the-glorious-dotfiles/config/awesome/SETUPNAME` folder to your `$HOME/.config/`.
 
-```bash
-# Use the Floppy setup
-$ cp -r the-glorious-dotfiles/config/awesome/floppy $HOME/.config/awesome
+	```bash
+	# Use the Floppy setup
+	$ cp -r the-glorious-dotfiles/config/awesome/floppy $HOME/.config/awesome
 
-# Use the GNawesOME setup
-$ cp -r the-glorious-dotfiles/config/awesome/gnawesome $HOME/.config/awesome
-```
+	# Use the GNawesOME setup
+	$ cp -r the-glorious-dotfiles/config/awesome/gnawesome $HOME/.config/awesome
+	```
 
 5. Reload AwesomeWM by pressing <kbd>Mod4 + Shift + r</kbd>.
 
@@ -228,9 +228,9 @@ The setup uses the `SF Pro Text` font of Apple. You need to install it or you ca
 **Recommended font installation**:
 1. If you're using Archlinux, you can find it in the AUR.
 
-```bash
-$ yay -S otf-san-francisco-pro
-```
+	```bash
+	$ yay -S otf-san-francisco-pro
+	```
 
 - Don't have Arch?<sup>aww you poor little soul</sup> 
 	
@@ -252,10 +252,13 @@ $ yay -S otf-san-francisco-pro
 	
 	- The fonts are now extracted and it has a `.OTF` file extension. You can find it in the `Library/Fonts` folder in the same Downloads directory. Now, copy/move it to:
 			
-	User only: `$HOME/.local/share/fonts/apple/`  
-	System wide: `/usr/share/fonts/apple/`
+		User only: 
+		`$HOME/.local/share/fonts/apple/`  
+		
+		System wide: 
+		`/usr/share/fonts/apple/`
 
-	Create the folder if it doesn't exist.
+		Create the folder if it doesn't exist.
 
 2. Reload <kbd>Mod4 + Control + r</kbd>. <kbd>Mod4</kbd> is the Windows key.
 
@@ -292,50 +295,50 @@ The rofi is configured to work on a `1366x768` resolution laptop so it will not 
 
 1. Check the $SHELL you're using right now.
 
-```bash
-$ echo $SHELL
-```
+	```bash
+	$ echo $SHELL
+	```
 
 The output should be `/usr/bin/zsh`.
 
 2. Not using ZSH? Well, it's a requirement. So to achieve the glory of Powerlevel10k you have to install it first. Assuming you're using the best distro in the universe, **Arch Linux**<sup>(i'm not joking)</sup>, you can install it by:
 
-```bash
-# Update your system then install zsh
-$ pacman -Syu zsh
-```
+	```bash
+	# Update your system then install zsh
+	$ pacman -Syu zsh
+	```
 
 3. Change your $SHELL from whatever you're using right now to ZSH.
 
-```bash
-# User
-$ chsh -s $(which zsh)
+	```bash
+	# User
+	$ chsh -s $(which zsh)
 
-# System-wide
-$ sudo chsh -s $(which zsh)
-```
+	# System-wide
+	$ sudo chsh -s $(which zsh)
+	```
 
 4. Now, install `oh-my-zsh`:
 
-```bash
-# via curl
-$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	```bash
+	# via curl
+	$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# via wget
-$ sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-```
+	# via wget
+	$ sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+	```
 
 4. Download the recommended font [here](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k). *Optional but highly recommended.* If you don't want to install the font, skip to instruction #8.
 
 5. Install the font by copying it to:
 
-```bash
-# User only
-cp FONTNAME.TTF $HOME/.local/share/fonts/TTF/
+	```bash
+	# User only
+	cp FONTNAME.TTF $HOME/.local/share/fonts/TTF/
 
-# System-wide
-cp FONTNAME.TTF /usr/share/fonts/TTF/
-```
+	# System-wide
+	cp FONTNAME.TTF /usr/share/fonts/TTF/
+	```
 
 If the folder doesn't exist, create it.
 
@@ -343,15 +346,15 @@ If the folder doesn't exist, create it.
 
 8. Install the Powerlevel10k theme
 
-```bash
-$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-```
+	```bash
+	$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+	```
 
 9. Open `~/.zshrc` with your editor
 
-```bash
-$ $EDITOR $HOME/.zshrc
-```
+	```bash
+	$ $EDITOR $HOME/.zshrc
+	```
 
 10. Find the line `ZSH_THEME=robbyrussell` it's not easy to miss. Then change it to `ZSH_THEME=powerlevel10k/powerlevel10k`.
 
@@ -362,7 +365,9 @@ $ $EDITOR $HOME/.zshrc
 
 ## Keybindings
 
-**Mod4** is the Windows key. Note that these are the universally implemented in all of my setups so some are missing. All the keybindings in global menu can be located by pressing <kbd>Mod4 + F1</kbd>.
+**Mod4** is the Windows key. 
+
+Note that these are the universally implemented in all of my setups so some are missing. All the keybindings in global menu can be located by pressing <kbd>Mod4 + F1</kbd>.
 
 ### Launchers
 
@@ -751,7 +756,7 @@ awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) 
 
 ## Testing the setup in VMs
 
-+ If you want to try it on a virtual machine, kitty and picom's kawase blur will not likely work. It's because the said programs need a newer OpenGL support which the virtual machines doesn't have. If you're using VMWare you must set it to compatibility mode that supports OpenGL >=3.3.
+If you want to try it on a virtual machine, kitty and picom's kawase blur will not likely work. It's because the said programs need a newer OpenGL support which the virtual machines doesn't have. If you're using VMWare you must set it to compatibility mode that supports OpenGL >=3.3.
 
 ## TODOs
 
