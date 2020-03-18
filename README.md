@@ -757,6 +757,8 @@ awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) 
 
 ### More AwesomeWM resources
 
+More contribution of AwesomeWM community
+
 + You can find a stash of AwesomeWM widgets [here](https://github.com/streetturtle/awesome-wm-widgets).
 + More AwesomeWM setups [here](https://github.com/PapyElGringo/material-awesome) and [here](https://github.com/elenapan/dotfiles)!
 
