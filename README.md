@@ -267,7 +267,7 @@ The rofi is configured to work on a `1366x768` resolution laptop so it will not 
 
 1. Open `awesome/configuration/rofi/appmenu/rofi.rasi`
 
-If you're using `Floppy`:
+#### If you're using `Floppy`:
 
 1. Find the `window {}` block, change the `height` and `width`.
 
@@ -279,7 +279,7 @@ If you're using `Floppy`:
 - Note:
 	- In multihead setups, both rofi configuration will only open in your PRIMARY screen. You can change that by changing the `monitor` value in the `configuration {}` block. More info in `man rofi`.
 
-If you're using `GNawesOME`:
+#### If you're using `GNawesOME`:
 
 - Note:
 	- Unlike in `Floppy`, the rofi will open in fullscreen mode and will open in the focused screen.
@@ -362,7 +362,7 @@ $ $EDITOR $HOME/.zshrc
 
 ## Keybindings
 
-**Mod4** is the Windows key.
+**Mod4** is the Windows key. Note that these are the universally implemented in all of my setups so some are missing. All the keybindings in global menu can be located by pressing <kbd>Mod4 + F1</kbd>.
 
 ### Launchers
 
@@ -371,15 +371,12 @@ $ $EDITOR $HOME/.zshrc
 <kbd>Mod4 + Shift + e</kbd> - Launch default file manager  
 <kbd>Mod4 + Shift + f</kbd> - Launch default web browser  
 <kbd>Mod4 + e</kbd> - Launch application menu  
-<kbd>Mod4 + Shift + r</kbd> - Launch web search rofi  
-<kbd>Mod4 + Shift + Escape</kbd> Launch system monitor  
+<kbd>Mod4 + Shift + Escape</kbd> Launch system monitor 
 
 ### Navigation
 
 <kbd>Mod4 + F2</kbd> - Open today panel  
-<kbd>Mod4 + F3</kbd> - Open notification panel  
-<kbd>Mod4 + r</kbd> - Open left dashboard  
-<kbd>Mod4 + m</kbd> - Toggle music widget  
+<kbd>Mod4 + F3</kbd> - Open notification panel/Open settings panel
 
 ### Utilities
 
