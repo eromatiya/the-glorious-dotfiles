@@ -139,7 +139,7 @@ local right_panel = function(s)
 							layout = wibox.layout.fixed.vertical,
 							{
 								layout = wibox.layout.flex.horizontal,
-								spacing = dpi(10),
+								spacing = dpi(7),
 								require('widget.notif-center'),
 								{
 									layout = wibox.layout.fixed.vertical,
