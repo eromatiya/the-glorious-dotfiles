@@ -114,9 +114,9 @@ GNawesOME is a weird name. GNawesOME was meant to be a GNOME clone. Instead, it 
 | ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/busy.png) |
 
 
-| Dirty |
+| Today |
 | --- |
-| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/dirty.png) |
+| ![Screenshot](https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups/gnawesome/today.png) |
 
 
 | Settings |
