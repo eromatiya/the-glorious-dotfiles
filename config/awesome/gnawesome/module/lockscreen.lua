@@ -339,8 +339,6 @@ local locker = function(s)
 
 		rotate_container.direction = direction
 
-		naughty.notification({message=color})
-
 		locker_arc.bg = color
 
 		rotate_container:emit_signal("widget:redraw_needed")
