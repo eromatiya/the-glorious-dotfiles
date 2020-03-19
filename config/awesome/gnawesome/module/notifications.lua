@@ -1,8 +1,9 @@
-local naughty = require('naughty')
 local gears = require('gears')
 local wibox = require('wibox')
 local awful = require('awful')
 local ruled = require('ruled')
+local naughty = require('naughty')
+local menubar = require("menubar")
 local beautiful = require('beautiful')
 
 local dpi = beautiful.xresources.apply_dpi
@@ -26,9 +27,11 @@ naughty.config.icon_dirs = {
 	"/usr/share/icons/Tela-blue-dark",
 	"/usr/share/icons/la-capitaine-icon-theme/",
 	"/usr/share/icons/Papirus/",
+	"/usr/share/icons/gnome/",
+	"/usr/share/icons/hicolor/",
 	"/usr/share/pixmaps/"
 }
-naughty.config.icon_formats = {	"png", "svg", "jpg" }
+naughty.config.icon_formats = {	"png", "svg", "jpg", "gif" }
 
 
 -- Presets / rules
@@ -90,7 +93,19 @@ naughty.connect_signal("request::display_error", function(message, startup)
     }
 end)
 
+-- XDG icon lookup
+naughty.connect_signal("request::icon", function(n, context, hints)
+    if context ~= "app_icon" then return end
 
+    local path = menubar.utils.lookup_icon(hints.app_icon) or
+        menubar.utils.lookup_icon(hints.app_icon:lower())
+
+    if path then
+        n.icon = path
+    end
+end)
+
+-- Naughty template
 naughty.connect_signal("request::display", function(n)
 
 	-- naughty.actions template
@@ -228,12 +243,5 @@ naughty.connect_signal("request::display", function(n)
 		}
 	
 	}
-
-	-- Destroy popups if dont_disturb mode is on
-	-- Or if the right_panel is visible
-	local focused = awful.screen.focused()
-	if _G.dont_disturb or (focused.right_panel and focused.right_panel.visible) then
-		naughty.destroy_all_notifications()
-	end
 
 end)
