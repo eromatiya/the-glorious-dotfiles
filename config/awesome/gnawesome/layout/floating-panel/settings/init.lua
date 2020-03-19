@@ -11,9 +11,9 @@ local icons = require('theme.icons')
 return function(s)
 
 	return wibox.widget {
-		layout = wibox.layout.fixed.vertical,
+		layout = wibox.layout.fixed.horizontal,
 		spacing = dpi(7),
-		require('layout.floating-panel.dashboard.hardware-monitor'),
-		require('layout.floating-panel.dashboard.quick-settings'),
+		require('layout.floating-panel.settings.hardware-monitor'),
+		require('layout.floating-panel.settings.quick-settings'),
 	}
 end

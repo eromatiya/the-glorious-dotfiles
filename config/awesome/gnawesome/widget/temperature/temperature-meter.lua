@@ -7,34 +7,29 @@ local icons = require('theme.icons')
 
 local dpi = beautiful.xresources.apply_dpi
 
+local bar_name = wibox.widget {
+	text = 'Temp',
+	font = 'SFNS Pro Text Bold 10',
+	align = 'center',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
 local slider = wibox.widget {
-	nil,
 	{
-		{
-			{
-				text = 'Temp',
-				font = 'SFNS Pro Text Bold 10',
-				align = 'center',
-				valign = 'center',
-				widget = wibox.widget.textbox
-			},
-			reflection = { vertical = true },
-			widget = wibox.container.mirror
-		},
 		id 				 = 'temp_status',
-		value         	 = 50,
-		min_value 		 = 0,
 		max_value     	 = 100,
-		forced_height 	 = dpi(56),
-		forced_width 	 = dpi(56),
-		border_width	 = dpi(7),
+		value         	 = 29,
+		forced_height 	 = dpi(2),
 		color 			 = beautiful.fg_normal,
-		border_color 	 = beautiful.groups_bg,
-		widget        	 = wibox.container.radialprogressbar
+		background_color = beautiful.groups_bg,
+		shape 			 = gears.shape.rounded_rect,
+		widget        	 = wibox.widget.progressbar
 	},
-	nil,
-	expand = 'none',
-	layout = wibox.layout.align.vertical
+    forced_height = dpi(270),
+    forced_width  = dpi(55),
+    direction     = 'east',
+    layout        = wibox.container.rotate
 }
 
 local max_temp = 80
@@ -51,9 +46,12 @@ watch(
 
 
 local temperature_meter = wibox.widget {
+	layout = wibox.layout.fixed.vertical,
+	expand = 'none',
+	spacing = dpi(8),
 	slider,
-	reflection = { vertical = true },
-	widget = wibox.container.mirror
+	nil,
+	bar_name
 }
 
 

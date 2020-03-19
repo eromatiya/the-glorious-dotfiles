@@ -22,15 +22,14 @@ return wibox.widget {
 				expand = 'none',
 				layout = wibox.layout.align.horizontal	
 			},
-			left = dpi(24),
-			right = dpi(24),
+			margins = dpi(24),
 			widget = wibox.container.margin
 		},
 		bg = beautiful.groups_bg,
 		shape = function(cr, width, height)
 			gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius) 
 		end,
-		forced_height = dpi(92),
+		forced_height = dpi(343),
 		widget = wibox.container.background
 	},
 

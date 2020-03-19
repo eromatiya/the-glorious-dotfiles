@@ -156,7 +156,7 @@ local right_panel = function(s)
 						{
 							id = 'settings_id',
 							visible = false,
-							require('layout.floating-panel.dashboard')(s),
+							require('layout.floating-panel.settings')(s),
 							layout = wibox.layout.fixed.vertical
 						}
 

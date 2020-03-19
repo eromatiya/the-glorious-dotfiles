@@ -91,7 +91,7 @@ local TopPanel = function(s)
 	s.screen_rec 	= require('widget.screen-recorder')()
 	s.music       	= require('widget.music')()
 	s.end_session	= require('widget.end-session')()
-	s.r_dashboard 	= require('layout.floating-panel')()
+	s.float_panel  	= require('layout.floating-panel')()
 
 
 	panel : setup {
@@ -103,7 +103,7 @@ local TopPanel = function(s)
 			s.add_button
 		}, 
 		-- s.clock_widget,
-		s.r_dashboard,
+		s.float_panel ,
 		{
 			layout = wibox.layout.fixed.horizontal,
 			spacing = dpi(5),
