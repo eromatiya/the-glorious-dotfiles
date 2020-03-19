@@ -269,16 +269,15 @@ Optional: Set it as your system font using `lxappearance` or something . I think
 
 The rofi is configured to work on a `1366x768` resolution laptop so it will not work out of the box in a monitor with a larger/smaller resolution. To fix that:
 
-1. Open `awesome/configuration/rofi/appmenu/rofi.rasi`
-
 #### If you're using `Floppy`:
 
-1. Find the `window {}` block, change the `height` and `width`.
+1. Open `awesome/configuration/rofi/appmenu/rofi.rasi`
 
-- Tips:
+2. Find the `window {}` block to change the `height` and `width`.
 	- The top panel has 28px height, so `$(YOUR_SCREEN_HEIGHT) - 28 = ROFI_HEIGHT`.
 	- While the left panel has 45px width, so `$(YOUR_SCREEN_WIDTH) - 45 = ROFI_WIDTH`.
-	- It is also advisable to alter the values of `padding` in the `mainbox {}` and `element {}` block.
+
+3. Change the value of `padding` in the `mainbox {}` and `element {}` block.
 
 - Note:
 	- In multihead setups, both rofi configuration will only open in your PRIMARY screen. You can change that by changing the `monitor` value in the `configuration {}` block. More info in `man rofi`.
@@ -286,8 +285,33 @@ The rofi is configured to work on a `1366x768` resolution laptop so it will not 
 #### If you're using `GNawesOME`:
 
 - Note:
-	- Unlike in `Floppy`, the rofi will open in fullscreen mode and will open in the focused screen.
+	- In multihead setups, unlike in `Floppy`, the rofi will open in fullscreen mode and will open in the focused screen.
 	- It's likely that you still need to change the `paddings` in the `mainbox {}` and `element {}` block.
+
+### Fix resolution
+
+> Everything is so small!
+
+You will encounter this if you didn't set your DPI in `~/.Xresources` and if you have a high res monitor.
+
+Set this on you `~/.Xresources`. Replace 96 with your screen DPI.
+
+```bash
+Xft.dpi: 96
+```
+
+Then run
+
+
+```bash
+# Load Xresources
+$ xrdb -merge ~/.Xresources
+
+# Reload awesomewm
+$ awesome-client 'awesome.restart()'
+```
+
+More info about HiDPI and Xresources [here](https://wiki.archlinux.org/index.php/HiDPI#X_Resources).
 
 
 ### Use the Powerleve10k prompt
@@ -714,7 +738,7 @@ An example of anti-aliased titlebars:
 
 <img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/antialias.png" alt="antialias">
 
-Anti-aliasing is pretty doable, but it requires a hackish way to do it and the code is ugly and unmaintainable<sup>(yeah just like my code)</sup>. Implementing it will make the titlebar module more obscure and will more likely break things.
+Anti-aliasing is pretty doable, but it requires a hackish way to do it and the code is ugly and unmaintainable<sup>(yeah just like my code)</sup>. Implementing it will make the titlebar module more obscure and will most likely break things.
 
 *Anti-aliasing can be applied to any wibox by making its background color transparent and putting all its items in a shaped container with the desired background color.*
 
@@ -760,7 +784,7 @@ awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) 
 More contribution of AwesomeWM community
 
 + You can find a stash of AwesomeWM widgets [here](https://github.com/streetturtle/awesome-wm-widgets).
-+ More AwesomeWM setups [here](https://github.com/PapyElGringo/material-awesome) and [here](https://github.com/elenapan/dotfiles)!
++ More AwesomeWM setups [here](https://github.com/PapyElGringo/material-awesome) and [here](https://github.com/elenapan/dotfiles).
 
 ## Testing the setup in VMs
 
