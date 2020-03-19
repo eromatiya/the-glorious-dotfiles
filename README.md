@@ -1,5 +1,5 @@
 <div align="center">
-    <h3><img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/banner.png" align="center" height="200px"></h3>
+    <h3><img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/banner-glorious.png" align="center" height="200px"></h3>
     <p align="center">a glorified dotfiles</p>
 </div>
 
