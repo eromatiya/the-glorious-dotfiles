@@ -180,6 +180,8 @@ Dependencies needed to achieve the setup's full potential. These are **optional*
 
 ### Getting started
 
+This guide will focus on Arch/Arch-based distros. If you're using Debian and its family, [Bearbobs](https://github.com/Bearbobs/) created a guide that can be found [here](https://gist.github.com/Bearbobs/2b744adda0a5151d4530ba763de993ef). 
+
 1. Install the AwesomeWM **git master branch**. So if you're using the stable version or if you don't have AwesomeWM installed, install it now. Assuming you're using the elevated one - Arch Linux, you can install it by using an AUR helper. In this example let's use `yay`
 
 	```bash
