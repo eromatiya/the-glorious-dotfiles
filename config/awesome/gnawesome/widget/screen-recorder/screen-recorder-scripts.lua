@@ -33,7 +33,6 @@ check_settings = function()
 end
 
 
-
 local create_save_directory = function()
 
 	local create_dir_cmd = [[
@@ -54,7 +53,6 @@ end
 create_save_directory()
 
 
-
 local kill_existing_recording_ffmpeg = function()
 	-- Let's killall ffmpeg instance first after awesome (re)-starts if there's any
 	awful.spawn.easy_async_with_shell(
@@ -66,8 +64,6 @@ local kill_existing_recording_ffmpeg = function()
 end
 
 kill_existing_recording_ffmpeg()
-
-
 
 local turn_on_the_mic = function()
 
@@ -90,35 +86,30 @@ end
 
 
 local create_notification = function(file_dir)
-	local open_image = naughty.action {
+	local open_video = naughty.action {
 		name = 'Open',
 		icon_only = false,
 	}
 
-	local delete_image = naughty.action {
+	local delete_video = naughty.action {
 		name = 'Delete',
 		icon_only = false,
 	}
 
-	local close = naughty.action {
-		name = 'Close',
-		icon_only = false,
-	}
-
-	open_image:connect_signal('invoked', function()
+	open_video:connect_signal('invoked', function()
 		awful.spawn('xdg-open ' .. file_dir, false)
 	end)
 
-	delete_image:connect_signal('invoked', function()
+	delete_video:connect_signal('invoked', function()
 		awful.spawn('rm -rf ' .. file_dir, false)
 	end)
 
 	naughty.notification ({
-		app_name = 'Screenshot Tool',
+		app_name = 'Screenshot Recorder',
 		timeout = 60,
-		title = 'Snap!',
-		message = 'Recording finished and now can be viewed!',
-		actions = { open_image, delete_image, close }
+		title = '<b>Recording Finished!</b>',
+		message = 'Recording can now be viewed.',
+		actions = { open_video, delete_video }
 	})
 end
 
@@ -143,18 +134,16 @@ local ffmpeg_start_recording = function(audio, filename)
 
 			if stderr and stderr:match('Invalid argument') then
 				naughty.notification({
-					app_name = 'Screen recorder widget',
-					title = 'Invalid configuration!',
-					message = 'Oof! The capture area ' .. user_resolution ..' at position ' .. user_offset .. ' is outside the screen size.' .. 
-					'\nDecrease the capture area/geometery or remove the offset.',
-					urgency = 'critical'
+					app_name = 'Screen Recorder',
+					title = '<b>Invalid Configuration!</b>',
+					message = 'Please, put a settings!',
+					timeout = 60,
+					urgency = 'normal'
 				})
 				_G.sr_recording_stop()
 				return
 			end
-
 			create_notification(filename)
-
 		end
 	)
 end

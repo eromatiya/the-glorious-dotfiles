@@ -48,7 +48,6 @@ local sr_resolution_tbox = sr_resolution_box:get_children_by_id('res_tbox')[1]
 local sr_offset_tbox = sr_offset_box:get_children_by_id('offset_tbox')[1]
 
 
-
 -- Main Scripts
 
 local sr_start_recording = screen_rec_backend.start_recording
@@ -165,8 +164,8 @@ local reset_textbox = function()
 end
 
 
+-- Set audio mode
 
-------
 
 local sr_audio_mode = function()
 
@@ -193,7 +192,6 @@ local sr_audio_mode = function()
 end
 
 
-
 local delete_key = function()
 
 	if sr_active_tbox == 'res_tbox' then
@@ -218,6 +216,7 @@ local delete_key = function()
 	end
 
 end
+
 
 local apply_new_settings = function()	
 
@@ -376,7 +375,6 @@ sr_back_button:buttons(
 	)
 )
 
-
 -- Close button functions and buttons
 
 local screen_rec_close = function()
@@ -404,8 +402,8 @@ sr_close_button:buttons(
 	)
 )
 
-
 -- Right click to exit
+
 local screen_close_on_rmb = function(widget)
 	widget:buttons(
 		gears.table.join(
@@ -420,7 +418,6 @@ local screen_close_on_rmb = function(widget)
 		)
 	)
 end
-
 
 -- Open recorder screen
 
@@ -483,7 +480,6 @@ sr_recording_stop = function()
 	sr_stop_recording()
 
 end
-
 
 -- Countdown timer functions
 
@@ -556,8 +552,6 @@ sr_audio_button:buttons(
 		)
 	)
 )
-
-
 
 -- Main button functions and buttons
 
