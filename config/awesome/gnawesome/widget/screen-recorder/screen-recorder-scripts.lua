@@ -136,7 +136,7 @@ local ffmpeg_start_recording = function(audio, filename)
 				naughty.notification({
 					app_name = 'Screen Recorder',
 					title = '<b>Invalid Configuration!</b>',
-					message = 'Please, put a settings!',
+					message = 'Please, put a valid settings!',
 					timeout = 60,
 					urgency = 'normal'
 				})
