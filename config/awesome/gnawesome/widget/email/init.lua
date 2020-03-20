@@ -305,7 +305,7 @@ local read_emails = awful.tooltip
 {
 	text = 'Loading...',
 	objects = {email_icon_widget},
-	mode = 'inside',
+	mode = 'outside',
 	align = 'right',
 	preferred_positions = {'right', 'left', 'top', 'bottom'},
 	margin_leftright = dpi(8),

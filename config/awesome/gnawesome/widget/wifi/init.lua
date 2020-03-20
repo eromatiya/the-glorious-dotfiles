@@ -67,7 +67,7 @@ local return_button = function()
 	awful.tooltip(
 		{
 			objects = {widget_button},
-			mode = 'inside',
+			mode = 'outside',
 			align = 'right',
 			timer_function = function()
 				if connected then

@@ -75,7 +75,7 @@ local return_button = function()
 	{
 		objects = {battery_button},
 		text = 'None',
-		mode = 'inside',
+		mode = 'outside',
 		align = 'right',
 		margin_leftright = dpi(8),
 		margin_topbottom = dpi(8),

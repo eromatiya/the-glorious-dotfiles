@@ -59,7 +59,7 @@ local trash_button = wibox.widget {
 -- Tooltip for trash_button
 trash_tooltip = awful.tooltip {
 	objects = {trash_button},
-	mode = 'inside',
+	mode = 'outside',
 	align = 'right',
 	markup = 'Trash',
 	margin_leftright = dpi(8),
