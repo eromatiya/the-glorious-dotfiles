@@ -105,26 +105,8 @@ local clientKeys =
 		function(c)
 			local focused = awful.screen.focused()
 
-			local top = 0
-			local bottom = 0
-			local left = 0
-			local right = 0
-
-			if focused.left_panel then
-				left = focused.left_panel.width
-			end
-			if focused.top_panel then
-				top = focused.top_panel.height
-			end
-
 			awful.placement.centered(c, {
-				margins = {
-					top = top,
-					bottom = bottom,
-					left = left,
-					right = right
-				},
-				parent = focused
+				honor_workarea = true
 			})
 		end,
 		{description = 'align a client to the center of the focused screen.', group = "client"}
