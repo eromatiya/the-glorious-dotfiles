@@ -698,6 +698,44 @@ Another fruit of my boredom.
 		- `morning`, `noon`, `night`, `midnight`
 	- Right now, it only searches for `*.jpg` image format. You can change it by editing the wallpaper name in the `awesome/module/dynamic-wallpaper.lua`
 
+#### Exit Screen Module
+
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/exitscreen.png" alt="lockscreen_img" align="right" width="350px">
+
+- Keyboard bindings:
+	- <kbd>s</kbd> to suspend.
+	- <kbd>l</kbd> to lock.
+	- <kbd>r</kbd> to reboot.
+	- <kbd>p</kbd> to power off.
+	- <kbd>e</kbd> to exit/log out.
+	- <kbd>escape/x/q</kbd> to close exit screen.
+
+- Note:
+	- Holding the <kbd>XF86PowerOff</kbd> button will probably power off your machine without showing the exit screen module. To fix that:
+
+		For **systemd** users:
+
+		1. Open the `logind.conf`.
+
+			```bash
+			# You need a root privilege to edit this
+			$ ${EDITOR} /etc/systemd/logind.conf
+			```
+		2. Uncomment and set the `HandlePowerKey` to `ignore`.
+					
+			```
+			HandlePowerKey=ignore
+			```
+			
+		3. Restart the logind service
+
+			```bash
+			$ systemctl restart systemd-logind.service 
+			```
+
+		For **non-systemd** users:
+
+		1. Google it or DuckDuckGo it. I'm using Arch btw, so I'm stuck with systemd and cannot test it.
 
 #### Backdrop Module
 
