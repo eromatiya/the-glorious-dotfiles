@@ -16,6 +16,7 @@ return {
 	terminal 			= dir .. 'tag-list/' .. 'terminal.svg',
 	graphics 			= dir .. 'tag-list/' .. 'graphics.svg',
 	menu 				= dir .. 'tag-list/' .. 'menu.svg',
+	close_small 		= dir .. 'tag-list/' .. 'close-small.svg',
 
 	-- Others/System UI
 	close 				= dir .. 'close.svg',

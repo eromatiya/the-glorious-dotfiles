@@ -47,7 +47,7 @@ return function(s, panel, action_bar_width)
 	panel:connect_signal(
 		'opened',
 		function()
-			menu_icon.menu_btn:set_image(gears.surface(icons.close))
+			menu_icon.menu_btn:set_image(gears.surface(icons.close_small))
 		end
 	)
 
