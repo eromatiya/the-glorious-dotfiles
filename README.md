@@ -739,7 +739,7 @@ The titlebar module is quite flexible. You can set the titlebar's position, colo
 	The class `kitty` will have a purple-colored right titlebar with a size of 20 pixels
 
 
-#### Dynamic Wallpaper Module
+#### Dynamic Wallpaper Module2
 
 <img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/dynamic-wall.gif" alt="dynawall_img" align="center">
 
@@ -754,7 +754,7 @@ Another fruit of my boredom.
 
 #### Menu Module
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/menu.png" alt="menu_img" align="right" height="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/menu.png" alt="menu_img" align="right" height="250px">
 
 Yes, this is somewhat useless when we're using a tiling window manager, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...s
 
