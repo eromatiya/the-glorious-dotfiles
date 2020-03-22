@@ -754,7 +754,7 @@ Another fruit of my boredom.
 
 #### Menu Module
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/menu.png" alt="menu_img" align="right">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/menu.png" alt="menu_img" align="right" height="350px">
 
 Yes, this is somewhat useless when we're using a tiling window manager, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...s
 
