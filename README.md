@@ -741,7 +741,7 @@ The titlebar module is quite flexible. You can set the titlebar's position, colo
 
 #### Dynamic Wallpaper Module
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/dynamic-wall.gif" alt="dynawall_img">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/dynamic-wall.gif" alt="dynawall_img" align="center">
 
 Another fruit of my boredom.
 
