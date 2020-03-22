@@ -751,6 +751,20 @@ Another fruit of my boredom.
 		- `morning`, `noon`, `night`, `midnight`
 	- You can change the time schedule and wallpaper to use in `awesome/module/dynamic-wallpaper.lua`
 
+
+#### Menu Module
+
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/menu.png" alt="menu_img" align="right">
+
+Yes, this is somewhat useless when we're using a tiling window manager, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...
+
+- Depends:
+	- `xdg-menu` or [`awesome-freedesktop`](https://github.com/lcpz/awesome-freedesktop/). 
+
+- `xdg-menu` needs a manual intervention. More info [here](https://wiki.archlinux.org/index.php/Awesome#Applications_menu)
+- `awesome-freedesktop` will populate the menu for you. More info [here](https://github.com/lcpz/awesome-freedesktop/)
+
+
 #### Exit Screen Module
 
 <img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/exitscreen.png" alt="lockscreen_img" align="right" width="350px">
@@ -798,20 +812,6 @@ Another fruit of my boredom.
 <img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/backdrop.png" alt="lockscreen_img" align="right" width="350px">
 
 This module is developed by [PapyElGringo](https://github.com/PapyElGringo/) for his [material-awesome](https://github.com/PapyElGringo/material-awesome). This module adds a backdrop blur to the dialogs and modals. You can disable it by setting the `draw_backdrop` to `false` in the `awesome/configuration/client/rules.lua`
-
-
-#### Menu Module
-
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/menu.png" alt="menu_img" align="right">
-
-Yes, this is somewhat useless when we're using a tiling window manager, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...
-
-- Depends:
-	- `xdg-menu` or [`awesome-freedesktop`](https://github.com/lcpz/awesome-freedesktop/). 
-
-- `xdg-menu` needs a manual intervention. More info [here](https://wiki.archlinux.org/index.php/Awesome#Applications_menu)
-- `awesome-freedesktop` will populate the menu for you. More info [here](https://github.com/lcpz/awesome-freedesktop/)
-
 
 #### Quake Terminal Module
 
