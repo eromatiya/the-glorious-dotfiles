@@ -393,11 +393,13 @@ If the folder doesn't exist, create it.
 
 ## Keybindings
 
+### Keyboard
+
 **Mod4** is the Windows key. 
 
 Note that these are the universally implemented in all of my setups so some are missing. All the keybindings in global menu can be located by pressing <kbd>Mod4 + F1</kbd>.
 
-### Launchers
+#### Launchers
 
 <kbd>Mod4 + Return</kbd> - Launch default terminal  
 <kbd>Mod4 + \`</kbd> Launch dropdown terminal  
@@ -406,12 +408,12 @@ Note that these are the universally implemented in all of my setups so some are 
 <kbd>Mod4 + e</kbd> - Launch application menu  
 <kbd>Mod4 + Shift + Escape</kbd> Launch system monitor 
 
-### Navigation
+#### Navigation
 
 <kbd>Mod4 + F2</kbd> - Open today panel  
 <kbd>Mod4 + F3</kbd> - Open notification panel/Open settings panel
 
-### Utilities
+#### Utilities
 
 <kbd>Control + Escape</kbd> - Toggle system tray  
 <kbd>Mod4 + l</kbd> - Lock the screen  
@@ -421,7 +423,7 @@ Note that these are the universally implemented in all of my setups so some are 
 <kbd>Print</kbd> - Take a screenshot  
 <kbd>Mod4 + Shift + s</kbd> - Take a selected screenshot  
 
-### Awesome
+#### Awesome
 
 <kbd>Mod4 + F1</kbd> - Show keybindings  
 <kbd>Control + Mod4 + R</kbd> - Reload awesome wm configuration  
@@ -709,7 +711,7 @@ Another fruit of my boredom.
 	- <kbd>r</kbd> to reboot.
 	- <kbd>p</kbd> to power off.
 	- <kbd>e</kbd> to exit/log out.
-	- <kbd>escape/x/q</kbd> to close exit screen.
+	- <kbd>escape</kbd>, <kbd>x</kbd>, <kbd>q</kbd> to close exit screen.
 
 - Note:
 	- Holding the <kbd>XF86PowerOff</kbd> button will probably power off your machine without showing the exit screen module. To fix that:
