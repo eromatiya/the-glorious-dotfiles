@@ -809,7 +809,7 @@ Yes, this is somewhat useless when we're using a tiling window manager, buuut...
 
 #### Backdrop Module
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/backdrop.png" alt="lockscreen_img" align="right" width="350px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/backdrop.png" alt="lockscreen_img" align="center">
 
 This module is developed by [PapyElGringo](https://github.com/PapyElGringo/) for his [material-awesome](https://github.com/PapyElGringo/material-awesome). This module adds a backdrop blur to the dialogs and modals. You can disable it by setting the `draw_backdrop` to `false` in the `awesome/configuration/client/rules.lua`
 
