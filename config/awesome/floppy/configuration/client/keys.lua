@@ -183,7 +183,7 @@ local clientKeys =
 		'Down',
 		function(c)
 			if c.floating then
-				c:relative_move(dpi(10), 0, 0, dpi(10))
+				c:relative_move(0, 0, 0, dpi(10))
 			end
 		end,
 		{description = 'increase floating client size vertically by 10 px down', group = 'client'}
