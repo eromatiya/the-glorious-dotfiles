@@ -211,7 +211,7 @@ This guide will focus on Arch/Arch-based distros. **If you're using Debian and i
 	$ cp -r the-glorious-dotfiles/config/awesome/gnawesome $HOME/.config/awesome
 	```
 
-5. Reload AwesomeWM by pressing <kbd>Mod4 + Shift + r</kbd>.
+5. Reload AwesomeWM by pressing <kbd>Super + Shift + r</kbd>.
 
 
 ## How to's
@@ -264,7 +264,7 @@ The setup uses the `SF Pro Text` font of Apple. You need to install it or you ca
 
 		Create the folder if it doesn't exist.
 
-2. Reload <kbd>Mod4 + Control + r</kbd>. <kbd>Mod4</kbd> is the Windows key.
+2. Reload <kbd>Super + Control + r</kbd>. <kbd>Super</kbd> is the Windows key.
 
 Optional: Set it as your system font using `lxappearance` or something . I think you can also change your system font by editing some of your gtk dotfiles. You can also follow the instructions [here](https://jichu4n.com/posts/how-to-set-default-fonts-and-font-aliases-on-linux/) to make your font rendering better.
 
@@ -393,41 +393,89 @@ If the folder doesn't exist, create it.
 
 ## Keybindings
 
-### Keyboard
 
-**Mod4** is the Windows key. 
+### Keyboard bindings
 
-Note that these are the universally implemented in all of my setups so some are missing. All the keybindings in global menu can be located by pressing <kbd>Mod4 + F1</kbd>.
+<kbd>**Super**</kbd> or <kbd>**Mod4**</kbd> key is the Windows key. 
+
+My keybindings to navigate is kinda not the traditional way like the vim keybindings, so feel free to change it.
+
+Show all keyboard bindings by pressing <kbd>Super + F1</kbd>.
 
 #### Launchers
 
-<kbd>Mod4 + Return</kbd> - Launch default terminal  
-<kbd>Mod4 + \`</kbd> Launch dropdown terminal  
-<kbd>Mod4 + Shift + e</kbd> - Launch default file manager  
-<kbd>Mod4 + Shift + f</kbd> - Launch default web browser  
-<kbd>Mod4 + e</kbd> - Launch application menu  
-<kbd>Mod4 + Shift + Escape</kbd> Launch system monitor 
+<kbd>Super + Return</kbd> - Launch default terminal  
+<kbd>Super + \`</kbd> Launch dropdown terminal  
+<kbd>Super + Shift + e</kbd> - Launch default file manager  
+<kbd>Super + Shift + f</kbd> - Launch default web browser  
+<kbd>Super + e</kbd> - Launch application menu  
+<kbd>Super + Shift + Escape</kbd> Launch system monitor
 
-#### Navigation
+#### Client
 
-<kbd>Mod4 + F2</kbd> - Open today panel  
-<kbd>Mod4 + F3</kbd> - Open notification panel/Open settings panel
+<kbd>Super + q</kbd> - Close client  
+<kbd>Super + f</kbd> - Toggle fullscreen  
+<kbd>Super + c</kbd> - Toggle floating  
+<kbd>Super + a</kbd> - Focus previous client by index  
+<kbd>Super + d</kbd> - Focus next client by index  
+<kbd>Super + Shift + { d/a }</kbd> - Swap with next client by index  
+<kbd>Super + Tab</kbd> - Go back to previews widget like an Alt + Tab behaviour  
+<kbd>Super + u</kbd> - Jump to urgent  
+<kbd>Super + n</kbd> - Restore minimized client  
+
+#### Tag
+
+<kbd>Super + { 1..9 }</kbd> - view tag number  
+<kbd>Super + s</kbd> - view next tag  
+<kbd>Super + w</kbd> - view previous tag  
+<kbd>Super + Shift + { 1..9 }</kbd> - move focused client to tag number  
+<kbd>Super + Escape</kbd> - alternate between current and previous tag  
+<kbd>Super + { 1..9 }</kbd> - Toggle tag number  
+<kbd>Ctrl + Shift + Super + { 1..9 }</kbd> - Toggle focused client in tag number  
+<kbd>Ctrl + Super + s</kbd> - View next non-empty tag  
+<kbd>Ctrl + Super + w</kbd> - View previous non-empty tag  
+
+#### Screen
+
+<kbd>Super + Shift + F1</kbd> - Focus the previous screen  
+<kbd>Super + Shift + F2</kbd> - Focus the next screen  
+
+#### Panels Navigation
+
+<kbd>Super + F2</kbd> - Open today panel  
+<kbd>Super + F3</kbd> - Open notification panel/Open settings panel  
 
 #### Utilities
 
 <kbd>Control + Escape</kbd> - Toggle system tray  
-<kbd>Mod4 + l</kbd> - Lock the screen  
-<kbd>Mod4 + t</kbd> - Toggle redshift filter  
-<kbd>Mod4 + [</kbd> - Decrease the blur effect  
-<kbd>Mod4 + ]</kbd> - Increase the blur effect  
+<kbd>Super + l</kbd> - Lock the screen  
+<kbd>Super + t</kbd> - Toggle redshift filter  
+<kbd>Super + [</kbd> - Decrease the blur effect  
+<kbd>Super + ]</kbd> - Increase the blur effect  
 <kbd>Print</kbd> - Take a screenshot  
-<kbd>Mod4 + Shift + s</kbd> - Take a selected screenshot  
+<kbd>Super + Shift + s</kbd> - Take a selected screenshot  
 
 #### Awesome
 
-<kbd>Mod4 + F1</kbd> - Show keybindings  
-<kbd>Control + Mod4 + R</kbd> - Reload awesome wm configuration  
-<kbd>Control + Mod4 + q</kbd> - Quit awesome wm  
+<kbd>Super + F1</kbd> - Show keybindings  
+<kbd>Control + Super + R</kbd> - Reload awesome wm configuration  
+<kbd>Control + Super + q</kbd> - Quit awesome wm
+
+### Mouse bindings
+
+<kbd>LMB</kbd> - Left mouse button
+<kbd>RMB</kbd> - Right mouse button
+
+#### Desktop
+
+<kbd>LMB</kbd> Toggle menu module  
+
+#### Client
+
+<kbd>LMB + Hover</kbd> - Activate and raise client  
+<kbd>LMB + Drag titlebar</kbd>, <kbd>Super + LMB</kbd> - Move client  
+<kbd>RMB + Drag titlebar</kbd>, <kbd>Super + RMB</kbd> - Resize client  
+<kbd>LMB + Double-click titlebar</kbd> - Toggle maximize  
 
 
 ## Basic File Structure
@@ -474,7 +522,7 @@ Note that these are the universally implemented in all of my setups so some are 
 
 + **Configure Keybindings?**
 	
-	You can check keybinds by pressing <kbd>Mod4 + F1</kbd>.
+	You can check keybinds by pressing <kbd>Super + F1</kbd>.
 
 	Client keybindings:
 	- `awesome/configuration/client/keys.lua`
@@ -544,7 +592,7 @@ How to get a credentials for weather widget?
 - Put your credentials in `awesome/configuration/secrets.lua`.
 
 - Depends:
-	`jq`
+	- `jq`
 
 
 #### Email Widget
@@ -653,7 +701,7 @@ Inspired by [elenapan](https://github.com/elenapan/)'s lockscreen module.
 		- Will store the images to `$HOME/Pictures/Intruder/` folder.
 
 - Keyboard Binding:
-	- <kbd>Mod4 + l</kbd> - lock the screen
+	- <kbd>Super + l</kbd> - lock the screen
 	- <kbd>Control + u</kbd> or <kbd>Escape</kbd> - clear the typed password
 	- <kbd>Return</kbd> - validate password
 
@@ -692,14 +740,16 @@ The titlebar module is quite flexible. You can set the titlebar's position, colo
 
 
 #### Dynamic Wallpaper Module
-	
+
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/dynamic-wall.gif" alt="dynawall_img">
+
 Another fruit of my boredom.
 
 - Note:
 	- The wallpapers are in `awesome/theme/wallpapers/`
 	- It has a four scheduled time:
 		- `morning`, `noon`, `night`, `midnight`
-	- Right now, it only searches for `*.jpg` image format. You can change it by editing the wallpaper name in the `awesome/module/dynamic-wallpaper.lua`
+	- You can change the time schedule and wallpaper to use in `awesome/module/dynamic-wallpaper.lua`
 
 #### Exit Screen Module
 
@@ -714,7 +764,7 @@ Another fruit of my boredom.
 	- <kbd>escape</kbd>, <kbd>x</kbd>, <kbd>q</kbd> to close exit screen.
 
 - Note:
-	- Holding the <kbd>XF86PowerOff</kbd> button will probably power off your machine without showing the exit screen module. To fix that:
+	- Holding down the <kbd>XF86PowerOff</kbd> button will probably power off your machine without showing the exit screen module if you're not using any power management program like `xfce4-power-manager`. To fix that:
 
 		For **systemd** users:
 
@@ -733,12 +783,15 @@ Another fruit of my boredom.
 		3. Restart the logind service
 
 			```bash
+			# You need a root privilege to do this
 			$ systemctl restart systemd-logind.service 
 			```
 
 		For **non-systemd** users:
 
 		1. Google it or DuckDuckGo it. I'm using Arch btw, so I'm stuck with systemd and cannot test it.
+
+	- If you're using a power management program, make sure to unbind or remove the event for power button to make sure it doesn't "steal" the `XF86PowerOff` button from AwesomeWM.
 
 #### Backdrop Module
 
@@ -749,7 +802,9 @@ This module is developed by [PapyElGringo](https://github.com/PapyElGringo/) for
 
 #### Menu Module
 
-Yes, this is somewhat useless when we're using a tiling window managers, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/widgets/menu.png" alt="menu_img" align="right">
+
+Yes, this is somewhat useless when we're using a tiling window manager, buuut... AwesomeWM is not a tiling window manager. It's a framework! And it handles floating clients pretty well. Sooo...
 
 - Depends:
 	- `xdg-menu` or [`awesome-freedesktop`](https://github.com/lcpz/awesome-freedesktop/). 
@@ -765,13 +820,13 @@ Yes, this is somewhat useless when we're using a tiling window managers, buuut..
 Another creation of PapyElGringo. As the name of the module says, it's a "dropdown" terminal like quake.
 
 - Depends:
-	- Any terminal
+	- Any terminal emulator
 
 - Note:
 	- This will use the default terminal set in `apps.lua`.
 
 - Keyboard bindings
-	- <kbd>Mod4 + \~</kbd>
+	- <kbd>Super + \~</kbd>
 
 ## More
 
@@ -824,7 +879,7 @@ awful.titlebar(c, {position = 'left', size = title_bar_size, bg = "#00000000"}) 
 
 ### More AwesomeWM resources
 
-More contribution of AwesomeWM community
+More contribution from AwesomeWM community
 
 + You can find a stash of AwesomeWM widgets [here](https://github.com/streetturtle/awesome-wm-widgets).
 + More AwesomeWM setups [here](https://github.com/PapyElGringo/material-awesome) and [here](https://github.com/elenapan/dotfiles).
