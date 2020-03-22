@@ -739,7 +739,7 @@ The titlebar module is quite flexible. You can set the titlebar's position, colo
 	The class `kitty` will have a purple-colored right titlebar with a size of 20 pixels
 
 
-#### Dynamic Wallpaper Module2
+#### Dynamic Wallpaper Module
 
 <img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/modules/dynamic-wall.gif" alt="dynawall_img" align="center">
 
