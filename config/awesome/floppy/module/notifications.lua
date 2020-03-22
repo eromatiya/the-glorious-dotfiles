@@ -8,6 +8,8 @@ local beautiful = require('beautiful')
 
 local dpi = beautiful.xresources.apply_dpi
 
+local clickable_container = require('widget.clickable-container')
+
 -- Defaults
 naughty.config.defaults.ontop = true
 naughty.config.defaults.icon_size = dpi(32)
@@ -119,19 +121,22 @@ naughty.connect_signal("request::display", function(n)
 			{
 				{
 					{
-						id     = 'text_role',
-						font   = 'SF Pro Text Regular 10',
-						widget = wibox.widget.textbox
+						{
+							id     = 'text_role',
+							font   = 'SF Pro Text Regular 10',
+							widget = wibox.widget.textbox
+						},
+						widget = wibox.container.place
 					},
-					widget = wibox.container.place
+					widget = clickable_container
 				},
 				bg                 = beautiful.groups_bg,
 				shape              = gears.shape.rounded_rect,
 				forced_height      = dpi(30),
-				widget             = wibox.container.background,
+				widget             = wibox.container.background
 			},
 			margins = dpi(4),
-			widget  = wibox.container.margin,
+			widget  = wibox.container.margin
 		},
 		style = { underline_normal = false, underline_selected = true },
 		widget = naughty.list.actions
@@ -141,7 +146,7 @@ naughty.connect_signal("request::display", function(n)
 	naughty.layout.box {
 		notification = n,
 		type = "notification",
-		screen = awful.screen.focused(),
+		screen = awful.screen.preferred(),
 		shape = gears.shape.rectangle,
 		widget_template = {
 			{
