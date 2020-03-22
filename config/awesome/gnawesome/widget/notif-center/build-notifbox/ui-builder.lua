@@ -94,19 +94,22 @@ notifbox_actions = function(n)
 			{
 				{
 					{
-						id     = 'text_role',
-						font   = 'SF Pro Text Regular 10',
-						widget = wibox.widget.textbox
+						{
+							id     = 'text_role',
+							font   = 'SF Pro Text Regular 10',
+							widget = wibox.widget.textbox
+						},
+						widget = wibox.container.place
 					},
-					widget = wibox.container.place
+					widget = clickable_container
 				},
 				bg                 = beautiful.groups_bg,
 				shape              = gears.shape.rounded_rect,
 				forced_height      = 30,
-				widget             = wibox.container.background,
+				widget             = wibox.container.background
 			},
 			margins = 4,
-			widget  = wibox.container.margin,
+			widget  = wibox.container.margin
 		},
 		style = { underline_normal = false, underline_selected = true },
 		widget = naughty.list.actions,
