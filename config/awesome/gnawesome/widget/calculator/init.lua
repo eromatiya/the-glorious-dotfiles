@@ -304,14 +304,17 @@ local kb_imagebox = wibox.widget {
 local kb_button_widget = wibox.widget {
 	{
 		{
-			layout = wibox.layout.align.horizontal,
-			expand = 'none',
-			nil,
-			kb_imagebox,
-			nil
+			{
+				layout = wibox.layout.align.horizontal,
+				expand = 'none',
+				nil,
+				kb_imagebox,
+				nil
+			},
+			margins = dpi(10),
+			widget = wibox.container.margin
 		},
-		margins = dpi(10),
-		widget = wibox.container.margin
+		widget = clickable_container
 	},
 	bg = beautiful.groups_bg,
 	shape = build_shape('bottom_left', beautiful.groups_radius),
@@ -322,25 +325,19 @@ local kb_button_widget = wibox.widget {
 local toggle_btn_keygrab = function()
 
 	if keygrab_running then
-
-
 		kb_imagebox.image = widget_icon_dir .. 'kb-off' .. '.svg'
 		awesome.emit_signal("widget::calc_stop_keygrab")
 		keygrab_running = false
-
 	else
-
-
 		kb_imagebox.image = widget_icon_dir .. 'kb' .. '.svg'
 		awesome.emit_signal("widget::calc_start_keygrab")
 		keygrab_running = true
-
 	end
 
 end
 
 
-local kb_button = clickable_container(kb_button_widget)
+local kb_button = kb_button_widget
 
 kb_button:buttons(
 	gears.table.join(
@@ -349,9 +346,7 @@ kb_button:buttons(
 			1,
 			nil,
 			function()
-
 				toggle_btn_keygrab()
-			
 			end
 		)
 	)
@@ -498,7 +493,6 @@ end)
 --     #    #    # #    # #        #   # #      
 --     #     ####   ####  ######   #   # #      
 
-
 awful.tooltip {
 
 	objects = {kb_button},
@@ -531,7 +525,5 @@ awful.tooltip {
 	]]
 }
 
-
-
--- Return to floating-panel
+-- Return to right-panel
 return calculator_body
