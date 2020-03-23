@@ -28,6 +28,7 @@ local default_wall_name = 'morning-wallpaper.jpg'
 local input_password = nil
 local lock_again = nil
 local type_again = true
+local capture_now = capture_intruder
 
 -- Get pass
 
@@ -353,8 +354,15 @@ local locker = function(s)
 			ls -l /dev/video* | grep /dev/video0
 			]],
 			function(stdout)
+				if not capture_intruder then
+					capture_now = false
+					return
+				end
+
 				if not stdout:match('/dev/video0') then
-					capture_intruder  = false
+					capture_now = false
+				else
+					capture_now = true
 				end
 			end
 		)
@@ -411,7 +419,7 @@ local locker = function(s)
 
 		circle_container.bg = red .. 'AA'
 
-		if capture_intruder then
+		if capture_now then
 			intruder_capture()
 		else
 			gears.timer.start_new(1, function()
@@ -446,7 +454,7 @@ local locker = function(s)
 			-- Enable validation again
 			type_again = true
 
-			if capture_intruder then
+			if capture_now then
 				-- Hide wanted poster
 				wanted_poster.visible = false
 
