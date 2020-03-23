@@ -347,6 +347,21 @@ local locker = function(s)
 
 	end
 
+	local check_webcam = function()
+		awful.spawn.easy_async_with_shell(
+			[[
+			ls -l /dev/video* | grep /dev/video0
+			]],
+			function(stdout)
+				if not stdout:match('/dev/video0') then
+					capture_intruder  = false
+				end
+			end
+		)
+	end
+
+	check_webcam()
+
 	local intruder_capture = function()
 		local capture_image = [[
 
@@ -619,7 +634,11 @@ local locker = function(s)
 
 		if lock_again == true or lock_again == nil then		
 
+			-- Check capslock status
 			check_caps()
+
+			-- Check webcam status
+			check_webcam()
 
 			-- Show all the lockscreen on each screen
 			for s in screen do
