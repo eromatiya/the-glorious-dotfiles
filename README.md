@@ -7,20 +7,24 @@
     		a glorified dotfiles
     	</strong>
     </p>
+</div>
+
+<div align="center">
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki">
-		<img width="100px" style="padding: 0 10px;" src="screenshots/button-wiki.png">
+		<img src="screenshots/button-wiki.png" width="100px">
 	</a>
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies">
-		<img width="100px" style="padding: 0 10px;" src="screenshots/button-depends.png">
+		<img src="screenshots/button-depends.png" width="100px">
 	</a>
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started">
-		<img width="100px" style="padding: 0 10px;" src="screenshots/button-install.png">
+		<img src="screenshots/button-install.png" width="100px">
 	</a>
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery">
-		<img width="100px" style="padding: 0 10px;" src="screenshots/button-gallery.png">
+		<img src="screenshots/button-gallery.png" width="100px">
 	</a>
 	<br>
 </div>
+
 
 
 ## the glorious wiki
