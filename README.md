@@ -15,7 +15,11 @@
 	- [Features](https://github.com/manilarome/the-glorious-dotfiles/wiki/Features)
 	- [Gallery](https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery)
 	- [Dependencies](https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies)
-	- [Recommended Apps](https://github.com/manilarome/the-glorious-dotfiles/wiki/Recommendations)
+		- [Required Dependencies](https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies#required-dependencies)
+		- [Optional Dependencies](https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies#optional-dependencies)
+	- [Recommendations](https://github.com/manilarome/the-glorious-dotfiles/wiki/Recommended)
+		- [Recommended Packages](https://github.com/manilarome/the-glorious-dotfiles/wiki/Recommended#recommended-packages)
+		- [Recommended Fonts](https://github.com/manilarome/the-glorious-dotfiles/wiki/Recommended#recommended-fonts)
 	- [Getting Started](https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started)
 - **Info**
 	- [FAQs](https://github.com/manilarome/the-glorious-dotfiles/wiki/FAQs)
