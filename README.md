@@ -11,9 +11,15 @@
 		<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki">
 			<img width="150px" style="padding: 0 10px;" src="screenshots/button-wiki.png">
 		</a>
-		[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies">Dependencies</a> ] 
-		[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started">Installation</a> ] 
-		[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery">Gallery</a> ] 
+		<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies">
+			<img width="150px" style="padding: 0 10px;" src="screenshots/button-depends.png">
+		</a>
+		<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started">
+			<img width="150px" style="padding: 0 10px;" src="screenshots/button-install.png">
+		</a>
+		<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery">
+			<img width="150px" style="padding: 0 10px;" src="screenshots/button-gallery.png">
+		</a>
 	</h5>
 	<br>
 </div>
@@ -23,7 +29,7 @@
 
 #### the table of contents
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups.png" align="right" height="500px">
+<img src="screenshots/setups.png" align="right" height="500px">
 
 - **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
 - **General**
