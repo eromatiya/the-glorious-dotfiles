@@ -8,16 +8,16 @@
     	</strong>
     </p>
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki">
-		<img width="150px" style="padding: 0 10px;" src="screenshots/button-wiki.png">
+		<img width="100px" style="padding: 0 10px;" src="screenshots/button-wiki.png">
 	</a>
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies">
-		<img width="150px" style="padding: 0 10px;" src="screenshots/button-depends.png">
+		<img width="100px" style="padding: 0 10px;" src="screenshots/button-depends.png">
 	</a>
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started">
-		<img width="150px" style="padding: 0 10px;" src="screenshots/button-install.png">
+		<img width="100px" style="padding: 0 10px;" src="screenshots/button-install.png">
 	</a>
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery">
-		<img width="150px" style="padding: 0 10px;" src="screenshots/button-gallery.png">
+		<img width="100px" style="padding: 0 10px;" src="screenshots/button-gallery.png">
 	</a>
 	<br>
 </div>
