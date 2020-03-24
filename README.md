@@ -5,7 +5,7 @@
 
 ## the glorious wiki
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/staging/screenshots/setups.png" align="right" height="500px">
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups.png" align="right" height="500px">
 
 #### the table of contents
 
