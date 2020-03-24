@@ -1,6 +1,6 @@
 <div align="center">
     <h3>
-    	<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/banner-glorious.png" align="center" height="200px">
+    	<img src="screenshots/banner-glorious.png" align="center" height="200px">
     </h3>
     <p align="center">
     	<strong>
@@ -8,7 +8,9 @@
     	</strong>
     </p>
 	<h5>
-		[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki">Wikipedia</a> ] 
+		<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki">
+			<img width="150px" style="padding: 0 10px;" src="screenshots/button-wiki.png">
+		</a>
 		[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies">Dependencies</a> ] 
 		[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started">Installation</a> ] 
 		[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery">Gallery</a> ] 
