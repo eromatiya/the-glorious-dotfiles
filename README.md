@@ -1,13 +1,22 @@
 <div align="center">
     <h3><img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/banner-glorious.png" align="center" height="200px"></h3>
-    <p align="center">a glorified dotfiles</p>
+    <p align="center"><strong>a glorified dotfiles</strong></p>
 </div>
+
+<p align="center">
+	<strong>
+	[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki">Wikipedia</a> ] 
+	[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies">Dependencies</a> ] 
+ 	[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started">Getting Started</a> ] 
+ 	[ <a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery">Gallery</a> ] 
+	</strong>
+</p>
 
 ## the glorious wiki
 
-<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups.png" align="right" height="500px">
-
 #### the table of contents
+
+<img src="https://github.com/manilarome/the-glorious-dotfiles/blob/master/screenshots/setups.png" align="right" height="500px">
 
 - **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
 - **General**
@@ -45,3 +54,6 @@
 - **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
 - **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
 - **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
+
+
+[![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
