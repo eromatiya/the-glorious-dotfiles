@@ -23,7 +23,19 @@
 	- [Keybindings](https://github.com/manilarome/the-glorious-dotfiles/wiki/Keybindings)
 	- [File Structure](https://github.com/manilarome/the-glorious-dotfiles/wiki/File-Structure)
 	- [About Widgets](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets)
+		- [Weather Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#weather-widget)
+		- [Email Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#email-widget)
+		- [Calculator Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#calculator-widget)
+		- [Trash Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#trash-widget)
+		- [Music Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#music-widget)
+		- [Screen-recorder Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#screen-recorder-widget)
 	- [About Modules](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules)
+		- [Lockscreen Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#lockscreen-module)
+		- [Titlebar Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#titlebar-module)
+		- [Dynamic Wallpaper Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#dynamic-wallpaper-module)
+		- [Exit Screen Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#exit-screen-module)
+		- [Backdrop Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#backdrop-module)
+		- [Menu Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#menu-module)
 - **[More Info](https://github.com/manilarome/the-glorious-dotfiles/wiki/More)**
 - **[TODOs](https://github.com/manilarome/the-glorious-dotfiles/wiki/TODOs)**
 - **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
