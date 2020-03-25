@@ -11,7 +11,7 @@ ignore_leading_the = "no"
 allow_for_physical_item_deletion = "no"
 
 ### Integration with external programs ###
-# execute_on_song_change = "bash ~/.config/ncmpcpp/notify.sh"
+execute_on_song_change = "bash ~/.config/ncmpcpp/music-notify.sh"
 external_editor = "vim"
 use_console_editor = yes
 mouse_support = "yes"
