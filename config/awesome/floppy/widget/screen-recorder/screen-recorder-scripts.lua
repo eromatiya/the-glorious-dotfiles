@@ -101,7 +101,7 @@ local create_notification = function(file_dir)
 	end)
 
 	delete_video:connect_signal('invoked', function()
-		awful.spawn('rm -rf ' .. file_dir, false)
+		awful.spawn('gio trash ' .. file_dir, false)
 	end)
 
 	naughty.notification ({
