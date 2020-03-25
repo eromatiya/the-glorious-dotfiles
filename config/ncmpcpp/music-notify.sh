@@ -5,15 +5,15 @@
 #	Depends:
 #		- mpc, mpd, ncmpcpp, imagemagick, ffmpeg or perl-image-exiftool
 
-music_dir="${HOME}/Music"
-tmp_cover_path="/tmp/ncmpcpp_cover.jpg"
-temp_song="/tmp/current-song"
-check_exiftool=$(command -v exiftool)
-check_dunst=$(command -v dunst)
-check_awesome_client=$(command -v awesome-client)
+MUSIC_DIR="${HOME}/Music"
+TMP_COVER_PATH="/tmp/ncmpcpp_cover.jpg"
+TMP_SONG="/tmp/current-song"
+CHECK_EXIFTOOL=$(command -v exiftool)
+CHECK_DUNST=$(command -v dunst)
+CHECK_AWESOME_CLIENT=$(command -v awesome-client)
 
-current_title="$(mpc -f %title% current)"
-current_artist="$(mpc -f %artist% current)"
+current_title="$(mpc -f %title% current | tr -d '"')"
+current_artist="$(mpc -f %artist% current | tr -d '"')"
 
 # Exit if $USER is in TTY
 if [[ $(ps -h -o comm -p $PPID) == *"login"* ]]; then
@@ -22,8 +22,8 @@ fi
 
 # Remove file extension name
 function check_mpc_data() {
-	if [[ -z $current_title ]]; then
-		file_name="$(mpc -f %file% current)"
+	if [[ -z "$current_title" ]]; then
+		file_name="$(mpc -f %file% current | tr -d '"')"
 		file_name=${file_name::-4}
 		current_title="$file_name"
 		current_artist='unknown artist'
@@ -36,15 +36,15 @@ check_mpc_data
 function display_album_art() {
 	if [[ $TERM == "kitty" ]]; then
 	  kitty +kitten icat --clear
-	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 $tmp_cover_path
+	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 $TMP_COVER_PATH
 	fi
 }
 
 # Check DE/WM
 function get_desktop_env() {
 	# Identify environment
-	de=${DESKTOP_STARTUP_ID}
-	if [[ ! -z "$de" && $de == *"awesome"* ]] || [[ ! -z "$check_awesome_client" ]]; then
+	DE=${DESKTOP_STARTUP_ID}
+	if [[ ! -z "$DE" && $DE == *"awesome"* ]] || [[ ! -z "$CHECK_AWESOME_CLIENT" ]]; then
 		echo "AWESOME"
 		return
 	fi
@@ -52,33 +52,33 @@ function get_desktop_env() {
 }
 
 # Extract album cover
-if [[ ! -z "$check_exiftool" ]]; then
+if [[ ! -z "$CHECK_EXIFTOOL" ]]; then
 
 	# Extract album cover using perl-image-exiftool
  	exiftool -b -Picture \
- 	"$music_dir/$(mpc -p 6600 --format "%file%" current)" > "$tmp_cover_path"
+ 	"$MUSIC_DIR/$(mpc -p 6600 --format "%file%" current)" > "$TMP_COVER_PATH"
 
 else
 
 	#Extract image using ffmpeg
-	cp "$music_dir/$(mpc --format %file% current)" "$temp_song"
+	cp "$MUSIC_DIR/$(mpc --format %file% current)" "$TMP_SONG"
 
 	ffmpeg \
 	-hide_banner \
     -loglevel 0 \
     -y \
-    -i "$temp_song" \
+    -i "$TMP_SONG" \
     -vf scale=300:-1 \
-    "$tmp_cover_path" > /dev/null 2>&1
+    "$TMP_COVER_PATH" > /dev/null 2>&1
 
-	rm "$temp_song"
+	rm "$TMP_SONG"
 fi
 
 # Check if image is valid
 function check_album_data() {
-	img_data=$(identify $tmp_cover_path 2>&1)
+	img_data=$(identify $TMP_COVER_PATH 2>&1)
 	if [[ $img_data == *"insufficient"* ]]; then
-		tmp_cover_path="${HOME}/.config/ncmpcpp/vinyl.svg"
+		TMP_COVER_PATH="${HOME}/.config/ncmpcpp/vinyl.svg"
 	fi
 }
 
@@ -119,7 +119,7 @@ function notify_awesome() {
       if noti.app_name == 'ncmpcpp' then
         noti.message = \"${current_artist}\"
         noti.title = \"${current_title}\"
-        noti.icon = gears.surface.load_uncached(\"${tmp_cover_path}\")
+        noti.icon = gears.surface.load_uncached(\"${TMP_COVER_PATH}\")
         noti.urgency = 'normal'
         return
       end
@@ -129,7 +129,7 @@ function notify_awesome() {
 		app_name = 'ncmpcpp',
 		message = \"${current_artist}\",
 		title = \"${current_title}\",
-		icon = gears.surface.load_uncached(\"${tmp_cover_path}\"),
+		icon = gears.surface.load_uncached(\"${TMP_COVER_PATH}\"),
 		urgency = 'normal',
 		actions = { prev, pause, next }
 	})
@@ -138,12 +138,12 @@ function notify_awesome() {
 
 # Create a notification
 function notify_non_awesome() {
-	if [[ ! -z "$check_dunst" ]]; then
+	if [[ ! -z "$CHECK_DUNST" ]]; then
 		dunstify --urgency 'normal' --appname "ncmpcpp" \
-		--replace 3 --icon ${tmp_cover_path} ${current_title} ${current_artist}
+		--replace 3 --icon ${TMP_COVER_PATH} ${current_title} ${current_artist}
 	else
 		notify-send --urgency "normal" --app-name "ncmpcpp" \
-		--icon "$tmp_cover_path" "$current_title" "$current_artist"
+		--icon "$TMP_COVER_PATH" "$current_title" "$current_artist"
 	fi
 }
 
