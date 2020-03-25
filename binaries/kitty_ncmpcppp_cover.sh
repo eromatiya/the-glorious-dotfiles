@@ -5,6 +5,10 @@ TMP_COVER_PATH="/tmp/cover.jpg"
 temp_song="/tmp/current-song"
 coverExtractingPackage=$(which exiftool)
 
+if [[ $(ps -h -o comm -p $PPID) == *"login"* ]]; then
+  exit 1
+fi
+
 function Album-Cover-Notif() {
   isDunst=$(command -v dunstify)
   if [ ! -z $isDunst ]
