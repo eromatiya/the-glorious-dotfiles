@@ -27,7 +27,11 @@
 	<br><br>
 </div>
 
-**Welcome to the glorious dotfiles!** 
+<img src="images/setup-big.png" align="center">
+
+<br>
+
+### Welcome to the glorious dotfiles!
 
 <img src="images/setups.png" align="right" height="400px">
 
