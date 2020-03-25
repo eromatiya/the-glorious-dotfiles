@@ -34,16 +34,15 @@
 <p align="left">
 This is a collection/stash of my linux configurations also known as <b><i>dotfiles</i></b>. I don't know why did I wasted my time writing these, especially my AwesomeWM setups. Or maybe it's because... I did it for me. I liked it. I was good at it. And I was really -- I was alive. ;) So no wasted time after all.
 
-About my setup, I'm using **Archlinux** btw, and I think everyone should know about that. **[AwesomeWM](awesomewm.org/)** is my window manager, it is the most flexible window manager out there. It is the best window manager in my honest opinion and **bspwm** is the closest second. 
+About my setup, I'm using **Archlinux** btw, and I think everyone should know about that. **[AwesomeWM](awesomewm.org/)** is my window manager. I think it is best window manager in my honest opinion if you spend some effort and time into it.  The strength of it is its flexibility, you can create your own widget, panels, pop-ups, design your own UI/UX in whatever you like. That's the beauty of Awesome WM.
 
-Anyway, I provided a documentation or wiki focusing on my AwesomeWM setups. It also contains some useful information about ricing so I can help the aspiring linux ricers. Make sure to read it if you're planning to use my setups! Enough with the blabbering and happy hacking! :)
+Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the-glorious-dotfiles/wiki)** focusing on my AwesomeWM setups. It also contains some useful information about ricing so I can help the aspiring linux ricers. Make sure to read it if you're planning to use my setups! Enough with the blabbering and happy hacking! :)
 </p>
 
-&nbsp;  
+<br>
+<br>
 
-## the glorious wiki
-
-#### table of contents
+### the glorious wiki's table of contents
 
 - **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
 - **General**
