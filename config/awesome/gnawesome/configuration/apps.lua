@@ -11,7 +11,7 @@ return {
 		terminal 										= 'kitty',                                  -- Terminal Emulator
 		text_editor 									= 'subl3',                                  -- GUI Text Editor
 		web_browser 									= 'firefox',                                -- Web browser
-		file_manager 									= 'nemo',                                   -- GUI File manager
+		file_manager 									= 'dolphin',                                -- GUI File manager
 		network_manager 								= 'nm-connection-editor',					-- Network manager
 		bluetooth_manager 								= 'blueman-manager',						-- Bluetooth manager
 		power_manager 									= 'xfce4-power-manager',					-- Power manager

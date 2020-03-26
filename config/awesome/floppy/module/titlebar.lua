@@ -186,7 +186,7 @@ client.connect_signal("request::titlebars", function(c)
 		-- awesome is the shit boi!
 		decorate_titlebar(c, 'top', beautiful.xresources.get_current_theme().background, titlebar_size)
 
-	elseif c.class == 'Nemo' then
+	elseif c.class == 'Nemo' or c.class == 'dolphin' then
 
 		decorate_titlebar(c, 'left', beautiful.background, titlebar_size)
 

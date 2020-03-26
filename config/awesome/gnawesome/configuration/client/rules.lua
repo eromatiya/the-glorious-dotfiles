@@ -167,6 +167,8 @@ ruled.client.connect_signal("request::rules", function()
 		id         = "file_managers",
 		rule_any   = {  
 			class = {
+				"dolphin",
+				"ark",
 				"Nemo",
 				"File-roller"
 			}
