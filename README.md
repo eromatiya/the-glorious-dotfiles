@@ -48,6 +48,7 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 
 ### the glorious wiki's table of contents
 
+
 - **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
 - **General**
 	- [Details](https://github.com/manilarome/the-glorious-dotfiles/wiki/Details)
@@ -63,6 +64,12 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 - **Info**
 	- [FAQs](https://github.com/manilarome/the-glorious-dotfiles/wiki/FAQs)
 	- [How To's](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos)
+		- [Fix the errors on start-up](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-the-errors-on-start-up)
+		- [Fix the font](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-font)
+		- [Fix rofi size](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-rofi-application-menu-size)
+		- [Fix Resolution](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-resolution)
+		- [Use the Powerlevel10k prompt](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#use-the-powerlevel10k-prompt)
+		- [Rice Qt5 apps](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#rice-qt5-apps-on-non-plasma-environment)
 	- [Keybindings](https://github.com/manilarome/the-glorious-dotfiles/wiki/Keybindings)
 	- [File Structure](https://github.com/manilarome/the-glorious-dotfiles/wiki/File-Structure)
 	- [About Widgets](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets)
@@ -84,6 +91,5 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 - **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
 - **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
 - **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
-
 
 [![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
