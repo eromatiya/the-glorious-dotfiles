@@ -12,6 +12,12 @@
 </div>
 
 <div align="center">
+	
+[![maintained](https://img.shields.io/maintenance/yes/2020?label=maintained&style=flat)](https://github.com/manilarome/the-glorious-dotfiles/commits/master) [![contributions](https://img.shields.io/badge/contribution-welcome-brightgreen&style=flat)](https://github.com/manilarome/the-glorious-dotfiles/pulls)
+
+</div>
+
+<div align="center">
 	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki">
 		<img src="images/button-wiki.png" width="100px">
 	</a>
