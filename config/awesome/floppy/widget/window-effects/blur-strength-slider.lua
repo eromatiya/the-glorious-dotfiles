@@ -5,6 +5,8 @@ local beautiful = require('beautiful')
 
 local dpi = beautiful.xresources.apply_dpi
 
+local start_up = true
+
 local icons = require('theme.icons')
 
 local slider = wibox.widget {
@@ -40,6 +42,7 @@ local update_slider_value = function()
 		function(stdout)
 			blur_strength = tonumber(stdout) / 20 * 100
 			blur_slider:set_value(tonumber(blur_strength))
+			start_up = false
 		end
 	)
 end
@@ -63,8 +66,10 @@ end
 blur_slider:connect_signal(
 	'property::value',
 	function()
-		strength = blur_slider:get_value() / 50 * 10
-		adjust_blur(strength)
+		if not start_up then
+			strength = blur_slider:get_value() / 50 * 10
+			adjust_blur(strength)
+		end
 	end
 )
 
