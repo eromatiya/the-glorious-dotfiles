@@ -97,4 +97,4 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 - **[TODOs](https://github.com/manilarome/the-glorious-dotfiles/wiki/TODOs)**
 - **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
 - **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
-- **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)*
+- **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
