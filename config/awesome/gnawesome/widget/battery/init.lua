@@ -65,7 +65,7 @@ local return_button = function()
 				1,
 				nil,
 				function()
-					-- awful.spawn(apps.default.power_manager , false)
+					awful.spawn(apps.default.power_manager , false)
 				end
 			)
 		)
