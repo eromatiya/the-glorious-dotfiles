@@ -13,7 +13,8 @@
 
 <div align="center">
 	
-[![maintained](https://img.shields.io/maintenance/yes/2020?label=maintained&style=flat)](https://github.com/manilarome/the-glorious-dotfiles/commits/master) [![contributions](https://img.shields.io/badge/contribution-welcome-brightgreen&style=flat)](https://github.com/manilarome/the-glorious-dotfiles/pulls)
+[![maintained](https://img.shields.io/maintenance/yes/2020?label=maintained&style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/commits/master) [![contributions](https://img.shields.io/badge/contribution-welcome-brightgreen&?style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/pulls) [![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
+
 
 </div>
 
@@ -96,6 +97,4 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 - **[TODOs](https://github.com/manilarome/the-glorious-dotfiles/wiki/TODOs)**
 - **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
 - **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
-- **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
-
-[![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
+- **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)*
