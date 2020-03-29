@@ -65,7 +65,7 @@ local return_button = function()
 				1,
 				nil,
 				function()
-					awful.spawn(apps.default.power_manager , false)
+					-- awful.spawn(apps.default.power_manager , false)
 				end
 			)
 		)
@@ -183,10 +183,10 @@ local return_button = function()
 
 				elseif battery_percentage == 100 then
 
-					icon_name = icon_name .. '-' .. status .. battery_percentage
+					icon_name = icon_name .. '-' .. battery_percentage
 				end
 
-			elseif status:match('charging') or status:match('fully') then
+			elseif status:match('charging') then
 
 				if battery_percentage > 0 and battery_percentage < 20 then
 
@@ -216,17 +216,20 @@ local return_button = function()
 
 					icon_name = icon_name .. '-' .. status .. '-' .. '90'
 
-				elseif battery_percentage == 100 then
-
-					icon_name = icon_name .. '-' .. status
+				else
+					icon_name = icon_name .. '-' .. 'fully-charged'
 				end
+
+			elseif status:match('fully') then
+
+				icon_name = icon_name .. '-' .. '100'
 
 			end
 
 			-- Debugger ;)
 			-- naughty.notification({message=widget_icon_dir .. icon_name .. '.svg'})
 
-			battery_imagebox.icon:set_image(gears.surface.load(widget_icon_dir .. icon_name .. '.svg'))
+			battery_imagebox.icon:set_image(gears.surface.load_uncached(widget_icon_dir .. icon_name .. '.svg'))
 
 			collectgarbage('collect')
 		end)
@@ -242,7 +245,7 @@ local return_button = function()
 			battery_percentage_text.visible = false
 
 			battery_tooltip:set_text('No battery detected!')
-			battery_imagebox.icon:set_image(gears.surface.load(widget_icon_dir .. 'battery-unknown' .. '.svg'))
+			battery_imagebox.icon:set_image(gears.surface.load_uncached(widget_icon_dir .. 'battery-unknown' .. '.svg'))
 			
 			return
 		
