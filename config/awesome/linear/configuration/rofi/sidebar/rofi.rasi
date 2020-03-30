@@ -1,0 +1,126 @@
+configuration {
+	font:                       	"SF Pro Text Regular 10";
+	show-icons:                		true;
+	fullscreen:                     false;
+	sidebar-mode:               	true;
+    threads:                        0;
+    scroll-method:                  0;
+    monitor:                        "primary";
+}
+
+* {
+    background:                     #00000000;
+    background-color:               #00000000;
+    background-entry:               #00000033;
+    background-alt:                 #f2f2f215;
+    foreground:                     #f2f2f2EE;
+    foreground-selected:            #ffffffFF;
+    urgent:                         #E91E6366;
+    urgent-selected:                #E91E6377;
+}
+
+window {
+	transparency:					"real";
+	background: 					@background;
+	location:						west;
+	anchor:		 					west;
+	x-offset: 	 					0px;
+	height:		 					100%;
+	width:		 					350px;
+	orientation: 					vertical;
+}
+
+mainbox {
+	background-color:				@background;
+	spacing:  						0px;
+	padding: 						5px 5px 5px 5px;
+	width:							200px;
+	expand: 						true;
+	children: 						[ inputbar, listview];
+}
+
+scrollbar {
+	background-color: 				@background-alt;
+	handle-width:					10px;
+	margin: 						0px 0px 5px 0px;
+	border-radius:  				9px;
+}
+
+listview {
+    background-color:               @background;
+	spacing: 						0px;
+	dynamic:						true;
+	cycle:   						true;
+	scrollbar: 						true;
+}
+
+inputbar {
+	children:		 				[ entry ];
+	position:                       north;
+}
+
+entry {
+	placeholder-color:          	@foreground;
+	placeholder:                	"Web Search";
+	blink:		                    true;
+	font:            				"SF Pro Text Regular 12";
+	expand:         				true;
+	text-color:						@foreground;
+	background-color:		 		@background-alt;
+	vertical-align: 				0.5;
+	padding:        				14px;
+	margin:							12px 22px 12px 12px;
+	border-radius:					9px;
+}
+
+element {
+	margin:							0px 12px 0px 12px;
+    background-color:               @background;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  0px;
+    padding:                        10px 12px 10px 12px;
+    border: 						0 0 2px;
+	border-color: 					@background-alt;
+}
+
+element-icon {
+	size:                          	16px;
+	border-color:					@background;
+	border:                        	2px;
+}
+
+element-text {
+	font:                      		"SF Pro Text Regular 11";
+	expand:                        	true;
+	horizontal-align:              	0.0;
+	vertical-align: 				0.5;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:               @urgent;
+    text-color:                     @foreground;
+    border-radius:                  9px;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+}
+
+element selected {
+    background-color:               @background-alt;
+    text-color:                     @foreground-selected;
+}
+
+element selected.urgent {
+    background-color:               @urgent-selected;
+    text-color:                     @foreground;
+}
+
+element selected.active {
+    background-color:               @background-alt;
+    color:                          @foreground-selected;
+}
