@@ -50,7 +50,10 @@ About my setup, I'm using **Archlinux** btw, and I think everyone should know ab
 Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the-glorious-dotfiles/wiki)** focusing on my AwesomeWM setups. It also contains some useful information about ricing so I can help the aspiring linux ricers. Make sure to read it if you're planning to use my setups! Enough with the blabbering and happy hacking! :)
 </p>
 
+<br>
+
 ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png)
+
 <br>
 <br>
 
