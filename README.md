@@ -47,18 +47,24 @@ This is a collection/stash of my linux configurations also known as <b><i>dotfil
 
 About my setup, I'm using **Archlinux** btw, and I think everyone should know about that. **[AwesomeWM](awesomewm.org/)** is my window manager. I think it is best window manager in my honest opinion if you spend some effort and time into it.  The strength of it is its flexibility, you can create your own widget, panels, pop-ups, design your own UI/UX in whatever you like. That's the beauty of Awesome WM.
 
-Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the-glorious-dotfiles/wiki)** focusing on my AwesomeWM setups. It also contains some useful information about ricing so I can help the aspiring linux ricers. Make sure to read it if you're planning to use my setups! Enough with the blabbering and happy hacking! :)
+Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the-glorious-dotfiles/wiki)** focusing on my AwesomeWM setups. It also contains some useful information about ricing so I can help the aspiring linux ricers. Make sure to read it if you're planning to use my setups!
 </p>
 
 <br>
 
-![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png)
+<img src="images/setups.png" align="left" height="400px">
+<p align="left">
+So, what is ricing or RICE in the linux world? Ricing refers to making a visual improvement and customization on your desktop. It was inherited from the practice of improving, modifying, and customizing a cheap asian import cars to make them appear faster than they actually are. So in the world of cars, <b>RICE</b> means <i>Race Inspired Cosmetic Enhancement</i>.
+<br>
+<br>
+Ricing is actually fun and it's my hobby for quite a long time now. Anyone can rice. Also, your distro doesn't matter. You can rice on ubuntu, manjaro, debian, and the list goes on. I'm just using archlinux because it's so easy. I love pacman and the aur, and these guys prevent me to distrohop again. There's also no <i>"best"</i> in ricing. There's no best window manager, best distro, best icon theme, so stop asking that. That "best" one is the one that will compliment you well and your workflow. Experiment. Have a vision on what you are trying to do. Then, do it. Just do it. :wink: Enough with the blabbering and happy hacking! :)
+</p>
 
 <br>
 <br>
 
-### the glorious wiki's table of contents
-
+## the glorious wiki's table of contents
+This wiki will guide you to replicate my setups.
 
 - **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
 - **General**
@@ -102,3 +108,8 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 - **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
 - **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
 - **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
+
+<br>
+<br>
+
+![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png)
