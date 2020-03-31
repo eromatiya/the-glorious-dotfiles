@@ -43,7 +43,7 @@ local return_button = function()
 		            if focused.right_panel and focused.right_panel.visible then
 		                focused.right_panel.visible = false
 		            end
-		            screen.primary.left_panel:toggle()
+		            focused.left_panel:toggle()
 				end
 			)
 		)
