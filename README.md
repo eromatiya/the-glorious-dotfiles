@@ -51,8 +51,9 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 </p>
 
 <br>
+<br>
 
-<img src="images/setups.png" align="left" height="400px">
+<img src="images/setups2.png" align="left" height="400px">
 <p align="left">
 So, what is ricing or RICE in the linux world? Ricing refers to making a visual improvement and customization on your desktop. It was inherited from the practice of improving, modifying, and customizing a cheap asian import cars to make them appear faster than they actually are. So in the world of cars, <b>RICE</b> means <i>Race Inspired Cosmetic Enhancement</i>.
 <br>
