@@ -409,7 +409,7 @@ local globalKeys = awful.util.table.join(
             if focused.right_panel and focused.right_panel.visible then
                 focused.right_panel.visible = false
             end
-            screen.primary.left_panel:toggle()
+            focused.left_panel:toggle()
         end,
         {description = 'open sidebar', group = 'launcher'}
     ),
@@ -422,7 +422,7 @@ local globalKeys = awful.util.table.join(
             if focused.right_panel and focused.right_panel.visible then
                 focused.right_panel.visible = false
             end
-            screen.primary.left_panel:toggle(true)
+            focused.left_panel:toggle(true)
         end,
         {description = 'open sidebar and web search', group = 'launcher'}
     ),
