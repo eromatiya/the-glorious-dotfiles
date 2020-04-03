@@ -224,8 +224,12 @@ local clientKeys =
 		{modkey, 'Control'},
 		'Down',
 		function(c)
-			if c.floating and c.height > 10 then
-				c:relative_move(0, dpi(10), 0, dpi(-10))
+			if c.floating then
+				local c_height = c.height
+				c:relative_move(0, 0, 0, dpi(-10))
+				if c.height ~= c_height and c.height > 10 then
+					c:relative_move(0, dpi(10), 0, 0)
+				end
 			end
 		end,
 		{description = 'decrease floating client size vertically by 10 px down', group = 'client'}
@@ -244,8 +248,12 @@ local clientKeys =
 		{modkey, 'Control'},
 		'Right',
 		function(c)
-			if c.floating and c.width > 10 then
-				c:relative_move(dpi(10), 0 , dpi(-10), 0)
+			if c.floating then
+				local c_width = c.width
+				c:relative_move(0, 0, dpi(-10), 0)
+				if c.width ~= c_width and c.width > 10 then
+					c:relative_move(dpi(10), 0 , 0, 0)
+				end
 			end
 		end,
 		{description = 'decrease floating client size horizontally by 10 px right', group = 'client'}
