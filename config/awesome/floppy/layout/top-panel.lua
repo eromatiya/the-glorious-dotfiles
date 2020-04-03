@@ -81,7 +81,7 @@ local TopPanel = function(s, offset)
 				nil,
 				function()
 					awful.spawn(
-						awful.screen.focused().selected_tag.defaultApp,
+						awful.screen.focused().selected_tag.default_app,
 						{
 							tag = mouse.screen.selected_tag,
 							placement = awful.placement.bottom_right

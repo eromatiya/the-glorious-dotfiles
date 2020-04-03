@@ -8,61 +8,61 @@ local tags = {
 	{
 		icon = icons.terminal,
 		type = 'terminal',
-		defaultApp = 'kitty',
+		default_app = 'kitty',
 		screen = 1
 	},
 	{
 		icon = icons.web_browser,
 		type = 'chrome',
-		defaultApp = 'firefox',
+		default_app = 'firefox',
 		screen = 1
 	},
 	{
 		icon = icons.text_editor,
 		type = 'code',
-		defaultApp = 'subl3',
+		default_app = 'subl3',
 		screen = 1
 	},
 	{
 		icon = icons.file_manager,
 		type = 'files',
-		defaultApp = 'nemo',
+		default_app = 'nemo',
 		screen = 1
 	},
 	{
 		icon = icons.multimedia,
 		type = 'music',
-		defaultApp = 'vlc',
+		default_app = 'vlc',
 		screen = 1
 	},
 	{
 		icon = icons.games,
 		type = 'game',
-		defaultApp = 'supertuxkart',
+		default_app = 'supertuxkart',
 		screen = 1
 	},
 	{
 		icon = icons.graphics,
 		type = 'art',
-		defaultApp = 'gimp-2.10',
+		default_app = 'gimp-2.10',
 		screen = 1
 	},
 	{
 		icon = icons.sandbox,
 		type = 'virtualbox',
-		defaultApp = 'virtualbox',
+		default_app = 'virtualbox',
 		screen = 1
 	},
 	{
 		icon = icons.development,
 		type = 'any',
-		defaultApp = '',
+		default_app = '',
 		screen = 1
 	}
 	-- {
 	--   icon = icons.social,
 	--   type = 'social',
-	--   defaultApp = 'discord',
+	--   default_app = 'discord',
 	--   screen = 1
 	-- }
 }
@@ -88,7 +88,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 				gap_single_client = false,
 				gap = beautiful.useless_gap,
 				screen = s,
-				defaultApp = tag.defaultApp,
+				default_app = tag.default_app,
 				selected = i == 1
 			}
 		)

@@ -2,7 +2,8 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 
-local function renderClient(client, mode)
+local function render_client(client, mode)
+	
 	if client.skip_decoration or (client.rendering_mode == mode) then
 		return
 	end
@@ -22,88 +23,90 @@ local function renderClient(client, mode)
 		client.shape = function(cr, w, h)
 			gears.shape.rectangle(cr, w, h)
 		end
-	elseif client.rendering_mode == 'tiled' or client.rendering_mode == 'floating' or client.rendering_mode == 'dwindle' then
+	elseif client.rendering_mode ~= 'maximized' then
 		client.border_width = beautiful.border_width
 		client.shape = function(cr, w, h)
 			gears.shape.rounded_rect(cr, w, h, beautiful.client_radius)
 		end
 	end
+
 end
 
-local changesOnScreenCalled = false
+local changes_on_screen_called = false
 
-local function changesOnScreen(currentScreen)
-	local tagIsMax = currentScreen.selected_tag ~= nil and currentScreen.selected_tag.layout == awful.layout.suit.max
-	local clientsToManage = {}
+local function changes_on_screen(current_screen)
 
-	for _, client in pairs(currentScreen.clients) do
+	local tag_is_max = current_screen.selected_tag ~= nil and 
+		current_screen.selected_tag.layout == awful.layout.suit.max
+
+	local clients_to_manage = {}
+
+	for _, client in pairs(current_screen.clients) do
 		if not client.skip_decoration and not client.hidden then
-			table.insert(clientsToManage, client)
+			table.insert(clients_to_manage, client)
 		end
 	end
 
-	if (tagIsMax or #clientsToManage == 1) then
-		currentScreen.client_mode = 'maximized'
+	if (tag_is_max or #clients_to_manage == 1) then
+		current_screen.client_mode = 'maximized'
 	else
-		currentScreen.client_mode = 'dwindle'
+		current_screen.client_mode = 'dwindle'
 	end
 
-	for _, client in pairs(clientsToManage) do
-		renderClient(client, currentScreen.client_mode)
+	for _, client in pairs(clients_to_manage) do
+		render_client(client, current_screen.client_mode)
 	end
-	changesOnScreenCalled = false
+	changes_on_screen_called = false
 end
 
 
-function clientCallback(client)
-	if not changesOnScreenCalled then
+function client_callback(client)
+	if not changes_on_screen_called then
 		if not client.skip_decoration and client.screen then
-			changesOnScreenCalled = true
+			changes_on_screen_called = true
 			local screen = client.screen
 			gears.timer.delayed_call(
 				function()
-					changesOnScreen(screen)
+					changes_on_screen(screen)
 				end
 			)
 		end
 	end
 end
 
-
-
-function tagCallback(tag)
-	if not changesOnScreenCalled then
+function tag_callback(tag)
+	if not changes_on_screen_called then
 		if tag.screen then
-			changesOnScreenCalled = true
+			changes_on_screen_called = true
 			local screen = tag.screen
 			gears.timer.delayed_call(
 				function()
-					changesOnScreen(screen)
+					changes_on_screen(screen)
 				end
 			)
 		end
 	end
 end
 
-_G.client.connect_signal('manage', clientCallback)
+client.connect_signal('manage', client_callback)
 
-_G.client.connect_signal('unmanage', clientCallback)
+client.connect_signal('unmanage', client_callback)
 
-_G.client.connect_signal('property::hidden', clientCallback)
+client.connect_signal('property::hidden', client_callback)
 
-_G.client.connect_signal('property::minimized', clientCallback)
+client.connect_signal('property::minimized', client_callback)
 
-_G.client.connect_signal(
+client.connect_signal(
 	'property::fullscreen',
 	function(c)
 		if c.fullscreen then
-			renderClient(c, 'maximized')
+			render_client(c, 'maximized')
 		else
-			clientCallback(c)
+			client_callback(c)
 		end
 	end
 )
 
-_G.tag.connect_signal('property::selected', tagCallback)
+tag.connect_signal('property::selected', tag_callback)
 
-_G.tag.connect_signal('property::layout', tagCallback)
+tag.connect_signal('property::layout', tag_callback)
