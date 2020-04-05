@@ -36,6 +36,7 @@ mainbox {
 	padding: 						5px 5px 5px 5px;
 	width:							200px;
 	expand: 						true;
+	spacing: 12px;
 	children: 						[ inputbar, listview];
 }
 
@@ -54,23 +55,50 @@ listview {
 	scrollbar: 						true;
 }
 
-inputbar {
-	children:		 				[ entry ];
-	position:                       north;
+prompt {
+    enabled:                        false;
 }
 
+button {
+    action:                         "ok";
+    str:                            " ";
+    font:                           "FantasqueSansMono Nerd Font 16";
+    expand:                         false;
+    text-color:                     @foreground;
+    background-color:               @background;
+    vertical-align:                 0.5;
+    horizontal-align:               0.5;
+}
+
+
 entry {
+	font:            				"SF Pro Text Regular 12";
+	background-color:               @background;
 	placeholder-color:          	@foreground;
 	placeholder:                	"Web Search";
 	blink:		                    true;
-	font:            				"SF Pro Text Regular 12";
 	expand:         				true;
 	text-color:						@foreground;
-	background-color:		 		@background-alt;
 	vertical-align: 				0.5;
-	padding:        				14px;
-	margin:							12px 22px 12px 12px;
-	border-radius:					9px;
+}
+
+entry-wrapper {
+    orientation:                    horizontal;
+    vertical-align:                 0.5;
+    spacing:                        4px;
+    background-color:               @background;
+    children:                       [ button, entry ];
+}
+
+inputbar {
+	padding:                        14px;
+	margin:							10px 10px 14px 10px;
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    expand:                         false;
+    border-radius:                  9px;
+    position:                       north;
+    children:                       [ entry-wrapper ];
 }
 
 element {

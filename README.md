@@ -85,6 +85,7 @@ This wiki will guide you to replicate my setups.
 		- [Fix the errors on start-up](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-the-errors-on-start-up)
 		- [Fix the font](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-font)
 		- [Fix rofi size](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-rofi-application-menu-size)
+		- [Fix rofi font](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-rofi-font)
 		- [Fix Resolution](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-resolution)
 		- [Use the Powerlevel10k prompt](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#use-the-powerlevel10k-prompt)
 		- [Rice Qt5 apps](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#rice-qt5-apps-on-non-plasma-environment)

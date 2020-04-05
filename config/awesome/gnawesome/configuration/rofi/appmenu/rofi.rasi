@@ -1,11 +1,12 @@
 configuration {
-    font:                           "SF Pro Text Regular 9";
+    font:                           "SF Pro Text Regular 10";
     show-icons:                     true;
     drun-display-format:            "{name}";
     fullscreen:                     false;
     threads:                        0;
     scroll-method:                  0;
     disable-history:                false;
+    monitor:                        "primary";
     fullscreen:                     true;
 }
 
@@ -24,18 +25,52 @@ window {
     transparency:                   "real";
     background-color:               @background;
     text-color:                     @foreground;
-    height:                         740px;
-    width:                          1321px;
     location:                       northwest;
     anchor:                         northwest;
-    x-offset:                       45;
-    y-offset:                       28;
 }
 
 prompt {
-    enabled: false;
+    enabled:                        false;
 }
 
+button {
+    action:                         "ok";
+    str:                            " ";
+    font:                           "FantasqueSansMono Nerd Font 11";
+    expand:                         false;
+    text-color:                     @foreground;
+    background-color:               @background;
+    vertical-align:                 0.5;
+    horizontal-align:               0.5;
+}
+
+entry {
+    font:                           "SF Pro Text Regular 11";
+    background-color:               @background;
+    text-color:                     @foreground;
+    expand:                         true;
+    vertical-align:                 0.5;
+    horizontal-align:               0.0;
+    placeholder:                    "Type to search";
+    placeholder-color:              @foreground;
+    blink:                          true;
+}
+
+case-indicator {
+    background-color:               @background;
+    text-color:                     @foreground;
+    spacing:                        0;
+    vertical-align:                 0.5;
+    horizontal-align:               0.5;
+}
+
+entry-wrapper {
+    orientation:                    horizontal;
+    vertical-align:                 0.5;
+    spacing:                        4px;
+    background-color:               @background;
+    children:                       [ button, entry, case-indicator ];
+}
 
 inputbar {
     background-color:               @background-alt;
@@ -45,25 +80,8 @@ inputbar {
     margin:                         0px 430px 0px 430px;
     padding:                        10px 10px 10px 10px;
     position:                       north;
+    children:                       [ entry-wrapper ];
 }
-
-
-entry {
-    background-color:               @background;
-    text-color:                     @foreground;
-    placeholder-color:              @foreground;
-    expand:                         true;
-    horizontal-align:               0.5;
-    placeholder:                    "Search applications";
-    blink:                          true;
-}
-
-case-indicator {
-    background-color:               @background;
-    text-color:                     @foreground;
-    spacing:                        0;
-}
-
 
 listview {
     background-color:               @background;
@@ -78,7 +96,7 @@ mainbox {
     background-color:               @background-color;
     children:                       [ inputbar, listview ];
     spacing:                        25px;
-    padding:                        70px 135px 55px 135px;
+    padding:                        45px 135px 45px 135px;
 }
 
 element {
