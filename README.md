@@ -58,7 +58,7 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 So, what is ricing or RICE in the linux world? Ricing refers to making a visual improvement and customization on your desktop. It was inherited from the practice of improving, modifying, and customizing a cheap asian import cars to make them appear faster than they actually are. So in the world of cars, <b>RICE</b> means <i>Race Inspired Cosmetic Enhancement</i>.
 <br>
 <br>
-Ricing is actually fun and it's my hobby for quite a long time now. Anyone can rice. Also, your distro doesn't matter. You can rice on ubuntu, manjaro, debian, and the list goes on. I'm just using archlinux because it's so easy. I love pacman and the aur, and these guys prevent me to distrohop again. There's also no <i>"best"</i> in ricing. There's no best window manager, best distro, best icon theme, so stop asking that. That "best" one is the one that will compliment you well and your workflow. Experiment. Have a vision on what you are trying to do. Then, do it. Just do it. :wink: Enough with the blabbering and happy hacking! :)
+Ricing is actually fun and it's my hobby for quite a long time now. Anyone can rice. Also, your distro doesn't matter. You can rice on ubuntu, manjaro, debian, and the list goes on. I'm just using archlinux because it's so easy to use and I love it. The pacman and aur is the selling point for me, and these guys prevent me to distrohop again. There's also no <i>"best"</i> in ricing. There's no best window manager, best distro, best icon theme, so stop asking that. That "best" one is the one that will compliment you and your workflow well. Experiment. Have a vision on what you are trying to do. Then, do it. Just do it. :wink: Enough with the blabbering and happy hacking! :)
 </p>
 
 <br>
@@ -114,4 +114,20 @@ This wiki will guide you to replicate my setups.
 <br>
 <br>
 
-![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png)
+## mini gallery
+
+| Floppy |
+| --- |
+| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/floppy/dirty.png) |
+
+| GNawesOME |
+| --- |
+| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/gnawesome/today.png) |
+
+| Linear |
+| --- |
+| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/linear/busier.png) |
+
+| Multihead |
+| --- |
+| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png) |
