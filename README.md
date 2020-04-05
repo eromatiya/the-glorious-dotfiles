@@ -131,3 +131,7 @@ This wiki will guide you to replicate my setups.
 | Multihead |
 | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png) |
+
+<br>
+
+Main gallery [here](https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery).
