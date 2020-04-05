@@ -101,7 +101,7 @@ END
 
 
 -- Script to show unread emails in tooltip
-local get_unread = [[
+local get_recent_unread = [[
 # A simple python script to get unread emails wrapped inside bash wrapped inside lua lol
 # Make sure to encrypt this
 python3 - <<END
@@ -115,7 +115,7 @@ def process_mailbox(M):
 		print ("No messages found!")
 		return
 
-	for num in data[0].split():
+	for num in reversed(data[0].split()):
 		rv, data = M.fetch(num, '(BODY.PEEK[])')
 		if rv != 'OK':
 			print ("ERROR getting message", num)
@@ -148,49 +148,6 @@ M.logout()
 
 END
 ]]
-
-
--- Show the mose recent received email details
-local read_recent_datails = [[
-# A simple python script to get unread emails wrapped inside bash wrapped inside lua lol
-# Make sure to encrypt this
-python3 - <<END
-import imaplib
-import email
-import datetime
-
-def process_mailbox(M):
-	rv, data = M.search(None, "(UNSEEN)")
-	if rv != 'OK':
-		print ("No messages found!")
-		return
-
-	for num in reversed(data[0].split()):
-		rv, data = M.fetch(num, '(BODY.PEEK[])')
-		if rv != 'OK':
-			print ("ERROR getting message", num)
-			return
-
-		msg = email.message_from_bytes(data[0][1])
-		print ('From:', msg['From'])
-		print ('Subject: %s' % (msg['Subject']))
-		return
-
-
-M=imaplib.IMAP4_SSL("]] .. imap_server .. [[", ]] .. port .. [[)
-M.login("]] .. email_account .. [[","]] .. app_password .. [[")
-
-rv, data = M.select("INBOX")
-if rv == 'OK':
-		process_mailbox(M)
-M.close()
-M.logout()
-
-END
-]]
-
-
-
 
 -- Widget layout
 local email_report = wibox.widget{
@@ -233,16 +190,24 @@ local email_report = wibox.widget{
 	widget = wibox.container.background
 }
 
-
-
 -- Create a notification
-local notify_new_email = function(count)
+local notify_new_email = function(count, details)
 	if tonumber(count) > tonumber(mail_counter) then
+		
+		details = details:gsub("<(.-)>", ''):sub(1, -2)
 		mail_counter = count
+
+		local title = "You have an unread email!"
+
+		if tonumber(mail_counter) > 1 then
+			title = "You have " .. mail_counter .. " unread emails!"
+		end
+
 		naughty.notification({ 
-			title = "Message received!",
-			message = "You have an unread email!",
+			title = title,
+			message = details,
 			app_name = 'Email',
+			timeout = 200,
 			icon = widget_icon_dir .. 'email-unread' .. '.svg'
 		})
 		email_icon_widget.icon:set_image(widget_icon_dir .. 'email-unread' .. '.svg')
@@ -255,53 +220,8 @@ local notify_new_email = function(count)
 	end
 end
 
--- Set text for missing credentials and no internet connection
-local set_error_msg = function(status)
-
-	if status == 'no-credentials' then
-		email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'message@stderr.sh'
-		email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Credentials are missing!'
-		return
-	end
-
-	if status == 'no-network' then
-		email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'message@stderr.sh'
-		email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Check network connection!'
-		return
-	end
-
-end
-
-
--- Update textbox to show recent email details
-local set_email_details = function()
-	awful.spawn.easy_async_with_shell(read_recent_datails, function(stdout)
-		if stdout:match('%W') then
-			local text_from = stdout:match('From: (.*)Subject:'):gsub('%\n','')
-			local text_subject = stdout:match('Subject: (.*)'):gsub('%\n','')
-
-			-- Only get the email address
-			text_from = text_from:match('<(.*)>')
-
-			email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. text_from
-			email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. text_subject
-		end
-	end)
-end
-
-
--- Update textbox to show that there's no unread email
-local set_no_email_details = function()
-	awful.spawn.easy_async_with_shell(read_recent_datails, function(stdout)
-
-		email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'empty@stdout.sh'
-		email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Empty inbox'
-	end)
-end
-
-
 -- A tooltip that will show all the unread emails
-local read_emails = awful.tooltip
+local email_details_tooltip = awful.tooltip
 {
 	text = 'Loading...',
 	objects = {email_icon_widget},
@@ -312,20 +232,56 @@ local read_emails = awful.tooltip
 	margin_topbottom = dpi(8)
 }
 
+-- Set text for missing credentials and no internet connection
+local set_error_msg = function(status)
 
--- Update tooltip content
-local update_tooltip = function()
-	awful.spawn.easy_async_with_shell(get_unread, function(stdout)
-		if (stdout:match("%W")) then
-			if stdout ~= nil then
-				read_emails.text = stdout:gsub('\n$', '')
-			else
-				read_emails.text = 'Loading...'
-			end
-		else
-			read_emails.text = 'No unread emails...'
+	if status == 'no-credentials' then
+		email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'message@stderr.sh'
+		email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Credentials are missing!'
+		email_details_tooltip.markup = 'Missing credentials!'
+		return
+	end
+
+	if status == 'no-network' then
+		email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'message@stderr.sh'
+		email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Check network connection!'
+		email_details_tooltip.markup = 'No internet connection!'
+		return
+	end
+
+end
+
+-- Update textbox to show recent email details
+local set_email_details = function(count)
+	awful.spawn.easy_async_with_shell(get_recent_unread, function(stdout)
+		if stdout:match('%W') then
+
+			details = stdout:sub(1, -2)
+
+			local text_from = details:match('From: (.-)Subject:'):gsub('%\n','')
+			local text_subject = details:match('Subject: (.-)Local Date'):gsub('%\n','')
+
+			-- Only get the email address
+			text_from = text_from:match('<(.*)>')
+
+			email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. text_from
+			email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. text_subject
+
+			-- Notify
+			notify_new_email(count, details)
+
+			-- Update tooltip
+			email_details_tooltip.text = 'Most recent:\n' .. stdout:gsub('\n$', '')
 		end
 	end)
+end
+
+
+-- Update textbox to show that there's no unread email
+local set_no_email_details = function()
+	email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'empty@stdout.sh'
+	email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Empty inbox'
+	email_details_tooltip.text = 'No unread email...'
 end
 
 
@@ -336,7 +292,7 @@ local update_widget = function()
 
 			if tonumber(unread_count) > 0 then
 				-- Get from and Subject
-				set_email_details()
+				set_email_details(unread_count)
 			else
 				-- Set empty messages
 				set_no_email_details()
@@ -345,11 +301,6 @@ local update_widget = function()
 			-- Update unread count
 			email_count.text = tonumber(unread_count)
 
-			-- Update tooltip
-			update_tooltip()
-	
-			-- Notify
-			notify_new_email(unread_count)
 		else
 			-- Send no network err msg
 			set_error_msg('no-network')
@@ -382,16 +333,14 @@ local update_widget_timer = gears.timer {
 
 -- Update widget after connecting to wifi
 awesome.connect_signal('system::wifi_connected', function()
-	-- Add a delay of 3 seconds
-	gears.timer.start_new(3, function() 
+	gears.timer.start_new(15, function() 
 		check_credentials()
 	end)
 end)
 
 
 -- Update content if hovers on widget
-email_report:connect_signal("mouse::enter", function() 
-	-- Update email widget
+email_report:connect_signal("mouse::enter", function()
 	check_credentials()
 end)
 
