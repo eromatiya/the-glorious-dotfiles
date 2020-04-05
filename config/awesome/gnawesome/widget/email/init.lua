@@ -1,8 +1,8 @@
 local awful = require('awful')
-local beautiful = require('beautiful')
 local gears = require('gears')
 local wibox = require('wibox')
 local naughty = require('naughty')
+local beautiful = require('beautiful')
 
 local dpi = beautiful.xresources.apply_dpi
 
@@ -210,13 +210,8 @@ local notify_new_email = function(count, details)
 			timeout = 200,
 			icon = widget_icon_dir .. 'email-unread' .. '.svg'
 		})
-		email_icon_widget.icon:set_image(widget_icon_dir .. 'email-unread' .. '.svg')
 	else
 		mail_counter = count
-	end
-
-	if tonumber(count) == 0 then
-		email_icon_widget.icon:set_image(widget_icon_dir .. 'email' .. '.svg')
 	end
 end
 
@@ -267,6 +262,9 @@ local set_email_details = function(count)
 			email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. text_from
 			email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. text_subject
 
+			-- Update email icon
+			email_icon_widget.icon:set_image(widget_icon_dir .. 'email-unread' .. '.svg')
+
 			-- Notify
 			notify_new_email(count, details)
 
@@ -282,10 +280,30 @@ local set_no_email_details = function()
 	email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'empty@stdout.sh'
 	email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Empty inbox'
 	email_details_tooltip.text = 'No unread email...'
+
+	email_icon_widget.icon:set_image(widget_icon_dir .. 'email' .. '.svg')
+end
+
+
+-- Check credentials
+local check_credentials = function()
+	if email_account == '' or app_password == '' or 
+		imap_server == '' or port == '' then
+
+		set_error_msg('no-credentials')
+		return false
+	else
+		return true
+	end
 end
 
 
 local update_widget = function()
+
+	if not check_credentials() then
+		return
+	end
+
 	awful.spawn.easy_async_with_shell(check_count, function(stdout)
 		if tonumber(stdout) ~= nil then
 			unread_count = stdout:gsub('%\n','')
@@ -309,17 +327,6 @@ local update_widget = function()
 end
 
 
-local check_credentials = function()
-	if email_account == '' or app_password == '' or imap_server == '' or port == '' then
-		-- Send no credential/s err msg
-		set_error_msg('no-credentials')
-	else
-		-- If there's credentials, update widget
-		update_widget()
-	end
-end
-
-
 -- Updater
 local update_widget_timer = gears.timer {
 	timeout = 30,
@@ -327,21 +334,21 @@ local update_widget_timer = gears.timer {
 	call_now = true,
 	callback  = function()
 		-- Check if there's a credentials
-		check_credentials() 
+		update_widget() 
 	end
 }
 
 -- Update widget after connecting to wifi
 awesome.connect_signal('system::wifi_connected', function()
 	gears.timer.start_new(15, function() 
-		check_credentials()
+		update_widget()
 	end)
 end)
 
 
 -- Update content if hovers on widget
 email_report:connect_signal("mouse::enter", function()
-	check_credentials()
+	update_widget()
 end)
 
 
