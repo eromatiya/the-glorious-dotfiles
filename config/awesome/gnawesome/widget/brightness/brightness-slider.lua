@@ -39,7 +39,7 @@ brightness_slider:connect_signal(
 
 		local brightness_level = brightness_slider:get_value()
 		
-		spawn('xbacklight -set ' .. 
+		spawn('light -S ' .. 
 			math.max(brightness_level, 5),
 			false
 		)
@@ -84,7 +84,7 @@ brightness_slider:buttons(
 
 local update_slider = function()
 	awful.spawn.easy_async_with_shell(
-		"xbacklight -get", 
+		"light -G", 
 		function(stdout)
 
 			local brightness = string.match(stdout, '(%d+)')
