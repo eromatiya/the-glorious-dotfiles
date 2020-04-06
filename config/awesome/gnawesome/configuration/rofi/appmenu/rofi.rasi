@@ -59,7 +59,6 @@ entry {
 case-indicator {
     background-color:               @background;
     text-color:                     @foreground;
-    spacing:                        0;
     vertical-align:                 0.5;
     horizontal-align:               0.5;
 }
@@ -69,7 +68,7 @@ entry-wrapper {
     vertical-align:                 0.5;
     spacing:                        4px;
     background-color:               @background;
-    children:                       [ button, entry, case-indicator ];
+    children:                       [ case-indicator, entry, button ];
 }
 
 inputbar {
