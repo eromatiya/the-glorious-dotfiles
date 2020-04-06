@@ -13,7 +13,7 @@ music_title = wibox.widget {
 		{
 			id = 'title',
 			text = 'The song title is here',
-			font = 'SF Pro Text Bold 12',
+			font = 'SF Pro Text Bold 11',
 			align  = 'center',
 			valign = 'center',
 			ellipsize = 'end',
