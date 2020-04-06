@@ -18,6 +18,7 @@ return {
 		package_manager 								= 'pamac-manager',							-- GUI Package manager
 		lock 											= 'awesome-client "_G.show_lockscreen()"',  -- Lockscreen
 		quake 											= 'kitty --name QuakeTerminal',             -- Quake-like Terminal
+		soundcontrol									= 'pavucontrol',							-- Volume control for pulseaudio
 
 		rofiweb											= 'rofi -dpi ' .. screen.primary.dpi .. 
 														  ' -show Search -modi Search:' .. config_dir .. 
