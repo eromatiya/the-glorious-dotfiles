@@ -56,7 +56,7 @@ bri_osd_slider:connect_signal(
 
 		local brightness_level = bri_osd_slider:get_value()
 		
-		spawn('xbacklight -set ' .. math.max(brightness_level, 5), false)
+		spawn('light -S ' .. math.max(brightness_level, 5), false)
 
 		-- Update textbox widget text
 		osd_value.text = brightness_level .. '%'
