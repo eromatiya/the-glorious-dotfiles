@@ -1,12 +1,3 @@
---  #     #                                          
---  #     # #####  #####    ##   ##### ###### #####  
---  #     # #    # #    #  #  #    #   #      #    # 
---  #     # #    # #    # #    #   #   #####  #    # 
---  #     # #####  #    # ######   #   #      #####  
---  #     # #      #    # #    #   #   #      #   #  
---   #####  #      #####  #    #   #   ###### #    # 
-
-
 -- Update Music info using mpd/mpc
 -- Depends mpd, mpc
 
@@ -25,10 +16,7 @@ local song_info = ui_content.song_info
 local vol_slider = ui_content.volume_slider
 local media_buttons = ui_content.media_buttons
 
-local mpd_updater = {}
-
 local apps = require('configuration.apps')
-
 
 local update_cover = function()
 	
@@ -203,7 +191,6 @@ local update_title = function()
 			local title = stdout:gsub('%\n', '')
 
 			local title_widget = song_info.music_title
-
 			local title_text = song_info.music_title:get_children_by_id('title')[1]
 			
 			-- Make sure it's not null
@@ -211,21 +198,31 @@ local update_title = function()
 			if title:match('%w') or title:match('%W') then
 				
 				title_text:set_text(title)
-
-			elseif update_file():match('%W') or update_file():match('%w') then
-				
-				-- Use file name because there's no metadata
-
-				local file_name = update_file()
-
-				-- Cut the .mp3 ending
-				file_name = file_name:sub(1, title:len() - 5) .. ''
-
-				title_text:set_text(file_name)
 			
 			else
-				-- Set title
-				title_text:set_text("Play some music!")
+
+				awful.spawn.easy_async_with_shell(
+					[[
+					mpc -f %file% current
+					]], 
+					function(stdout)
+
+
+						if stdout:match('%W') or stdout:match('%w') then
+
+							file_name = stdout:gsub('%\n','')
+			
+							file_name = file_name:sub(1, title:len() - 5) .. ''
+
+							title_text:set_text(file_name)
+
+						else
+							-- Set title
+							title_text:set_text("Play some music!")
+
+						end
+					end
+				)
 			
 			end
 
@@ -257,13 +254,25 @@ local update_artist = function()
 			if artist:match('%w') or artist:match('%W') then
 
 				artist_text:set_text(artist)
-
-			elseif update_file():match('%W') or update_file():match('%w') then
-
-				artist_text:set_text('unknown artist')
 			
 			else
-				artist_text:set_text("or play some porn?")
+				
+
+				awful.spawn.easy_async_with_shell(
+					[[
+					mpc -f %file% current
+					]], 
+					function(stdout)
+						if stdout:match('%W') or stdout:match('%w') then
+
+							artist_text:set_text('unknown artist')
+
+						else
+							artist_text:set_text("or play some porn?")
+
+						end
+					end
+				)
 			end
 
 			artist_widget:emit_signal("widget::redraw_needed")
@@ -377,7 +386,6 @@ end
 
 local startup_update_quota = 0
 
-
 gears.timer.start_new(3, function()
 	
 	update_all_content()
@@ -386,13 +394,14 @@ gears.timer.start_new(3, function()
 
 	if startup_update_quota <= 5 then
 		return true
+	else
+		return false
 	end
-	return false
 end)
 
 
 gears.timer.start_new(
-	5, 
+	5,
 	function()
 		update_progress_bar()
 		update_time_progress()
