@@ -294,6 +294,7 @@ local TopPanel = function(s, offset)
 	s.updater 		= require('widget.package-updater')()
 	s.screen_rec 	= require('widget.screen-recorder')()
 	s.music       	= require('widget.music')()
+	s.soundcontrol  = require('widget.soundcontrol')()
 	s.bluetooth   	= require('widget.bluetooth')()
 	s.wifi        	= require('widget.wifi')()
 	s.battery     	= require('widget.battery')()
@@ -322,6 +323,7 @@ local TopPanel = function(s, offset)
 			s.updater,
 			s.screen_rec,
 			s.music,
+			s.soundcontrol,
 			s.bluetooth,
 			s.wifi,
 			s.battery,
