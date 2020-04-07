@@ -83,21 +83,14 @@ local clientKeys =
 		end,
 		{description = 'go back', group = 'client'}
 	),
-
-    awful.key(
-        {modkey, 'Control'},
+	awful.key(
+        {modkey},
         'n',
-        function()
-            local c = awful.client.restore()
-            -- Focus restored client
-            if c then
-                client.focus = c
-                c:raise()
-            end
+        function(c)
+            c.minimized = true
         end,
-        {description = 'restore minimized', group = 'client'}
+        {description = "minimize client", group = 'client'}
     ),
-
 	-- move floating client to center
 	awful.key(
 		{ modkey, "Shift" }, 

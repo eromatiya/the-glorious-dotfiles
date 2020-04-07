@@ -158,6 +158,19 @@ local globalKeys = awful.util.table.join(
         { description = "focus the next screen", group = "screen"}
     ),
     awful.key(
+        {modkey, 'Control'},
+        'n',
+        function()
+            local c = awful.client.restore()
+            -- Focus restored client
+            if c then
+                client.focus = c
+                c:raise()
+            end
+        end,
+        {description = 'restore minimized', group = 'screen'}
+    ),
+    awful.key(
         {},
         'XF86MonBrightnessUp',
         function()
