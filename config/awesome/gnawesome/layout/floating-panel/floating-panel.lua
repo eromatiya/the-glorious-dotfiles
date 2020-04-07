@@ -25,7 +25,7 @@ end
 
 styles.month   = { 
 	padding = 5,
-	bg_color = '#00000000',
+	bg_color = '#00000000'
 }
 styles.normal  = {
 	fg_color = '#f2f2f2',
@@ -34,7 +34,11 @@ styles.normal  = {
 styles.focus   = {
 	fg_color = '#f2f2f2',
 	bg_color = beautiful.accent,
-	markup   = function(t) return '<b>' .. t .. '</b>' end
+	markup   = function(t) return '<b>' .. t .. '</b>' end,
+	shape 	 = function(cr, width, height)
+					gears.shape.partially_rounded_rect(
+						cr, width, height, true, true, true, true, dpi(4))
+				end
 }
 styles.header  = {
 	fg_color = '#f2f2f2',
@@ -140,7 +144,6 @@ local right_panel = function(s)
 							{
 								layout = wibox.layout.flex.horizontal,
 								spacing = dpi(7),
-								require('widget.notif-center'),
 								{
 									layout = wibox.layout.fixed.vertical,
 									spacing = dpi(7),
@@ -148,7 +151,8 @@ local right_panel = function(s)
 									require('widget.weather'),
 									require('widget.email'),
 									calendar						
-								}
+								},
+								require('widget.notif-center')
 							},
 
 						},

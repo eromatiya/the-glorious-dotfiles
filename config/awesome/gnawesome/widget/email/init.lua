@@ -222,7 +222,7 @@ local email_details_tooltip = awful.tooltip
 	objects = {email_icon_widget},
 	mode = 'outside',
 	align = 'right',
-	preferred_positions = {'right', 'left', 'top', 'bottom'},
+	preferred_positions = {'left', 'right', 'top', 'bottom'},
 	margin_leftright = dpi(8),
 	margin_topbottom = dpi(8)
 }
