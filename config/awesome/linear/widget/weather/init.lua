@@ -240,7 +240,7 @@ awesome.connect_signal('widget::weather_fetch', function()
 		local fetch_icon_code = stdout:match('^(.*)^')
 		
 		-- No internet / no credentials
-		if fetch_icon_code == "..." then
+		if fetch_icon_code == "..." and not fetch_icon_code then
 
 			awesome.emit_signal("widget::weather_update", 
 				fetch_icon_code, 
