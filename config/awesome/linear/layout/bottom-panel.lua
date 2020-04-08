@@ -11,12 +11,11 @@ local clickable_container = require('widget.clickable-container')
 local task_list = require('widget.task-list')
 local tag_list = require('widget.tag-list')
 
-local TopPanel = function(s)
+local bottom_panel = function(s)
 
 	local panel_height = dpi(48)
-	local panel_y = s.geometry.y + s.geometry.height - panel_height
 
-	local panel = wibox
+	local panel = awful.wibar
 	{
 		ontop = true,
 		screen = s,
@@ -24,7 +23,8 @@ local TopPanel = function(s)
 		height = panel_height,
 		width = s.geometry.width,
 		x = s.geometry.x,
-		y = dpi(panel_y),
+		y = dpi(s.geometry.y),
+		position = 'bottom',
 		bg = beautiful.background,
 		fg = beautiful.fg_normal
 	}
@@ -369,4 +369,4 @@ local TopPanel = function(s)
 end
 
 
-return TopPanel
+return bottom_panel
