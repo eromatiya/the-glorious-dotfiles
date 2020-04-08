@@ -204,7 +204,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		end
 	)
 
-
 	local placement_placer = function()
 
 		local focused = awful.screen.focused()
