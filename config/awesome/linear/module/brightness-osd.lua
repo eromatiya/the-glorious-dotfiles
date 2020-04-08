@@ -167,11 +167,19 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		end
 	 }
 
+	local timer_rerun = function()
+	 	if hide_osd.started then
+			hide_osd:again()
+		else
+			hide_osd:start()
+		end
+	end
+
   	-- Reset timer on mouse hover
 	s.brightness_osd_overlay:connect_signal(
 		'mouse::enter', 
 		function()
-			hide_osd:again()
+			timer_rerun()
 		end
 	)
 
@@ -213,13 +221,15 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			placement_placer()
 			awful.screen.focused().brightness_osd_overlay.visible = bool
 			if bool then
-				hide_osd:again()
+				timer_rerun()
 			  	awesome.emit_signal(
 			  		'module::volume_osd:show',
 			  		false
 			  	)
 			else
-				hide_osd:stop()
+				if hide_osd.started then
+					hide_osd:stop()
+				end
 		  	end
 		end
 	)
