@@ -4,6 +4,12 @@ local awful = require('awful')
 local naughty = require('naughty')
 local beautiful = require('beautiful')
 
+local filesystem = require('gears.filesystem')
+local config_dir = filesystem.get_configuration_dir()
+
+package.cpath = package.cpath .. ";" .. config_dir .. "/library/?.so;"
+local pam = require('liblua_pam')
+
 local dpi = beautiful.xresources.apply_dpi
 
 local apps = require('configuration.apps')
@@ -29,14 +35,6 @@ local input_password = nil
 local lock_again = nil
 local type_again = true
 local capture_now = capture_intruder
-
--- Get pass
-
-local pass = function()
-	local secrets = require('configuration.secrets')
-	local password = secrets.lockscreen.password
-	return password
-end
 
 -- Process
 
@@ -535,7 +533,8 @@ local locker = function(s)
 				type_again = false
 
 				-- Validate password
-				if input_password == pass() then
+				local pam_auth = pam:auth_current_user(input_password)
+				if pam_auth then
 					-- Come in!
 					self:stop()
 					generalkenobi_ohhellothere()
