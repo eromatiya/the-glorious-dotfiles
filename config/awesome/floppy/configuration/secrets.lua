@@ -46,10 +46,5 @@ return {
 		city_id       = '',
 		units         = 'metric'
 
-	},
-
-	lockscreen = {
-		password 	  = 'toor'
 	}
-
 }
