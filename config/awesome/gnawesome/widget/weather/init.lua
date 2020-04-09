@@ -237,18 +237,22 @@ awesome.connect_signal('widget::weather_fetch', function()
 
 	awful.spawn.easy_async_with_shell(weather_details_script, function(stdout)
 
-		local fetch_icon_code = stdout:match('^(.*)^')
+		local fetch_icon_code = stdout:gsub('%\n',''):match('^(.*)^')
+
+		if not fetch_icon_code then
+			fetch_icon_code = '...'
+		end
 		
 		-- No internet / no credentials
-		if fetch_icon_code == "..." and not fetch_icon_code then
+		if fetch_icon_code == '...' then
 
 			awesome.emit_signal("widget::weather_update", 
 				fetch_icon_code, 
 				'dust & clouds, -1000°C', 
 				'Earth, Milky Way', 
-				'00:00AM', 
-				'00:00PM', 
-				'00:00PM'
+				'00:00', 
+				'00:00', 
+				'00:00'
 			)
 			
 		else
