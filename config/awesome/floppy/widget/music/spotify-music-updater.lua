@@ -109,7 +109,7 @@ local update_artist = function()
 			-- Remove new lines
 			local artist = stdout:gsub('%\n', '')
 
-			if not artist:match('%W') and not artist:match('%w') then
+			if (stdout == nil or stdout == '') then
 				artist = 'Advertisement'
 			end
 

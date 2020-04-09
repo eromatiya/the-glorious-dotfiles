@@ -249,7 +249,7 @@ end
 -- Update textbox to show recent email details
 local set_email_details = function(count)
 	awful.spawn.easy_async_with_shell(get_recent_unread, function(stdout)
-		if stdout:match('%W') then
+		if not (stdout == nil or stdout == '') then
 
 			details = stdout:sub(1, -2)
 
