@@ -24,11 +24,6 @@
 --        metric uses °C, while imperial uses °F
 
 
--- Lockscreen 
--- Set your lockscreen password there
--- 		Default: `toor`
-
-
 return {
 
 	email  = {

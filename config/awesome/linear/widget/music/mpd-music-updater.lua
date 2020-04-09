@@ -76,7 +76,7 @@ local update_cover = function()
 		function(stdout)
 			local album_icon = widget_icon_dir .. 'vinyl' .. '.svg'
 
-			if stdout:match("%W") or stdout:match("%w") then
+			if not (stdout == nil or stdout == '') then
 				album_icon = stdout:gsub('%\n', '')
 			end
 
@@ -176,8 +176,7 @@ local update_title = function()
 			local title_text = song_info.music_title:get_children_by_id('title')[1]
 			
 			-- Make sure it's not null
-			-- nill is not working that's why its %w
-			if title:match('%w') or title:match('%W') then
+			if not (title == nil or title == '') then
 				
 				title_text:set_text(title)
 			
@@ -189,8 +188,7 @@ local update_title = function()
 					]], 
 					function(stdout)
 
-
-						if stdout:match('%W') or stdout:match('%w') then
+						if not (stdout == nil or stdout == '') then
 
 							file_name = stdout:gsub('%\n','')
 			
@@ -235,7 +233,7 @@ local update_artist = function()
 
 			local artist_text = artist_widget:get_children_by_id('artist')[1]
 
-			if artist:match('%w') or artist:match('%W') then
+			if not (artist == nil or artist == '') then
 
 				artist_text:set_text(artist)
 			
@@ -247,7 +245,7 @@ local update_artist = function()
 					mpc -f %file% current
 					]], 
 					function(stdout)
-						if stdout:match('%W') or stdout:match('%w') then
+						if not (stdout == nil or stdout == '') then
 
 							artist_text:set_text('unknown artist')
 
@@ -297,7 +295,7 @@ local check_if_playing = function()
 
 			local play_button_img = media_buttons.play_button_image.play
 		
-			if stdout:match("%W") or stdout:match("%w") then
+			if not (stdout == nil or stdout == '') then
 				play_button_img:set_image(widget_icon_dir .. 'pause.svg')
 				update_volume_slider()
 			else

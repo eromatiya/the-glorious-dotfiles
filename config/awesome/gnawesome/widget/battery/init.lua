@@ -86,7 +86,7 @@ local return_button = function()
 	local get_battery_info = function()
 		awful.spawn.easy_async_with_shell('upower -i $(upower -e | grep BAT)', function(stdout)
 
-			if not stdout:match('%W') then
+			if (stdout == nil or stdout == '') then
 				battery_tooltip:set_text('No battery detected!')
 				return
 			end
@@ -239,7 +239,7 @@ local return_button = function()
 	watch(check_status_cmd, 5, function(widget, stdout)
 
 		-- If no output or battery detected
-		if not stdout:match('%W') then
+		if (stdout == nil or stdout == '') then
 
 			battery_widget.spacing = dpi(0)
 			battery_percentage_text.visible = false
