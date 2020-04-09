@@ -533,7 +533,11 @@ local locker = function(s)
 				type_again = false
 
 				-- Validate password
-				local pam_auth = pam:auth_current_user(input_password)
+				local pam_auth = false
+				if input_password ~= nil
+				then
+					pam_auth = pam:auth_current_user(input_password)
+				end
 				if pam_auth then
 					-- Come in!
 					self:stop()
