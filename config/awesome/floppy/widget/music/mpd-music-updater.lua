@@ -21,89 +21,71 @@ local apps = require('configuration.apps')
 local update_cover = function()
 	
 	local extract_script = [[
-		mpd_music_path="${HOME}/Music"
-		tmp_dir="/tmp/awesomewm/${USER}/"
-		tmp_cover_path=${tmp_dir}"cover.jpg"
-		temp_song="${tmp_dir}current-song"
-		exif_tool=$(command -v exiftool)
+		MUSIC_DIR="${HOME}/Music"
+		TMP_DIR="/tmp/awesomewm/${USER}/"
+		TMP_COVER_PATH=${TMP_DIR}"cover.jpg"
+		TMP_SONG="${TMP_DIR}current-song"
 
-		if [ ! -d $tmp_dir ]; then
-			mkdir -p $tmp_dir;
+		CHECK_EXIFTOOL=$(command -v exiftool)
+
+		if [ ! -d $TMP_DIR ]; then
+			mkdir -p $TMP_DIR;
 		fi
 
-		if [ -f $tmp_cover_path]; then
-			rm $tmp_cover_path
+		if [ -f $TMP_COVER_PATH]; then
+			rm $TMP_COVER_PATH
 		fi
 
 
-		# NOTE: ALBUM COVER EXTRACTION WORKS ONLY with
-		# MEDIA WITH HARDCODED ALBUM COVER
+		if [ ! -z "$CHECK_EXIFTOOL" ]; then
 
-		# If you want to extract the song's image album cover
-		# without copying the song to /tmp then use Exiftool
-		# Package name Perl-Image-Exiftool in Arch
-		# Else Use FFMpeg and copy song to /tmp then extract cover
-		# using FFMPEG
-		if [ -z '$exif_tool' ]
-		then
-			# USE FFMPEG AND THE COPY SONG TO TEMP TECHNIQUE
-			# having issues escaping spaces in the path
-			cp "$mpd_music_path/$(mpc --format %file% current)" "$temp_song"
+			# Extract album cover using perl-image-exiftool
+		 	exiftool -b -Picture \
+		 	"$MUSIC_DIR/$(mpc -p 6600 --format "%file%" current)" > "$TMP_COVER_PATH"
+
+		else
+
+			#Extract image using ffmpeg
+			cp "$MUSIC_DIR/$(mpc --format %file% current)" "$TMP_SONG"
 
 			ffmpeg \
-				-hide_banner \
-				-loglevel 0 \
-				-y \
-				-i "$temp_song" \
-				-vf scale=300:-1 \
-				"$tmp_cover_path" > /dev/null 2>&1
+			-hide_banner \
+		    -loglevel 0 \
+		    -y \
+		    -i "$TMP_SONG" \
+		    -vf scale=300:-1 \
+		    "$TMP_COVER_PATH" > /dev/null 2>&1
 
-			rm "$temp_song"
+			rm "$TMP_SONG"
+		fi
 			
-		else
-			# USE EXIFTOOL COMMAND TO EXTRACT IMAGE
-			exiftool -b -Picture "$mpd_music_path/$(mpc -p 6600 --format "%file%" current)" > "$tmp_cover_path"
+		img_data=$(identify $TMP_COVER_PATH 2>&1)
 
-			# Resize image
-			convert "$tmp_cover_path" -resize 300x300! -quality 100 "$tmp_cover_path"
+		# Delete the cover.jpg if it's not a valid image
+		if [[ $img_data == *"insufficient"* ]] .. ']]' .. [[; then
+			rm $TMP_COVER_PATH
 		fi
 
-		# Delete the cover.jpg if its 0KB (it means there's no extracted album cover)
-		if [ 0 -eq $(wc -c < $tmp_cover_path) ]; then
-			rm $tmp_cover_path
+		if [ -f $TMP_COVER_PATH ]; then 
+			echo $TMP_COVER_PATH; 
 		fi
-
 	]]
 
 	awful.spawn.easy_async_with_shell(
 		extract_script, 
-		function()
-			awful.spawn.easy_async_with_shell(
-				[[
-				tmp_dir="/tmp/awesomewm/${USER}/"
-				tmp_cover_path=${tmp_dir}"cover.jpg"
+		function(stdout)
+			local album_icon = widget_icon_dir .. 'vinyl' .. '.svg'
 
-				if [ -f $tmp_cover_path ]; then 
-					echo $tmp_cover_path; 
-				fi
-				]], 
-				function(stdout)
-					
-					local album_icon = widget_icon_dir .. 'vinyl' .. '.svg'
+			if stdout:match("%W") or stdout:match("%w") then
+				album_icon = stdout:gsub('%\n', '')
+			end
 
-					if stdout:match("%W") or stdout:match("%w") then
-						album_icon = stdout:gsub('%\n', '')
-					end
-
-					album_cover.cover:set_image(gears.surface.load_uncached(album_icon))
-					
-					album_cover:emit_signal("widget::redraw_needed")
-					album_cover:emit_signal("widget::layout_changed")
-					
-					collectgarbage('collect')
-				end
-			)
-
+			album_cover.cover:set_image(gears.surface.load_uncached(album_icon))
+			
+			album_cover:emit_signal("widget::redraw_needed")
+			album_cover:emit_signal("widget::layout_changed")
+			
+			collectgarbage('collect')
 		end
 	)
 end
@@ -221,6 +203,8 @@ local update_title = function()
 							title_text:set_text("Play some music!")
 
 						end
+						title_widget:emit_signal("widget::redraw_needed")
+						title_widget:emit_signal("widget::layout_changed")
 					end
 				)
 			
@@ -271,6 +255,8 @@ local update_artist = function()
 							artist_text:set_text("or play some porn?")
 
 						end
+						artist_widget:emit_signal("widget::redraw_needed")
+						artist_widget:emit_signal("widget::layout_changed")
 					end
 				)
 			end
@@ -455,12 +441,7 @@ media_buttons.play_button:buttons(
 			1,
 			nil,
 			function()
-				awful.spawn.easy_async_with_shell(
-					'mpc toggle', 
-					function() 
-						check_if_playing()
-					end
-				)
+				awful.spawn.with_shell('mpc toggle')
 			end
 		)
 	)
@@ -474,9 +455,7 @@ media_buttons.next_button:buttons(
 			1,
 			nil,
 			function()
-				awful.spawn.easy_async_with_shell(
-					'mpc next', function() end
-				)
+				awful.spawn.with_shell('mpc next')
 			end
 		)
 	)
@@ -490,11 +469,7 @@ media_buttons.prev_button:buttons(
 			1,
 			nil,
 			function()
-				awful.spawn.easy_async_with_shell(
-					'mpc prev', 
-					function() 
-					end
-				)
+				awful.spawn.with_shell('mpc prev')
 			end
 		)
 	)
@@ -510,7 +485,7 @@ media_buttons.repeat_button:buttons(
 			function()
 				awful.spawn.easy_async_with_shell(
 					'mpc repeat', 
-					function() 
+					function () 
 						check_repeat_status()
 					end
 				)
@@ -529,7 +504,7 @@ media_buttons.random_button:buttons(
 			function()
 				awful.spawn.easy_async_with_shell(
 					'mpc random', 
-					function() 
+					function () 
 						check_random_status()
 					end
 				)
