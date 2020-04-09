@@ -132,6 +132,10 @@ This wiki will guide you to replicate my setups.
 | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png) |
 
+| Lockscreen with **PAM Integration**|
+| --- |
+| ![Screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/floppy/lockscreen.png) |
+
 <br>
 
 Main gallery [here](https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery).
