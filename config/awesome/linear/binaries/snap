@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------
 
 
-screenshot_dir=${HOME}/Pictures/Screenshots/
+screenshot_dir=$(xdg-user-dir PICTURES)/Screenshots/
 
 # Check save directory
 # Creates it if it doesn't exist
@@ -40,7 +40,7 @@ function shot() {
 	# Exit if the user cancels the screenshot
 	# So it means there's no new screenshot image file
 	if [ ! -f "${file_loc}" ]; then
-		exit
+		exit;
 	fi
 
 	# Copy to clipboard
