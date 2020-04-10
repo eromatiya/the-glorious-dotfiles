@@ -10,12 +10,12 @@ local ffmpeg_pid = nil
 
 
 -- Get user settings
-user_resolution = user_config.user_resolution or '1024x768'
-user_offset = user_config.user_offset or '0,0'
-user_audio = user_config.user_audio or false
-user_dir = user_config.user_save_directory or '$HOME/Videos/Recordings/'
-user_mic_lvl = user_config.user_mic_lvl or '10'
-user_fps = user_config.user_fps or '30'
+user_resolution = user_config.user_resolution
+user_offset = user_config.user_offset
+user_audio = user_config.user_audio
+user_dir = user_config.user_save_directory
+user_mic_lvl = user_config.user_mic_lvl
+user_fps = user_config.user_fps
 
 
 update_user_settings = function(res, offset, audio)
