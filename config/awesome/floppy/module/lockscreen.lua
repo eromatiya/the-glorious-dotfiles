@@ -707,7 +707,7 @@ end)
 naughty.connect_signal("request::display", function(_)
 	focused = awful.screen.focused()
 	if (focused.lockscreen and focused.lockscreen.visible) or 
-		(focused.lockscreen_extended or focused.lockscreen_extended.visible) then
+		(focused.lockscreen_extended and focused.lockscreen_extended.visible) then
 		naughty.destroy_all_notifications()
 	end
 end)
