@@ -21,7 +21,7 @@ local apps = require('configuration.apps')
 local update_cover = function()
 	
 	local extract_script = [[
-		MUSIC_DIR="${HOME}/Music"
+		MUSIC_DIR="$(xdg-user-dir MUSIC)"
 		TMP_DIR="/tmp/awesomewm/${USER}/"
 		TMP_COVER_PATH=${TMP_DIR}"cover.jpg"
 		TMP_SONG="${TMP_DIR}current-song"
