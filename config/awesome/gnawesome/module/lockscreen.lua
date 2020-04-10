@@ -4,19 +4,19 @@ local awful = require('awful')
 local naughty = require('naughty')
 local beautiful = require('beautiful')
 
+local dpi = beautiful.xresources.apply_dpi
+
 local filesystem = require('gears.filesystem')
 local config_dir = filesystem.get_configuration_dir()
-
-package.cpath = package.cpath .. ";" .. config_dir .. "/library/?.so;"
-local pam = require('liblua_pam')
-
-local dpi = beautiful.xresources.apply_dpi
 
 local apps = require('configuration.apps')
 
 local filesystem = require('gears.filesystem')
 local config_dir = filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. '/widget/user-profile/icons/'
+
+package.cpath = package.cpath .. ";" .. config_dir .. "/library/?.so;"
+local pam = require('liblua_pam')
 
 -- Configuration
 
@@ -138,7 +138,7 @@ local locker = function(s)
 	)
 
 	local wanted_text = wibox.widget {
-		markup = 'INTRUDER ALERT',
+		markup = 'INTRUDER ALERT!',
 		font   = 'SFNS Pro Text Bold 12',
 		align  = 'center',
 		valign = 'center',
@@ -202,7 +202,7 @@ local locker = function(s)
 		shape          		= gears.shape.rectangle,
 		maximum_width  		= dpi(250),
 		maximum_height 		= dpi(200),
-		hide_on_right_click = true,
+		hide_on_right_click = false,
 		preferred_anchors 	= {'middle'},
 		visible 	   		= false
 
@@ -534,8 +534,7 @@ local locker = function(s)
 
 				-- Validate password
 				local pam_auth = false
-				if input_password ~= nil
-				then
+				if input_password ~= nil then
 					pam_auth = pam:auth_current_user(input_password)
 				end
 				if pam_auth then
@@ -708,12 +707,13 @@ end)
 naughty.connect_signal("request::display", function(_)
 	focused = awful.screen.focused()
 	if (focused.lockscreen and focused.lockscreen.visible) or 
-		(focused.lockscreen_extended and focused.lockscreen_extended.visible) then
+		(focused.lockscreen_extended or focused.lockscreen_extended.visible) then
 		naughty.destroy_all_notifications()
 	end
 end)
 
 
+-- This is where the part we set the background image of the lockscreen/s
 
 -- Blurred background
 -- Depends:
@@ -737,7 +737,7 @@ local return_cmd_str_to_blur = function(wall_name, index, ap, width, height)
 end
 
 
--- Set the data
+-- Set background image data
 local update_ls_bg = function(wall_name)
 
 	for s in screen do
@@ -766,26 +766,22 @@ local update_ls_bg = function(wall_name)
 	end
 end
 
-if background_mode == 'blur'  then
 
-	if not change_background_on_time then
-		update_ls_bg(default_wall_name)
-		return 
-	end
+local blur_bg = function()
 
 	-- Wallpapers filename
 	-- Note:
 	-- Default image format is jpg
-	ls_bg_morning = 'morning-wallpaper.jpg'
-	ls_bg_noon = 'noon-wallpaper.jpg'
-	ls_bg_night = 'night-wallpaper.jpg'
-	ls_bg_midnight = 'midnight-wallpaper.jpg'
+	local ls_bg_morning = 'morning-wallpaper.jpg'
+	local ls_bg_noon = 'noon-wallpaper.jpg'
+	local ls_bg_night = 'night-wallpaper.jpg'
+	local ls_bg_midnight = 'midnight-wallpaper.jpg'
 
 	-- Change the wallpaper on scheduled time
-	morning_schedule = '06:22:00'
-	noon_schedule = '12:00:00'
-	night_schedule = '17:58:00'
-	midnight_schedule = '24:00:00'
+	local morning_schedule = '06:22:00'
+	local noon_schedule = '12:00:00'
+	local night_schedule = '17:58:00'
+	local midnight_schedule = '24:00:00'
 
 	local bg_data = {}
 	local the_countdown = nil
@@ -910,13 +906,27 @@ if background_mode == 'blur'  then
 
 	end)
 
-	-- If a screen is added, execute manage_timer()
-	screen.connect_signal(
-		'added', 
-		function() 
-			manage_timer()
+end
+
+
+-- If a screen is added, generate a background 
+-- for the inserted screen/monitor
+screen.connect_signal(
+	'added', 
+	function()
+		if background_mode == 'blur' then
+			blur_bg()
 		end
-	)
+	end
+)
+
+if background_mode == 'blur'  then
+
+	if not change_background_on_time then
+		update_ls_bg(default_wall_name)
+		return 
+	end
+	blur_bg()
 
 elseif background_mode == 'root' then
 
