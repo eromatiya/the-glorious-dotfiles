@@ -11,7 +11,6 @@ local widget_icon_dir = config_dir .. 'widget/xdg-folders/icons/'
 local vid_widget =
 	wibox.widget {
 	{
-		id = 'icon',
 		image = widget_icon_dir .. 'folder-videos' .. '.svg',
 		widget = wibox.widget.imagebox,
 		resize = true
@@ -35,10 +34,7 @@ videos_button:buttons(
 			1,
 			nil,
 			function()
-				awful.spawn.easy_async_with_shell(
-					'xdg-open ${HOME}/Videos', 
-					function() end
-				)
+				awful.spawn.with_shell('xdg-open $(xdg-user-dir VIDEOS)')
 			end
 		)
 	)
