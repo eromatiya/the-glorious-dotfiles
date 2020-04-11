@@ -6,7 +6,8 @@
 #		- mpc, mpd, ncmpcpp, imagemagick, ffmpeg or perl-image-exiftool
 
 MUSIC_DIR="${HOME}/Music"
-TMP_COVER_PATH="/tmp/ncmpcpp_cover.jpg"
+TMP_DIR="/tmp/ncmpcpp_${USER}"
+TMP_COVER_PATH="${TMP_DIR}/ncmpcpp_cover.jpg"
 TMP_SONG="/tmp/current-song"
 CHECK_EXIFTOOL=$(command -v exiftool)
 CHECK_DUNST=$(command -v dunst)
@@ -18,6 +19,10 @@ current_artist="$(mpc -f %artist% current | tr -d '"')"
 # Exit if $USER is in TTY
 if [[ $(ps -h -o comm -p $PPID) == *"login"* ]]; then
   exit 1
+fi
+
+if [[ ! -d ${TMP_DIR} ]]; then
+	mkdir -p ${TMP_DIR}
 fi
 
 # Remove file extension name
