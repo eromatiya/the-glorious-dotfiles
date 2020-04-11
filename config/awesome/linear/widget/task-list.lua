@@ -7,6 +7,16 @@ local gears = require('gears')
 local clickable_container = require('widget.clickable-container')
 local icons = require('theme.icons')
 
+--- sub string for utf8 format
+-- @s the string need to be sub
+-- @i index of start position
+-- @j index of end position
+local function utf8_sub(s, i, j)
+    i = utf8.offset(s, i)
+    j = utf8.offset(s, j + 1) - 1
+    return string.sub(s, i, j)
+end
+
 --- Common method to create buttons.
 -- @tab buttons
 -- @param object
@@ -150,7 +160,7 @@ local function list_update(w, buttons, label, data, objects)
 			-- truncate when title is too long
 			local text_only = text:match('>(.-)<')
 			if (text_only:len() > 24) then
-				text = text:gsub('>(.-)<', '>' .. text_only:sub(1, 21) .. '...<')
+				text = text:gsub('>(.-)<', '>' .. utf8_sub(text_only,1,21) .. '...<')
 				tt:set_text(text_only)
 				tt:add_to_object(tb)
 			else
