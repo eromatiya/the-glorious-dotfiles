@@ -49,7 +49,6 @@ ruled.notification.connect_signal('request::rules', function()
 			fg 					= '#ffffff',
 			margin 				= dpi(16),
 			position 			= 'top_right',
-			timeout 			= 0,
 			implicit_timeout	= 0
 		}
 	}
@@ -77,7 +76,6 @@ ruled.notification.connect_signal('request::rules', function()
 			fg 					= beautiful.fg_normal,
 			margin 				= dpi(16),
 			position 			= 'top_right',
-			timeout 			= 5,
 			implicit_timeout	= 5
 		}
 	}
