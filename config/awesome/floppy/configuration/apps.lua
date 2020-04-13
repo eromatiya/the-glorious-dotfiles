@@ -60,7 +60,6 @@ return {
 
 	bins = {
 		full_screenshot = bin_dir .. 'snap full',              					                    -- Full Screenshot
-		area_screenshot = bin_dir .. 'snap area',			                                        -- Area Selected Screenshot
-		capslock_status = bin_dir .. 'capschecker'													-- Returns CapsLock Status
+		area_screenshot = bin_dir .. 'snap area'			                                        -- Area Selected Screenshot
 	}
 }
