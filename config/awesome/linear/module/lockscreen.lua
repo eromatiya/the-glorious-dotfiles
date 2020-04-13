@@ -288,9 +288,10 @@ local locker = function(s)
 
 	-- Check Capslock state
 	check_caps = function()
-		awful.spawn.easy_async(apps.bins.capslock_status, function(stdout)
-			
-			status = stdout:gsub('%\n','')
+		awful.spawn.easy_async_with_shell(
+		    'xset q | grep Caps | cut -d: -f3 | cut -d0 -f1 | tr -d " "',
+		    function(stdout)
+			status = stdout
 
 			if status:match('on') then
 				caps_text.opacity = 1.0
