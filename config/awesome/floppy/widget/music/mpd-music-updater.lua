@@ -28,14 +28,9 @@ local update_cover = function()
 
 		CHECK_EXIFTOOL=$(command -v exiftool)
 
-		if [ ! -d $TMP_DIR ]; then
-			mkdir -p $TMP_DIR;
+		if [ ! -d "${TMP_DIR}" ]; then
+			mkdir -p "${TMP_DIR}";
 		fi
-
-		if [ -f $TMP_COVER_PATH]; then
-			rm $TMP_COVER_PATH
-		fi
-
 
 		if [ ! -z "$CHECK_EXIFTOOL" ]; then
 
