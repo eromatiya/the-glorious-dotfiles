@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# ----------------------------------------------------------------------------
+# --- Rofi File Browser
+# --
+# --
+# -- @author manilarome &lt;gerome.matilla07@gmail.com&gt;
+# -- @copyright 2020 manilarome
+# -- @script rofi-spotlight.sh
+# ----------------------------------------------------------------------------
+
 TMP_DIR="/tmp/rofi/${USER}/"
 
 PREV_LOC_FILE="${TMP_DIR}rofi_fb_prevloc"
