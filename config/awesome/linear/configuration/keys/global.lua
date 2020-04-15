@@ -437,7 +437,7 @@ local globalKeys = awful.util.table.join(
             end
             focused.left_panel:toggle(true)
         end,
-        {description = 'open sidebar and web search', group = 'launcher'}
+        {description = 'open sidebar and global search', group = 'launcher'}
     ),
     awful.key(
         {modkey}, 

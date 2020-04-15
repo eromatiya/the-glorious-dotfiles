@@ -20,7 +20,6 @@
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
 
 import json
 import re
@@ -34,6 +33,7 @@ import gzip
 import subprocess as sp
 
 import html
+
 
 ################################################################################
 #####                      C O N F I G U R A T I O N                      ######
@@ -138,40 +138,26 @@ def fetch_suggestions(search_string):
         reply_data = json.loads(re.match(r'autocompleteCallback\((.*)\);', reply_data).group(1))
         return [ cleanhtml(res['phrase']).strip() for res in reply_data ]
 
-
 def main():
     search_string = html.unescape((' '.join(sys.argv[1:])).strip())
 
-    # Rofi Configuration
-    rofi_sidebar = os.environ['HOME'] + '/.config/awesome/configuration/rofi/sidebar/'
-    hist_icons = rofi_sidebar + 'icons/'
-    hist_file = rofi_sidebar + 'history.txt'
+    path_str = os.path.dirname(os.path.realpath(__file__)) + '/'
+    icon_path_str = path_str + 'icons/'
+    icon_name = icon_path_str
 
-    if search_string.endswith('!'):
+    if SEARCH_ENGINE == 'google':
+        icon_name += 'google.svg'
+    else:
+        icon_name += 'ddg.svg'
+
+    if search_string.startswith('!'):
         search_string = search_string.rstrip('!').strip()
         results = fetch_suggestions(search_string)
-        
         for r in results:
-            print(html.unescape(r) + "\0icon\x1f"+hist_icons+"suggestion.svg\n")
-
-        # Record search query as history
-        with open(hist_file, 'a') as file:
-            file.write(search_string + '\n')
-
-    elif search_string == '':
-        print('Search with %s' % CONFIG['SEARCH_ENGINE_NAME'][SEARCH_ENGINE] + "\0icon\x1f"+hist_icons+"suggestion.svg\n")
-
-        # Read history file in reverse order
-        for line in reversed(list(open(hist_file))):
-            print(line.rstrip() + "\0icon\x1f"+hist_icons+"history.svg\n")
-    
+            print(html.unescape(r) + "\0icon\x1f"+icon_name+"\n")
     else:
         url = CONFIG['SEARCH_URL'][SEARCH_ENGINE] + urllib.parse.quote_plus(search_string)
         sp.Popen(CONFIG['BROWSER_PATH'][BROWSER] + [url], stdout=sp.DEVNULL, stderr=sp.DEVNULL, shell=False)
-        
-        # Record search query as history
-        with open(hist_file, 'a') as file:
-            file.write(search_string + '\n')
 
 if __name__ == "__main__":
     try:
