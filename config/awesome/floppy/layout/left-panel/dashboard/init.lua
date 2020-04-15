@@ -22,7 +22,7 @@ return function(_, panel)
 				widget = wibox.container.margin
 			},
 			{
-				text = 'Web Search',
+				text = 'Global Search',
 				font = 'SF Pro Text Regular 12',
 				align = 'left',
 				valign = 'center',

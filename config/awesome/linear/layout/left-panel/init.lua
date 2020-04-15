@@ -43,7 +43,7 @@ local left_panel = function(screen)
 
 	function panel:run_rofi()
 		_G.awesome.spawn(
-			apps.default.rofiweb,
+			apps.default.rofiglobal,
 			false,
 			false,
 			false,
@@ -53,7 +53,7 @@ local left_panel = function(screen)
 			end
 		)
 		
-		-- Hide panel content if rofi web search is opened
+		-- Hide panel content if rofi global search is opened
 		panel:get_children_by_id('panel_content')[1].visible = false
 	end
 

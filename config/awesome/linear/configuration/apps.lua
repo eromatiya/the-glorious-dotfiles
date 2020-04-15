@@ -19,11 +19,11 @@ return {
 		lock 											= 'awesome-client "_G.show_lockscreen()"',  -- Lockscreen
 		quake 											= 'kitty --name QuakeTerminal',             -- Quake-like Terminal
 
-		rofiweb											= 'rofi -dpi ' .. screen.primary.dpi .. 
-														  ' -show Search -modi Search:' .. config_dir .. 
-														  '/configuration/rofi/sidebar/rofi-web-search.py' .. 
+		rofiglobal										= 'rofi -dpi ' .. screen.primary.dpi .. 
+														  ' -show "Global Search" -modi "Global Search":' .. config_dir .. 
+														  '/configuration/rofi/sidebar/rofi-spotlight.sh' .. 
 														  ' -theme ' .. config_dir ..
-														  '/configuration/rofi/sidebar/rofi.rasi', 	-- Rofi Web Search
+														  '/configuration/rofi/sidebar/rofi.rasi', 	-- Rofi Global Search
 		
 
 		rofiappmenu 									= 'rofi -dpi ' .. screen.primary.dpi ..

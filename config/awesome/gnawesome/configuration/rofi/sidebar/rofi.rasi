@@ -2,7 +2,6 @@ configuration {
 	font:                       	"SF Pro Text Regular 10";
 	show-icons:                		true;
 	fullscreen:                     false;
-	sidebar-mode:               	true;
     threads:                        0;
     scroll-method:                  0;
     monitor:                        "primary";
@@ -10,7 +9,7 @@ configuration {
 
 * {
     background:                     #00000000;
-    background-color:               #00000000;
+    background-color:               #00000066;
     background-entry:               #00000033;
     background-alt:                 #f2f2f215;
     foreground:                     #f2f2f2EE;
@@ -22,12 +21,13 @@ configuration {
 window {
 	transparency:					"real";
 	background: 					@background;
-	location:						west;
-	anchor:		 					west;
+	location:						center;
+	anchor:		 					center;
 	x-offset: 	 					0px;
-	height:		 					100%;
-	width:		 					350px;
+	height:		 					500px;
+	width:		 					750px;
 	orientation: 					vertical;
+    border-radius:                  12px;
 }
 
 mainbox {

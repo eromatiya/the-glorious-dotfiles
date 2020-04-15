@@ -90,6 +90,7 @@ local TopPanel = function(s)
 	s.updater 		= require('widget.package-updater')()
 	s.screen_rec 	= require('widget.screen-recorder')()
 	s.music       	= require('widget.music')()
+	s.globalsearch  = require('widget.globalsearch')()
 	s.end_session	= require('widget.end-session')()
 	s.float_panel  	= require('layout.floating-panel')()
 
@@ -110,6 +111,7 @@ local TopPanel = function(s)
 			s.updater,
 			s.screen_rec,
 			s.music,
+			s.globalsearch,
 			s.end_session
 		}
 	}
