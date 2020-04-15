@@ -137,11 +137,11 @@ This wiki will guide you to replicate my setups.
 | --- |
 | ![Screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/floppy/lockscreen.png) |
 
-| File Browsing | Context Menu |
+| Rofi File Browsing | Rofi Context Menu |
 | --- | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-main.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-menu.png) |
 
-| Google Results | DuckDuckGo Results
+| Rofi Google Results | Rofi DuckDuckGo Results
 | --- | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-google.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-ddg.png) |
 

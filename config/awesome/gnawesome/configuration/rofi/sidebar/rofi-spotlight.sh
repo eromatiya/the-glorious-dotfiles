@@ -93,6 +93,7 @@ then
 	touch "${HIST_FILE}"
 fi
 
+# Help message
 if [[ ! -z "$@" ]] && [[ "$@" == ":help" ]]
 then
 
@@ -103,6 +104,7 @@ then
 	echo ":help to print this help message"
 	echo ":h or :hidden to show hidden files/dirs"
 	echo ":sh or :show_hist to show search history"
+	echo ":ch or :clear_hist to clear search history"
 	echo ":xdg to jump to an xdg directory"
 	echo "Examples:"
 	echo "	:xdg DOCUMENTS"
@@ -133,6 +135,7 @@ then
 	exit;
 fi
 
+# Return the icon string
 function icon_file_type(){
 
 	icon_name=""
@@ -259,12 +262,14 @@ function icon_file_type(){
 }
 
 
+# Pass the argument to python scrupt
 function web_search() {
 	# Pass the search query to web-search script
 	python "${MY_PATH}/web-search.py" "${1}"
 	exit;
 }
 
+# Handles the web search method
 if [ ! -z "$@" ] && [[ "$@" == ":webbro"* ]]
 then
 	remove=":webbro "
@@ -282,17 +287,7 @@ then
 	exit;
 fi
 
-if [ ! -z "$@" ] && ([[ "$@" == ":sh" ]] || [[ "$@" == ":show_hist" ]])
-then
-	hist=$(tac "${HIST_FILE}")
-	while IFS= read -r line; 
-	do 
-		printf "${line}\0icon\x1f${MY_PATH}/icons/history.svg\n"; 
-	done <<< "${hist}"
-	
-	exit;
-fi
-
+# File and calls to the web search
 if [ ! -z "$@" ] && ([[ "$@" == /* ]] || [[ "$@" == \?* ]] || [[ "$@" == \!* ]])
 then
 	QUERY=$@
@@ -332,17 +327,25 @@ then
 	exit;
 fi
 
+# Create notification if there's an error
 function create_notification() {
 	if [[ "${1}" == "denied" ]]
 	then
 		notify-send -a "Global Search" "<b>Permission denied!</b>" \
 		'You have no permission to access '"<b>${CUR_DIR}</b>!"
+	
+	elif [[ "${1}" == "cleared" ]]
+	then
+		notify-send -a "Global Search" "<b>Success!</b>" \
+		'Search history has been successfully cleared!'
+
 	else
 		notify-send -a "Global Search" "<b>Somethings wrong I can feel it!</b>" \
 		'This incident will be reported!'
 	fi
 }
 
+# Show the files in the current directory
 function navigate_to() {
 	# process current dir.
 	if [ -n "${CUR_DIR}" ]
@@ -400,6 +403,7 @@ function navigate_to() {
 
 }
 
+# Set XDG dir
 function return_xdg_dir() {
 	target_dir=$(echo "$1" | tr "[:lower:]" "[:upper:]")
 
@@ -450,7 +454,35 @@ function return_xdg_dir() {
 	navigate_to
 }
 
+# Show and Clear History
+if [ ! -z "$@" ] && ([[ "$@" == ":sh" ]] || [[ "$@" == ":show_hist" ]])
+then
+	hist=$(tac "${HIST_FILE}")
 
+	if [ ! -n "${hist}" ]
+	then
+		printf ".\0icon\x1fback\n"
+		printf "No history, yet.\0icon\x1ftext-plain\n"
+	fi
+
+	while IFS= read -r line; 
+	do 
+		printf "${line}\0icon\x1f${MY_PATH}/icons/history.svg\n"; 
+	done <<< "${hist}"
+	
+	exit;
+
+elif [ ! -z "$@" ] && ([[ "$@" == ":ch" ]] || [[ "$@" == ":clear_hist" ]])
+then
+	:> "${HIST_FILE}"
+	create_notification cleared
+
+	CUR_DIR="${HOME}"
+	navigate_to
+	exit;
+fi
+
+# Accepts XDG command
 if [[ ! -z "$@" ]] && [[ "$@" == ":xdg"* ]]
 then
 
