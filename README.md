@@ -98,6 +98,7 @@ This wiki will guide you to replicate my setups.
 		- [Trash Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#trash-widget)
 		- [Music Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#music-widget)
 		- [Screen-recorder Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#screen-recorder-widget)
+		- [Global Search Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#global-search-rofi)
 	- [About Modules](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules)
 		- [Lockscreen Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#lockscreen-module)
 		- [Titlebar Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#titlebar-module)
@@ -135,6 +136,14 @@ This wiki will guide you to replicate my setups.
 | Lockscreen with **PAM Integration**|
 | --- |
 | ![Screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/floppy/lockscreen.png) |
+
+| File Browsing | Context Menu |
+| --- | --- |
+| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-main.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-menu.png) |
+
+| Google Results | DuckDuckGo Results
+| --- | --- |
+| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-google.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-ddg.png) |
 
 <br>
 
