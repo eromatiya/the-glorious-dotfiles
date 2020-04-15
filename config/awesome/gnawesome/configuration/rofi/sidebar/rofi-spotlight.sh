@@ -14,6 +14,9 @@ TMP_DIR="/tmp/rofi/${USER}/"
 PREV_LOC_FILE="${TMP_DIR}rofi_fb_prevloc"
 CURRENT_FILE="${TMP_DIR}rofi_fb_current_file"
 
+MY_PATH="$(dirname "${0}")"
+HIST_FILE="${MY_PATH}/history.txt"
+
 OPENER=xdg-open
 TERM_EMU=kitty
 FILE_MANAGER=dolphin
@@ -79,8 +82,15 @@ while IFS= read -r -d '' x; do
 done < <(printf "%s\0" "${COMBINED_OPTIONS[@]}" | sort -uz)
 
 # Create tmp dir for rofi
-if [ ! -d "${TMP_DIR}" ]; then
+if [ ! -d "${TMP_DIR}" ]
+then
 	mkdir -p "${TMP_DIR}";
+fi
+
+# Create hist file if it doesn't exist
+if [ ! -f "${HIST_FILE}" ]
+then
+	touch "${HIST_FILE}"
 fi
 
 if [[ ! -z "$@" ]] && [[ "$@" == ":help" ]]
@@ -92,6 +102,7 @@ then
 	echo "Commands:"
 	echo ":help to print this help message"
 	echo ":h or :hidden to show hidden files/dirs"
+	echo ":sh or :show_hist to show search history"
 	echo ":xdg to jump to an xdg directory"
 	echo "Examples:"
 	echo "	:xdg DOCUMENTS"
@@ -250,7 +261,7 @@ function icon_file_type(){
 
 function web_search() {
 	# Pass the search query to web-search script
-	python "$(dirname "$0")/web-search.py" "${1}"
+	python "${MY_PATH}/web-search.py" "${1}"
 	exit;
 }
 
@@ -271,10 +282,22 @@ then
 	exit;
 fi
 
+if [ ! -z "$@" ] && ([[ "$@" == ":sh" ]] || [[ "$@" == ":show_hist" ]])
+then
+	hist=$(tac "${HIST_FILE}")
+	while IFS= read -r line; 
+	do 
+		printf "${line}\0icon\x1f${MY_PATH}/icons/history.svg\n"; 
+	done <<< "${hist}"
+	
+	exit;
+fi
 
 if [ ! -z "$@" ] && ([[ "$@" == /* ]] || [[ "$@" == \?* ]] || [[ "$@" == \!* ]])
 then
 	QUERY=$@
+
+	echo "${QUERY}" >> "${HIST_FILE}"
 
 	if [[ "$@" == /* ]]
 	then
@@ -300,7 +323,7 @@ then
 	else
 		# Find the file
 		find "${HOME}" -iname *"${QUERY#!}"* -exec echo -ne \
-		"{}\0icon\x1f$(dirname "$0")/icons/result.svg\n" \; 2>&1 | 
+		"{}\0icon\x1f${MY_PATH}/icons/result.svg\n" \; 2>&1 | 
 		grep -av 'Permission denied\|Input/output error'
 
 		# Web search
@@ -595,8 +618,21 @@ function context_menu() {
 		coproc ( exec "${CUR_DIR}" & > /dev/null  2>&1 )
 	
 	else
-		coproc ( ${OPENER} "${CUR_DIR}" & > /dev/null  2>&1 )
-	
+		if [ ! -d "${CUR_DIR}" ] && [ ! -f "${CUR_DIR}" ]
+		then
+			QUERY="${CUR_DIR//*\/\//}"
+
+			echo "${QUERY}" >> "${HIST_FILE}"
+
+			find "${HOME}" -iname *"${QUERY#!}"* -exec echo -ne \
+			"{}\0icon\x1f${MY_PATH}/icons/result.svg\n" \; 2>&1 | 
+			grep -av 'Permission denied\|Input/output error'
+
+			web_search "!${QUERY}"
+			exit;
+		else
+			coproc ( ${OPENER} "${CUR_DIR}" & > /dev/null  2>&1 )
+		fi
 	fi
 	exit;
 
