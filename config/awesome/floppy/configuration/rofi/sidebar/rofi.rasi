@@ -75,7 +75,7 @@ entry {
 	font:            				"SF Pro Text Regular 12";
 	background-color:               @background;
 	placeholder-color:          	@foreground;
-	placeholder:                	"Web Search";
+	placeholder:                	"Global Search";
 	blink:		                    true;
 	expand:         				true;
 	text-color:						@foreground;
