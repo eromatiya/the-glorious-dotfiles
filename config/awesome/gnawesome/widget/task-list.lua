@@ -13,7 +13,7 @@ local icons = require('theme.icons')
 -- @j index of end position
 local function utf8_sub(s, i, j)
     i = utf8.offset(s, i)
-    j = utf8.offset(s, j + 1) - 1
+    j = (utf8.offset(s, j + 1) or j+1) - 1
     return string.sub(s, i, j)
 end
 
