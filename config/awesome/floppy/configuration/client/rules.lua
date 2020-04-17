@@ -213,7 +213,8 @@ ruled.client.connect_signal("request::rules", function()
 			draw_backdrop = false,
 			switchtotag = true,
 			floating = true,
-			hide_titlebars = true
+			hide_titlebars = true,
+			placement = awful.placement.centered
 		}
 	}
 

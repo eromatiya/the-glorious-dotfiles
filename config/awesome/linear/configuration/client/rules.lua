@@ -214,6 +214,7 @@ ruled.client.connect_signal("request::rules", function()
 			switchtotag = true,
 			floating = true,
 			hide_titlebars = true
+			placement = awful.placement.centered
 		}
 	}
 
