@@ -13,18 +13,18 @@ local tag_list = require('widget.tag-list')
 
 local bottom_panel = function(s)
 
-	local panel_height = dpi(48)
+	local panel_height = 48
+	local panel_y = (s.geometry.y + s.geometry.height) - panel_height
 
-	local panel = awful.wibar
+	local panel = wibox
 	{
 		ontop = true,
 		screen = s,
 		type = 'dock',
-		height = panel_height,
-		width = s.geometry.width,
+		height = dpi(panel_height),
+		width = dpi(s.geometry.width),
 		x = s.geometry.x,
-		y = dpi(s.geometry.y),
-		position = 'bottom',
+		y = panel_y,
 		bg = beautiful.background,
 		fg = beautiful.fg_normal
 	}
