@@ -160,17 +160,18 @@ local return_button = function()
 
 			if (wifi_strength ~= nil) then
 				connected = true
-			
-				-- Create a notification
 				notify_connection()
-			
-				-- Get wifi wifi_strength
 				local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
-				widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded
-			
-				-- Update wifi strength icon
-				widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
-			
+				awful.spawn.easy_async_with_shell(
+					'ping 8.8.8.8 -c 1',
+					function(stdout)
+						widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded
+						if stdout:match("Unreachable") or (stdout == '' or not stdout) then
+							widget_icon_name = widget_icon_name .. '-alert'
+						end
+						widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
+					end
+				)
 			else
 				connected = false
 			
