@@ -163,7 +163,9 @@ local return_button = function()
 				notify_connection()
 				local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
 				awful.spawn.easy_async_with_shell(
-					'ping 8.8.8.8 -c 1',
+					[[
+					bash -c "ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null && echo -ne online || echo -ne offline"
+					]],
 					function(stdout)
 						widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded
 						if stdout:match("Unreachable") or (stdout == '' or not stdout) then
