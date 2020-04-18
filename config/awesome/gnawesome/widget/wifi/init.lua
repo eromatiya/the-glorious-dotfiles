@@ -1,20 +1,12 @@
--------------------------------------------------
--- WiFi Widget for Awesome Window Manager
--- Shows the wifi status using some magic
--- Make sure to change the wireless interface
--- See `ifconfig` or `iwconfig`
--------------------------------------------------
-
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
 local naughty = require('naughty') 
 
 local watch = awful.widget.watch
+local dpi = require('beautiful').xresources.apply_dpi
 
 local apps = require('configuration.apps')
-
-local dpi = require('beautiful').xresources.apply_dpi
 local clickable_container = require('widget.clickable-container')
 
 local config_dir = gears.filesystem.get_configuration_dir()
@@ -26,6 +18,7 @@ local status = nil
 local start_up = true
 local essid = 'N/A'
 local wifi_strength = 0
+local show_no_internet_access = true
 
 
 local return_button = function()
@@ -85,10 +78,9 @@ local return_button = function()
 		}
 	)
 
-	-- Get ESSID
 	local get_essid = function()
 		if connected then
-			awful.spawn.easy_async(
+			awful.spawn.easy_async_with_shell(
 				'iw dev ' .. interface .. ' link',
 				function(stdout)
 					essid = stdout:match('SSID: (.-)\n')
@@ -100,42 +92,34 @@ local return_button = function()
 		end
 	end
 
-
-	-- Notify the change in connection status
 	local notify_connection = function()
-
 		if status ~= connected then
 			status = connected
-
 			if start_up == false then
 				if connected == true then
-
 					-- Update SSID
-					awful.spawn.easy_async(
+					awful.spawn.easy_async_with_shell(
 						'iw dev ' .. interface .. ' link',
 						function(stdout)
 							essid = stdout:match('SSID: (.-)\n')
 							if essid then
-
 								-- Notify that you're already connected
 								naughty.notification({ 
-									message = 'You are now connected to the Wi-Fi network:\n<b>"' .. essid .. '"</b>.',
+									message = "You are now connected to <b>\"" .. essid .. "\"</b>",
 									title = "Connection Established",
 									app_name = 'System notification',
 									icon = widget_icon_dir .. 'wifi.svg'
 								})
-
 								-- Send signals to update wifi and email widget
 								awesome.emit_signal('system::wifi_connected')
 							end
 						end
 					)
 				else
-
-					-- Notify that you're currently disconnected
+					-- Notify that you have been disconnected from Wi-Fi
 					naughty.notification({ 
-						message = "The network connection has been disconnected.",
-						title = "WiFi Connection",
+						message = "The network connection has been disconnected",
+						title = "Connection Disconnected",
 						app_name = "System Notification",
 						icon = widget_icon_dir .. 'wifi-off.svg'
 					})
@@ -144,16 +128,13 @@ local return_button = function()
 		end 
 	end
 
-
-	-- Get wifi strenth bash script
-	local get_wifi_strength = [[
-	awk 'NR==3 {printf "%3.0f" ,($3/70)*100}' /proc/net/wireless
-	]]
-
 	watch(
-		get_wifi_strength, 
+		[[
+		awk 'NR==3 {printf "%3.0f" ,($3/70)*100}' /proc/net/wireless
+		]], 
 		5,
 		function(_, stdout)
+
 			local widget_icon_name = 'wifi-strength'
 			
 			wifi_strength = tonumber(stdout)
@@ -164,25 +145,33 @@ local return_button = function()
 				local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
 				awful.spawn.easy_async_with_shell(
 					[[
-					bash -c "ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null && echo -ne online || echo -ne offline"
+					ping -q -w 2 -c2 8.8.8.8 | grep -o "100% packet loss"
 					]],
 					function(stdout)
 						widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded
-						if stdout:match("offline") or (stdout == '' or not stdout) then
-							widget_icon_name = widget_icon_name .. '-alert'
+						if stdout and stdout ~= '' then
+							widget_icon_name = 'wifi-strength-alert'
+							if show_no_internet_access then
+								naughty.notification({ 
+									message = "Wi-Fi has no internet access",
+									title = "Connection Status",
+									app_name = "System Notification",
+									icon = widget_icon_dir .. widget_icon_name
+								})
+								show_no_internet_access = false
+							end
+						else
+							show_no_internet_access = true
 						end
+
 						widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
+					
 					end
 				)
 			else
 				connected = false
-			
-				-- Create a notification
 				notify_connection()
-			
-				-- Update wifi strength to off
 				widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '-off' .. '.svg')
-			
 			end
 
 			-- Update essid
@@ -195,13 +184,10 @@ local return_button = function()
 			if start_up then
 				start_up = false
 			end
-
-			-- Cleanup memory
 			collectgarbage('collect')
 		end
 	)
 
-	-- Tooltip text update
 	widget:connect_signal(
 		'mouse::enter',
 		function()
