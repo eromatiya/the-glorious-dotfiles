@@ -333,7 +333,14 @@ function create_notification() {
 	then
 		notify-send -a "Global Search" "<b>Permission denied!</b>" \
 		'You have no permission to access '"<b>${CUR_DIR}</b>!"
-	
+	elif [[ "${1}" == "deleted" ]]
+	then
+		notify-send -a "Global Search" "<b>Success!</b>" \
+		'File deleted!'
+	elif [[ "${1}" == "trashed" ]]
+	then
+		notify-send -a "Global Search" "<b>Success!</b>" \
+		'The file has been moved to trash!'	
 	elif [[ "${1}" == "cleared" ]]
 	then
 		notify-send -a "Global Search" "<b>Success!</b>" \
@@ -400,7 +407,6 @@ function navigate_to() {
 			printf "$(icon_file_type "${i}")";
 		fi
 	done
-
 }
 
 # Set XDG dir
@@ -450,8 +456,8 @@ function return_xdg_dir() {
 	else
 		CUR_DIR="${HOME}"
 	fi
-
 	navigate_to
+	exit;
 }
 
 # Show and Clear History
@@ -475,7 +481,7 @@ then
 elif [ ! -z "$@" ] && ([[ "$@" == ":ch" ]] || [[ "$@" == ":clear_hist" ]])
 then
 	:> "${HIST_FILE}"
-	create_notification cleared
+	create_notification "cleared"
 
 	CUR_DIR="${HOME}"
 	navigate_to
@@ -505,11 +511,9 @@ fi
 
 if [[ ! -z "$@" ]] && ([[ "$@" == ":h" ]] || [[ "$@" == ":hidden" ]])
 then
-
 	SHOW_HIDDEN=true
-
 	navigate_to
-
+	exit;
 fi
 
 # Handle argument.
@@ -551,12 +555,16 @@ then
 			;;
 		"Move to trash" )
 			coproc( gio trash "$(cat "${CURRENT_FILE}")" & > /dev/null 2>&1 )
-			kill -9 $(pgrep rofi)
+			create_notification "trashed"
+			CUR_DIR="$(dirname $(cat "${CURRENT_FILE}"))"
+			navigate_to
 			;;
 		"Delete" )
-			kill -9 $(pgrep rofi)
 			shred "$(cat "${CURRENT_FILE}")"
 			rm "$(cat "${CURRENT_FILE}")"
+			create_notification "deleted"
+			CUR_DIR="$(dirname $(cat "${CURRENT_FILE}"))"
+			navigate_to
 			;;
 		"Send via Bluetooth" )
 			rfkill unblock bluetooth &&	bluetoothctl power on 
@@ -641,7 +649,7 @@ function context_menu() {
 	then
 		print_context_menu IMAGE_OPTIONS[@]
 	
-	elif [[ "${type}" == "image/x-xcf" ]] || [[ "${type}" == "svg+xml" ]]
+	elif [[ "${type}" == "image/x-xcf" ]] || [[ "${type}" == "image/svg+xml" ]]
 	then
 		print_context_menu XCF_SVG_OPTIONS[@]
 	
@@ -661,7 +669,6 @@ function context_menu() {
 			grep -av 'Permission denied\|Input/output error'
 
 			web_search "!${QUERY}"
-			exit;
 		else
 			coproc ( ${OPENER} "${CUR_DIR}" & > /dev/null  2>&1 )
 		fi
@@ -670,9 +677,7 @@ function context_menu() {
 
 }
 
-
 # If argument is not a directory/folder
-
 if [ ! -d "${CUR_DIR}" ]
 then
 	echo "${CUR_DIR}" > "${CURRENT_FILE}"
