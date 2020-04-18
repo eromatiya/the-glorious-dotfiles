@@ -168,7 +168,7 @@ local return_button = function()
 					]],
 					function(stdout)
 						widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded
-						if stdout:match("Unreachable") or (stdout == '' or not stdout) then
+						if stdout:match("offline") or (stdout == '' or not stdout) then
 							widget_icon_name = widget_icon_name .. '-alert'
 						end
 						widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
