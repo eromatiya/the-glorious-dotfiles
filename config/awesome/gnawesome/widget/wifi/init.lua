@@ -156,7 +156,7 @@ local return_button = function()
 									message = "Wi-Fi has no internet access",
 									title = "Connection Status",
 									app_name = "System Notification",
-									icon = widget_icon_dir .. widget_icon_name
+									icon = widget_icon_dir .. widget_icon_name .. '.svg'
 								})
 								show_no_internet_access = false
 							end
