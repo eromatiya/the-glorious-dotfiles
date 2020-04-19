@@ -297,7 +297,6 @@ local TopPanel = function(s, offset)
 	s.bluetooth   	= require('widget.bluetooth')()
 	s.wifi        	= require('widget.wifi')()
 	s.battery     	= require('widget.battery')()
-	s.search      	= require('widget.search-apps')()
 	s.r_dashboard 	= require('widget.right-dashboard')()
 
 
@@ -325,7 +324,6 @@ local TopPanel = function(s, offset)
 			s.bluetooth,
 			s.wifi,
 			s.battery,
-			s.search,
 			layout_box(s),
 			s.r_dashboard
 		}

@@ -8,18 +8,21 @@ local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
 
+local filesystem = gears.filesystem
 local dpi = require('beautiful').xresources.apply_dpi
-local clickable_container = require('widget.clickable-container')
 
 local apps = require('configuration.apps')
-local icons = require('theme.icons')
+local clickable_container = require('widget.clickable-container')
+
+local config_dir = filesystem.get_configuration_dir()
+local widget_icon_dir = config_dir .. '/widget/search-apps/icons/'
 
 local return_button = function()
 
 	local widget = wibox.widget {
 		{
 			id = 'icon',
-			image = icons.search,
+			image = widget_icon_dir .. 'app-launcher.svg',
 			widget = wibox.widget.imagebox,
 			resize = true
 		},
@@ -29,7 +32,7 @@ local return_button = function()
 	local widget_button = wibox.widget {
 		{
 			widget,
-			margins = dpi(7),
+			margins = dpi(10),
 			widget = wibox.container.margin
 		},
 		widget = clickable_container
@@ -42,7 +45,16 @@ local return_button = function()
 				1,
 				nil,
 				function()
-					awful.spawn(apps.default.rofiappmenu, false)
+		            local focused = awful.screen.focused()
+
+		            if focused.left_panel then
+		                focused.left_panel:HideDashboard()
+		                focused.left_panel.opened = false
+		            end
+		            if focused.right_panel then
+		                focused.right_panel:HideDashboard()
+		            end
+					awful.util.spawn(apps.default.rofiappmenu, false)
 				end
 			)
 		)

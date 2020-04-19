@@ -405,9 +405,11 @@ local globalKeys = awful.util.table.join(
 
             if focused.left_panel then
                 focused.left_panel:HideDashboard()
+                focused.left_panel.opened = false
             end
             if focused.right_panel then
                 focused.right_panel:HideDashboard()
+                focused.right_panel.opened = false
             end
             awful.util.spawn(apps.default.rofiappmenu)
         end,
