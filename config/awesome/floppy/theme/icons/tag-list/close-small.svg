@@ -5,24 +5,25 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="240"
    height="240"
-   viewBox="0 0 240 240"
    version="1.1"
-   id="svg33"
-   sodipodi:docname="close-small.svg"
+   viewBox="0 0 240 240"
+   id="svg21"
+   sodipodi:docname="menu123131.svg"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
-     id="metadata37">
+     id="metadata25">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>deepin-multitasking-view</dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -37,95 +38,116 @@
      inkscape:pageshadow="2"
      inkscape:window-width="1321"
      inkscape:window-height="740"
-     id="namedview35"
+     id="namedview23"
      showgrid="false"
      inkscape:pagecheckerboard="true"
-     inkscape:zoom="0.43457605"
-     inkscape:cx="9.5008324"
-     inkscape:cy="472.49792"
+     inkscape:zoom="1.8101934"
+     inkscape:cx="92.388716"
+     inkscape:cy="96.694777"
      inkscape:window-x="45"
      inkscape:window-y="28"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g836" />
-  <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-  <title
-     id="title2">deepin-multitasking-view</title>
-  <desc
-     id="desc4">Created with Sketch.</desc>
+     inkscape:current-layer="g844" />
   <defs
-     id="defs20">
+     id="defs7">
     <linearGradient
-       x1="48"
-       y1="6"
-       x2="48"
-       y2="87.462059"
-       id="linearGradient-1"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.1190476,0,0,1.1190476,-5.7142853,-4.211336)">
+       id="b"
+       x1="46.167999"
+       x2="46.167999"
+       y1="57"
+       y2="27.346001"
+       gradientTransform="matrix(0.26458,0,0,0.26458,0,280.07)"
+       gradientUnits="userSpaceOnUse">
       <stop
-         stop-color="#FFB594"
-         offset="0%"
-         id="stop6" />
+         offset="0"
+         id="stop2" />
       <stop
-         stop-color="#FFB8A0"
-         offset="8.0078125%"
-         id="stop8" />
-      <stop
-         stop-color="#F94444"
-         offset="100%"
-         id="stop10" />
+         stop-opacity="0"
+         offset="1"
+         id="stop4" />
     </linearGradient>
     <linearGradient
-       x1="48"
-       y1="7"
-       x2="48"
-       y2="89"
-       id="linearGradient-2"
+       inkscape:collect="always"
+       xlink:href="#b"
+       id="linearGradient860"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.1463414,0,0,1.1463414,-7.02439,-5.5214399)">
-      <stop
-         stop-color="#FFA57D"
-         offset="0%"
-         id="stop13" />
-      <stop
-         stop-color="#FF9B7A"
-         offset="8.0078125%"
-         id="stop15" />
-      <stop
-         stop-color="#FF5959"
-         offset="100%"
-         id="stop17" />
-    </linearGradient>
+       gradientTransform="matrix(0.26458,0,0,0.26458,0,280.07)"
+       x1="46.167999"
+       y1="57"
+       x2="46.167999"
+       y2="27.346001" />
   </defs>
   <g
-     id="Page-1"
-     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
-     transform="matrix(2.1276596,0,0,2.1276596,17.872339,14.674574)">
+     transform="matrix(14.536827,0,0,14.536827,-3.0711039,-679.98549)"
+     id="g858">
     <g
-       id="g836">
-      <g
-         id="g10"
-         style="paint-order:stroke markers fill"
-         transform="matrix(6.8323885,0,0,8.4585622,-115.65731,5.9444064)" />
+       transform="matrix(1.04,0,0,1.04,-0.339,-245.04425)"
+       id="g850"
+       style="stroke-width:0.96200001;paint-order:markers stroke fill">
       <rect
-         style="opacity:1;fill:#ee4f84;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="rect850"
-         width="94"
-         height="94"
-         x="1.0000001"
-         y="2.5029497"
-         rx="5.6399999" />
-      <g
-         id="g8"
-         transform="matrix(2.8822519,0,0,2.8822519,3.3167508,-2939.1265)"
-         style="fill:#ffffff">
-        <path
-           inkscape:connector-curvature="0"
-           id="path6"
-           d="M 3.9902344,2.9902344 A 1.0000925,1.0000925 0 0 0 3.2929688,4.7070312 L 6.5859375,8 3.2929688,11.292969 a 1.0000925,1.0000925 0 1 0 1.4140624,1.414062 L 8,9.4140625 11.292969,12.707031 a 1.0003045,1.0003045 0 1 0 1.414062,-1.414062 L 9.4140625,8 12.707031,4.7070312 a 1.0000925,1.0000925 0 0 0 -0.726562,-1.7148437 1.0000925,1.0000925 0 0 0 -0.6875,0.3007813 L 8,6.5859375 4.7070312,3.2929688 A 1.0000925,1.0000925 0 0 0 3.9902344,2.9902344 Z"
-           transform="matrix(1.6250122,0,0,1.6250122,2.4976161,1023.8989)"
-           style="fill:#ffffff" />
-      </g>
+         x="1.852"
+         y="281.92001"
+         width="13.229"
+         height="13.229"
+         rx="0.76300001"
+         ry="0.76300001"
+         id="rect846"
+         style="fill:#2196f3" />
+      <path
+         d="m 15.081,287.302 a 11.906,11.906 0 0 1 -5.732,7.846 h 4.938 c 0.44,0 0.794,-0.354 0.794,-0.794 z"
+         id="path848"
+         inkscape:connector-curvature="0"
+         style="opacity:0.25;fill:url(#linearGradient860)" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       d="M 6.08525,53.866767 H 7.275845 V 52.676172 H 6.08525 Z m 1.7858922,3.571785 h 1.190595 v -1.190595 h -1.190595 z m -1.7858922,0 H 7.275845 V 56.247957 H 6.08525 Z m 0,-1.785892 H 7.275845 V 54.462065 H 6.08525 Z m 1.7858922,0 h 1.190595 V 54.462065 H 7.8711422 Z M 9.657035,52.676172 v 1.190595 h 1.190595 v -1.190595 z m -1.7858928,1.190595 h 1.190595 V 52.676172 H 7.8711422 Z M 9.657035,55.65266 H 10.84763 V 54.462065 H 9.657035 Z m 0,1.785892 H 10.84763 V 56.247957 H 9.657035 Z"
+       id="path852"
+       style="fill:#ffffff;fill-opacity:0.89803922;stroke-width:0.14882438" />
+    <g
+       transform="matrix(0.79373,0,0,0.79373,2.1166,-773.91425)"
+       id="g856"
+       style="fill:#ffffff;fill-opacity:0.9">
+      <path
+         transform="translate(0,1036.4)"
+         d="M 3,3 V 7 H 4 V 4 H 7 V 3 Z m 6,0 v 1 h 3 v 3 h 1 V 3 Z M 3,9 v 4 H 7 V 12 H 4 V 9 Z m 9,0 v 3 H 9 v 1 h 4 V 9 Z"
+         id="path854"
+         inkscape:connector-curvature="0"
+         style="color:#000000" />
+    </g>
+  </g>
+  <g
+     id="g844"
+     transform="matrix(14.536827,0,0,14.536827,-3.0711039,-679.98549)">
+    <g
+       style="stroke-width:0.96200001;paint-order:markers stroke fill"
+       id="g13"
+       transform="matrix(1.04,0,0,1.04,-0.339,-245.04425)">
+      <rect
+         style="fill:#ee4f84;fill-opacity:1"
+         id="rect9"
+         ry="0.76300001"
+         rx="0.76300001"
+         height="13.229"
+         width="13.229"
+         y="281.92001"
+         x="1.852" />
+      <path
+         style="opacity:0.25;fill:url(#b)"
+         inkscape:connector-curvature="0"
+         id="path11"
+         d="m 15.081,287.302 a 11.906,11.906 0 0 1 -5.732,7.846 h 4.938 c 0.44,0 0.794,-0.354 0.794,-0.794 z" />
+    </g>
+    <g
+       id="g8"
+       transform="matrix(0.52732028,0,0,0.52732028,0.29116898,-491.75087)"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:1">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6"
+         d="M 3.9902344,2.9902344 A 1.0000925,1.0000925 0 0 0 3.2929688,4.7070312 L 6.5859375,8 3.2929688,11.292969 a 1.0000925,1.0000925 0 1 0 1.4140624,1.414062 L 8,9.4140625 11.292969,12.707031 a 1.0003045,1.0003045 0 1 0 1.414062,-1.414062 L 9.4140625,8 12.707031,4.7070312 a 1.0000925,1.0000925 0 0 0 -0.726562,-1.7148437 1.0000925,1.0000925 0 0 0 -0.6875,0.3007813 L 8,6.5859375 4.7070312,3.2929688 A 1.0000925,1.0000925 0 0 0 3.9902344,2.9902344 Z"
+         transform="matrix(1.6250122,0,0,1.6250122,2.4976161,1023.8989)"
+         style="fill:#ffffff" />
     </g>
   </g>
 </svg>

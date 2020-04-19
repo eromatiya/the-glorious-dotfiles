@@ -59,15 +59,21 @@
      id="namedview8"
      showgrid="false"
      inkscape:pagecheckerboard="true"
-     inkscape:zoom="2.6700353"
-     inkscape:cx="155.46394"
-     inkscape:cy="108.42164"
+     inkscape:zoom="0.94400003"
+     inkscape:cx="241.76729"
+     inkscape:cy="32.075325"
      inkscape:window-x="45"
      inkscape:window-y="28"
      inkscape:window-maximized="0"
      inkscape:current-layer="g842" />
   <g
      id="g842">
+    <circle
+       style="opacity:1;fill:#4f4f4f;fill-opacity:1"
+       id="path825"
+       cx="120"
+       cy="120"
+       r="100" />
     <g
        id="g1274">
       <circle
@@ -76,14 +82,6 @@
          cy="120"
          cx="120"
          style="opacity:0.15;stroke-width:15.24018574" />
-      <rect
-         rx="12"
-         y="20"
-         x="20"
-         height="200"
-         width="200"
-         id="rect850"
-         style="opacity:1;fill:#4f4f4f;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <g
          id="g10-3"
          style="fill:#ffffff"
