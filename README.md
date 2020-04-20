@@ -1,5 +1,3 @@
-
-
 <div align="center">
     <h3>
     	<img src="images/banner-glorious.png" align="center" height="200px">
@@ -14,7 +12,6 @@
 <div align="center">
 	
 [![maintained](https://img.shields.io/maintenance/yes/2020?label=maintained&style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/commits/master) [![contributions](https://img.shields.io/badge/contribution-welcome-brightgreen&?style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/pulls) [![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
-
 
 </div>
 
@@ -38,7 +35,7 @@
 
 <br>
 
-### Welcome to the glorious dotfiles!
+### Welcome to the glorious dotfiles
 
 <img src="images/setups.png" align="right" height="400px">
 
@@ -67,8 +64,8 @@ Ricing is actually fun and it's my hobby for quite a long time now. Anyone can r
 ## the glorious wiki's table of contents
 This wiki will guide you to replicate my setups.
 
-- **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
-- **General**
+- **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**  
+- **General**  
 	- [Details](https://github.com/manilarome/the-glorious-dotfiles/wiki/Details)
 	- [Features](https://github.com/manilarome/the-glorious-dotfiles/wiki/Features)
 	- [Gallery](https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery)
@@ -79,7 +76,7 @@ This wiki will guide you to replicate my setups.
 		- [Recommended Packages](https://github.com/manilarome/the-glorious-dotfiles/wiki/Recommended#recommended-packages)
 		- [Recommended Fonts](https://github.com/manilarome/the-glorious-dotfiles/wiki/Recommended#recommended-fonts)
 	- [Getting Started](https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started)
-- **Info**
+- **Info**  
 	- [FAQs](https://github.com/manilarome/the-glorious-dotfiles/wiki/FAQs)
 	- [How To's](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos)
 		- [Fix the errors on start-up](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-the-errors-on-start-up)
@@ -141,7 +138,7 @@ This wiki will guide you to replicate my setups.
 | --- | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-main.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-menu.png) |
 
-| Rofi Google Results | Rofi DuckDuckGo Results
+| Rofi Google Results | Rofi DuckDuckGo Results |
 | --- | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-google.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-ddg.png) |
 

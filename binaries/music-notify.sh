@@ -140,7 +140,7 @@ function notify_awesome() {
 function notify_non_awesome() {
 	if [[ ! -z "$CHECK_DUNST" ]]; then
 		dunstify --urgency 'normal' --appname "ncmpcpp" \
-		--replace 3 --icon ${TMP_COVER_PATH} ${current_title} ${current_artist}
+		--replace 3 --icon "${TMP_COVER_PATH}" "${current_title}" "${current_artist}"
 	else
 		notify-send --urgency "normal" --app-name "ncmpcpp" \
 		--icon "$TMP_COVER_PATH" "$current_title" "$current_artist"

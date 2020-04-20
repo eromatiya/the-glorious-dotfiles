@@ -22,7 +22,7 @@ if [[ $(ps -h -o comm -p $PPID) == *"login"* ]]; then
 fi
 
 if [[ ! -d ${TMP_DIR} ]]; then
-	mkdir -p ${TMP_DIR}
+	mkdir -p "${TMP_DIR}"
 fi
 
 # Remove file extension name
@@ -41,7 +41,7 @@ check_mpc_data
 function display_album_art() {
 	if [[ $TERM == "kitty" ]]; then
 	  kitty +kitten icat --clear
-	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 $TMP_COVER_PATH
+	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 "${TMP_COVER_PATH}"
 	fi
 }
 
@@ -81,7 +81,7 @@ fi
 
 # Check if image is valid
 function check_album_data() {
-	img_data=$(identify $TMP_COVER_PATH 2>&1)
+	img_data=$(identify "${TMP_COVER_PATH}" 2>&1)
 	if [[ $img_data == *"insufficient"* ]]; then
 		TMP_COVER_PATH="${HOME}/.config/ncmpcpp/vinyl.svg"
 	fi
