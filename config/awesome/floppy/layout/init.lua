@@ -31,14 +31,14 @@ function updateBarsVisibility()
 			if s.left_panel then
 				s.left_panel.visible = not fullscreen
 			end
-		end
-		if s.right_panel then
-			if fullscreen and focused.right_panel.visible then
-				focused.right_panel:toggle()
-				focused.right_panel_show_again = true
-			elseif not fullscreen and not focused.right_panel.visible and focused.right_panel_show_again then
-				focused.right_panel:toggle()
-				focused.right_panel_show_again = false
+			if s.right_panel then
+				if fullscreen and focused.right_panel.visible then
+					focused.right_panel:toggle()
+					focused.right_panel_show_again = true
+				elseif not fullscreen and not focused.right_panel.visible and focused.right_panel_show_again then
+					focused.right_panel:toggle()
+					focused.right_panel_show_again = false
+				end
 			end
 		end
 	end
