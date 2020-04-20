@@ -13,7 +13,7 @@
    version="1.1"
    viewBox="0 0 240 240"
    id="svg21"
-   sodipodi:docname="menu123131.svg"
+   sodipodi:docname="no.svg"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
      id="metadata25">
@@ -41,13 +41,13 @@
      id="namedview23"
      showgrid="false"
      inkscape:pagecheckerboard="true"
-     inkscape:zoom="1.8101934"
-     inkscape:cx="92.388716"
-     inkscape:cy="96.694777"
+     inkscape:zoom="1.28"
+     inkscape:cx="-63.397777"
+     inkscape:cy="116.47151"
      inkscape:window-x="45"
      inkscape:window-y="28"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g844" />
+     inkscape:current-layer="svg21" />
   <defs
      id="defs7">
     <linearGradient
@@ -69,75 +69,31 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#b"
-       id="linearGradient860"
+       id="linearGradient831"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.26458,0,0,0.26458,0,280.07)"
+       gradientTransform="matrix(0.2751632,0,0,0.2751632,-0.339,46.22855)"
        x1="46.167999"
        y1="57"
        x2="46.167999"
        y2="27.346001" />
   </defs>
   <g
-     transform="matrix(14.536827,0,0,14.536827,-3.0711039,-679.98549)"
-     id="g858">
-    <g
-       transform="matrix(1.04,0,0,1.04,-0.339,-245.04425)"
-       id="g850"
-       style="stroke-width:0.96200001;paint-order:markers stroke fill">
-      <rect
-         x="1.852"
-         y="281.92001"
-         width="13.229"
-         height="13.229"
-         rx="0.76300001"
-         ry="0.76300001"
-         id="rect846"
-         style="fill:#2196f3" />
-      <path
-         d="m 15.081,287.302 a 11.906,11.906 0 0 1 -5.732,7.846 h 4.938 c 0.44,0 0.794,-0.354 0.794,-0.794 z"
-         id="path848"
-         inkscape:connector-curvature="0"
-         style="opacity:0.25;fill:url(#linearGradient860)" />
-    </g>
-    <path
-       inkscape:connector-curvature="0"
-       d="M 6.08525,53.866767 H 7.275845 V 52.676172 H 6.08525 Z m 1.7858922,3.571785 h 1.190595 v -1.190595 h -1.190595 z m -1.7858922,0 H 7.275845 V 56.247957 H 6.08525 Z m 0,-1.785892 H 7.275845 V 54.462065 H 6.08525 Z m 1.7858922,0 h 1.190595 V 54.462065 H 7.8711422 Z M 9.657035,52.676172 v 1.190595 h 1.190595 v -1.190595 z m -1.7858928,1.190595 h 1.190595 V 52.676172 H 7.8711422 Z M 9.657035,55.65266 H 10.84763 V 54.462065 H 9.657035 Z m 0,1.785892 H 10.84763 V 56.247957 H 9.657035 Z"
-       id="path852"
-       style="fill:#ffffff;fill-opacity:0.89803922;stroke-width:0.14882438" />
-    <g
-       transform="matrix(0.79373,0,0,0.79373,2.1166,-773.91425)"
-       id="g856"
-       style="fill:#ffffff;fill-opacity:0.9">
-      <path
-         transform="translate(0,1036.4)"
-         d="M 3,3 V 7 H 4 V 4 H 7 V 3 Z m 6,0 v 1 h 3 v 3 h 1 V 3 Z M 3,9 v 4 H 7 V 12 H 4 V 9 Z m 9,0 v 3 H 9 v 1 h 4 V 9 Z"
-         id="path854"
-         inkscape:connector-curvature="0"
-         style="color:#000000" />
-    </g>
-  </g>
-  <g
      id="g844"
-     transform="matrix(14.536827,0,0,14.536827,-3.0711039,-679.98549)">
-    <g
-       style="stroke-width:0.96200001;paint-order:markers stroke fill"
-       id="g13"
-       transform="matrix(1.04,0,0,1.04,-0.339,-245.04425)">
-      <rect
-         style="fill:#ee4f84;fill-opacity:1"
-         id="rect9"
-         ry="0.76300001"
-         rx="0.76300001"
-         height="13.229"
-         width="13.229"
-         y="281.92001"
-         x="1.852" />
-      <path
-         style="opacity:0.25;fill:url(#b)"
-         inkscape:connector-curvature="0"
-         id="path11"
-         d="m 15.081,287.302 a 11.906,11.906 0 0 1 -5.732,7.846 h 4.938 c 0.44,0 0.794,-0.354 0.794,-0.794 z" />
-    </g>
+     transform="matrix(14.536827,0,0,14.536827,-3.0711033,-679.9855)">
+    <rect
+       x="1.58708"
+       y="48.152565"
+       width="13.75816"
+       height="13.75816"
+       rx="0.79352003"
+       ry="0.79352003"
+       id="rect9"
+       style="fill:#ee4f84;fill-opacity:1;stroke-width:1.00048006;paint-order:markers stroke fill" />
+    <path
+       d="m 15.34524,53.74983 a 12.38224,12.38224 0 0 1 -5.96128,8.15984 h 5.13552 c 0.4576,0 0.82576,-0.36816 0.82576,-0.82576 z"
+       id="path11"
+       inkscape:connector-curvature="0"
+       style="opacity:0.25;fill:url(#linearGradient831);stroke-width:1.00048006;paint-order:markers stroke fill" />
     <g
        id="g8"
        transform="matrix(0.52732028,0,0,0.52732028,0.29116898,-491.75087)"

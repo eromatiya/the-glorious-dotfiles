@@ -4,7 +4,7 @@
 
 # Keyboard Shortcut
 
-sxhkd -c ~/.config/bspwm/configuration/sxhkd/sxhkdrc &
+sxhkd -c "${HOME}/.config/bspwm/configuration/sxhkd/sxhkdrc" &
 
 # Restore cursor theme
 
@@ -12,7 +12,7 @@ xsetroot -cursor_name left_ptr
 
 # Restore wallpaper
 
-feh --bg-fill ${HOME}/Pictures/Wallpapers/no-mans-sky-8k-ultrawide-i3.jpg 
+feh --bg-fill "${HOME}/Pictures/Wallpapers/no-mans-sky-8k-ultrawide-i3.jpg"
 
 # Music is layf
 
@@ -24,7 +24,7 @@ picom --experimental-backends --dbus --config ~/.config/bspwm/configuration/pico
 
 # Load Xresources
 
-xrdb ${HOME}/.Xresources
+xrdb "${HOME}/.Xresources"
 
 # nm-applet 
 

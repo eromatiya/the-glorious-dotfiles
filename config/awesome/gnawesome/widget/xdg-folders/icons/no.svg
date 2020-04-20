@@ -5,17 +5,18 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="240"
    height="240"
-   viewBox="0 0 240 240"
    version="1.1"
-   id="svg7"
+   viewBox="0 0 240 240"
+   id="svg21"
    sodipodi:docname="no.svg"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
-     id="metadata11">
+     id="metadata25">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -37,46 +38,66 @@
      inkscape:pageshadow="2"
      inkscape:window-width="1321"
      inkscape:window-height="740"
-     id="namedview9"
+     id="namedview23"
      showgrid="false"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="48.473996"
-     inkscape:cy="101.07576"
+     inkscape:pagecheckerboard="true"
+     inkscape:zoom="1.28"
+     inkscape:cx="67.070973"
+     inkscape:cy="56.31526"
      inkscape:window-x="45"
      inkscape:window-y="28"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1"
-     inkscape:pagecheckerboard="true" />
+     inkscape:current-layer="g844" />
   <defs
-     id="defs3">
-    <style
-       id="current-color-scheme"
-       type="text/css">
-   .ColorScheme-Text { color:#aaaaaa; } .ColorScheme-Highlight { color:#5294e2; }
-  </style>
+     id="defs7">
+    <linearGradient
+       id="b"
+       x1="46.167999"
+       x2="46.167999"
+       y1="57"
+       y2="27.346001"
+       gradientTransform="matrix(0.26458,0,0,0.26458,0,280.07)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         id="stop2" />
+      <stop
+         stop-opacity="0"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#b"
+       id="linearGradient831"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2751632,0,0,0.2751632,-0.339,46.22855)"
+       x1="46.167999"
+       y1="57"
+       x2="46.167999"
+       y2="27.346001" />
   </defs>
   <g
-     inkscape:groupmode="layer"
-     id="layer1"
-     inkscape:label="Layer 1">
+     id="g844"
+     transform="matrix(14.536827,0,0,14.536827,-3.0711033,-679.9855)">
     <rect
-       style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect820"
-       width="200"
-       height="199.99998"
-       x="20"
-       y="20.000008"
-       ry="29.698486" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Layer 2">
+       x="1.58708"
+       y="48.152565"
+       width="13.75816"
+       height="13.75816"
+       rx="0.79352003"
+       ry="0.79352003"
+       id="rect9"
+       style="fill:#ee4f84;fill-opacity:1;stroke-width:1.00048006;paint-order:markers stroke fill" />
     <path
-       style="color:#aaaaaa;fill:#ee4f84;fill-opacity:1;stroke-width:15.6059494"
-       class="ColorScheme-Text"
-       d="m 166.84833,57.5 a 15.605949,15.605949 0 0 0 -11.0339,4.572067 L 120.03049,97.85601 84.398927,62.224446 a 15.605949,15.605949 0 0 0 -0.15245,-0.152883 15.605949,15.605949 0 0 0 -10.94246,-4.511106 l -0.15232,0.213942 A 15.605949,15.605949 0 0 0 57.545723,73.38034 15.605949,15.605949 0 0 0 62.11778,84.41423 l 35.783957,35.7839 -35.783957,35.78394 a 15.605949,15.605949 0 0 0 -4.511096,10.91196 15.605949,15.605949 0 0 0 15.605953,15.60597 15.605949,15.605949 0 0 0 11.03389,-4.57207 l 35.783963,-35.78394 35.63153,35.63155 a 15.605949,15.605949 0 0 0 11.18631,4.72446 15.605949,15.605949 0 0 0 15.60595,-15.60597 15.605949,15.605949 0 0 0 -4.57205,-11.03389 L 141.97635,119.98476 177.6079,84.3532 A 15.605949,15.605949 0 0 0 182.45428,73.10593 15.605949,15.605949 0 0 0 166.84833,57.5 Z"
-       id="path5"
-       inkscape:connector-curvature="0" />
+       d="m 15.34524,53.74983 a 12.38224,12.38224 0 0 1 -5.96128,8.15984 h 5.13552 c 0.4576,0 0.82576,-0.36816 0.82576,-0.82576 z"
+       id="path11"
+       inkscape:connector-curvature="0"
+       style="opacity:0.25;fill:url(#linearGradient831);stroke-width:1.00048006;paint-order:markers stroke fill" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 12.765585,51.601316 -0.869098,-0.869099 -3.430327,3.430331 -3.430327,-3.430331 -0.869098,0.869099 3.430327,3.430331 -3.430327,3.430327 0.869098,0.869098 3.430327,-3.430327 3.430327,3.430327 0.869098,-0.869098 -3.430326,-3.430327 z"
+       id="path2"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.30710188" />
   </g>
 </svg>
