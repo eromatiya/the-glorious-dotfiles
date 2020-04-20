@@ -1,5 +1,0 @@
-#!/bin/bash
-
-
-#Makes tint2 below on bspwm node
-xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2)

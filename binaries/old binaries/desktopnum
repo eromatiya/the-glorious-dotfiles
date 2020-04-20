@@ -1,2 +1,0 @@
-#!/bin/bash
-bspc query -T -d | jq '.name' | sed -r 's/("|")//g'
