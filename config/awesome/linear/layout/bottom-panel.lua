@@ -319,7 +319,7 @@ local bottom_panel = function(s)
 	s.search      	= require('widget.search-apps')()
 	s.end_session   = require('widget.end-session')()
 	s.side_settings = require('widget.side-settings')()
-	s.r_dashboard 	= require('layout.right-panel')()
+	s.r_dashboard 	= require('layout.right-panel.right-panel-opener')()
 
 
 	panel : setup {

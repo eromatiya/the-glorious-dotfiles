@@ -297,7 +297,7 @@ local TopPanel = function(s, offset)
 	s.bluetooth   	= require('widget.bluetooth')()
 	s.wifi        	= require('widget.wifi')()
 	s.battery     	= require('widget.battery')()
-	s.r_dashboard 	= require('widget.right-dashboard')()
+	s.r_dashboard 	= require('layout.right-panel.right-panel-opener')()
 
 
 	panel : setup {
