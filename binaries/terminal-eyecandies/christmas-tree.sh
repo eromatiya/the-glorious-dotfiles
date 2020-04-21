@@ -43,7 +43,7 @@ while true; do
         # Turn off the lights
         [ $k -gt 1 ] && {
             tput setaf 2; tput bold
-            tput cup ${line[$[k-1]$i]} ${column[$[k-1]$i]}; echo \*
+            tput cup "${line[$[k-1]$i]}" "${column[$[k-1]${i}]}"; echo \*
             unset line[$[k-1]$i]; unset column[$[k-1]$i]  # Array cleanup
         }
 
