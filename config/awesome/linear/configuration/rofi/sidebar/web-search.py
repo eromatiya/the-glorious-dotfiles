@@ -163,4 +163,5 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        sys.exit(1)
+        if e:
+            sys.exit(1)
