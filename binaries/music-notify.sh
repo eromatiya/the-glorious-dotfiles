@@ -6,7 +6,8 @@
 #		- mpc, mpd, ncmpcpp, imagemagick, ffmpeg or perl-image-exiftool
 
 MUSIC_DIR="${HOME}/Music"
-TMP_COVER_PATH="/tmp/ncmpcpp_cover.jpg"
+TMP_DIR="/tmp/ncmpcpp_${USER}"
+TMP_COVER_PATH="${TMP_DIR}/ncmpcpp_cover.jpg"
 TMP_SONG="/tmp/current-song"
 CHECK_EXIFTOOL=$(command -v exiftool)
 CHECK_DUNST=$(command -v dunst)
@@ -18,6 +19,10 @@ current_artist="$(mpc -f %artist% current | tr -d '"')"
 # Exit if $USER is in TTY
 if [[ $(ps -h -o comm -p $PPID) == *"login"* ]]; then
   exit 1
+fi
+
+if [[ ! -d ${TMP_DIR} ]]; then
+	mkdir -p "${TMP_DIR}"
 fi
 
 # Remove file extension name
@@ -36,7 +41,7 @@ check_mpc_data
 function display_album_art() {
 	if [[ $TERM == "kitty" ]]; then
 	  kitty +kitten icat --clear
-	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 $TMP_COVER_PATH
+	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 "${TMP_COVER_PATH}"
 	fi
 }
 
@@ -76,7 +81,7 @@ fi
 
 # Check if image is valid
 function check_album_data() {
-	img_data=$(identify $TMP_COVER_PATH 2>&1)
+	img_data=$(identify "${TMP_COVER_PATH}" 2>&1)
 	if [[ $img_data == *"insufficient"* ]]; then
 		TMP_COVER_PATH="${HOME}/.config/ncmpcpp/vinyl.svg"
 	fi
@@ -140,7 +145,7 @@ function notify_awesome() {
 function notify_non_awesome() {
 	if [[ ! -z "$CHECK_DUNST" ]]; then
 		dunstify --urgency 'normal' --appname "ncmpcpp" \
-		--replace 3 --icon "${TMP_COVER_PATH}" "${current_title}" "${current_artist}"
+		--replace 3 --icon ${TMP_COVER_PATH} ${current_title} ${current_artist}
 	else
 		notify-send --urgency "normal" --app-name "ncmpcpp" \
 		--icon "$TMP_COVER_PATH" "$current_title" "$current_artist"

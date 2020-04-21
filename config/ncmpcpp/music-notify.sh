@@ -17,12 +17,12 @@ current_title="$(mpc -f %title% current | tr -d '"')"
 current_artist="$(mpc -f %artist% current | tr -d '"')"
 
 # Exit if $USER is in TTY
-if [[ $(ps -h -o comm -p $PPID) == *"login"* ]]; then
+if [[ "$(ps -h -o comm -p "$PPID")" == *"login"* ]]; then
   exit 1
 fi
 
-if [[ ! -d ${TMP_DIR} ]]; then
-	mkdir -p "${TMP_DIR}"
+if [[ ! -d "$TMP_DIR" ]]; then
+	mkdir -p "$TMP_DIR"
 fi
 
 # Remove file extension name
@@ -30,7 +30,7 @@ function check_mpc_data() {
 	if [[ -z "$current_title" ]]; then
 		file_name="$(mpc -f %file% current | tr -d '"')"
 		file_name=${file_name::-4}
-		current_title="$file_name"
+		current_title="${file_name}"
 		current_artist='unknown artist'
 	fi
 }
@@ -39,17 +39,17 @@ check_mpc_data
 
 # This function is unused right now
 function display_album_art() {
-	if [[ $TERM == "kitty" ]]; then
+	if [[ "$TERM" == "kitty" ]]; then
 	  kitty +kitten icat --clear
-	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 "${TMP_COVER_PATH}"
+	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 "$TMP_COVER_PATH"
 	fi
 }
 
 # Check DE/WM
 function get_desktop_env() {
 	# Identify environment
-	DE=${DESKTOP_STARTUP_ID}
-	if [[ ! -z "$DE" && $DE == *"awesome"* ]] || [[ ! -z "$CHECK_AWESOME_CLIENT" ]]; then
+	DE="${DESKTOP_STARTUP_ID}"
+	if [[ ! -z "$DE" && "$DE" == *"awesome"* ]] || [[ ! -z "$CHECK_AWESOME_CLIENT" ]]; then
 		echo "AWESOME"
 		return
 	fi
@@ -61,7 +61,7 @@ if [[ ! -z "$CHECK_EXIFTOOL" ]]; then
 
 	# Extract album cover using perl-image-exiftool
  	exiftool -b -Picture \
- 	"$MUSIC_DIR/$(mpc -p 6600 --format "%file%" current)" > "$TMP_COVER_PATH"
+ 	"${MUSIC_DIR}/$(mpc -p 6600 --format "%file%" current)" > "$TMP_COVER_PATH"
 
 else
 
@@ -81,8 +81,8 @@ fi
 
 # Check if image is valid
 function check_album_data() {
-	img_data=$(identify "${TMP_COVER_PATH}" 2>&1)
-	if [[ $img_data == *"insufficient"* ]]; then
+	img_data=$(identify "$TMP_COVER_PATH" 2>&1)
+	if [[ "$img_data" == *"insufficient"* ]]; then
 		TMP_COVER_PATH="${HOME}/.config/ncmpcpp/vinyl.svg"
 	fi
 }
@@ -145,7 +145,7 @@ function notify_awesome() {
 function notify_non_awesome() {
 	if [[ ! -z "$CHECK_DUNST" ]]; then
 		dunstify --urgency 'normal' --appname "ncmpcpp" \
-		--replace 3 --icon ${TMP_COVER_PATH} ${current_title} ${current_artist}
+		--replace 3 --icon "$TMP_COVER_PATH" "$current_title" "$current_artist"
 	else
 		notify-send --urgency "normal" --app-name "ncmpcpp" \
 		--icon "$TMP_COVER_PATH" "$current_title" "$current_artist"
@@ -153,7 +153,7 @@ function notify_non_awesome() {
 }
 
 # Call to create a notification
-if [[ $(get_desktop_env) == "AWESOME" ]]; then
+if [[ "$(get_desktop_env)" == "AWESOME" ]]; then
 	notify_awesome
 else
 	notify_non_awesome
