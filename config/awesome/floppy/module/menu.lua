@@ -189,23 +189,3 @@ else
 	mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 end
-
--- Embed mouse bindings
-root.buttons(
-	gears.table.join(
-		awful.button(
-			{}, 
-			3, 
-			function () 
-				mymainmenu:toggle() 
-			end
-		),
-		awful.button(
-			{}, 
-			1,
-		 	function()
-				mymainmenu:hide()
-		 	end
-		)
-	)
-)

@@ -51,6 +51,7 @@ require('module.lockscreen')
 --  ========================================
 
 require('configuration.client')
+require('configuration.root')
 require('configuration.tags')
 root.keys(require('configuration.keys.global'))
 
