@@ -64,9 +64,9 @@ Ricing is actually fun and it's my hobby for quite a long time now. Anyone can r
 ## the glorious wiki's table of contents
 This wiki will guide you to replicate my setups.
 
-- **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**  
+-   **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
 
-- **General**  
+-   **General**
 
 	- [Details](https://github.com/manilarome/the-glorious-dotfiles/wiki/Details)
 	- [Features](https://github.com/manilarome/the-glorious-dotfiles/wiki/Features)
@@ -79,44 +79,52 @@ This wiki will guide you to replicate my setups.
 		- [Recommended Fonts](https://github.com/manilarome/the-glorious-dotfiles/wiki/Recommended#recommended-fonts)
 	- [Getting Started](https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started)
 
-- **Info**  
+-   **Info**
 
-	- [FAQs](https://github.com/manilarome/the-glorious-dotfiles/wiki/FAQs)  
-	- [How To's](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos)  
-		- [Fix the errors on start-up](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-the-errors-on-start-up)  
-		- [Fix the font](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-font)  
-		- [Fix rofi size](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-rofi-application-menu-size)  
-		- [Fix rofi font](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-rofi-font)  
-		- [Fix Resolution](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-resolution)  
-		- [Use the Powerlevel10k prompt](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#use-the-powerlevel10k-prompt)  
-		- [Rice Qt5 apps](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#rice-qt5-apps-on-non-plasma-environment)  
-	- [Keybindings](https://github.com/manilarome/the-glorious-dotfiles/wiki/Keybindings)  
-	- [File Structure](https://github.com/manilarome/the-glorious-dotfiles/wiki/File-Structure)  
-	- [About Widgets](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets)  
-		- [Weather Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#weather-widget)  
-		- [Email Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#email-widget)  
-		- [Calculator Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#calculator-widget)  
-		- [Trash Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#trash-widget)  
-		- [Music Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#music-widget)  
-		- [Screen-recorder Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#screen-recorder-widget)  
-		- [Global Search Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#global-search-rofi)  
-	- [About Modules](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules)  
-		- [Lockscreen Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#lockscreen-module)  
-		- [Titlebar Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#titlebar-module)  
-		- [Dynamic Wallpaper Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#dynamic-wallpaper-module)  
-		- [Exit Screen Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#exit-screen-module)  
-		- [Backdrop Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#backdrop-module)  
-		- [Menu Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#menu-module)  
+	-   [FAQs](https://github.com/manilarome/the-glorious-dotfiles/wiki/FAQs)
 
-- **[More Info](https://github.com/manilarome/the-glorious-dotfiles/wiki/More)**
+	-   [How To's](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos)
+	
+		-   [Fix the errors on start-up](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-the-errors-on-start-up)
+		-   [Fix the font](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-font)
+		-   [Fix rofi size](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-rofi-application-menu-size)
+		-   [Fix rofi font](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-rofi-font)
+		-   [Fix Resolution](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#fix-resolution)
+		-   [Use the Powerlevel10k prompt](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#use-the-powerlevel10k-prompt)
+		-   [Rice Qt5 apps](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos#rice-qt5-apps-on-non-plasma-environment)
+	
+	-   [Keybindings](https://github.com/manilarome/the-glorious-dotfiles/wiki/Keybindings)
+	
+	-   [File Structure](https://github.com/manilarome/the-glorious-dotfiles/wiki/File-Structure)
+	
+	-   [About Widgets](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets)
+	
+		-   [Weather Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#weather-widget)
+		-   [Email Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#email-widget)
+		-   [Calculator Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#calculator-widget)
+		-   [Trash Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#trash-widget)
+		-   [Music Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#music-widget)
+		-   [Screen-recorder Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#screen-recorder-widget)
+		-   [Global Search Widget](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Widgets#global-search-rofi)
+	
+	-   [About Modules](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules)
+	
+		-   [Lockscreen Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#lockscreen-module)
+		-   [Titlebar Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#titlebar-module)
+		-   [Dynamic Wallpaper Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#dynamic-wallpaper-module)
+		-   [Exit Screen Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#exit-screen-module)
+		-   [Backdrop Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#backdrop-module)
+		-   [Menu Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#menu-module)
 
-- **[TODOs](https://github.com/manilarome/the-glorious-dotfiles/wiki/TODOs)**
+-   **[More Info](https://github.com/manilarome/the-glorious-dotfiles/wiki/More)**
 
-- **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
+-   **[TODOs](https://github.com/manilarome/the-glorious-dotfiles/wiki/TODOs)**
 
-- **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
+-   **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
 
-- **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
+-   **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
+
+-   **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
 
 <br>
 <br>
