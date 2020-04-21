@@ -22,7 +22,7 @@ gen_blurred_seq () {
 
 	clean_cache
 
-	wallpaper_resolution=$(identify -format "%wx%h" "$wallpaper")
+	WALL_RES=$(identify -format "%wx%h" "$wallpaper")
 
 	print_err "Display resolution is: ${DISPLAY_RES}"
 	print_err "Wallpaper resolution is: ${WALL_RES}"
@@ -37,7 +37,7 @@ gen_blurred_seq () {
 	for i in $(seq 0 1 5)
 	do
 		blurred_wallpaper="${CACHE_DIR}/${filename}${i}.${extension}"
-		convert -blur 0x${i} "$wallpaper" "$blurred_wallpaper"
+		convert -blur 0x"${i}" "$wallpaper" "$blurred_wallpaper"
 	done
 }
 
@@ -89,8 +89,8 @@ base_filename="${wallpaper##*/}"
 extension="${base_filename##*.}"
 filename="${base_filename%.*}"
 
-print_err $wallpaper
-print_err $CACHE_DIR
+print_err "$wallpaper"
+print_err "$CACHE_DIR"
 
 # Create a cache directory if it doesn't exist
 if [ ! -d "$CACHE_DIR" ]; then
@@ -112,7 +112,7 @@ prev_state="reset"
 
 while :; do
 	current_workspace="$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')"
-	num_windows="$(echo "$(wmctrl -l)" | awk -F" " '{print $2}' | grep ^$current_workspace)"
+	num_windows="$(echo "$(wmctrl -l)" | awk -F" " '{print $2}' | grep ^"${current_workspace}")"
 	# If there are active windows
 	if [ -n "$num_windows" ]
 	then
