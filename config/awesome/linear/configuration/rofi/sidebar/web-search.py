@@ -162,5 +162,6 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except:
-        sys.exit(1)
+    except Exception as e:
+        if e:
+            sys.exit(1)
