@@ -65,9 +65,7 @@ Ricing is actually fun and it's my hobby for quite a long time now. Anyone can r
 This wiki will guide you to replicate my setups.
 
 -   **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
-
 -   **General**
-
 	-   [Details](https://github.com/manilarome/the-glorious-dotfiles/wiki/Details)
 	-   [Features](https://github.com/manilarome/the-glorious-dotfiles/wiki/Features)
 	-   [Gallery](https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery)
