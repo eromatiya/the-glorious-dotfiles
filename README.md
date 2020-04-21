@@ -64,9 +64,9 @@ Ricing is actually fun and it's my hobby for quite a long time now. Anyone can r
 ## the glorious wiki's table of contents
 This wiki will guide you to replicate my setups.
 
-- **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**  
+-   **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
 
-- **General**  
+-   **General**
 
 	- [Details](https://github.com/manilarome/the-glorious-dotfiles/wiki/Details)
 	- [Features](https://github.com/manilarome/the-glorious-dotfiles/wiki/Features)
@@ -79,7 +79,7 @@ This wiki will guide you to replicate my setups.
 		- [Recommended Fonts](https://github.com/manilarome/the-glorious-dotfiles/wiki/Recommended#recommended-fonts)
 	- [Getting Started](https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started)
 
-- **Info**  
+-   **Info**
 
 	- [FAQs](https://github.com/manilarome/the-glorious-dotfiles/wiki/FAQs)  
 	- [How To's](https://github.com/manilarome/the-glorious-dotfiles/wiki/How-Tos)  
@@ -108,15 +108,15 @@ This wiki will guide you to replicate my setups.
 		- [Backdrop Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#backdrop-module)  
 		- [Menu Module](https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#menu-module)  
 
-- **[More Info](https://github.com/manilarome/the-glorious-dotfiles/wiki/More)**
+-   **[More Info](https://github.com/manilarome/the-glorious-dotfiles/wiki/More)**
 
-- **[TODOs](https://github.com/manilarome/the-glorious-dotfiles/wiki/TODOs)**
+-   **[TODOs](https://github.com/manilarome/the-glorious-dotfiles/wiki/TODOs)**
 
-- **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
+-   **[Issues](https://github.com/manilarome/the-glorious-dotfiles/wiki/Issues)**
 
-- **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
+-   **[Acknowledgement](https://github.com/manilarome/the-glorious-dotfiles/wiki/Acknowledgement)**
 
-- **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
+-   **[Epilogue](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)**
 
 <br>
 <br>
