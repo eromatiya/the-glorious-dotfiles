@@ -1,8 +1,10 @@
 # More explanation here
 # https://github.com/PCMan/gtk3-nocsd
-# You can use gtk3-mushrooms btw
-export GTK_CSD=0
-export LD_PRELOAD=/lib/libgtk3-nocsd.so.0
+# You can use gtk3-mushrooms btw it's better
+
+# Uncomment if you're using gtk3-nocsd instead of gtk3-mushrooms
+# export GTK_CSD=0
+# export LD_PRELOAD=/lib/libgtk3-nocsd.so.0
 
 # Editor and shits
 export VISUAL="vim"
