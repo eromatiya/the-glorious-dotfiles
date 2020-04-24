@@ -145,11 +145,11 @@ local return_button = function()
 				local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
 				awful.spawn.easy_async_with_shell(
 					[[
-					ping -q -w 2 -c2 8.8.8.8 | grep -o "100% packet loss"
+					ping -q -w 3 -c3 8.8.8.8 | grep -o "100% packet loss"
 					]],
 					function(stdout)
 						widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded
-						if stdout and stdout ~= '' then
+						if stdout == '100% packet loss' then
 							widget_icon_name = 'wifi-strength-alert'
 							if show_no_internet_access then
 								naughty.notification({ 
@@ -163,9 +163,7 @@ local return_button = function()
 						else
 							show_no_internet_access = true
 						end
-
 						widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
-					
 					end
 				)
 			else
