@@ -314,7 +314,7 @@ local bottom_panel = function(s)
 	s.screen_rec 	= require('widget.screen-recorder')()
 	s.music       	= require('widget.music')()
 	s.bluetooth   	= require('widget.bluetooth')()
-	s.wifi        	= require('widget.wifi')()
+	s.network        	= require('widget.network')()
 	s.battery     	= require('widget.battery')()
 	s.search      	= require('widget.search-apps')()
 	s.end_session   = require('widget.end-session')()
@@ -352,7 +352,7 @@ local bottom_panel = function(s)
 				build_widget(s.updater),
 				build_widget(s.screen_rec),
 				build_widget(s.bluetooth),
-				build_widget(s.wifi),
+				build_widget(s.network),
 				build_widget(s.battery),
 				build_widget(s.clock_widget),
 				build_widget(s.end_session),

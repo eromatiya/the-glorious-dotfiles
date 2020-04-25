@@ -58,7 +58,7 @@ return wibox.widget {
 		},
 
 		{
-			require('widget.wifi.wifi-toggle'),
+			require('widget.network.network-toggle'),
 			bg = barColor,
 			shape = function(cr, width, height)
 				gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.groups_radius) end,
