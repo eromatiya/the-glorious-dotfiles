@@ -1,14 +1,14 @@
-# ----------------------------------------------------------------------------
-# --- Simple Network Widget
-# --
-# -- Depends: iproute2, iw
-# --
-# -- For more details check `man maim`
-# --
-# -- @author manilarome &lt;gerome.matilla07@gmail.com&gt;
-# -- @copyright 2020 manilarome
-# -- @widget network
-# ----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+--- Simple Network Widget
+--
+-- Depends: iproute2, iw
+--
+-- For more details check `man maim`
+--
+-- @author manilarome &lt;gerome.matilla07@gmail.com&gt;
+-- @copyright 2020 manilarome
+-- @widget network
+----------------------------------------------------------------------------
 
 
 local awful = require('awful')
