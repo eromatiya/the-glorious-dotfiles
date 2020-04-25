@@ -295,7 +295,7 @@ local TopPanel = function(s, offset)
 	s.screen_rec 	= require('widget.screen-recorder')()
 	s.music       	= require('widget.music')()
 	s.bluetooth   	= require('widget.bluetooth')()
-	s.wifi        	= require('widget.wifi')()
+	s.network        	= require('widget.network')()
 	s.battery     	= require('widget.battery')()
 	s.r_dashboard 	= require('layout.right-panel.right-panel-opener')()
 
@@ -322,7 +322,7 @@ local TopPanel = function(s, offset)
 			s.screen_rec,
 			s.music,
 			s.bluetooth,
-			s.wifi,
+			s.network,
 			s.battery,
 			layout_box(s),
 			s.r_dashboard

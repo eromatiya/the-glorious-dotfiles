@@ -6,19 +6,18 @@ local watch = awful.widget.watch
 
 local dpi = require('beautiful').xresources.apply_dpi
 
-local clickable_container = require('widget.wifi.clickable-container')
+local clickable_container = require('widget.network.clickable-container')
 
 local config_dir = gears.filesystem.get_configuration_dir()
-local widget_icon_dir = config_dir .. 'widget/wifi/icons/'
+local widget_dir = config_dir .. 'widget/network/'
+local widget_icon_dir = config_dir .. widget_dir .. 'icons/'
 
 local icons = require('theme.icons')
 
-local wifi_state = false
-
-
+local ap_state = false
 
 local action_name = wibox.widget {
-	text = 'Wireless Connection',
+	text = 'Airplane Mode',
 	font = 'SF Pro Text Regular 11',
 	align = 'left',
 	widget = wibox.widget.textbox
@@ -45,33 +44,46 @@ local widget_button = wibox.widget {
 }
 
 local update_imagebox = function()
-	if wifi_state then
+	if ap_state then
 		button_widget.icon:set_image(icons.toggled_on)
 	else
 		button_widget.icon:set_image(icons.toggled_off)
 	end
 end
 
-local check_device_state = function()
+
+local check_airplane_mode_state = function()
+
+	local cmd = "cat " .. widget_dir .. "airplane_mode"
 
 	awful.spawn.easy_async_with_shell(
-		'rfkill list wlan', 
+		cmd, 
 		function(stdout)
-			if stdout:match('Soft blocked: yes') then
-				wifi_state = false
+			
+			local status = stdout
+			
+			if status:match("true") then
+				ap_state = true
+			elseif status:match("false") then
+				ap_state = false
 			else
-				wifi_state = true
+				ap_state = false
+				awful.spawn.easy_async_with_shell(
+					"echo 'false' > " .. widget_dir .. "airplane_mode", 
+					function(stdout) end
+				)
 			end
-		
 			update_imagebox()
 		end
 	)
 end
 
-check_device_state()
 
 
-local power_on_cmd = [[
+check_airplane_mode_state()
+
+
+local ap_off_cmd = [[
 	
 	rfkill unblock wlan
 
@@ -79,15 +91,16 @@ local power_on_cmd = [[
 	awesome-client "
 	naughty = require('naughty')
 	naughty.notification({
-		app_name = 'WiFi Manager',
-		title = 'System Notification',
-		message = 'Initializing WiFi device...',
-		icon = ']] .. widget_icon_dir .. 'loading' .. '.svg' .. [['
+		app_name = 'Network Manager',
+		title = '<b>Airplane mode disabled!</b>',
+		message = 'Initializing network devices',
+		icon = ']] .. widget_icon_dir .. 'airplane-mode-off' .. '.svg' .. [['
 	})
 	"
+	]] .. "echo false > " .. widget_dir .. "airplane_mode" .. [[
 ]]
 
-local power_off_cmd = [[
+local ap_on_cmd = [[
 
 	rfkill block wlan
 
@@ -95,30 +108,34 @@ local power_off_cmd = [[
 	awesome-client "
 	naughty = require('naughty')
 	naughty.notification({
-		app_name = 'WiFi Manager',
-		title = 'System Notification',
-		message = 'The WiFi device has been disabled.',
-		icon = ']] .. widget_icon_dir .. 'wifi-off' .. '.svg' .. [['
+		app_name = 'Network Manager',
+		title = '<b>Airplane mode enabled!</b>',
+		message = 'Disabling radio devices',
+		icon = ']] .. widget_icon_dir .. 'airplane-mode' .. '.svg' .. [['
 	})
 	"
+	]] .. "echo true > " .. widget_dir .. "airplane_mode" .. [[
 ]]
 
 
 local toggle_action = function()
-	if wifi_state then
-		wifi_state = false
+	if ap_state then
 		awful.spawn.easy_async_with_shell(
-			power_off_cmd, 
-			function(stdout) end
+			ap_off_cmd, 
+			function(stdout) 
+				ap_state = false
+				update_imagebox()
+			end
 		)
 	else
-		wifi_state = true
 		awful.spawn.easy_async_with_shell(
-			power_on_cmd,
-			function(stdout) end
+			ap_on_cmd,
+			function(stdout)
+				ap_state = true
+				update_imagebox()
+			end
 		)
 	end
-	update_imagebox()
 end
 
 
@@ -135,15 +152,13 @@ widget_button:buttons(
 	)
 )
 
-watch(
-	'rfkill list wlan', 
-	5,
-	function(_, stdout)
-		check_device_state()
-		collectgarbage('collect')
+gears.timer {
+	timeout = 5,
+	autostart = true,
+	callback  = function()
+		check_airplane_mode_state()
 	end
-)
-
+}
 
 local action_widget =  wibox.widget {
 	{
