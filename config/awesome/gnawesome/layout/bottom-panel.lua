@@ -84,7 +84,7 @@ local bottom_panel = function(s)
 
 	s.tray_toggler  = build_widget(require('widget.tray-toggler'))
 	s.bluetooth   	= build_widget(require('widget.bluetooth')())
-	s.wifi        	= build_widget(require('widget.wifi')())
+	s.network        	= build_widget(require('widget.network')())
 	s.battery     	= build_widget(require('widget.battery')())
 	s.search      	= require('widget.search-apps')()
 	
@@ -111,7 +111,7 @@ local bottom_panel = function(s)
 					s.systray,
 					s.tray_toggler,
 					s.bluetooth,
-					s.wifi,
+					s.network,
 					s.battery,
 					build_widget(layout_box(s)),
 					separator,

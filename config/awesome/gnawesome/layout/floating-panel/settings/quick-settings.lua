@@ -4,7 +4,7 @@ local beautiful = require('beautiful')
 
 local dpi = require('beautiful').xresources.apply_dpi
 
-local barColor = beautiful.groups_bg
+local bar_color = beautiful.groups_bg
 
 
 return wibox.widget {
@@ -14,7 +14,7 @@ return wibox.widget {
 		layout = wibox.layout.fixed.vertical,
 		{
 			require('widget.brightness.brightness-slider'),
-			bg = barColor,
+			bg = bar_color,
 			shape = function(cr, width, height)
 				gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.groups_radius) end,
 			forced_height = dpi(48),
@@ -23,7 +23,7 @@ return wibox.widget {
 		},
 		{
 			require('widget.volume.volume-slider'),
-			bg = barColor,
+			bg = bar_color,
 			shape = function(cr, width, height)
 				gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.groups_radius) end,
 			forced_height = dpi(48),
@@ -32,8 +32,8 @@ return wibox.widget {
 		},
 
 		{
-			require('widget.wifi.wifi-toggle'),
-			bg = barColor,
+			require('widget.network.network-toggle'),
+			bg = bar_color,
 			shape = function(cr, width, height)
 				gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.groups_radius) end,
 			forced_height = dpi(48),
@@ -42,7 +42,7 @@ return wibox.widget {
 
 		{
 			require('widget.bluetooth.bluetooth-toggle'),
-			bg = barColor,
+			bg = bar_color,
 			shape = function(cr, width, height)
 				 gears.shape.partially_rounded_rect(cr, width, height, false, false, false, false, beautiful.groups_radius) end,
 			forced_height = dpi(48),
@@ -50,7 +50,7 @@ return wibox.widget {
 		},
 		{
 			require('widget.blue-light'),
-			bg = barColor,
+			bg = bar_color,
 			shape = function(cr, width, height)
 				 gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.groups_radius) end,
 			forced_height = dpi(48),
@@ -61,7 +61,7 @@ return wibox.widget {
 		layout = wibox.layout.fixed.vertical,
 		{
 			require('widget.window-effects.blur-toggle'),
-			bg = barColor,
+			bg = bar_color,
 			shape = function(cr, width, height)
 				 gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.groups_radius) end,
 			forced_height = dpi(48),
@@ -69,7 +69,7 @@ return wibox.widget {
 		},
 		{
 			require('widget.window-effects.blur-strength-slider'),
-			bg = barColor,
+			bg = bar_color,
 			shape = function(cr, width, height)
 				gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.groups_radius) end,
 			forced_height = dpi(48),
