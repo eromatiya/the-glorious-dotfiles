@@ -1,3 +1,16 @@
+# ----------------------------------------------------------------------------
+# --- Simple Network Widget
+# --
+# -- Depends: iproute2, iw
+# --
+# -- For more details check `man maim`
+# --
+# -- @author manilarome &lt;gerome.matilla07@gmail.com&gt;
+# -- @copyright 2020 manilarome
+# -- @widget network
+# ----------------------------------------------------------------------------
+
+
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
@@ -192,16 +205,9 @@ local return_button = function()
 	end
 
 	local update_net_speed = function()
-		local active_interface = nil
-
-		if conn_status == 'wireless' then
-			active_interface = wlan_interface
-		elseif conn_status == 'wired' then
-			active_interface = lan_interface
-		end
 
 		awful.spawn.easy_async_with_shell(
-			'iw dev ' .. active_interface .. ' link',
+			'iw dev ' .. wlan_interface .. ' link',
 			function(stdout)
 				net_speed = stdout:match("tx bitrate: (.+/s)") or 'N/A'
 			end
@@ -225,7 +231,7 @@ local return_button = function()
 
 				awful.spawn.easy_async_with_shell(
 					[[
-					ping -q -w 3 -c3 8.8.8.8 | grep -o "100% packet loss"
+					ping -q -w3 -c3 8.8.8.8 | grep -o "100% packet loss"
 					]],
 					function(stdout)
 						local widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded 
@@ -282,8 +288,7 @@ local return_button = function()
 						'</b>\nWiFi-Strength: <b>' .. tostring(wifi_strength) .. '%' ..
 						'</b>\nBit rate: <b>' .. tostring(net_speed) .. '</b>'
 					else
-						return 'Ethernet Interface: <b>' .. lan_interface ..
-						'</b>\nBit rate: <b>' .. tostring(net_speed) .. '</b>'
+						return 'Ethernet Interface: <b>' .. lan_interface
 					end
 				else
 					return 'Network is currently disconnected'
