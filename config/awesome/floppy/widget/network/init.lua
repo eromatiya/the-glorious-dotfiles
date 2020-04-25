@@ -27,6 +27,8 @@ local return_button = function()
 	local startup = true
 	local notify_new_wifi_conn = false
 
+	local net_speed = 'N/A'
+
 	local widget = wibox.widget {
 		{
 			id = 'icon',
@@ -57,30 +59,6 @@ local return_button = function()
 				end
 			)
 		)
-	)
-
-	awful.tooltip(
-		{
-			objects = {widget_button},
-			mode = 'outside',
-			align = 'right',
-			timer_function = function()
-				if connected_to_network then
-					if conn_status == 'wireless' then
-						return 'Wireless Interface: <b>' .. wlan_interface .. 
-						'</b>\nConnected to: <b>' .. (essid or "*LOADING...*") .. 
-						'</b>\nWiFi-Strength: <b>' .. tostring(wifi_strength) .. '%</b>'
-					else
-						return 'LAN Connection'
-					end
-				else
-					return 'Network is currently disconnected'
-				end
-			end,
-			preferred_positions = {'left', 'right', 'top', 'bottom'},
-			margin_leftright = dpi(8),
-			margin_topbottom = dpi(8)
-		}
 	)
 
 	local notify_not_connected = function()
@@ -134,7 +112,7 @@ local return_button = function()
 				message = 'Wi-Fi has no internet access'
 				icon =  widget_icon_dir .. 'wifi-strength-off.svg'
 			elseif conn_status == 'wired' then
-				message = 'LAN network has no internet access'
+				message = 'Ethernet has no internet access'
 				icon = widget_icon_dir .. 'wired-off.svg'
 			end
 
@@ -213,6 +191,23 @@ local return_button = function()
 		end
 	end
 
+	local update_net_speed = function()
+		local active_interface = nil
+
+		if conn_status == 'wireless' then
+			active_interface = wlan_interface
+		elseif conn_status == 'wired' then
+			active_interface = lan_interface
+		end
+
+		awful.spawn.easy_async_with_shell(
+			'iw dev ' .. active_interface .. ' link',
+			function(stdout)
+				net_speed = stdout:match("tx bitrate: (.+/s)") or 'N/A'
+			end
+		)
+	end
+
 	local update_wireless = function()
 		conn_status = 'wireless'
 		connected_to_network = true
@@ -230,7 +225,7 @@ local return_button = function()
 
 				awful.spawn.easy_async_with_shell(
 					[[
-					ping -q -w3 -c3 8.8.8.8 | grep -o "100% packet loss"
+					ping -q -w 3 -c3 8.8.8.8 | grep -o "100% packet loss"
 					]],
 					function(stdout)
 						local widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded 
@@ -238,6 +233,7 @@ local return_button = function()
 							update_no_access()
 							return
 						else
+							update_net_speed()
 							awesome.emit_signal('system::wifi_connected')
 							update_notify_no_access = true
 						end
@@ -256,7 +252,7 @@ local return_button = function()
 
 		awful.spawn.easy_async_with_shell(
 			[[
-			ping -q -w3 -c3 8.8.8.8 | grep -o "100% packet loss"
+			ping -q -w2 -c2 8.8.8.8 | grep -o "100% packet loss"
 			]],
 			function(stdout)
 				widget_icon_name = 'wired'
@@ -272,6 +268,32 @@ local return_button = function()
 		)
 		
 	end
+
+	awful.tooltip(
+		{
+			objects = {widget_button},
+			mode = 'outside',
+			align = 'right',
+			timer_function = function()
+				if connected_to_network then
+					if conn_status == 'wireless' then
+						return 'Wireless Interface: <b>' .. wlan_interface .. 
+						'</b>\nConnected to: <b>' .. (essid or "*LOADING...*") .. 
+						'</b>\nWiFi-Strength: <b>' .. tostring(wifi_strength) .. '%' ..
+						'</b>\nBit rate: <b>' .. tostring(net_speed) .. '</b>'
+					else
+						return 'Ethernet Interface: <b>' .. lan_interface ..
+						'</b>\nBit rate: <b>' .. tostring(net_speed) .. '</b>'
+					end
+				else
+					return 'Network is currently disconnected'
+				end
+			end,
+			preferred_positions = {'left', 'right', 'top', 'bottom'},
+			margin_leftright = dpi(8),
+			margin_topbottom = dpi(8)
+		}
+	)
 
 	gears.timer {
 		timeout = 5,
