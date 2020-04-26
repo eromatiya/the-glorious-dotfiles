@@ -108,7 +108,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	}
 
 
-	require('widget.music.get-margin')(s, music_box_width, 15)
+	-- require('widget.music.get-margin')(s, music_box_width, 15)
 
 
 	toggle_music_box = function()
@@ -125,9 +125,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			music_backdrop.visible = true
 			music_box.visible = true
 
-			awful.placement.top_right(music_box, { margins = { 
-				top = dpi(focused.margin_y) or dpi(35), 
-				right = dpi(focused.margin_x) or dpi(95)
+			awful.placement.bottom_left(music_box, { margins = { 
+				bottom = dpi(48 + 5), 
+				left = dpi(5)
 			}, 
 			parent = focused 
 			})
