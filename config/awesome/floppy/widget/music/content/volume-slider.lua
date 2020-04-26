@@ -2,13 +2,11 @@ local beautiful = require('beautiful')
 local gears = require('gears')
 local awful = require('awful')
 local wibox = require('wibox')
-local dpi = require('beautiful').xresources.apply_dpi
-
+local dpi = beautiful.xresources.apply_dpi
 
 local slider = {}
 
-
-vol_slider = wibox.widget {
+slider.vol_slider = wibox.widget {
 	bar_shape           = gears.shape.rounded_rect,
 	bar_height          = dpi(5),
 	bar_color           = '#ffffff20',
@@ -21,10 +19,6 @@ vol_slider = wibox.widget {
 	maximum				= 100,
 	widget              = wibox.widget.slider,
 }
-
-
-slider.vol_slider = vol_slider
-
 
 return slider
 

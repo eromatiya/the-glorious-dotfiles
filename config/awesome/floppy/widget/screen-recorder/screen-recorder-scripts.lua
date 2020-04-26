@@ -5,9 +5,7 @@ local user_config = require('widget.screen-recorder.screen-recorder-config')
 
 local scripts_tbl = {}
 
-
 local ffmpeg_pid = nil
-
 
 -- Get user settings
 user_resolution = user_config.user_resolution
