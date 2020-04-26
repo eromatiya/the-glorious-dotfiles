@@ -45,7 +45,7 @@ local return_button = function()
 	local widget = wibox.widget {
 		{
 			id = 'icon',
-			image = widget_icon_dir .. 'no-internet' .. '.svg',
+			image = widget_icon_dir .. 'wifi-strength-off' .. '.svg',
 			widget = wibox.widget.imagebox,
 			resize = true
 		},
@@ -140,7 +140,7 @@ local return_button = function()
 	end
 
 
-	local update_no_access = function()
+	local update_no_access = function(strength)
 
 		if not update_notify_no_access then
 			return
@@ -149,7 +149,7 @@ local return_button = function()
 		local widget_icon_name = nil
 
 		if conn_status == 'wireless' then
-			widget_icon_name = 'wifi-strength-alert'
+			widget_icon_name = 'wifi-strength-' .. tostring(strength) .. '-alert'
 		elseif conn_status == 'wired' then
 			widget_icon_name = 'wired-alert'
 		end
@@ -236,7 +236,7 @@ local return_button = function()
 					function(stdout)
 						local widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded 
 						if stdout:match('100%% packet loss') then
-							update_no_access()
+							update_no_access(wifi_strength_rounded)
 							return
 						else
 							update_net_speed()
@@ -311,7 +311,7 @@ local return_button = function()
 				if ]] .. "[[ " .. [[ "$(echo ${net_status} |  awk -F ": " '{print $2}')" == *'unreachable'* ]] .. " ]];" .. [[
 				then
 					echo 'No internet connection'
-					exit 1
+					exit;
 				fi
 
 				net_status="$(ip route get 8.8.8.8 | grep -Po 'dev \K\w+' | grep -Ff - /proc/net/wireless)"

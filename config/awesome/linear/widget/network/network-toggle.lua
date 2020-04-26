@@ -3,14 +3,13 @@ local wibox = require('wibox')
 local gears = require('gears')
 
 local watch = awful.widget.watch
-
 local dpi = require('beautiful').xresources.apply_dpi
 
 local clickable_container = require('widget.network.clickable-container')
 
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_dir = config_dir .. 'widget/network/'
-local widget_icon_dir = config_dir .. widget_dir .. 'icons/'
+local widget_icon_dir = widget_dir .. 'icons/'
 
 local icons = require('theme.icons')
 
@@ -51,7 +50,6 @@ local update_imagebox = function()
 	end
 end
 
-
 local check_airplane_mode_state = function()
 
 	local cmd = "cat " .. widget_dir .. "airplane_mode"
@@ -78,10 +76,7 @@ local check_airplane_mode_state = function()
 	)
 end
 
-
-
 check_airplane_mode_state()
-
 
 local ap_off_cmd = [[
 	
@@ -138,7 +133,6 @@ local toggle_action = function()
 	end
 end
 
-
 widget_button:buttons(
 	gears.table.join(
 		awful.button(
@@ -175,6 +169,5 @@ local action_widget =  wibox.widget {
 	forced_height = dpi(48),
 	widget = wibox.container.margin
 }
-
 
 return action_widget
