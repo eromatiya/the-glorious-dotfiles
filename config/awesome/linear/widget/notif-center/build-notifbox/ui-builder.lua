@@ -1,40 +1,20 @@
--- Formats and builds UI widgets like font, imagebox and actions
-
---  #                                                     
---  #       # #####  #####    ##   #####  # ######  ####  
---  #       # #    # #    #  #  #  #    # # #      #      
---  #       # #####  #    # #    # #    # # #####   ####  
---  #       # #    # #####  ###### #####  # #           # 
---  #       # #    # #   #  #    # #   #  # #      #    # 
---  ####### # #####  #    # #    # #    # # ######  ####  
-
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 local naughty = require('naughty')
 local gears = require('gears')
 
-local config_dir = gears.filesystem.get_configuration_dir()
+local dpi = beautiful.xresources.apply_dpi
 
+local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/notif-center/icons/'
 
-
-
---  #     #                                           
---  #     # ###### #      #####  ###### #####   ####  
---  #     # #      #      #    # #      #    # #      
---  ####### #####  #      #    # #####  #    #  ####  
---  #     # #      #      #####  #      #####       # 
---  #     # #      #      #      #      #   #  #    # 
---  #     # ###### ###### #      ###### #    #  ####  
-
-local dpi = require('beautiful').xresources.apply_dpi
 local clickable_container = require('widget.clickable-container')
 
 
 local ui_noti_builder = {}
 
 -- Notification icon container
-notifbox_icon = function(ico_image)
+ui_noti_builder.notifbox_icon = function(ico_image)
 	local noti_icon = wibox.widget {
 		{
 			id = 'icon',
@@ -50,7 +30,7 @@ notifbox_icon = function(ico_image)
 end
 
 -- Notification title container
-notifbox_title = function(title)
+ui_noti_builder.notifbox_title = function(title)
 	return wibox.widget {
 		markup   = title,
 		font   = 'SF Pro Text Bold 12',
@@ -61,7 +41,7 @@ notifbox_title = function(title)
 end
 
 -- Notification message container
-notifbox_message = function(msg)
+ui_noti_builder.notifbox_message = function(msg)
 	return wibox.widget {
 		markup   = msg,
 		font   = 'SF Pro Text Regular 11',
@@ -72,7 +52,7 @@ notifbox_message = function(msg)
 end
 
 -- Notification app name container
-notifbox_appname = function(app)
+ui_noti_builder.notifbox_appname = function(app)
 	return wibox.widget {
 		markup   = app,
 		font   = 'SF Pro Text Bold 12',
@@ -83,7 +63,7 @@ notifbox_appname = function(app)
 end
 
 -- Notification actions container
-notifbox_actions = function(n)
+ui_noti_builder.notifbox_actions = function(n)
 	actions_template = wibox.widget {
 		notification = n,
 		base_layout = wibox.widget {
@@ -120,7 +100,7 @@ end
 
 
 -- Notification dismiss button
-notifbox_dismiss = function()
+ui_noti_builder.notifbox_dismiss = function()
 
     local dismiss_imagebox = wibox.widget {
         {
@@ -153,12 +133,5 @@ notifbox_dismiss = function()
     return notifbox_dismiss
 end
 
-
-ui_noti_builder.notifbox_icon = notifbox_icon
-ui_noti_builder.notifbox_title = notifbox_title
-ui_noti_builder.notifbox_message = notifbox_message
-ui_noti_builder.notifbox_appname = notifbox_appname
-ui_noti_builder.notifbox_actions = notifbox_actions
-ui_noti_builder.notifbox_dismiss = notifbox_dismiss
 
 return ui_noti_builder

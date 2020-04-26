@@ -9,8 +9,6 @@ local clickable_container = require('widget.clickable-container')
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/notif-center/icons/'
 
-
-
 -- Delete button imagebox
 local delete_imagebox = wibox.widget {
 	{

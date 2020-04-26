@@ -48,7 +48,7 @@ local notifbox_layout = wibox.layout.fixed.vertical()
 
 
 -- Notification boxes container layout spacing
-notifbox_layout.spacing = dpi(7)
+notifbox_layout.spacing = dpi(5)
 
 
 -- Reset notifbox_layout

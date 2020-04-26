@@ -54,9 +54,12 @@ local separator_for_empty_msg =  wibox.widget
 
 -- Make empty_notifbox center
 local centered_empty_notifbox = wibox.widget {
-	layout = wibox.layout.fixed.vertical,
+	forced_height = dpi(500),
 	expand = 'none',
+	layout = wibox.layout.align.vertical,
+	separator_for_empty_msg,
 	empty_notifbox,
+	separator_for_empty_msg
 }
 
 return centered_empty_notifbox
