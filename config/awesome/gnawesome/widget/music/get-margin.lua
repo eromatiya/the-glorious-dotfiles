@@ -41,6 +41,7 @@ local margin_return = function(s, music_box_width, side_margin)
     s.margin_returner = gears.timer.start_new(3, function()
 
         local focused_top_panel = s.top_panel
+        local focused_left_panel = s.left_panel
         local focused_music_button = s.music
         
         x_margin = 0
@@ -75,7 +76,8 @@ local margin_return = function(s, music_box_width, side_margin)
             if x_margin < 0 then
                 x_margin = 5
             elseif x_margin >= s.geometry.width - music_box_width then
-                x_margin = s.geometry.width - music_box_width - 5
+                x_margin = s.geometry.width - focused_left_panel.width - 
+                    music_box_width - 5
             end
 
         else
