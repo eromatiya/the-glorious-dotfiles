@@ -28,7 +28,8 @@ local update_cover = function()
 	local get_art_url = [[
 	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get \
 	string:'org.mpris.MediaPlayer2.Player' string:'Metadata' | 
-	egrep -A 1 "artUrl"| egrep -v "artUrl" | awk -F '"' '{print $2}'
+	egrep -A 1 "artUrl"| egrep -v "artUrl" | awk -F '"' '{print $2}' |
+	sed -e 's/open.spotify.com/i.scdn.co/g'
 	]]
 
 	awful.spawn.easy_async_with_shell(
