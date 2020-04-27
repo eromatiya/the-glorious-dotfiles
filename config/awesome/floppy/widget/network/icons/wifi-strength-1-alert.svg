@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="240"
-   height="240"
-   viewBox="0 0 240 240"
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
    version="1.1"
    id="svg8"
    sodipodi:docname="wifi-strength-1-alert.svg"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
      id="metadata14">
     <rdf:RDF>
@@ -42,15 +42,16 @@
      id="namedview10"
      showgrid="false"
      inkscape:pagecheckerboard="true"
-     inkscape:zoom="0.30729167"
-     inkscape:cx="352.44189"
-     inkscape:cy="418.25249"
+     inkscape:zoom="2.4583334"
+     inkscape:cx="72.138642"
+     inkscape:cy="106.67249"
      inkscape:window-x="45"
      inkscape:window-y="28"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg8" />
   <g
-     id="g832">
+     id="g832"
+     transform="matrix(0.23231214,0,0,0.23231214,-3.8774568,-3.8774563)">
     <path
        style="fill:none"
        inkscape:connector-curvature="0"
@@ -62,7 +63,7 @@
        id="path4"
        d="M 209.48294,87.216134 220.21,73.866904 c -3.89352,-2.86055 -42.35201,-34.326578 -100.03973,-34.326578 -57.687723,0 -96.146206,31.466028 -99.96027,34.326578 l 99.88081,124.433846 0.0795,0.15892 0.0795,-0.0795 55.54231,-69.20938 V 87.216094 Z" />
     <path
-       style="stroke-width:7.9459672;fill:#ffffff;fill-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:7.9459672"
        inkscape:connector-curvature="0"
        id="path6"
        d="m 75.196095,142.4406 44.974175,55.93961 v 0.0795 -0.0795 l 44.97418,-56.01907 c -1.74812,-1.27135 -18.99087,-15.41518 -44.97418,-15.41518 -25.983313,0 -43.226063,14.14383 -44.974175,15.49464 z m 116.487885,56.01907 h 15.89193 v -15.89193 h -15.89193 z m 0,-95.35161 v 63.56774 h 15.89193 v -63.56774 z" />
