@@ -2,8 +2,8 @@ local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
 
-local clickable_container = require('widget.window-effects.clickable-container')
 local dpi = require('beautiful').xresources.apply_dpi
+local clickable_container = require('widget.window-effects.clickable-container')
 
 local icons = require('theme.icons')
 
@@ -38,21 +38,13 @@ local widget_button = wibox.widget {
 
 
 local update_imagebox = function()
-
 	local button_icon = button_widget.icon
-
 	if blue_light_state then
-
 		button_icon:set_image(icons.toggled_on)
 	else
-		
 		button_icon:set_image(icons.toggled_off)
 	end
 end
-
-
--- Kill everytime the Awesome (re)start
--- Or everytime you logged in
 
 local kill_state = function()
 	awful.spawn.easy_async_with_shell(
@@ -70,15 +62,19 @@ local kill_state = function()
 	)
 end
 
-
 kill_state()
-
 
 local toggle_action = function()
 	awful.spawn.easy_async_with_shell(
 		[[
-		pgrep redshift > /dev/null && (redshift -x && pkill redshift && echo 'OFF') || 
-		(echo 'ON' && redshift -l 0:0 -t 4500:4500 -r &>/dev/null &)
+		if [ ! -z $(pgrep redshift) ];
+		then
+			redshift -x && pkill redshift && killall redshift
+			echo 'OFF'
+		else
+			redshift -l 0:0 -t 4500:4500 -r &>/dev/null &
+			echo 'ON'
+		fi
 		]],
 		function(stdout)
 			if stdout:match('ON') then
@@ -127,6 +123,5 @@ awesome.connect_signal(
 		toggle_action()
 	end
 )
-
 
 return action_widget
