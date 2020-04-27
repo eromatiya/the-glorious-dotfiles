@@ -62,6 +62,7 @@ Ricing is actually fun and it's my hobby for quite a long time now. Anyone can r
 <br>
 
 ## the glorious wiki's table of contents
+
 This wiki will guide you to replicate my setups.
 
 -   **[Home](https://github.com/manilarome/the-glorious-dotfiles/wiki)**
@@ -112,7 +113,56 @@ This wiki will guide you to replicate my setups.
 <br>
 <br>
 
-## mini gallery
+## Summary and Details
+
+If you're too lazy to open the wiki, here's some of the details you need to know.
+
+### Starring
+
+- [`archlinux`](https://www.archlinux.org/download/) as distribution
+- [`awesomewm`](https://awesomewm.org) as window manager
+- [`kitty`](https://github.com/kovidgoyal/kitty) as terminal emulator
+- [`tryone144's picom`](https://github.com/tryone144/compton/tree/feature/dual_kawase) as compositor
+- [`rofi-git branch`](https://github.com/davatorium/rofi) as application launcher
+- [`SF Pro Text`](https://developer.apple.com/fonts/) as the setup font
+- [`trivago`](https://www.youtube.com/watch?v=dQw4w9WgXcQ) as hotel
+
+### Required Dependencies
+
+| Name | Description | Why/Where is it needed? |
+| --- | --- | --- |
+| [`awesome-git`](https://github.com/awesomeWM/awesome) |  Highly configurable framework window manager | isn't it obvious? |
+| [`rofi-git`](https://github.com/davatorium/rofi) | Window switcher, application launcher and dmenu replacement | Application launcher |
+| [`tryone144's picom`](https://github.com/tryone144/compton/tree/feature/dual_kawase) | A compositor for X11 | a compositor with kawase-blur |
+
+## Selling the dotfiles
+
+Why would I want this?
+
+### Core Features
+
+These are the features included in my AwesomeWM setups!
+
++ Notification Center
++ Dynamic Wallpaper
++ File/Web Searching like macOS' Spotlight
++ Application Dashboard
++ Brightness and Volume OSDs
++ Functional Trash Widget
++ Built-in Screen Recorder Widget
++ Built-in Calculator Widget
++ Email Widget
++ Weather Widget
++ Quake Terminal
++ Hardware Monitor
++ Blue Light Filter Widgets 
++ Lockscreen Module with Face Capture and PAM Integration
++ Easter eggs!<sup>Mostly bugs</sup>
++ Any many more!
+
+### mini gallery
+
+Some of these are outdated, so it is better if you try them yourself. 
 
 | Floppy |
 | --- |
@@ -138,7 +188,7 @@ This wiki will guide you to replicate my setups.
 | --- | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-main.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-menu.png) |
 
-| Rofi Google Results | Rofi DuckDuckGo Results |
+| Rofi Google Suggestion | Rofi DuckDuckGo Suggestion |
 | --- | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-google.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-ddg.png) |
 
