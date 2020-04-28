@@ -125,11 +125,12 @@ then
 	echo " "
 	echo "Web search syntaxes:"
 	echo "!<search_query> to gets search suggestions"
-	echo ":web <search_query> to also to gets search suggestions"
-	echo ":webbro <search_query> to search directly from your browser"
+	echo ":web/:w <search_query> to also to gets search suggestions"
+	echo ":webbro/:wb <search_query> to search directly from your browser"
 	echo "Examples:"
 	echo "	!how to install archlinux"
 	echo "	:web how to install gentoo"
+	echo "	:w how to make a nuclear fission"
 	echo "	:webbro how to install wine in windowsxp"
 
 	exit;
@@ -270,17 +271,31 @@ function web_search() {
 }
 
 # Handles the web search method
-if [ ! -z "$@" ] && [[ "$@" == ":webbro"* ]]
+if [ ! -z "$@" ] && ([[ "$@" == ":webbro"* ]] || [[ "$@" == ":wb"* ]])
 then
-	remove=":webbro "
+	remove=''
+
+	if [[ "$@" == ":webbro"* ]]
+	then
+		remove=":webbro"
+	else
+		remove=":wb"
+	fi
 
 	# Search directly from your web browser
 	web_search "$(printf '%s\n' "${1//$remove/}")"
 	exit;
 
-elif [ ! -z "$@" ] && [[ "$@" == ":web"* ]]
+elif [ ! -z "$@" ] && ([[ "$@" == ":web"* ]] || [[ "$@" == ":w"* ]])
 then
-	remove=":web "
+	remove=''
+
+	if [[ "$@" == ":web"* ]]
+	then
+		remove=":web"
+	else
+		remove=":w"
+	fi
 
 	# Get search suggestions
 	web_search "!$(printf '%s\n' "${1//$remove/}")"

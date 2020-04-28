@@ -154,7 +154,7 @@ def main():
         search_string = search_string.rstrip('!').strip()
         results = fetch_suggestions(search_string)
         for r in results:
-            print(html.unescape(r) + "\0icon\x1f"+icon_name+"\n")
+            print(":wb " + html.unescape(r) + "\0icon\x1f"+icon_name+"\n")
     else:
         url = CONFIG['SEARCH_URL'][SEARCH_ENGINE] + urllib.parse.quote_plus(search_string)
         sp.Popen(CONFIG['BROWSER_PATH'][BROWSER] + [url], stdout=sp.DEVNULL, stderr=sp.DEVNULL, shell=False)
