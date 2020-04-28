@@ -162,7 +162,7 @@ local return_button = function()
 
 
 	local notify_wifi_conn = function()
-		if startup == true then
+		if startup then
 			startup = false
 			return
 		end
@@ -240,7 +240,9 @@ local return_button = function()
 							return
 						else
 							update_net_speed()
-							awesome.emit_signal('system::wifi_connected')
+									if startup then
+										awesome.emit_signal('system::wifi_connected')
+									end
 							update_notify_no_access = true
 						end
 						widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
@@ -248,7 +250,6 @@ local return_button = function()
 				)
 			end
 		)
-
 		update_essid()
 	end
 
@@ -266,7 +267,10 @@ local return_button = function()
 					update_no_access()
 					return
 				else
-					awesome.emit_signal('system::wifi_connected')
+					if startup then
+						awesome.emit_signal('system::wifi_connected')
+						startup = false
+					end
 					update_notify_no_access = true
 				end
 				widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
