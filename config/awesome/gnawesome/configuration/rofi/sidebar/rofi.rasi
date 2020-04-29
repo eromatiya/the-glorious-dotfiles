@@ -3,6 +3,7 @@ configuration {
 	show-icons:                		true;
 	fullscreen:                     false;
     threads:                        0;
+    matching:                      "fuzzy";
     scroll-method:                  0;
     monitor:                        "primary";
 }
