@@ -9,6 +9,7 @@ configuration {
     disable-history:                false;
     monitor:                        "primary";
     fullscreen:                     true;
+    window-thumbnail:       true;
 }
 
 * {
