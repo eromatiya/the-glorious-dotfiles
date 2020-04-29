@@ -42,7 +42,7 @@ ruled.client.connect_signal("request::rules", function()
 		properties = { 
 			titlebars_enabled = true,
 			floating = true,
-			above = false,
+			above = true,
 			draw_backdrop = true,
 			skip_decoration = true,
 			shape = function(cr, width, height)
@@ -61,7 +61,7 @@ ruled.client.connect_signal("request::rules", function()
 		properties = { 
 			titlebars_enabled = true,
 			floating = true,
-			above = false,
+			above = true,
 			draw_backdrop = true,
 			skip_decoration = true,
 			shape = function(cr, width, height)
@@ -96,7 +96,7 @@ ruled.client.connect_signal("request::rules", function()
 		properties = { 
 			titlebars_enabled = false,
 			floating = true,
-			above = false,
+			above = true,
 			hide_titlebars = true,
 			draw_backdrop = false,
 			skip_decoration = true,
