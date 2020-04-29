@@ -116,14 +116,14 @@ local return_button = function()
 		end
 	end
 
-	local notify_no_access = function()
+	local notify_no_access = function(strength)
 		if conn_status == 'wireless' or conn_status == 'wired' then
 						
 			local message = nil
 
 			if conn_status == 'wireless' then
 				message = 'Wi-Fi has no internet access'
-				icon =  widget_icon_dir .. 'wifi-strength-off.svg'
+				icon =  widget_icon_dir .. 'wifi-strength-' .. tostring(strength) .. '-alert.svg'
 			elseif conn_status == 'wired' then
 				message = 'Ethernet has no internet access'
 				icon = widget_icon_dir .. 'wired-off.svg'
@@ -139,7 +139,6 @@ local return_button = function()
 		end
 	end
 
-
 	local update_no_access = function(strength)
 
 		if not update_notify_no_access then
@@ -153,7 +152,7 @@ local return_button = function()
 		elseif conn_status == 'wired' then
 			widget_icon_name = 'wired-alert'
 		end
-		notify_no_access()
+		notify_no_access(strength)
 		widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
 
 		update_notify_no_access = false
