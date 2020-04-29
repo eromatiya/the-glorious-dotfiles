@@ -204,25 +204,25 @@ UNITS="]]..units..[["
 weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
 
 if [ ! -z "$weather" ]; then
-	weather_icon="$(printf "$weather" | jq -r ".weather[].icon" | head -1)"
+	weather_icon="icon=$(printf "$weather" | jq -r ".weather[].icon" | head -1)"
 	
-	weather_location="$(printf "$weather" | jq -r ".name")"
-	weather_country="$(printf "$weather" | jq -r ".sys.country")"
+	weather_location="location=$(printf "$weather" | jq -r ".name")"
+	weather_country="country=$(printf "$weather" | jq -r ".sys.country")"
 	
-	weather_sunrise="$(printf "$weather" | jq -r ".sys.sunrise" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
-	weather_sunset="$(printf "$weather" | jq -r ".sys.sunset" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
+	weather_sunrise="sunrise=$(printf "$weather" | jq -r ".sys.sunrise" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
+	weather_sunset="sunset=$(printf "$weather" | jq -r ".sys.sunset" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
 	
-	weather_data_time="$(printf "$weather" | jq -r ".dt" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
+	weather_data_time="update=$(printf "$weather" | jq -r ".dt" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
 	
-	weather_temp="$(printf "$weather" | jq ".main.temp" | cut -d "." -f 1)"
+	weather_temp="temperature=$(printf "$weather" | jq ".main.temp" | cut -d "." -f 1)"
 	
-	weather_description="$(printf "$weather" | jq -r ".weather[].description" | head -1)"
+	weather_description="details=$(printf "$weather" | jq -r ".weather[].description" | head -1)"
 
 	DATA="${weather_icon}\n${weather_location}\n${weather_country}\n${weather_sunrise}\n${weather_sunset}\n${weather_data_time}\n${weather_temp}\n${weather_description}\n"
 	printf "${DATA}"
 
 else
-	printf "..."
+	printf "icon=..."
 fi	
 ]]
 
@@ -234,16 +234,16 @@ awesome.connect_signal('widget::weather_fetch', function()
 
 		-- Populate weather_data_tbl
 		for data in stdout:gmatch("[^\n]+") do
-			table.insert(
-				weather_data_tbl, 
-				data or 'N/A'
-			)
+			local key = data:match("(.*)=")
+			local value = data:match("=(.*)")
+			weather_data_tbl[key] = value
 		end
 
-		local icon_code = weather_data_tbl[1]
+		local icon_code = weather_data_tbl['icon']
 
 		-- No internet / no credentials
 		if icon_code == '...' then
+
 			awesome.emit_signal("widget::weather_update", 
 				icon_code, 
 				'dust & clouds, -1000°C', 
@@ -252,19 +252,19 @@ awesome.connect_signal('widget::weather_fetch', function()
 				'00:00', 
 				'00:00'
 			)
+			
 		else
 
-			local location = weather_data_tbl[2]
-			local country = weather_data_tbl[3]
-			local sunrise = weather_data_tbl[4]
-			local sunset = weather_data_tbl[5]
-			local update_time = weather_data_tbl[6]
-			local temperature = weather_data_tbl[7]
-			local details = weather_data_tbl[8]
+			local location = weather_data_tbl['location']
+			local country = weather_data_tbl['country']
+			local sunrise = weather_data_tbl['sunrise']
+			local sunset = weather_data_tbl['sunset']
+			local update_time = weather_data_tbl['update']
+			local temperature = weather_data_tbl['temperature']
+			local details = weather_data_tbl['details']
 
 			local weather_description = details .. ', ' .. temperature .. weather_temperature_symbol
 			
-
 			if #weather_description >= 33 then
 				weather_desc_temp:set_font('SF Pro Text Bold 11')
 			else
@@ -283,7 +283,7 @@ awesome.connect_signal('widget::weather_fetch', function()
 		end
 
 		collectgarbage('collect')
-	
+
 	end)
 end)
 
@@ -309,41 +309,32 @@ end)
 
 awesome.connect_signal("widget::weather_update", 
 	function(code, desc, location, sunrise, sunset, data_receive)
-		local icon = nil
-		local color = nil
-		local widget_icon_name = nil
+		local widget_icon_name = 'weather-error'
 
-		if  code:find("01d") then
-				widget_icon_name = 'sun_icon'
+		-- Yes, I'm learning Lua tables
+		local icon_tbl = {
+			['01d'] = 'sun_icon',
+			['01n'] = 'moon_icon',
+			['02d'] = 'dfew_clouds',
+			['02n'] = 'nfew_clouds',
+			['03d'] = 'dscattered_clouds',
+			['03n'] = 'nscattered_clouds',
+			['04d'] = 'dbroken_clouds',
+			['04n'] = 'nbroken_clouds',
+			['09d'] = 'dshower_rain',
+			['09n'] = 'nshower_rain',
+			['10n'] = 'drain_icon',
+			['10d'] = 'nrain_icon',
+			['11d'] = 'dthunderstorm',
+			['11n'] = 'nhunderstorm',
+			['13d'] = 'snow',
+			['13n'] = 'snow',
+			['50d'] = 'dmist',
+			['50n'] = 'nmist',
+			['...'] = 'weather-error'
+		}
 
-		elseif code:find("01n") then
-				widget_icon_name = 'moon_icon'
-
-		elseif code:find("02d") then
-				widget_icon_name = 'dcloud_icon'
-
-		elseif code:find("02n") then
-				widget_icon_name = 'ncloud_icon'
-
-		elseif code:find("03") or code:find("04") then
-				widget_icon_name = 'cloud_icon'
-
-		elseif code:find("09") or code:find("10") then
-				widget_icon_name = 'rain_icon'
-
-		elseif code:find("11") then
-				widget_icon_name = 'storm_icon'
-		
-		elseif code:find("13") then
-				widget_icon_name = 'snow_icon'
-
-		elseif code:find("50") or code:find("40") then
-				widget_icon_name = 'mist_icon'
-
-		else
-				widget_icon_name = 'weather-error'
-
-		end
+		widget_icon_name = icon_tbl[code]
 
 		weather_icon_widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
 		weather_desc_temp:set_text(desc)
@@ -351,6 +342,7 @@ awesome.connect_signal("widget::weather_update",
 		weather_sunrise:set_text(sunrise)
 		weather_sunset:set_text(sunset)
 		weather_data_time:set_text(data_receive)
+
 end)
 
 
