@@ -35,7 +35,7 @@ local return_button = function()
 	local conn_status = 'disconnected'
 	local essid = nil
 
-	local update_notify_no_access = false
+	local update_notify_no_access = true
 
 	local startup = true
 	local notify_new_wifi_conn = false
@@ -104,6 +104,7 @@ local return_button = function()
 			connected_to_network = false
 			notify_new_wifi_conn = true
 			essid = nil
+			update_notify_no_access = true
 
 			if conn_status == 'wireless' then
 				widget_icon_name = 'wifi-strength-off'
