@@ -7,20 +7,20 @@
 !
 ! -----------------------------------
 
-Xft.dpi										: 96
+Xft.dpi									: 96
 Xft.antialias							: true
-Xft.hinting								: true
+Xft.hinting							: true
 Xft.rightScrollBar 					: rgb
 Xft.autohint							: false
 Xft.hintstyle							: hintslight
-Xft.lcdfilter								: lcddefault
+Xft.lcdfilter							: lcddefault
 
 ! -
 ! - URxvt
 ! -
 
 URxvt.cursorBlink : 1
-URxvt.font        						: xft:MesloLGS NF:pixelsize=13:antialias=true,xft:MesloLGS NF
+URxvt.font        					: xft:MesloLGS NF:pixelsize=13:antialias=true,xft:MesloLGS NF
 URxvt.boldFont    					: xft:MesloLGS NF:pixelsize=13:weight=bold:antialias=true,xft:MesloLGS NF
 URxvt.italicFont  					: xft:MesloLGS NF:pixelsize=13:weight=italic:antialias=true,xft:MesloLGS NF
 
@@ -34,9 +34,9 @@ URxvt.titleBar            			: true
 URxvt.intensityStyles     		: false
 URxvt.scrollTtyKeypress   	: true
 URxvt.scrollTtyOutput     		: true
-URxvt.cursorUnderline	  	: true
+URxvt.cursorUnderline	  		: true
 URxvt*allow_bold		  			: true
-URxvt*iso14755			  		: False
+URxvt*iso14755			  			: False
 
 ! -
 ! - URxvt Extensions
@@ -44,7 +44,7 @@ URxvt*iso14755			  		: False
 
 URxvt.perl-ext-common		: fullscreen,resize-font,matcher,clipboard
 URxvt.keysym.F11					: perl:fullscreen:switch
-URxvt.keysym.C-Down		: resize-font:smaller
+URxvt.keysym.C-Down			: resize-font:smaller
 URxvt.keysym.C-Up				: resize-font:bigger
 URxvt.url-launcher				: firefox
 URxvt.matcher.button			: 1
@@ -62,7 +62,7 @@ URxvt.matcher.button			: 1
 
 xterm*letterSpace					: 0
 xterm*faceName 					: xft:MesloLGS NF
-xterm*faceSize 						: 10
+xterm*faceSize 					: 10
 xterm*internalBorder 			: 32
 xterm*vt100*geometry 			: 70x13
 xterm*saveLines 					: 16384
@@ -77,20 +77,20 @@ xterm*eightBitInput 				: false
 ! -
 
 UXTerm*termName 				: xterm-256color
-UXTerm*VT100.geometry	: 70x13
+UXTerm*VT100.geometry		: 70x13
 UXTerm*faceName           	: xft:MesloLGS NF
 UXTerm*faceSize		   			: 10
 UXTerm*dynamicColors     	: true
 UXTerm*utf8               			: 2
-UXTerm*eightBitInput      	: true
+UXTerm*eightBitInput      		: true
 UXTerm*saveLines          		: 16384
 UXTerm*scrollKey          		: true
 UXTerm*scrollTtyOutput    	: false
 UXTerm*scrollBar          		: false
-UXTerm*rightScrollBar     	: false
+UXTerm*rightScrollBar     		: false
 UXTerm*jumpScroll         		: true
 UXTerm*multiScroll        		: true
 UXTerm*toolBar            		: false
 UXTerm*boldMode 				: false
-UXTerm*colorBDMode 		: true
+UXTerm*colorBDMode 			: true
 UXTerm*colorBD 					: rgb:3f/3f/3f
