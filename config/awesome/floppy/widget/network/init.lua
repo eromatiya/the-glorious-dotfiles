@@ -36,6 +36,7 @@ local return_button = function()
 	local essid = nil
 
 	local update_notify_no_access = true
+	local notify_no_access_quota = 0
 
 	local startup = true
 	local notify_new_wifi_conn = false
@@ -120,13 +121,11 @@ local return_button = function()
 	local notify_no_access = function(strength)
 		if conn_status == 'wireless' or conn_status == 'wired' then
 						
-			local message = nil
+			local message = 'Internet may not be available or it is too slow right now'
 
 			if conn_status == 'wireless' then
-				message = 'Wi-Fi has no internet access'
 				icon =  widget_icon_dir .. 'wifi-strength-' .. tostring(strength) .. '-alert.svg'
 			elseif conn_status == 'wired' then
-				message = 'Ethernet has no internet access'
 				icon = widget_icon_dir .. 'wired-off.svg'
 			end
 
@@ -204,6 +203,32 @@ local return_button = function()
 		end
 	end
 
+	local check_internet_health = [[
+	status_curl=0
+	status_ping=0
+
+	ip="$(curl --connect-timeout 5 ifconfig.co)"
+	if expr "$ip" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$' >/dev/null; 
+	then
+		status_curl=1
+	else
+		status_curl=0
+	fi
+	
+	packets="$(ping -q -w4 -c4 1.1.1.1 | grep -o "100% packet loss")"
+	if [ ! -z "${packets}" ];
+	then
+		status_ping=0
+	else
+		status_ping=1
+	fi
+
+	if [ $status_ping -eq 0 ] && [ $status_curl -eq 0 ];
+	then
+		echo 'noaccess'
+	fi
+	]]
+
 	local update_net_speed = function()
 
 		awful.spawn.easy_async_with_shell(
@@ -230,24 +255,17 @@ local return_button = function()
 				local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
 
 				awful.spawn.easy_async_with_shell(
-					[[
-					ip="$(curl ifconfig.co)"
-					if expr "$ip" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$' >/dev/null; then
-					  echo "success"
-					else
-					  echo "fail"
-					fi
-					]],
+					check_internet_health,
 					function(stdout)
 						local widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded
-						if stdout:match('fail') then
+						if stdout:match('noaccess') then
 							update_no_access(wifi_strength_rounded)
 							return
 						else
 							update_net_speed()
-									if startup then
-										awesome.emit_signal('system::wifi_connected')
-									end
+							if startup then
+								awesome.emit_signal('system::wifi_connected')
+							end
 							update_notify_no_access = true
 						end
 						widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
@@ -263,14 +281,7 @@ local return_button = function()
 		connected_to_network = true
 
 		awful.spawn.easy_async_with_shell(
-			[[
-			ip="$(curl ifconfig.co)"
-			if expr "$ip" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$' >/dev/null; then
-			  echo "success"
-			else
-			  echo "fail"
-			fi
-			]],
+			check_internet_health,
 			function(stdout)
 				widget_icon_name = 'wired'
 				if stdout:match('fail') then
@@ -315,7 +326,7 @@ local return_button = function()
 	)
 
 	gears.timer {
-		timeout = 5,
+		timeout = 9,
 		autostart = true,
 		call_now = true,
 		callback = function()
