@@ -231,11 +231,16 @@ local return_button = function()
 
 				awful.spawn.easy_async_with_shell(
 					[[
-					ping -q -w3 -c3 8.8.8.8 | grep -o "100% packet loss"
+					ip="$(curl ifconfig.co)"
+					if expr "$ip" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$' >/dev/null; then
+					  echo "success"
+					else
+					  echo "fail"
+					fi
 					]],
 					function(stdout)
-						local widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded 
-						if stdout:match('100%% packet loss') then
+						local widget_icon_name = widget_icon_name .. '-' .. wifi_strength_rounded
+						if stdout:match('fail') then
 							update_no_access(wifi_strength_rounded)
 							return
 						else
@@ -259,11 +264,16 @@ local return_button = function()
 
 		awful.spawn.easy_async_with_shell(
 			[[
-			ping -q -w2 -c2 8.8.8.8 | grep -o "100% packet loss"
+			ip="$(curl ifconfig.co)"
+			if expr "$ip" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$' >/dev/null; then
+			  echo "success"
+			else
+			  echo "fail"
+			fi
 			]],
 			function(stdout)
 				widget_icon_name = 'wired'
-				if stdout:match('100%% packet loss') then
+				if stdout:match('fail') then
 					update_no_access()
 					return
 				else
