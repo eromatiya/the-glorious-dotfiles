@@ -679,23 +679,23 @@ function context_menu() {
 
 	type=$(file --mime-type -b "${CUR_DIR}")
 	
-	if [ -w "${CUR_DIR}" ] && [ -x "${CUR_DIR}" ] && [[ "${type}" == "text/x-shellscript" ]]
+	if [ -w "${CUR_DIR}" ] && [[ "${type}" == "text/x-shellscript" ]]
 	then
-		print_context_menu SHELL_OPTIONS[@]
+		if [ -x "${CUR_DIR}" ];
+		then
+			print_context_menu SHELL_OPTIONS[@]
+		else
+			print_context_menu SHELL_NO_X_OPTIONS[@]
+		fi
 
-	elif [ -w "${CUR_DIR}" ] && [ ! -x "${CUR_DIR}" ] && [[ "${type}" == "text/x-shellscript" ]]
+	elif [[ "${type}" == "application/x-executable" ]] || [[ "${type}" == "application/x-pie-executable" ]]
 	then
-		print_context_menu SHELL_NO_X_OPTIONS[@]
-
-	elif [ -x "${CUR_DIR}" ] && 
-	([[ "${type}" == "application/x-executable" ]] || [[ "${type}" == "application/x-pie-executable" ]])
-	then
-		print_context_menu BIN_OPTIONS[@]
-	
-	elif [ ! -x "${CUR_DIR}" ] && 
-	([[ "${type}" == "application/x-executable" ]] || [[ "${type}" == "application/x-pie-executable" ]])
-	then
-		print_context_menu BIN_NO_X_OPTIONS[@]
+		if [ -x "${CUR_DIR}" ]
+		then
+			print_context_menu BIN_OPTIONS[@]
+		else
+			print_context_menu BIN_NO_X_OPTIONS[@]
+		fi
 
 	elif [[ "${type}" == "text/plain" ]]
 	then
