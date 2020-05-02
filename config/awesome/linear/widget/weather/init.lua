@@ -337,6 +337,8 @@ awesome.connect_signal("widget::weather_update",
 		widget_icon_name = icon_tbl[code]
 
 		weather_icon_widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
+		weather_icon_widget.icon:emit_signal('widget::redraw_needed')
+		
 		weather_desc_temp:set_text(desc)
 		weather_location:set_text(location)
 		weather_sunrise:set_text(sunrise)
