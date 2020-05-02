@@ -29,12 +29,36 @@ NEXT_DIR=""
 SHOW_HIDDEN=false
 
 declare -a SHELL_OPTIONS=(
-	"Run" "Execute in ${TERM_EMU}"
+	"Run"
+	"Execute in ${TERM_EMU}"
 	"Edit"
 	"Open file location in ${TERM_EMU}"
 	"Open file location in ${FILE_MANAGER}"
 	"Move to trash"
 	"Delete"
+	"Back"
+)
+
+declare -a SHELL_NO_X_OPTIONS=(
+	"Edit"
+	"Open file location in ${TERM_EMU}"
+	"Open file location in ${FILE_MANAGER}"
+	"Move to trash"
+	"Delete"
+	"Back"
+)
+
+declare -a BIN_OPTIONS=(
+	"Run"
+	"Execute in ${TERM_EMU}"
+	"Open file location in ${TERM_EMU}"
+	"Open file location in ${FILE_MANAGER}"
+	"Back"
+)
+
+declare -a BIN_NO_X_OPTIONS=(
+	"Open file location in ${TERM_EMU}"
+	"Open file location in ${FILE_MANAGER}"
 	"Back"
 )
 
@@ -71,6 +95,9 @@ declare -a ALL_OPTIONS=()
 # Combine all context menu
 COMBINED_OPTIONS=(
 	"${SHELL_OPTIONS[@]}"
+	"${SHELL_NO_X_OPTIONS[@]}"
+	"${BIN_OPTIONS[@]}"
+	"${BIN_NO_X_OPTIONS[@]}"
 	"${TEXT_OPTIONS[@]}"
 	"${XCF_SVG_OPTIONS[@]}"
 	"${IMAGE_OPTIONS[@]}"
@@ -652,9 +679,23 @@ function context_menu() {
 
 	type=$(file --mime-type -b "${CUR_DIR}")
 	
-	if [ -w "${CUR_DIR}" ] && [[ "${type}" == "text/x-shellscript" ]]
+	if [ -w "${CUR_DIR}" ] && [ -x "${CUR_DIR}" ] && [[ "${type}" == "text/x-shellscript" ]]
 	then
 		print_context_menu SHELL_OPTIONS[@]
+
+	elif [ -w "${CUR_DIR}" ] && [ ! -x "${CUR_DIR}" ] && [[ "${type}" == "text/x-shellscript" ]]
+	then
+		print_context_menu SHELL_NO_X_OPTIONS[@]
+
+	elif [ -x "${CUR_DIR}" ] && 
+	([[ "${type}" == "application/x-executable" ]] || [[ "${type}" == "application/x-pie-executable" ]])
+	then
+		print_context_menu BIN_OPTIONS[@]
+	
+	elif [ ! -x "${CUR_DIR}" ] && 
+	([[ "${type}" == "application/x-executable" ]] || [[ "${type}" == "application/x-pie-executable" ]])
+	then
+		print_context_menu BIN_NO_X_OPTIONS[@]
 
 	elif [[ "${type}" == "text/plain" ]]
 	then
