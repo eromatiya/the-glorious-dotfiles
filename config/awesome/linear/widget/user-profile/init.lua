@@ -11,10 +11,11 @@ local naughty = require('naughty')
 
 local dpi = beautiful.xresources.apply_dpi
 
+local apps = require('configuration.apps')
 local clickable_container = require('widget.clickable-container')
 
 local config_dir = gears.filesystem.get_configuration_dir()
-local widget_icon_dir = config_dir .. 'widget/user-profile/icons/'
+local widget_icon_dir = config_dir .. 'configuration/user-profile/'
 
 local user_icon_dir = '/var/lib/AccountsService/icons/'
 
@@ -55,7 +56,7 @@ local profile_imagebox = wibox.widget {
 		id = 'icon',
 		forced_height = dpi(45),
 		forced_width = dpi(45),
-		image = widget_icon_dir .. 'user' .. '.svg',
+		image = widget_icon_dir .. 'default' .. '.svg',
 		clip_shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius) end,
 		widget = wibox.widget.imagebox,
 		resize = true
@@ -117,83 +118,40 @@ local uptime_time = wibox.widget {
 
 -- Get profile picture
 
-local user_jpg_checker = [[
-if test -f ]] .. widget_icon_dir .. 'user.jpg' .. [[; then print 'yes'; fi
-]]
-
-awful.spawn.easy_async_with_shell(user_jpg_checker, function(already)
-
-	if already:match('yes') then
-		
-		-- Update imagebox
-		profile_imagebox.icon:set_image(widget_icon_dir .. 'user.jpg')
-	
-	else
-
-		-- Get username first
-		awful.spawn.easy_async_with_shell('whoami', function(stdout)
-
-			local username = stdout:gsub('%W', '')
-
-			local check_profile_pic_cmd = [[
-			if test -f ]] .. user_icon_dir .. username .. [[; then print 'detected'; fi
-			]]
-
-
-			-- Check AccountsService if user profile image is available
-			awful.spawn.easy_async_with_shell(check_profile_pic_cmd, function(status) 
-
-
-			-- If image exist
-			if status:match('detected') then
-
-				-- Copy it to widget icon folder as `user.jpg`
-				copy_profile_image_cmd = [[
-				cp ]] .. user_icon_dir .. username .. [[ ]] .. widget_icon_dir .. [[user.jpg
-				]]
-
-				-- Copy
-				awful.spawn.easy_async(copy_profile_image_cmd)
-
-
-				-- Update imagebox with a delay
-				gears.timer.start_new(1, function() 
-					profile_imagebox.icon:set_image(widget_icon_dir .. 'user.jpg')
-				end)
-
+local update_profile_image = function()
+	awful.spawn.easy_async_with_shell(
+		apps.bins.update_profile,
+		function(stdout)
+			stdout = stdout:gsub('%\n','')
+			if not stdout:match("default") then
+				profile_imagebox.icon:set_image(stdout)
 			else
-
-				-- No image in AccountsService, use the default picture
-				profile_imagebox.icon:set_image(widget_icon_dir .. 'user' .. '.svg')
-
+				profile_imagebox.icon:set_image(widget_icon_dir .. 'default.svg')
 			end
 
-			end, false)
-		end, false)
-	end
-end, false)
+		end
+	)
+end
 
+update_profile_image()
 
 -- Get username
 
-awful.spawn.easy_async_with_shell('whoami', function(stdout) 
+awful.spawn.easy_async_with_shell(
+	'whoami',
+	function(stdout) 
+		i_am_who = stdout:gsub('%W', '')
 
-	i_am_who = stdout:gsub('%W', '')
+		-- Capitalize first letter
+		-- i_am_who = i_am_who:sub(1,1):upper() .. i_am_who:sub(2)
 
-	-- Capitalize first letter
-	-- i_am_who = i_am_who:sub(1,1):upper() .. i_am_who:sub(2)
-
-	awful.spawn.easy_async_with_shell('hostname', function(host)
-
-		host_who = host:gsub('%W', '')
-		
-		profile_name.markup = i_am_who .. '@' .. host_who
-
-
-	end, false)
-
-
-end, false)
+		awful.spawn.easy_async_with_shell('hostname', function(host)
+			host_who = host:gsub('%W', '')
+			
+			profile_name.markup = i_am_who .. '@' .. host_who
+		end
+	)
+end)
 
 -- Get distro name
 
@@ -201,28 +159,33 @@ local get_distro_name_cmd = [[
 cat /etc/os-release | awk 'NR==1'| awk -F '"' '{print $2}'
 ]]
 
-awful.spawn.easy_async_with_shell(get_distro_name_cmd, function(out)
+awful.spawn.easy_async_with_shell(
+	get_distro_name_cmd,
+	function(stdout)
+		distroname = stdout:gsub('%\n', '')
+		distro_name.markup = distroname
+	end
+)
 
-	distroname = out:gsub('%\n', '')
-	distro_name.markup = distroname
-
-end)
-
-awful.spawn.easy_async_with_shell('uname -r', function(out)
-
-	kname = out:gsub('%\n', '')
-	kernel_version.markup = kname
-
-end)
+awful.spawn.easy_async_with_shell(
+	'uname -r',
+	function(stdout)
+		kname = stdout:gsub('%\n', '')
+		kernel_version.markup = kname
+	end
+)
 
 
 -- Get and update uptime
 
 local update_uptime = function()
-	awful.spawn.easy_async_with_shell("uptime -p", function(out)
-		uptime = out:gsub('%\n','')
-		uptime_time.markup = uptime		
-	end)
+	awful.spawn.easy_async_with_shell(
+		"uptime -p",
+		function(stdout)
+			uptime = stdout:gsub('%\n','')
+			uptime_time.markup = uptime		
+		end
+	)
 end
 
 local uptime_updater_timer = gears.timer{
@@ -272,10 +235,11 @@ local user_profile = wibox.widget {
 }
 
 -- Update uptime on hover
-user_profile:connect_signal('mouse::enter', function() 
-	update_uptime()
-end)
-
-
+user_profile:connect_signal(
+	'mouse::enter',
+	function() 
+		update_uptime()
+	end
+)
 
 return user_profile

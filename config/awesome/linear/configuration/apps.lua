@@ -60,6 +60,7 @@ return {
 
 	bins = {
 		full_screenshot = bin_dir .. 'snap full',              					                    					-- Full Screenshot
-		area_screenshot = bin_dir .. 'snap area'			                                        					-- Area Selected Screenshot
+		area_screenshot = bin_dir .. 'snap area',			                                        					-- Area Selected Screenshot
+		update_profile  = bin_dir .. 'profile-image'
 	}
 }

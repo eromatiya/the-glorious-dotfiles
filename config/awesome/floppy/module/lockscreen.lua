@@ -13,7 +13,7 @@ local apps = require('configuration.apps')
 
 local filesystem = require('gears.filesystem')
 local config_dir = filesystem.get_configuration_dir()
-local widget_icon_dir = config_dir .. '/widget/user-profile/icons/'
+local widget_icon_dir = config_dir .. 'configuration/user-profile/'
 
 package.cpath = package.cpath .. ";" .. config_dir .. "/library/?.so;"
 local pam = require('liblua_pam')
@@ -96,37 +96,37 @@ local locker = function(s)
 
 	local profile_imagebox = wibox.widget {
 		id = 'user_icon',
-		image = widget_icon_dir .. 'user.svg',
+		image = widget_icon_dir .. 'default' .. '.svg',
+		resize = true,
 		forced_height = dpi(100),
 		forced_width = dpi(100),
 		clip_shape = gears.shape.circle,
-		widget = wibox.widget.imagebox,
-		resize = true
+		widget = wibox.widget.imagebox
 	}
 
 	local update_profile_pic = function()
+		awful.spawn.easy_async_with_shell(
+			apps.bins.update_profile,
+			function(stdout)
+				stdout = stdout:gsub('%\n','')
+				if not stdout:match("default") then
+					profile_imagebox:set_image(stdout)
+				else
+					profile_imagebox:set_image(widget_icon_dir .. 'default.svg')
+				end
 
-		local user_jpg_checker = [[
-		if test -f ]] .. widget_icon_dir .. 'user.jpg' .. [[; then print 'yes'; fi
-		]]
-
-		awful.spawn.easy_async_with_shell(user_jpg_checker, function(stdout)
-
-			if stdout:match('yes') then
-				profile_imagebox:set_image(widget_icon_dir .. 'user' .. '.jpg')
-			else
-				profile_imagebox:set_image(widget_icon_dir .. 'user' .. '.svg')
 			end
-			
-			profile_imagebox:emit_signal('widget::redraw_needed')
-		end)
+		)
 	end
 
 	-- Update image
-	gears.timer.start_new(5, function() 
-		update_profile_pic()
-	end)
-
+	gears.timer.start_new(
+		2, 
+		function() 
+			update_profile_pic()
+		end
+	)
+	
 	local time = wibox.widget.textclock(
 		'<span font="SF Pro Display Bold 56">%H:%M</span>',
 		1
@@ -165,7 +165,7 @@ local locker = function(s)
 	}
 
 	local wanted_image = wibox.widget {
-		image  = widget_icon_dir .. 'user.svg',
+		image  = widget_icon_dir .. 'default.svg',
 		resize = true,
 		forced_height = dpi(100),
 		clip_shape = gears.shape.rounded_rect,
