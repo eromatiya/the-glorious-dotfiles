@@ -9,6 +9,10 @@ local icons = require('theme.icons')
 local apps = require('configuration.apps')
 local clickable_container = require('widget.clickable-container')
 
+local filesystem = require('gears.filesystem')
+local config_dir = filesystem.get_configuration_dir()
+local widget_icon_dir = config_dir .. 'configuration/user-profile/'
+
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or dpi(90)
 
@@ -20,19 +24,44 @@ local user_name = wibox.widget {
 	widget = wibox.widget.textbox
 }
 
-awful.spawn.easy_async_with_shell("whoami", function(stdout) 
-	if stdout then
-		-- Remove new line
-		local username = stdout:gsub('%\n','')
+local profile_imagebox = wibox.widget {
+	image = widget_icon_dir .. 'default.svg',
+	resize = true,
+	forced_height = dpi(140),
+	clip_shape = gears.shape.circle,
+	widget = wibox.widget.imagebox
+}
 
-		-- Capitalize first letter of username
-		-- Comment it if you're not using your name as your username
-		username = username:sub(1, 1):upper() .. username:sub(2)
+local update_profile_pic = function()
+	awful.spawn.easy_async_with_shell(
+		apps.bins.update_profile,
+		function(stdout)
+			stdout = stdout:gsub('%\n','')
+			if not stdout:match("default") then
+				profile_imagebox:set_image(stdout)
+			else
+				profile_imagebox:set_image(widget_icon_dir .. 'default.svg')
+			end
+		end
+	)
+end
 
-		user_name:set_markup('Choose wisely,' .. ' ' .. username .. '!')
-	end
-end, false)
+update_profile_pic()
 
+local update_user_name = function()
+	awful.spawn.easy_async_with_shell(
+		"printf $(whoami)",
+		function(stdout) 
+			if stdout then
+				local username = stdout:gsub('%\n','')
+				username = username:sub(1, 1):upper() .. username:sub(2)
+				user_name:set_markup('Choose wisely,' .. ' ' .. username .. '!')
+			end
+		end
+	)
+end
+
+update_user_name()
 
 local buildButton = function(icon, name)
 
@@ -58,7 +87,7 @@ local buildButton = function(icon, name)
 				bg = beautiful.groups_bg,
 				widget = wibox.container.background
 			},
-			shape = gears.shape.rounded_rect,
+			shape = gears.shape.circle,
 			forced_width = icon_size,
 			forced_height = icon_size,
 			widget = clickable_container
@@ -262,16 +291,49 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		{
 			nil,
 			{
-				user_name,
 				{
-					poweroff,
-					reboot,
-					suspend,
-					exit,
-					lock,
-					layout = wibox.layout.fixed.horizontal
+					nil,
+					{
+						{
+							bg = beautiful.groups_bg,
+						    forced_width = dpi(150),
+						    forced_height = dpi(150),
+						    shape = gears.shape.circle,
+						    widget = wibox.container.background
+						},
+						{
+							layout = wibox.layout.align.vertical,
+							expand = 'none',
+							nil,
+							{
+								layout = wibox.layout.align.horizontal,
+								expand = 'none',
+								nil,
+								profile_imagebox,
+								nil
+							},
+							nil
+						},
+						layout = wibox.layout.stack
+					},
+					nil,
+					expand = 'none',
+					layout = wibox.layout.align.horizontal
 				},
-				spacing = dpi(40),
+				{
+					user_name,
+					{
+						poweroff,
+						reboot,
+						suspend,
+						exit,
+						lock,
+						layout = wibox.layout.fixed.horizontal
+					},
+					spacing = dpi(40),
+					layout = wibox.layout.fixed.vertical
+				},
+				spacing = dpi(20),
 				layout = wibox.layout.fixed.vertical
 			},
 			nil,
@@ -282,6 +344,5 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		expand = 'none',
 		layout = wibox.layout.align.vertical
 	}
-
 
 end)
