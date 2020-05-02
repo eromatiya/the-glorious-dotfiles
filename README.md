@@ -213,13 +213,17 @@ Some of these are outdated, so it is better if you try them yourself.
 | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/linear/busier.png) |
 
+| Lockscreen with **PAM Integration** |
+| --- |
+| ![Screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/floppy/lockscreen.png) |
+
+| Exit Screen |
+| --- |
+| ![Screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/modules/exitscreen.png) |
+
 | Multihead |
 | --- |
 | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png) |
-
-| Lockscreen with **PAM Integration**|
-| --- |
-| ![Screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/floppy/lockscreen.png) |
 
 | Rofi File Browsing | Rofi Context Menu |
 | --- | --- |
