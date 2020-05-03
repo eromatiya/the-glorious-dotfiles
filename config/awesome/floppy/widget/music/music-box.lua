@@ -23,6 +23,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	local music_box_margin = dpi(5)
 	local music_box_height = dpi(375)
 	local music_box_width = dpi(260)
+	local music_box_x = nil
 
 
 	s.musicpop = awful.popup {
@@ -107,11 +108,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		height = s.geometry.height
 	}
 
-
-	require('widget.music.get-margin')(s, music_box_width, 15)
-
-
-	toggle_music_box = function()
+	local toggle_music_box = function(type)
 
 		local focused = awful.screen.focused()
 		local music_box = focused.musicpop
@@ -122,19 +119,35 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			music_box.visible = not music_box.visible
 
 		else
-			music_backdrop.visible = true
-			music_box.visible = true
 
-			awful.placement.top_right(music_box, { margins = { 
-				top = dpi(focused.margin_y) or dpi(35), 
-				right = dpi(focused.margin_x) or dpi(95)
-			}, 
-			parent = focused 
-			})
+			if type == 'keyboard' then
+				music_backdrop.visible = true
+				music_box.visible = true
+
+				awful.placement.top_right(music_box, { margins = { 
+					top = dpi(5), 
+					right = dpi(music_box_x or 5)
+				},
+				honor_workarea = true
+				})
+			else
+				local widget_button = mouse.current_widget_geometry
+				
+				music_backdrop.visible = true
+				music_box:move_next_to(widget_button)
+				music_box_x = (focused.geometry.width - music_box.x) - music_box_width
+			end
 
 		end
 
 	end
+
+	awesome.connect_signal(
+		'widget::music',
+		function(type)
+			toggle_music_box(type)
+		end
+	)
 
 
 	s.backdrop_music:buttons(
