@@ -41,7 +41,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		offset = dpi(5),
 		shape = gears.shape.rectangle,
 		bg = beautiful.transparent,
-		preferred_anchors = 'middle',
+		preferred_anchors = {'middle', 'back', 'front'},
 		preferred_positions = {'left', 'right', 'top', 'bottom'},
 
 	}

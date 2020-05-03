@@ -1,11 +1,9 @@
 local wibox = require('wibox')
 local dpi = require('beautiful').xresources.apply_dpi
 
-
 local song_info = {}
 
-
-music_title = wibox.widget {
+song_info.music_title = wibox.widget {
     layout = wibox.layout.align.horizontal,
     expand = 'none',
     nil,
@@ -31,8 +29,7 @@ music_title = wibox.widget {
 	nil
 }
 
-
-music_artist = wibox.widget {
+song_info.music_artist = wibox.widget {
     layout = wibox.layout.align.horizontal,
     expand = 'none',
     nil,
@@ -57,18 +54,11 @@ music_artist = wibox.widget {
 	nil,
 }
 
-
-music_info = wibox.widget {
+song_info.music_info = wibox.widget {
 	expand = 'none',
 	layout = wibox.layout.fixed.vertical,
-	music_title,
-	music_artist,
+	song_info.music_title,
+	song_info.music_artist,
 }
-
-
-song_info.music_title = music_title
-song_info.music_artist = music_artist
-song_info.music_info = music_info
-
 
 return song_info

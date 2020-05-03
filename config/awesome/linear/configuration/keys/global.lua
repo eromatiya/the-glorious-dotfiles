@@ -289,7 +289,7 @@ local globalKeys = awful.util.table.join(
         'm',
         function()
             if awful.screen.focused().musicpop then
-                _G.toggle_music_box()
+                awesome.emit_signal('widget::music', 'keyboard')
             end
         end,
         {description = "toggle music widget", group = 'launcher'}
