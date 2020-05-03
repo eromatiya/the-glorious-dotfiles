@@ -7,43 +7,26 @@ awesome_dir="${HOME}/.config/awesome/"
 user_profile_dir="${awesome_dir}/configuration/user-profile/"
 
 accountsservice_user_icons="/var/lib/AccountsService/icons/${USER}"
-face_user_icons="${HOME}/.face"
 
 # Check if user image exists
-if [ -f "${user_profile_dir}${USER}"* ];
+if [ -f "${user_profile_dir}${USER}.png" ];
 then
-	printf "${user_profile_dir}${USER}"*
+	if [ -f "${accountsservice_user_icons}" ];
+	then
+		if ! cmp --silent "${user_profile_dir}${USER}.png" "${accountsservice_user_icons}";
+		then
+			cp "${accountsservice_user_icons}" "${user_profile_dir}${USER}.png"
+			printf "${user_profile_dir}${USER}.png"
+		fi
+	else
+		printf "${user_profile_dir}${USER}.png"
+	fi
 	exit;
 else
-	if [ -f "${accountsservice_user_icons}" ] || [ -f "${face_user_icons}" ];
+	if [ -f "${accountsservice_user_icons}" ];
 	then
-		ext=''
-		profile_target=''
-
-		if [ -f "${face_user_icons}" ];
-		then
-			profile_target="${face_user_icons}"
-		else
-			profile_target="${accountsservice_user_icons}"
-		fi
-
-		mime_type="$(file --mime-type -b "${profile_target}")"
-		case "${mime_type}" in
-			"image/jpeg" )
-				ext=".jpg"
-				;;
-			"image/png" )
-				ext=".png"
-				;;
-			"image/svg+xml" )
-				ext=".svg"
-				;;
-			* )
-				ext=".jpg"
-				;;
-		esac
-		cp "${profile_target}" "${user_profile_dir}${USER}${ext}"
-		printf "${user_profile_dir}${USER}${ext}"
+		cp "${accountsservice_user_icons}" "${user_profile_dir}${USER}.png"
+		printf "${user_profile_dir}${USER}.png"
 		exit;
 	else
 		printf "default"
