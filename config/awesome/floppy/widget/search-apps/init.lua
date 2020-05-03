@@ -54,7 +54,7 @@ local return_button = function()
 		            if focused.right_panel then
 		                focused.right_panel:HideDashboard()
 		            end
-					awful.util.spawn(apps.default.rofiappmenu, false)
+					awful.spawn(apps.default.rofiappmenu, false)
 				end
 			)
 		)
