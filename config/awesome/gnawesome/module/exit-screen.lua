@@ -16,9 +16,17 @@ local widget_icon_dir = config_dir .. 'configuration/user-profile/'
 -- Appearance
 local icon_size = beautiful.exit_screen_icon_size or dpi(90)
 
-local user_name = wibox.widget {
-	markup = 'Choose wisely, $USER!',
+local greeter_message = wibox.widget {
+	markup = 'Choose wisely!',
 	font = 'SF Pro Text UltraLight 48',
+	align = 'center',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
+local profile_name = wibox.widget {
+	markup = 'user@hostname',
+	font = 'SF Pro Text Regular 12',
 	align = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -27,9 +35,17 @@ local user_name = wibox.widget {
 local profile_imagebox = wibox.widget {
 	image = widget_icon_dir .. 'default.svg',
 	resize = true,
-	forced_height = dpi(140),
+	forced_height = dpi(110),
 	clip_shape = gears.shape.circle,
 	widget = wibox.widget.imagebox
+}
+
+local profile_imagebox_bg = wibox.widget {
+	bg = beautiful.groups_bg,
+    forced_width = dpi(120),
+    forced_height = dpi(120),
+    shape = gears.shape.circle,
+    widget = wibox.container.background
 }
 
 local update_profile_pic = function()
@@ -54,8 +70,19 @@ local update_user_name = function()
 		function(stdout) 
 			if stdout then
 				local username = stdout:gsub('%\n','')
+	
+				awful.spawn.easy_async_with_shell(
+					"printf $(hostname)",
+					function(stdout) 
+						local hostname = stdout:gsub('%\n','')
+						username = username:sub(1, 1):lower() .. username:sub(2)
+						profile_name:set_markup(username .. '@' .. hostname)
+					end
+				)
+
+				-- Update Greeter and Capitalize Username
 				username = username:sub(1, 1):upper() .. username:sub(2)
-				user_name:set_markup('Choose wisely,' .. ' ' .. username .. '!')
+				greeter_message:set_markup('Choose wisely, ' .. username .. '!')
 			end
 		end
 	)
@@ -294,46 +321,55 @@ screen.connect_signal("request::desktop_decoration", function(s)
 				{
 					nil,
 					{
+						layout = wibox.layout.fixed.vertical,
+						spacing = dpi(5),
 						{
-							bg = beautiful.groups_bg,
-						    forced_width = dpi(150),
-						    forced_height = dpi(150),
-						    shape = gears.shape.circle,
-						    widget = wibox.container.background
-						},
-						{
-							layout = wibox.layout.align.vertical,
-							expand = 'none',
-							nil,
+							profile_imagebox_bg,
 							{
-								layout = wibox.layout.align.horizontal,
+								layout = wibox.layout.align.vertical,
 								expand = 'none',
 								nil,
-								profile_imagebox,
+								{
+									layout = wibox.layout.align.horizontal,
+									expand = 'none',
+									nil,
+									profile_imagebox,
+									nil
+								},
 								nil
 							},
-							nil
+							layout = wibox.layout.stack
 						},
-						layout = wibox.layout.stack
+						profile_name
 					},
 					nil,
 					expand = 'none',
 					layout = wibox.layout.align.horizontal
 				},
 				{
-					user_name,
+					layout = wibox.layout.align.horizontal,
+					expand = 'none',
+					nil,
 					{
-						poweroff,
-						reboot,
-						suspend,
-						exit,
-						lock,
-						layout = wibox.layout.fixed.horizontal
+						{
+							greeter_message,
+							{
+								poweroff,
+								reboot,
+								suspend,
+								exit,
+								lock,
+								layout = wibox.layout.fixed.horizontal
+							},
+							spacing = dpi(40),
+							layout = wibox.layout.fixed.vertical
+						},
+						spacing = dpi(40),
+						layout = wibox.layout.fixed.vertical
 					},
-					spacing = dpi(40),
-					layout = wibox.layout.fixed.vertical
+					nil
 				},
-				spacing = dpi(20),
+				spacing = dpi(40),
 				layout = wibox.layout.fixed.vertical
 			},
 			nil,
