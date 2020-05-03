@@ -264,6 +264,7 @@ awesome.connect_signal('widget::weather_fetch', function()
 			local details = weather_data_tbl['details']
 
 			local weather_description = details .. ', ' .. temperature .. weather_temperature_symbol
+			local weather_location = location .. ', ' .. country
 			
 			if #weather_description >= 33 then
 				weather_desc_temp:set_font('SF Pro Text Bold 11')
@@ -274,7 +275,7 @@ awesome.connect_signal('widget::weather_fetch', function()
 			awesome.emit_signal("widget::weather_update", 
 				icon_code, 
 				weather_description, 
-				location, 
+				weather_location, 
 				sunrise, 
 				sunset, 
 				update_time
