@@ -16,8 +16,8 @@ then
 		if ! cmp --silent "${user_profile_dir}${USER}.png" "${accountsservice_user_icons}";
 		then
 			cp "${accountsservice_user_icons}" "${user_profile_dir}${USER}.png"
-			printf "${user_profile_dir}${USER}.png"
 		fi
+		printf "${user_profile_dir}${USER}.png"
 	else
 		printf "${user_profile_dir}${USER}.png"
 	fi
