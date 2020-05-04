@@ -62,10 +62,8 @@ end
 -- Add empty notification message on start-up
 notifbox_layout:insert(1, empty_notifbox)
 
-
--- Connect to naughty
-naughty.connect_signal("request::display", function(n)
-
+local notifbox_pass = function(n, appicon, notifbox_color)
+	
 	-- If notifbox_layout has a child and remove_notifbox_empty
 	if #notifbox_layout.children == 1 and remove_notifbox_empty then
 		-- Reset layout
@@ -73,7 +71,38 @@ naughty.connect_signal("request::display", function(n)
 		remove_notifbox_empty = false
 	end
 
+	-- Throw data from naughty to notifbox_layout 
+	-- Generates notifbox
+	notifbox_box = require('widget.notif-center.build-notifbox.notifbox-builder')
+	notifbox_layout:insert(
+		1,
+		notifbox_box(
+			n, 
+			appicon, 
+			n.title, 
+			n.message, 
+			n.app_name, 
+			notifbox_color
+		)
+	)
+end
 
+local naughty_expired = function(n, appicon, notifbox_color)
+	focused = awful.screen.focused()
+	n:connect_signal(
+		'destroyed',
+		function(self, reason, keep_visble)
+			if reason == 1 then
+				notifbox_pass(n, appicon, notifbox_color)
+			elseif reason == 2 and (_G.dont_disturb or (focused.right_panel and focused.right_panel.visible)) then
+				notifbox_pass(n, appicon, notifbox_color)
+			end
+		end
+	)
+end
+
+-- Connect to naughty
+naughty.connect_signal("request::display", function(n)
 	-- Set background color based on urgency level
 	local notifbox_color = beautiful.groups_bg
 	if n.urgency == 'critical' then
@@ -86,18 +115,7 @@ naughty.connect_signal("request::display", function(n)
 		appicon = widget_icon_dir .. 'new-notif' .. '.svg'
 	end
 
-	-- Throw data from naughty to notifbox_layout 
-	-- Generates notifbox
-	notifbox_box = require('widget.notif-center.build-notifbox.notifbox-builder')
-	notifbox_layout:insert(1, 
-		notifbox_box(
-			n, 
-			appicon, 
-			n.title, 
-			n.message, 
-			n.app_name, 
-			notifbox_color)
-		)
+	naughty_expired(n, appicon, notifbox_color)
 end)
 
 return notifbox_layout
