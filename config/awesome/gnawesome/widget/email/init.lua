@@ -9,20 +9,15 @@ local dpi = beautiful.xresources.apply_dpi
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/email/icons/'
 
--- Retrieve credentials
 local secrets = require('configuration.secrets')
 
-local mail_counter = 0
-
-local email_state = nil
-
-
--- Credentials
 local email_account   = secrets.email.address
 local app_password    = secrets.email.app_password
 local imap_server     = secrets.email.imap_server
 local port            = secrets.email.port
 
+local unread_email_count = 0
+local startup_show = true
 
 local email_icon_widget = wibox.widget {
 	{
@@ -36,14 +31,6 @@ local email_icon_widget = wibox.widget {
 	layout = wibox.layout.fixed.horizontal
 }
 
--- local email_header = wibox.widget {
---   text   = "Email",
---   font   = 'SF Pro Text Regular 14',
---   align  = 'center',
---   valign = 'center',
---   widget = wibox.widget.textbox
--- }
-
 local email_unread_text = wibox.widget {
 	text = 'Unread emails:',
 	font = 'SF Pro Text Bold 10',
@@ -52,62 +39,116 @@ local email_unread_text = wibox.widget {
 	widget = wibox.widget.textbox
 }
 
-local email_count = wibox.widget {
-	text = '0',
+local email_unread_count = wibox.widget {
+	markup = '0',
 	font = 'SF Pro Text Regular 10',
+	align = 'left',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
+local email_from_text = wibox.widget {
+	font = 'SF Pro Text Bold 10',
+	markup = 'From:',
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
 }
 
 local email_recent_from = wibox.widget {
-	-- text = 'From:',
 	font = 'SF Pro Text Regular 10',
-	markup = '<span font="SF Pro Text Bold 10">From: </span>loading@stdout.sh',
+	markup = 'loading@stdout.sh',
+	align = 'left',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
+local email_subject_text = wibox.widget {
+	font = 'SF Pro Text Bold 10',
+	markup = 'Subject:',
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
 }
 
 local email_recent_subject = wibox.widget {
-	markup = '<span font="SF Pro Text Bold 10">Subject: </span>Loading data',
-	-- font = 'SF Pro Text Regular 10',
+	font = 'SF Pro Text Regular 10',
+	markup = 'Loading data',
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
 }
 
--- Show email count
-local check_count = [[
-# A simple python script to get email count wrapped inside bash wrapped inside lua lol
-# Make sure to encrypt this
-python3 - <<END
-import imaplib
-import re
 
-M=imaplib.IMAP4_SSL("]] .. imap_server .. [[", ]] .. port .. [[)
-M.login("]] .. email_account .. [[","]] .. app_password .. [[")
+local email_report = wibox.widget{
+	{
+		{
+			layout = wibox.layout.fixed.horizontal,
+			spacing = dpi(10),
+			{
+				layout = wibox.layout.align.vertical,
+				expand = 'none',
+				nil,
+				email_icon_widget,
+				nil
+			},
+			{
+				layout = wibox.layout.align.vertical,
+				expand = 'none',
+				nil,
+				{
+					layout = wibox.layout.fixed.vertical,
+					{
+						layout = wibox.layout.fixed.horizontal,
+						spacing = dpi(5),
+						email_unread_text,
+						email_unread_count
+					},
+					{
+						layout = wibox.layout.fixed.horizontal,
+						spacing = dpi(5),
+						email_from_text,
+						email_recent_from,
+					},
+					{
+						layout = wibox.layout.fixed.horizontal,
+						spacing = dpi(5),
+						email_subject_text,
+						email_recent_subject
+					}
+				},
+				nil
+			}
+		},
+		margins = dpi(10),
+		widget = wibox.container.margin
+	},
+	forced_height = dpi(92),
+	bg = beautiful.groups_bg,
+	shape = function(cr, width, height)
+		gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius)
+	end,
+	widget = wibox.container.background
+}
 
-status, counts = M.status("INBOX","(MESSAGES UNSEEN)")
+local email_details_tooltip = awful.tooltip
+{
+	text = 'Loading...',
+	objects = {email_icon_widget},
+	mode = 'outside',
+	align = 'right',
+	preferred_positions = {'right', 'left', 'top', 'bottom'},
+	margin_leftright = dpi(8),
+	margin_topbottom = dpi(8)
+}
 
-if status == "OK":
-	unread = re.search(r'UNSEEN\s(\d+)', counts[0].decode('utf-8')).group(1)
-else:
-	unread = "N/A"
-
-print (unread)
-END
-]]
-
-
--- Script to show unread emails in tooltip
-local get_recent_unread = [[
-# A simple python script to get unread emails wrapped inside bash wrapped inside lua lol
-# Make sure to encrypt this
+local fetch_email_command = [[
 python3 - <<END
 import imaplib
 import email
 import datetime
+import re
+import sys
 
 def process_mailbox(M):
 	rv, data = M.search(None, "(UNSEEN)")
@@ -137,219 +178,185 @@ def process_mailbox(M):
 			#             print msg.get_payload()
 
 
-M=imaplib.IMAP4_SSL("]] .. imap_server .. [[", ]] .. port .. [[)
-M.login("]] .. email_account .. [[","]] .. app_password .. [[")
+try:
+	M=imaplib.IMAP4_SSL("]] .. imap_server .. [[", ]] .. port .. [[)
+	M.login("]] .. email_account .. [[","]] .. app_password .. [[")
 
-rv, data = M.select("INBOX")
-if rv == 'OK':
+	status, counts = M.status("INBOX","(MESSAGES UNSEEN)")
+
+	rv, data = M.select("INBOX")
+	if rv == 'OK':
+		unread = re.search(r'UNSEEN\s(\d+)', counts[0].decode('utf-8')).group(1)
+		print ("Unread Count: " + unread)
 		process_mailbox(M)
-M.close()
-M.logout()
+
+	M.close()
+	M.logout()
+
+except Exception as e:
+	if e:
+		print (e)
 
 END
 ]]
 
--- Widget layout
-local email_report = wibox.widget{
-	{
-		{
-			layout = wibox.layout.fixed.horizontal,
-			spacing = dpi(10),
-			{
-				layout = wibox.layout.align.vertical,
-				expand = 'none',
-				nil,
-				email_icon_widget,
-				nil
-			},
-			{
-				layout = wibox.layout.align.vertical,
-				expand = 'none',
-				nil,
-				{
-					layout = wibox.layout.fixed.vertical,
-					{
-						layout = wibox.layout.fixed.horizontal,
-						spacing = dpi(5),
-						email_unread_text,
-						email_count
-					},
-					email_recent_from,
-					email_recent_subject
-				},
-				nil
-			}
-		},
-		margins = dpi(10),
-		widget = wibox.container.margin
-	},
-	forced_height = dpi(92),
-	bg = beautiful.groups_bg,
-	shape = function(cr, width, height)
-		gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius) end,
-	widget = wibox.container.background
-}
+local notify_all_unread_email = function(email_data)
+	
+	local unread_counter = email_data:match('Unread Count: (.-)From:'):sub(1, -2)
 
--- Create a notification
-local notify_new_email = function(count, details)
-	if tonumber(count) > tonumber(mail_counter) then
+	email_data = email_data:match('(From:.*)'):sub(1, -2)
+	email_data = gears.string.xml_unescape(email_data)
+
+	local title = nil
+
+	if tonumber(unread_email_count) > 1 then
+		title = 'You have ' .. unread_counter .. ' unread emails!'
+	else
+		title = 'You have ' .. unread_counter .. ' unread email!'
+	end
+	
+	naughty.notification ({
+		app_name = 'Email',
+		title = title,
+		message = email_data,
+		timeout = 200,
+		icon = widget_icon_dir .. 'email-unread' .. '.svg'
+	})
+end
+
+local notify_new_email = function(count, from, subject)
+	if not startup_show and (tonumber(count) > tonumber(unread_email_count)) then
+		unread_email_count = tonumber(count)
+
+		local message = "From: " .. from ..
+		"\nSubject: " .. subject
 		
-		details = details:gsub("<(.-)>", ''):sub(1, -2)
-		mail_counter = count
-
-		local title = "You have an unread email!"
-
-		if tonumber(mail_counter) > 1 then
-			title = "You have " .. mail_counter .. " unread emails!"
-		end
-
-		naughty.notification({ 
-			title = title,
-			message = details,
+		naughty.notification ({
 			app_name = 'Email',
+			title = 'You have a new unread email!',
+			message = message,
 			timeout = 200,
 			icon = widget_icon_dir .. 'email-unread' .. '.svg'
 		})
 	else
-		mail_counter = count
-	end
-end
-
--- A tooltip that will show all the unread emails
-local email_details_tooltip = awful.tooltip
-{
-	text = 'Loading...',
-	objects = {email_icon_widget},
-	mode = 'outside',
-	align = 'right',
-	preferred_positions = {'left', 'right', 'top', 'bottom'},
-	margin_leftright = dpi(8),
-	margin_topbottom = dpi(8)
-}
-
--- Set text for missing credentials and no internet connection
-local set_error_msg = function(status)
-
-	if status == 'no-credentials' then
-		email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'message@stderr.sh'
-		email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Credentials are missing!'
-		email_details_tooltip.markup = 'Missing credentials!'
-		return
-	end
-
-	if status == 'no-network' then
-		email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'message@stderr.sh'
-		email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Check network connection!'
-		email_details_tooltip.markup = 'No internet connection!'
-		return
+		unread_email_count = tonumber(count)
 	end
 
 end
 
--- Update textbox to show recent email details
-local set_email_details = function(count)
-	awful.spawn.easy_async_with_shell(get_recent_unread, function(stdout)
-		if not (stdout == nil or stdout == '') then
-
-			details = stdout:sub(1, -2)
-
-			local text_from = details:match('From: (.-)Subject:'):gsub('%\n','')
-			local text_subject = details:match('Subject: (.-)Local Date'):gsub('%\n','')
-
-			-- Only get the email address
-			text_from = text_from:match('<(.*)>') or text_from
-
-			email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. text_from
-			email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. text_subject
-
-			-- Update email icon
-			email_icon_widget.icon:set_image(widget_icon_dir .. 'email-unread' .. '.svg')
-
-			-- Notify
-			notify_new_email(count, details)
-
-			-- Update tooltip
-			email_details_tooltip.text = 'Most recent:\n' .. stdout:gsub('\n$', '')
-		end
-	end)
+local set_email_data_tooltip = function(email_data)
+	email_data = email_data:match('(From:.*)')
+	email_details_tooltip:set_markup(email_data)
 end
 
-
--- Update textbox to show that there's no unread email
-local set_no_email_details = function()
-	email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. 'empty@stdout.sh'
-	email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. 'Empty inbox'
-	email_details_tooltip.text = 'No unread email...'
-
-	email_icon_widget.icon:set_image(widget_icon_dir .. 'email' .. '.svg')
+local set_no_connection_msg = function()
+	email_recent_from:set_markup("message@stderr.sh")
+	email_recent_subject:set_markup("Check network connection!")
+	email_details_tooltip:set_markup("No internet connection!")
 end
 
-
--- Check credentials
-local check_credentials = function()
-	if email_account == '' or app_password == '' or 
-		imap_server == '' or port == '' then
-
-		set_error_msg('no-credentials')
-		return false
-	else
-		return true
-	end
+local set_invalid_credentials_msg = function()
+	email_recent_from:set_markup("message@stderr.sh")
+	email_recent_subject:set_markup("Invalid Credentials!")
+	email_details_tooltip:set_markup("You have an invalid credentials!")
 end
 
+local set_latest_email_data = function(email_data)
 
-local update_widget = function()
+	local unread_count = email_data:match('Unread Count: (.-)From:'):sub(1, -2)
+	local recent_from = email_data:match('From: (.-)Subject:'):sub(1, -2)
+	local recent_subject = email_data:match('Subject: (.-)Local Date:'):sub(1, -2)
 
-	if not check_credentials() then
-		return
-	end
+	recent_from = recent_from:match('<(.*)>') or recent_from:match('&lt;(.*)&gt;') or recent_from
 
-	awful.spawn.easy_async_with_shell(check_count, function(stdout)
-		if tonumber(stdout) ~= nil then
-			unread_count = stdout:gsub('%\n','')
+	email_unread_count:set_markup(unread_count)
+	email_recent_from:set_markup(recent_from)
+	email_recent_subject:set_markup(recent_subject)
 
-			if tonumber(unread_count) > 0 then
-				-- Get from and Subject
-				set_email_details(unread_count)
-			else
-				-- Set empty messages
-				set_no_email_details()
+	notify_new_email(unread_count, recent_from, recent_subject)
+end
+
+local set_empty_inbox_msg = function()
+	email_unread_count:set_markup('0')
+	email_recent_from:set_markup('empty@stdout.sh')
+	email_recent_subject:set_markup('Empty inbox')
+end
+
+local fetch_email_data = function()
+	awful.spawn.easy_async_with_shell(
+		fetch_email_command,
+		function(stdout)
+			stdout = gears.string.xml_escape(stdout:sub(1, -2))
+
+			if stdout:match("Temporary failure in name resolution") then
+				set_no_connection_msg()
+				return
+			elseif stdout:match("Invalid credentials") then
+				set_invalid_credentials_msg()
+				return
+			elseif stdout:match("Unread Count: 0") then
+				email_icon_widget.icon:set_image(widget_icon_dir .. 'email.svg')
+				set_empty_inbox_msg()
+				email_details_tooltip:set_markup('Empty inbox.')
+				return
 			end
 
-			-- Update unread count
-			email_count.text = tonumber(unread_count)
+			set_latest_email_data(stdout)
+			set_email_data_tooltip(stdout)
+			email_icon_widget.icon:set_image(widget_icon_dir .. 'email-unread.svg')
 
-		else
-			-- Send no network err msg
-			set_error_msg('no-network')
+			if startup_show then
+				notify_all_unread_email(stdout)
+				startup_show = false
+			end
 		end
-	end)
+	)
 end
 
+local set_missing_secrets_msg = function()
+	email_recent_from:set_markup("message@stderr.sh")
+	email_recent_subject:set_markup("Credentials are missing!")
+	email_details_tooltip:set_markup("Missing credentials!")
+end
 
--- Updater
+local check_secrets = function()
+	if email_account == '' or app_password == '' or imap_server == '' or port == '' then
+		set_missing_secrets_msg()
+		return
+	else
+		fetch_email_data()
+	end
+end
+
+check_secrets()
+
 local update_widget_timer = gears.timer {
 	timeout = 30,
 	autostart = true,
 	call_now = true,
 	callback  = function()
-		-- Check if there's a credentials
-		update_widget() 
+		check_secrets() 
 	end
 }
 
--- Update widget after connecting to wifi
-awesome.connect_signal('system::wifi_connected', function()
-	gears.timer.start_new(15, function() 
-		update_widget()
-	end)
-end)
 
+email_report:connect_signal(
+	"mouse::enter",
+	function()
+		check_secrets()
+	end
+)
 
--- Update content if hovers on widget
-email_report:connect_signal("mouse::enter", function()
-	update_widget()
-end)
-
+awesome.connect_signal(
+	'system::wifi_connected',
+	function()
+		gears.timer.start_new(
+			5,
+			function() 
+				check_secrets()
+			end
+		)
+	end
+)
 
 return email_report
