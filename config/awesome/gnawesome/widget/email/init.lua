@@ -257,7 +257,7 @@ local set_email_details = function(count)
 			local text_subject = details:match('Subject: (.-)Local Date'):gsub('%\n','')
 
 			-- Only get the email address
-			text_from = text_from:match('<(.*)>')
+			text_from = text_from:match('<(.*)>') or text_from
 
 			email_recent_from.markup = '<span font="SF Pro Text Bold 10">From: </span>' .. text_from
 			email_recent_subject.markup = '<span font="SF Pro Text Bold 10">Subject: </span>' .. text_subject
