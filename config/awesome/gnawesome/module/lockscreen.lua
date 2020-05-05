@@ -291,22 +291,23 @@ local locker = function(s)
 		awful.spawn.easy_async_with_shell(
 		    'xset q | grep Caps | cut -d: -f3 | cut -d0 -f1 | tr -d " "',
 		    function(stdout)
-			status = stdout
+				status = stdout
 
-			if status:match('on') then
-				caps_text.opacity = 1.0
-				caps_text_shadow.opacity = 1.0
+				if status:match('on') then
+					caps_text.opacity = 1.0
+					caps_text_shadow.opacity = 1.0
 
-				caps_text:set_markup('Caps Lock is on')
-				caps_text_shadow:set_markup('<span foreground="#00000066">' .. 'Caps Lock is on' .. "</span>")
-			else
-				caps_text.opacity = 0.0
-				caps_text_shadow.opacity = 0.0
+					caps_text:set_markup('Caps Lock is on')
+					caps_text_shadow:set_markup('<span foreground="#00000066">' .. 'Caps Lock is on' .. "</span>")
+				else
+					caps_text.opacity = 0.0
+					caps_text_shadow.opacity = 0.0
+				end
+
+				caps_text:emit_signal('widget::redraw_needed')
+				caps_text_shadow:emit_signal('widget::redraw_needed')
 			end
-
-			caps_text:emit_signal('widget::redraw_needed')
-			caps_text_shadow:emit_signal('widget::redraw_needed')
-		end)
+		)
 	end
 
 	local rotate_container = wibox.container.rotate()
@@ -421,10 +422,13 @@ local locker = function(s)
 		if capture_now then
 			intruder_capture()
 		else
-			gears.timer.start_new(1, function()
-				circle_container.bg = beautiful.groups_title_bg
-				type_again = true
-			end)
+			gears.timer.start_new(
+				1,
+				function()
+					circle_container.bg = beautiful.groups_title_bg
+					type_again = true
+				end
+			)
 		end
 	end
 
@@ -434,32 +438,34 @@ local locker = function(s)
 		circle_container.bg = green .. 'AA'
 
 		-- Add a little delay before unlocking completely
-		gears.timer.start_new(1, function()
+		gears.timer.start_new(
+			1,
+			function()
 
-			-- Hide all the lockscreen on all screen
-			for s in screen do
-				if s.index == 1 then
-					s.lockscreen.visible = false
-				else
-					s.lockscreen_extended.visible = false
+				-- Hide all the lockscreen on all screen
+				for s in screen do
+					if s.index == 1 then
+						s.lockscreen.visible = false
+					else
+						s.lockscreen_extended.visible = false
+					end
+				end
+
+				circle_container.bg = beautiful.groups_title_bg
+				
+				-- Enable locking again
+				lock_again = true
+
+				-- Enable validation again
+				type_again = true
+
+				if capture_now then
+					-- Hide wanted poster
+					wanted_poster.visible = false
+
 				end
 			end
-
-			circle_container.bg = beautiful.groups_title_bg
-			
-			-- Enable locking again
-			lock_again = true
-
-			-- Enable validation again
-			type_again = true
-
-			if capture_now then
-				-- Hide wanted poster
-				wanted_poster.visible = false
-
-			end
-		end)
-
+		)
 	end
 
 	-- A backdoor
@@ -499,10 +505,11 @@ local locker = function(s)
 			if key == 'Escape' then
 				-- Clear input threshold
 				input_password = nil
+				return
 			end
 
 			-- Accept only the single charactered key
-			-- Ignore 'Shift', 'Control', 'Return', 'F1', 'F2', etc., etc
+			-- Ignore 'Shift', 'Control', 'Return', 'F1', 'F2', etc., etc.
 			if #key == 1 then
 				
 				locker_widget_rotate()
@@ -694,25 +701,28 @@ end
 
 
 -- Create a lockscreen for each screen
-screen.connect_signal("request::desktop_decoration", function(s)
-
-	if s.index == 1 then
-		s.lockscreen = locker(s)
-	else
-		s.lockscreen_extended = locker_ext(s)
+screen.connect_signal(
+	"request::desktop_decoration",
+	function(s)
+		if s.index == 1 then
+			s.lockscreen = locker(s)
+		else
+			s.lockscreen_extended = locker_ext(s)
+		end
 	end
-
-end)
+)
 
 -- Dont show notification popups if the screen is locked
-naughty.connect_signal("request::display", function(_)
-	focused = awful.screen.focused()
-	if (focused.lockscreen and focused.lockscreen.visible) or 
-		(focused.lockscreen_extended and focused.lockscreen_extended.visible) then
-		naughty.destroy_all_notifications()
+naughty.connect_signal(
+	"request::display",
+	function(_)
+		focused = awful.screen.focused()
+		if (focused.lockscreen and focused.lockscreen.visible) or 
+			(focused.lockscreen_extended and focused.lockscreen_extended.visible) then
+			naughty.destroy_all_notifications()
+		end
 	end
-end)
-
+)
 
 -- This is where the part we set the background image of the lockscreen/s
 
@@ -740,7 +750,6 @@ end
 
 -- Set background image data
 local update_ls_bg = function(wall_name)
-
 	for s in screen do
 
 		local index = s.index .. '-'
@@ -755,15 +764,20 @@ local update_ls_bg = function(wall_name)
 		local cmd = return_cmd_str_to_blur(wall_name, index, aspect_ratio, screen_width, screen_height)
 
 		if s.index == 1 then
-			awful.spawn.easy_async_with_shell(cmd, function(stdout, stderr)
-				s.lockscreen.bgimage = tmp_wall_dir .. index .. wall_name
-			end)
+			awful.spawn.easy_async_with_shell(
+				cmd,
+				function(stdout, stderr)
+					s.lockscreen.bgimage = tmp_wall_dir .. index .. wall_name
+				end
+			)
 		else
-			awful.spawn.easy_async_with_shell(cmd, function() 
-				s.lockscreen_extended.bgimage = tmp_wall_dir .. index .. wall_name
-			end)
+			awful.spawn.easy_async_with_shell(
+				cmd,
+				function() 
+					s.lockscreen_extended.bgimage = tmp_wall_dir .. index .. wall_name
+				end
+			)
 		end
-
 	end
 end
 
@@ -894,32 +908,52 @@ local blur_bg = function()
 	}
 
 	-- Update lockscreen bg here and update the timeout for the next schedule
-	awesome.connect_signal("module::lockscreen_background", function()
-		
-		-- Update values for the next specified schedule
-		manage_timer()
+	awesome.connect_signal(
+		"module::lockscreen_background",
+		function()
+			-- Update values for the next specified schedule
+			manage_timer()
 
-		-- Update timer timeout for the next specified schedule
-		ls_updater.timeout = the_countdown
+			-- Update timer timeout for the next specified schedule
+			ls_updater.timeout = the_countdown
 
-		-- Restart timer
-		ls_updater:again()
-
-	end)
-
+			-- Restart timer
+			ls_updater:again()
+		end
+	)
 end
 
-
--- If a screen is added, generate a background 
--- for the inserted screen/monitor
 screen.connect_signal(
 	'added', 
 	function()
+		if s.index == 1 then
+			s.lockscreen = locker(s)
+		else
+			s.lockscreen_extended = locker_ext(s)
+		end
 		if background_mode == 'blur' then
 			blur_bg()
 		end
 	end
+
 )
+
+screen.connect_signal(
+	"removed",
+	function(s)
+		for s in screen do 
+			if s.index == 1 then
+				s.lockscreen = locker(s)
+			else
+				s.lockscreen_extended = locker_ext(s)
+			end
+			if background_mode == 'blur' then
+				blur_bg()
+			end
+		end
+	end
+)
+
 
 if background_mode == 'blur'  then
 

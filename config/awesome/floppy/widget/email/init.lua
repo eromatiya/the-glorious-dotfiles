@@ -299,6 +299,8 @@ local fetch_email_data = function()
 				set_empty_inbox_msg()
 				email_details_tooltip:set_markup('Empty inbox.')
 				return
+			elseif not stdout or stdout == '' then
+				return
 			end
 
 			set_latest_email_data(stdout)
