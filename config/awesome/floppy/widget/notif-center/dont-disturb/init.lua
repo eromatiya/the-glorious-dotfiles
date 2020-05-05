@@ -41,11 +41,9 @@ local function update_icon()
 end
 
 local check_disturb_status = function()
-
-	local cmd = "cat " .. widget_dir .. "disturb_status"
-
+	
 	awful.spawn.easy_async_with_shell(
-		cmd, 
+		"cat " .. widget_dir .. "disturb_status", 
 		function(stdout)
 			
 			local status = stdout
@@ -56,7 +54,7 @@ local check_disturb_status = function()
 				dont_disturb = false
 			else
 				dont_disturb = false
-				awful.spawn.easy_async_with_shell("echo 'false' > " .. widget_dir .. "disturb_status")
+				awful.spawn.with_shell("echo 'false' > " .. widget_dir .. "disturb_status")
 			end
 
 			update_icon()
@@ -72,7 +70,7 @@ local toggle_disturb = function()
 	else
 		dont_disturb = true
 	end
-	awful.spawn.easy_async_with_shell("echo " .. tostring(dont_disturb) .. " > " .. widget_dir .. "disturb_status")
+	awful.spawn.with_shell("echo " .. tostring(dont_disturb) .. " > " .. widget_dir .. "disturb_status")
 	update_icon()
 end
 

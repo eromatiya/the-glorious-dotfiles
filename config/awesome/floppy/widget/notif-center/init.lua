@@ -25,5 +25,5 @@ return wibox.widget {
 			require('widget.notif-center.clear-all')
 		},
 	},
-	require('widget.notif-center.build-notifbox')
+	require('widget.notif-center.build-notifbox').notifbox_layout
 }
