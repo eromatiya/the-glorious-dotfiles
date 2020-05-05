@@ -251,7 +251,7 @@ naughty.connect_signal("request::display", function(n)
 	-- Or if the right_panel is visible
 	local focused = awful.screen.focused()
 	if _G.dont_disturb or (focused.right_panel and focused.right_panel.visible) then
-		naughty.destroy_all_notifications()
+		naughty.destroy_all_notifications(nil, 1)
 	end
 
 end)

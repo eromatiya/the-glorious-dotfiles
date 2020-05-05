@@ -94,8 +94,6 @@ local naughty_expired = function(n, appicon, notifbox_color)
 		function(self, reason, keep_visble)
 			if reason == 1 then
 				notifbox_pass(n, appicon, notifbox_color)
-			elseif reason == 2 and (_G.dont_disturb or (focused.right_panel and focused.right_panel.visible)) then
-				notifbox_pass(n, appicon, notifbox_color)
 			end
 		end
 	)

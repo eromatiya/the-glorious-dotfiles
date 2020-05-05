@@ -719,7 +719,7 @@ naughty.connect_signal(
 		focused = awful.screen.focused()
 		if (focused.lockscreen and focused.lockscreen.visible) or 
 			(focused.lockscreen_extended and focused.lockscreen_extended.visible) then
-			naughty.destroy_all_notifications()
+			naughty.destroy_all_notifications(nil, 1)
 		end
 	end
 )
