@@ -261,7 +261,8 @@ awesome.connect_signal(
 					local temperature = weather_data_tbl['temperature']
 					local details = weather_data_tbl['details']
 
-					local weather_description = details .. ', ' .. temperature .. weather_temperature_symbol
+					local description = details:sub(1, 1):upper() .. details:sub(2)
+					local weather_description = description .. ', ' .. temperature .. weather_temperature_symbol
 					local weather_location = location .. ', ' .. country
 					
 					if #weather_description >= 33 then
