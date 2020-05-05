@@ -4,12 +4,12 @@ local naughty = require('naughty')
 local gears = require('gears')
 
 local dpi = beautiful.xresources.apply_dpi
+local xml_escape = gears.string.xml_escape
 
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/notif-center/icons/'
 
 local clickable_container = require('widget.clickable-container')
-
 
 local ui_noti_builder = {}
 
@@ -32,7 +32,7 @@ end
 -- Notification title container
 ui_noti_builder.notifbox_title = function(title)
 	return wibox.widget {
-		markup   = title,
+		markup = xml_escape(title),
 		font   = 'SF Pro Text Bold 12',
 		align  = 'left',
 		valign = 'center',
@@ -43,7 +43,7 @@ end
 -- Notification message container
 ui_noti_builder.notifbox_message = function(msg)
 	return wibox.widget {
-		markup   = msg,
+		markup = xml_escape(msg),
 		font   = 'SF Pro Text Regular 11',
 		align  = 'left',
 		valign = 'center',
@@ -54,7 +54,7 @@ end
 -- Notification app name container
 ui_noti_builder.notifbox_appname = function(app)
 	return wibox.widget {
-		markup   = app,
+		markup  = app,
 		font   = 'SF Pro Text Bold 12',
 		align  = 'left',
 		valign = 'center',
@@ -105,7 +105,7 @@ ui_noti_builder.notifbox_dismiss = function()
     local dismiss_imagebox = wibox.widget {
         {
             id = 'dismiss_icon',
-            image = widget_icon_dir .. 'delete' .. '.svg',
+            image = widget_icon_dir .. 'delete.svg',
             resize = true,
             forced_height = dpi(5),
             widget = wibox.widget.imagebox
