@@ -27,13 +27,13 @@ naughty.config.spacing = 8
 naughty.config.icon_dirs = {
 	"/usr/share/icons/Tela",
 	"/usr/share/icons/Tela-blue-dark",
-	"/usr/share/icons/la-capitaine-icon-theme/",
 	"/usr/share/icons/Papirus/",
+	"/usr/share/icons/la-capitaine-icon-theme/",
 	"/usr/share/icons/gnome/",
 	"/usr/share/icons/hicolor/",
 	"/usr/share/pixmaps/"
 }
-naughty.config.icon_formats = {	"png", "svg", "jpg", "gif" }
+naughty.config.icon_formats = { "svg", "png", "jpg", "gif" }
 
 
 -- Presets / rules
@@ -75,7 +75,6 @@ ruled.notification.connect_signal('request::rules', function()
 			fg 					= beautiful.fg_normal,
 			margin 				= dpi(16),
 			position 			= 'top_right',
-			timeout 			= 5,
 			implicit_timeout	= 5
 		}
 	}
@@ -83,27 +82,33 @@ end)
 
 
 -- Error handling
-naughty.connect_signal("request::display_error", function(message, startup)
-    naughty.notification {
-        urgency = "critical",
-        title   = "Oops, an error happened"..(startup and " during startup!" or "!"),
-        message = message,
-        app_name = 'System Notification',
-        icon = beautiful.awesome_icon
-    }
-end)
+naughty.connect_signal(
+	"request::display_error",
+	function(message, startup)
+	    naughty.notification {
+	        urgency = "critical",
+	        title   = "Oops, an error happened"..(startup and " during startup!" or "!"),
+	        message = message,
+	        app_name = 'System Notification',
+	        icon = beautiful.awesome_icon
+	    }
+	end
+)
 
 -- XDG icon lookup
-naughty.connect_signal("request::icon", function(n, context, hints)
-    if context ~= "app_icon" then return end
+naughty.connect_signal(
+	"request::icon",
+	function(n, context, hints)
+	    if context ~= "app_icon" then return end
 
-    local path = menubar.utils.lookup_icon(hints.app_icon) or
-        menubar.utils.lookup_icon(hints.app_icon:lower())
+	    local path = menubar.utils.lookup_icon(hints.app_icon) or
+	        menubar.utils.lookup_icon(hints.app_icon:lower())
 
-    if path then
-        n.icon = path
-    end
-end)
+	    if path then
+	        n.icon = path
+	    end
+	end
+)
 
 -- Naughty template
 naughty.connect_signal("request::display", function(n)
