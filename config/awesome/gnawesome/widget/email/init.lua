@@ -19,6 +19,11 @@ local port            = secrets.email.port
 local unread_email_count = 0
 local startup_show = true
 
+local format_string = function(key, value)
+	local key = "<span font='SF Pro Text Bold 10'>" .. key .. "</span>"
+	return key .. ' ' .. value
+end
+
 local email_icon_widget = wibox.widget {
 	{
 		id = 'icon',
@@ -31,25 +36,9 @@ local email_icon_widget = wibox.widget {
 	layout = wibox.layout.fixed.horizontal
 }
 
-local email_unread_text = wibox.widget {
-	text = 'Unread emails:',
-	font = 'SF Pro Text Bold 10',
-	align = 'center',
-	valign = 'center',
-	widget = wibox.widget.textbox
-}
-
 local email_unread_count = wibox.widget {
-	markup = '0',
+	markup = format_string('Unread Count:', '0'),
 	font = 'SF Pro Text Regular 10',
-	align = 'left',
-	valign = 'center',
-	widget = wibox.widget.textbox
-}
-
-local email_from_text = wibox.widget {
-	font = 'SF Pro Text Bold 10',
-	markup = 'From:',
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -57,15 +46,7 @@ local email_from_text = wibox.widget {
 
 local email_recent_from = wibox.widget {
 	font = 'SF Pro Text Regular 10',
-	markup = 'loading@stdout.sh',
-	align = 'left',
-	valign = 'center',
-	widget = wibox.widget.textbox
-}
-
-local email_subject_text = wibox.widget {
-	font = 'SF Pro Text Bold 10',
-	markup = 'Subject:',
+	markup = format_string('From:', 'loading@stdout.sh'),
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -73,7 +54,7 @@ local email_subject_text = wibox.widget {
 
 local email_recent_subject = wibox.widget {
 	font = 'SF Pro Text Regular 10',
-	markup = 'Loading data',
+	markup = format_string('Subject:', 'Loading data'),
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -98,24 +79,9 @@ local email_report = wibox.widget{
 				nil,
 				{
 					layout = wibox.layout.fixed.vertical,
-					{
-						layout = wibox.layout.fixed.horizontal,
-						spacing = dpi(5),
-						email_unread_text,
-						email_unread_count
-					},
-					{
-						layout = wibox.layout.fixed.horizontal,
-						spacing = dpi(5),
-						email_from_text,
-						email_recent_from,
-					},
-					{
-						layout = wibox.layout.fixed.horizontal,
-						spacing = dpi(5),
-						email_subject_text,
-						email_recent_subject
-					}
+					email_unread_count,
+					email_recent_from,
+					email_recent_subject
 				},
 				nil
 			}
@@ -250,15 +216,15 @@ local set_email_data_tooltip = function(email_data)
 end
 
 local set_no_connection_msg = function()
-	email_recent_from:set_markup("message@stderr.sh")
-	email_recent_subject:set_markup("Check network connection!")
-	email_details_tooltip:set_markup("No internet connection!")
+	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
+	email_recent_subject:set_markup(format_string('Subject:', 'Check network connection!'))
+	email_details_tooltip:set_markup('No internet connection!')
 end
 
 local set_invalid_credentials_msg = function()
-	email_recent_from:set_markup("message@stderr.sh")
-	email_recent_subject:set_markup("Invalid Credentials!")
-	email_details_tooltip:set_markup("You have an invalid credentials!")
+	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
+	email_recent_subject:set_markup(format_string('Subject:', 'Invalid Credentials!'))
+	email_details_tooltip:set_markup('You have an invalid credentials!')
 end
 
 local set_latest_email_data = function(email_data)
@@ -269,17 +235,17 @@ local set_latest_email_data = function(email_data)
 
 	recent_from = recent_from:match('<(.*)>') or recent_from:match('&lt;(.*)&gt;') or recent_from
 
-	email_unread_count:set_markup(unread_count)
-	email_recent_from:set_markup(recent_from)
-	email_recent_subject:set_markup(recent_subject)
+	email_unread_count:set_markup(format_string('Unread Count:', unread_count))
+	email_recent_from:set_markup(format_string('From:', recent_from))
+	email_recent_subject:set_markup(format_string('Subject:', recent_subject))
 
 	notify_new_email(unread_count, recent_from, recent_subject)
 end
 
 local set_empty_inbox_msg = function()
-	email_unread_count:set_markup('0')
-	email_recent_from:set_markup('empty@stdout.sh')
-	email_recent_subject:set_markup('Empty inbox')
+	email_unread_count:set_markup(format_string('Unread Count:', '0'))
+	email_recent_from:set_markup(format_string('From:', 'empty@stdout.sh'))
+	email_recent_subject:set_markup(format_string('Subject:', 'Empty inbox'))
 end
 
 local fetch_email_data = function()
@@ -316,9 +282,10 @@ local fetch_email_data = function()
 end
 
 local set_missing_secrets_msg = function()
-	email_recent_from:set_markup("message@stderr.sh")
-	email_recent_subject:set_markup("Credentials are missing!")
-	email_details_tooltip:set_markup("Missing credentials!")
+	email_unread_count:set_markup(format_string('Unread Count:', 'Unknown'))
+	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
+	email_recent_subject:set_markup(format_string('Subject:', 'Credentials are missing!'))
+	email_details_tooltip:set_markup('Missing credentials!')
 end
 
 local check_secrets = function()
