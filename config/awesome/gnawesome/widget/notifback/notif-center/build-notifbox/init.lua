@@ -1,5 +1,4 @@
 local wibox = require('wibox')
-local awful = require('awful')
 local gears = require('gears')
 local naughty = require('naughty')
 local beautiful = require('beautiful')
@@ -9,7 +8,6 @@ local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/notif-center/icons/'
 
 local empty_notifbox = require('widget.notif-center.build-notifbox.empty-notifbox')
-local notifbox_scroller = require('widget.notif-center.build-notifbox.notifbox-scroller')
 
 local notif_core = {}
 
@@ -20,8 +18,6 @@ notif_core.notifbox_layout = wibox.widget {
 	spacing = dpi(5),
 	empty_notifbox
 }
-
-notifbox_scroller(notif_core.notifbox_layout)
 
 notif_core.reset_notifbox_layout = function()
 	notif_core.notifbox_layout:reset()
@@ -60,21 +56,19 @@ local notifbox_add_expired = function(n, notif_icon, notifbox_color)
 	)
 end
 
-naughty.connect_signal(
-	"request::display",
-	function(n)
-		local notifbox_color = beautiful.groups_bg
-		if n.urgency == 'critical' then
-			notifbox_color = n.bg .. '66'
-		end
-
-		local notif_icon = n.icon or n.app_icon
-		if not notif_icon then
-			notif_icon = widget_icon_dir .. 'new-notif' .. '.svg'
-		end
-
-		notifbox_add_expired(n, notif_icon, notifbox_color)
+naughty.connect_signal("request::display", function(n)
+	local notifbox_color = beautiful.groups_bg
+	if n.urgency == 'critical' then
+		notifbox_color = n.bg .. '66'
 	end
-)
+
+	local notif_icon = n.icon or n.app_icon
+	if not notif_icon then
+		notif_icon = widget_icon_dir .. 'new-notif' .. '.svg'
+	end
+
+	notifbox_add_expired(n, notif_icon, notifbox_color)
+end)
+
 
 return notif_core
