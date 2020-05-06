@@ -267,6 +267,8 @@ local fetch_email_data = function()
 				return
 			elseif not stdout or stdout == '' then
 				return
+			elseif not stdout:match('Unread Count: (.-)From:'):sub(1, -2) then
+				return
 			end
 
 			set_latest_email_data(stdout)
