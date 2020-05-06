@@ -1,62 +1,59 @@
+-- Battery notification module
 -- Dependencies:
--- acpid, upower, acpi_listens
+-- acpid, upower, acpi_listens, acpi_call
+-- enabled acpid service
 
-
-local awful = require("awful")
+local awful = require('awful')
 local naughty = require('naughty')
-
 local icons = require('theme.icons')
 
 local update_interval = 30
 
-local battery_script = [[
+-- Periodically get battery info
+awful.widget.watch(
+	[[
 	sh -c "
 	upower -i $(upower -e | grep BAT) | grep percentage | awk '{print $2}'
-"]]
-
--- Subscribe to power supply status changes with acpi_listen
-local charger_script = [[
-	sh -c '
-	acpi_listen | grep --line-buffered ac_adapter
-']]
-
--- Periodically get battery info
-awful.widget.watch(battery_script, update_interval, function(widget, stdout)
+	"]],
+	update_interval,
+	function(widget, stdout)
 		local battery = stdout:gsub("%%", "")
 		awesome.emit_signal("module::battery", tonumber(battery))
-end)
+	end
+)
 
 local emit_charger_info = function()
-	awful.spawn.easy_async_with_shell("cat /sys/class/power_supply/*/online", function (out)
-		status = tonumber(out)
-		if status == 1 then
-			awesome.emit_signal("module::charger", true)
-		else
-			awesome.emit_signal("module::charger", false)
+	awful.spawn.easy_async_with_shell(
+		"cat /sys/class/power_supply/*/online",
+		function (stdout)
+			status = tonumber(stdout)
+			if status == 1 then
+				awesome.emit_signal("module::charger", true)
+			else
+				awesome.emit_signal("module::charger", false)
+			end
 		end
-	end)
+	)
 end
 
--- Run once to initialize widgets
 emit_charger_info()
 
--- Kill old acpi_listen process
-awful.spawn.easy_async_with_shell("ps x | grep \"acpi_listen\" | grep -v grep | awk '{print $1}' | xargs kill", function ()
-	-- Update charger status with each line printed
-	awful.spawn.with_line_callback(charger_script, {
-		stdout = function(_)
-			emit_charger_info()
-		end
-	})
-
-end)
-
-
--- Battery notification module
--- Depends:
---    - acpi_call
---    - enabled acpid service
-
+awful.spawn.easy_async_with_shell(
+	"ps x | grep \"acpi_listen\" | grep -v grep | awk '{print $1}' | xargs kill",
+	function ()
+		awful.spawn.with_line_callback(
+			[[
+			sh -c '
+			acpi_listen | grep --line-buffered ac_adapter
+			']],
+			{
+				stdout = function(_)
+					emit_charger_info()
+				end
+			}
+		)
+	end
+)
 
 local charger_plugged = true
 local battery_full_already_notified = true
@@ -66,7 +63,6 @@ local battery_critical_already_notified = false
 local last_notification
 
 local function send_notification(title, text, icon, timeout, urgency)
-
 
 	local args = {
 		title = title,
