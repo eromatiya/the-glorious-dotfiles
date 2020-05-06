@@ -155,7 +155,7 @@ local right_panel = function(s)
 				{
 					id = 'notif_id',
 					visible = false,
-					require('widget.notif-center'),
+					require('widget.notif-center')(s),
 					layout = wibox.layout.fixed.vertical,
 				}
 
