@@ -7,7 +7,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 local clickable_container = require('widget.clickable-container')
 
 -- Variable used for switching panel modes
-right_panel_mode = 'today_mode'
+floating_panel_mode = 'today_mode'
 
 local active_button    = beautiful.groups_title_bg
 local inactive_button  = beautiful.transparent
@@ -80,27 +80,27 @@ local switcher = wibox.widget {
 }
 
 
-function switch_rdb_pane(right_panel_mode)
+function switch_rdb_pane(floating_panel_mode)
 
 	local focused = awful.screen.focused()
 	
-	if right_panel_mode == 'today_mode' then
+	if floating_panel_mode == 'today_mode' then
 	
 		-- Update button color
 		wrap_today.bg = active_button
 		wrap_settings.bg = inactive_button
 	
 		-- Change panel content of floating-panel.lua
-		focused.right_panel:switch_pane(right_panel_mode)
+		focused.floating_panel:switch_pane(floating_panel_mode)
 
-	elseif right_panel_mode == 'settings_mode' then
+	elseif floating_panel_mode == 'settings_mode' then
 	
 		-- Update button color
 		wrap_today.bg = inactive_button
 		wrap_settings.bg = active_button
 	
 		-- Change panel content of floating-panel.lua
-		focused.right_panel:switch_pane(right_panel_mode)
+		focused.floating_panel:switch_pane(floating_panel_mode)
 	end
 
 end

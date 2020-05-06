@@ -403,8 +403,8 @@ local globalKeys = awful.util.table.join(
         function()
             local focused = awful.screen.focused()
 
-            if focused.right_panel then
-                focused.right_panel:HideDashboard()
+            if focused.floating_panel then
+                focused.floating_panel:HideDashboard()
             end
             awful.spawn(apps.default.rofiappmenu, false)
         end,
@@ -424,15 +424,15 @@ local globalKeys = awful.util.table.join(
         function()
             local focused = awful.screen.focused()
 
-            if focused.right_panel then
-                if _G.right_panel_mode == 'today_mode' or not focused.right_panel.visible then
-                    focused.right_panel:toggle()
+            if focused.floating_panel then
+                if _G.floating_panel_mode == 'today_mode' or not focused.floating_panel.visible then
+                    focused.floating_panel:toggle()
                     switch_rdb_pane('today_mode')
                 else
                     switch_rdb_pane('today_mode')
                 end
 
-                _G.right_panel_mode = 'today_mode'
+                _G.floating_panel_mode = 'today_mode'
             end
         end,
         {description = "open today panel", group = 'launcher'}
@@ -443,15 +443,15 @@ local globalKeys = awful.util.table.join(
         function()
             local focused = awful.screen.focused()
 
-            if focused.right_panel then
-                if _G.right_panel_mode == 'settings_mode' or not focused.right_panel.visible then
-                    focused.right_panel:toggle()
+            if focused.floating_panel then
+                if _G.floating_panel_mode == 'settings_mode' or not focused.floating_panel.visible then
+                    focused.floating_panel:toggle()
                     switch_rdb_pane('settings_mode')
                 else
                     switch_rdb_pane('settings_mode')
                 end
 
-                _G.right_panel_mode = 'settings_mode'
+                _G.floating_panel_mode = 'settings_mode'
             end
         end,
         {description = "open settings panel", group = 'launcher'}

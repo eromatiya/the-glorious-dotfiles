@@ -1,15 +1,15 @@
 local awful = require('awful')
 local top_panel = require('layout.top-panel')
 local bottom_panel = require('layout.bottom-panel')
-local right_panel = require('layout.floating-panel.floating-panel')
+local floating_panel = require('layout.floating-panel')
 
 
 -- Create a wibox panel for each screen and add it
 screen.connect_signal("request::desktop_decoration", function(s)
 	s.top_panel = top_panel(s, false)
 	s.bottom_panel = bottom_panel(s)
-	s.right_panel = right_panel(s)
-	s.right_panel_show_again = false
+	s.floating_panel = floating_panel(s)
+	s.floating_panel_show_again = false
 end)
 
 
@@ -22,13 +22,13 @@ function updateBarsVisibility()
 			-- Order matter here for shadow
 			s.top_panel.visible = not fullscreen
 			s.bottom_panel.visible = not fullscreen
-			if s.right_panel then
-				if fullscreen and focused.right_panel.visible then
-					focused.right_panel:toggle()
-					focused.right_panel_show_again = true
-				elseif not fullscreen and not focused.right_panel.visible and focused.right_panel_show_again then
-					focused.right_panel:toggle()
-					focused.right_panel_show_again = false
+			if s.floating_panel then
+				if fullscreen and focused.floating_panel.visible then
+					focused.floating_panel:toggle()
+					focused.floating_panel_show_again = true
+				elseif not fullscreen and not focused.floating_panel.visible and focused.floating_panel_show_again then
+					focused.floating_panel:toggle()
+					focused.floating_panel_show_again = false
 				end
 			end
 		end

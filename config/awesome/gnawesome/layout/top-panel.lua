@@ -92,7 +92,7 @@ local TopPanel = function(s)
 	s.music       	= require('widget.music')()
 	s.globalsearch  = require('widget.globalsearch')()
 	s.end_session	= require('widget.end-session')()
-	s.float_panel  	= require('layout.floating-panel')()
+	s.float_panel  	= require('layout.floating-panel.floating-panel-opener')()
 
 
 	panel : setup {
