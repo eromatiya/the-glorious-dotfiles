@@ -977,9 +977,9 @@ elseif background_mode == 'root' then
 elseif background_mode == 'background' then
 	for s in screen do
 		if s.index == 1 then
-			s.lockscreen.bgimage = beautiful.background
+			s.lockscreen.bg = beautiful.background
 		else
-			s.lockscreen_extended.bgimage = beautiful.background
+			s.lockscreen_extended.bg = beautiful.background
 		end
 	end
 else
