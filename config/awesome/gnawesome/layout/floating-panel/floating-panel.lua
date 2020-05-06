@@ -152,7 +152,7 @@ local right_panel = function(s)
 									require('widget.email'),
 									calendar						
 								},
-								require('widget.notif-center')
+								require('widget.notif-center')(s)
 							},
 
 						},
