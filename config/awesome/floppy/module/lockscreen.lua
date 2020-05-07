@@ -24,7 +24,7 @@ local face_capture_dir = '$(xdg-user-dir PICTURES)/Intruders/'  		-- Save locati
 local background_mode = 'blur' 											-- Available background mode: `blur`, `root`, `background`
 local wall_dir = config_dir .. 'theme/wallpapers/'						-- Wallpaper directory
 local default_wall_name = 'morning-wallpaper.jpg'						-- Default wallpaper
-local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'		-- Tmp directory
+local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'		-- /tmp directory
 
 
 -- Useful variables (DO NOT TOUCH)
@@ -695,7 +695,6 @@ local locker = function(s)
 
 end
 
-
 -- This lockscreen is for the extra/multi monitor
 local locker_ext = function(s)
 	local extended_lockscreen = wibox {
@@ -748,6 +747,7 @@ screen.connect_signal(
 
 -- Dont show notification popups if the screen is locked
 local check_lockscreen_visibility = function()
+	focused = awful.screen.focused()
 	if focused.lockscreen and focused.lockscreen.visible then
 		return true
 	end
@@ -760,7 +760,6 @@ end
 naughty.connect_signal(
 	"request::display",
 	function(_)
-		focused = awful.screen.focused()
 		if check_lockscreen_visibility() then
 			naughty.destroy_all_notifications(nil, 1)
 		end
@@ -768,30 +767,8 @@ naughty.connect_signal(
 )
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 local return_cmd_str_to_blur = function(wall_name, index, ap, width, height)
 	local magic = [[
-
 	if [ ! -d ]] .. tmp_wall_dir ..[[ ]; then mkdir -p ]] .. tmp_wall_dir .. [[; fi
 
 	convert -quality 100 -filter Gaussian -blur 0x10 ]] .. wall_dir .. wall_name .. 
@@ -852,7 +829,7 @@ local check_background_mode = function()
 				s.lockscreen_extended.bg = beautiful.background
 			end
 		end
-		
+
 	elseif background_mode == 'blur' then
 		apply_ls_bg_image(default_wall_name)
 
