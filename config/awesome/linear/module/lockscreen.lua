@@ -11,29 +11,30 @@ local config_dir = filesystem.get_configuration_dir()
 
 local apps = require('configuration.apps')
 
-local filesystem = require('gears.filesystem')
-local config_dir = filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'configuration/user-profile/'
 
 package.cpath = package.cpath .. ";" .. config_dir .. "/library/?.so;"
 local pam = require('liblua_pam')
 
--- Configuration
+-- General Configuration
+local capture_intruder = true  											-- Capture a picture using webcam 
+local face_capture_dir = '$(xdg-user-dir PICTURES)/Intruders/'  		-- Save location, auto creates
 
-local capture_intruder = true  							-- Capture a picture using webcam 
-local face_capture_dir = '${HOME}/Pictures/Intruders/'  -- Save location, auto creates
+-- Background Mode Configuration
+local background_mode = 'blur' 											-- Available background mode: `blur`, `root`, `background`
+local wall_dir = config_dir .. 'theme/wallpapers/'						-- Wallpaper directory
+local default_wall_name = 'morning-wallpaper.jpg'						-- Default wallpaper
+local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'		-- Tmp directory
 
 
 -- Useful variables (DO NOT TOUCH)
-
 local input_password = nil
 local lock_again = nil
 local type_again = true
 local capture_now = capture_intruder
 local locked_tag = nil
 
--- Process
-
+-- Processes
 local locker = function(s)
 
 	local lockscreen = wibox {
@@ -712,28 +713,27 @@ local locker_ext = function(s)
 	return extended_lockscreen
 end
 
+local cycle_through_screens = function(s)
+	if s.index == 1 then
+		s.lockscreen = locker(s)
+	else
+		s.lockscreen_extended = locker_ext(s)
+	end
+end
 
 -- Create a lockscreen for each screen
 screen.connect_signal(
 	"request::desktop_decoration",
 	function(s)
-		if s.index == 1 then
-			s.lockscreen = locker(s)
-		else
-			s.lockscreen_extended = locker_ext(s)
-		end
+		cycle_through_screens(s)
 	end
 )
 
 -- Regenerate lockscreens if a screen was added to avoid errors
 screen.connect_signal(
 	'added', 
-	function()
-		if s.index == 1 then
-			s.lockscreen = locker(s)
-		else
-			s.lockscreen_extended = locker_ext(s)
-		end
+	function(s)
+		cycle_through_screens(s)
 	end
 
 )
@@ -742,18 +742,11 @@ screen.connect_signal(
 screen.connect_signal(
 	"removed",
 	function(s)
-		for s in screen do 
-			if s.index == 1 then
-				s.lockscreen = locker(s)
-			else
-				s.lockscreen_extended = locker_ext(s)
-			end
-		end
+		cycle_through_screens(s)
 	end
 )
 
 -- Dont show notification popups if the screen is locked
-
 local check_lockscreen_visibility = function()
 	if focused.lockscreen and focused.lockscreen.visible then
 		return true
@@ -771,5 +764,125 @@ naughty.connect_signal(
 		if check_lockscreen_visibility() then
 			naughty.destroy_all_notifications(nil, 1)
 		end
+	end
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local return_cmd_str_to_blur = function(wall_name, index, ap, width, height)
+	local magic = [[
+
+	if [ ! -d ]] .. tmp_wall_dir ..[[ ]; then mkdir -p ]] .. tmp_wall_dir .. [[; fi
+
+	convert -quality 100 -filter Gaussian -blur 0x10 ]] .. wall_dir .. wall_name .. 
+	[[ -gravity center -crop ]] .. ap .. [[:1 +repage -resize ]] .. width .. 'x' .. height .. 
+	[[! ]] .. tmp_wall_dir .. index .. wall_name .. [[
+	]]
+	return magic
+end
+
+local apply_ls_bg_image = function(wall_name)
+	for s in screen do
+		local index = s.index .. '-'
+
+		local screen_width = s.geometry.width
+		local screen_height = s.geometry.height
+
+		local aspect_ratio = screen_width / screen_height
+
+		aspect_ratio = math.floor(aspect_ratio * 100) / 100
+
+		local cmd = return_cmd_str_to_blur(wall_name, index, aspect_ratio, screen_width, screen_height)
+
+		if s.index == 1 then
+			awful.spawn.easy_async_with_shell(
+				cmd,
+				function(stdout, stderr)
+					s.lockscreen.bgimage = tmp_wall_dir .. index .. wall_name
+				end
+			)
+		else
+			awful.spawn.easy_async_with_shell(
+				cmd,
+				function() 
+					s.lockscreen_extended.bgimage = tmp_wall_dir .. index .. wall_name
+				end
+			)
+		end
+	end
+end
+
+local check_background_mode = function()
+
+	if background_mode == 'root' then
+
+		for s in screen do
+			if s.index == 1 then
+				s.lockscreen.bgimage = root.wallpaper()
+			else
+				s.lockscreen_extended.bgimage = root.wallpaper()
+			end
+		end
+
+	elseif background_mode == 'background' then
+		for s in screen do
+			if s.index == 1 then
+				s.lockscreen.bg = beautiful.background
+			else
+				s.lockscreen_extended.bg = beautiful.background
+			end
+		end
+		
+	elseif background_mode == 'blur' then
+		apply_ls_bg_image(default_wall_name)
+
+	else
+		for s in screen do
+			if s.index == 1 then
+				s.lockscreen.bgimage = root.wallpaper()
+			else
+				s.lockscreen_extended.bgimage = root.wallpaper()
+			end
+		end
+	end
+
+end
+
+check_background_mode()
+
+-- Regenerate lockscreen's background if a screen was added to avoid errors
+screen.connect_signal(
+	'added', 
+	function()
+		check_background_mode()
+	end
+
+)
+
+-- Regenerate lockscreen's background if a screen was removed to avoid errors
+screen.connect_signal(
+	"removed",
+	function()
+		check_background_mode()
 	end
 )
