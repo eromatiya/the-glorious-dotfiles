@@ -164,10 +164,10 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 
 My TODOs or roadmap for my awesomewm setups.
 
-- [ ] Scrollable Notification Center<sup>send help</sup>
+- [x] Scrollable Notification Center<sup>needs improvement</sup>
 - [x] Lockscreen PAM Integration
 - [x] Multi-monitor support  
-- [ ] Refactor for cleaner code
+- [x] Refactor for cleaner code<sup>WIP</sup>
 - [x] Extend the screen recorder widget's functionality
 - [x] Adjust picom's blur strength using a slider
 
