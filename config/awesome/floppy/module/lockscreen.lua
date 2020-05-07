@@ -635,8 +635,9 @@ local locker = function(s)
 
 	show_lockscreen = function()
 
-		-- Unselect all tags
+		-- Unselect all tags and minimize the focused client
 		-- Will also fix the problem with virtualbox or any other program that has keygrabbing enabled
+		client.focus.minimized = true
 		for _, t in ipairs(mouse.screen.selected_tags) do t.selected = false end
 
 		-- Why is there a lock_again variable?
