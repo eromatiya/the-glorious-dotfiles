@@ -281,7 +281,7 @@ local locker = function(s)
 	}
 
 	-- Check Capslock state
-	check_caps = function()
+	local check_caps = function()
 		awful.spawn.easy_async_with_shell(
 		    'xset q | grep Caps | cut -d: -f3 | cut -d0 -f1 | tr -d " "',
 		    function(stdout)
@@ -530,6 +530,8 @@ local locker = function(s)
 				local pam_auth = false
 				if input_password ~= nil then
 					pam_auth = pam:auth_current_user(input_password)
+				else
+					return
 				end
 
 				if pam_auth then
@@ -549,7 +551,6 @@ local locker = function(s)
 		end
 
 	}
-
 
 	lockscreen : setup {
 		layout = wibox.layout.align.vertical,
@@ -634,8 +635,8 @@ local locker = function(s)
 
 	show_lockscreen = function()
 
-		-- Unmanage all clients
-		-- Will fix the problem with virtualbox or any other program that has keygrabbing enabled
+		-- Unselect all tags
+		-- Will also fix the problem with virtualbox or any other program that has keygrabbing enabled
 		for _, t in ipairs(mouse.screen.selected_tags) do t.selected = false end
 
 		-- Why is there a lock_again variable?
