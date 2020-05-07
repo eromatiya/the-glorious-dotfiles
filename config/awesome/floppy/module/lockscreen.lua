@@ -21,7 +21,7 @@ local capture_intruder = true  											-- Capture a picture using webcam
 local face_capture_dir = '$(xdg-user-dir PICTURES)/Intruders/'  		-- Save location, auto creates
 
 -- Background Mode Configuration
-local background_mode = 'blur' 											-- Available background mode: `blur`, `root`, `background`
+local background_mode = 'blur'											-- Available background mode: `image`, `blur`, `root`, `bg_color`
 local wall_dir = config_dir .. 'theme/wallpapers/'						-- Wallpaper directory
 local default_wall_name = 'morning-wallpaper.jpg'						-- Default wallpaper
 local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'		-- /tmp directory
@@ -385,8 +385,7 @@ local locker = function(s)
 			capture_image, 
 			function(stdout)
 				circle_container.bg = beautiful.groups_title_bg
-				type_again = true
-					
+
 				-- Humiliate the intruder by showing his/her hideous face
 				wanted_image:set_image(stdout:gsub('%\n',''))
 				wanted_poster.visible= true
@@ -402,6 +401,8 @@ local locker = function(s)
 					}
 				)
 				wanted_image:emit_signal('widget::redraw_needed')
+				
+				type_again = true
 			end
 		)
 	end
@@ -491,7 +492,10 @@ local locker = function(s)
 	        awful.key {
 	            modifiers = {'Mod1', 'Mod4', 'Shift', 'Control'},
 	            key       = 'Return',
-	            on_press  = function(self) 
+	            on_press  = function(self)
+					if not type_again then
+						return
+					end
 	            	self:stop()
 	            	back_door() 
 	        	end
@@ -766,12 +770,23 @@ naughty.connect_signal(
 	end
 )
 
-
-local return_cmd_str_to_blur = function(wall_name, index, ap, width, height)
+-- Background Mode Processes
+local blur_resize_image = function(wall_name, index, ap, width, height)
 	local magic = [[
 	if [ ! -d ]] .. tmp_wall_dir ..[[ ]; then mkdir -p ]] .. tmp_wall_dir .. [[; fi
 
 	convert -quality 100 -filter Gaussian -blur 0x10 ]] .. wall_dir .. wall_name .. 
+	[[ -gravity center -crop ]] .. ap .. [[:1 +repage -resize ]] .. width .. 'x' .. height .. 
+	[[! ]] .. tmp_wall_dir .. index .. wall_name .. [[
+	]]
+	return magic
+end
+
+local resize_image = function(wall_name, index, ap, width, height)
+	local magic = [[
+	if [ ! -d ]] .. tmp_wall_dir ..[[ ]; then mkdir -p ]] .. tmp_wall_dir .. [[; fi
+
+	convert -quality 100 ]] .. wall_dir .. wall_name .. 
 	[[ -gravity center -crop ]] .. ap .. [[:1 +repage -resize ]] .. width .. 'x' .. height .. 
 	[[! ]] .. tmp_wall_dir .. index .. wall_name .. [[
 	]]
@@ -789,7 +804,12 @@ local apply_ls_bg_image = function(wall_name)
 
 		aspect_ratio = math.floor(aspect_ratio * 100) / 100
 
-		local cmd = return_cmd_str_to_blur(wall_name, index, aspect_ratio, screen_width, screen_height)
+		local cmd = nil
+		if background_mode == 'blur' then
+			cmd = blur_resize_image(wall_name, index, aspect_ratio, screen_width, screen_height)
+		else
+			cmd = resize_image(wall_name, index, aspect_ratio, screen_width, screen_height)
+		end
 
 		if s.index == 1 then
 			awful.spawn.easy_async_with_shell(
@@ -821,7 +841,7 @@ local check_background_mode = function()
 			end
 		end
 
-	elseif background_mode == 'background' then
+	elseif background_mode == 'bg_color' then
 		for s in screen do
 			if s.index == 1 then
 				s.lockscreen.bg = beautiful.background
@@ -830,7 +850,7 @@ local check_background_mode = function()
 			end
 		end
 
-	elseif background_mode == 'blur' then
+	elseif background_mode == 'blur' or background_mode == 'image' then
 		apply_ls_bg_image(default_wall_name)
 
 	else
@@ -847,7 +867,7 @@ end
 
 check_background_mode()
 
--- Regenerate lockscreen's background if a screen was added to avoid errors
+-- Regenerate lockscreen's background if a screen was added
 screen.connect_signal(
 	'added', 
 	function()
@@ -856,7 +876,7 @@ screen.connect_signal(
 
 )
 
--- Regenerate lockscreen's background if a screen was removed to avoid errors
+-- Regenerate lockscreen's background if a screen was removed
 screen.connect_signal(
 	"removed",
 	function()
