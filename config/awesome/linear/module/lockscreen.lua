@@ -30,6 +30,7 @@ local input_password = nil
 local lock_again = nil
 local type_again = true
 local capture_now = capture_intruder
+local locked_tag = nil
 
 -- Process
 
@@ -452,6 +453,18 @@ local locker = function(s)
 				-- Enable validation again
 				type_again = true
 
+				-- Select old tag 
+				-- And restore minimized focused client if there's any
+				if locked_tag then
+					locked_tag.selected = true
+					locked_tag = nil
+				end
+            	local c = awful.client.restore()
+	            if c then
+	                client.focus = c
+	                c:raise()
+	            end
+
 			end
 		)
 	end
@@ -499,7 +512,6 @@ local locker = function(s)
 			-- Accept only the single charactered key
 			-- Ignore 'Shift', 'Control', 'Return', 'F1', 'F2', etc., etc.
 			if #key == 1 then
-				
 				locker_widget_rotate()
 
 				if input_password == nil then
@@ -517,6 +529,7 @@ local locker = function(s)
 
 			if key == 'Caps_Lock' then
 				check_caps()
+				return
 			end
 
 			if not type_again then
@@ -637,8 +650,13 @@ local locker = function(s)
 
 		-- Unselect all tags and minimize the focused client
 		-- Will also fix the problem with virtualbox or any other program that has keygrabbing enabled
-		client.focus.minimized = true
-		for _, t in ipairs(mouse.screen.selected_tags) do t.selected = false end
+		if client.focus then
+			client.focus.minimized = true
+		end
+		for _, t in ipairs(mouse.screen.selected_tags) do
+			locked_tag = t
+			t.selected = false
+		end
 
 		-- Why is there a lock_again variable?
 		-- Well, it fixes a bug.
