@@ -11,33 +11,30 @@ local config_dir = filesystem.get_configuration_dir()
 
 local apps = require('configuration.apps')
 
-local filesystem = require('gears.filesystem')
-local config_dir = filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'configuration/user-profile/'
 
 package.cpath = package.cpath .. ";" .. config_dir .. "/library/?.so;"
 local pam = require('liblua_pam')
 
--- Configuration
+-- General Configuration
+local capture_intruder = true  											-- Capture a picture using webcam 
+local face_capture_dir = '$(xdg-user-dir PICTURES)/Intruders/'  		-- Save location, auto creates
 
-local capture_intruder = true  							-- Capture a picture using webcam 
-local face_capture_dir = '${HOME}/Pictures/Intruders/'  -- Save location, auto creates
+-- Background Mode Configuration
+local background_mode = 'blur'											-- Available background mode: `image`, `blur`, `root`, `bg_color`
+local wall_dir = config_dir .. 'theme/wallpapers/'						-- Wallpaper directory
+local default_wall_name = 'morning-wallpaper.jpg'						-- Default wallpaper
+local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'		-- /tmp directory
 
-local background_mode = 'blur' 							-- Available background mode: `blur`, `root`, `background`
-local change_background_on_time = true					-- Dynamic background will only work with `blur` mode
-
-local wall_dir = gears.filesystem.get_configuration_dir() .. 'theme/wallpapers/'
-local default_wall_name = 'morning-wallpaper.jpg'
 
 -- Useful variables (DO NOT TOUCH)
-
 local input_password = nil
 local lock_again = nil
 local type_again = true
 local capture_now = capture_intruder
+local locked_tag = nil
 
--- Process
-
+-- Processes
 local locker = function(s)
 
 	local lockscreen = wibox {
@@ -70,7 +67,7 @@ local locker = function(s)
 
 	local caps_text = wibox.widget {
 		id = 'uname_text',
-		markup = 'Caps Lock is off',
+		markup = 'Caps Lock is on',
 		font = 'SF Pro Display Italic 10',
 		align = 'center',
 		valign = 'center',
@@ -79,7 +76,7 @@ local locker = function(s)
 	}
 	local caps_text_shadow = wibox.widget {
 		id = 'uname_text',
-		markup = '<span foreground="#00000066">' .. 'Caps Lock is off' .. "</span>",
+		markup = '<span foreground="#00000066">' .. 'Caps Lock is on' .. "</span>",
 		font = 'SF Pro Display Italic 10',
 		align = 'center',
 		valign = 'center',
@@ -250,7 +247,6 @@ local locker = function(s)
 		return date_val
 	end
 
-
 	local date = wibox.widget {
 		markup = date_value().day .. date_value().ordinal .. ' of ' .. date_value().month,
 		font = 'SF Pro Display Bold 20',
@@ -287,26 +283,23 @@ local locker = function(s)
 	}
 
 	-- Check Capslock state
-	check_caps = function()
+	local check_caps = function()
 		awful.spawn.easy_async_with_shell(
 		    'xset q | grep Caps | cut -d: -f3 | cut -d0 -f1 | tr -d " "',
 		    function(stdout)
-			status = stdout
+				status = stdout
 
-			if status:match('on') then
-				caps_text.opacity = 1.0
-				caps_text_shadow.opacity = 1.0
-
-				caps_text:set_markup('Caps Lock is on')
-				caps_text_shadow:set_markup('<span foreground="#00000066">' .. 'Caps Lock is on' .. "</span>")
-			else
-				caps_text.opacity = 0.0
-				caps_text_shadow.opacity = 0.0
+				if status:match('on') then
+					caps_text.opacity = 1.0
+					caps_text_shadow.opacity = 1.0
+				else
+					caps_text.opacity = 0.0
+					caps_text_shadow.opacity = 0.0
+				end
+				caps_text:emit_signal('widget::redraw_needed')
+				caps_text_shadow:emit_signal('widget::redraw_needed')
 			end
-
-			caps_text:emit_signal('widget::redraw_needed')
-			caps_text_shadow:emit_signal('widget::redraw_needed')
-		end)
+		)
 	end
 
 	local rotate_container = wibox.container.rotate()
@@ -392,8 +385,7 @@ local locker = function(s)
 			capture_image, 
 			function(stdout)
 				circle_container.bg = beautiful.groups_title_bg
-				type_again = true
-					
+
 				-- Humiliate the intruder by showing his/her hideous face
 				wanted_image:set_image(stdout:gsub('%\n',''))
 				wanted_poster.visible= true
@@ -408,8 +400,9 @@ local locker = function(s)
 						parent = screen.primary
 					}
 				)
-
 				wanted_image:emit_signal('widget::redraw_needed')
+				
+				type_again = true
 			end
 		)
 	end
@@ -421,10 +414,13 @@ local locker = function(s)
 		if capture_now then
 			intruder_capture()
 		else
-			gears.timer.start_new(1, function()
-				circle_container.bg = beautiful.groups_title_bg
-				type_again = true
-			end)
+			gears.timer.start_new(
+				1,
+				function()
+					circle_container.bg = beautiful.groups_title_bg
+					type_again = true
+				end
+			)
 		end
 	end
 
@@ -434,32 +430,45 @@ local locker = function(s)
 		circle_container.bg = green .. 'AA'
 
 		-- Add a little delay before unlocking completely
-		gears.timer.start_new(1, function()
-
-			-- Hide all the lockscreen on all screen
-			for s in screen do
-				if s.index == 1 then
-					s.lockscreen.visible = false
-				else
-					s.lockscreen_extended.visible = false
+		gears.timer.start_new(
+			1,
+			function()
+				if capture_now then
+					-- Hide wanted poster
+					wanted_poster.visible = false
 				end
+
+				-- Hide all the lockscreen on all screen
+				for s in screen do
+					if s.index == 1 then
+						s.lockscreen.visible = false
+					else
+						s.lockscreen_extended.visible = false
+					end
+				end
+
+				circle_container.bg = beautiful.groups_title_bg
+				
+				-- Enable locking again
+				lock_again = true
+
+				-- Enable validation again
+				type_again = true
+
+				-- Select old tag 
+				-- And restore minimized focused client if there's any
+				if locked_tag then
+					locked_tag.selected = true
+					locked_tag = nil
+				end
+            	local c = awful.client.restore()
+	            if c then
+	                client.focus = c
+	                c:raise()
+	            end
+
 			end
-
-			circle_container.bg = beautiful.groups_title_bg
-			
-			-- Enable locking again
-			lock_again = true
-
-			-- Enable validation again
-			type_again = true
-
-			if capture_now then
-				-- Hide wanted poster
-				wanted_poster.visible = false
-
-			end
-		end)
-
+		)
 	end
 
 	-- A backdoor
@@ -483,7 +492,10 @@ local locker = function(s)
 	        awful.key {
 	            modifiers = {'Mod1', 'Mod4', 'Shift', 'Control'},
 	            key       = 'Return',
-	            on_press  = function(self) 
+	            on_press  = function(self)
+					if not type_again then
+						return
+					end
 	            	self:stop()
 	            	back_door() 
 	        	end
@@ -499,12 +511,12 @@ local locker = function(s)
 			if key == 'Escape' then
 				-- Clear input threshold
 				input_password = nil
+				return
 			end
 
 			-- Accept only the single charactered key
-			-- Ignore 'Shift', 'Control', 'Return', 'F1', 'F2', etc., etc
+			-- Ignore 'Shift', 'Control', 'Return', 'F1', 'F2', etc., etc.
 			if #key == 1 then
-				
 				locker_widget_rotate()
 
 				if input_password == nil then
@@ -522,6 +534,7 @@ local locker = function(s)
 
 			if key == 'Caps_Lock' then
 				check_caps()
+				return
 			end
 
 			if not type_again then
@@ -531,13 +544,14 @@ local locker = function(s)
 			-- Validation
 			if key == 'Return' then
 
-				type_again = false
-
 				-- Validate password
 				local pam_auth = false
 				if input_password ~= nil then
 					pam_auth = pam:auth_current_user(input_password)
+				else
+					return
 				end
+
 				if pam_auth then
 					-- Come in!
 					self:stop()
@@ -547,13 +561,14 @@ local locker = function(s)
 					stoprightthereyoucriminalscum()
 				end
 
+				type_again = false
+
 				input_password = nil
 			end
 		
 		end
 
 	}
-
 
 	lockscreen : setup {
 		layout = wibox.layout.align.vertical,
@@ -638,6 +653,16 @@ local locker = function(s)
 
 	show_lockscreen = function()
 
+		-- Unselect all tags and minimize the focused client
+		-- Will also fix the problem with virtualbox or any other program that has keygrabbing enabled
+		if client.focus then
+			client.focus.minimized = true
+		end
+		for _, t in ipairs(mouse.screen.selected_tags) do
+			locked_tag = t
+			t.selected = false
+		end
+
 		-- Why is there a lock_again variable?
 		-- Well, it fixes a bug.
 		-- What is the bug? 
@@ -674,7 +699,6 @@ local locker = function(s)
 
 end
 
-
 -- This lockscreen is for the extra/multi monitor
 local locker_ext = function(s)
 	local extended_lockscreen = wibox {
@@ -692,42 +716,63 @@ local locker_ext = function(s)
 	return extended_lockscreen
 end
 
-
--- Create a lockscreen for each screen
-screen.connect_signal("request::desktop_decoration", function(s)
-
+local cycle_through_screens = function(s)
 	if s.index == 1 then
 		s.lockscreen = locker(s)
 	else
 		s.lockscreen_extended = locker_ext(s)
 	end
+end
 
-end)
+-- Create a lockscreen for each screen
+screen.connect_signal(
+	"request::desktop_decoration",
+	function(s)
+		cycle_through_screens(s)
+	end
+)
+
+-- Regenerate lockscreens if a screen was added to avoid errors
+screen.connect_signal(
+	'added', 
+	function(s)
+		cycle_through_screens(s)
+	end
+
+)
+
+-- Regenerate lockscreens if a screen was removed to avoid errors
+screen.connect_signal(
+	"removed",
+	function(s)
+		cycle_through_screens(s)
+	end
+)
 
 -- Dont show notification popups if the screen is locked
-naughty.connect_signal("request::display", function(_)
+local check_lockscreen_visibility = function()
 	focused = awful.screen.focused()
-	if (focused.lockscreen and focused.lockscreen.visible) or 
-		(focused.lockscreen_extended and focused.lockscreen_extended.visible) then
-		naughty.destroy_all_notifications()
+	if focused.lockscreen and focused.lockscreen.visible then
+		return true
 	end
-end)
+	if focused.lockscreen_extended and focused.lockscreen_extended.visible then
+		return true
+	end
+	return false
+end
 
+naughty.connect_signal(
+	"request::display",
+	function(_)
+		if check_lockscreen_visibility() then
+			naughty.destroy_all_notifications(nil, 1)
+		end
+	end
+)
 
--- This is where the part we set the background image of the lockscreen/s
-
--- Blurred background
--- Depends:
--- 		imagemagick
-
--- Temp dir
-local tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'
-
-
--- Imagemagick convert command that will crop, resize and blur the background image
-local return_cmd_str_to_blur = function(wall_name, index, ap, width, height)
+-- Background Mode Processes
+local blur_resize_image = function(wall_name, index, ap, width, height)
 	local magic = [[
-
 	if [ ! -d ]] .. tmp_wall_dir ..[[ ]; then mkdir -p ]] .. tmp_wall_dir .. [[; fi
 
 	convert -quality 100 -filter Gaussian -blur 0x10 ]] .. wall_dir .. wall_name .. 
@@ -737,12 +782,19 @@ local return_cmd_str_to_blur = function(wall_name, index, ap, width, height)
 	return magic
 end
 
+local resize_image = function(wall_name, index, ap, width, height)
+	local magic = [[
+	if [ ! -d ]] .. tmp_wall_dir ..[[ ]; then mkdir -p ]] .. tmp_wall_dir .. [[; fi
 
--- Set background image data
-local update_ls_bg = function(wall_name)
+	convert -quality 100 ]] .. wall_dir .. wall_name .. 
+	[[ -gravity center -crop ]] .. ap .. [[:1 +repage -resize ]] .. width .. 'x' .. height .. 
+	[[! ]] .. tmp_wall_dir .. index .. wall_name .. [[
+	]]
+	return magic
+end
 
+local apply_ls_bg_image = function(wall_name)
 	for s in screen do
-
 		local index = s.index .. '-'
 
 		local screen_width = s.geometry.width
@@ -752,208 +804,82 @@ local update_ls_bg = function(wall_name)
 
 		aspect_ratio = math.floor(aspect_ratio * 100) / 100
 
-		local cmd = return_cmd_str_to_blur(wall_name, index, aspect_ratio, screen_width, screen_height)
+		local cmd = nil
+		if background_mode == 'blur' then
+			cmd = blur_resize_image(wall_name, index, aspect_ratio, screen_width, screen_height)
+		else
+			cmd = resize_image(wall_name, index, aspect_ratio, screen_width, screen_height)
+		end
 
 		if s.index == 1 then
-			awful.spawn.easy_async_with_shell(cmd, function(stdout, stderr)
-				s.lockscreen.bgimage = tmp_wall_dir .. index .. wall_name
-			end)
+			awful.spawn.easy_async_with_shell(
+				cmd,
+				function(stdout, stderr)
+					s.lockscreen.bgimage = tmp_wall_dir .. index .. wall_name
+				end
+			)
 		else
-			awful.spawn.easy_async_with_shell(cmd, function() 
-				s.lockscreen_extended.bgimage = tmp_wall_dir .. index .. wall_name
-			end)
+			awful.spawn.easy_async_with_shell(
+				cmd,
+				function() 
+					s.lockscreen_extended.bgimage = tmp_wall_dir .. index .. wall_name
+				end
+			)
 		end
-
 	end
 end
 
+local check_background_mode = function()
 
-local blur_bg = function()
+	if background_mode == 'root' then
 
-	-- Wallpapers filename
-	-- Note:
-	-- Default image format is jpg
-	local ls_bg_morning = 'morning-wallpaper.jpg'
-	local ls_bg_noon = 'noon-wallpaper.jpg'
-	local ls_bg_night = 'night-wallpaper.jpg'
-	local ls_bg_midnight = 'midnight-wallpaper.jpg'
-
-	-- Change the wallpaper on scheduled time
-	local morning_schedule = '06:22:00'
-	local noon_schedule = '12:00:00'
-	local night_schedule = '17:58:00'
-	local midnight_schedule = '24:00:00'
-
-	local bg_data = {}
-	local the_countdown = nil
-
-	-- Get current time
-	local current_time = function()
-	  	return os.date("%H:%M:%S")
-	end
-
-	-- Parse HH:MM:SS to seconds
-	local parse_to_seconds = function(time)
-
-	  	-- Convert HH in HH:MM:SS
-	  	hour_sec = tonumber(string.sub(time, 1, 2)) * 3600
-
-	  	-- Convert MM in HH:MM:SS
-	  	min_sec = tonumber(string.sub(time, 4, 5)) * 60
-
-		-- Get SS in HH:MM:SS
-		get_sec = tonumber(string.sub(time, 7, 8))
-
-		-- Return computed seconds
-	    return (hour_sec + min_sec + get_sec)
-
-	end
-
-
-	-- Get time difference
-	local time_diff = function(current, schedule)
-		local diff = parse_to_seconds(current) - parse_to_seconds(schedule)
-		return diff
-	end
-
-
-	-- Updates variables
-	local manage_timer = function()
-
-		-- Get current time
-		local time_now = parse_to_seconds(current_time())
-
-		-- Parse the schedules to seconds
-		local parsed_morning = parse_to_seconds(morning_schedule)
-		local parsed_noon = parse_to_seconds(noon_schedule)
-		local parsed_night = parse_to_seconds(night_schedule)
-		local parsed_midnight = parse_to_seconds('00:00:00')
-
-		-- Note that we will use '00:00:00' instead of '24:00:00' as midnight
-		-- As the latter causes an error. The time_diff() returns a negative value
-
-		if time_now >= parsed_midnight and time_now < parsed_morning then
-			-- Midnight time
-
-			-- Update lockscreen background
-			update_ls_bg(ls_bg_midnight)
-
-			-- Set the data for the next scheduled time
-			bg_data = {morning_schedule, ls_bg_morning}
-
-		elseif time_now >= parsed_morning and time_now < parsed_noon then
-			-- Morning time
-
-			-- Update lockscreen background
-			update_ls_bg(ls_bg_morning)
-
-			-- Set the data for the next scheduled time
-			bg_data = {noon_schedule, ls_bg_noon}
-
-		elseif time_now >= parsed_noon and time_now < parsed_night then
-			-- Noon time
-
-			-- Update lockscreen background
-			update_ls_bg(ls_bg_noon)
-
-			-- Set the data for the next scheduled time
-			bg_data = {night_schedule, ls_bg_night}
-
-		else
-			-- Night time
-
-			-- Update lockscreen background
-			update_ls_bg(ls_bg_night)
-
-			-- Set the data for the next scheduled time
-			bg_data = {midnight_schedule, ls_bg_midnight}
-
+		for s in screen do
+			if s.index == 1 then
+				s.lockscreen.bgimage = root.wallpaper()
+			else
+				s.lockscreen_extended.bgimage = root.wallpaper()
+			end
 		end
-	  
-		
-		-- Get the time difference to set as timeout for the wall_updater timer below
-		the_countdown = time_diff(bg_data[1], current_time())
 
+	elseif background_mode == 'bg_color' then
+		for s in screen do
+			if s.index == 1 then
+				s.lockscreen.bg = beautiful.background
+			else
+				s.lockscreen_extended.bg = beautiful.background
+			end
+		end
+
+	elseif background_mode == 'blur' or background_mode == 'image' then
+		apply_ls_bg_image(default_wall_name)
+
+	else
+		for s in screen do
+			if s.index == 1 then
+				s.lockscreen.bgimage = root.wallpaper()
+			else
+				s.lockscreen_extended.bgimage = root.wallpaper()
+			end
+		end
 	end
-
-	-- Update lockscreen background
-	manage_timer()
-
-
-	local ls_updater = gears.timer {
-		-- The timeout is the difference of current time and the scheduled time we set above.
-		timeout   = the_countdown,
-		autostart = true,
-		call_now = true,
-		callback  = function()
-
-			-- Emit signal to update lockscreen background
-	    	awesome.emit_signal("module::lockscreen_background")
-	  	
-	  	end
-	}
-
-	-- Update lockscreen bg here and update the timeout for the next schedule
-	awesome.connect_signal("module::lockscreen_background", function()
-		
-		-- Update values for the next specified schedule
-		manage_timer()
-
-		-- Update timer timeout for the next specified schedule
-		ls_updater.timeout = the_countdown
-
-		-- Restart timer
-		ls_updater:again()
-
-	end)
 
 end
 
+check_background_mode()
 
--- If a screen is added, generate a background 
--- for the inserted screen/monitor
+-- Regenerate lockscreen's background if a screen was added
 screen.connect_signal(
 	'added', 
 	function()
-		if background_mode == 'blur' then
-			blur_bg()
-		end
+		check_background_mode()
 	end
+
 )
 
-if background_mode == 'blur'  then
-
-	if not change_background_on_time then
-		update_ls_bg(default_wall_name)
-		return 
+-- Regenerate lockscreen's background if a screen was removed
+screen.connect_signal(
+	"removed",
+	function()
+		check_background_mode()
 	end
-	blur_bg()
-
-elseif background_mode == 'root' then
-
-	for s in screen do
-		if s.index == 1 then
-			s.lockscreen.bgimage = root.wallpaper()
-		else
-			s.lockscreen_extended.bgimage = root.wallpaper()
-		end
-	end
-
-
-elseif background_mode == 'background' then
-	for s in screen do
-		if s.index == 1 then
-			s.lockscreen.bgimage = beautiful.background
-		else
-			s.lockscreen_extended.bgimage = beautiful.background
-		end
-	end
-else
-	for s in screen do
-		if s.index == 1 then
-			s.lockscreen.bgimage = root.wallpaper()
-		else
-			s.lockscreen_extended.bgimage = root.wallpaper()
-		end
-	end
-end
+)

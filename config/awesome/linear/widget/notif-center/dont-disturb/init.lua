@@ -12,14 +12,12 @@ local config_dir = gears.filesystem.get_configuration_dir()
 local widget_dir = config_dir .. 'widget/notif-center/dont-disturb/'
 local widget_icon_dir = config_dir .. 'widget/notif-center/icons/'
 
--- Do not disturb status
-dont_disturb = false
+_G.dont_disturb = false
 
--- Delete button imagebox
 local dont_disturb_imagebox = wibox.widget {
 	{
 		id = 'icon',
-		image = widget_icon_dir .. 'dont-disturb-mode' .. '.svg',
+		image = widget_icon_dir .. 'dont-disturb-mode.svg',
 		resize = true,
 		forced_height = dpi(20),
 		forced_width = dpi(20),
@@ -28,7 +26,6 @@ local dont_disturb_imagebox = wibox.widget {
 	layout = wibox.layout.fixed.horizontal
 }
 
--- Update imagebox
 local function update_icon()
 
 	local widget_icon_name = nil
@@ -36,20 +33,17 @@ local function update_icon()
 
 	if dont_disturb then
 		widget_icon_name = 'toggled-on'
-		dd_icon:set_image(widget_icon_dir .. 'dont-disturb-mode' .. '.svg')
+		dd_icon:set_image(widget_icon_dir .. 'dont-disturb-mode.svg')
 	else
 		widget_icon_name = 'toggled-off'
-		dd_icon:set_image(widget_icon_dir .. 'notify-mode' .. '.svg')
+		dd_icon:set_image(widget_icon_dir .. 'notify-mode.svg')
 	end
 end
 
-
 local check_disturb_status = function()
-
-	local cmd = "cat " .. widget_dir .. "disturb_status"
-
+	
 	awful.spawn.easy_async_with_shell(
-		cmd, 
+		"cat " .. widget_dir .. "disturb_status", 
 		function(stdout)
 			
 			local status = stdout
@@ -60,10 +54,7 @@ local check_disturb_status = function()
 				dont_disturb = false
 			else
 				dont_disturb = false
-				awful.spawn.easy_async_with_shell(
-					"echo 'false' > " .. widget_dir .. "disturb_status", 
-					function(stdout) end
-				)
+				awful.spawn.with_shell("echo 'false' > " .. widget_dir .. "disturb_status")
 			end
 
 			update_icon()
@@ -71,24 +62,15 @@ local check_disturb_status = function()
 	)
 end
 
-
--- Check status on startup
 check_disturb_status()
 
--- Maintain Status even after awesome.restart() by writing on the widget_dir/ .. disturb_status
 local toggle_disturb = function()
-	if(dont_disturb == true) then
-
+	if dont_disturb then
 		dont_disturb = false
-
 	else
 		dont_disturb = true
 	end
-	
-	awful.spawn.easy_async_with_shell(
-		"echo " .. tostring(dont_disturb) .. " > " .. widget_dir .. "disturb_status", 
-		function(stdout) end
-	)
+	awful.spawn.with_shell("echo " .. tostring(dont_disturb) .. " > " .. widget_dir .. "disturb_status")
 	update_icon()
 end
 
@@ -114,7 +96,6 @@ dont_disturb_button:buttons(
 	)
 )
 
--- decorate button
 local dont_disturb_wrapped = wibox.widget {
 	nil,
 	{
@@ -133,10 +114,7 @@ naughty.connect_signal(
 	"request::display", 
 	function(n)
 		if not dont_disturb then
-			awful.spawn.easy_async(
-				'canberra-gtk-play -i message', 
-				function() end
-			)
+			awful.spawn.with_shell('canberra-gtk-play -i message')
 		end
 	end
 )

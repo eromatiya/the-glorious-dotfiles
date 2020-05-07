@@ -361,7 +361,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 								lock,
 								layout = wibox.layout.fixed.horizontal
 							},
-							spacing = dpi(40),
+							spacing = dpi(30),
 							layout = wibox.layout.fixed.vertical
 						},
 						spacing = dpi(40),
