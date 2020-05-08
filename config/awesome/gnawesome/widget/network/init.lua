@@ -249,9 +249,14 @@ local return_button = function()
 			]],
 			function(stdout)
 
+				if not tonumber(stdout) then
+					return
+				end
+
 				local widget_icon_name = 'wifi-strength'
 
 				wifi_strength = tonumber(stdout)
+				
 				local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
 
 				awful.spawn.easy_async_with_shell(
