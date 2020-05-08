@@ -1,11 +1,9 @@
-
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
-
-local dpi = require('beautiful').xresources.apply_dpi
-
 local beautiful = require('beautiful')
+
+local dpi = beautiful.xresources.apply_dpi
 
 local clickable_container = require('widget.clickable-container')
 
@@ -18,12 +16,12 @@ local decorate_widget = function(widgets)
 		widgets,
 		bg = beautiful.groups_bg,
 		shape = function(cr, width, height)
-			gears.shape.rounded_rect(cr, width, height, groups_radius) end,
+			gears.shape.rounded_rect(cr, width, height, groups_radius)
+		end,
 		widget = wibox.container.background
 	}
 
 end
-
 
 local build_social_button = function(website)
 
@@ -47,6 +45,21 @@ local build_social_button = function(website)
 		widget = clickable_container
 	}
 
+	local website_url = nil
+	if website == 'facebook' then
+		website_url = 'https://facebook.com'
+
+	elseif website == 'reddit' then
+		website_url = 'https://reddit.com'
+
+	elseif website == 'twitter' then
+		website_url = 'https://twitter.com'
+
+	elseif website == 'instagram' then
+		website_url = 'https://instagram.com'
+
+	end
+
 	social_button:buttons(
 		gears.table.join(
 			awful.button(
@@ -54,25 +67,13 @@ local build_social_button = function(website)
 				1,
 				nil,
 				function()
-					local social_site = website
-					
-					if social_site == 'facebook' then
-						awful.spawn.easy_async_with_shell("xdg-open https://facebook.com", function(stderr) end, false)
-					elseif social_site == 'reddit' then
-						awful.spawn.easy_async_with_shell("xdg-open https://reddit.com", function(stderr) end, false)
-					elseif social_site == 'twitter' then
-						awful.spawn.easy_async_with_shell("xdg-open https://twitter.com", function(stderr) end, false)
-					elseif social_site == 'instagram' then
-						awful.spawn.easy_async_with_shell("xdg-open https://instagram.com", function(stderr) end, false)
-					end
-
+					awful.spawn({"xdg-open", website_url}, false)
 				end
 			)
 		)
 	)
 
-	local social_name = website:gsub('%W','')
-	social_name =  social_name:sub(1,1):upper()..social_name:sub(2)
+	local social_name = website:sub(1,1):upper() .. website:sub(2)
 
 	local social_tbox = wibox.widget {
 		text = social_name,
@@ -100,33 +101,30 @@ end
 local social_layout = wibox.widget {
 	layout = wibox.layout.fixed.horizontal,
 	spacing = dpi(5),
-	build_social_button('facebook'),
 	build_social_button('reddit'),
+	build_social_button('facebook'),
 	build_social_button('twitter'),
 	build_social_button('instagram'),
 }
 
-local social =  wibox.widget {
-	expand = 'none',
-	layout = wibox.layout.fixed.vertical,
+local social = wibox.widget {
 	{
 		{
-			{
-				expand = "none",
-				layout = wibox.layout.align.horizontal,
-				nil,
-				social_layout,
-				nil
-			},
-			margins = dpi(10),
-			widget = wibox.container.margin,
+			expand = "none",
+			layout = wibox.layout.align.horizontal,
+			nil,
+			social_layout,
+			nil
 		},
-		forced_height = dpi(92),
-		bg = beautiful.groups_bg,
-		shape = function(cr, width, height)
-			gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius) end,
-		widget = wibox.container.background
+		margins = dpi(10),
+		widget = wibox.container.margin,
 	},
+	forced_height = dpi(92),
+	bg = beautiful.groups_bg,
+	shape = function(cr, width, height)
+		gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius)
+	end,
+	widget = wibox.container.background
 }
 
 return social
