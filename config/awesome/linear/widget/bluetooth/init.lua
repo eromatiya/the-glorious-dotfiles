@@ -10,19 +10,15 @@ local naughty = require('naughty')
 local wibox = require('wibox')
 
 local watch = awful.widget.watch
+local dpi = require('beautiful').xresources.apply_dpi
 
 local apps = require('configuration.apps')
 
 local clickable_container = require('widget.clickable-container')
-local dpi = require('beautiful').xresources.apply_dpi
-
 
 local config_dir = gears.filesystem.get_configuration_dir()
 
 local widget_icon_dir = config_dir .. 'widget/bluetooth/icons/'
-
-local checker = nil
-
 
 local return_button = function()
 
@@ -59,18 +55,11 @@ local return_button = function()
 		)
 	)
 
-	awful.tooltip
+	local bluetooth_tooltip = awful.tooltip
 	{
 		objects = {widget_button},
 		mode = 'outside',
 		align = 'right',
-		timer_function = function()
-			if checker then
-				return 'Bluetooth is on'
-			else
-				return 'Bluetooth is off'
-			end
-		end,
 		margin_leftright = dpi(8),
 		margin_topbottom = dpi(8),
 		preferred_positions = {'right', 'left', 'top', 'bottom'}
@@ -83,12 +72,12 @@ local return_button = function()
 			local widget_icon_name = nil
 			if stdout:match('Soft blocked: yes') then
 				widget_icon_name = 'bluetooth-off'
+				bluetooth_tooltip.markup = 'Bluetooth is off'
 			else
 				widget_icon_name = 'bluetooth'
+				bluetooth_tooltip.markup = 'Bluetooth is on'
 			end
-
 			widget.icon:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
-
 			collectgarbage('collect')
 		end,
 		widget
