@@ -67,7 +67,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 					widget = wibox.container.margin,
 				},
 				{
-					spacing = dpi(0),
 					layout = wibox.layout.fixed.vertical,
 					{
 						spacing = dpi(4),

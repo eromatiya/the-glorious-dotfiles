@@ -440,7 +440,6 @@ media_buttons.play_button:buttons(
 	)
 )
 
-
 media_buttons.next_button:buttons(
 	gears.table.join(
 		awful.button(

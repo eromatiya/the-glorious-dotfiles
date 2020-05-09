@@ -11,7 +11,7 @@ song_info.music_title = wibox.widget {
 		{
 			id = 'title',
 			text = 'The song title is here',
-			font = 'SF Pro Text Bold 11',
+			font = 'SF Pro Text Bold 12',
 			align  = 'center',
 			valign = 'center',
 			ellipsize = 'end',
@@ -23,8 +23,8 @@ song_info.music_title = wibox.widget {
         expand = true,
         direction = 'h',
         step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
+        -- fps = 60,
         layout = wibox.container.scroll.horizontal,
-        fps = 60
 	},
 	nil
 }
@@ -37,7 +37,7 @@ song_info.music_artist = wibox.widget {
 		{
 			id = 'artist',
 			text = 'The artist name is here',
-			font = 'SF Pro Text 9',
+			font = 'SF Pro Text 10',
 			align  = 'center',
 			valign = 'center',
 			widget = wibox.widget.textbox
@@ -55,10 +55,9 @@ song_info.music_artist = wibox.widget {
 }
 
 song_info.music_info = wibox.widget {
-	expand = 'none',
 	layout = wibox.layout.fixed.vertical,
 	song_info.music_title,
-	song_info.music_artist,
+	song_info.music_artist
 }
 
 return song_info
