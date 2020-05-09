@@ -214,18 +214,33 @@ local set_email_data_tooltip = function(email_data)
 	email_details_tooltip:set_markup(counter .. '\n\n' .. email_data)
 end
 
+local set_widget_markup = function(from, subject, date, tooltip)
+
+	email_recent_from:set_markup(format_string('From:', from))
+	email_recent_subject:set_markup(format_string('Subject:', subject))
+	email_recent_date:set_markup(format_string('Local Date:', date))
+
+	if tooltip then
+		email_details_tooltip:set_markup(tooltip)
+	end
+end
+
 local set_no_connection_msg = function()
-	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
-	email_recent_subject:set_markup(format_string('Subject:', 'Check network connection!'))
-	email_recent_date:set_markup(format_string('Last Check:', os.date("%d-%m-%Y %H:%M:%S")))
-	email_details_tooltip:set_markup('No internet connection!')
+	set_widget_markup(
+		'message@stderr.sh',
+		'Check network connection!',
+		os.date("%d-%m-%Y %H:%M:%S"),
+		'No internet connection!'		
+	)
 end
 
 local set_invalid_credentials_msg = function()
-	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
-	email_recent_subject:set_markup(format_string('Subject:', 'Invalid Credentials!'))
-	email_recent_date:set_markup(format_string('Last Check:', os.date("%d-%m-%Y %H:%M:%S")))
-	email_details_tooltip:set_markup('You have an invalid credentials!')
+	set_widget_markup(
+		'message@stderr.sh',
+		'Invalid Credentials!',
+		os.date("%d-%m-%Y %H:%M:%S"),
+		'You have an invalid credentials!'
+	)
 end
 
 local set_latest_email_data = function(email_data)
@@ -243,18 +258,23 @@ local set_latest_email_data = function(email_data)
 	elseif count > 9 then
 		email_icon_widget.icon:set_image(widget_icon_dir .. 'email-9+.svg')
 	end
-
-	email_recent_from:set_markup(format_string('From:', recent_from))
-	email_recent_subject:set_markup(format_string('Subject:', recent_subject))
-	email_recent_date:set_markup(format_string('Local Date:', recent_date))
+	
+	set_widget_markup(
+		recent_from,
+		recent_subject,
+		recent_date
+	)
 
 	notify_new_email(unread_count, recent_from, recent_subject)
 end
 
 local set_empty_inbox_msg = function()
-	email_recent_from:set_markup(format_string('From:', 'empty@stdout.sh'))
-	email_recent_subject:set_markup(format_string('Subject:', 'Empty inbox'))
-	email_recent_date:set_markup(format_string('Last Check:', os.date("%d-%m-%Y %H:%M:%S")))
+	set_widget_markup(
+		'empty@stdout.sh',
+		'Empty inbox',
+		os.date("%d-%m-%Y %H:%M:%S"),
+		'Empty inbox.'
+	)
 end
 
 local fetch_email_data = function()
@@ -272,7 +292,6 @@ local fetch_email_data = function()
 			elseif stdout:match("Unread Count: 0") then
 				email_icon_widget.icon:set_image(widget_icon_dir .. 'email.svg')
 				set_empty_inbox_msg()
-				email_details_tooltip:set_markup('Empty inbox.')
 				return
 			elseif not stdout:match('Unread Count: (.-)From:') then
 				return
