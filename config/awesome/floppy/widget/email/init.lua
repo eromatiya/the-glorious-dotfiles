@@ -36,14 +36,6 @@ local email_icon_widget = wibox.widget {
 	layout = wibox.layout.fixed.horizontal
 }
 
-local email_unread_count = wibox.widget {
-	markup = format_string('Unread Count:', '0'),
-	font = 'SF Pro Text Regular 10',
-	align = 'left',
-	valign = 'center',
-	widget = wibox.widget.textbox
-}
-
 local email_recent_from = wibox.widget {
 	font = 'SF Pro Text Regular 10',
 	markup = format_string('From:', 'loading@stdout.sh'),
@@ -55,6 +47,14 @@ local email_recent_from = wibox.widget {
 local email_recent_subject = wibox.widget {
 	font = 'SF Pro Text Regular 10',
 	markup = format_string('Subject:', 'Loading data'),
+	align = 'left',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
+local email_recent_date = wibox.widget {
+	font = 'SF Pro Text Regular 10',
+	markup = format_string('Local Date:', 'Loading date'),
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -78,9 +78,9 @@ local email_report = wibox.widget{
 				nil,
 				{
 					layout = wibox.layout.fixed.vertical,
-					email_unread_count,
 					email_recent_from,
-					email_recent_subject
+					email_recent_subject,
+					email_recent_date
 				},
 				nil
 			}
@@ -133,7 +133,7 @@ def process_mailbox(M):
 		date_tuple = email.utils.parsedate_tz(msg['Date'])
 		if date_tuple:
 			local_date = datetime.datetime.fromtimestamp(email.utils.mktime_tz(date_tuple))
-			print ("Local Date:", local_date.strftime("%a, %d %b %Y %H:%M:%S") + "\n")
+			print ("Local Date:", local_date.strftime("%a, %H:%M:%S %d-%m-%Y") + "\n")
 			# with code below you can process text of email
 			# if msg.is_multipart():
 			#     for payload in msg.get_payload():
@@ -169,8 +169,7 @@ local notify_all_unread_email = function(email_data)
 	
 	local unread_counter = email_data:match('Unread Count: (.-)From:'):sub(1, -2)
 
-	email_data = email_data:match('(From:.*)'):sub(1, -2)
-	email_data = gears.string.xml_unescape(email_data)
+	local email_data = email_data:match('(From:.*)'):sub(1, -2)
 
 	local title = nil
 
@@ -210,19 +209,22 @@ local notify_new_email = function(count, from, subject)
 end
 
 local set_email_data_tooltip = function(email_data)
-	email_data = email_data:match('(From:.*)')
-	email_details_tooltip:set_markup(email_data)
+	local email_data = email_data:match('(From:.*)')
+	local counter = format_string("Unread Count: ", unread_email_count)
+	email_details_tooltip:set_markup(counter .. '\n\n' .. email_data)
 end
 
 local set_no_connection_msg = function()
 	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
 	email_recent_subject:set_markup(format_string('Subject:', 'Check network connection!'))
+	email_recent_date:set_markup(format_string('Last Check:', os.date("%d-%m-%Y %H:%M:%S")))
 	email_details_tooltip:set_markup('No internet connection!')
 end
 
 local set_invalid_credentials_msg = function()
 	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
 	email_recent_subject:set_markup(format_string('Subject:', 'Invalid Credentials!'))
+	email_recent_date:set_markup(format_string('Last Check:', os.date("%d-%m-%Y %H:%M:%S")))
 	email_details_tooltip:set_markup('You have an invalid credentials!')
 end
 
@@ -231,20 +233,28 @@ local set_latest_email_data = function(email_data)
 	local unread_count = email_data:match('Unread Count: (.-)From:'):sub(1, -2)
 	local recent_from = email_data:match('From: (.-)Subject:'):sub(1, -2)
 	local recent_subject = email_data:match('Subject: (.-)Local Date:'):sub(1, -2)
+	local recent_date = email_data:match('Local Date: (.-)\n')
 
 	recent_from = recent_from:match('<(.*)>') or recent_from:match('&lt;(.*)&gt;') or recent_from
 
-	email_unread_count:set_markup(format_string('Unread Count:', unread_count))
+	local count = tonumber(unread_count)
+	if count > 0 and count <= 9 then
+		email_icon_widget.icon:set_image(widget_icon_dir .. 'email-'.. tostring(count) .. '.svg')
+	elseif count > 9 then
+		email_icon_widget.icon:set_image(widget_icon_dir .. 'email-9+.svg')
+	end
+
 	email_recent_from:set_markup(format_string('From:', recent_from))
 	email_recent_subject:set_markup(format_string('Subject:', recent_subject))
+	email_recent_date:set_markup(format_string('Local Date:', recent_date))
 
 	notify_new_email(unread_count, recent_from, recent_subject)
 end
 
 local set_empty_inbox_msg = function()
-	email_unread_count:set_markup(format_string('Unread Count:', '0'))
 	email_recent_from:set_markup(format_string('From:', 'empty@stdout.sh'))
 	email_recent_subject:set_markup(format_string('Subject:', 'Empty inbox'))
+	email_recent_date:set_markup(format_string('Last Check:', os.date("%d-%m-%Y %H:%M:%S")))
 end
 
 local fetch_email_data = function()
@@ -272,7 +282,6 @@ local fetch_email_data = function()
 
 			set_latest_email_data(stdout)
 			set_email_data_tooltip(stdout)
-			email_icon_widget.icon:set_image(widget_icon_dir .. 'email-unread.svg')
 
 			if startup_show then
 				notify_all_unread_email(stdout)
@@ -283,7 +292,6 @@ local fetch_email_data = function()
 end
 
 local set_missing_secrets_msg = function()
-	email_unread_count:set_markup(format_string('Unread Count:', 'Unknown'))
 	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
 	email_recent_subject:set_markup(format_string('Subject:', 'Credentials are missing!'))
 	email_details_tooltip:set_markup('Missing credentials!')
