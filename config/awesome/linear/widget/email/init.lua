@@ -60,7 +60,6 @@ local email_recent_subject = wibox.widget {
 	widget = wibox.widget.textbox
 }
 
-
 local email_report = wibox.widget{
 	{
 		{
@@ -185,8 +184,8 @@ local notify_all_unread_email = function(email_data)
 		app_name = 'Email',
 		title = title,
 		message = email_data,
-		timeout = 200,
-		icon = widget_icon_dir .. 'email-unread' .. '.svg'
+		timeout = 180,
+		icon = widget_icon_dir .. 'email-unread.svg'
 	})
 end
 
@@ -201,8 +200,8 @@ local notify_new_email = function(count, from, subject)
 			app_name = 'Email',
 			title = 'You have a new unread email!',
 			message = message,
-			timeout = 200,
-			icon = widget_icon_dir .. 'email-unread' .. '.svg'
+			timeout = 10,
+			icon = widget_icon_dir .. 'email-unread.svg'
 		})
 	else
 		unread_email_count = tonumber(count)
@@ -265,9 +264,9 @@ local fetch_email_data = function()
 				set_empty_inbox_msg()
 				email_details_tooltip:set_markup('Empty inbox.')
 				return
-			elseif not stdout or stdout == '' then
+			elseif not stdout:match('Unread Count: (.-)From:') then
 				return
-			elseif not stdout:match('Unread Count: (.-)From:'):sub(1, -2) then
+			elseif not stdout or stdout == '' then
 				return
 			end
 
