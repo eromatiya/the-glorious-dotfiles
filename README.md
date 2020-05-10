@@ -111,7 +111,6 @@ This wiki will guide you to replicate my setups.
 *  [**Epilogue**](https://github.com/manilarome/the-glorious-dotfiles/wiki/Epilogue)
 
 <br>
-<br>
 
 ## summary and details
 
@@ -236,3 +235,8 @@ Some of these are outdated, so it is better if you try them yourself.
 <br>
 
 Main gallery [here](https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery).
+
+
+## contributors
+
+Grazie to these [people](https://github.com/manilarome/the-glorious-dotfiles/graphs/contributors)!
