@@ -92,8 +92,7 @@ ruled.client.connect_signal(
 		ruled.client.append_rule {
 			id         = "splash",
 			rule_any   = { 
-				type = { "splash" },
-				name = {"Discord Updater"}
+				type = { "splash" }
 			},
 			properties = { 
 				titlebars_enabled = false,
@@ -139,7 +138,9 @@ ruled.client.connect_signal(
 				class = {
 					"firefox",
 					"Tor Browser",
-					"discord"
+					"discord",
+					"Chromium",
+					"Google-chrome"
 				}
 			},
 			properties = { 
@@ -195,6 +196,7 @@ ruled.client.connect_signal(
 			},
 			properties = { 
 				tag = '5',
+				switchtotag = true,
 				draw_backdrop = false
 			}
 		}
@@ -238,7 +240,7 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Sandboxes
+		-- Sandboxes and VMs
 		ruled.client.append_rule {
 			id         = "sandbox",
 			rule_any   = {  
@@ -269,15 +271,16 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Hide titlebars
+		-- Image viewers with splash-like behaviour
 		ruled.client.append_rule {
-			id        = "hide_titlebars",
+			id        = "splash_like",
 			rule_any  = {
 				class    = {
 					"feh",
-					"Mugshot",
-					"Pulseeffects"
-				}
+					"Pqiv",
+					"Sxiv"
+				},
+				name = {"Discord Updater"}
 			},
 			properties = { 
 				skip_decoration = true,
@@ -288,14 +291,19 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Instances
+		-- Splash-like but with titlebars enabled
 		ruled.client.append_rule {
 			id       = "instances",
 			rule_any = {
 				instance    = {
 					"file_progress",
 					"Popup",
-					"nm-connection-editor"
+					"nm-connection-editor",
+				},
+				class = { 
+					"scrcpy" ,
+					"Mugshot",
+					"Pulseeffects"
 				}
 			},
 				properties = { 
