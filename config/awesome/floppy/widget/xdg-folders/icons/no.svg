@@ -5,99 +5,65 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="240"
-   height="240"
-   version="1.1"
-   viewBox="0 0 240 240"
-   id="svg21"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    sodipodi:docname="no.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+   id="svg6"
+   version="1.1"
+   height="240"
+   width="240">
   <metadata
-     id="metadata25">
+     id="metadata12">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1321"
-     inkscape:window-height="740"
-     id="namedview23"
-     showgrid="false"
-     inkscape:pagecheckerboard="true"
-     inkscape:zoom="1.28"
-     inkscape:cx="67.070973"
-     inkscape:cy="56.31526"
-     inkscape:window-x="45"
-     inkscape:window-y="28"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g844" />
   <defs
-     id="defs7">
-    <linearGradient
-       id="b"
-       x1="46.167999"
-       x2="46.167999"
-       y1="57"
-       y2="27.346001"
-       gradientTransform="matrix(0.26458,0,0,0.26458,0,280.07)"
-       gradientUnits="userSpaceOnUse">
-      <stop
-         offset="0"
-         id="stop2" />
-      <stop
-         stop-opacity="0"
-         offset="1"
-         id="stop4" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#b"
-       id="linearGradient831"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.2751632,0,0,0.2751632,-0.339,46.22855)"
-       x1="46.167999"
-       y1="57"
-       x2="46.167999"
-       y2="27.346001" />
-  </defs>
+     id="defs10" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg6"
+     inkscape:window-maximized="0"
+     inkscape:window-y="28"
+     inkscape:window-x="0"
+     inkscape:cy="72.365474"
+     inkscape:cx="-82.801293"
+     inkscape:zoom="0.99930857"
+     inkscape:pagecheckerboard="true"
+     showgrid="false"
+     id="namedview8"
+     inkscape:window-height="692"
+     inkscape:window-width="1366"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
   <g
-     id="g844"
-     transform="matrix(14.536827,0,0,14.536827,-3.0711033,-679.9855)">
+     id="g839">
     <rect
-       x="1.58708"
-       y="48.152565"
-       width="13.75816"
-       height="13.75816"
-       rx="0.79352003"
-       ry="0.79352003"
-       id="rect9"
-       style="fill:#ee4f84;fill-opacity:1;stroke-width:1.00048006;paint-order:markers stroke fill" />
+       width="200"
+       height="200"
+       rx="37.5"
+       ry="37.5"
+       fill="#db3c30"
+       id="rect2"
+       x="20"
+       y="20"
+       style="stroke-width:12.5" />
     <path
-       d="m 15.34524,53.74983 a 12.38224,12.38224 0 0 1 -5.96128,8.15984 h 5.13552 c 0.4576,0 0.82576,-0.36816 0.82576,-0.82576 z"
-       id="path11"
-       inkscape:connector-curvature="0"
-       style="opacity:0.25;fill:url(#linearGradient831);stroke-width:1.00048006;paint-order:markers stroke fill" />
-    <path
-       inkscape:connector-curvature="0"
-       d="m 12.765585,51.601316 -0.869098,-0.869099 -3.430327,3.430331 -3.430327,-3.430331 -0.869098,0.869099 3.430327,3.430331 -3.430327,3.430327 0.869098,0.869098 3.430327,-3.430327 3.430327,3.430327 0.869098,-0.869098 -3.430326,-3.430327 z"
-       id="path2"
-       style="fill:#ffffff;fill-opacity:1;stroke-width:0.30710188" />
+       d="M 57.499998,76.249997 101.25,119.99999 57.499998,163.75 l 18.75,18.75 43.749992,-43.75 43.75,43.75 L 182.5,163.75 138.74999,119.99999 182.5,76.249997 163.74999,57.499997 119.99999,101.25 76.249997,57.499997 Z"
+       fill="#ffffff"
+       id="path4"
+       style="stroke-width:12.5" />
   </g>
 </svg>
