@@ -3,18 +3,16 @@ local gears = require('gears')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 
-local dpi = require('beautiful').xresources.apply_dpi
+local dpi = beautiful.xresources.apply_dpi
 
 local icons = require('theme.icons')
 local apps = require('configuration.apps')
 local clickable_container = require('widget.clickable-container')
 
-local filesystem = require('gears.filesystem')
+local filesystem = gears.filesystem
 local config_dir = filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'configuration/user-profile/'
 
--- Appearance
-local icon_size = beautiful.exit_screen_icon_size or dpi(90)
 
 local greeter_message = wibox.widget {
 	markup = 'Choose wisely!',
@@ -66,31 +64,20 @@ update_profile_pic()
 
 local update_user_name = function()
 	awful.spawn.easy_async_with_shell(
-		"printf $(whoami)",
+		"printf \"$(whoami)@$(hostname)\"",
 		function(stdout) 
-			if stdout then
-				local username = stdout:gsub('%\n','')
-	
-				awful.spawn.easy_async_with_shell(
-					"printf $(hostname)",
-					function(stdout) 
-						local hostname = stdout:gsub('%\n','')
-						username = username:sub(1, 1):lower() .. username:sub(2)
-						profile_name:set_markup(username .. '@' .. hostname)
-					end
-				)
-
-				-- Update Greeter and Capitalize Username
-				username = username:sub(1, 1):upper() .. username:sub(2)
-				greeter_message:set_markup('Choose wisely, ' .. username .. '!')
-			end
+			local stdout = stdout:gsub('%\n','')
+			local username = stdout:match("(.*)@")
+			username = username:sub(1, 1):upper() .. username:sub(2)
+			greeter_message:set_markup('Choose wisely, ' .. username .. '!')
+			profile_name:set_markup(stdout)
 		end
 	)
 end
 
 update_user_name()
 
-local buildButton = function(icon, name)
+local build_button = function(icon, name)
 
 	local button_text = wibox.widget {
 		text = name,
@@ -100,7 +87,7 @@ local buildButton = function(icon, name)
 		widget = wibox.widget.textbox
 	}
 
-	local abutton = wibox.widget {
+	local a_button = wibox.widget {
 		{
 			{
 				{
@@ -115,8 +102,8 @@ local buildButton = function(icon, name)
 				widget = wibox.container.background
 			},
 			shape = gears.shape.rounded_rect,
-			forced_width = icon_size,
-			forced_height = icon_size,
+			forced_width = dpi(90),
+			forced_height = dpi(90),
 			widget = clickable_container
 		},
 		left = dpi(24),
@@ -124,41 +111,41 @@ local buildButton = function(icon, name)
 		widget = wibox.container.margin
 	}
 
-	local buildabutton = wibox.widget {
+	local build_a_button = wibox.widget {
 		layout = wibox.layout.fixed.vertical,
 		spacing = dpi(5),
-		abutton,
+		a_button,
 		button_text
 	}
 
-	return buildabutton
+	return build_a_button
 end
 
-suspend_command = function()
+local suspend_command = function()
 	exit_screen_hide()
 	awful.spawn.with_shell(apps.default.lock .. ' & systemctl suspend')
 end
 
-exit_command = function()
-	_G.awesome.quit()
+local exit_command = function()
+	awesome.quit()
 end
 
-lock_command = function()
+local lock_command = function()
 	exit_screen_hide()
 	awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock)
 end
 
-poweroff_command = function()
+local poweroff_command = function()
 	awful.spawn.with_shell('poweroff')
 	awesome.emit_signal("module::exit_screen_hide")
 end
 
-reboot_command = function()
+local reboot_command = function()
 	awful.spawn.with_shell('reboot')
 	awesome.emit_signal("module::exit_screen_hide")
 end
 
-local poweroff = buildButton(icons.power, 'Shutdown')
+local poweroff = build_button(icons.power, 'Shutdown')
 poweroff:connect_signal(
 	'button::release',
 	function()
@@ -166,7 +153,7 @@ poweroff:connect_signal(
 	end
 )
 
-local reboot = buildButton(icons.restart, 'Restart')
+local reboot = build_button(icons.restart, 'Restart')
 reboot:connect_signal(
 	'button::release',
 	function()
@@ -174,7 +161,7 @@ reboot:connect_signal(
 	end
 )
 
-local suspend = buildButton(icons.sleep, 'Sleep')
+local suspend = build_button(icons.sleep, 'Sleep')
 suspend:connect_signal(
 	'button::release',
 	function()
@@ -182,7 +169,7 @@ suspend:connect_signal(
 	end
 )
 
-local exit = buildButton(icons.logout, 'Logout')
+local exit = build_button(icons.logout, 'Logout')
 exit:connect_signal(
 	'button::release',
 	function()
@@ -190,7 +177,7 @@ exit:connect_signal(
 	end
 )
 
-local lock = buildButton(icons.lock, 'Lock')
+local lock = build_button(icons.lock, 'Lock')
 lock:connect_signal(
 	'button::release',
 	function()
@@ -198,187 +185,166 @@ lock:connect_signal(
 	end
 )
 
--- Create exit screen on every screen
-screen.connect_signal("request::desktop_decoration", function(s)
+screen.connect_signal(
+	"request::desktop_decoration",
+	function(s)
 
-	-- Get screen geometry
-	local screen_geometry = s.geometry
+		s.exit_screen = wibox
+		{
+			screen = s,
+			type = 'splash',
+			visible = false,
+			ontop = true,
+			bg = beautiful.background,
+			fg = beautiful.fg_normal,
+			height = s.geometry.height,
+			width = s.geometry.width,
+			x = s.geometry.x,
+			y = s.geometry.y
+		}
 
-	-- Create the widget
-	s.exit_screen = wibox
-	{
-		screen = s,
-		type = 'splash',
-		visible = false,
-		ontop = true,
-		height = screen_geometry.height,
-		width = screen_geometry.width,
-		x = screen_geometry.x,
-		y = screen_geometry.y
-	}
-
-	s.exit_screen.bg = beautiful.background
-	s.exit_screen.fg = beautiful.exit_screen_fg or beautiful.wibar_fg or '#FEFEFE'
-
-	-- Hide exit screen
-	exit_screen_hide = function()
-		awesome.emit_signal("module::exit_screen_hide")
-
-		-- Hide exit_screen in all screens
-		for s in screen do
-			s.exit_screen.visible = false
+		local exit_screen_hide = function()
+			awesome.emit_signal("module::exit_screen_hide")
+			for s in screen do
+				s.exit_screen.visible = false
+			end
 		end
 
-	end
 
+		local exit_screen_grabber = awful.keygrabber {
 
-	local exit_screen_grabber = awful.keygrabber {
+			auto_start          = true,
+			stop_event          = 'release',
+			keypressed_callback = function(self, mod, key, command) 
 
-		auto_start          = true,
-		stop_event          = 'release',
-		keypressed_callback = function(self, mod, key, command) 
+				if key == 's' then
+					suspend_command()
 
-			if key == 's' then
-				suspend_command()
+				elseif key == 'e' then
+					exit_command()
 
-			elseif key == 'e' then
-				exit_command()
+				elseif key == 'l' then
+					lock_command()
 
-			elseif key == 'l' then
-				lock_command()
+				elseif key == 'p' then
+					poweroff_command()
 
-			elseif key == 'p' then
-				poweroff_command()
+				elseif key == 'r' then
+					reboot_command()
 
-			elseif key == 'r' then
-				reboot_command()
+				elseif key == 'Escape' or key == 'q' or key == 'x' then
+					exit_screen_hide()
 
-			elseif key == 'Escape' or key == 'q' or key == 'x' then
-				exit_screen_hide()
+				end
 
 			end
 
-		end
+		}
 
-	}
-
-	-- Exit screen show
-	exit_screen_show = function()
-
-		exit_screen_grabber:start()
-
-		-- Hide exit_screen in all screens to avoid duplication
-		for s in screen do
-			s.exit_screen.visible = false
-		end
-
-		-- Then open it in the focused one
-		awful.screen.focused().exit_screen.visible = true
-
-	end
-
-	-- Signals
-	awesome.connect_signal("module::exit_screen_show", function() 
-
-		exit_screen_grabber:start()
-	end)
-
-	awesome.connect_signal("module::exit_screen_hide", function()
-
-		exit_screen_grabber:stop()
-	end)
-
-
-
-	s.exit_screen:buttons(
-		gears.table.join(
-			-- Middle click - Hide exit_screen
-			awful.button(
-				{},
-				2,
-				function()
-					exit_screen_hide()
+		awesome.connect_signal(
+			"module::exit_screen_show",
+			function() 
+				for s in screen do
+					s.exit_screen.visible = false
 				end
-			),
-			-- Right click - Hide exit_screen
-			awful.button(
-				{},
-				3,
-				function()
-					exit_screen_hide()
-				end
+				awful.screen.focused().exit_screen.visible = true
+				exit_screen_grabber:start()
+			end
+		)
+
+		awesome.connect_signal(
+			"module::exit_screen_hide",
+			function()
+				exit_screen_grabber:stop()
+			end
+		)
+
+		s.exit_screen : buttons(
+			gears.table.join(
+				awful.button(
+					{},
+					2,
+					function()
+						exit_screen_hide()
+					end
+				),
+				awful.button(
+					{},
+					3,
+					function()
+						exit_screen_hide()
+					end
+				)
 			)
 		)
-	)
 
-
-	-- Item placement
-	s.exit_screen:setup {
-		nil,
-		{
+		s.exit_screen : setup {
 			nil,
 			{
+				nil,
 				{
-					nil,
 					{
-						layout = wibox.layout.fixed.vertical,
-						spacing = dpi(5),
+						nil,
 						{
-							profile_imagebox_bg,
+							layout = wibox.layout.fixed.vertical,
+							spacing = dpi(5),
 							{
-								layout = wibox.layout.align.vertical,
-								expand = 'none',
-								nil,
+								profile_imagebox_bg,
 								{
-									layout = wibox.layout.align.horizontal,
+									layout = wibox.layout.align.vertical,
 									expand = 'none',
 									nil,
-									profile_imagebox,
+									{
+										layout = wibox.layout.align.horizontal,
+										expand = 'none',
+										nil,
+										profile_imagebox,
+										nil
+									},
 									nil
 								},
-								nil
+								layout = wibox.layout.stack
 							},
-							layout = wibox.layout.stack
+							profile_name
 						},
-						profile_name
+						nil,
+						expand = 'none',
+						layout = wibox.layout.align.horizontal
 					},
-					nil,
-					expand = 'none',
-					layout = wibox.layout.align.horizontal
-				},
-				{
-					layout = wibox.layout.align.horizontal,
-					expand = 'none',
-					nil,
 					{
+						layout = wibox.layout.align.horizontal,
+						expand = 'none',
+						nil,
 						{
-							greeter_message,
 							{
-								poweroff,
-								reboot,
-								suspend,
-								exit,
-								lock,
-								layout = wibox.layout.fixed.horizontal
+								greeter_message,
+								{
+									poweroff,
+									reboot,
+									suspend,
+									exit,
+									lock,
+									layout = wibox.layout.fixed.horizontal
+								},
+								spacing = dpi(30),
+								layout = wibox.layout.fixed.vertical
 							},
-							spacing = dpi(30),
+							spacing = dpi(40),
 							layout = wibox.layout.fixed.vertical
 						},
-						spacing = dpi(40),
-						layout = wibox.layout.fixed.vertical
+						nil
 					},
-					nil
+					spacing = dpi(40),
+					layout = wibox.layout.fixed.vertical
 				},
-				spacing = dpi(40),
-				layout = wibox.layout.fixed.vertical
+				nil,
+				expand = 'none',
+				layout = wibox.layout.align.horizontal
 			},
 			nil,
 			expand = 'none',
-			layout = wibox.layout.align.horizontal
-		},
-		nil,
-		expand = 'none',
-		layout = wibox.layout.align.vertical
-	}
+			layout = wibox.layout.align.vertical
+		}
 
-end)
+	end
+)
