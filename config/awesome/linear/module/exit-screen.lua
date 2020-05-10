@@ -122,7 +122,7 @@ local build_button = function(icon, name)
 end
 
 local suspend_command = function()
-	exit_screen_hide()
+	awesome.emit_signal("module::exit_screen_hide")
 	awful.spawn.with_shell(apps.default.lock .. ' & systemctl suspend')
 end
 
@@ -131,7 +131,7 @@ local exit_command = function()
 end
 
 local lock_command = function()
-	exit_screen_hide()
+	awesome.emit_signal("module::exit_screen_hide")
 	awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock)
 end
 
@@ -205,9 +205,7 @@ screen.connect_signal(
 
 		local exit_screen_hide = function()
 			awesome.emit_signal("module::exit_screen_hide")
-			for s in screen do
-				s.exit_screen.visible = false
-			end
+
 		end
 
 
@@ -233,7 +231,7 @@ screen.connect_signal(
 					reboot_command()
 
 				elseif key == 'Escape' or key == 'q' or key == 'x' then
-					exit_screen_hide()
+					awesome.emit_signal("module::exit_screen_hide")
 
 				end
 
@@ -256,6 +254,9 @@ screen.connect_signal(
 			"module::exit_screen_hide",
 			function()
 				exit_screen_grabber:stop()
+				for s in screen do
+					s.exit_screen.visible = false
+				end
 			end
 		)
 
@@ -265,14 +266,14 @@ screen.connect_signal(
 					{},
 					2,
 					function()
-						exit_screen_hide()
+						awesome.emit_signal("module::exit_screen_hide")
 					end
 				),
 				awful.button(
 					{},
 					3,
 					function()
-						exit_screen_hide()
+						awesome.emit_signal("module::exit_screen_hide")
 					end
 				)
 			)
