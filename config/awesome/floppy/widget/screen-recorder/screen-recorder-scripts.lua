@@ -8,33 +8,30 @@ local scripts_tbl = {}
 local ffmpeg_pid = nil
 
 -- Get user settings
-user_resolution = user_config.user_resolution
-user_offset = user_config.user_offset
-user_audio = user_config.user_audio
-user_dir = user_config.user_save_directory
-user_mic_lvl = user_config.user_mic_lvl
-user_fps = user_config.user_fps
+scripts_tbl.user_resolution = user_config.user_resolution
+scripts_tbl.user_offset = user_config.user_offset
+scripts_tbl.user_audio = user_config.user_audio
+scripts_tbl.user_dir = user_config.user_save_directory
+scripts_tbl.user_mic_lvl = user_config.user_mic_lvl
+scripts_tbl.user_fps = user_config.user_fps
 
-
-update_user_settings = function(res, offset, audio)
-	user_resolution = res
-	user_offset = offset
-	user_audio = audio
+scripts_tbl.update_user_settings = function(res, offset, audio)
+	scripts_tbl.user_resolution = res
+	scripts_tbl.user_offset = offset
+	scripts_tbl.user_audio = audio
 end
 
-
-check_settings = function()
+scripts_tbl.check_settings = function()
 	-- For debugging purpose only
 	-- naughty.notification({
-	-- 	message=user_resolution .. ' ' .. user_offset .. tostring(user_audio)
+	-- 	message=scripts_tbl.user_resolution .. ' ' .. scripts_tbl.user_offset .. tostring(scripts_tbl.user_audio)
 	-- })
 end
-
 
 local create_save_directory = function()
 
 	local create_dir_cmd = [[
-	dir=]] .. user_dir .. [[
+	dir=]] .. scripts_tbl.user_dir .. [[
 
 	if [ ! -d $dir ]; then
 		mkdir -p $dir
@@ -50,7 +47,6 @@ end
 
 create_save_directory()
 
-
 local kill_existing_recording_ffmpeg = function()
 	-- Let's killall ffmpeg instance first after awesome (re)-starts if there's any
 	awful.spawn.easy_async_with_shell(
@@ -64,24 +60,20 @@ end
 kill_existing_recording_ffmpeg()
 
 local turn_on_the_mic = function()
-
 	awful.spawn.easy_async_with_shell(
 		[[
 		amixer set Capture cap
-		amixer set Capture ]].. user_mic_lvl ..[[%
+		amixer set Capture ]].. scripts_tbl.user_mic_lvl ..[[%
 		]], 
 		function() end
 	)
-
 end
 
 local ffmpeg_stop_recording = function()
-
 	awesome.kill(
 		ffmpeg_pid, awesome.unix_signal.SIGINT
 	)
 end
-
 
 local create_notification = function(file_dir)
 	local open_video = naughty.action {
@@ -94,13 +86,19 @@ local create_notification = function(file_dir)
 		icon_only = false,
 	}
 
-	open_video:connect_signal('invoked', function()
-		awful.spawn('xdg-open ' .. file_dir, false)
-	end)
+	open_video:connect_signal(
+		'invoked',
+		function()
+			awful.spawn('xdg-open ' .. file_dir, false)
+		end
+	)
 
-	delete_video:connect_signal('invoked', function()
-		awful.spawn('gio trash ' .. file_dir, false)
-	end)
+	delete_video:connect_signal(
+		'invoked',
+		function()
+			awful.spawn('gio trash ' .. file_dir, false)
+		end
+	)
 
 	naughty.notification ({
 		app_name = 'Screenshot Recorder',
@@ -110,7 +108,6 @@ local create_notification = function(file_dir)
 		actions = { open_video, delete_video }
 	})
 end
-
 
 local ffmpeg_start_recording = function(audio, filename)
 
@@ -125,8 +122,8 @@ local ffmpeg_start_recording = function(audio, filename)
 		[[		
 		file_name=]] .. filename .. [[		
 
-		ffmpeg -video_size ]] .. user_resolution .. [[ -framerate ]] .. user_fps .. [[ -f x11grab \
-		-i :0.0+]] .. user_offset .. add_audio_str .. [[ $file_name
+		ffmpeg -video_size ]] .. scripts_tbl.user_resolution .. [[ -framerate ]] .. scripts_tbl.user_fps .. [[ -f x11grab \
+		-i :0.0+]] .. scripts_tbl.user_offset .. add_audio_str .. [[ $file_name
 		]],
 		function(stdout, stderr)
 
@@ -138,7 +135,7 @@ local ffmpeg_start_recording = function(audio, filename)
 					timeout = 60,
 					urgency = 'normal'
 				})
-				_G.sr_recording_stop()
+				awesome.emit_signal('widget::screen_recorder')
 				return
 			end
 			create_notification(filename)
@@ -146,11 +143,10 @@ local ffmpeg_start_recording = function(audio, filename)
 	)
 end
 
-
 local create_unique_filename = function(audio)
 	awful.spawn.easy_async_with_shell(
 		[[
-		dir=]] .. user_dir .. [[
+		dir=]] .. scripts_tbl.user_dir .. [[
 		date=$(date '+%Y-%m-%d_%H-%M-%S')
 		format=.mp4
 
@@ -158,37 +154,19 @@ local create_unique_filename = function(audio)
 		]],
 		function(stdout) 
 			local filename = stdout
-
 			ffmpeg_start_recording(audio, filename)
-		end)
+		end
+	)
 end
 
-
-start_recording = function(audio_mode)
-
+scripts_tbl.start_recording = function(audio_mode)
 	create_save_directory()
 	create_unique_filename(audio_mode)
-
 end
 
-stop_recording = function()
-
+scripts_tbl.stop_recording = function()
 	ffmpeg_stop_recording()
-
 end
 
-
--- User preferences
-
-scripts_tbl.user_resolution = user_resolution
-scripts_tbl.user_offset = user_offset
-scripts_tbl.user_audio = user_audio
-scripts_tbl.update_user_settings = update_user_settings
-
-
-scripts_tbl.start_recording = start_recording
-scripts_tbl.stop_recording = stop_recording
-
-scripts_tbl.check_settings = check_settings
 
 return scripts_tbl

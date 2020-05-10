@@ -41,8 +41,8 @@ local sr_close_button = screen_rec_ui.screen_rec_close_button
 
 local sr_back_button = screen_rec_ui.screen_rec_back_button
 
-sr_resolution_box = screen_rec_ui.screen_rec_res_txtbox
-sr_offset_box = screen_rec_ui.screen_rec_offset_txtbox
+local sr_resolution_box = screen_rec_ui.screen_rec_res_txtbox
+local sr_offset_box = screen_rec_ui.screen_rec_offset_txtbox
 
 local sr_resolution_tbox = sr_resolution_box:get_children_by_id('res_tbox')[1]
 local sr_offset_tbox = sr_offset_box:get_children_by_id('offset_tbox')[1]
@@ -467,7 +467,7 @@ end
 -- Stop Recording
 
 
-sr_recording_stop = function()
+local sr_recording_stop = function()
 
 	status_recording = false
 	status_audio = false
@@ -480,6 +480,12 @@ sr_recording_stop = function()
 	sr_stop_recording()
 
 end
+
+awesome.connect_signal('widget::screen_recorder',
+	function()
+		sr_recording_stop()
+	end
+)
 
 -- Countdown timer functions
 

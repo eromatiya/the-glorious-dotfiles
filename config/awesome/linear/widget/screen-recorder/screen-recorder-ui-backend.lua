@@ -41,8 +41,8 @@ local sr_close_button = screen_rec_ui.screen_rec_close_button
 
 local sr_back_button = screen_rec_ui.screen_rec_back_button
 
-sr_resolution_box = screen_rec_ui.screen_rec_res_txtbox
-sr_offset_box = screen_rec_ui.screen_rec_offset_txtbox
+local sr_resolution_box = screen_rec_ui.screen_rec_res_txtbox
+local sr_offset_box = screen_rec_ui.screen_rec_offset_txtbox
 
 local sr_resolution_tbox = sr_resolution_box:get_children_by_id('res_tbox')[1]
 local sr_offset_tbox = sr_offset_box:get_children_by_id('offset_tbox')[1]
@@ -80,9 +80,9 @@ local sr_offset_default_markup = sr_offset_tbox:get_markup()
 
 
 if status_audio then
-	screen_rec_audio_button.bg = '#EE4F84' .. '66'
+	sr_audio_button.bg = '#EE4F84' .. '66'
 else
-	screen_rec_audio_button.bg = beautiful.groups_bg
+	sr_audio_button.bg = beautiful.groups_bg
 end
 
 
@@ -177,13 +177,13 @@ local sr_audio_mode = function()
 
 			status_audio = false
 
-			screen_rec_audio_button.bg = beautiful.groups_bg
+			sr_audio_button.bg = beautiful.groups_bg
 
 		else
 
 			status_audio = true
 
-			screen_rec_audio_button.bg = '#EE4F84' .. '66'
+			sr_audio_button.bg = '#EE4F84' .. '66'
 
 		end
 
@@ -467,7 +467,7 @@ end
 -- Stop Recording
 
 
-sr_recording_stop = function()
+local sr_recording_stop = function()
 
 	status_recording = false
 	status_audio = false
@@ -480,6 +480,12 @@ sr_recording_stop = function()
 	sr_stop_recording()
 
 end
+
+awesome.connect_signal('widget::screen_recorder',
+	function()
+		sr_recording_stop()
+	end
+)
 
 -- Countdown timer functions
 
@@ -589,6 +595,3 @@ sr_main_button:buttons(
 		)
 	)
 )
-
-
-

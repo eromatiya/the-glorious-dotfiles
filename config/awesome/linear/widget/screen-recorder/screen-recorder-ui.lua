@@ -3,7 +3,7 @@ local gears = require('gears')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 
-local dpi = require('beautiful').xresources.apply_dpi
+local dpi = beautiful.xresources.apply_dpi
 
 local clickable_container = require('widget.clickable-container')
 
@@ -14,22 +14,22 @@ local record_tbl = {}
 
 -- Panel UI
 
-screen_rec_toggle_imgbox = wibox.widget {
+record_tbl.screen_rec_toggle_imgbox = wibox.widget {
 	image = widget_icon_dir .. 'start-recording-button' .. '.svg',
 	resize = true,
 	widget = wibox.widget.imagebox
 }
 
-screen_rec_toggle_button = wibox.widget {
+record_tbl.screen_rec_toggle_button = wibox.widget {
 	{
-		screen_rec_toggle_imgbox,
+		record_tbl.screen_rec_toggle_imgbox,
 		margins = dpi(7),
 		widget = wibox.container.margin
 	},
 	widget = clickable_container
 }
 
-screen_rec_countdown_txt = wibox.widget {
+record_tbl.screen_rec_countdown_txt = wibox.widget {
 	id = 'countdown_text',
 	font = 'SF Pro Text Bold 64',
 	text = '4',
@@ -39,17 +39,17 @@ screen_rec_countdown_txt = wibox.widget {
 	widget = wibox.widget.textbox
 }
 
-screen_rec_main_imgbox = wibox.widget {
+record_tbl.screen_rec_main_imgbox = wibox.widget {
 	image = widget_icon_dir .. 'recorder-off' .. '.svg',
 	resize = true,
 	widget = wibox.widget.imagebox
 }
 
-screen_rec_main_button = wibox.widget {
+record_tbl.screen_rec_main_button = wibox.widget {
 	{
 		{
 			{
-				screen_rec_main_imgbox,
+				record_tbl.screen_rec_main_imgbox,
 				margins = dpi(24),
 				widget = wibox.container.margin
 			},
@@ -66,18 +66,18 @@ screen_rec_main_button = wibox.widget {
 }
 
 
-screen_rec_audio_imgbox = wibox.widget {
+record_tbl.screen_rec_audio_imgbox = wibox.widget {
 	image = widget_icon_dir .. 'audio' .. '.svg',
 	resize = true,
 	widget = wibox.widget.imagebox
 }
 
-screen_rec_audio_button = wibox.widget {
+record_tbl.screen_rec_audio_button = wibox.widget {
 	{
 		nil,
 		{
 			{
-				screen_rec_audio_imgbox,
+				record_tbl.screen_rec_audio_imgbox,
 				margins = dpi(16),
 				widget = wibox.container.margin
 			},
@@ -94,19 +94,18 @@ screen_rec_audio_button = wibox.widget {
 	widget = wibox.container.background
 }
 
-
-screen_rec_close_imgbox = wibox.widget {
+record_tbl.screen_rec_close_imgbox = wibox.widget {
 	image = widget_icon_dir .. 'close-screen' .. '.svg',
 	resize = true,
 	widget = wibox.widget.imagebox
 }
 
-screen_rec_close_button = wibox.widget {
+record_tbl.screen_rec_close_button = wibox.widget {
 	{
 		nil,
 		{
 			{
-				screen_rec_close_imgbox,
+				record_tbl.screen_rec_close_imgbox,
 				margins = dpi(16),
 				widget = wibox.container.margin
 			},
@@ -123,19 +122,18 @@ screen_rec_close_button = wibox.widget {
 	widget = wibox.container.background
 }
 
-screen_rec_settings_imgbox = wibox.widget {
+record_tbl.screen_rec_settings_imgbox = wibox.widget {
 	image = widget_icon_dir .. 'settings' .. '.svg',
 	resize = true,
 	widget = wibox.widget.imagebox
 }
 
-
-screen_rec_settings_button = wibox.widget {
+record_tbl.screen_rec_settings_button = wibox.widget {
 	{
 		nil,
 		{
 			{
-				screen_rec_settings_imgbox,
+				record_tbl.screen_rec_settings_imgbox,
 				margins = dpi(16),
 				widget = wibox.container.margin
 			},
@@ -152,24 +150,18 @@ screen_rec_settings_button = wibox.widget {
 	widget = wibox.container.background
 }
 
-
-
-
--- Settings UI
-
-screen_rec_back_imgbox = wibox.widget {
+record_tbl.screen_rec_back_imgbox = wibox.widget {
 	image = widget_icon_dir .. 'back' .. '.svg',
 	resize = true,
 	widget = wibox.widget.imagebox
 }
 
-
-screen_rec_back_button = wibox.widget {
+record_tbl.screen_rec_back_button = wibox.widget {
 	{
 		nil,
 		{
 			{
-				screen_rec_back_imgbox,
+				record_tbl.screen_rec_back_imgbox,
 				margins = dpi(16),
 				widget = wibox.container.margin
 			},
@@ -188,10 +180,7 @@ screen_rec_back_button = wibox.widget {
 	widget = wibox.container.background
 }
  
-
-
-
-local screen_rec_back_txt = wibox.widget {
+record_tbl.screen_rec_back_txt = wibox.widget {
 	{
 		text = 'Back',
 		font = 'SF Pro Display Bold 16',
@@ -204,9 +193,7 @@ local screen_rec_back_txt = wibox.widget {
 
 }
 
-
-
-local screen_rec_res_txt = wibox.widget {
+record_tbl.screen_rec_res_txt = wibox.widget {
 	{
 		text = 'Resolution',
 		font = 'SF Pro Display Bold 16',
@@ -219,8 +206,7 @@ local screen_rec_res_txt = wibox.widget {
 
 }
 
-
-screen_rec_res_txtbox = wibox.widget {
+record_tbl.screen_rec_res_txtbox = wibox.widget {
 	{
 		{
 			{
@@ -246,7 +232,7 @@ screen_rec_res_txtbox = wibox.widget {
 
 }
 
-local screen_rec_offset_txt = wibox.widget {
+record_tbl.screen_rec_offset_txt = wibox.widget {
 	{
 		text = 'Offset',
 		font = 'SF Pro Display Bold 16',
@@ -259,7 +245,7 @@ local screen_rec_offset_txt = wibox.widget {
 
 }
 
-screen_rec_offset_txtbox = wibox.widget {
+record_tbl.screen_rec_offset_txtbox = wibox.widget {
 	{
 		{
 			{
@@ -285,8 +271,6 @@ screen_rec_offset_txtbox = wibox.widget {
 	widget = wibox.container.background
 
 }
-
-
 
 screen.connect_signal("request::desktop_decoration", function(s)
 
@@ -317,14 +301,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
 				nil,
 				{
 					layout = wibox.layout.fixed.vertical,
-					screen_rec_countdown_txt,
+					record_tbl.screen_rec_countdown_txt,
 					{
 						layout = wibox.layout.align.horizontal,
-						screen_rec_settings_button,
-						screen_rec_main_button,
-						screen_rec_audio_button
+						record_tbl.screen_rec_settings_button,
+						record_tbl.screen_rec_main_button,
+						record_tbl.screen_rec_audio_button
 					},
-					screen_rec_close_button,
+					record_tbl.screen_rec_close_button,
 				},
 				nil
 				
@@ -348,13 +332,13 @@ screen.connect_signal("request::desktop_decoration", function(s)
 					{
 						layout = wibox.layout.fixed.horizontal,
 						spacing = dpi(10),
-						screen_rec_back_button,
-						screen_rec_back_txt,
+						record_tbl.screen_rec_back_button,
+						record_tbl.screen_rec_back_txt,
 					},
-					screen_rec_res_txt,
-					screen_rec_res_txtbox,
-					screen_rec_offset_txt,
-					screen_rec_offset_txtbox
+					record_tbl.screen_rec_res_txt,
+					record_tbl.screen_rec_res_txtbox,
+					record_tbl.screen_rec_offset_txt,
+					record_tbl.screen_rec_offset_txtbox
 				},
 				nil
 				
@@ -364,24 +348,5 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	}
 
 end)
-
-
--- Panel UIs
-
-record_tbl.screen_rec_toggle_imgbox = screen_rec_toggle_imgbox
-record_tbl.screen_rec_toggle_button = screen_rec_toggle_button
-record_tbl.screen_rec_countdown_txt = screen_rec_countdown_txt
-record_tbl.screen_rec_main_imgbox = screen_rec_main_imgbox
-record_tbl.screen_rec_main_button = screen_rec_main_button
-record_tbl.screen_rec_audio_imgbox = screen_rec_audio_imgbox
-record_tbl.screen_rec_audio_button = screen_rec_audio_button
-record_tbl.screen_rec_settings_button = screen_rec_settings_button
-record_tbl.screen_rec_close_button = screen_rec_close_button
-
-
--- Settings UI
-record_tbl.screen_rec_back_button = screen_rec_back_button
-record_tbl.screen_rec_res_txtbox = screen_rec_res_txtbox
-record_tbl.screen_rec_offset_txtbox = screen_rec_offset_txtbox
 
 return record_tbl
