@@ -311,9 +311,12 @@ local fetch_email_data = function()
 end
 
 local set_missing_secrets_msg = function()
-	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
-	email_recent_subject:set_markup(format_string('Subject:', 'Credentials are missing!'))
-	email_details_tooltip:set_markup('Missing credentials!')
+	set_widget_markup(
+		'message@stderr.sh',
+		'Credentials are missing!',
+		os.date("%d-%m-%Y %H:%M:%S"),
+		'Missing credentials!'
+	)
 end
 
 local check_secrets = function()

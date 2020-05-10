@@ -102,7 +102,7 @@ local email_details_tooltip = awful.tooltip
 	objects = {email_icon_widget},
 	mode = 'outside',
 	align = 'right',
-	preferred_positions = {'left', 'right', 'top', 'bottom'},
+	preferred_positions = {'right', 'left', 'top', 'bottom'},
 	margin_leftright = dpi(8),
 	margin_topbottom = dpi(8)
 }
@@ -311,9 +311,12 @@ local fetch_email_data = function()
 end
 
 local set_missing_secrets_msg = function()
-	email_recent_from:set_markup(format_string('From:', 'message@stderr.sh'))
-	email_recent_subject:set_markup(format_string('Subject:', 'Credentials are missing!'))
-	email_details_tooltip:set_markup('Missing credentials!')
+	set_widget_markup(
+		'message@stderr.sh',
+		'Credentials are missing!',
+		os.date("%d-%m-%Y %H:%M:%S"),
+		'Missing credentials!'
+	)
 end
 
 local check_secrets = function()
