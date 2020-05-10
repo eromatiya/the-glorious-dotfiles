@@ -110,7 +110,7 @@ return function(_, panel)
 				1,
 				function()
 					panel:toggle()
-					_G.exit_screen_show()
+					awesome.emit_signal("module::exit_screen_show")
 				end
 			)
 		)

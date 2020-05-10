@@ -122,7 +122,7 @@ local tools_menu = {
 	{
 		"End Session",
 		function()
-			_G.exit_screen_show()
+			awesome.emit_signal("module::exit_screen_show")
 		end,
 		menubar.utils.lookup_icon("system-shutdown") 
 	}
@@ -197,7 +197,7 @@ else
 			{
 				"End Session",
 				function()
-					_G.exit_screen_show()
+					awesome.emit_signal("module::exit_screen_show")
 				end,
 				menubar.utils.lookup_icon("system-shutdown") 
 			}

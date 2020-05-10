@@ -34,7 +34,7 @@ root.buttons(
 			{'Control'},
 			2,
 			function ()
-				_G.exit_screen_show()
+				awesome.emit_signal("module::exit_screen_show")
 			end
 		),
 		awful.button(

@@ -264,7 +264,7 @@ local globalKeys = awful.util.table.join(
         {},
         'XF86PowerOff',
         function()
-            _G.exit_screen_show()
+            awesome.emit_signal("module::exit_screen_show")
         end,
         {description = 'toggle exit screen', group = 'hotkeys'}
     ),
