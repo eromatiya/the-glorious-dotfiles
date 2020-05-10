@@ -6,8 +6,8 @@
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
-local beautiful = require('beautiful')
 local naughty = require('naughty')
+local beautiful = require('beautiful')
 
 local dpi = beautiful.xresources.apply_dpi
 
@@ -50,7 +50,6 @@ message_table = {
 	"You’re the reason God created the middle finger."
 }
 
-
 local profile_imagebox = wibox.widget {
 	{
 		id = 'icon',
@@ -82,7 +81,6 @@ profile_imagebox:buttons(
 		)
 	)
 )
-
 
 local profile_name = wibox.widget {
 	font = "SF Pro Text Bold 14",
@@ -116,8 +114,6 @@ local uptime_time = wibox.widget {
 	widget = wibox.widget.textbox
 }
 
--- Get profile picture
-
 local update_profile_image = function()
 	awful.spawn.easy_async_with_shell(
 		apps.bins.update_profile,
@@ -128,62 +124,45 @@ local update_profile_image = function()
 			else
 				profile_imagebox.icon:set_image(widget_icon_dir .. 'default.svg')
 			end
-
 		end
 	)
 end
 
 update_profile_image()
 
--- Get username
-
 awful.spawn.easy_async_with_shell(
-	'whoami',
+	"printf \"$(whoami)@$(hostname)\"",
 	function(stdout) 
-		i_am_who = stdout:gsub('%W', '')
-
-		-- Capitalize first letter
-		-- i_am_who = i_am_who:sub(1,1):upper() .. i_am_who:sub(2)
-
-		awful.spawn.easy_async_with_shell('hostname', function(host)
-			host_who = host:gsub('%W', '')
-			
-			profile_name.markup = i_am_who .. '@' .. host_who
-		end
-	)
-end)
-
--- Get distro name
-
-local get_distro_name_cmd = [[
-cat /etc/os-release | awk 'NR==1'| awk -F '"' '{print $2}'
-]]
+		local stdout = stdout:gsub('%\n', '')
+		-- stdout = stdout:sub(1,1):upper() .. stdout:sub(2)
+		profile_name:set_markup(stdout)
+	end
+)
 
 awful.spawn.easy_async_with_shell(
-	get_distro_name_cmd,
+	[[
+	cat /etc/os-release | awk 'NR==1'| awk -F '"' '{print $2}'
+	]],
 	function(stdout)
-		distroname = stdout:gsub('%\n', '')
-		distro_name.markup = distroname
+		local distroname = stdout:gsub('%\n', '')
+		distro_name:set_markup(distroname)
 	end
 )
 
 awful.spawn.easy_async_with_shell(
 	'uname -r',
 	function(stdout)
-		kname = stdout:gsub('%\n', '')
-		kernel_version.markup = kname
+		local kname = stdout:gsub('%\n', '')
+		kernel_version:set_markup(kname)
 	end
 )
-
-
--- Get and update uptime
 
 local update_uptime = function()
 	awful.spawn.easy_async_with_shell(
 		"uptime -p",
 		function(stdout)
-			uptime = stdout:gsub('%\n','')
-			uptime_time.markup = uptime		
+			local uptime = stdout:gsub('%\n','')
+			uptime_time:set_markup(uptime)		
 		end
 	)
 end
@@ -196,7 +175,6 @@ local uptime_updater_timer = gears.timer{
 		update_uptime()
 	end
 }
-
 
 local user_profile = wibox.widget {
 	{
@@ -234,7 +212,6 @@ local user_profile = wibox.widget {
 	
 }
 
--- Update uptime on hover
 user_profile:connect_signal(
 	'mouse::enter',
 	function() 
