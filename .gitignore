@@ -1,12 +1,9 @@
-# Dont overwrite icons
-config/awesome/floppy/widget/user-profile/icons/user.jpg
-config/awesome/rounded/widget/user-profile/icons/user.jpg
-config/awesome/lines/widget/user-profile/icons/user.jpg
+# Don't include profile pictures
+config/awesome/floppy/configuration/user-profile/*.png
+config/awesome/gnawesome/configuration/user-profile/*.png
+config/awesome/linear/configuration/user-profile/*.png
 
-# Dont include openweather api keys
-# Sorry lol
-#config/awesome/floppy/widget/weather/weather-update.lua
-#config/awesome/rounded/widget/weather/weather-update.lua
-#config/awesome/lines/widget/weather/weather-update.lua
-
-
+# Don' include awesomewm status files and history.txt by web search
+config/awesome/*/widget/network/airplane_mode
+config/awesome/*/configuration/rofi/sidebar/history.txt
+config/awesome/*/widget/notif-center/dont-disturb/disturb_status
