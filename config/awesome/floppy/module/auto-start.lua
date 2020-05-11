@@ -4,15 +4,29 @@
 local awful = require('awful')
 local apps = require('configuration.apps')
 
-local function run_once(cmd)
+local debugger_mode = false
+
+local run_once = function(cmd)
     local findme = cmd
     local firstspace = cmd:find(' ')
     if firstspace then
         findme = cmd:sub(0, firstspace - 1)
     end
-    awful.spawn.with_shell(
-        string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd), 
-        false
+    awful.spawn.easy_async_with_shell(
+        string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd),
+        function(stdout, stderr)
+            -- Debugger 
+            if not stderr or stderr == '' or not debugger_mode then
+                return 
+            end
+            require('naughty').notification({
+                app_name = 'Start-up Applications',
+                title = '<b>Oof! Error detected when starting an application!</b>',
+                message = stderr:gsub('%\n', ''),
+                timeout = 20,
+                icon = require('beautiful').awesome_icon
+            })
+        end
     )
 end
 
