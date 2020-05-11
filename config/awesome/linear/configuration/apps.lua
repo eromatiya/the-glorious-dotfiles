@@ -3,12 +3,9 @@ local filesystem = require('gears.filesystem')
 local config_dir = filesystem.get_configuration_dir()
 local bin_dir = config_dir .. 'binaries/'
 
-
-awesome.connect_signal('test', function() require('awful').screen.focused().top_panel.bg = '#ff00ff' end)
-
 return {
 
-	-- The default applications in keybindings and widgets
+	-- The default applications that we will use in keybindings and widgets
 	default = {
 		terminal 										= 'kitty',																-- Terminal Emulator
 		text_editor 									= 'subl3',                      	            						-- GUI Text Editor
@@ -36,6 +33,7 @@ return {
 	},
 	
 	-- List of apps to start once on start-up
+	-- auto-start.lua module will start these
 
 	run_on_start_up = {
 
@@ -59,7 +57,7 @@ return {
 		-- You can add more start-up applications here
 	},
 
-	-- List of binaries that will execute a certain task
+	-- List of binaries/shell scripts that will execute a certain task
 
 	bins = {
 		full_screenshot = bin_dir .. 'snap full',              					                    							-- Full Screenshot
