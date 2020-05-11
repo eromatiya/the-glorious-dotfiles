@@ -651,7 +651,7 @@ local locker = function(s)
 		nil
 	}
 
-	show_lockscreen = function()
+	local show_lockscreen = function()
 
 		-- Unselect all tags and minimize the focused client
 		-- Will also fix the problem with virtualbox or any other program that has keygrabbing enabled
@@ -694,6 +694,15 @@ local locker = function(s)
 		end
 
 	end
+
+	awesome.connect_signal(
+		"module::lockscreen_show",
+		function()
+			if lock_again == true or lock_again == nil then
+				show_lockscreen()
+			end
+		end
+	)
 
 	return lockscreen
 
