@@ -4,7 +4,6 @@ local naughty = require('naughty')
 local gears = require('gears')
 
 local dpi = beautiful.xresources.apply_dpi
-local xml_escape = gears.string.xml_escape
 
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/notif-center/icons/'
@@ -32,7 +31,7 @@ end
 -- Notification title container
 ui_noti_builder.notifbox_title = function(title)
 	return wibox.widget {
-		markup = xml_escape(title),
+		markup = title,
 		font   = 'SF Pro Text Bold 12',
 		align  = 'left',
 		valign = 'center',
@@ -43,7 +42,7 @@ end
 -- Notification message container
 ui_noti_builder.notifbox_message = function(msg)
 	return wibox.widget {
-		markup = xml_escape(msg),
+		markup = msg,
 		font   = 'SF Pro Text Regular 11',
 		align  = 'left',
 		valign = 'center',
