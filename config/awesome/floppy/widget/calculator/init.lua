@@ -10,7 +10,6 @@
 -- @widget calculator
 ----------------------------------------------------------------------------
 
-
 -- A basic calculator widget
 -- Supports keyboard input!
 --  Just hover your cursor above the calculator widget and start typing
@@ -40,29 +39,20 @@ local calculator_screen = wibox.widget {
 	widget = wibox.container.margin
 }
 
---  #######                                                   
---  #       #    # #    #  ####  ##### #  ####  #    #  ####  
---  #       #    # ##   # #    #   #   # #    # ##   # #      
---  #####   #    # # #  # #        #   # #    # # #  #  ####  
---  #       #    # #  # # #        #   # #    # #  # #      # 
---  #       #    # #   ## #    #   #   # #    # #   ## #    # 
---  #        ####  #    #  ####    #   #  ####  #    #  ####  
-
-
 -- Evaluate
 local calculate = function ()
 
 	local calcu_screen = calculator_screen.calcu_screen
 
-	local string_expression = calcu_screen.text
+	local string_expression = calcu_screen:get_text()
 
 	if string_expression:sub(-1):match("[%+%-%/%*%^%.]") then
 		return
 	end
 
 
-	func = assert(load("return " .. string_expression))
-	ans = tostring(func())
+	local func = assert(load("return " .. string_expression))
+	local ans = tostring(func())
 		
 	-- Convert -nan to undefined
 	if ans == '-nan' then
@@ -75,10 +65,9 @@ local calculate = function ()
 
 end
 
-
 local txt_on_screen = function()
 	
-	screen_text = calculator_screen.calcu_screen.text
+	screen_text = calculator_screen.calcu_screen:get_text()
 
 	return screen_text == 'inf' or screen_text == 'undefined' or screen_text == 'SYNTAX ERROR' or #screen_text == 1
 end
@@ -94,7 +83,7 @@ local delete_value = function()
 		calcu_screen:set_text('0')
 	else
 		-- Delete the last digit
-		calcu_screen:set_text(calcu_screen.text:sub(1, -2))
+		calcu_screen:set_text(calcu_screen:get_text():sub(1, -2))
 	end
 end
 
@@ -104,21 +93,19 @@ local clear_screen = function()
 	calculator_screen.calcu_screen:set_text('0')
 end
 
-
 -- The one that filters and checks the user input to avoid errors and bugs
 local format_screen = function(value)
-
 
 	local calcu_screen = calculator_screen.calcu_screen
 
 	-- If the screen has only 0
-	if calcu_screen.text == '0' then
+	if calcu_screen:get_text() == '0' then
 
 		-- Check if the button pressed sends a value of either +, -, /, *, ^, .
 
 		if value:sub(-1):match("[%+%/%*%^%.]") then
 
-			calcu_screen:set_text(calcu_screen.text .. tostring(value))
+			calcu_screen:set_text(calcu_screen:get_text() .. tostring(value))
 
 		else
 
@@ -126,18 +113,16 @@ local format_screen = function(value)
 
 		end
 
-	elseif calcu_screen.text == 'inf' or 
-		calcu_screen.text == 'undefined' or
-		calcu_screen.text == 'SYNTAX ERROR' then
+	elseif calcu_screen:get_text() == 'inf' or 
+		calcu_screen:get_text() == 'undefined' or
+		calcu_screen:get_text() == 'SYNTAX ERROR' then
 
 		-- Clear screen if an operator is selected
-
 		if value:sub(-1):match("[%+%/%*%^%.]") then
 			clear_screen()
 
 		else
 			-- Replace screen txt with the number value pressed
-
 			clear_screen()
 			calcu_screen:set_text(tostring(value))
 		end
@@ -145,72 +130,66 @@ local format_screen = function(value)
 	else
 
 		-- Don't let the user to input two or more consecutive arithmetic operators and decimals
-
-		if calcu_screen.text:sub(-1):match("[%+%-%/%*%^%.]") and value:sub(-1):match("[%+%-%/%*%^%.%%]") then
+		if calcu_screen:get_text():sub(-1):match("[%+%-%/%*%^%.]") and value:sub(-1):match("[%+%-%/%*%^%.%%]") then
 			
 			-- Get the operator from button pressed
-
-			local string_eval = calcu_screen.text:sub(-1):gsub("[%+%-%/%*%^%.]", value)
+			local string_eval = calcu_screen:get_text():sub(-1):gsub("[%+%-%/%*%^%.]", value)
 
 			-- This will prevent the user to input consecutive operators and decimals
 			-- It will replace the previous operator with the value of input
-			calcu_screen:set_text(calcu_screen.text:sub(1, -2))
+			calcu_screen:set_text(calcu_screen:get_text():sub(1, -2))
 
 			-- Concatenate the value operator to the screen string to replace the deleted operator
-			calcu_screen:set_text(calcu_screen.text .. tostring(string_eval))
+			calcu_screen:set_text(calcu_screen:get_text() .. tostring(string_eval))
 		
 		else
-		
 			-- Concatenate the value to screen string
-			calcu_screen:set_text(calcu_screen.text .. tostring(value))
+			calcu_screen:set_text(calcu_screen:get_text() .. tostring(value))
 		
 		end
 	end
 
 end
 
-
--- shape up the widget
+-- Shape generator
 local build_shape = function (position, radius)
 	
 	-- Position represents the position of rounded corners
 	if position == 'top' then
-		return function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, radius) end
+		return function(cr, width, height)
+			gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, radius)
+		end
 
 	elseif position == 'top_left' then
-		return function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, true, false, false, false, radius) end
+		return function(cr, width, height)
+			gears.shape.partially_rounded_rect(cr, width, height, true, false, false, false, radius)
+		end
 
 	elseif position == 'top_right' then
-		return function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, true, false, false, radius) end
+		return function(cr, width, height)
+			gears.shape.partially_rounded_rect(cr, width, height, false, true, false, false, radius)
+		end
 
 	elseif position == 'bottom_right' then
-		return function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, false, true, false, radius) end
+		return function(cr, width, height)
+			gears.shape.partially_rounded_rect(cr, width, height, false, false, true, false, radius)
+		end
 
 	elseif position == 'bottom_left' then
-		return function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, radius) end
+		return function(cr, width, height)
+			gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, radius)
+		end
 
 	else
-		return function(cr, width, height) gears.shape.rounded_rect(cr, width, height, radius) end
+		return function(cr, width, height)
+			gears.shape.rounded_rect(cr, width, height, radius)
+		end
 
 	end
 end
 
-
-
-
---  #     # ### 
---  #     #  #  
---  #     #  #  
---  #     #  #  
---  #     #  #  
---  #     #  #  
---   #####  ### 
-
-
-
 -- Themes widgets
 local decorate_widget = function(widget_arg, pos, rad)
-
 	return wibox.widget {
 		widget_arg,
 		bg = beautiful.groups_bg,
@@ -218,7 +197,6 @@ local decorate_widget = function(widget_arg, pos, rad)
 		widget = wibox.container.background
 	}
 end
-
 
 -- Build a button
 local build_button_widget = function(text, rcp, rad)
@@ -280,17 +258,7 @@ local build_button_widget = function(text, rcp, rad)
 
 end
 
-
---  #    #                  #####                       
---  #   #  ###### #   #    #     # #####    ##   #####  
---  #  #   #       # #     #       #    #  #  #  #    # 
---  ###    #####    #      #  #### #    # #    # #####  
---  #  #   #        #      #     # #####  ###### #    # 
---  #   #  #        #      #     # #   #  #    # #    # 
---  #    # ######   #       #####  #    # #    # #####  
-
 local keygrab_running = false
-
 
 local kb_imagebox = wibox.widget {
 	
@@ -321,21 +289,19 @@ local kb_button_widget = wibox.widget {
 	widget = wibox.container.background
 }
 
-
 local toggle_btn_keygrab = function()
 
 	if keygrab_running then
-		kb_imagebox.image = widget_icon_dir .. 'kb-off' .. '.svg'
+		kb_imagebox:set_image(widget_icon_dir .. 'kb-off' .. '.svg')
 		awesome.emit_signal("widget::calc_stop_keygrab")
 		keygrab_running = false
 	else
-		kb_imagebox.image = widget_icon_dir .. 'kb' .. '.svg'
+		kb_imagebox:set_image(widget_icon_dir .. 'kb' .. '.svg')
 		awesome.emit_signal("widget::calc_start_keygrab")
 		keygrab_running = true
 	end
 
 end
-
 
 local kb_button = kb_button_widget
 
@@ -359,13 +325,13 @@ local calcu_keygrabber = awful.keygrabber {
 	start_callback      = function()
 
 		keygrab_running = true
-		kb_imagebox.image = widget_icon_dir .. 'kb' .. '.svg'
+		kb_imagebox:set_image(widget_icon_dir .. 'kb' .. '.svg')
 
 	end,
 	stop_callback = function() 
 
 		keygrab_running = false
-		kb_imagebox.image = widget_icon_dir .. 'kb-off' .. '.svg'
+		kb_imagebox:set_image(widget_icon_dir .. 'kb-off' .. '.svg')
 
 	end,
 	keypressed_callback = function(self, mod, key, command) 
@@ -392,17 +358,6 @@ local calcu_keygrabber = awful.keygrabber {
 
 	end,
 }
-
-
---  #     # ### 
---  #     #  #  
---  #     #  #  
---  #     #  #  
---  #     #  #  
---  #     #  #  
---   #####  ### 
-
-
 
 local calculator_body = wibox.widget {
 	layout = wibox.layout.fixed.vertical,
@@ -454,46 +409,39 @@ local calculator_body = wibox.widget {
 	},
 }
 
+calculator_body:connect_signal(
+	"mouse::enter",
+	function() 
+		-- Start keygrabbing
+		calcu_keygrabber:start()
+	end
+)
 
+calculator_body:connect_signal(
+	"mouse::leave",
+	function()
+		-- Stop keygrabbing
+		calcu_keygrabber:stop()
+	end
+)
 
---   #####                                       
---  #     # #  ####  #    #   ##   #       ####  
---  #       # #    # ##   #  #  #  #      #      
---   #####  # #      # #  # #    # #       ####  
---        # # #  ### #  # # ###### #           # 
---  #     # # #    # #   ## #    # #      #    # 
---   #####  #  ####  #    # #    # ######  ####  
+awesome.connect_signal(
+	"widget::calc_start_keygrab",
+	function() 
+		-- Stop keygrabbing
+		calcu_keygrabber:start()
+	end
+)
 
-calculator_body:connect_signal("mouse::enter", function() 
-	-- Start keygrabbing
-	calcu_keygrabber:start()
-end)
+awesome.connect_signal(
+	"widget::calc_stop_keygrab",
+	function() 
+		-- Stop keygrabbing
+		calcu_keygrabber:stop()
+	end
+)
 
-calculator_body:connect_signal("mouse::leave", function()
-	-- Stop keygrabbing
-	calcu_keygrabber:stop()
-end)
-
-awesome.connect_signal("widget::calc_start_keygrab", function() 
-	-- Stop keygrabbing
-	calcu_keygrabber:start()
-end)
-
-awesome.connect_signal("widget::calc_stop_keygrab", function() 
-	-- Stop keygrabbing
-	calcu_keygrabber:stop()
-end)
-
-
---  #######                                     
---     #     ####   ####  #      ##### # #####  
---     #    #    # #    # #        #   # #    # 
---     #    #    # #    # #        #   # #    # 
---     #    #    # #    # #        #   # #####  
---     #    #    # #    # #        #   # #      
---     #     ####   ####  ######   #   # #      
-
-awful.tooltip {
+local calcu_tooltip = awful.tooltip {
 
 	objects = {kb_button},
 	mode = 'outside',
@@ -503,7 +451,7 @@ awful.tooltip {
 	margin_leftright = dpi(8),
 	margin_topbottom = dpi(8),
 	markup = [[
-	<b>Tip:</b>
+	<b>Tips:</b>
 	Enable keyboard support by hovering your mouse above the calculator.
 	Or toggle it on/off by pressing the keyboard button.
 	Only numbers, arithmetic operators, and decimal point is accepted.
@@ -525,5 +473,4 @@ awful.tooltip {
 	]]
 }
 
--- Return to right-panel
 return calculator_body
