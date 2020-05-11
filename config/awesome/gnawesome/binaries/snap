@@ -12,39 +12,39 @@
 # -- @script snap
 # ----------------------------------------------------------------------------
 
-
 screenshot_dir=$(xdg-user-dir PICTURES)/Screenshots/
 
 # Check save directory
-# Creates it if it doesn't exist
+# Create it if it doesn't exist
 function check_dir() {
-	if [ ! -d $screenshot_dir ]; then
-		mkdir -p $screenshot_dir
+	if [ ! -d "$screenshot_dir" ];
+	then
+		mkdir -p "$screenshot_dir"
 	fi
 }
-
 
 # Main function
 function shot() {
 
 	check_dir
 
-	file_loc=$screenshot_dir$(date +%Y%m%d_%H%M%S).png
+	file_loc="${screenshot_dir}$(date +%Y%m%d_%H%M%S).png"
 	
-	maim_command=$1
-	notif_message=$2
+	maim_command="$1"
+	notif_message="$2"
 
 	# Execute maim command
 	${maim_command} "${file_loc}"
 
 	# Exit if the user cancels the screenshot
 	# So it means there's no new screenshot image file
-	if [ ! -f "${file_loc}" ]; then
+	if [ ! -f "${file_loc}" ];
+	then
 		exit;
 	fi
 
 	# Copy to clipboard
-	xclip -selection clipboard -t image/png -i ${screenshot_dir}/`ls -1 -t ${screenshot_dir} | head -1` &
+	xclip -selection clipboard -t image/png -i "${screenshot_dir}"/`ls -1 -t "${screenshot_dir}" | head -1` &
 
 	awesome-client "
 
@@ -83,13 +83,12 @@ function shot() {
 		awful.spawn('gio trash ' .. '${file_loc}', false)
 	end)
 
-
 	-- Show notification
 	naughty.notification ({
 		app_name = 'Screenshot Tool',
 		icon = '${file_loc}',
-		timeout = 60,
-		title = 'Snap!',
+		timeout = 10,
+		title = '<b>Snap!</b>',
 		message = '${notif_message}',
 		actions = { open_image, open_folder, delete_image }
 	})
@@ -98,7 +97,8 @@ function shot() {
 }
 
 # Check the args passed
-if [ -z "$1" ] || ([ $1 != 'full' ] && [ $1 != 'area' ]) ; then
+if [ -z "$1" ] || ([ "$1" != 'full' ] && [ "$1" != 'area' ]);
+then
 	echo "
 	Requires an argument:
 	area 	- Area screenshot
@@ -108,10 +108,12 @@ if [ -z "$1" ] || ([ $1 != 'full' ] && [ $1 != 'area' ]) ; then
 	./snap area
 	./snap full
 	"
-elif [ $1 = 'full' ]; then
+elif [ "$1" = 'full' ];
+then
 	msg="Full screenshot saved and copied to clipboard!"
 	shot 'maim -u -m 1' "${msg}"
-elif [ $1 = 'area' ]; then
+elif [ "$1" = 'area' ];
+then
 	msg='Area screenshot saved and copied to clipboard!'
 	shot 'maim -u -s -n -m 1' "${msg}"
 fi
