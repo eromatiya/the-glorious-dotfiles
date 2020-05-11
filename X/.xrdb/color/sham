@@ -1,0 +1,54 @@
+! Author: https://github.com/mohabaks
+! Date: Tue Sep 12 20:52:32 EAT 2017
+! Description: This colorscheme was generated using pwal script and modified
+!              with https://terminal.sexy. Wallpaper used to generate this
+!              colors can be found here: https://alpha.wallhaven.cc/wallpaper/501871
+!
+
+URxvt*cursorColor:  #ac9b9d
+URxvt*borderColor:  #1A1829
+*colorUL:           #558453
+
+! special
+*.foreground:   #c0b3b5
+*.background:   #1a1829
+*.cursorColor:  #c0b3b5
+
+! black
+*.color0:       #1f1d2f
+*.color8:       #4e4c5e
+
+! red
+*.color1:       #a0286a
+*.color9:       #a0286a
+
+! green
+*.color2:       #558453
+*.color10:      #558453
+
+! yellow
+*.color3:       #b87b66
+*.color11:      #b87b66
+
+! blue
+*.color4:       #5a4786
+*.color12:      #5a4786
+
+! magenta
+*.color5:       #914e96
+*.color13:      #914e96
+
+! cyan
+*.color6:       #816886
+*.color14:      #816886
+
+! white
+*.color7:       #c0b3b5
+*.color15:      #c0b3b5
+
+
+! Rofi colors.
+rofi.color-window: #1A1829, #1A1829, #805084
+rofi.color-normal: #1A1829, #c0b3b5, #1A1829, #805084, #1A1829
+rofi.color-active: #1A1829, #c0b3b5, #1A1829, #805084, #1A1829
+rofi.color-urgent: #1A1829, #ac9b9d, #1A1829, #ac9b9d, #c0b3b5

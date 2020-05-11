@@ -1,0 +1,14 @@
+rofi.font               : Pragmatapro 10
+rofi.hide-scrollbar     : true
+rofi.levenshtein-sort	: true
+rofi.display-drun		: Apps
+rofi.display-run		: Commands
+rofi.display-window		: Windows
+rofi.drun-icon-theme	: Xenlism-Wildfire
+
+
+rofi.color-enabled: true
+rofi.color-window: #242629, #242629, #242629
+rofi.color-normal: #242629, #d8dee8, #242629, #242629, #fc3d4a
+rofi.color-active: #242629, #fec7cd, #242629, #242629, #95c1c0
+rofi.color-urgent: #242629, #f59335, #242629, #242629, #f59335 

@@ -1,0 +1,9 @@
+# Don't include profile pictures
+config/awesome/floppy/configuration/user-profile/*.png
+config/awesome/gnawesome/configuration/user-profile/*.png
+config/awesome/linear/configuration/user-profile/*.png
+
+# Don' include awesomewm status files and history.txt by web search
+config/awesome/*/widget/network/airplane_mode
+config/awesome/*/configuration/rofi/sidebar/history.txt
+config/awesome/*/widget/notif-center/dont-disturb/disturb_status

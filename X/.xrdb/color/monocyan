@@ -1,0 +1,44 @@
+! Author: https://github.com/mohabaks
+!
+
+
+URxvt*cursorColor:  #00a8a8
+URxvt*borderColor:  #020202
+*colorUL:           #00a8a8
+
+! special
+*.foreground:   #a8a8a8
+*.background:   #020202
+*.cursorColor:  #a8a8a8
+
+! black
+*.color0:       #080808
+*.color8:       #404040
+
+! red
+*.color1:       #B52253
+*.color9:       #B52253
+
+! green
+*.color2:       #505050
+*.color10:      #505050
+
+! yellow
+*.color3:       #686868
+*.color11:      #686868
+
+! blue
+*.color4:       #787878
+*.color12:      #787878
+
+! magenta
+*.color5:       #00a8a8
+*.color13:      #00a8a8
+
+! cyan
+*.color6:       #8e8e8e
+*.color14:      #8e8e8e
+
+! white
+*.color7:       #a8a8a8
+*.color15:      #d7d7d7

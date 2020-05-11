@@ -1,0 +1,396 @@
+/**
+ * @name Glasscord Example Theme
+ * @description This theme showcases Glasscord's features: glassy Discord!
+ * @author AryToNeX
+ * @version 0.1
+ * @source https://github.com/AryToNeX/Glasscord
+ * @invite SftnByN
+ * @patreon https://patreon.com/arytonex
+ * @donate https://ko-fi.com/arytonex
+ * @authorLink http://arytonex.pw
+ * @requires Glasscord>=0.0.5
+ */
+/*
+   Copyright 2020 AryToNeX
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+ 
+:root{
+	/* Here you can define properties for use with Glasscord. */
+
+	/* Windows-specific properties */
+	/* Blur mode. Available types: acrylic (strong blur), blurbehind (light blur), transparent */
+	--glasscord-win-blur: acrylic;
+	/* Acrylic mode makes some computers pretty unresponsive when resizing/moving the window.
+	   Should we work around it? */
+	--glasscord-win-performance-mode: true;
+
+	/* macOS-specific properties */
+	/* Vibrancy mode */
+	--glasscord-macos-vibrancy: fullscreen-ui;
+
+	/* Linux-specific properties */
+	/* Should Glasscord send a request to your window compositor to blur behind Discord's window? */
+	/* It currently supports KWin only */
+	--glasscord-linux-blur: true;
+
+	/* Discord-specific properties */
+	/* Custom (forced) titlebar */
+	/* native (default), windows, osx, linux (framed) */
+	--glasscord-titlebar: native;
+}
+
+.theme-dark{
+	--background-primary: transparent;
+	--background-primary-alt: #36393ff0;
+	--background-secondary: transparent;
+	--background-secondary-chat: #2f3136a0;
+	--background-secondary-alt: #292b2f00;
+	--background-tertiary: #00000039;
+	--background-logo: #36393fa0;
+	--deprecated-card-bg: #36393f4c;
+	--deprecated-store-bg: #36393f00;
+	--background-attachments: #2f313640;
+	--background-search-bar: #202225a0;
+	--background-switcher: #2f3136ff;
+	--background-chatbox: #20222550;
+	--background-lights-out: #000;
+	--background-pinned: #2f3136ff;
+	--background-profile-expand: #2f3136ff;
+	--background-emoji: #2f3136ff;
+	--text-lights-out: #f0f0f0;
+	--background-titlebar: #2f313650;
+}
+
+.theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-track-piece {
+	background-color: transparent;
+	border: 4px solid transparent;
+}
+
+.theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-thumb {
+	background-color: #20222550;
+}
+
+.theme-dark .container-1D34oG {
+	background-color: transparent;
+}
+
+.theme-dark .card-FDVird:before {
+	background-color: #33363c90;
+}
+
+.theme-dark .codeRedemptionRedirect-1wVR4b {
+	background-color: #2f313650;
+	border-color: #20222550;
+}
+
+.theme-dark .pageWrapper-1PgVDX {
+	background-color: transparent;
+}
+
+.theme-light {
+	--background-primary: transparent;
+	--background-primary-alt: #ffffffff;
+	--background-secondary: #f2f3f550;
+	--background-secondary-chat: #f2f3f5a0;
+	--background-secondary-alt: #ebedef00;
+	--background-tertiary: #e3e5e860;
+	--background-logo: #f2f3f5a0;
+	--deprecated-card-bg: #f8f9f94c;
+	--deprecated-store-bg: #f8f9f900;
+	--background-attachments: #f6f6f640;
+	--background-search-bar: #e3e5e8a0;
+	--background-switcher: #f2f3f5ff;
+	--background-chatbox: #e3e5e850;
+	--background-lights-out: #fff;
+	--background-pinned: #f2f3f5ff;
+	--background-profile-expand: #f2f3f5ff;
+	--background-emoji: #f2f3f5ff;
+	--text-lights-out: #202020;
+	--background-titlebar: #f2f3f550;
+	--interactive-muted: #95999d;
+}
+
+.theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-track-piece {
+	background-color: transparent;
+	border: 4px solid transparent;
+}
+
+.theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-thumb {
+	border-color: transparent;
+	background-color: #e3e5e850;
+}
+
+.theme-light .container-1D34oG {   
+	background-color: transparent;
+}
+
+.theme-light .card-FDVird:before {
+	background-color: #f6f6f790;
+}
+
+.theme-light .codeRedemptionRedirect-1wVR4b {
+	background-color: #f6f6f750;
+	border-color: #dcddde50;
+}
+
+.theme-light .pageWrapper-1PgVDX {
+	background-color: transparent;
+}
+
+.withFrame-haYltI {
+	height: 18px;
+	margin-top: 0;
+	padding-top: 4px;
+}
+
+.premiumPromo-yVfLiA {
+	background-color: var(--background-secondary-chat);
+	backdrop-filter: blur(2px);
+}
+
+.unread-3zKkbm {
+	height: 4px;
+	width: 4px;
+	margin-top: -2px;
+	border-radius: 2px 2px 2px 2px;
+}
+
+.jumpToPresentBar-9P20AM {
+	border-radius: 8px;
+	padding-bottom: 0;
+}
+
+.platform-win .sidebar-2K8pFh {
+	border-radius: 0;
+}
+
+.platform-osx .scroller-2TZvBN {
+    padding-top: 32px;
+    -webkit-mask: linear-gradient(#0000, #fff 32px);
+}
+
+.platform-osx .wrapper-1Rf91z {
+    margin-top: 0;
+}
+
+.typeMacOS-3EmCyP {
+    background-color: transparent !important;
+}
+
+.platform-osx .unreadMentionsIndicatorTop-gA6RCh {
+    top: 32px;
+}
+
+.platform-osx .back-1Ess-_ {
+    -webkit-app-region: no-drag;
+}
+
+.platform-osx .button-2PWmas {
+    -webkit-app-region: no-drag;
+}
+
+.messagesPopoutWrap-1MQ1bW {
+	background-color: var(--background-pinned);
+}
+
+.notice-2FJMB4 {
+	background-color: var(--background-secondary) !important;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.emojiPicker-3m1S-j {
+	background-color: var(--background-emoji);
+}
+
+.appMount-3lHmkl {
+	background-color: transparent;
+}
+
+.app-2rEoOp {
+	background-color: transparent;
+}
+
+.attachment-33OFj0 {
+	background-color: var(--background-attachments) !important;
+}
+
+.header-2o-2hj {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.privateChannels-1nO12o {
+	background-color: transparent;
+}
+
+.root-SR8cQa {
+	background-color: var(--background-profile-expand);
+}
+
+.container-PNkimc {
+	background-color: transparent;
+}
+
+.inset-3sAvek {
+	background-color: var(--background-secondary) !important;
+}
+
+.container-1r6BKw.themed-ANHk51 {
+	background-color: var(--background-secondary);
+}
+
+.wrapper-1Rf91z {
+	background-color: var(--background-secondary);
+}
+
+.childWrapper-anI2G9 {
+	background-color: var(--background-logo);
+}
+
+.circleIconButton-jET_ig {
+	background-color: var(--background-logo);
+}
+
+.searchBar-3dMhjb {
+	background-color: var(--background-search-bar);
+}
+
+.searchBar-6Kv8R2 {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.searchHeader-1l-wpR {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.channelName-1QajIf {
+	background-color: transparent;
+}
+
+.searchResult-3pzFAB:before {
+	background-image: none;
+}
+
+.searchResult-3pzFAB:after {
+	background-image: none;
+}
+
+.perksModal-fSYqOq {
+	background-color: transparent !important;
+}
+
+.ctaBar-2UsjF2 {
+	background-color: var(--background-attachments) !important;
+}
+
+.tierBody-16Chc9 {
+	background-color: var(--background-secondary-chat) !important;
+}
+
+.perk-2WeBWW {
+	background-color: var(--background-attachments) !important;
+}
+
+.content-yTz4x3:before {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.tabBody-3YRQ8W:before {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.container-19hC9u:before {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.container-xm7Ad0:before {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.searchBar-6Kv8R2 .searchBarComponent-32dTOx {
+	background-color: var(--background-search-bar);
+}
+
+.scroller-1JbKMe {
+	background-color: transparent;
+}
+
+.scroller-2TZvBN {
+	background-color: transparent;
+}
+
+.quickswitcher-3JagVE {
+	background-color: var(--background-switcher);
+}
+
+.wrapper-2aW0bm {
+	background-color: var(--background-primary-alt);
+}
+
+.searchResultMessage-2VxO12.hit-NLlWXA {
+	background-color: var(--background-primary-alt);
+}
+
+.scroller-zPkAnE {
+	background-color: transparent;
+}
+
+.embedFull-2tM8-- {
+	background-color: var(--background-attachments);
+}
+
+.messagesWrapper-3lZDfY {
+	margin-bottom: 8px;
+}
+
+.panels-j1Uci_ {
+	background-color: transparent;
+}
+
+.titleBar-AC4pGV {
+	background-color: var(--background-titlebar);
+}
+
+.uploadArea-3QgLtW {
+	background-color: var(--background-lights-out);
+}
+
+.backdropWithLayer-3_uhz4 {
+	background-color: var(--background-lights-out) !important;
+}
+
+.backdrop-1wrmKB {
+	background-color: var(--background-lights-out) !important;
+}
+
+.downloadLink-1ywL9o {
+	color: var(--text-lights-out) !important;
+}
+
+.bg-AYqtMd {
+	-webkit-mask-image: linear-gradient(#000f, #0000) !important;
+}
+
+.scrollableContainer-2NUZem {
+	background-color: var(--background-chatbox);
+}
