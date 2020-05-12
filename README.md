@@ -228,7 +228,7 @@ Some of these are outdated, so it is better if you try them yourself.
 | --- |
 | ![Screenshot](https://i.imgur.com/0nSbhjN.png) |
 
-| Minimal function fox [blurred fork](https://github.com/manilarome/blurred-functional-fox) |
+| Minimal functional fox [blurred fork](https://github.com/manilarome/blurred-functional-fox) |
 | --- |
 | ![Screenshot](https://i.imgur.com/LBXvePV.png)
 <br>
