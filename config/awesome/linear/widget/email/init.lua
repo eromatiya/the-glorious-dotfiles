@@ -266,9 +266,9 @@ end
 
 local set_widget_markup = function(from, subject, date, tooltip)
 
-	email_recent_from:set_markup(from)
-	email_recent_subject:set_markup(subject)
-	email_recent_date:set_markup(date)
+	email_recent_from:set_markup(from:gsub('%\n', ''))
+	email_recent_subject:set_markup(subject:gsub('%\n', ''))
+	email_recent_date:set_markup(date:gsub('%\n', ''))
 
 	if tooltip then
 		email_details_tooltip:set_markup(tooltip)
