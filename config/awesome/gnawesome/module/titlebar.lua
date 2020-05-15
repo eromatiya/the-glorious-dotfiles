@@ -68,41 +68,6 @@ client.connect_signal("request::titlebars", function(c)
 			end
 		)
 	)
-	local naughty = require('naughty')
-wibox.widget {
-    notification = notif,
-    base_layout = wibox.widget {
-        spacing        = 3,
-        spacing_widget = wibox.widget {
-            orientation = 'vertical',
-            widget      = wibox.widget.separator,
-        },
-        layout         = wibox.layout.flex.horizontal
-    },
-    widget_template = {
-        {
-            {
-                {
-                    id            = 'icon_role',
-                    forced_height = 16,
-                    forced_width  = 16,
-                    widget        = wibox.widget.imagebox
-                },
-                {
-                    id     = 'text_role',
-                    widget = wibox.widget.textbox
-                },
-                spacing = 5,
-                layout = wibox.layout.fixed.horizontal
-            },
-            id = 'background_role',
-            widget             = wibox.container.background,
-        },
-        margins = 4,
-        widget  = wibox.container.margin,
-    },
-    widget = naughty.list.actions,
-}
 
 
 	local decorate_titlebar = function(c, pos, bg, size)
@@ -204,7 +169,17 @@ wibox.widget {
 	-- Generate a custom titlabar for each class, roles, type, etc., etc.
 	-- The titlebar's position can now be set differently
 
-	if c.role == "GtkFileChooserDialog" or c.type == 'dialog' or c.type == 'modal' then
+	if c.class == 'dolphin' or c.class == 'firefox' or c.class == 'pavucontrol-qt' or 
+	c.instance == 'transmission-qt' or c.class == 'ark' or c.class == 'polkit-kde-authentication-agent-1' or
+	c.class == 'partitionmanager' or c.class == 'discord' or c.class == 'kdesu' then
+
+		if c.type == 'dialog' or c.type == 'modal' then
+			decorate_titlebar(c, 'top', beautiful.background, titlebar_size)
+		else
+			decorate_titlebar(c, 'left', beautiful.background, titlebar_size)
+		end
+
+	elseif c.role == "GtkFileChooserDialog" or c.type == 'dialog' or c.type == 'modal' then
 
 		-- Let's use the gtk theme's bg_color as titlebar's bg then add some transparency
 		-- Let's set the titlebar's position to top
@@ -223,12 +198,12 @@ wibox.widget {
 
 	elseif c.class == 'Nemo' then
 
-		decorate_titlebar(c, 'left', beautiful.background, titlebar_size)
+		decorate_titlebar(c, 'left', beautiful.xresources.get_current_theme().background, titlebar_size)
 
 	else
 
 		-- Default titlebar
-		decorate_titlebar(c)
+		decorate_titlebar(c, 'left', beautiful.background, titlebar_size)
 
 	end
 
@@ -247,7 +222,7 @@ end)
 client.connect_signal(
 	"manage", 
 	function(c)
-		
+
 		if not c.max and not c.hide_titlebars then
 			awful.titlebar.show(c, c.titlebar_position or 'left')
 		else
@@ -261,7 +236,6 @@ client.connect_signal(
 screen.connect_signal(
 	"arrange", 
 	function(s)
-		
 		for _, c in pairs(s.clients) do
 
 			if (#s.tiled_clients > 1 or c.floating) and c.first_tag.layout.name ~= 'max' then
