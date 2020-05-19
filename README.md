@@ -202,7 +202,7 @@ Some of these are outdated, so it is better if you try them yourself.
 
 | Floppy |
 | --- |
-| ![screenshot](https://i.imgur.com/coDjoeY.png) |
+| ![screenshot](https://i.imgur.com/63bx9dU.png) |
 
 | GNawesOME |
 | --- |
