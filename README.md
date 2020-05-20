@@ -228,9 +228,14 @@ Some of these are outdated, so it is better if you try them yourself.
 | --- |
 | ![Screenshot](https://i.imgur.com/0nSbhjN.png) |
 
-| Minimal functional fox [blurred fork](https://github.com/manilarome/blurred-functional-fox) |
+| [blurredfox CSS theme for Firefox](https://github.com/manilarome/blurredfox/) |
 | --- |
-| ![Screenshot](https://i.imgur.com/LBXvePV.png)
+| ![Screenshot](https://i.imgur.com/3C1cVNN.png)
+
+| [thunderblurred CSS theme for Thunderbird](https://github.com/manilarome/blurredfox/) |
+| --- |
+| ![Screenshot](https://imgur.com/a/n7o0w7G)
+
 <br>
 
 Main gallery [here](https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery).
