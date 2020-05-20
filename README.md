@@ -234,7 +234,7 @@ Some of these are outdated, so it is better if you try them yourself.
 
 | [thunderblurred CSS theme for Thunderbird](https://github.com/manilarome/blurredfox/) |
 | --- |
-| ![Screenshot](https://imgur.com/a/n7o0w7G)
+| ![Screenshot](https://i.imgur.com/b8Uq8c8.png)
 
 <br>
 
