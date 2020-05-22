@@ -19,6 +19,7 @@ HIST_FILE="${MY_PATH}/history.txt"
 
 OPENER=xdg-open
 TERM_EMU=kitty
+TEXT_EDITOR=${EDITOR}
 FILE_MANAGER=dolphin
 BLUETOOTH_SEND=blueman-sendto
 
@@ -592,7 +593,7 @@ then
 			kill -9 $(pgrep rofi)
 			;;
 		"Edit" )
-			coproc ( eval "${TERM_EMU} ${EDITOR} $(cat "${CURRENT_FILE}")" & > /dev/null 2>&1 )
+			coproc ( eval "${TERM_EMU} ${TEXT_EDITOR} $(cat "${CURRENT_FILE}")" & > /dev/null 2>&1 )
 			kill -9 $(pgrep rofi)
 			;;
 		"Move to trash" )

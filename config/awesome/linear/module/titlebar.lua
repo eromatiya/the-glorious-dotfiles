@@ -169,7 +169,17 @@ client.connect_signal("request::titlebars", function(c)
 	-- Generate a custom titlabar for each class, roles, type, etc., etc.
 	-- The titlebar's position can now be set differently
 
-	if c.role == "GtkFileChooserDialog" or c.type == 'dialog' or c.type == 'modal' then
+	if c.class == 'dolphin' or c.class == 'firefox' or c.class == 'pavucontrol-qt' or 
+	c.instance == 'transmission-qt' or c.class == 'ark' or c.class == 'polkit-kde-authentication-agent-1' or
+	c.class == 'partitionmanager' or c.class == 'discord' or c.class == 'kdesu' then
+
+		if c.type == 'dialog' or c.type == 'modal' then
+			decorate_titlebar(c, 'top', beautiful.background, titlebar_size)
+		else
+			decorate_titlebar(c, 'left', beautiful.background, titlebar_size)
+		end
+
+	elseif c.role == "GtkFileChooserDialog" or c.type == 'dialog' or c.type == 'modal' then
 
 		-- Let's use the gtk theme's bg_color as titlebar's bg then add some transparency
 		-- Let's set the titlebar's position to top
@@ -186,14 +196,14 @@ client.connect_signal("request::titlebars", function(c)
 		-- awesome is the shit boi!
 		decorate_titlebar(c, 'top', beautiful.xresources.get_current_theme().background, titlebar_size)
 
-	elseif c.class == 'Nemo' or c.class == 'dolphin' then
+	elseif c.class == 'Nemo' then
 
-		decorate_titlebar(c, 'left', beautiful.background, titlebar_size)
+		decorate_titlebar(c, 'left', beautiful.xresources.get_current_theme().background, titlebar_size)
 
 	else
 
 		-- Default titlebar
-		decorate_titlebar(c)
+		decorate_titlebar(c, 'left', beautiful.background, titlebar_size)
 
 	end
 

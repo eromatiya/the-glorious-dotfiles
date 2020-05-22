@@ -19,15 +19,25 @@ local port            = secrets.email.port
 local unread_email_count = 0
 local startup_show = true
 
-local format_string = function(key, value)
-	local key = "<span font='SF Pro Text Bold 10'>" .. key .. "</span>"
-	return key .. ' ' .. value
+local scroll_container = function(widget)
+	return wibox.widget {
+		widget,
+		id = 'scroll_container',
+		max_size = 345,
+		speed = 75,
+		expand = true,
+		direction = 'h',
+		step_function = wibox.container.scroll
+						.step_functions.waiting_nonlinear_back_and_forth,
+		fps = 30,
+		layout = wibox.container.scroll.horizontal,
+	}
 end
 
 local email_icon_widget = wibox.widget {
 	{
 		id = 'icon',
-		image = widget_icon_dir .. 'email' .. '.svg',
+		image = widget_icon_dir .. 'email.svg',
 		resize = true,
 		forced_height = dpi(45),
 		forced_width = dpi(45),
@@ -36,9 +46,26 @@ local email_icon_widget = wibox.widget {
 	layout = wibox.layout.fixed.horizontal
 }
 
+local email_from_text = wibox.widget {
+	font = 'SF Pro Text Bold 10',
+	markup = 'From:',
+	align = 'left',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
+
 local email_recent_from = wibox.widget {
 	font = 'SF Pro Text Regular 10',
-	markup = format_string('From:', 'loading@stdout.sh'),
+	markup = 'loading@stdout.sh',
+	align = 'left',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
+local email_subject_text = wibox.widget {
+	font = 'SF Pro Text Regular 10',
+	markup = 'Subject:',
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -46,7 +73,15 @@ local email_recent_from = wibox.widget {
 
 local email_recent_subject = wibox.widget {
 	font = 'SF Pro Text Regular 10',
-	markup = format_string('Subject:', 'Loading data'),
+	markup = 'Loading data',
+	align = 'left',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
+local email_date_text = wibox.widget {
+	font = 'SF Pro Text Regular 10',
+	markup = 'Local Date:',
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -54,7 +89,7 @@ local email_recent_subject = wibox.widget {
 
 local email_recent_date = wibox.widget {
 	font = 'SF Pro Text Regular 10',
-	markup = format_string('Local Date:', 'Loading date'),
+	markup = 'Loading date...',
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -78,9 +113,24 @@ local email_report = wibox.widget{
 				nil,
 				{
 					layout = wibox.layout.fixed.vertical,
-					email_recent_from,
-					email_recent_subject,
-					email_recent_date
+					{
+						email_from_text,
+						scroll_container(email_recent_from),
+						spacing = dpi(5),
+						layout = wibox.layout.fixed.horizontal
+					},
+					{
+						email_subject_text,
+						scroll_container(email_recent_subject),
+						spacing = dpi(5),
+						layout = wibox.layout.fixed.horizontal
+					},
+					{
+						email_date_text,
+						scroll_container(email_recent_date),
+						spacing = dpi(5),
+						layout = wibox.layout.fixed.horizontal
+					}
 				},
 				nil
 			}
@@ -133,7 +183,7 @@ def process_mailbox(M):
 		date_tuple = email.utils.parsedate_tz(msg['Date'])
 		if date_tuple:
 			local_date = datetime.datetime.fromtimestamp(email.utils.mktime_tz(date_tuple))
-			print ("Local Date:", local_date.strftime("%a, %H:%M:%S %d-%m-%Y") + "\n")
+			print ("Local Date:", local_date.strftime("%a, %H:%M:%S %b %d, %Y") + "\n")
 			# with code below you can process text of email
 			# if msg.is_multipart():
 			#     for payload in msg.get_payload():
@@ -183,7 +233,7 @@ local notify_all_unread_email = function(email_data)
 		app_name = 'Email',
 		title = title,
 		message = email_data,
-		timeout = 180,
+		timeout = 30,
 		icon = widget_icon_dir .. 'email-unread.svg'
 	})
 end
@@ -210,15 +260,15 @@ end
 
 local set_email_data_tooltip = function(email_data)
 	local email_data = email_data:match('(From:.*)')
-	local counter = format_string("Unread Count: ", unread_email_count)
+	local counter = "<span font='SF Pro Text Bold 10'>Unread Count: </span>" .. unread_email_count
 	email_details_tooltip:set_markup(counter .. '\n\n' .. email_data)
 end
 
 local set_widget_markup = function(from, subject, date, tooltip)
 
-	email_recent_from:set_markup(format_string('From:', from))
-	email_recent_subject:set_markup(format_string('Subject:', subject))
-	email_recent_date:set_markup(format_string('Local Date:', date))
+	email_recent_from:set_markup(from:gsub('%\n', ''))
+	email_recent_subject:set_markup(subject:gsub('%\n', ''))
+	email_recent_date:set_markup(date:gsub('%\n', ''))
 
 	if tooltip then
 		email_details_tooltip:set_markup(tooltip)

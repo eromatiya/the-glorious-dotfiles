@@ -31,13 +31,13 @@
 	<br><br>
 </div>
 
-<img src="images/setup-big.png" align="center">
+<img src="https://i.imgur.com/T5jvmK1.png" align="center">
 
 <br>
 
 ### Welcome to the glorious dotfiles
 
-<img src="images/setups.png" align="right" height="400px">
+<img src="https://i.imgur.com/68r3k8q.png" align="right" height="400px">
 
 <p align="left">
 This is a collection/stash of my linux configurations also known as <b><i>dotfiles</i></b>. I don't know why did I wasted my time writing these, especially my AwesomeWM setups. Or maybe it's because... I did it for me. I liked it. I was good at it. And I was really -- I was alive. ;) So no wasted time after all.
@@ -50,7 +50,7 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 <br>
 <br>
 
-<img src="images/setups2.png" align="left" height="400px">
+<img src="https://i.imgur.com/2R2p5NN.png" align="left" height="400px">
 <p align="left">
 So, what is ricing or RICE in the linux world? Ricing refers to making a visual improvement and customization on your desktop. It was inherited from the practice of improving, modifying, and customizing a cheap asian import cars to make them appear faster than they actually are. So in the world of cars, <b>RICE</b> means <i>Race Inspired Cosmetic Enhancement</i>.
 <br>
@@ -63,7 +63,7 @@ Ricing is actually fun and it's my hobby for quite a long time now. Anyone can r
 
 ## the glorious wiki's table of contents
 
-This wiki will guide you to replicate my setups.
+This wiki will guide you to replicate my setups. So basically, read the frickin' manual! 
 
 *  [**Home**](https://github.com/manilarome/the-glorious-dotfiles/wiki)
 *  **General**
@@ -202,35 +202,39 @@ Some of these are outdated, so it is better if you try them yourself.
 
 | Floppy |
 | --- |
-| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/floppy/dirty.png) |
+| ![screenshot](https://i.imgur.com/63bx9dU.png) |
 
 | GNawesOME |
 | --- |
-| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/gnawesome/today.png) |
+| ![screenshot](https://i.imgur.com/xspiV3g.png) |
 
 | Linear |
 | --- |
-| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/linear/busier.png) |
+| ![screenshot](https://i.imgur.com/e6x3M2w.png) |
 
 | Lockscreen with **PAM Integration** |
 | --- |
-| ![Screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/setups/floppy/lockscreen.png) |
+| ![Screenshot](https://i.imgur.com/CF9MUF4.png) |
 
 | Exit Screen |
 | --- |
-| ![Screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/modules/exitscreen.png) |
+| ![Screenshot](https://i.imgur.com/1J2hmoJ.png) |
 
 | Multihead |
 | --- |
-| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/multihead.png) |
+| ![Screenshot](https://i.imgur.com/kvHcyb7.jpg) |
 
-| Rofi File Browsing | Rofi Context Menu |
-| --- | --- |
-| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-main.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-global-menu.png) |
+| Rofi Global Search |
+| --- |
+| ![Screenshot](https://i.imgur.com/0nSbhjN.png) |
 
-| Rofi Google Suggestion | Rofi DuckDuckGo Suggestion |
-| --- | --- |
-| ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-google.png) | ![screenshot](https://raw.githubusercontent.com/wiki/manilarome/the-glorious-dotfiles/images/widgets/rofi-web-ddg.png) |
+| [blurredfox CSS theme for Firefox](https://github.com/manilarome/blurredfox/) |
+| --- |
+| ![Screenshot](https://i.imgur.com/3C1cVNN.png)
+
+| [thunderblurred CSS theme for Thunderbird](https://github.com/manilarome/blurredfox/) |
+| --- |
+| ![Screenshot](https://i.imgur.com/b8Uq8c8.png)
 
 <br>
 

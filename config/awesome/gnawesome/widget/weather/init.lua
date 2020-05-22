@@ -55,7 +55,7 @@ local sunset_icon_widget = wibox.widget {
 	layout = wibox.layout.fixed.horizontal
 }
 
-refresh_icon_widget = wibox.widget {
+local refresh_icon_widget = wibox.widget {
 	{
 		id = 'refresh_icon',
 		image = widget_icon_dir .. 'refresh.svg',
@@ -89,19 +89,43 @@ local refresh_widget = wibox.widget {
 }
 
 local weather_desc_temp = wibox.widget {
-	markup = "dust and clouds, -1000°C",
-	font   = 'SF Pro Text Bold 12',
-	align  = 'left',
-	valign = 'center',
-	widget = wibox.widget.textbox
+	{
+		id 	   = 'description',
+		markup = 'dust and clouds, -1000°C',
+		font   = 'SF Pro Text Bold 12',
+		align  = 'left',
+		valign = 'center',
+		widget = wibox.widget.textbox
+	},
+	id = 'scroll_container',
+	max_size = 345,
+	speed = 75,
+	expand = true,
+	direction = 'h',
+	step_function = wibox.container.scroll
+					.step_functions.waiting_nonlinear_back_and_forth,
+	fps = 30,
+	layout = wibox.container.scroll.horizontal,
 }
 
 local weather_location = wibox.widget {
-	markup = "Earth, Milky Way",
-	font   = 'SF Pro Text Regular 12',
-	align  = 'left',
-	valign = 'center',
-	widget = wibox.widget.textbox
+	{
+		id 	   = 'location',
+		markup = 'Earth, Milky Way',
+		font   = 'SF Pro Text Regular 12',
+		align  = 'left',
+		valign = 'center',
+		widget = wibox.widget.textbox
+	},
+	id = 'scroll_container',
+	max_size = 345,
+	speed = 75,
+	expand = true,
+	direction = 'h',
+	step_function = wibox.container.scroll
+					.step_functions.waiting_nonlinear_back_and_forth,
+	fps = 30,
+	layout = wibox.container.scroll.horizontal,
 }
 
 local weather_sunrise = wibox.widget {
@@ -265,12 +289,6 @@ awesome.connect_signal(
 					local weather_description = description .. ', ' .. temperature .. weather_temperature_symbol
 					local weather_location = location .. ', ' .. country
 					
-					if #weather_description >= 33 then
-						weather_desc_temp:set_font('SF Pro Text Bold 11')
-					else
-						weather_desc_temp:set_font('SF Pro Text Bold 12')
-					end
-
 					awesome.emit_signal("widget::weather_update", 
 						icon_code, 
 						weather_description, 
@@ -323,8 +341,8 @@ awesome.connect_signal(
 			['04n'] = 'nbroken_clouds.svg',
 			['09d'] = 'dshower_rain.svg',
 			['09n'] = 'nshower_rain.svg',
-			['10n'] = 'drain_icon.svg',
-			['10d'] = 'nrain_icon.svg',
+			['10d'] = 'd_rain.svg',
+			['10n'] = 'n_rain.svg',
 			['11d'] = 'dthunderstorm.svg',
 			['11n'] = 'nhunderstorm.svg',
 			['13d'] = 'snow.svg',
@@ -339,8 +357,8 @@ awesome.connect_signal(
 		weather_icon_widget.icon:set_image(widget_icon_dir .. widget_icon_name)
 		weather_icon_widget.icon:emit_signal('widget::redraw_needed')
 		
-		weather_desc_temp:set_markup(desc)
-		weather_location:set_markup(location)
+		weather_desc_temp.description:set_markup(desc)
+		weather_location.location:set_markup(location)
 		weather_sunrise:set_markup(sunrise)
 		weather_sunset:set_markup(sunset)
 		weather_data_time:set_markup(data_receive)

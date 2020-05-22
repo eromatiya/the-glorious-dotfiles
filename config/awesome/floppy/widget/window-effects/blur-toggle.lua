@@ -14,8 +14,6 @@ local apps = require('configuration.apps')
 
 local frame_status = nil
 
-
-
 local action_name = wibox.widget {
 	text = 'Blur Effects',
 	font = 'SF Pro Text Regular 11',
@@ -51,15 +49,12 @@ local update_imagebox = function()
 	end
 end
 
-
-
 local check_blur_status = function()
 	awful.spawn.easy_async_with_shell(
-		[[
-		grep -F 'method = "none";' ]] .. config_dir .. [[/configuration/picom.conf | tr -d '[\"\;\=\ ]'
-		]], 
-		function(stdout)
-		
+		[[bash -c "
+		grep -F 'method = \"none\";' ]] .. config_dir .. [[/configuration/picom.conf | tr -d '[\"\;\=\ ]'
+		"]], 
+		function(stdout, stderr)
 			if stdout:match('methodnone') then
 				action_status = false
 			else
@@ -71,37 +66,28 @@ local check_blur_status = function()
 	)
 end
 
-
 check_blur_status()
-
 
 local toggle_blur = function(togglemode)
 
-	local toggle_blur_script = [[
-	picom_dir=$HOME/.config/awesome/configuration/picom.conf
-
+	local toggle_blur_script = [[bash -c "
 	# Check picom if it's not running then start it
 	if [ -z $(pgrep picom) ]; then
-		picom -b --experimental-backends --dbus --config ]] .. config_dir .. [[/configuration/picom.conf
+		picom -b --experimental-backends --dbus --config ]] .. config_dir .. [[configuration/picom.conf
 	fi
 
 	case ]] .. togglemode .. [[ in
 		'enable')
-		sed -i -e 's/method = "none"/method = "dual_kawase"/g' "${picom_dir}"
+		sed -i -e 's/method = \"none\"/method = \"dual_kawase\"/g' \"]] .. config_dir .. [[configuration/picom.conf\"
 		;;
 		'disable')
-		sed -i -e 's/method = "dual_kawase"/method = "none"/g' "${picom_dir}"
+		sed -i -e 's/method = \"dual_kawase\"/method = \"none\"/g' \"]] .. config_dir .. [[configuration/picom.conf\"
 		;;
 	esac
-	]]
+	"]]
 
 	-- Run the script
-	awful.spawn.easy_async_with_shell(
-		toggle_blur_script, 
-		function(stdout, stderr)
-
-		end
-	)
+	awful.spawn.with_shell(toggle_blur_script)
 
 end
 

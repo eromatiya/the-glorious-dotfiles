@@ -36,32 +36,30 @@ local blur_slider = slider.blur_strength_slider
 local update_slider_value = function()
 
 	awful.spawn.easy_async_with_shell(
-		[[
-		grep -F 'strength =' ~/.config/awesome/configuration/picom.conf | awk 'NR==1 {printf $3}' | tr -d ';'
-		]],
-		function(stdout)
-			blur_strength = tonumber(stdout) / 20 * 100
+		[[bash -c "
+		grep -F 'strength =' $HOME/.config/awesome/configuration/picom.conf | 
+		awk 'NR==1 {print $3}' | tr -d ';'
+		"]],
+		function(stdout, stderr)
+			local strength = stdout:match('%d+')
+			blur_strength = tonumber(strength) / 20 * 100
 			blur_slider:set_value(tonumber(blur_strength))
 			start_up = false
 		end
 	)
 end
 
--- Update slider value
 update_slider_value()
 
 local adjust_blur = function(power)
 
-	awful.spawn.easy_async_with_shell(
-		[[
-		picom_dir=~/.config/awesome/configuration/picom.conf 
-		sed -i 's/.*strength = .*/    strength = ]] .. power .. [[;/g' "${picom_dir}"
-		]],
-		function(stdout, stderr)
-		end
+	awful.spawn.with_shell(
+		[[bash -c "
+		sed -i 's/.*strength = .*/    strength = ]] .. power .. [[;/g' \
+		$HOME/.config/awesome/configuration/picom.conf
+		"]]
 	)
 end
-
 
 blur_slider:connect_signal(
 	'property::value',
@@ -74,42 +72,48 @@ blur_slider:connect_signal(
 )
 
 -- Adjust slider value to change blur strength
-awesome.connect_signal('widget::blur:increase', function() 
+awesome.connect_signal(
+	'widget::blur:increase',
+	function() 
 
-	-- On startup, the slider.value returns nil so...
-	if blur_slider:get_value() == nil then
-		return
+		-- On startup, the slider.value returns nil so...
+		if blur_slider:get_value() == nil then
+			return
+		end
+	 
+		local blur_value = blur_slider:get_value() + 10
+
+		-- No more than 100!
+		if blur_value > 100 then
+			blur_slider:set_value(100)
+			return
+		end
+
+		blur_slider:set_value(blur_value)
 	end
- 
-	local blur_value = blur_slider:get_value() + 10
-
-	-- No more than 100!
-	if blur_value > 100 then
-		blur_slider:set_value(100)
-		return
-	end
-
-	blur_slider:set_value(blur_value)
-end)
+)
 
 -- Decrease blur
-awesome.connect_signal('widget::blur:decrease', function() 
+awesome.connect_signal(
+	'widget::blur:decrease',
+	function() 
 	
-	-- On startup, the slider.value returns nil so...
-	if blur_slider:get_value() == nil then
-		return
+		-- On startup, the slider.value returns nil so...
+		if blur_slider:get_value() == nil then
+			return
+		end
+
+		local blur_value = blur_slider:get_value() - 10
+
+		-- No negatives!
+		if blur_value < 0 then
+			blur_slider:set_value(0)
+			return
+		end
+
+		blur_slider:set_value(blur_value)
 	end
-
-	local blur_value = blur_slider:get_value() - 10
-
-	-- No negatives!
-	if blur_value < 0 then
-		blur_slider:set_value(0)
-		return
-	end
-
-	blur_slider:set_value(blur_value)
-end)
+)
 
 local blur_slider_setting = wibox.widget {
 	{
@@ -133,6 +137,5 @@ local blur_slider_setting = wibox.widget {
 	forced_height = dpi(48),
 	widget = wibox.container.margin
 }
-
 
 return blur_slider_setting
