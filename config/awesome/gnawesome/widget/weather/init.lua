@@ -344,7 +344,7 @@ awesome.connect_signal(
 			['10d'] = 'd_rain.svg',
 			['10n'] = 'n_rain.svg',
 			['11d'] = 'dthunderstorm.svg',
-			['11n'] = 'nhunderstorm.svg',
+			['11n'] = 'nthunderstorm.svg',
 			['13d'] = 'snow.svg',
 			['13n'] = 'snow.svg',
 			['50d'] = 'dmist.svg',
