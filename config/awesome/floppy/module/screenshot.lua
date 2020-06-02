@@ -1,5 +1,6 @@
 local naughty = require('naughty')
 local awful = require('awful')
+local gears = require('gears')
 
 return function(mode)
 	local screenshot_dir = os.getenv('HOME') .. '/Pictures/Screenshots/'
@@ -24,46 +25,51 @@ return function(mode)
 
 	awful.spawn.easy_async_with_shell(maim_command .. file_loc, function()
 
-		awful.spawn('xclip -selection clipboard -t image/png -i ' .. file_loc)
+		if (gears.filesystem.file_readable(file_loc)) then
 
-		local open_image = naughty.action {
-			name = 'Open',
-				icon_only = false,
-		}
+			awful.spawn('xclip -selection clipboard -t image/png -i ' .. file_loc)
 
-		local open_folder = naughty.action {
-			name = 'Folder',
-				icon_only = false,
-		}
+			local open_image = naughty.action {
+				name = 'Open',
+					icon_only = false,
+			}
 
-		local delete_image = naughty.action {
-			name = 'Delete',
-				icon_only = false,
-		}
+			local open_folder = naughty.action {
+				name = 'Folder',
+					icon_only = false,
+			}
 
-		-- Execute the callback when 'Open' is pressed
-		open_image:connect_signal('invoked', function()
-			awful.spawn('xdg-open ' .. file_loc, false)
-		end)
+			local delete_image = naughty.action {
+				name = 'Delete',
+					icon_only = false,
+			}
 
-		open_folder:connect_signal('invoked', function()
-			awful.spawn('xdg-open ' .. screenshot_dir, false)
-		end)
+			-- Execute the callback when 'Open' is pressed
+			open_image:connect_signal('invoked', function()
+				awful.spawn('xdg-open ' .. file_loc, false)
+			end)
 
-		-- Execute the callback when 'Delete' is pressed
-		delete_image:connect_signal('invoked', function()
-			awful.spawn('gio trash ' .. file_loc, false)
-		end)
+			open_folder:connect_signal('invoked', function()
+				awful.spawn('xdg-open ' .. screenshot_dir, false)
+			end)
 
-		-- Show notification
-		naughty.notification ({
-			app_name = 'Screenshot Tool',
-			icon = file_loc,
-			timeout = 10,
-			title = '<b>Snap!</b>',
-			message = notif_message,
-			actions = { open_image, open_folder, delete_image }
-		})
+			-- Execute the callback when 'Delete' is pressed
+			delete_image:connect_signal('invoked', function()
+				awful.spawn('gio trash ' .. file_loc, false)
+			end)
+
+			-- Show notification
+			naughty.notification ({
+				app_name = 'Screenshot Tool',
+				icon = file_loc,
+				timeout = 10,
+				title = '<b>Snap!</b>',
+				message = notif_message,
+				actions = { open_image, open_folder, delete_image }
+			})
+
+		end
+
 	end)
 
 end
