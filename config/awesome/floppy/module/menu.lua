@@ -87,7 +87,7 @@ local screenshot_menu = {
 			gears.timer.start_new(
 				0.1,
 				function()
-					awful.spawn.easy_async_with_shell(apps.bins.full_screenshot)
+					require('module.screenshot')('full')
 				end
 			)
 		end,
@@ -99,7 +99,7 @@ local screenshot_menu = {
 			gears.timer.start_new(
 				0.1,
 				function()
-					awful.spawn.easy_async_with_shell(apps.bins.area_screenshot)
+					require('module.screenshot')('area')
 				end,
 				menubar.utils.lookup_icon("accessories-screenshot")
 			)
