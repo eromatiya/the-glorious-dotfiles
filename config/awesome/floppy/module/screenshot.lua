@@ -7,6 +7,10 @@ return function(mode)
 	local file_loc = screenshot_dir .. os.date("%Y-%m-%d_%T") .. '.png'
 	local maim_command, notif_message
 
+	if (gears.filesystem.dir_readable(screenshot_dir) == nil) then
+		gears.filesystem.make_directories(screenshot_dir)
+	end
+
 	if (mode == 'full') then
 		maim_command = 'maim -u -m 1 '
 		notif_message = "Full screenshot saved and copied to clipboard!"
