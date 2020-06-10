@@ -54,11 +54,12 @@ package() {
 		"one of the following themes: "
 	for t in $(ls config/awesome/)
 	do
-		echo "   $t"
+		echo "   \033[1m$t\033[0m"
 	done
 	echo "to the config folder using: "
 	echo
-	echo "cp -r $DEST/config/awesome/<theme> \$HOME/.config/awesome"
+	echo "\033[1mcp -r $DEST/config/awesome/<theme> \$HOME/.config/awesome\033[0m"
+	echo "Tip: DO NOT use sudo"
 	echo && echo
 }
 
