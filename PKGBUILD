@@ -42,14 +42,14 @@ sha256sums=("SKIP")
 package() {
 	DEST="${pkgdir}/usr/lib/$pkgname"
 
-	cd "${srcdir}/"
+	cd "${srcdir}/$pkgname"
 	mkdir -p $DEST
 	for file in config/awesome/*
 	do
 		install -dDm644 ${file} $DEST/${file}
 	done
 
-	echo "\n"
+	echo && echo
 	echo "Copied files to $DEST."
 	echo "To start using $pkgname, you will need to copy" \
 		"one of the following themes: "
@@ -60,6 +60,6 @@ package() {
 	echo "to the config folder using: "
 	echo
 	echo "cp -r $DEST/config/awesome/<theme> \$HOME/.config/awesome"
-	echo "\n"
+	echo && echo
 }
 
