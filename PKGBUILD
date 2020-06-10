@@ -1,7 +1,7 @@
 # Maintainer: manilarome <hum@idontknowhis.email>
 # Contributor: demostanis worlds <demostanis@protonmail.com>
 
-pkgname=glorious-dotfiles
+pkgname=the-glorious-dotfiles
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="A glorified personal dot files"
