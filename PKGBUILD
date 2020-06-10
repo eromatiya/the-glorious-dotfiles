@@ -43,9 +43,9 @@ package() {
 
 	cd "${srcdir}/$pkgname"
 	mkdir -p $DEST
-	for file in config/awesome/*
+	for file in $(find config/awesome)
 	do
-		install -dDm644 ${file} $DEST/${file}
+		install -Dm644 ${file} $DEST/${file}
 	done
 
 	echo && echo
