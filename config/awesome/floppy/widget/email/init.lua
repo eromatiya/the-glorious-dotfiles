@@ -164,6 +164,7 @@ import email
 import datetime
 import re
 import sys
+from email.policy import default
 
 def process_mailbox(M):
 	rv, data = M.search(None, "(UNSEEN)")
@@ -177,7 +178,7 @@ def process_mailbox(M):
 			print ("ERROR getting message", num)
 			return
 
-		msg = email.message_from_bytes(data[0][1])
+		msg = email.message_from_bytes(data[0][1], policy=default)
 		print ('From:', msg['From'])
 		print ('Subject: %s' % (msg['Subject']))
 		date_tuple = email.utils.parsedate_tz(msg['Date'])
