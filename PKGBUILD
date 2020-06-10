@@ -45,7 +45,7 @@ package() {
 	mkdir -p $DEST
 	for file in $(find config/awesome -type f)
 	do
-		install -Dm644 ${file} $DEST/${file}
+		install -Dm755 ${file} $DEST/${file}
 	done
 
 	echo && echo
