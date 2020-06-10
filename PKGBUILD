@@ -43,7 +43,7 @@ package() {
 
 	cd "${srcdir}/$pkgname"
 	mkdir -p $DEST
-	for file in $(find config/awesome)
+	for file in $(find config/awesome -type f)
 	do
 		install -Dm644 ${file} $DEST/${file}
 	done
