@@ -67,7 +67,9 @@ _ask() {
 			rm -rf ~/.config/awesome && \
 			echo "Saved old awesome config to ~/.config/awesome.bak"
 		cp -r $DEST/config/awesome/$THEME ~/.config/awesome
-	else
+		echo "Successfully installed theme"
+		echo
+	elif [[ ! $THEME = "cancel" ]]; then
 		echo "Invalid theme"
 		_ask
 	fi
