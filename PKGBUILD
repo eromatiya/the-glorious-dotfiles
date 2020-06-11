@@ -61,7 +61,7 @@ _ask() {
 	echo -n "Please choose one to install: "
 	read THEME
 
-	if [[ $(ls config/awesome/) =~ (^| )$THEME($| ) ]]; then
+	if [[ -d config/awesome/$THEME ]]; then
 		[[ -d ~/.config/awesome ]] && \
 			cp ~/.config/awesome ~/.config/awesome.bak && \
 			rm -rf ~/.config/awesome && \
