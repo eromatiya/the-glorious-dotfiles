@@ -52,7 +52,7 @@ package() {
 	echo "Here's a list of available themes:"
 	for t in $(ls config/awesome/)
 	do
-		echo " \033[1m$t\033[0m"
+		echo -e " \033[1m$t\033[0m"
 	done
 	_ask
 }
@@ -61,12 +61,12 @@ _ask() {
 	echo -n "Please choose one to install: "
 	read THEME
 
-	if [[ -d config/awesome/$THEME ]]; then
+	if [[ -d $DEST/config/awesome/$THEME ]]; then
 		[[ -d ~/.config/awesome ]] && \
 			cp -r ~/.config/awesome ~/.config/awesome.bak && \
 			rm -rf ~/.config/awesome && \
-			echo -e "Saved old awesome config to ~/.config/awesome.bak"
-		cp $DEST/$THEME ~/.config/awesome
+			echo "Saved old awesome config to ~/.config/awesome.bak"
+		cp $DEST/config/awesome/$THEME ~/.config/awesome
 	else
 		echo "Invalid theme"
 		_ask
