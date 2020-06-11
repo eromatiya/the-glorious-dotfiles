@@ -63,9 +63,9 @@ _ask() {
 
 	if [[ -d config/awesome/$THEME ]]; then
 		[[ -d ~/.config/awesome ]] && \
-			cp ~/.config/awesome ~/.config/awesome.bak && \
+			cp -r ~/.config/awesome ~/.config/awesome.bak && \
 			rm -rf ~/.config/awesome && \
-			echo "Saved old awesome config to ~/.config/awesome.bak"
+			echo -e "Saved old awesome config to ~/.config/awesome.bak"
 		cp $DEST/$THEME ~/.config/awesome
 	else
 		echo "Invalid theme"
