@@ -48,18 +48,28 @@ package() {
 		install -Dm755 ${file} $DEST/${file}
 	done
 
-	echo && echo
-	echo "Copied files to $DEST."
-	echo "To start using $pkgname, you will need to copy" \
-		"one of the following themes: "
+	echo
+	echo "Here's a list of available themes:"
 	for t in $(ls config/awesome/)
 	do
-		echo "   \033[1m$t\033[0m"
+		echo " \033[1m$t\033[0m"
 	done
-	echo "to the config folder using: "
-	echo
-	echo "\033[1mcp -r $DEST/config/awesome/<theme> \$HOME/.config/awesome\033[0m"
-	echo "Tip: DO NOT use sudo"
-	echo && echo
+	_ask
+}
+
+_ask() {
+	echo -n "Please choose one to install: "
+	read THEME
+
+	if [[ $(ls config/awesome/) =~ (^| )$THEME($| ) ]]; then
+		[[ -d ~/.config/awesome ]] && \
+			cp ~/.config/awesome ~/.config/awesome.bak && \
+			rm -rf ~/.config/awesome && \
+			echo "Saved old awesome config to ~/.config/awesome.bak"
+		cp $DEST/$THEME ~/.config/awesome
+	else
+		echo "Invalid theme"
+		_ask
+	fi
 }
 
