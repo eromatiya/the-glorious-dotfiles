@@ -66,7 +66,7 @@ _ask() {
 			cp -r ~/.config/awesome ~/.config/awesome.bak && \
 			rm -rf ~/.config/awesome && \
 			echo "Saved old awesome config to ~/.config/awesome.bak"
-		cp $DEST/config/awesome/$THEME ~/.config/awesome
+		cp -r $DEST/config/awesome/$THEME ~/.config/awesome
 	else
 		echo "Invalid theme"
 		_ask
