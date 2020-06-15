@@ -232,7 +232,7 @@ Some of these are outdated, so it is better if you try them yourself.
 | --- |
 | ![Screenshot](https://i.imgur.com/3C1cVNN.png)
 
-| [thunderblurred CSS theme for Thunderbird](https://github.com/manilarome/blurredfox/) |
+| [thunderblurred CSS theme for Thunderbird](https://github.com/manilarome/thunderblurred) |
 | --- |
 | ![Screenshot](https://i.imgur.com/b8Uq8c8.png)
 
