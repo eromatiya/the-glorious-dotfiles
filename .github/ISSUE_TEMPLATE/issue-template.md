@@ -10,6 +10,8 @@ assignees: ''
 <!-- 
 If you're having an issue... Well, that's why you're here right? 
 
+### IMPORTANT NOTE: Ricing and this dotfiles are not my priority right now. So if you have a question, read the wiki first! Make sure to check the dependencies and requirements to avoid avoidable errors! If it's a bug, uhm well, like I said in the first sentence, this is not my priority anymore. Pull request is appreciated.
+
 If you're having a problem or question on why certain things doesn't work, did you already read the wiki? Do you have the needed dependencies installed? If no, please read it. 
 
 Wiki: https://github.com/manilarome/the-glorious-dotfiles/wiki
