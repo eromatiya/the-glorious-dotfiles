@@ -72,7 +72,7 @@ local function send_notification(title, text, icon, timeout, urgency)
 		urgency = urgency,
 		app_name = 'Power Notification'
 	}
-	
+
 	if last_notification and not last_notification.is_expired then
 		last_notification.title = args.title
 		last_notification.text = args.text
@@ -101,7 +101,7 @@ awesome.connect_signal("module::battery", function(battery)
 			urgency = 'critical'
 		elseif battery < 16 and not battery_low_already_notified then
 			battery_low_already_notified = true
-			text = "Battery Full!"
+			text = "Battery Low!"
 			timeout = 6
 			urgency = 'normal'
 		end
