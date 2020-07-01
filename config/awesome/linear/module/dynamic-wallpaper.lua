@@ -14,7 +14,6 @@
 
 -- Limitations: 
 -- Timeout paused when laptop/pc is suspended or in sleep mode, and there's probably some bugs too so whatever
-
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
@@ -125,6 +124,9 @@ local manage_timer = function()
 	local previous_time = '' --Scheduled time that should activate now
 	local next_time = '' --Time that should activate next
 
+	local first_time = '24:00:00' --First scheduled time registered (to be found)
+	local last_time = '00:00:00' --Last scheduled time registered (to be found)
+
 	-- Find previous_time
 	for time, wallpaper in pairs(wallpaper_schedule) do
 		local parsed_time = parse_to_seconds(time)
@@ -133,6 +135,16 @@ local manage_timer = function()
 				previous_time = time
 			end
 		end
+
+		if parsed_time > parse_to_seconds(last_time) then
+			last_time = time
+		end
+	end
+
+	-- Previous time being blank = no scheduled time today. Therefore
+	-- the last time was yesterday's latest time
+	if previous_time == '' then
+		previous_time = last_time
 	end
 
 	--Find next_time
@@ -143,10 +155,16 @@ local manage_timer = function()
 				next_time = time
 			end
 		end
+
+		if parsed_time < parse_to_seconds(first_time) then
+			first_time = time
+		end
 	end
 
+	-- Next time being blank means that there is no scheduled times left for
+	-- the current day. So next scheduled time is tomorrow's first time
 	if next_time == '' then
-		next_time = '00:00:00'
+		next_time = first_time
 	end
 
 	-- Update Wallpaper
