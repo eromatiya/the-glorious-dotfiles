@@ -56,13 +56,6 @@ end
 -- In seconds
 local the_countdown = nil
 
--- We will use a table for hour change and wallpaper string
--- Element 0 errm 1 will store the incoming/next scheduled time
--- Geez why the f is lua's array starts with `1`? lol
--- Element 2 will have the wallpaper file name
-local wall_data = {}
--- > Why array, you say? 
--- Because why not? I'm new to lua and I'm experimenting with it
 
 -- Parse HH:MM:SS to seconds
 local parse_to_seconds = function(time)
@@ -143,12 +136,10 @@ local manage_timer = function()
 
 	-- Update Wallpaper
 	update_wallpaper(wallpaper_schedule[previous_time])
-
-	-- Set the data for the next scheduled time
-	wall_data = {next_time, wallpaper_schedule[next_time]}
 	
 	-- Get the time difference to set as timeout for the wall_updater timer below
-	the_countdown = time_diff(wall_data[1], current_time())
+	the_countdown = time_diff(next_time, current_time())
+
 end
 
 -- Update values at startup
@@ -171,8 +162,8 @@ awesome.connect_signal(
 	function()
 		set_wallpaper(wall_dir .. wall_data[2])
 
-		-- Update values for the next specified schedule
-		manage_timer()
+	-- Update wallpaper based on the data in the array
+	--gears.wallpaper.maximized (wall_dir .. wall_data[2], s)
 
 		-- Update timer timeout for the next specified schedule
 		wall_updater.timeout = the_countdown
