@@ -120,15 +120,16 @@ end
 -- Updates variables
 local manage_timer = function()
 	-- Get current time
-	local time_now = current_time()
+	local time_now = parse_to_seconds(current_time())
 
 	local previous_time = '' --Scheduled time that should activate now
 	local next_time = '' --Time that should activate next
 
 	-- Find previous_time
 	for time, wallpaper in pairs(wallpaper_schedule) do
-		if previous_time == '' or time > previous_time then
-			if time <= time_now then
+		local parsed_time = parse_to_seconds(time)
+		if previous_time == '' or parsed_time > parse_to_seconds(previous_time) then
+			if parsed_time <= time_now then
 				previous_time = time
 			end
 		end
@@ -136,11 +137,16 @@ local manage_timer = function()
 
 	--Find next_time
 	for time, wallpaper in pairs(wallpaper_schedule) do
-		if next_time == '' or time < next_time then
-			if time > time_now then
+		local parsed_time = parse_to_seconds(time)
+		if next_time == '' or parsed_time < parse_to_seconds(next_time) then
+			if parsed_time > time_now then
 				next_time = time
 			end
 		end
+	end
+
+	if next_time == '' then
+		next_time = '00:00:00'
 	end
 
 	-- Update Wallpaper
