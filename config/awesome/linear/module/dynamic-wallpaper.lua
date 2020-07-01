@@ -101,9 +101,20 @@ local update_wallpaper = function(wall_name)
 	local wall_dir = wall_dir .. wall_name
 	set_wallpaper(wall_dir)
 
-	-- Overwrite the default wallpaper
-	-- This is important in case we add an extra monitor
-	beautiful.wallpaper = wall_dir
+		local wall_full_path = wall_dir .. wall_name
+
+		gears.wallpaper.maximized (wall_full_path, s)
+
+		-- Overwrite the default wallpaper
+		-- This is important in case we add an extra monitor
+		beautiful.wallpaper = wall_full_path
+
+		if update_ls_bg then
+			awful.spawn.easy_async_with_shell(update_ls_cmd .. ' ' .. wall_full_path, function() 
+				--
+			end)
+		end
+	end)
 end
 
 -- Updates variables
