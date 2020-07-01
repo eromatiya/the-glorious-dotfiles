@@ -73,8 +73,11 @@ local parse_to_seconds = function(time)
 end
 
 -- Get time difference
-local time_diff = function(current, schedule)
-	local diff = parse_to_seconds(current) - parse_to_seconds(schedule)
+local time_diff = function(future, past)
+	local diff = parse_to_seconds(future) - parse_to_seconds(past)
+	if diff < 0 then
+		diff = diff + (24 * 3600) --If time difference is negative, the future is meant for tomorrow
+	end
 	return diff
 end
 
