@@ -29,17 +29,20 @@ local filesystem = gears.filesystem
 local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 -- local wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
 
--- Wallpapers filename and extension
-wallpaper_morning = 'morning-wallpaper.jpg'
-wallpaper_noon = 'noon-wallpaper.jpg'
-wallpaper_night = 'night-wallpaper.jpg'
-wallpaper_midnight = 'midnight-wallpaper.jpg'
+
+-- Wallpapers filename
+-- Note:
+-- Default image format is jpg
+local wallpaper_morning = 'morning-wallpaper.jpg'
+local wallpaper_noon = 'noon-wallpaper.jpg'
+local wallpaper_night = 'night-wallpaper.jpg'
+local wallpaper_midnight = 'midnight-wallpaper.jpg'
 
 -- Change the wallpaper on scheduled time
-morning_schedule = '06:22:00'
-noon_schedule = '12:00:00'
-night_schedule = '17:58:00'
-midnight_schedule = '24:00:00'
+local morning_schedule = '06:22:00'
+local noon_schedule = '12:00:00'
+local night_schedule = '17:58:00'
+local midnight_schedule = '24:00:00'
 
 -- Don't stretch wallpaper on multihead setups if true
 local dont_stretch_wallpaper = false
@@ -56,7 +59,7 @@ end
 
 -- Countdown variable
 -- In seconds
-the_countdown = nil
+local the_countdown = nil
 
 -- We will use a table for hour change and wallpaper string
 -- Element 0 errm 1 will store the incoming/next scheduled time
@@ -70,13 +73,13 @@ local wall_data = {}
 local parse_to_seconds = function(time)
 
   	-- Convert HH in HH:MM:SS
-  	hour_sec = tonumber(string.sub(time, 1, 2)) * 3600
+  	local hour_sec = tonumber(string.sub(time, 1, 2)) * 3600
 
   	-- Convert MM in HH:MM:SS
-  	min_sec = tonumber(string.sub(time, 4, 5)) * 60
+  	local min_sec = tonumber(string.sub(time, 4, 5)) * 60
 
 	-- Get SS in HH:MM:SS
-	get_sec = tonumber(string.sub(time, 7, 8))
+	local get_sec = tonumber(string.sub(time, 7, 8))
 
 	-- Return computed seconds
     return (hour_sec + min_sec + get_sec)
