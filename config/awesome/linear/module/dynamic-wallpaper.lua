@@ -36,7 +36,7 @@ local wallpaper_schedule = {
 	['00:00:00'] = 'midnight-wallpaper.jpg',
 	['06:22:00'] = 'morning-wallpaper.jpg',
 	['12:00:00'] = 'noon-wallpaper.jpg',
-	['17:58:00'] = 'night-wallpaper.jpg',
+	['17:58:00'] = 'night-wallpaper.jpg'
 }
 
 -- Don't stretch wallpaper on multihead setups if true
@@ -109,28 +109,26 @@ end
 -- Updates variables
 local manage_timer = function()
 	-- Get current time
-	local time_now = parse_to_seconds(current_time())
+	local time_now = current_time()
 
 	local previous_time = '' --Scheduled time that should activate now
 	local next_time = '' --Time that should activate next
-	-- Warning: This may rely on the wallpaper schedules being in order (of time)
+
+	-- Find previous_time
 	for time, wallpaper in pairs(wallpaper_schedule) do
-		-- This finds the closest schedule time that is before the current time
-		if time_now < parse_to_seconds(time) then
-			next_time = time
-			break
-		else
-			previous_time = time
+		if previous_time == '' or time > previous_time then
+			if time <= time_now then
+				previous_time = time
+			end
 		end
 	end
 
-	-- If next time is blank, that must mean that all of the times are before
-	-- the current time. Therefore, the clock needs to wrap around
-	if next_time == '' then
-		-- As far as I can tell, this is the only way to get the first table element :/
-		for time, wallpaper in pairs(wallpaper_schedule) do
-			next_time = time
-			break
+	--Find next_time
+	for time, wallpaper in pairs(wallpaper_schedule) do
+		if next_time == '' or time < next_time then
+			if time > time_now then
+				next_time = time
+			end
 		end
 	end
 
@@ -163,7 +161,7 @@ awesome.connect_signal(
 		set_wallpaper(wall_dir .. wall_data[2])
 
 	-- Update wallpaper based on the data in the array
-	--gears.wallpaper.maximized (wall_dir .. wall_data[2], s)
+	--gears.wallpaper.maximized (wall_dir .. wallpaper_schedule['00:00:00'], s)
 
 		-- Update timer timeout for the next specified schedule
 		wall_updater.timeout = the_countdown
