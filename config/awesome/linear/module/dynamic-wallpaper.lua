@@ -33,13 +33,13 @@ local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 -- Note:
 -- Default image format is jpg
 local wallpaper_schedule = {
-----[[
+--[[
 	['00:00:00'] = 'midnight-wallpaper.jpg',
 	['06:22:00'] = 'morning-wallpaper.jpg',
 	['12:00:00'] = 'noon-wallpaper.jpg',
 	['17:58:00'] = 'night-wallpaper.jpg'
 --]]
---[[
+----[[
 	'midnight',
 	'morning',
 	'noon',
@@ -159,7 +159,8 @@ local function find_wallpapers(keywords)
 			-- midnight and night both matching night
 			for _, part in ipairs(split(line, "[^%a]")) do
 				if part == word then
-					table.insert(wallpaper_files, line)
+					--table.insert(wallpaper_files, line)
+					wallpaper_files[word] = line
 					break
 				end
 			end
@@ -167,14 +168,9 @@ local function find_wallpapers(keywords)
 	end
 
 	return wallpaper_files
-
-	-- for index, file in pairs(wallpaper_files) do
-	-- 	local auto_time = parse_to_time(parse_to_seconds("24:00:00") * (index - 1) / #wallpaper_files)
-	-- 	naughty.notify({ title = file, message = tostring(auto_time), timeout = 0 })
-	-- 	wallpaper_schedule[auto_time] = file
-	-- end
 end
 
+-- Turn an ordered list of files into a scheduled list of files
 local function auto_schedule(wall_list)
 	local sched = {}
 	for index, file in ipairs(wall_list) do
@@ -192,13 +188,22 @@ if #wallpaper_schedule == 0 then
 	for k, v in pairs(wallpaper_schedule) do
 		count = count + 1
 	end
-	if count == 0 then --Schedle is actually empty
+	if count == 0 then --Schedule is actually empty
 		--Find wallpapers without keywords and auto-schedule
 	else --Schedule is manually timed
-		--Find files then remake schedule
+		-- Find files then remake schedule
 	end
 else --Schedule is list of keywords, find times and files
-	wallpaper_schedule = auto_schedule(find_wallpapers(wallpaper_schedule))
+	local ordered_files = {}
+	local name_to_file = find_wallpapers(wallpaper_schedule)
+	for index, word in ipairs(wallpaper_schedule) do
+		local file = name_to_file[word]
+		if file ~= nil then
+			table.insert(ordered_files, file)
+		end
+	end
+
+	wallpaper_schedule = auto_schedule(ordered_files)
 end
 
 
