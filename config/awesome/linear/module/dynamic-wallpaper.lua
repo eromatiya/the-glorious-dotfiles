@@ -142,7 +142,7 @@ local function split(str, pat)
 end
 
 local function find_wallpapers(dir, keywords)
-	naughty.notify({title = "EXECUTE", timeout = 0})
+	naughty.notify({title = "FIND_WALLPAPERS", timeout = 0})
 
 	local wallpaper_files = {}
 
@@ -158,7 +158,7 @@ local function find_wallpapers(dir, keywords)
 			-- Split into non-letter parts here to prevent things like
 			-- midnight and night both matching night
 			for _, part in ipairs(split(line, "[^%a]")) do
-				if part == word then
+				if line == word or part == word then
 					--table.insert(wallpaper_files, line)
 					wallpaper_files[word] = line
 					break
@@ -192,8 +192,37 @@ if #wallpaper_schedule == 0 then
 		--Find wallpapers without keywords and auto-schedule
 	else --Schedule is manually timed
 		-- Find files then remake schedule
+		naughty.notify({title = "MANUAL", timeout = 0})
+		local ordered_times = {}
+		-- This is made just in case the schedule is specified out of order
+		-- because of some sociopath
+		for time, _ in pairs(wallpaper_schedule) do
+			local pos = 1
+			-- Add 1 to insert position for each time before "time"
+			for time2, _ in pairs(wallpaper_schedule) do
+				if parse_to_seconds(time2) < parse_to_seconds(time) then
+					pos = pos + 1
+				end
+			end
+			ordered_times[pos] = time
+		end
+
+		-- Get ordered list of keywords from ordered times
+		local keywords = {}
+		for index, time in ipairs(ordered_times) do
+			keywords[index] = wallpaper_schedule[time]
+		end
+
+		-- Search for files using keywords
+		local files = find_wallpapers(wall_dir, keywords)
+		-- Replace keywords with files (or do nothing if it was already a filename)
+		for index, time in ipairs(ordered_times) do
+			local word = wallpaper_schedule[time]
+			wallpaper_schedule[time] = files[word]
+		end
 	end
 else --Schedule is list of keywords, find times and files
+	naughty.notify({title = "KEYWORD-ONLY", timeout = 0})
 	local ordered_files = {}
 	local name_to_file = find_wallpapers(wall_dir, wallpaper_schedule)
 	for index, word in ipairs(wallpaper_schedule) do
