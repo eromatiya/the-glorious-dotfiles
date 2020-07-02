@@ -141,13 +141,13 @@ local function split(str, pat)
 	return t
 end
 
-local function find_wallpapers(keywords)
+local function find_wallpapers(dir, keywords)
 	naughty.notify({title = "EXECUTE", timeout = 0})
 
 	local wallpaper_files = {}
 
 	-- Command to give list of files in directory
-	local dir_explore = 'find ' .. wall_dir .. ' -printf "%f\\n"'
+	local dir_explore = 'find ' .. dir .. ' -printf "%f\\n"'
 	local out = io.popen(dir_explore):read("a") --Done synchronously because we literally can't continue without files
 	-- Split command output by line
 	local lines = split(out, "\n")
@@ -195,7 +195,7 @@ if #wallpaper_schedule == 0 then
 	end
 else --Schedule is list of keywords, find times and files
 	local ordered_files = {}
-	local name_to_file = find_wallpapers(wallpaper_schedule)
+	local name_to_file = find_wallpapers(wall_dir, wallpaper_schedule)
 	for index, word in ipairs(wallpaper_schedule) do
 		local file = name_to_file[word]
 		if file ~= nil then
