@@ -29,6 +29,8 @@ local naughty = require('naughty')
 local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 -- local wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
 
+local valid_picture_formats = {"jpg", "png", "jpeg"}
+
 -- Table mapping schedule to wallpaper filename
 -- Note:
 -- Default image format is jpg
@@ -39,7 +41,7 @@ local wallpaper_schedule = {
 	['12:00:00'] = 'noon-wallpaper.jpg',
 	['17:58:00'] = 'night-wallpaper.jpg'
 --]]
-----[[
+--[[
 	'midnight',
 	'morning',
 	'noon',
@@ -141,30 +143,47 @@ local function split(str, pat)
 	return t
 end
 
-local function find_wallpapers(dir, keywords)
-	naughty.notify({title = "FIND_WALLPAPERS", timeout = 0})
-
-	local wallpaper_files = {}
-
+local function get_dir_contents(dir)
 	-- Command to give list of files in directory
 	local dir_explore = 'find ' .. dir .. ' -printf "%f\\n"'
 	local out = io.popen(dir_explore):read("a") --Done synchronously because we literally can't continue without files
 	-- Split command output by line
-	local lines = split(out, "\n")
-	
-	-- Looks for words (in order)
-	for index, word in ipairs(keywords) do
-		for _, line in ipairs(lines) do
-			-- Split into non-letter parts here to prevent things like
-			-- midnight and night both matching night
-			for _, part in ipairs(split(line, "[^%a]")) do
-				if line == word or part == word then
-					--table.insert(wallpaper_files, line)
-					wallpaper_files[word] = line
-					break
+	return split(out, "\n")
+end
+
+local function find_matching_files(dir, keywords, valid_file_formats)
+	naughty.notify({title = "FIND_WALLPAPERS", timeout = 0})
+
+	local wallpaper_files = {}
+	local lines = get_dir_contents(dir)
+
+	local pictures = {}
+	for _, line in ipairs(lines) do
+		for _, format in ipairs(valid_file_formats) do
+			if string.match(line, ".+%." .. format) ~= nil then
+				table.insert(pictures, line)
+				break
+			end
+		end
+	end
+
+	if keywords ~= nil then
+		-- Looks for words (in order)
+		for index, word in ipairs(keywords) do
+			for _, picture in ipairs(pictures) do
+				-- Split into non-letter parts here to prevent things like
+				-- midnight and night both matching night
+				for _, part in ipairs(split(picture, "[^%a]")) do
+					if picture == word or part == word then
+						--table.insert(wallpaper_files, line)
+						wallpaper_files[word] = picture
+						break
+					end
 				end
 			end
 		end
+	else
+		wallpaper_files = pictures
 	end
 
 	return wallpaper_files
@@ -188,8 +207,48 @@ if #wallpaper_schedule == 0 then
 	for k, v in pairs(wallpaper_schedule) do
 		count = count + 1
 	end
+
 	if count == 0 then --Schedule is actually empty
 		--Find wallpapers without keywords and auto-schedule
+		naughty.notify({title = "AUTO", timeout = 0})
+
+		local pictures = find_matching_files(wall_dir, nil, valid_picture_formats)
+		local pictures_are_numbers = true
+		local ordered_pictures = {}
+		for _, picture in pairs(pictures) do
+			local picture_name = string.match(picture, "(.+)%.")
+			--naughty.notify({title = picture, message = tostring(tonumber(picture_name)), timeout = 0})
+			if tonumber(picture_name) == nil then
+				pictures_are_numbers = false
+				break
+			end
+		end
+
+		if pictures_are_numbers then
+			for _, picture in pairs(pictures) do
+				-- Add numbered picture to numbered_pictures (in correct order
+				-- regardless of gaps)
+				local pos = 1
+				local picture_name = string.match(picture, "(.+)%.")
+				for index, ordered_picture in ipairs(ordered_pictures) do
+					local ordered_pic_name = string.match(ordered_picture, "(.+)%.")
+					if tonumber(picture_name) > tonumber(ordered_pic_name) then
+						pos = pos + 1
+					end
+				end
+
+				table.insert(ordered_pictures, pos, picture)
+			end
+		else
+
+		end
+
+		wallpaper_schedule = auto_schedule(ordered_pictures)
+
+		for i, p in ipairs(ordered_pictures) do
+			naughty.notify({title = tostring(i), message = p, timeout = 0})
+		end
+
 	else --Schedule is manually timed
 		-- Find files then remake schedule
 		naughty.notify({title = "MANUAL", timeout = 0})
@@ -214,7 +273,7 @@ if #wallpaper_schedule == 0 then
 		end
 
 		-- Search for files using keywords
-		local files = find_wallpapers(wall_dir, keywords)
+		local files = find_matching_files(wall_dir, keywords, valid_picture_formats)
 		-- Replace keywords with files (or do nothing if it was already a filename)
 		for index, time in ipairs(ordered_times) do
 			local word = wallpaper_schedule[time]
@@ -224,7 +283,7 @@ if #wallpaper_schedule == 0 then
 else --Schedule is list of keywords, find times and files
 	naughty.notify({title = "KEYWORD-ONLY", timeout = 0})
 	local ordered_files = {}
-	local name_to_file = find_wallpapers(wall_dir, wallpaper_schedule)
+	local name_to_file = find_matching_files(wall_dir, wallpaper_schedule, valid_picture_formats)
 	for index, word in ipairs(wallpaper_schedule) do
 		local file = name_to_file[word]
 		if file ~= nil then
