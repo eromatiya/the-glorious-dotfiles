@@ -17,7 +17,8 @@
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
-local filesystem = gears.filesystem
+local naughty = require('naughty')
+
 
 --  ========================================
 -- 				Configuration
@@ -32,14 +33,29 @@ local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 -- Note:
 -- Default image format is jpg
 local wallpaper_schedule = {
+----[[
 	['00:00:00'] = 'midnight-wallpaper.jpg',
 	['06:22:00'] = 'morning-wallpaper.jpg',
 	['12:00:00'] = 'noon-wallpaper.jpg',
 	['17:58:00'] = 'night-wallpaper.jpg'
+--]]
+--[[
+	'midnight',
+	'morning',
+	'noon',
+	'afternoon',
+	'evening',
+	'night'
+--]]
 }
 
--- Don't stretch wallpaper on multihead setups if true
-local dont_stretch_wallpaper = false
+-- Update lockscreen background
+local update_ls_bg = false
+
+-- Update lockscreen background command
+local update_ls_cmd = 'mantablockscreen --image'
+
+
 
 --  ========================================
 -- 				   Processes
@@ -55,6 +71,34 @@ end
 -- In seconds
 local the_countdown = nil
 
+-- Parse seconds to HH:MM:SS
+local function parse_to_time(seconds)
+	-- DST ruined me :(
+	--return os.date("%H:%M:%S", seconds)
+
+	local function format(str)
+		while #str < 2 do
+			str = '0' .. str
+		end
+
+		return str
+	end
+
+	local function convert(num)
+		return format(tostring(num))
+	end
+
+	local hours = convert(math.floor(seconds / 3600))
+	seconds = seconds - (hours * 3600)
+
+	local minutes = convert(math.floor(seconds / 60))
+	seconds = seconds - (minutes * 60)
+
+	local seconds = convert(math.floor(seconds))
+
+	return (hours .. ':' .. minutes .. ':' .. seconds)
+
+end
 
 -- Parse HH:MM:SS to seconds
 local parse_to_seconds = function(time)
@@ -81,18 +125,82 @@ local time_diff = function(future, past)
 	return diff
 end
 
--- Set wallpaper
-local set_wallpaper = function(path)
-	if dont_stretch_wallpaper then
-		for s in screen do
-			-- Update wallpaper based on the data in the array
-			gears.wallpaper.maximized (path, s)
-		end
-	else
-		-- Update wallpaper based on the data in the array
-		gears.wallpaper.maximized (path)
+-- Split string based on pattern
+local function split(str, pat)
+	local t = {}
+	local i = 0
+	local j = string.find(str, pat)
+	while j ~= nil do
+		table.insert(t, string.sub(str, i + 1, j - 1))
+
+		i = j
+		j = string.find(str, pat, i + 1)
 	end
+	table.insert(t, string.sub(str, i + 1, #str))
+
+	return t
 end
+
+local function find_wallpapers(keywords)
+	naughty.notify({title = "EXECUTE", timeout = 0})
+
+	local wallpaper_files = {}
+
+	-- Command to give list of files in directory
+	local dir_explore = 'find ' .. wall_dir .. ' -printf "%f\\n"'
+	local out = io.popen(dir_explore):read("a") --Done synchronously because we literally can't continue without files
+	-- Split command output by line
+	local lines = split(out, "\n")
+	
+	-- Looks for words (in order)
+	for index, word in ipairs(keywords) do
+		for _, line in ipairs(lines) do
+			-- Split into non-letter parts here to prevent things like
+			-- midnight and night both matching night
+			for _, part in ipairs(split(line, "[^%a]")) do
+				if part == word then
+					table.insert(wallpaper_files, line)
+					break
+				end
+			end
+		end
+	end
+
+	return wallpaper_files
+
+	-- for index, file in pairs(wallpaper_files) do
+	-- 	local auto_time = parse_to_time(parse_to_seconds("24:00:00") * (index - 1) / #wallpaper_files)
+	-- 	naughty.notify({ title = file, message = tostring(auto_time), timeout = 0 })
+	-- 	wallpaper_schedule[auto_time] = file
+	-- end
+end
+
+local function auto_schedule(wall_list)
+	local sched = {}
+	for index, file in ipairs(wall_list) do
+		local auto_time = parse_to_time(parse_to_seconds("24:00:00") * (index - 1) / #wall_list)
+		sched[auto_time] = file
+	end
+
+	return sched
+end
+
+-- Reformat whatever schedule was specified into an actual schedule
+if #wallpaper_schedule == 0 then
+	local count = 0
+	-- Determine if empty or if manual schedule
+	for k, v in pairs(wallpaper_schedule) do
+		count = count + 1
+	end
+	if count == 0 then --Schedle is actually empty
+		--Find wallpapers without keywords and auto-schedule
+	else --Schedule is manually timed
+		--Find files then remake schedule
+	end
+else --Schedule is list of keywords, find times and files
+	wallpaper_schedule = auto_schedule(find_wallpapers(wallpaper_schedule))
+end
+
 
 -- Update wallpaper (used by the manage_timer function)
 -- I think the gears.wallpaper.maximized is too fast or being ran asynchronously
@@ -201,7 +309,7 @@ awesome.connect_signal("module::change_wallpaper", function()
 	-- Update timer timeout for the next specified schedule
 	wall_updater.timeout = the_countdown
 
-		-- Restart timer
-		wall_updater:again()
-	end
-)
+	-- Restart timer
+	wall_updater:again()
+
+end)
