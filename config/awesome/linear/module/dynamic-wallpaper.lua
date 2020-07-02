@@ -193,16 +193,13 @@ local wall_updater = gears.timer {
 }
 
 -- Update wallpaper here and update the timeout for the next schedule
-awesome.connect_signal(
-	'module::change_wallpaper',
-	function()
-		set_wallpaper(wall_dir .. wall_data[2])
+awesome.connect_signal("module::change_wallpaper", function()
+	
+	-- Update values for the next specified schedule
+	manage_timer()
 
-	-- Update wallpaper based on the data in the array
-	--gears.wallpaper.maximized (wall_dir .. wallpaper_schedule['00:00:00'], s)
-
-		-- Update timer timeout for the next specified schedule
-		wall_updater.timeout = the_countdown
+	-- Update timer timeout for the next specified schedule
+	wall_updater.timeout = the_countdown
 
 		-- Restart timer
 		wall_updater:again()
