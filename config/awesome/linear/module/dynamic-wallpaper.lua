@@ -17,7 +17,7 @@
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
-local naughty = require('naughty')
+--local naughty = require('naughty')
 
 
 --  ========================================
@@ -146,13 +146,13 @@ end
 local function get_dir_contents(dir)
 	-- Command to give list of files in directory
 	local dir_explore = 'find ' .. dir .. ' -printf "%f\\n"'
-	local out = io.popen(dir_explore):read("a") --Done synchronously because we literally can't continue without files
+	local out = io.popen(dir_explore):read("*a") --Done synchronously because we literally can't continue without files
 	-- Split command output by line
 	return split(out, "\n")
 end
 
 local function find_matching_files(dir, keywords, valid_file_formats)
-	naughty.notify({title = "FIND_WALLPAPERS", timeout = 0})
+	--naughty.notify({title = "FIND_WALLPAPERS", timeout = 0})
 
 	local wallpaper_files = {}
 	local lines = get_dir_contents(dir)
@@ -210,7 +210,7 @@ if #wallpaper_schedule == 0 then
 
 	if count == 0 then --Schedule is actually empty
 		--Find wallpapers without keywords and auto-schedule
-		naughty.notify({title = "AUTO", timeout = 0})
+		--naughty.notify({title = "AUTO", timeout = 0})
 
 		local pictures = find_matching_files(wall_dir, nil, valid_picture_formats)
 		local pictures_are_numbers = true
@@ -239,19 +239,28 @@ if #wallpaper_schedule == 0 then
 
 				table.insert(ordered_pictures, pos, picture)
 			end
-		else
+		else -- Same as before, but string compare
+			for _, picture in pairs(pictures) do
+				-- Add numbered picture to numbered_pictures (in correct order
+				-- regardless of gaps)
+				local pos = 1
+				local picture_name = string.match(picture, "(.+)%.")
+				for index, ordered_picture in ipairs(ordered_pictures) do
+					local ordered_pic_name = string.match(ordered_picture, "(.+)%.")
+					if picture_name > ordered_pic_name then
+						pos = pos + 1
+					end
+				end
 
+				table.insert(ordered_pictures, pos, picture)
+			end
 		end
 
 		wallpaper_schedule = auto_schedule(ordered_pictures)
 
-		for i, p in ipairs(ordered_pictures) do
-			naughty.notify({title = tostring(i), message = p, timeout = 0})
-		end
-
 	else --Schedule is manually timed
 		-- Find files then remake schedule
-		naughty.notify({title = "MANUAL", timeout = 0})
+		--naughty.notify({title = "MANUAL", timeout = 0})
 		local ordered_times = {}
 		-- This is made just in case the schedule is specified out of order
 		-- because of some sociopath
@@ -281,7 +290,7 @@ if #wallpaper_schedule == 0 then
 		end
 	end
 else --Schedule is list of keywords, find times and files
-	naughty.notify({title = "KEYWORD-ONLY", timeout = 0})
+	--naughty.notify({title = "KEYWORD-ONLY", timeout = 0})
 	local ordered_files = {}
 	local name_to_file = find_matching_files(wall_dir, wallpaper_schedule, valid_picture_formats)
 	for index, word in ipairs(wallpaper_schedule) do
