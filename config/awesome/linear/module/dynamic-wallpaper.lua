@@ -17,7 +17,6 @@
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
---local naughty = require('naughty')
 
 
 --  ========================================
@@ -152,8 +151,6 @@ local function get_dir_contents(dir)
 end
 
 local function find_matching_files(dir, keywords, valid_file_formats)
-	--naughty.notify({title = "FIND_WALLPAPERS", timeout = 0})
-
 	local wallpaper_files = {}
 	local lines = get_dir_contents(dir)
 
@@ -210,14 +207,11 @@ if #wallpaper_schedule == 0 then
 
 	if count == 0 then --Schedule is actually empty
 		--Find wallpapers without keywords and auto-schedule
-		--naughty.notify({title = "AUTO", timeout = 0})
-
 		local pictures = find_matching_files(wall_dir, nil, valid_picture_formats)
 		local pictures_are_numbers = true
 		local ordered_pictures = {}
 		for _, picture in pairs(pictures) do
 			local picture_name = string.match(picture, "(.+)%.")
-			--naughty.notify({title = picture, message = tostring(tonumber(picture_name)), timeout = 0})
 			if tonumber(picture_name) == nil then
 				pictures_are_numbers = false
 				break
@@ -260,7 +254,6 @@ if #wallpaper_schedule == 0 then
 
 	else --Schedule is manually timed
 		-- Find files then remake schedule
-		--naughty.notify({title = "MANUAL", timeout = 0})
 		local ordered_times = {}
 		-- This is made just in case the schedule is specified out of order
 		-- because of some sociopath
@@ -290,7 +283,6 @@ if #wallpaper_schedule == 0 then
 		end
 	end
 else --Schedule is list of keywords, find times and files
-	--naughty.notify({title = "KEYWORD-ONLY", timeout = 0})
 	local ordered_files = {}
 	local name_to_file = find_matching_files(wall_dir, wallpaper_schedule, valid_picture_formats)
 	for index, word in ipairs(wallpaper_schedule) do
