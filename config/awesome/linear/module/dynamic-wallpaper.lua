@@ -218,36 +218,28 @@ if #wallpaper_schedule == 0 then
 			end
 		end
 
-		if pictures_are_numbers then
-			for _, picture in pairs(pictures) do
-				-- Add numbered picture to numbered_pictures (in correct order
-				-- regardless of gaps)
-				local pos = 1
-				local picture_name = string.match(picture, "(.+)%.")
-				for index, ordered_picture in ipairs(ordered_pictures) do
-					local ordered_pic_name = string.match(ordered_picture, "(.+)%.")
-					if tonumber(picture_name) > tonumber(ordered_pic_name) then
-						pos = pos + 1
-					end
-				end
-
-				table.insert(ordered_pictures, pos, picture)
+		-- Special compare function to avoid huge if statements
+		local function compare_string_or_num(a, b, numeric)
+			if numeric then
+				return tonumber(a) > tonumber(b)
+			else
+				return a > b
 			end
-		else -- Same as before, but string compare
-			for _, picture in pairs(pictures) do
-				-- Add numbered picture to numbered_pictures (in correct order
-				-- regardless of gaps)
-				local pos = 1
-				local picture_name = string.match(picture, "(.+)%.")
-				for index, ordered_picture in ipairs(ordered_pictures) do
-					local ordered_pic_name = string.match(ordered_picture, "(.+)%.")
-					if picture_name > ordered_pic_name then
-						pos = pos + 1
-					end
-				end
+		end
 
-				table.insert(ordered_pictures, pos, picture)
+		for _, picture in pairs(pictures) do
+			-- Add pictures to ordered_pictures (in correct order
+			-- regardless of gaps and type)
+			local pos = 1
+			local picture_name = string.match(picture, "(.+)%.")
+			for index, ordered_picture in ipairs(ordered_pictures) do
+				local ordered_pic_name = string.match(ordered_picture, "(.+)%.")
+				if compare_string_or_num(picture_name, ordered_pic_name, pictures_are_numbers) then
+					pos = pos + 1
+				end
 			end
+
+			table.insert(ordered_pictures, pos, picture)
 		end
 
 		wallpaper_schedule = auto_schedule(ordered_pictures)
