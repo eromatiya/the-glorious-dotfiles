@@ -34,7 +34,7 @@ local valid_picture_formats = {"jpg", "png", "jpeg"}
 -- Note:
 -- Default image format is jpg
 local wallpaper_schedule = {
---[[
+----[[
 	['00:00:00'] = 'midnight-wallpaper.jpg',
 	['06:22:00'] = 'morning-wallpaper.jpg',
 	['12:00:00'] = 'noon-wallpaper.jpg',
