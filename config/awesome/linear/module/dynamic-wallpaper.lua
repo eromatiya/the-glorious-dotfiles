@@ -145,45 +145,46 @@ end
 local function get_dir_contents(dir)
 	-- Command to give list of files in directory
 	local dir_explore = 'find ' .. dir .. ' -printf "%f\\n"'
-	local out = io.popen(dir_explore):read("*a") --Done synchronously because we literally can't continue without files
-	-- Split command output by line
-	return split(out, "\n")
+	local lines = io.popen(dir_explore):lines() --Done synchronously because we literally can't continue without files
+	local files = {}
+	for line in lines do
+		table.insert(files, line)
+	end
+	return files
 end
 
-local function find_matching_files(dir, keywords, valid_file_formats)
-	local wallpaper_files = {}
-	local lines = get_dir_contents(dir)
-
-	local pictures = {}
-	for _, line in ipairs(lines) do
+local function filter_files_by_format(files, valid_file_formats)
+	local valid_files = {}
+	for _, file in ipairs(files) do
 		for _, format in ipairs(valid_file_formats) do
-			if string.match(line, ".+%." .. format) ~= nil then
-				table.insert(pictures, line)
-				break
+			if string.match(file, ".+%." .. format) ~= nil then
+				table.insert(valid_files, file)
+				break --No need to check other formats
 			end
 		end
 	end
 
-	if keywords ~= nil then
-		-- Looks for words (in order)
-		for index, word in ipairs(keywords) do
-			for _, picture in ipairs(pictures) do
-				-- Split into non-letter parts here to prevent things like
-				-- midnight and night both matching night
-				for _, part in ipairs(split(picture, "[^%a]")) do
-					if picture == word or part == word then
-						--table.insert(wallpaper_files, line)
-						wallpaper_files[word] = picture
-						break
-					end
+	return valid_files
+end
+
+local function find_files_containing_keywords(files, keywords)
+	local found_files = {}
+
+	-- Looks for words (in order)
+	for _, word in ipairs(keywords) do --Preserves keyword order inherently, conveniently
+		for _, file in ipairs(files) do
+			-- Split into non-letter parts here to prevent things like
+			-- midnight and night both matching night
+			for _, part in ipairs(split(file, "[^%a]")) do
+				if file == word or part == word then
+					found_files[word] = file
+					break
 				end
 			end
 		end
-	else
-		wallpaper_files = pictures
 	end
 
-	return wallpaper_files
+	return found_files
 end
 
 -- Turn an ordered list of files into a scheduled list of files
@@ -206,59 +207,33 @@ if #wallpaper_schedule == 0 then
 	end
 
 	if count == 0 then --Schedule is actually empty
-		--Find wallpapers without keywords and auto-schedule
-		local pictures = find_matching_files(wall_dir, nil, valid_picture_formats)
-		local pictures_are_numbers = true
-		local ordered_pictures = {}
-		for _, picture in pairs(pictures) do
-			local picture_name = string.match(picture, "(.+)%.")
-			if tonumber(picture_name) == nil then
-				pictures_are_numbers = false
-				break
-			end
-		end
+		-- Get all pictures
+		local pictures = filter_files_by_format(get_dir_contents(wall_dir), valid_picture_formats)
 
-		-- Special compare function to avoid huge if statements
-		local function compare_string_or_num(a, b, numeric)
-			if numeric then
-				return tonumber(a) > tonumber(b)
+		--Sort pictures as sanely as possible
+		local function order_pictures(a, b) --Attempts to mimic default sort but numbers aren't compared as strings
+			if tonumber(a) ~= nil and tonumber(b) ~= nil then
+				return tonumber(a) < tonumber(b)
 			else
-				return a > b
+				return a < b
 			end
 		end
+		table.sort(pictures, order_pictures)
 
-		for _, picture in pairs(pictures) do
-			-- Add pictures to ordered_pictures (in correct order
-			-- regardless of gaps and type)
-			local pos = 1
-			local picture_name = string.match(picture, "(.+)%.")
-			for index, ordered_picture in ipairs(ordered_pictures) do
-				local ordered_pic_name = string.match(ordered_picture, "(.+)%.")
-				if compare_string_or_num(picture_name, ordered_pic_name, pictures_are_numbers) then
-					pos = pos + 1
-				end
-			end
-
-			table.insert(ordered_pictures, pos, picture)
-		end
-
-		wallpaper_schedule = auto_schedule(ordered_pictures)
+		wallpaper_schedule = auto_schedule(pictures)
 
 	else --Schedule is manually timed
-		-- Find files then remake schedule
+		-- Get times as list
 		local ordered_times = {}
-		-- This is made just in case the schedule is specified out of order
-		-- because of some sociopath
 		for time, _ in pairs(wallpaper_schedule) do
-			local pos = 1
-			-- Add 1 to insert position for each time before "time"
-			for time2, _ in pairs(wallpaper_schedule) do
-				if parse_to_seconds(time2) < parse_to_seconds(time) then
-					pos = pos + 1
-				end
-			end
-			ordered_times[pos] = time
+			table.insert(ordered_times, time)
 		end
+
+		-- Sort times using seconds as comparison
+		local function order_time_asc(a, b)
+			return parse_to_seconds(a) < parse_to_seconds(b)
+		end
+		table.sort(ordered_times, order_time_asc)
 
 		-- Get ordered list of keywords from ordered times
 		local keywords = {}
@@ -266,25 +241,37 @@ if #wallpaper_schedule == 0 then
 			keywords[index] = wallpaper_schedule[time]
 		end
 
-		-- Search for files using keywords
-		local files = find_matching_files(wall_dir, keywords, valid_picture_formats)
-		-- Replace keywords with files (or do nothing if it was already a filename)
+		-- Get any pictures that match keywords
+		local pictures = filter_files_by_format(get_dir_contents(wall_dir), valid_picture_formats)
+		pictures = find_files_containing_keywords(pictures, keywords)
+		
+		-- Replace keywords with files
 		for index, time in ipairs(ordered_times) do
 			local word = wallpaper_schedule[time]
-			wallpaper_schedule[time] = files[word]
+			if pictures[word] ~= nil then
+				wallpaper_schedule[time] = pictures[word]
+			else --To avoid crashes, we'll remove entries with invalid keywords
+				wallpaper_schedule[time] = nil
+			end
 		end
 	end
-else --Schedule is list of keywords, find times and files
-	local ordered_files = {}
-	local name_to_file = find_matching_files(wall_dir, wallpaper_schedule, valid_picture_formats)
-	for index, word in ipairs(wallpaper_schedule) do
-		local file = name_to_file[word]
+else --Schedule is list of keywords
+	local keywords = wallpaper_schedule
+
+	-- Get any pictures that match keywords
+	local pictures = filter_files_by_format(get_dir_contents(wall_dir), valid_picture_formats)
+	pictures = find_files_containing_keywords(pictures, keywords)
+	
+	-- Order files by keyword (if a file was found for the keyword)
+	local ordered_pictures = {}
+	for _, word in ipairs(keywords) do
+		local file = pictures[word]
 		if file ~= nil then
-			table.insert(ordered_files, file)
+			table.insert(ordered_pictures, file)
 		end
 	end
 
-	wallpaper_schedule = auto_schedule(ordered_files)
+	wallpaper_schedule = auto_schedule(ordered_pictures)
 end
 
 
