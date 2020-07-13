@@ -59,7 +59,7 @@ local slider = wibox.widget {
 
 watch(
 	'bash -c "free | grep -z Mem.*Swap.*"',
-	5,
+	10,
 	function(_, stdout)
 		local total, used, free, shared, buff_cache, available, total_swap, used_swap, free_swap =
 			stdout:match('(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*Swap:%s*(%d+)%s*(%d+)%s*(%d+)')

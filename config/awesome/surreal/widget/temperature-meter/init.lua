@@ -61,7 +61,7 @@ local max_temp = 80
 
 watch(
 	'bash -c "cat /sys/class/thermal/thermal_zone0/temp"',
-	5,
+	10,
 	function(_, stdout)
 		local temp = stdout:match('(%d+)')
 		slider.temp_status:set_value((temp / 1000) / max_temp * 100)

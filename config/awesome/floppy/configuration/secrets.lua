@@ -25,18 +25,13 @@
 
 
 return {
-
 	email  = {
-
 		address       = '',
 		app_password  = '',
 		imap_server   = 'imap.gmail.com',
 		port          = '993'
-
 	},
-
 	weather = {
-
 		key           = '',
 		city_id       = '',
 		units         = 'metric'

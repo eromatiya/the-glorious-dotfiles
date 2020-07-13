@@ -7,7 +7,6 @@ theme.icons = theme_dir .. '/icons/'
 theme.font = 'SF Pro Text Regular 10'
 theme.font_bold = 'SF Pro Text Bold 10'
 
-
 -- Colorscheme
 theme.system_black_dark = '#3D4C5F'
 theme.system_black_light = '#56687E'
@@ -32,7 +31,6 @@ theme.system_cyan_light = '#87DFEB'
 
 theme.system_white_dark = '#E5E5E5'
 theme.system_white_light = '#F8F8F2'
-
 
 -- Accent color
 theme.accent = theme.system_blue_dark

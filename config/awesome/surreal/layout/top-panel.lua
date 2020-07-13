@@ -2,10 +2,8 @@ local wibox = require('wibox')
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
-
 local icons = require('theme.icons')
 local dpi = beautiful.xresources.apply_dpi
-
 local clickable_container = require('widget.clickable-container')
 local task_list = require('widget.task-list')
 
