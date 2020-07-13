@@ -1,21 +1,12 @@
--------------------------------------------------
--- Rofi toggler widget for Awesome Window Manager
--- Shows the application list
--- Use rofi-git master branch
--------------------------------------------------
-
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
-
 local filesystem = gears.filesystem
-local dpi = require('beautiful').xresources.apply_dpi
-
-local apps = require('configuration.apps')
-local clickable_container = require('widget.clickable-container')
-
 local config_dir = filesystem.get_configuration_dir()
+local dpi = require('beautiful').xresources.apply_dpi
+local clickable_container = require('widget.clickable-container')
 local widget_icon_dir = config_dir .. '/widget/search-apps/icons/'
+local apps = require('configuration.apps')
 
 local return_button = function()
 
@@ -45,15 +36,7 @@ local return_button = function()
 				1,
 				nil,
 				function()
-		            local focused = awful.screen.focused()
-
-		            if focused.left_panel then
-		                focused.left_panel:HideDashboard()
-		                focused.left_panel.opened = false
-		            end
-		            if focused.right_panel then
-		                focused.right_panel:HideDashboard()
-		            end
+					screen.primary.left_panel:toggle()
 					awful.spawn(apps.default.rofiappmenu, false)
 				end
 			)

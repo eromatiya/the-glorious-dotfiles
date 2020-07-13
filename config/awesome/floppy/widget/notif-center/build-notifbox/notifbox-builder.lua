@@ -151,7 +151,7 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 
 	-- Add hover, and mouse leave events
 	notifbox_template:connect_signal(
-		"mouse::enter",
+		'mouse::enter',
 		function() 
 			notifbox.bg = beautiful.groups_bg
 			notifbox_timepop.visible = false
@@ -160,7 +160,7 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 	)
 
 	notifbox_template:connect_signal(
-		"mouse::leave",
+		'mouse::leave',
 		function() 
 			notifbox.bg = beautiful.tranparent
 			notifbox_timepop.visible = true

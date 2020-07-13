@@ -46,12 +46,12 @@ local calculate = function ()
 
 	local string_expression = calcu_screen:get_text()
 
-	if string_expression:sub(-1):match("[%+%-%/%*%^%.]") then
+	if string_expression:sub(-1):match('[%+%-%/%*%^%.]') then
 		return
 	end
 
 
-	local func = assert(load("return " .. string_expression))
+	local func = assert(load('return ' .. string_expression))
 	local ans = tostring(func())
 		
 	-- Convert -nan to undefined
@@ -103,7 +103,7 @@ local format_screen = function(value)
 
 		-- Check if the button pressed sends a value of either +, -, /, *, ^, .
 
-		if value:sub(-1):match("[%+%/%*%^%.]") then
+		if value:sub(-1):match('[%+%/%*%^%.]') then
 
 			calcu_screen:set_text(calcu_screen:get_text() .. tostring(value))
 
@@ -118,7 +118,7 @@ local format_screen = function(value)
 		calcu_screen:get_text() == 'SYNTAX ERROR' then
 
 		-- Clear screen if an operator is selected
-		if value:sub(-1):match("[%+%/%*%^%.]") then
+		if value:sub(-1):match('[%+%/%*%^%.]') then
 			clear_screen()
 
 		else
@@ -130,10 +130,10 @@ local format_screen = function(value)
 	else
 
 		-- Don't let the user to input two or more consecutive arithmetic operators and decimals
-		if calcu_screen:get_text():sub(-1):match("[%+%-%/%*%^%.]") and value:sub(-1):match("[%+%-%/%*%^%.%%]") then
+		if calcu_screen:get_text():sub(-1):match('[%+%-%/%*%^%.]') and value:sub(-1):match('[%+%-%/%*%^%.%%]') then
 			
 			-- Get the operator from button pressed
-			local string_eval = calcu_screen:get_text():sub(-1):gsub("[%+%-%/%*%^%.]", value)
+			local string_eval = calcu_screen:get_text():sub(-1):gsub('[%+%-%/%*%^%.]', value)
 
 			-- This will prevent the user to input consecutive operators and decimals
 			-- It will replace the previous operator with the value of input
@@ -293,11 +293,11 @@ local toggle_btn_keygrab = function()
 
 	if keygrab_running then
 		kb_imagebox:set_image(widget_icon_dir .. 'kb-off' .. '.svg')
-		awesome.emit_signal("widget::calc_stop_keygrab")
+		awesome.emit_signal('widget::calc_stop_keygrab')
 		keygrab_running = false
 	else
 		kb_imagebox:set_image(widget_icon_dir .. 'kb' .. '.svg')
-		awesome.emit_signal("widget::calc_start_keygrab")
+		awesome.emit_signal('widget::calc_start_keygrab')
 		keygrab_running = true
 	end
 
@@ -346,7 +346,7 @@ local calcu_keygrabber = awful.keygrabber {
 			clear_screen()
 
 		elseif key == 'x' then
-			awesome.emit_signal("widget::calc_stop_keygrab")
+			awesome.emit_signal('widget::calc_stop_keygrab')
 
 		elseif key == '=' or key == 'Return' then
 			-- Calculate
@@ -410,7 +410,7 @@ local calculator_body = wibox.widget {
 }
 
 calculator_body:connect_signal(
-	"mouse::enter",
+	'mouse::enter',
 	function() 
 		-- Start keygrabbing
 		calcu_keygrabber:start()
@@ -418,7 +418,7 @@ calculator_body:connect_signal(
 )
 
 calculator_body:connect_signal(
-	"mouse::leave",
+	'mouse::leave',
 	function()
 		-- Stop keygrabbing
 		calcu_keygrabber:stop()
@@ -426,7 +426,7 @@ calculator_body:connect_signal(
 )
 
 awesome.connect_signal(
-	"widget::calc_start_keygrab",
+	'widget::calc_start_keygrab',
 	function() 
 		-- Stop keygrabbing
 		calcu_keygrabber:start()
@@ -434,7 +434,7 @@ awesome.connect_signal(
 )
 
 awesome.connect_signal(
-	"widget::calc_stop_keygrab",
+	'widget::calc_stop_keygrab',
 	function() 
 		-- Stop keygrabbing
 		calcu_keygrabber:stop()

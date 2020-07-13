@@ -1,9 +1,7 @@
 local awful = require('awful')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
-
 local dpi = beautiful.xresources.apply_dpi
-
 panel_visible = false
 
 local right_panel = function(s)
@@ -15,6 +13,7 @@ local right_panel = function(s)
 	local panel = wibox {
 		ontop = true,
 		screen = s,
+		visible = false,
 		type = 'dock',
 		width = panel_width,
 		height = s.geometry.height,
@@ -26,8 +25,7 @@ local right_panel = function(s)
 
 	panel.opened = false
 
-	s.backdrop_rdb = wibox
-	{
+	s.backdrop_rdb = wibox {
 		ontop = true,
 		screen = s,
 		bg = beautiful.transparent,
@@ -38,8 +36,7 @@ local right_panel = function(s)
 		height = s.geometry.height
 	}
 
-	panel:struts
-	{
+	panel:struts {
 		right = 0
 	}
 	
@@ -64,7 +61,7 @@ local right_panel = function(s)
 	end
 
 	-- Hide this panel when app dashboard is called.
-	function panel:HideDashboard()
+	function panel:hide_dashboard()
 		close_panel()
 	end
 
@@ -102,7 +99,6 @@ local right_panel = function(s)
 		)
 	)
 
-
 	local separator = wibox.widget {
 		orientation = 'horizontal',
 		opacity = 0.0,
@@ -126,7 +122,7 @@ local right_panel = function(s)
 				layout = wibox.layout.align.horizontal,
 				expand = 'none',
 				nil,
-				require('layout.right-panel.panel-mode-switcher'),
+				require('widget.info-center-switch'),
 				nil
 			},
 			separator,
@@ -150,7 +146,6 @@ local right_panel = function(s)
 					},
 
 				},
-
 				-- Notification Center
 				{
 					id = 'notif_id',
@@ -158,18 +153,14 @@ local right_panel = function(s)
 					require('widget.notif-center')(s),
 					layout = wibox.layout.fixed.vertical,
 				}
-
 			},
 		},
 		margins = dpi(16),
 		widget = wibox.container.margin
 	}
 
-
 	return panel
 end
 
-
 return right_panel
-
 

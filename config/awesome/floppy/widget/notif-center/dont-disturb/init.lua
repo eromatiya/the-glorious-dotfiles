@@ -43,18 +43,18 @@ end
 local check_disturb_status = function()
 	
 	awful.spawn.easy_async_with_shell(
-		"cat " .. widget_dir .. "disturb_status", 
+		'cat ' .. widget_dir .. 'disturb_status', 
 		function(stdout)
 			
 			local status = stdout
 			
-			if status:match("true") then
+			if status:match('true') then
 				dont_disturb = true
-			elseif status:match("false") then
+			elseif status:match('false') then
 				dont_disturb = false
 			else
 				dont_disturb = false
-				awful.spawn.with_shell("echo 'false' > " .. widget_dir .. "disturb_status")
+				awful.spawn.with_shell('echo "false" > ' .. widget_dir .. 'disturb_status')
 			end
 
 			update_icon()
@@ -70,7 +70,7 @@ local toggle_disturb = function()
 	else
 		dont_disturb = true
 	end
-	awful.spawn.with_shell("echo " .. tostring(dont_disturb) .. " > " .. widget_dir .. "disturb_status")
+	awful.spawn.with_shell('echo "' .. tostring(dont_disturb) .. '" > ' .. widget_dir .. 'disturb_status')
 	update_icon()
 end
 
@@ -111,7 +111,7 @@ local dont_disturb_wrapped = wibox.widget {
 
 -- Create a notification sound
 naughty.connect_signal(
-	"request::display", 
+	'request::display', 
 	function(n)
 		if not dont_disturb then
 			awful.spawn.with_shell('canberra-gtk-play -i message')
