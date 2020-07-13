@@ -1,0 +1,38 @@
+.window-frame, .window-frame:backdrop {
+ box-shadow: 0 0 0 black;
+ border-style: none;
+ margin: 0;
+ border-radius: 0;
+}
+
+.titlebar {
+ border-radius: 0;
+}
+
+.window-frame.csd.popup {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.13);
+}
+
+.header-bar {
+  background-image: none;
+  background-color: #ededed;
+  box-shadow: none;
+}
+/* You may want to use this if you don't like the double title.
+GtkLabel.title {
+    opacity: 0;
+}*/
+
+/* Textboxes */
+GtkEntry {
+    padding: 6px 6px 6px 6px;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #DEE6E7;
+    /*Disable shadow*/
+    box-shadow: 0 0 0 0px;
+    /*If font is unset, the current system font will be used.*/
+    font-family: monospace;
+    font-size: 9pt;
+}

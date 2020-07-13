@@ -1,0 +1,623 @@
+[colors]
+red = #bf616a
+green = #a3be8c
+yellow = #ebcb8b
+orange = #eba68b
+white = #e5e9f0
+magenta = #b48ead
+blue = #81a1c1
+cyan = #88c0d0
+pink = #ea4b8b
+
+; universal color
+bg = #2e3440
+fg = #fff6f6
+fg-alt = #434c5e
+trans = #00000000
+
+; accent color
+accent = #fff6f6
+accent-alt = #ea4b8b
+
+i3-accent = #81a1c1
+i3-accent-alt = #88c0d0
+
+; --------------------------------------------------------
+; ewmh window manager
+
+[bar/ewmh]
+width = 100%
+height = 18
+background = ${colors.bg}
+foreground = ${colors.fg}
+line-size = 4
+fixed-center = true
+
+font-0 = Iosevka:style=Regular:size=8;2
+font-1 = Material:style=Regular:size=11;3
+
+modules-left = run ewmh temp cpu mem
+modules-center = date
+modules-right = wlan batt vol mpd
+
+border-size = 4
+border-color = ${colors.bg}
+
+tray-position = right
+tray-padding = 4
+tray-maxsize = 14
+tray-background = ${colors.bg}
+;tray-detached = true
+;tray-offset-x = 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; ---
+
+[module/run]
+type = custom/script
+exec = "cat /etc/hostname"
+
+;format-overline = ${colors.bg}
+;format-underline = ${colors.bg}
+format-background = ${colors.bg}
+format-padding = 1
+
+format-prefix = ""
+format-prefix-foreground = ${colors.accent-alt}
+
+click-left = bash -c '~/.config/rofi/scripts/appsmenu.sh' &
+click-right = bash -c '~/.config/rofi/scripts/powermenu.sh' &
+
+[module/ewmh]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+
+format = "<label-state>"
+format-padding = 1
+
+icon-0 = "1;"
+icon-1 = "2;"
+icon-2 = "3;"
+icon-3 = "4;"
+icon-4 = "5;"
+icon-5 = "6;"
+icon-default = ""
+
+label-active = "%icon%"
+label-active-padding = 1
+label-active-foreground = ${colors.accent}
+label-active-background = ${colors.fg-alt}
+
+label-urgent = "%icon%"
+label-urgent-padding = 1
+label-urgent-foreground = ${colors.magenta}
+label-urgent-background = ${colors.fg-alt}
+
+label-empty = "%icon%"
+label-empty-padding = 1
+label-empty-foreground = ${colors.bg}
+label-empty-background = ${colors.fg-alt}
+
+[module/temp]
+type = internal/temperature
+interval = 1.0
+
+; min temp base
+base-temperature = 45
+; max temp base
+warn-temperature = 65
+
+format = "<label>"
+;format-padding = 1
+
+format-prefix = ""
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.fg-alt}
+format-prefix-background = ${colors.accent}
+
+label = "%temperature-c%"
+label-padding = 1
+label-background = ${colors.fg-alt}
+
+format-warn = "<label-warn>"
+;format-warn-padding = 1
+
+format-warn-prefix = ""
+format-warn-prefix-padding = 1
+format-warn-prefix-foreground = ${colors.accent-alt}
+format-warn-prefix-background = ${colors.accent}
+
+label-warn = "%temperature-c%"
+label-warn-padding = 1
+label-warn-background = ${colors.fg-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 1.0
+
+format = "<label>"
+format-padding = 1
+
+format-prefix = ""
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.fg-alt}
+format-prefix-background = ${colors.accent}
+
+label = "%percentage%%"
+label-padding =1
+label-background = ${colors.fg-alt}
+
+[module/mem]
+type = internal/memory
+interval = 1.0
+
+format = "<label>"
+;format-padding = 1
+
+format-prefix = ""
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.fg-alt}
+format-prefix-background = ${colors.accent}
+
+label = "%percentage_used%%"
+label-padding =1
+label-background = ${colors.fg-alt}
+
+[module/date]
+type = internal/date
+interval = 1.0
+
+format-padding = 1
+
+label = "%date% @ %time%"
+label-padding = 1
+label-background = ${colors.fg-alt}
+
+date = "%A"
+date-alt = "%d %B %Y"
+
+time = "%I:%M %p"
+time-alt = "%I:%M %p"
+
+[module/wlan]
+type = internal/network
+interval = 1.0
+unknown-as-up = true
+
+; Wireless interfaces often start with `wl` and ethernet interface with `eno` or `eth`. Check " ifconfig/iwconfig "
+interface = wlan0
+
+format-connected = "<label-connected>"
+;format-connected-padding = 1
+
+format-connected-suffix = "%{A1:networkmanager_dmenu &:}%{A}"
+format-connected-suffix-padding = 1
+format-connected-suffix-foreground = ${colors.fg-alt}
+format-connected-suffix-background = ${colors.accent}
+
+format-disconnected = "<label-disconnected>"
+;format-disconnected-padding = 1
+
+format-disconnected-suffix = "%{A1:networkmanager_dmenu &:}%{A}"
+format-disconnected-suffix-padding = 1
+format-disconnected-suffix-foreground = ${colors.fg-alt}
+format-disconnected-suffix-background = ${colors.accent}
+
+label-connected = "%essid%"
+label-connected-padding = 1
+label-connected-background = ${colors.fg-alt}
+
+label-disconnected = "OFF"
+label-disconnected-padding = 1
+label-disconnected-background = ${colors.fg-alt}
+
+[module/batt]
+type = internal/battery
+full-at = 99
+
+; Check " ls -1 /sys/class/power_supply/ " 
+battery = BAT1
+adapter = ACAD
+
+poll-interval = 5
+
+format-charging = "<label-charging>"
+format-charging-padding = 1
+
+format-charging-suffix = "%{A1:xfce4-power-manager-settings &:}%{A}"
+format-charging-suffix-padding = 1
+format-charging-suffix-foreground = ${colors.fg-alt}
+format-charging-suffix-background = ${colors.accent}
+
+format-discharging = "<label-discharging>"
+format-discharging-padding = 1
+
+format-discharging-suffix = "%{A1:xfce4-power-manager-settings &:}%{A}"
+format-discharging-suffix-padding = 1
+format-discharging-suffix-foreground = ${colors.fg-alt}
+format-discharging-suffix-background = ${colors.accent}
+
+label-charging = "%percentage%%"
+label-charging-padding = 1
+label-charging-background = ${colors.fg-alt}
+
+label-discharging = "%percentage%%"
+label-discharging-padding = 1
+label-discharging-background = ${colors.fg-alt}
+
+label-full = "FULL"
+label-full-padding = 1
+label-full-background = ${colors.fg-alt}
+
+[module/vol]
+type = internal/alsa
+format-volume = "%{A1:bash -c '~/.scripts/get-volume' &:}<bar-volume>%{A}"
+;format-volume-padding = 1
+
+format-volume-prefix = "%{A3:pavucontrol &:}%{A}"
+format-volume-prefix-padding = 1
+format-volume-prefix-background = ${colors.fg-alt}
+
+;format-muted-padding = 1
+
+format-muted-prefix = "%{A3:pavucontrol &:}%{A}"
+format-muted-prefix-padding = 1
+format-muted-prefix-background = ${colors.fg-alt}
+
+label-muted = " "
+label-muted-background = ${colors.fg-alt}
+
+bar-volume-width = 5
+bar-volume-indicator = ""
+bar-volume-empty = ""
+bar-volume-fill = ""
+
+bar-volume-indicator-foreground = ${colors.fg}
+bar-volume-indicator-background = ${colors.fg-alt}
+
+bar-volume-empty-foreground = ${colors.fg-alt}
+bar-volume-empty-background = ${colors.fg-alt}
+
+bar-volume-fill-foreground = ${colors.accent-alt}
+bar-volume-fill-background = ${colors.fg-alt}
+
+[module/mpd]
+type = internal/mpd
+
+;your port and host here
+host = 127.0.0.1
+port = 6600
+
+format-online = "<toggle> %{A1:bash -c '~/.ncmpcpp/notify' &:}<label-song>%{A} "
+
+icon-play = "%{A3:bash -c '~/.config/rofi/scripts/mpdmenu.sh' &:}%{A}"
+icon-play-padding = 1
+icon-play-foreground = ${colors.fg-alt}
+icon-play-background = ${colors.accent}
+
+icon-pause = "%{A3:bash -c '~/.config/rofi/scripts/mpdmenu.sh' &:}%{A}"
+icon-pause-padding = 1
+icon-pause-foreground = ${colors.fg-alt}
+icon-pause-background = ${colors.accent}
+
+label-song = "%title%"
+label-song-maxlen = 15
+label-song-ellipsis = true
+label-song-padding = 1
+label-song-background = ${colors.fg-alt}
+
+; --------------------------------------------------------
+; i3wm
+
+[bar/i3]
+width = 100%
+height = 18
+background = ${colors.bg}
+foreground = ${colors.fg}
+line-size = 4
+fixed-center = true
+
+font-0 = Iosevka:style=Regular:size=8;2
+font-1 = Material:style=Regular:size=11;3
+
+modules-left = i3-run i3 i3-temp i3-cpu i3-mem
+modules-center = i3-date
+modules-right = i3-wlan i3-batt i3-vol i3-mpd
+
+border-size = 4
+border-color = ${colors.bg}
+
+tray-position = right
+tray-padding = 4
+tray-maxsize = 14
+tray-background = ${colors.bg}
+;tray-detached = true
+;tray-offset-x = 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; ---
+
+[module/i3-run]
+type = custom/script
+exec = "cat /etc/hostname"
+
+;format-overline = ${colors.bg}
+;format-underline = ${colors.bg}
+format-background = ${colors.bg}
+format-padding = 1
+
+format-prefix = ""
+format-prefix-foreground = ${colors.i3-accent-alt}
+
+click-left = bash -c '~/.config/rofi/scripts/appsmenu.sh' &
+click-right = bash -c '~/.config/rofi/scripts/powermenu.sh' &
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+index-sort = false
+enable-click = true
+enable-scroll = true
+wrapping-scroll = true
+reverse-scroll = false
+fuzzy-match = true
+
+ws-icon-0 = "1;"
+ws-icon-1 = "2;"
+ws-icon-2 = "3;"
+ws-icon-3 = "4;"
+ws-icon-4 = "5;"
+ws-icon-5 = "6;"
+ws-icon-6 = "7;"
+ws-icon-7 = "8;"
+ws-icon-default = ""
+
+format = "<label-state> <label-mode>"
+format-padding = 1
+
+label-mode = "%mode%"
+label-mode-padding = 1
+label-mode-foreground = ${colors.bg}
+label-mode-background = ${colors.i3-accent-alt}
+
+label-focused = "%icon%"
+label-focused-padding = 1
+label-focused-foreground = ${colors.i3-accent}
+label-focused-background = ${colors.fg-alt}
+
+label-unfocused = "%icon%"
+label-unfocused-padding = 1
+label-unfocused-foreground = ${colors.bg}
+label-unfocused-background = ${colors.fg-alt}
+
+label-visible = "%icon%"
+label-visible-padding = 1
+label-visible-foreground = ${colors.bg}
+label-visible-background = ${colors.fg-alt}
+
+label-urgent = "%icon%"
+label-urgent-padding = 1
+label-urgent-foreground = ${colors.magenta}
+label-urgent-background = ${colors.fg-alt}
+
+;label-separator = 
+;label-separator-padding = 1
+
+[module/i3-temp]
+type = internal/temperature
+interval = 1.0
+
+; min temp base
+base-temperature = 45
+; max temp base
+warn-temperature = 65
+
+format = "<label>"
+;format-padding = 1
+
+format-prefix = ""
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.fg-alt}
+format-prefix-background = ${colors.i3-accent}
+
+label = "%temperature-c%"
+label-padding = 1
+label-background = ${colors.fg-alt}
+
+format-warn = "<label-warn>"
+;format-warn-padding = 1
+
+format-warn-prefix = ""
+format-warn-prefix-padding = 1
+format-warn-prefix-foreground = ${colors.i3-accent-alt}
+format-warn-prefix-background = ${colors.i3-accent}
+
+label-warn = "%temperature-c%"
+label-warn-padding = 1
+label-warn-background = ${colors.fg-alt}
+
+[module/i3-cpu]
+type = internal/cpu
+interval = 1.0
+
+format = "<label>"
+format-padding = 1
+
+format-prefix = ""
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.fg-alt}
+format-prefix-background = ${colors.i3-accent}
+
+label = "%percentage%%"
+label-padding =1
+label-background = ${colors.fg-alt}
+
+[module/i3-mem]
+type = internal/memory
+interval = 1.0
+
+format = "<label>"
+;format-padding = 1
+
+format-prefix = ""
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.fg-alt}
+format-prefix-background = ${colors.i3-accent}
+
+label = "%percentage_used%%"
+label-padding =1
+label-background = ${colors.fg-alt}
+
+[module/i3-date]
+type = internal/date
+interval = 1.0
+
+format-padding = 1
+
+label = "%date% @ %time%"
+label-padding = 1
+label-background = ${colors.fg-alt}
+
+date = "%A"
+date-alt = "%d %B %Y"
+
+time = "%I:%M %p"
+time-alt = "%I:%M %p"
+
+[module/i3-wlan]
+type = internal/network
+interval = 1.0
+unknown-as-up = true
+
+; Wireless interfaces often start with `wl` and ethernet interface with `eno` or `eth`. Check " ifconfig/iwconfig "
+interface = wlan0
+
+format-connected = "<label-connected>"
+;format-connected-padding = 1
+
+format-connected-suffix = "%{A1:networkmanager_dmenu &:}%{A}"
+format-connected-suffix-padding = 1
+format-connected-suffix-foreground = ${colors.fg-alt}
+format-connected-suffix-background = ${colors.i3-accent}
+
+format-disconnected = "<label-disconnected>"
+;format-disconnected-padding = 1
+
+format-disconnected-suffix = "%{A1:networkmanager_dmenu &:}%{A}"
+format-disconnected-suffix-padding = 1
+format-disconnected-suffix-foreground = ${colors.fg-alt}
+format-disconnected-suffix-background = ${colors.i3-accent}
+
+label-connected = "%essid%"
+label-connected-padding = 1
+label-connected-background = ${colors.fg-alt}
+
+label-disconnected = "OFF"
+label-disconnected-padding = 1
+label-disconnected-background = ${colors.fg-alt}
+
+[module/i3-batt]
+type = internal/battery
+full-at = 99
+
+; Check " ls -1 /sys/class/power_supply/ " 
+battery = BAT1
+adapter = ACAD
+
+poll-interval = 5
+
+format-charging = "<label-charging>"
+format-charging-padding = 1
+
+format-charging-suffix = "%{A1:xfce4-power-manager-settings &:}%{A}"
+format-charging-suffix-padding = 1
+format-charging-suffix-foreground = ${colors.fg-alt}
+format-charging-suffix-background = ${colors.i3-accent}
+
+format-discharging = "<label-discharging>"
+format-discharging-padding = 1
+
+format-discharging-suffix = "%{A1:xfce4-power-manager-settings &:}%{A}"
+format-discharging-suffix-padding = 1
+format-discharging-suffix-foreground = ${colors.fg-alt}
+format-discharging-suffix-background = ${colors.i3-accent}
+
+label-charging = "%percentage%%"
+label-charging-padding = 1
+label-charging-background = ${colors.fg-alt}
+
+label-discharging = "%percentage%%"
+label-discharging-padding = 1
+label-discharging-background = ${colors.fg-alt}
+
+label-full = "FULL"
+label-full-padding = 1
+label-full-background = ${colors.fg-alt}
+
+[module/i3-vol]
+type = internal/alsa
+format-volume = "%{A1:bash -c '~/.scripts/get-volume' &:}<bar-volume>%{A}"
+;format-volume-padding = 1
+
+format-volume-prefix = "%{A3:pavucontrol &:}%{A}"
+format-volume-prefix-padding = 1
+format-volume-prefix-background = ${colors.fg-alt}
+
+;format-muted-padding = 1
+
+format-muted-prefix = "%{A3:pavucontrol &:}%{A}"
+format-muted-prefix-padding = 1
+format-muted-prefix-background = ${colors.fg-alt}
+
+label-muted = " "
+label-muted-background = ${colors.fg-alt}
+
+bar-volume-width = 5
+bar-volume-indicator = ""
+bar-volume-empty = ""
+bar-volume-fill = ""
+
+bar-volume-indicator-foreground = ${colors.fg}
+bar-volume-indicator-background = ${colors.fg-alt}
+
+bar-volume-empty-foreground = ${colors.fg-alt}
+bar-volume-empty-background = ${colors.fg-alt}
+
+bar-volume-fill-foreground = ${colors.i3-accent-alt}
+bar-volume-fill-background = ${colors.fg-alt}
+
+[module/i3-mpd]
+type = internal/mpd
+
+;your port and host here
+host = 127.0.0.1
+port = 6600
+
+format-online = "<toggle> %{A1:bash -c '~/.ncmpcpp/notify' &:}<label-song>%{A} "
+
+icon-play = "%{A3:bash -c '~/.config/rofi/scripts/mpdmenu.sh' &:}%{A}"
+icon-play-padding = 1
+icon-play-foreground = ${colors.fg-alt}
+icon-play-background = ${colors.i3-accent}
+
+icon-pause = "%{A3:bash -c '~/.config/rofi/scripts/mpdmenu.sh' &:}%{A}"
+icon-pause-padding = 1
+icon-pause-foreground = ${colors.fg-alt}
+icon-pause-background = ${colors.i3-accent}
+
+label-song = "%title%"
+label-song-maxlen = 15
+label-song-ellipsis = true
+label-song-padding = 1
+label-song-background = ${colors.fg-alt}
+
+; -------------------------------------------------------------------------
+
+[settings]
+screenchange-reload = true

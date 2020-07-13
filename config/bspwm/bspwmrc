@@ -1,0 +1,90 @@
+#! /bin/sh
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
+bspc config border_width         0
+bspc config window_gap          12
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# Misc
+
+bspc config auto_alternate true
+bspc config auto_cancel true
+bspc config initial_polarity first_child
+
+
+# Rules
+
+bspc rule -a feh state="floating" center=true
+bspc rule -a Sxiv state="floating" center=true
+bspc rule -a Nm-connection-editor state="floating" center=true
+bspc rule -a dialog state="floating" center=true
+
+
+# Workspace ruling
+
+## 1
+
+bspc rule -a 'kitty' desktop="^1" state="tiled" center=true
+bspc rule -a 'URxvt' desktop="^1" state="tiled" center=true
+bspc rule -a 'XTerm' desktop="^1" state="tiled" center=true
+bspc rule -a 'UXTerm' desktop="^1" state="tiled" center=true
+
+##2
+
+bspc rule -a 'Firefox' private=on desktop="^2" state="fullscreen"
+bspc rule -a 'Tor Browser' private=on desktop="^2" state="fullscreen"
+
+## 3
+
+bspc rule -a 'Subl3' desktop="^3"
+bspc rule -a 'Atom' desktop="^3"
+bspc rule -a 'code-oss' desktop="^3"
+bspc rule -a 'Geany' desktop="^3"
+
+## 4
+
+bspc rule -a 'Nemo' desktop="^4"
+bspc rule -a 'File-roller' state=floating center=true follow=on desktop="^4"
+
+
+## 5
+
+bspc rule -a 'vlc' desktop="^5" border=off follow=on
+bspc rule -a 'Spotify' desktop="^5" border=off follow=on
+
+## 6 
+
+bspc rule -a 'Wine' desktop="^6" border=off follow=on
+bspc rule -a 'dolphin-emu' desktop="^6" border=off follow=on
+bspc rule -a 'Steam' desktop="^6" border=off follow=on
+bspc rule -a 'Citra' desktop="^6" border=off follow=on
+bspc rule -a 'SuperTuxKart' desktop="^6" border=off follow=on
+
+## 7
+
+bspc rule -a 'Gimp-2.10' desktop="^7" border=off follow=on
+bspc rule -a 'Inkscape' desktop="^7" border=off follow=on
+bspc rule -a 'Flowblade' desktop="^7" border=off follow=on
+
+## 8 
+
+bspc rule -a 'VirtualBox Manage' desktop="^8"
+bspc rule -a 'VirtualBox Machine' desktop="^8"
+
+## 9
+
+bspc rule -a 'Oomox' desktop="^9"
+bspc rule -a 'Unity' desktop="^9"
+bspc rule -a 'UnityHub' desktop="^9"
+
+
+
+# Auto start
+sh $HOME/.config/bspwm/apps-start.sh

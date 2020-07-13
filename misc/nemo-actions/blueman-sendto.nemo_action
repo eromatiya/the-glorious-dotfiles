@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=Send to bluetooth
+Comment=Send to bluetooth: %F
+Exec=blueman-sendto %F
+Icon-Name=bluetooth
+Selection=any
+Extensions=nodirs;
+Quote=double
+Dependencies=blueman-sendto;
