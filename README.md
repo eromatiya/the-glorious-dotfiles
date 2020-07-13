@@ -50,7 +50,7 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 <br>
 <br>
 
-<img src="https://i.imgur.com/2R2p5NN.png" align="left" height="400px">
+<img src="https://i.imgur.com/68r3k8q.png" align="left" height="400px">
 <p align="left">
 So, what is ricing or RICE in the linux world? Ricing refers to making a visual improvement and customization on your desktop. It was inherited from the practice of improving, modifying, and customizing a cheap asian import cars to make them appear faster than they actually are. So in the world of cars, <b>RICE</b> means <i>Race Inspired Cosmetic Enhancement</i>.
 <br>
@@ -212,6 +212,10 @@ Some of these are outdated, so it is better if you try them yourself.
 | --- |
 | ![screenshot](https://i.imgur.com/e6x3M2w.png) |
 
+| Surreal |
+| --- |
+| ![screenshot](scrots/surreal.png) |
+
 | Lockscreen with **PAM Integration** |
 | --- |
 | ![Screenshot](https://i.imgur.com/CF9MUF4.png) |
@@ -240,7 +244,6 @@ Some of these are outdated, so it is better if you try them yourself.
 
 Main gallery [here](https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery).
 
+## hot coffee
 
-## contributors
-
-Grazie to these [people](https://github.com/manilarome/the-glorious-dotfiles/graphs/contributors)!
+I created a [patreon accout](https://www.patreon.com/manilarome). If you like this project and want to buy this poor bloke a coffee, I'll appreciate it!
