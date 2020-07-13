@@ -2,8 +2,10 @@ local awful = require('awful')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
 local gears = require('gears')
+
 local dpi = beautiful.xresources.apply_dpi
 local icons = require('theme.icons')
+
 local tag_list = require('widget.tag-list')
 local clickable_container = require('widget.clickable-container')
 
@@ -20,7 +22,7 @@ return function(s, panel, action_bar_width)
 		widget = wibox.container.margin
 	}
 	
-	local open_dashboard_button = wibox.widget {
+	local home_button = wibox.widget {
 		{
 			menu_icon,
 			widget = clickable_container
@@ -29,7 +31,7 @@ return function(s, panel, action_bar_width)
 		widget = wibox.container.background
 	}
 
-	open_dashboard_button:buttons(
+	home_button:buttons(
 		gears.table.join(
 			awful.button(
 				{},
@@ -63,10 +65,10 @@ return function(s, panel, action_bar_width)
 		{
 			require('widget.search-apps')(),
 			tag_list(s),
-			require("widget.xdg-folders")(),
+			require("widget.xdg-folders"),
 			layout = wibox.layout.fixed.vertical,
 		},
 		nil,
-		open_dashboard_button
+		home_button
 	}
 end

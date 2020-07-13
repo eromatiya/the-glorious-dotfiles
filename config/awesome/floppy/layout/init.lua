@@ -1,7 +1,7 @@
 local awful = require('awful')
 local left_panel = require('layout.left-panel')
 local top_panel = require('layout.top-panel')
--- local right_panel = require('layout.right-panel')
+local right_panel = require('layout.right-panel')
 
 -- Create a wibox panel for each screen and add it
 screen.connect_signal("request::desktop_decoration", function(s)
@@ -15,13 +15,13 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		-- Create the Top bar
 		s.top_panel = top_panel(s, false)
 	end
-	-- s.right_panel = right_panel(s)
-	-- s.right_panel_show_again = false
+	s.right_panel = right_panel(s)
+	s.right_panel_show_again = false
 end)
 
 
 -- Hide bars when app go fullscreen
-function update_bars_visibility()
+function updateBarsVisibility()
 	for s in screen do
 		focused = awful.screen.focused()
 		if s.selected_tag then
@@ -31,15 +31,15 @@ function update_bars_visibility()
 			if s.left_panel then
 				s.left_panel.visible = not fullscreen
 			end
-			-- if s.right_panel then
-			-- 	if fullscreen and focused.right_panel.visible then
-			-- 		focused.right_panel:toggle()
-			-- 		focused.right_panel_show_again = true
-			-- 	elseif not fullscreen and not focused.right_panel.visible and focused.right_panel_show_again then
-			-- 		focused.right_panel:toggle()
-			-- 		focused.right_panel_show_again = false
-			-- 	end
-			-- end
+			if s.right_panel then
+				if fullscreen and focused.right_panel.visible then
+					focused.right_panel:toggle()
+					focused.right_panel_show_again = true
+				elseif not fullscreen and not focused.right_panel.visible and focused.right_panel_show_again then
+					focused.right_panel:toggle()
+					focused.right_panel_show_again = false
+				end
+			end
 		end
 	end
 end
@@ -47,7 +47,7 @@ end
 tag.connect_signal(
 	'property::selected',
 	function(t)
-		update_bars_visibility()
+		updateBarsVisibility()
 	end
 )
 
@@ -57,7 +57,7 @@ client.connect_signal(
 		if c.first_tag then
 			c.first_tag.fullscreenMode = c.fullscreen
 		end
-		update_bars_visibility()
+		updateBarsVisibility()
 	end
 )
 
@@ -66,7 +66,7 @@ client.connect_signal(
 	function(c)
 		if c.fullscreen then
 			c.screen.selected_tag.fullscreenMode = false
-			update_bars_visibility()
+			updateBarsVisibility()
 		end
 	end
 )

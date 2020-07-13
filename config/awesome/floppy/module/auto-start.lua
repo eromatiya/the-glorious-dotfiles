@@ -2,7 +2,6 @@
 -- Run all the apps listed in configuration/apps.lua as run_on_start_up only once when awesome start
 
 local awful = require('awful')
-local naughty = require('naughty')
 local apps = require('configuration.apps')
 
 local debugger_mode = false
@@ -20,7 +19,7 @@ local run_once = function(cmd)
             if not stderr or stderr == '' or not debugger_mode then
                 return 
             end
-            naughty.notification({
+            require('naughty').notification({
                 app_name = 'Start-up Applications',
                 title = '<b>Oof! Error detected when starting an application!</b>',
                 message = stderr:gsub('%\n', ''),

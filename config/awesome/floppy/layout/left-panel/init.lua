@@ -9,7 +9,8 @@ local left_panel = function(screen)
 	local action_bar_width = dpi(45)
 	local panel_content_width = dpi(350)
 
-	local panel = wibox {
+	local panel =
+		wibox {
 		screen = screen,
 		width = action_bar_width,
 		type = 'dock',
@@ -41,7 +42,7 @@ local left_panel = function(screen)
 	}
 
 	function panel:run_rofi()
-		awesome.spawn(
+		_G.awesome.spawn(
 			apps.default.rofiglobal,
 			false,
 			false,
@@ -56,7 +57,7 @@ local left_panel = function(screen)
 		panel:get_children_by_id('panel_content')[1].visible = false
 	end
 
-	local open_panel = function(should_run_rofi)
+	local openPanel = function(should_run_rofi)
 		panel.width = action_bar_width + panel_content_width
 		backdrop.visible = true
 		panel.visible = false
@@ -68,7 +69,7 @@ local left_panel = function(screen)
 		panel:emit_signal('opened')
 	end
 
-	local close_panel = function()
+	local closePanel = function()
 		panel.width = action_bar_width
 		panel:get_children_by_id('panel_content')[1].visible = false
 		backdrop.visible = false
@@ -76,16 +77,16 @@ local left_panel = function(screen)
 	end
 
 	-- Hide this panel when app dashboard is called.
-	function panel:hide_dashboard()
-		close_panel()
+	function panel:HideDashboard()
+		closePanel()
 	end
 
 	function panel:toggle(should_run_rofi)
 		self.opened = not self.opened
 		if self.opened then
-			open_panel(should_run_rofi)
+			openPanel(should_run_rofi)
 		else
-			close_panel()
+			closePanel()
 		end
 	end
 

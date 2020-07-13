@@ -170,9 +170,9 @@ local return_button = function()
 			return
 		end
 
-		local message = 'You are now connected to <b>\"' .. essid .. '\"</b>'
-		local title = 'Connection Established'
-		local app_name = 'System Notification'
+		local message = "You are now connected to <b>\"" .. essid .. "\"</b>"
+		local title = "Connection Established"
+		local app_name = "System Notification"
 		local icon = widget_icon_dir .. 'wifi.svg'
 
 		naughty.notification({ 
@@ -234,7 +234,7 @@ local return_button = function()
 		awful.spawn.easy_async_with_shell(
 			'iw dev ' .. wlan_interface .. ' link',
 			function(stdout)
-				net_speed = stdout:match('tx bitrate: (.+/s)') or 'N/A'
+				net_speed = stdout:match("tx bitrate: (.+/s)") or 'N/A'
 			end
 		)
 	end
@@ -314,7 +314,7 @@ local return_button = function()
 				if connected_to_network then
 					if conn_status == 'wireless' then
 						return 'Wireless Interface: <b>' .. wlan_interface .. 
-						'</b>\nConnected to: <b>' .. (essid or '*LOADING...*') .. 
+						'</b>\nConnected to: <b>' .. (essid or "*LOADING...*") .. 
 						'</b>\nWiFi-Strength: <b>' .. tostring(wifi_strength) .. '%' ..
 						'</b>\nBit rate: <b>' .. tostring(net_speed) .. '</b>'
 					else

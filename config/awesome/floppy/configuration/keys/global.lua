@@ -113,8 +113,8 @@ local globalKeys = awful.util.table.join(
         awful.tag.history.restore, 
         {description = 'alternate between current and previous tag', group = 'tag'}
     ),
-    awful.key({ modkey, 'Control' }, 
-        'w',
+    awful.key({ modkey, "Control" }, 
+        "w",
         function ()
             -- tag_view_nonempty(-1)
             local focused = awful.screen.focused()
@@ -125,10 +125,10 @@ local globalKeys = awful.util.table.join(
                 end
             end
         end, 
-        {description = 'view previous non-empty tag', group = 'tag'}
+        {description = "view previous non-empty tag", group = "tag"}
     ),
-    awful.key({ modkey, 'Control' }, 
-        's',
+    awful.key({ modkey, "Control" }, 
+        "s",
         function ()
             -- tag_view_nonempty(1)
             local focused =  awful.screen.focused()
@@ -139,23 +139,23 @@ local globalKeys = awful.util.table.join(
                 end
             end
         end, 
-        {description = 'view next non-empty tag', group = 'tag'}
+        {description = "view next non-empty tag", group = "tag"}
     ),
     awful.key(
         {modkey, 'Shift'}, 
-        'F1',  
+        "F1",  
         function() 
             awful.screen.focus_relative(-1) 
         end,
-        { description = 'focus the previous screen', group = 'screen'}
+        { description = "focus the previous screen", group = "screen"}
     ),
     awful.key(
         {modkey, 'Shift'}, 
-        'F2', 
+        "F2", 
         function()
             awful.screen.focus_relative(1)
         end,
-        { description = 'focus the next screen', group = 'screen'}
+        { description = "focus the next screen", group = "screen"}
     ),
     awful.key(
         {modkey, 'Control'},
@@ -264,7 +264,7 @@ local globalKeys = awful.util.table.join(
         {},
         'XF86PowerOff',
         function()
-            awesome.emit_signal('module::exit_screen_show')
+            awesome.emit_signal("module::exit_screen_show")
         end,
         {description = 'toggle exit screen', group = 'hotkeys'}
     ),
@@ -292,55 +292,55 @@ local globalKeys = awful.util.table.join(
                 awesome.emit_signal('widget::music', 'keyboard')
             end
         end,
-        {description = 'toggle music widget', group = 'launcher'}
+        {description = "toggle music widget", group = 'launcher'}
     ),
     awful.key(
         { }, 
-        'Print',
+        "Print",
         function ()
             awful.spawn.easy_async_with_shell(apps.bins.full_screenshot,function() end)
         end,
-        {description = 'fullscreen screenshot', group = 'Utility'}
+        {description = "fullscreen screenshot", group = 'Utility'}
     ),
     awful.key(
-        {modkey, 'Shift'}, 
+        {modkey, "Shift"}, 
         's',
         function ()
             awful.spawn.easy_async_with_shell(apps.bins.area_screenshot,function() end)
         end,
-        {description = 'area/selected screenshot', group = 'Utility'}
+        {description = "area/selected screenshot", group = 'Utility'}
     ),
     awful.key(
         {modkey},
         'x',
         function()
-            awesome.emit_signal('widget::blur:toggle')
+            awesome.emit_signal("widget::blur:toggle")
         end,
-        {description = 'toggle blur effects', group = 'Utility'}
+        {description = "toggle blur effects", group = 'Utility'}
     ),
     awful.key(
         {modkey},
         ']',
         function()
-            awesome.emit_signal('widget::blur:increase')
+            awesome.emit_signal("widget::blur:increase")
         end,
-        {description = 'increase blur effect by 10%', group = 'Utility'}
+        {description = "increase blur effect by 10%", group = 'Utility'}
     ),
     awful.key(
         {modkey},
         '[',
         function()
-            awesome.emit_signal('widget::blur:decrease')
+            awesome.emit_signal("widget::blur:decrease")
         end,
-        {description = 'decrease blur effect by 10%', group = 'Utility'}
+        {description = "decrease blur effect by 10%", group = 'Utility'}
     ),
     awful.key(
         {modkey},
         't',
         function() 
-            awesome.emit_signal('widget::blue_light:toggle')
+            awesome.emit_signal("widget::blue_light:toggle")
         end,
-        {description = 'toggle redshift filter', group = 'Utility'}
+        {description = "toggle redshift filter", group = 'Utility'}
     ),
     awful.key(
         { 'Control' }, 
@@ -351,11 +351,11 @@ local globalKeys = awful.util.table.join(
                     local systray = screen.primary.systray
                     systray.visible = not systray.visible
                 else
-                    awesome.emit_signal('widget::systray:toggle')
+                    awesome.emit_signal("widget::systray:toggle")
                 end
             end
         end, 
-        {description = 'toggle systray visibility', group = 'Utility'}
+        {description = "toggle systray visibility", group = 'Utility'}
     ),
     awful.key(
         {modkey},
@@ -363,7 +363,7 @@ local globalKeys = awful.util.table.join(
         function()
             awful.spawn(apps.default.lock, false)
         end,
-        {description = 'lock the screen', group = 'Utility'}
+        {description = "lock the screen", group = 'Utility'}
     ),
     awful.key(
         {modkey}, 
@@ -371,31 +371,31 @@ local globalKeys = awful.util.table.join(
         function()
             awful.spawn(apps.default.terminal)
         end,
-        {description = 'open default terminal', group = 'launcher'}
+        {description = "open default terminal", group = 'launcher'}
     ),
     awful.key(
-        {modkey, 'Shift'}, 
+        {modkey, "Shift"}, 
         'e',
         function()
             awful.spawn(apps.default.file_manager)
         end,
-        {description = 'open default file manager', group = 'launcher'}
+        {description = "open default file manager", group = 'launcher'}
     ),
     awful.key(
-        {modkey, 'Shift'}, 
+        {modkey, "Shift"}, 
         'f',
         function()
             awful.spawn(apps.default.web_browser)
         end,
-        {description = 'open default web browser', group = 'launcher'}
+        {description = "open default web browser", group = 'launcher'}
     ),
     awful.key(
-        {'Control', 'Shift'}, 
+        {"Control", "Shift"}, 
         'Escape',
         function()
             awful.spawn(apps.default.terminal .. ' ' .. 'htop')
         end,
-        {description = 'open system monitor', group = 'launcher'}
+        {description = "open system monitor", group = 'launcher'}
     ),
     awful.key(
         {modkey}, 
@@ -404,16 +404,16 @@ local globalKeys = awful.util.table.join(
             local focused = awful.screen.focused()
 
             if focused.left_panel then
-                focused.left_panel:hide_dashboard()
+                focused.left_panel:HideDashboard()
                 focused.left_panel.opened = false
             end
             if focused.right_panel then
-                focused.right_panel:hide_dashboard()
+                focused.right_panel:HideDashboard()
                 focused.right_panel.opened = false
             end
             awful.spawn(apps.default.rofiappmenu, false)
         end,
-        {description = 'open application drawer', group = 'launcher'}
+        {description = "open application drawer", group = 'launcher'}
     ),
     awful.key(
         {modkey},
@@ -462,7 +462,7 @@ local globalKeys = awful.util.table.join(
                 _G.right_panel_mode = 'today_mode'
             end
         end,
-        {description = 'open notification center', group = 'launcher'}
+        {description = "open notification center", group = 'launcher'}
     ),
     awful.key(
         {modkey}, 
@@ -485,7 +485,7 @@ local globalKeys = awful.util.table.join(
                 _G.right_panel_mode = 'notif_mode'
             end
         end,
-        {description = 'open today pane', group = 'launcher'}
+        {description = "open today pane", group = 'launcher'}
     )
 )
 

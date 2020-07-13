@@ -34,14 +34,14 @@ root.buttons(
 			{'Control'},
 			2,
 			function ()
-				awesome.emit_signal('module::exit_screen_show')
+				awesome.emit_signal("module::exit_screen_show")
 			end
 		),
 		awful.button(
 			{'Shift'},
 			2,
 			function ()
-				awesome.emit_signal('widget::blue_light:toggle')
+				awesome.emit_signal("widget::blue_light:toggle")
 			end
 		),
 		awful.button(

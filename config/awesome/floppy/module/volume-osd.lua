@@ -1,13 +1,16 @@
-local awful = require('awful')
-local gears = require('gears')
-local wibox = require('wibox')
+local awful = require("awful")
+local gears = require("gears")
+local wibox = require("wibox")
 local beautiful = require('beautiful')
-local dpi = beautiful.xresources.apply_dpi
+
+local dpi = require('beautiful').xresources.apply_dpi
+
 local clickable_container = require('widget.clickable-container')
 local icons = require('theme.icons')
 local spawn = require('awful.spawn')
 
-screen.connect_signal('request::desktop_decoration', function(s)
+screen.connect_signal("request::desktop_decoration", function(s)
+
 	s.show_vol_osd = false
 
 	local osd_header = wibox.widget {
@@ -53,6 +56,7 @@ screen.connect_signal('request::desktop_decoration', function(s)
 	vol_osd_slider:connect_signal(
 		'property::value',
 		function()
+
 			local volume_level = vol_osd_slider:get_value()
 
 			spawn('amixer -D pulse sset Master ' .. volume_level .. '%', false)
@@ -69,6 +73,7 @@ screen.connect_signal('request::desktop_decoration', function(s)
 					true
 				)
 			end
+			
 		end
 	)
 
@@ -78,7 +83,12 @@ screen.connect_signal('request::desktop_decoration', function(s)
 			s.show_vol_osd = true
 		end
 	)
-
+	vol_osd_slider:connect_signal(
+		'button::release',
+		function()
+			s.show_vol_osd = false
+		end
+	)
 	vol_osd_slider:connect_signal(
 		'mouse::enter',
 		function()
@@ -115,6 +125,7 @@ screen.connect_signal('request::desktop_decoration', function(s)
 	-- Create the box
 	local osd_height = dpi(100)
 	local osd_width = dpi(300)
+
 	local osd_margin = dpi(10)
 
 	s.volume_osd_overlay = awful.popup {
@@ -133,7 +144,8 @@ screen.connect_signal('request::desktop_decoration', function(s)
 		shape = gears.shape.rectangle,
 		bg = beautiful.transparent,
 		preferred_anchors = 'middle',
-		preferred_positions = {'left', 'right', 'top', 'bottom'}
+		preferred_positions = {'left', 'right', 'top', 'bottom'},
+
 	}
 
 	s.volume_osd_overlay : setup {
@@ -160,17 +172,17 @@ screen.connect_signal('request::desktop_decoration', function(s)
 		widget = wibox.container.background()
 	}
 
+
 	local hide_osd = gears.timer {
 		timeout = 2,
 		autostart = true,
 		callback  = function()
 			awful.screen.focused().volume_osd_overlay.visible = false
-			s.show_vol_osd = false
 		end
 	}
 
 	local timer_rerun = function()
-		if hide_osd.started then
+	 	if hide_osd.started then
 			hide_osd:again()
 		else
 			hide_osd:start()
@@ -185,6 +197,12 @@ screen.connect_signal('request::desktop_decoration', function(s)
 			timer_rerun()
 		end
 	)
+	s.volume_osd_overlay:connect_signal(
+		'mouse::leave', 
+		function()
+			s.show_vol_osd = false
+		end
+	)
 
 	local placement_placer = function()
 
@@ -196,17 +214,13 @@ screen.connect_signal('request::desktop_decoration', function(s)
 
 		if right_panel and left_panel then
 			if right_panel.visible then
-				awful.placement.bottom_left(
-					focused.volume_osd_overlay,
-					{
-						margins = { 
-							left = osd_margin + left_panel.width,
-							right = 0,
-							top = 0,
-							bottom = osd_margin
-						},
-						parent = focused
-					}
+				awful.placement.bottom_left(focused.volume_osd_overlay, { margins = { 
+					left = osd_margin + left_panel.width,
+					right = 0,
+					top = 0,
+					bottom = osd_margin,
+					}, 
+					parent = focused }
 				)
 				return
 			end
@@ -214,33 +228,25 @@ screen.connect_signal('request::desktop_decoration', function(s)
 
 		if right_panel then
 			if right_panel.visible then
-				awful.placement.bottom_left(
-					focused.volume_osd_overlay,
-					{
-						margins = { 
-							left = osd_margin,
-							right = 0,
-							top = 0,
-							bottom = osd_margin
-						},
-						parent = focused
-					}
+				awful.placement.bottom_left(focused.volume_osd_overlay, { margins = { 
+					left = osd_margin,
+					right = 0,
+					top = 0,
+					bottom = osd_margin,
+					}, 
+					parent = focused }
 				)
 				return
 			end
 		end
 
-		awful.placement.bottom_right(
-			focused.volume_osd_overlay,
-			{
-				margins = { 
-					left = 0,
-					right = osd_margin,
-					top = 0,
-					bottom = osd_margin,
-				},
-				parent = focused
-			}
+		awful.placement.bottom_right(focused.volume_osd_overlay, { margins = { 
+			left = 0,
+			right = osd_margin,
+			top = 0,
+			bottom = osd_margin,
+			}, 
+			parent = focused }
 		)
 	end
 
@@ -262,4 +268,5 @@ screen.connect_signal('request::desktop_decoration', function(s)
 			end
 		end
 	)
+
 end)

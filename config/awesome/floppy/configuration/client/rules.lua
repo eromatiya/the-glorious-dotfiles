@@ -1,18 +1,18 @@
 local awful = require('awful')
 local gears = require('gears')
-local ruled = require('ruled')
+local ruled = require("ruled")
 local beautiful = require('beautiful')
 
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
 
 ruled.client.connect_signal(
-	'request::rules',
+	"request::rules",
 	function()
 
 		-- All clients will match this rule.
 		ruled.client.append_rule {
-			id         = 'global',
+			id         = "global",
 			rule       = { },
 			properties = {
 				focus     = awful.client.focus.filter,
@@ -35,10 +35,10 @@ ruled.client.connect_signal(
 
 		-- Dialogs
 		ruled.client.append_rule {
-			id         = 'dialog',
+			id         = "dialog",
 			rule_any   = { 
-				type  = { 'dialog' },
-				class = { 'Wicd-client.py', 'calendar.google.com' }
+				type  = { "dialog" },
+				class = { "Wicd-client.py", "calendar.google.com" }
 			},
 			properties = { 
 				titlebars_enabled = true,
@@ -55,9 +55,9 @@ ruled.client.connect_signal(
 
 		-- Modals
 		ruled.client.append_rule {
-			id         = 'dialog',
+			id         = "dialog",
 			rule_any   = { 
-				type = { 'modal' }
+				type = { "modal" }
 			},
 			properties = { 
 				titlebars_enabled = true,
@@ -74,9 +74,9 @@ ruled.client.connect_signal(
 
 		-- Utilities
 		ruled.client.append_rule {
-			id         = 'utility',
+			id         = "utility",
 			rule_any   = { 
-				type = { 'utility' }
+				type = { "utility" }
 			},
 			properties = { 
 				titlebars_enabled = false,
@@ -90,9 +90,9 @@ ruled.client.connect_signal(
 
 		-- Splash
 		ruled.client.append_rule {
-			id         = 'splash',
+			id         = "splash",
 			rule_any   = { 
-				type = { 'splash' }
+				type = { "splash" }
 			},
 			properties = { 
 				titlebars_enabled = false,
@@ -110,18 +110,18 @@ ruled.client.connect_signal(
 
 		-- terminal emulators
 		ruled.client.append_rule {
-			id         = 'terminals',
+			id         = "terminals",
 			rule_any   = { 
 				class = { 
-					'URxvt',
-					'XTerm',
-					'UXTerm',
-					'kitty',
-					'K3rmit'
+					"URxvt",
+					"XTerm",
+					"UXTerm",
+					"kitty",
+					"K3rmit"
 				}
 			},
 			except_any = {
-				instance = { 'QuakeTerminal' }
+				instance = { "QuakeTerminal" }
 			},
 			properties = {
 				tag = '1',
@@ -133,14 +133,14 @@ ruled.client.connect_signal(
 
 		-- Browsers
 		ruled.client.append_rule {
-			id         = 'web_browsers',
+			id         = "web_browsers",
 			rule_any   = { 
 				class = {
-					'firefox',
-					'Tor Browser',
-					'discord',
-					'Chromium',
-					'Google-chrome'
+					"firefox",
+					"Tor Browser",
+					"discord",
+					"Chromium",
+					"Google-chrome"
 				}
 			},
 			properties = { 
@@ -150,17 +150,17 @@ ruled.client.connect_signal(
 
 		-- text editors
 		ruled.client.append_rule {
-			id         = 'text_editors',
+			id         = "text_editors",
 			rule_any   = {  
 				class = {
-					'Geany',
-					'Atom',
-					'Subl3',
-					'code-oss'
+					"Geany",
+					"Atom",
+					"Subl3",
+					"code-oss"
 				},
 				name  = {
-					'LibreOffice',
-					'libreoffice'
+					"LibreOffice",
+					"libreoffice"
 				}
 			},
 			properties = { 
@@ -170,13 +170,13 @@ ruled.client.connect_signal(
 
 		-- File managers
 		ruled.client.append_rule {
-			id         = 'file_managers',
+			id         = "file_managers",
 			rule_any   = {  
 				class = {
-					'dolphin',
-					'ark',
-					'Nemo',
-					'File-roller'
+					"dolphin",
+					"ark",
+					"Nemo",
+					"File-roller"
 				}
 			},
 			properties = { 
@@ -187,11 +187,11 @@ ruled.client.connect_signal(
 
 		-- Multimedia
 		ruled.client.append_rule {
-			id         = 'multimedia',
+			id         = "multimedia",
 			rule_any   = {  
 				class = {
-					'vlc',
-					'Spotify'
+					"vlc",
+					"Spotify"
 				}
 			},
 			properties = { 
@@ -203,16 +203,16 @@ ruled.client.connect_signal(
 
 		-- Gaming
 		ruled.client.append_rule {
-			id         = 'gaming',
+			id         = "gaming",
 			rule_any   = {  
 				class = {
-					'Wine',
-					'dolphin-emu',
-					'Steam',
-					'Citra',
-					'SuperTuxKart'
+					"Wine",
+					"dolphin-emu",
+					"Steam",
+					"Citra",
+					"SuperTuxKart"
 				},
-			name = { 'Steam' }
+			name = { "Steam" }
 			},
 			properties = { 
 				tag = '6',
@@ -227,12 +227,12 @@ ruled.client.connect_signal(
 
 		-- Graphics Editing
 		ruled.client.append_rule {
-			id         = 'graphics_editors',
+			id         = "graphics_editors",
 			rule_any   = {  
 				class = {
-					'Gimp-2.10',
-					'Inkscape',
-					'Flowblade'
+					"Gimp-2.10",
+					"Inkscape",
+					"Flowblade"
 				}
 			},
 			properties = { 
@@ -242,11 +242,11 @@ ruled.client.connect_signal(
 
 		-- Sandboxes and VMs
 		ruled.client.append_rule {
-			id         = 'sandbox',
+			id         = "sandbox",
 			rule_any   = {  
 				class = {
-					'VirtualBox Manage',
-					'VirtualBox Machine'
+					"VirtualBox Manage",
+					"VirtualBox Machine"
 				}
 			},
 			properties = { 
@@ -256,13 +256,13 @@ ruled.client.connect_signal(
 
 		-- IDEs and Tools
 		ruled.client.append_rule {
-			id         = 'ide',
+			id         = "ide",
 			rule_any   = {  
 				class = {
-					'Oomox',
-					'Unity',
-					'UnityHub',
-					'jetbrains-studio'
+					"Oomox",
+					"Unity",
+					"UnityHub",
+					"jetbrains-studio"
 				}
 			},
 			properties = { 
@@ -273,14 +273,14 @@ ruled.client.connect_signal(
 
 		-- Image viewers with splash-like behaviour
 		ruled.client.append_rule {
-			id        = 'splash_like',
+			id        = "splash_like",
 			rule_any  = {
 				class    = {
-					'feh',
-					'Pqiv',
-					'Sxiv'
+					"feh",
+					"Pqiv",
+					"Sxiv"
 				},
-				name = {'Discord Updater'}
+				name = {"Discord Updater"}
 			},
 			properties = { 
 				skip_decoration = true,
@@ -293,17 +293,17 @@ ruled.client.connect_signal(
 
 		-- Splash-like but with titlebars enabled
 		ruled.client.append_rule {
-			id       = 'instances',
+			id       = "instances",
 			rule_any = {
 				instance    = {
-					'file_progress',
-					'Popup',
-					'nm-connection-editor',
+					"file_progress",
+					"Popup",
+					"nm-connection-editor",
 				},
 				class = { 
-					'scrcpy' ,
-					'Mugshot',
-					'Pulseeffects'
+					"scrcpy" ,
+					"Mugshot",
+					"Pulseeffects"
 				}
 			},
 				properties = { 
@@ -322,10 +322,10 @@ ruled.client.connect_signal(
 		
 		-- Fullsreen
 		ruled.client.append_rule {
-			id       = 'fullscreen',
+			id       = "fullscreen",
 			rule_any = {
 				class    = {
-					'SuperTuxKart'
+					"SuperTuxKart"
 				}
 			},
 			properties = { 
@@ -355,12 +355,12 @@ ruled.client.connect_signal(
 -- See what I did in `SuperTuxKart`
 
 client.connect_signal(
-	'property::class',
+	"property::class",
 	function(c)
-		if c.class == 'Spotify' then
+		if c.class == "Spotify" then
 			-- Check if Spotify is already open
 			local spotify = function (c)
-				return ruled.client.match(c, { class = 'Spotify' })
+				return ruled.client.match(c, { class = "Spotify" })
 			end
 
 			local spotify_count = 0
@@ -376,17 +376,17 @@ client.connect_signal(
 					c:jump_to(false)
 				end
 			else
-				-- Move the Spotify instance to '5' tag on this screen
-				local t = awful.tag.find_by_name(awful.screen.focused(), '5')
+				-- Move the Spotify instance to "5" tag on this screen
+				local t = awful.tag.find_by_name(awful.screen.focused(), "5")
 				c:move_to_tag(t)
 			end
-		elseif c.class == 'SuperTuxKart' then
+		elseif c.class == "SuperTuxKart" then
 			-- Disable fullscreen first
 			c.fullscreen = false
 
 			-- Check if SuperTuxKart is already open
 			local stk = function (c)
-				return ruled.client.match(c, { class = 'SuperTuxKart' })
+				return ruled.client.match(c, { class = "SuperTuxKart" })
 			end
 
 			local stk_count = 0
@@ -403,7 +403,7 @@ client.connect_signal(
 				end
 			else
 				-- Move the instance to specified tag tag on this screen
-				local t = awful.tag.find_by_name(awful.screen.focused(), '6')
+				local t = awful.tag.find_by_name(awful.screen.focused(), "6")
 				c:move_to_tag(t)
 				t:view_only()
 				-- Enable fullscreeen again

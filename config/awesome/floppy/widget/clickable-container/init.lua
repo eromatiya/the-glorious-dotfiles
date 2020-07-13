@@ -1,17 +1,14 @@
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 
-local create_click_events = function(widget)
-
-	local container = wibox.widget {
+function build(widget)
+	local container =
+		wibox.widget {
 		widget,
 		widget = wibox.container.background
 	}
-
-	-- Old and new widget
 	local old_cursor, old_wibox
 
-	-- Mouse hovers on the widget
 	container:connect_signal(
 		'mouse::enter',
 		function()
@@ -25,11 +22,10 @@ local create_click_events = function(widget)
 		end
 	)
 
-	-- Mouse leaves the widget
 	container:connect_signal(
 		'mouse::leave',
 		function()
-			container.bg = beautiful.leave_event
+			container.bg = beautiful.transparent
 			if old_wibox then
 				old_wibox.cursor = old_cursor
 				old_wibox = nil
@@ -37,23 +33,21 @@ local create_click_events = function(widget)
 		end
 	)
 
-	-- Mouse pressed the widget
 	container:connect_signal(
 		'button::press',
 		function()
-			container.bg = beautiful.press_event
+			container.bg = beautiful.groups_title_bg
 		end
 	)
 
-	-- Mouse releases the widget
 	container:connect_signal(
 		'button::release',
 		function()
-			container.bg = beautiful.release_event
+			container.bg = beautiful.groups_bg
 		end
 	)
 
 	return container
 end
 
-return create_click_events
+return build
