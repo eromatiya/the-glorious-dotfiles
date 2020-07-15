@@ -31,13 +31,13 @@
 	<br><br>
 </div>
 
-<img src="https://i.imgur.com/T5jvmK1.png" align="center">
+<img src="https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/big.webp" align="center">
 
 <br>
 
 ### Welcome to the glorious dotfiles
 
-<img src="https://i.imgur.com/68r3k8q.png" align="right" height="400px">
+<img src="https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/extra-1.webp" align="right" height="400px">
 
 <p align="left">
 This is a collection/stash of my linux configurations also known as <b><i>dotfiles</i></b>. I don't know why did I wasted my time writing these, especially my AwesomeWM setups. Or maybe it's because... I did it for me. I liked it. I was good at it. And I was really -- I was alive. ;) So no wasted time after all.
@@ -50,7 +50,7 @@ Anyway, I provided a documentation or **[wiki](https://github.com/manilarome/the
 <br>
 <br>
 
-<img src="https://i.imgur.com/68r3k8q.png" align="left" height="400px">
+<img src="https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/extra-2.webp" align="left" height="400px">
 <p align="left">
 So, what is ricing or RICE in the linux world? Ricing refers to making a visual improvement and customization on your desktop. It was inherited from the practice of improving, modifying, and customizing a cheap asian import cars to make them appear faster than they actually are. So in the world of cars, <b>RICE</b> means <i>Race Inspired Cosmetic Enhancement</i>.
 <br>
@@ -163,6 +163,12 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 
 5. Reload AwesomeWM by pressing <kbd>Super + Shift + r</kbd>.
 
+This repo is also available in [AUR](https://aur.archlinux.org/packages/the-glorious-dotfiles/).
+
+```
+$ yay -S the-glorious-dotfiles
+```
+
 ## todos
 
 My TODOs or roadmap for my awesomewm setups.
@@ -206,43 +212,43 @@ Some of these are outdated, so it is better if you try them yourself.
 
 | Floppy |
 | --- |
-| ![screenshot](https://i.imgur.com/63bx9dU.png) |
+| ![screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/floppy.webp) |
 
 | GNawesOME |
 | --- |
-| ![screenshot](https://i.imgur.com/xspiV3g.png) |
+| ![screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/gnawesome.webp) |
 
 | Linear |
 | --- |
-| ![screenshot](https://i.imgur.com/e6x3M2w.png) |
+| ![screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/linear.webp) |
 
 | Surreal |
 | --- |
-| ![screenshot](scrots/surreal.png) |
+| ![screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/surreal.webp) |
 
-| Lockscreen with **PAM Integration** |
+| Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam) |
 | --- |
-| ![Screenshot](https://i.imgur.com/CF9MUF4.png) |
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/lockscreen.webp) |
 
 | Exit Screen |
 | --- |
-| ![Screenshot](https://i.imgur.com/1J2hmoJ.png) |
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/exit-screen.webp) |
 
 | Multihead |
 | --- |
-| ![Screenshot](https://i.imgur.com/kvHcyb7.jpg) |
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/multihead.webp) |
 
-| Rofi Global Search |
+| [Rofi Global Search](https://github.com/manilarome/rofi-spotlight) |
 | --- |
-| ![Screenshot](https://i.imgur.com/0nSbhjN.png) |
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/rofi-global.webp) |
 
 | [blurredfox CSS theme for Firefox](https://github.com/manilarome/blurredfox/) |
 | --- |
-| ![Screenshot](https://i.imgur.com/3C1cVNN.png)
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/blurredfox.webp)
 
 | [thunderblurred CSS theme for Thunderbird](https://github.com/manilarome/thunderblurred) |
 | --- |
-| ![Screenshot](https://i.imgur.com/b8Uq8c8.png)
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/thunderblurred.webp)
 
 <br>
 

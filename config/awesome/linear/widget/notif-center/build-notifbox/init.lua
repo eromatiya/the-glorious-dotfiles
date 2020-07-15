@@ -17,7 +17,7 @@ notif_core.remove_notifbox_empty = true
 
 notif_core.notifbox_layout = wibox.widget {
 	layout = wibox.layout.fixed.vertical,
-	spacing = dpi(5),
+	spacing = dpi(7),
 	empty_notifbox
 }
 
