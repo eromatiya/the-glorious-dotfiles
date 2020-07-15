@@ -2,20 +2,17 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require('beautiful')
-
-local dpi = require('beautiful').xresources.apply_dpi
-
+local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require('widget.clickable-container')
 local icons = require('theme.icons')
 local spawn = require('awful.spawn')
 
 screen.connect_signal("request::desktop_decoration", function(s)
-
 	s.show_bri_osd = false
 
 	local osd_header = wibox.widget {
 		text = 'Brightness',
-		font = 'SF Pro Text Bold 12',
+		font = 'Inter Bold 12',
 		align = 'left',
 		valign = 'center',
 		widget = wibox.widget.textbox
@@ -23,7 +20,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 	local osd_value = wibox.widget {
 		text = '0%',
-		font = 'SF Pro Text Bold 12',
+		font = 'Inter Bold 12',
 		align = 'center',
 		valign = 'center',
 		widget = wibox.widget.textbox
@@ -56,7 +53,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	bri_osd_slider:connect_signal(
 		'property::value',
 		function()
-
 			local brightness_level = bri_osd_slider:get_value()
 			
 			spawn('light -S ' .. math.max(brightness_level, 5), false)
@@ -73,22 +69,16 @@ screen.connect_signal("request::desktop_decoration", function(s)
 					true
 				)
 			end
-	  	
-	  	end
+		end
 	)
 
 	bri_osd_slider:connect_signal(
-	  	'button::press',
-	  	function()
-	  		s.show_bri_osd = true
-	  	end
-	)
-	bri_osd_slider:connect_signal(
-		'button::release',
+		'button::press',
 		function()
-			s.show_bri_osd = false
+			s.show_bri_osd = true
 		end
 	)
+
 	bri_osd_slider:connect_signal(
 		'mouse::enter',
 		function()
@@ -125,7 +115,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	-- Create the box
 	local osd_height = dpi(100)
 	local osd_width = dpi(300)
-
 	local osd_margin = dpi(10)
 
 	s.brightness_osd_overlay = awful.popup {
@@ -144,29 +133,28 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		shape = gears.shape.rectangle,
 		bg = beautiful.transparent,
 		preferred_anchors = 'middle',
-		preferred_positions = {'left', 'right', 'top', 'bottom'},
-
+		preferred_positions = {'left', 'right', 'top', 'bottom'}
 	}
 
-  	s.brightness_osd_overlay : setup {
-  		{
-  			{
+	s.brightness_osd_overlay : setup {
+		{
+			{
 				{
 					layout = wibox.layout.align.horizontal,
-				  	expand = 'none',
-				  	forced_height = dpi(48),
+					expand = 'none',
+					forced_height = dpi(48),
 					osd_header,
-				  	nil,
-				  	osd_value
+					nil,
+					osd_value
 				},
 				brightness_slider_osd,
 				layout = wibox.layout.fixed.vertical
-	  		},
+			},
 			left = dpi(24),
 			right = dpi(24),
 			widget = wibox.container.margin
-	  	},
-	  	bg = beautiful.background,
+		},
+		bg = beautiful.background,
 		shape = gears.shape.rounded_rect,
 		widget = wibox.container.background()
 	}
@@ -176,18 +164,19 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		autostart = true,
 		callback  = function()
 			awful.screen.focused().brightness_osd_overlay.visible = false
+			s.show_bri_osd = false
 		end
 	}
 
 	local timer_rerun = function()
-	 	if hide_osd.started then
+		if hide_osd.started then
 			hide_osd:again()
 		else
 			hide_osd:start()
 		end
 	end
 
-  	-- Reset timer on mouse hover
+	-- Reset timer on mouse hover
 	s.brightness_osd_overlay:connect_signal(
 		'mouse::enter', 
 		function()
@@ -195,16 +184,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			timer_rerun()
 		end
 	)
-	s.brightness_osd_overlay:connect_signal(
-		'mouse::enter', 
-		function()
-			s.show_bri_osd = false
-			timer_rerun()
-		end
-	)
 
 	local placement_placer = function()
-
 		local focused = awful.screen.focused()
 		
 		local right_panel = focused.right_panel
@@ -213,13 +194,17 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 		if right_panel and left_panel then
 			if right_panel.visible then
-				awful.placement.bottom_left(focused.brightness_osd_overlay, { margins = { 
-					left = osd_margin + left_panel.width,
-					right = 0,
-					top = 0,
-					bottom = osd_margin,
-					}, 
-					parent = focused }
+				awful.placement.bottom_left(
+					focused.brightness_osd_overlay,
+					{
+						margins = { 
+							left = osd_margin,
+							right = 0,
+							top = 0,
+							bottom = osd_margin
+						},
+						honor_workarea = true
+					}
 				)
 				return
 			end
@@ -227,25 +212,33 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 		if right_panel then
 			if right_panel.visible then
-				awful.placement.bottom_left(focused.brightness_osd_overlay, { margins = { 
-					left = osd_margin,
-					right = 0,
-					top = 0,
-					bottom = osd_margin,
-					}, 
-					parent = focused }
+				awful.placement.bottom_left(
+					focused.brightness_osd_overlay,
+					{
+						margins = { 
+							left = osd_margin,
+							right = 0,
+							top = 0,
+							bottom = osd_margin
+						}, 
+						honor_workarea = true
+					}
 				)
 				return
 			end
 		end
 
-		awful.placement.bottom_right(focused.brightness_osd_overlay, { margins = { 
-			left = 0,
-			right = osd_margin,
-			top = 0,
-			bottom = osd_margin,
-			}, 
-			parent = focused }
+		awful.placement.bottom_right(
+			focused.brightness_osd_overlay,
+			{
+				margins = { 
+					left = 0,
+					right = osd_margin,
+					top = 0,
+					bottom = osd_margin
+				},
+				honor_workarea = true
+			}
 		)
 	end
 
@@ -256,17 +249,15 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			awful.screen.focused().brightness_osd_overlay.visible = bool
 			if bool then
 				timer_rerun()
-			  	awesome.emit_signal(
-			  		'module::volume_osd:show',
-			  		false
-			  	)
+				awesome.emit_signal(
+					'module::volume_osd:show',
+					false
+				)
 			else
 				if hide_osd.started then
 					hide_osd:stop()
 				end
-		  	end
+			end
 		end
 	)
-
-
 end)

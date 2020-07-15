@@ -15,7 +15,7 @@ local inactive_button  = beautiful.transparent
 local notif_text = wibox.widget
 {
 	text 	= 	'Notifications',
-	font   	= 	'SF Pro Text Bold 11',
+	font   	= 	'Inter Bold 11',
 	align  	= 	'center',
 	valign 	= 	'center',
 	widget 	= 	wibox.widget.textbox
@@ -45,7 +45,7 @@ local wrap_notif = wibox.widget {
 local today_text = wibox.widget
 {
 	text 	= 	'Today',
-	font   	= 	'SF Pro Text Bold 11',
+	font   	= 	'Inter Bold 11',
 	align  	= 	'center',
 	valign 	= 	'center',
 	widget 	=	wibox.widget.textbox

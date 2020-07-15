@@ -1,20 +1,15 @@
-local awful = require('awful')
-local beautiful = require('beautiful')
 local wibox = require('wibox')
+local awful = require('awful')
 local gears = require('gears')
-
-local icons = require('theme.icons')
+local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
-
+local icons = require('theme.icons')
 local clickable_container = require('widget.clickable-container')
 local task_list = require('widget.task-list')
 
+local top_panel = function(s)
 
-
-local TopPanel = function(s)
-
-	local panel = wibox
-	{
+	local panel = wibox {
 		ontop = true,
 		screen = s,
 		type = 'dock',
@@ -26,13 +21,10 @@ local TopPanel = function(s)
 		bg = beautiful.background,
 		fg = beautiful.fg_normal
 	}
-	
 
-	panel:struts
-	{
+	panel:struts {
 		top = dpi(28)
 	}
-
 
 	panel:connect_signal(
 		'mouse::enter',
@@ -42,76 +34,32 @@ local TopPanel = function(s)
 				w.cursor = 'left_ptr'
 			end
 		end
-
 	)
 
-
-	s.add_button = wibox.widget {
-		{
-			{
-				{
-					{
-						image = icons.plus,
-						resize = true,
-						widget = wibox.widget.imagebox
-					},
-					margins = dpi(4),
-					widget = wibox.container.margin
-				},
-				widget = clickable_container
-			},
-			bg = beautiful.transparent,
-			shape = gears.shape.circle,
-			widget = wibox.container.background
-		},
-		margins = dpi(4),
-		widget = wibox.container.margin
-	}
-
-	s.add_button:buttons(
-		gears.table.join(
-			awful.button(
-				{},
-				1,
-				nil,
-				function()
-					awful.spawn(
-						awful.screen.focused().selected_tag.default_app,
-						{
-							tag = mouse.screen.selected_tag,
-							placement = awful.placement.bottom_right
-						}
-					)
-				end
-			)
-		)
-	)
-
-	s.updater 		= require('widget.package-updater')()
-	s.screen_rec 	= require('widget.screen-recorder')()
-	s.music       	= require('widget.music')()
-	s.globalsearch  = require('widget.globalsearch')()
-	s.end_session	= require('widget.end-session')()
-	s.float_panel  	= require('layout.floating-panel.floating-panel-opener')()
-
+	local add_button 		= require('widget.open-default-app')(s)
+	local clock 			= require('widget.clock')(s)
+	s.updater 				= require('widget.package-updater')()
+	s.screen_rec 			= require('widget.screen-recorder')()
+	s.mpd       			= require('widget.mpd')()
+	s.end_session			= require('widget.end-session')()
+	s.global_search			= require('widget.global-search')()
 
 	panel : setup {
 		layout = wibox.layout.align.horizontal,
-		expand = "none",
+		expand = 'none',
 		{
 			layout = wibox.layout.fixed.horizontal,
 			task_list(s),
-			s.add_button
+			add_button
 		}, 
-		-- s.clock_widget,
-		s.float_panel ,
+		clock,
 		{
 			layout = wibox.layout.fixed.horizontal,
 			spacing = dpi(5),
 			s.updater,
 			s.screen_rec,
-			s.music,
-			s.globalsearch,
+			s.global_search,
+			s.mpd,
 			s.end_session
 		}
 	}
@@ -120,4 +68,4 @@ local TopPanel = function(s)
 end
 
 
-return TopPanel
+return top_panel

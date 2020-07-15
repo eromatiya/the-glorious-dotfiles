@@ -2,21 +2,17 @@ local awful = require('awful')
 local gears = require('gears')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
-
+local filesystem = gears.filesystem
 local dpi = beautiful.xresources.apply_dpi
-
 local icons = require('theme.icons')
 local apps = require('configuration.apps')
 local clickable_container = require('widget.clickable-container')
-
-local filesystem = gears.filesystem
 local config_dir = filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'configuration/user-profile/'
 
-
 local greeter_message = wibox.widget {
 	markup = 'Choose wisely!',
-	font = 'SF Pro Text UltraLight 48',
+	font = 'Inter UltraLight 48',
 	align = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -24,7 +20,7 @@ local greeter_message = wibox.widget {
 
 local profile_name = wibox.widget {
 	markup = 'user@hostname',
-	font = 'SF Pro Text Regular 12',
+	font = 'Inter Regular 12',
 	align = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -33,15 +29,15 @@ local profile_name = wibox.widget {
 local profile_imagebox = wibox.widget {
 	image = widget_icon_dir .. 'default.svg',
 	resize = true,
-	forced_height = dpi(110),
+	forced_height = dpi(130),
 	clip_shape = gears.shape.circle,
 	widget = wibox.widget.imagebox
 }
 
 local profile_imagebox_bg = wibox.widget {
 	bg = beautiful.groups_bg,
-    forced_width = dpi(120),
-    forced_height = dpi(120),
+    forced_width = dpi(140),
+    forced_height = dpi(140),
     shape = gears.shape.circle,
     widget = wibox.container.background
 }
@@ -51,7 +47,7 @@ local update_profile_pic = function()
 		apps.bins.update_profile,
 		function(stdout)
 			stdout = stdout:gsub('%\n','')
-			if not stdout:match("default") then
+			if not stdout:match('default') then
 				profile_imagebox:set_image(stdout)
 			else
 				profile_imagebox:set_image(widget_icon_dir .. 'default.svg')
@@ -64,10 +60,10 @@ update_profile_pic()
 
 local update_user_name = function()
 	awful.spawn.easy_async_with_shell(
-		"printf \"$(whoami)@$(hostname)\"",
+		'printf \"$(whoami)@$(hostname)\"',
 		function(stdout) 
 			local stdout = stdout:gsub('%\n','')
-			local username = stdout:match("(.*)@")
+			local username = stdout:match('(.*)@')
 			username = username:sub(1, 1):upper() .. username:sub(2)
 			greeter_message:set_markup('Choose wisely, ' .. username .. '!')
 			profile_name:set_markup(stdout)
@@ -122,7 +118,7 @@ local build_button = function(icon, name)
 end
 
 local suspend_command = function()
-	awesome.emit_signal("module::exit_screen_hide")
+	awesome.emit_signal('module::exit_screen_hide')
 	awful.spawn.with_shell(apps.default.lock .. ' & systemctl suspend')
 end
 
@@ -131,18 +127,18 @@ local exit_command = function()
 end
 
 local lock_command = function()
-	awesome.emit_signal("module::exit_screen_hide")
+	awesome.emit_signal('module::exit_screen_hide')
 	awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock)
 end
 
 local poweroff_command = function()
 	awful.spawn.with_shell('poweroff')
-	awesome.emit_signal("module::exit_screen_hide")
+	awesome.emit_signal('module::exit_screen_hide')
 end
 
 local reboot_command = function()
 	awful.spawn.with_shell('reboot')
-	awesome.emit_signal("module::exit_screen_hide")
+	awesome.emit_signal('module::exit_screen_hide')
 end
 
 local poweroff = build_button(icons.power, 'Shutdown')
@@ -186,7 +182,7 @@ lock:connect_signal(
 )
 
 screen.connect_signal(
-	"request::desktop_decoration",
+	'request::desktop_decoration',
 	function(s)
 
 		s.exit_screen = wibox
@@ -204,13 +200,10 @@ screen.connect_signal(
 		}
 
 		local exit_screen_hide = function()
-			awesome.emit_signal("module::exit_screen_hide")
-
+			awesome.emit_signal('module::exit_screen_hide')
 		end
 
-
 		local exit_screen_grabber = awful.keygrabber {
-
 			auto_start          = true,
 			stop_event          = 'release',
 			keypressed_callback = function(self, mod, key, command) 
@@ -231,16 +224,13 @@ screen.connect_signal(
 					reboot_command()
 
 				elseif key == 'Escape' or key == 'q' or key == 'x' then
-					awesome.emit_signal("module::exit_screen_hide")
-
+					awesome.emit_signal('module::exit_screen_hide')
 				end
-
 			end
-
 		}
 
 		awesome.connect_signal(
-			"module::exit_screen_show",
+			'module::exit_screen_show',
 			function() 
 				for s in screen do
 					s.exit_screen.visible = false
@@ -251,7 +241,7 @@ screen.connect_signal(
 		)
 
 		awesome.connect_signal(
-			"module::exit_screen_hide",
+			'module::exit_screen_hide',
 			function()
 				exit_screen_grabber:stop()
 				for s in screen do
@@ -266,14 +256,14 @@ screen.connect_signal(
 					{},
 					2,
 					function()
-						awesome.emit_signal("module::exit_screen_hide")
+						awesome.emit_signal('module::exit_screen_hide')
 					end
 				),
 				awful.button(
 					{},
 					3,
 					function()
-						awesome.emit_signal("module::exit_screen_hide")
+						awesome.emit_signal('module::exit_screen_hide')
 					end
 				)
 			)

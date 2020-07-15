@@ -17,7 +17,7 @@ local update_interval = 1200
 
 local weather_header = wibox.widget {
 	text   = 'Weather Forecast',
-	font   = 'SF Pro Text Bold 14',
+	font   = 'Inter Bold 14',
 	align  = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -96,7 +96,7 @@ local weather_desc_temp = wibox.widget {
 	{
 		id 	   = 'description',
 		markup = 'Dust and clouds, -1000°C',
-		font   = 'SF Pro Text Regular 10',
+		font   = 'Inter Regular 10',
 		align  = 'left',
 		valign = 'center',
 		widget = wibox.widget.textbox
@@ -116,7 +116,7 @@ local weather_location = wibox.widget {
 	{
 		id 	   = 'location',
 		markup = 'Earth, Milky Way',
-		font   = 'SF Pro Text Regular 10',
+		font   = 'Inter Regular 10',
 		align  = 'left',
 		valign = 'center',
 		widget = wibox.widget.textbox
@@ -134,7 +134,7 @@ local weather_location = wibox.widget {
 
 local weather_sunrise = wibox.widget {
 	markup = '00:00',
-	font   = 'SF Pro Text Regular 10',
+	font   = 'Inter Regular 10',
 	align  = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -142,7 +142,7 @@ local weather_sunrise = wibox.widget {
 
 local weather_sunset = wibox.widget {
 	markup = '00:00',
-	font   = 'SF Pro Text Regular 10',
+	font   = 'Inter Regular 10',
 	align  = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -150,7 +150,7 @@ local weather_sunset = wibox.widget {
 
 local weather_data_time = wibox.widget {
 	markup = '00:00',
-	font   = 'SF Pro Text Regular 10',
+	font   = 'Inter Regular 10',
 	align  = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox

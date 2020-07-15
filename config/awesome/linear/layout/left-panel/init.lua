@@ -1,19 +1,17 @@
+local wibox = require('wibox')
 local awful = require('awful')
 local beautiful = require('beautiful')
-local wibox = require('wibox')
+local dpi = beautiful.xresources.apply_dpi
 local apps = require('configuration.apps')
-local dpi = require('beautiful').xresources.apply_dpi
 
 local left_panel = function(screen)
+	
+	local panel_content_width = dpi(345)
 
-	local panel_content_width = dpi(350)
-
-	local panel =
-		wibox {
+	local panel = wibox {
 		screen = screen,
-		visible = false,
-		type = 'dock',
 		width = panel_content_width,
+		type = 'dock',
 		height = screen.geometry.height,
 		x = screen.geometry.x,
 		y = screen.geometry.y,
@@ -23,12 +21,6 @@ local left_panel = function(screen)
 	}
 
 	panel.opened = false
-
-	panel:struts(
-		{
-			left = dpi(0)
-		}
-	)
 
 	local backdrop = wibox {
 		ontop = true,
@@ -42,7 +34,7 @@ local left_panel = function(screen)
 	}
 
 	function panel:run_rofi()
-		_G.awesome.spawn(
+		awesome.spawn(
 			apps.default.rofiglobal,
 			false,
 			false,
@@ -57,9 +49,8 @@ local left_panel = function(screen)
 		panel:get_children_by_id('panel_content')[1].visible = false
 	end
 
-	local openPanel = function(should_run_rofi)
+	local open_panel = function(should_run_rofi)
 		backdrop.visible = true
-		panel.visible = false
 		panel.visible = true
 		panel:get_children_by_id('panel_content')[1].visible = true
 		if should_run_rofi then
@@ -68,24 +59,24 @@ local left_panel = function(screen)
 		panel:emit_signal('opened')
 	end
 
-	local closePanel = function()
-		panel.visible = false
+	local close_panel = function()
 		panel:get_children_by_id('panel_content')[1].visible = false
+		panel.visible = false
 		backdrop.visible = false
 		panel:emit_signal('closed')
 	end
 
 	-- Hide this panel when app dashboard is called.
-	function panel:HideDashboard()
-		closePanel()
+	function panel:hide_dashboard()
+		close_panel()
 	end
 
 	function panel:toggle(should_run_rofi)
 		self.opened = not self.opened
 		if self.opened then
-			openPanel(should_run_rofi)
+			open_panel(should_run_rofi)
 		else
-			closePanel()
+			close_panel()
 		end
 	end
 
@@ -114,7 +105,8 @@ local left_panel = function(screen)
 				require('layout.left-panel.dashboard')(screen, panel),
 				layout = wibox.layout.stack
 			}
-		}
+		},
+		nil
 	}
 	return panel
 end

@@ -50,20 +50,20 @@ local clientKeys =
 		{description = 'focus previous by index', group = 'client'}
 	),
 	awful.key(
-		{ modkey, "Shift"  },
-		"d",
+		{ modkey, 'Shift'  },
+		'd',
 		function ()
 			awful.client.swap.byidx(1)
 		end,
-		{description = "swap with next client by index", group = "client"}
+		{description = 'swap with next client by index', group = 'client'}
 	),
 	awful.key(
-		{ modkey, "Shift" },
-		"a",
+		{ modkey, 'Shift' },
+		'a',
 		function ()
 			awful.client.swap.byidx(-1)
 		end,
-		{description = "swap with next client by index", group = "client"}
+		{description = 'swap with next client by index', group = 'client'}
 	),
 
 	awful.key(
@@ -83,18 +83,18 @@ local clientKeys =
 		end,
 		{description = 'go back', group = 'client'}
 	),
-	awful.key(
+    awful.key(
         {modkey},
         'n',
         function(c)
             c.minimized = true
         end,
-        {description = "minimize client", group = 'client'}
+        {description = 'minimize client', group = 'client'}
     ),
 	-- move floating client to center
 	awful.key(
-		{ modkey, "Shift" }, 
-		"c", 
+		{ modkey, 'Shift' }, 
+		'c', 
 		function(c)
 			local focused = awful.screen.focused()
 
@@ -102,7 +102,7 @@ local clientKeys =
 				honor_workarea = true
 			})
 		end,
-		{description = 'align a client to the center of the focused screen.', group = "client"}
+		{description = 'align a client to the center of the focused screen.', group = 'client'}
 	),
 
 	-- toggle client floating mode

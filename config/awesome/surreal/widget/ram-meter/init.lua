@@ -9,7 +9,7 @@ local icons = require('theme.icons')
 
 local meter_name = wibox.widget {
 	text = 'RAM',
-	font = 'SF Pro Text Bold 10',
+	font = 'Inter Bold 10',
 	align = 'left',
 	widget = wibox.widget.textbox
 }
@@ -59,7 +59,7 @@ local slider = wibox.widget {
 
 watch(
 	'bash -c "free | grep -z Mem.*Swap.*"',
-	5,
+	10,
 	function(_, stdout)
 		local total, used, free, shared, buff_cache, available, total_swap, used_swap, free_swap =
 			stdout:match('(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*Swap:%s*(%d+)%s*(%d+)%s*(%d+)')

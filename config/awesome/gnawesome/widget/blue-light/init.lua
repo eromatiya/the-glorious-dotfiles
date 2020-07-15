@@ -1,17 +1,14 @@
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
-
 local dpi = require('beautiful').xresources.apply_dpi
-local clickable_container = require('widget.window-effects.clickable-container')
-
+local clickable_container = require('widget.blue-light.clickable-container')
 local icons = require('theme.icons')
-
 local blue_light_state = nil
 
 local action_name = wibox.widget {
-	text = 'Blue Light Filter',
-	font = 'SF Pro Text Regular 11',
+	text = 'Blue Light',
+	font = 'Inter Regular 11',
 	align = 'left',
 	widget = wibox.widget.textbox
 }
@@ -85,6 +82,7 @@ local toggle_action = function()
 			update_imagebox()
 		end
 	)
+
 end
 
 widget_button:buttons(

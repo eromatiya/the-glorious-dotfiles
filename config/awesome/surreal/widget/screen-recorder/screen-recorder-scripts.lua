@@ -102,7 +102,7 @@ local create_notification = function(file_dir)
 	)
 
 	naughty.notification ({
-		app_name = 'Screenshot Recorder',
+		app_name = 'Screen Recorder',
 		timeout = 60,
 		title = '<b>Recording Finished!</b>',
 		message = 'Recording can now be viewed.',

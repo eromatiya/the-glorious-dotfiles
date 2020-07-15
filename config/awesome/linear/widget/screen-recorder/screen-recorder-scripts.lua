@@ -51,8 +51,9 @@ local kill_existing_recording_ffmpeg = function()
 	-- Let's killall ffmpeg instance first after awesome (re)-starts if there's any
 	awful.spawn.easy_async_with_shell(
 		[[
-		ps x | grep "ffmpeg -video_size" | grep -v grep | awk '{print $1}' | xargs kill
-		]], 
+		sh -c "
+		ps x | grep 'ffmpeg -video_size' | grep -v grep | awk '{print $1}' | xargs kill
+		"]], 
 		function(stdout) end
 	)
 end
@@ -101,7 +102,7 @@ local create_notification = function(file_dir)
 	)
 
 	naughty.notification ({
-		app_name = 'Screenshot Recorder',
+		app_name = 'Screen Recorder',
 		timeout = 60,
 		title = '<b>Recording Finished!</b>',
 		message = 'Recording can now be viewed.',

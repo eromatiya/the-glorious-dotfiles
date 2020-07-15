@@ -10,48 +10,20 @@ local tag_list = require('widget.tag-list')
 
 local bottom_panel = function(s)
 
-	local layout_box = function(s)
-		local layoutbox = wibox.widget {
+	local build_widget = function(widget)
+		return wibox.widget {
 			{
-				awful.widget.layoutbox(s),
-				margins = dpi(7),
-				widget = wibox.container.margin
+				widget,
+				bg = beautiful.groups_title_bg,
+				shape = function(cr, w, h)
+					gears.shape.rounded_rect(cr, w, h, dpi(6))
+				end,
+				widget = wibox.container.background
 			},
-			widget = clickable_container
+			top = dpi(10),
+			bottom = dpi(10),
+			widget = wibox.container.margin
 		}
-		layoutbox:buttons(
-			awful.util.table.join(
-				awful.button(
-					{},
-					1,
-					function()
-						awful.layout.inc(1)
-					end
-				),
-				awful.button(
-					{},
-					3,
-					function()
-						awful.layout.inc(-1)
-					end
-				),
-				awful.button(
-					{},
-					4,
-					function()
-						awful.layout.inc(1)
-					end
-				),
-				awful.button(
-					{},
-					5,
-					function()
-						awful.layout.inc(-1)
-					end
-				)
-			)
-		)
-		return layoutbox
 	end
 
 	local build_widget = function(widget)
@@ -69,7 +41,7 @@ local bottom_panel = function(s)
 			widget = wibox.container.margin
 		}
 	end
-	
+
 	s.systray = wibox.widget {
 		{
 			base_size = dpi(20),
@@ -82,11 +54,12 @@ local bottom_panel = function(s)
 		widget = wibox.container.margin
 	}
 
-	s.tray_toggler  = build_widget(require('widget.tray-toggler'))
-	s.bluetooth   	= build_widget(require('widget.bluetooth')())
-	s.network        	= build_widget(require('widget.network')())
-	s.battery     	= build_widget(require('widget.battery')())
-	s.search      	= require('widget.search-apps')()
+	s.search = require('widget.search-apps')()
+	s.tray_toggler  		= build_widget(require('widget.tray-toggle'))
+	s.bluetooth   			= build_widget(require('widget.bluetooth')())
+	s.network       		= build_widget(require('widget.network')())
+	s.battery     			= build_widget(require('widget.battery')())
+	local layout_box 		= build_widget(require('widget.layoutbox')(s))
 	
 	local separator =  wibox.widget {
 		orientation = 'vertical',
@@ -106,19 +79,19 @@ local bottom_panel = function(s)
 				s.search,
 				separator,
 				tag_list(s),
-				require('widget.xdg-folders'),
+				require('widget.xdg-folders')(),
 				{
+					layout = wibox.layout.fixed.horizontal,
+					spacing = dpi(10),
 					s.systray,
 					s.tray_toggler,
 					s.bluetooth,
 					s.network,
 					s.battery,
-					build_widget(layout_box(s)),
-					separator,
-					spacing = dpi(10),
-					layout = wibox.layout.fixed.horizontal
+					layout_box,
+					separator
 				},
-				require("widget.xdg-folders.trash")
+				require('widget.xdg-folders.trash')(),
 			},
 			bg = beautiful.background,
 			shape = function(cr, w, h)
@@ -137,13 +110,11 @@ local bottom_panel = function(s)
 		bg = beautiful.transparent
 	}
 
-	panel:struts
-	{
+	panel:struts {
 		bottom = bottom_panel_height
 	}
 
 	return panel
 end
-
 
 return bottom_panel

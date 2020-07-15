@@ -2,10 +2,8 @@ local wibox = require('wibox')
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
-
 local icons = require('theme.icons')
 local dpi = beautiful.xresources.apply_dpi
-
 local clickable_container = require('widget.clickable-container')
 local task_list = require('widget.task-list')
 
@@ -58,6 +56,7 @@ local top_panel = function(s)
 	s.battery     			= require('widget.battery')()
 	s.network       		= require('widget.network')()
 	s.control_center_toggle = require('widget.control-center-toggle')()
+	s.global_search			= require('widget.global-search')()
 	s.info_center_toggle 	= require('widget.info-center-toggle')()
 
 	panel : setup {
@@ -84,6 +83,7 @@ local top_panel = function(s)
 			s.battery,
 			s.network,
 			s.control_center_toggle,
+			s.global_search,
 			layout_box,
 			s.info_center_toggle
 		}

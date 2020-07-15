@@ -9,7 +9,7 @@ local clickable_container = require('widget.clickable-container')
 
 local action_name = wibox.widget {
 	text = 'Volume',
-	font = 'SF Pro Text Bold 10',
+	font = 'Inter Bold 10',
 	align = 'left',
 	widget = wibox.widget.textbox
 }

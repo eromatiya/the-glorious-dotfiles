@@ -67,7 +67,7 @@ local build_social_button = function(website)
 				1,
 				nil,
 				function()
-					awful.spawn({"xdg-open", website_url}, false)
+					awful.spawn({'xdg-open', website_url}, false)
 				end
 			)
 		)
@@ -77,7 +77,7 @@ local build_social_button = function(website)
 
 	local social_tbox = wibox.widget {
 		text = social_name,
-		font = 'SF Pro Text Regular 10',
+		font = 'Inter Regular 10',
 		align = 'center',
 		valign = 'center',
 		widget = wibox.widget.textbox
@@ -110,7 +110,7 @@ local social_layout = wibox.widget {
 local social = wibox.widget {
 	{
 		{
-			expand = "none",
+			expand = 'none',
 			layout = wibox.layout.align.horizontal,
 			nil,
 			social_layout,

@@ -9,7 +9,7 @@ local icons = require('theme.icons')
 
 local meter_name = wibox.widget {
 	text = 'Temperature',
-	font = 'SF Pro Text Bold 10',
+	font = 'Inter Bold 10',
 	align = 'left',
 	widget = wibox.widget.textbox
 }
@@ -61,7 +61,7 @@ local max_temp = 80
 
 watch(
 	'bash -c "cat /sys/class/thermal/thermal_zone0/temp"',
-	5,
+	10,
 	function(_, stdout)
 		local temp = stdout:match('(%d+)')
 		slider.temp_status:set_value((temp / 1000) / max_temp * 100)

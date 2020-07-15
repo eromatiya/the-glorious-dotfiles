@@ -1,5 +1,4 @@
 local awful = require('awful')
-
 local modkey = require('configuration.keys.mod').modKey
 
 return awful.util.table.join(
@@ -7,7 +6,7 @@ return awful.util.table.join(
 		{},
 		1,
 		function(c)
-			_G.client.focus = c
+			client.focus = c
 			c:raise()
 		end
 	),

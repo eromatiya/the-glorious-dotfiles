@@ -1,14 +1,11 @@
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
-
 local clickable_container = require('widget.clickable-container')
 local dpi = require('beautiful').xresources.apply_dpi
-
 local icons = require('theme.icons')
 
 local return_button = function()
-
 	local widget = wibox.widget {
 		{
 			id = 'icon',
@@ -35,15 +32,13 @@ local return_button = function()
 				1,
 				nil,
 				function()
-					awesome.emit_signal("module::exit_screen_show")
+					awesome.emit_signal('module::exit_screen_show')
 				end
 			)
 		)
 	)
 
-
 	return widget_button
-
 end
 
 return return_button

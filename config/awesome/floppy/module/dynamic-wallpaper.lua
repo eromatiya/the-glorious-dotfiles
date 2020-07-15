@@ -16,10 +16,9 @@
 -- Timeout paused when laptop/pc is suspended or in sleep mode, and there's probably some bugs too so whatever
 
 local awful = require('awful')
-local filesystem = require('gears.filesystem')
 local gears = require('gears')
 local beautiful = require('beautiful')
-
+local filesystem = gears.filesystem
 
 --  ========================================
 -- 				Configuration
@@ -30,15 +29,11 @@ local beautiful = require('beautiful')
 local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 -- local wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
 
-
--- Wallpapers filename
--- Note:
--- Default image format is jpg
+-- Wallpapers filename and extension
 wallpaper_morning = 'morning-wallpaper.jpg'
 wallpaper_noon = 'noon-wallpaper.jpg'
 wallpaper_night = 'night-wallpaper.jpg'
 wallpaper_midnight = 'midnight-wallpaper.jpg'
-
 
 -- Change the wallpaper on scheduled time
 morning_schedule = '06:22:00'
@@ -46,40 +41,30 @@ noon_schedule = '12:00:00'
 night_schedule = '17:58:00'
 midnight_schedule = '24:00:00'
 
-
--- Update lockscreen background
-local update_ls_bg = false
-
--- Update lockscreen background command
-local update_ls_cmd = 'mantablockscreen --image'
-
-
+-- Don't stretch wallpaper on multihead setups if true
+local dont_stretch_wallpaper = false
 
 --  ========================================
 -- 				   Processes
 --	    Don't touch it if it's working
 --  ========================================
 
-
 -- Get current time
 local current_time = function()
-  	return os.date("%H:%M:%S")
+  	return os.date('%H:%M:%S')
 end
-
 
 -- Countdown variable
 -- In seconds
 the_countdown = nil
 
-
--- We will use an array for hour change and wallpaper string
+-- We will use a table for hour change and wallpaper string
 -- Element 0 errm 1 will store the incoming/next scheduled time
 -- Geez why the f is lua's array starts with `1`? lol
 -- Element 2 will have the wallpaper file name
 local wall_data = {}
 -- > Why array, you say? 
 -- Because why not? I'm new to lua and I'm experimenting with it
-
 
 -- Parse HH:MM:SS to seconds
 local parse_to_seconds = function(time)
@@ -95,9 +80,7 @@ local parse_to_seconds = function(time)
 
 	-- Return computed seconds
     return (hour_sec + min_sec + get_sec)
-
 end
-
 
 -- Get time difference
 local time_diff = function(current, schedule)
@@ -105,6 +88,18 @@ local time_diff = function(current, schedule)
 	return diff
 end
 
+-- Set wallpaper
+local set_wallpaper = function(path)
+	if dont_stretch_wallpaper then
+		for s in screen do
+			-- Update wallpaper based on the data in the array
+			gears.wallpaper.maximized (path, s)
+		end
+	else
+		-- Update wallpaper based on the data in the array
+		gears.wallpaper.maximized (path)
+	end
+end
 
 -- Update wallpaper (used by the manage_timer function)
 -- I think the gears.wallpaper.maximized is too fast or being ran asynchronously
@@ -112,27 +107,16 @@ end
 -- We need some delay.
 -- Hey it's working, so whatever
 local update_wallpaper = function(wall_name)
-	gears.timer.start_new(0, function()
+	local wall_dir = wall_dir .. wall_name
+	set_wallpaper(wall_dir)
 
-		local wall_dir = wall_dir .. wall_name
-
-		gears.wallpaper.maximized (wall_dir, s)
-
-		-- Overwrite the default wallpaper
-		-- This is important in case we add an extra monitor
-		beautiful.wallpaper = wall_dir
-
-		if update_ls_bg then
-			awful.spawn.easy_async_with_shell(update_ls_cmd .. ' ' .. wall_dir, function() 
-				--
-			end)
-		end
-	end)
+	-- Overwrite the default wallpaper
+	-- This is important in case we add an extra monitor
+	beautiful.wallpaper = wall_dir
 end
 
 -- Updates variables
 local manage_timer = function()
-
 	-- Get current time
 	local time_now = parse_to_seconds(current_time())
 
@@ -171,7 +155,6 @@ local manage_timer = function()
 
 		-- Set the data for the next scheduled time
 		wall_data = {night_schedule, wallpaper_night}
-
 	else
 		-- Night time
 
@@ -180,19 +163,14 @@ local manage_timer = function()
 
 		-- Set the data for the next scheduled time
 		wall_data = {midnight_schedule, wallpaper_midnight}
-
 	end
-  
 	
 	-- Get the time difference to set as timeout for the wall_updater timer below
 	the_countdown = time_diff(wall_data[1], current_time())
-
 end
 
 -- Update values at startup
 manage_timer()
-
-
 
 local wall_updater = gears.timer {
 	-- The timeout is the difference of current time and the scheduled time we set above.
@@ -200,26 +178,24 @@ local wall_updater = gears.timer {
 	autostart = true,
 	call_now = true,
 	callback  = function()
-
 		-- Emit signal to update wallpaper
-    	awesome.emit_signal("module::change_wallpaper")
-  	
+    	awesome.emit_signal('module::change_wallpaper')
   	end
 }
 
 -- Update wallpaper here and update the timeout for the next schedule
-awesome.connect_signal("module::change_wallpaper", function()
+awesome.connect_signal(
+	'module::change_wallpaper',
+	function()
+		set_wallpaper(wall_dir .. wall_data[2])
 
-	-- Update wallpaper based on the data in the array
-	gears.wallpaper.maximized (wall_dir .. wall_data[2], s)
+		-- Update values for the next specified schedule
+		manage_timer()
 
-	-- Update values for the next specified schedule
-	manage_timer()
+		-- Update timer timeout for the next specified schedule
+		wall_updater.timeout = the_countdown
 
-	-- Update timer timeout for the next specified schedule
-	wall_updater.timeout = the_countdown
-
-	-- Restart timer
-	wall_updater:again()
-
-end)
+		-- Restart timer
+		wall_updater:again()
+	end
+)

@@ -61,7 +61,7 @@ local notifbox_add_expired = function(n, notif_icon, notifbox_color)
 end
 
 naughty.connect_signal(
-	"request::display",
+	'request::display',
 	function(n)
 		local notifbox_color = beautiful.groups_bg
 		if n.urgency == 'critical' then
