@@ -24,7 +24,7 @@ function update_bars_visibility()
 	for s in screen do
 		focused = awful.screen.focused()
 		if s.selected_tag then
-			local fullscreen = s.selected_tag.fullscreenMode
+			local fullscreen = s.selected_tag.fullscreen_mode
 			-- Order matter here for shadow
 			s.top_panel.visible = not fullscreen
 			if s.left_panel then
@@ -57,7 +57,7 @@ client.connect_signal(
 	'property::fullscreen',
 	function(c)
 		if c.first_tag then
-			c.first_tag.fullscreenMode = c.fullscreen
+			c.first_tag.fullscreen_mode = c.fullscreen
 		end
 		update_bars_visibility()
 	end
@@ -67,7 +67,7 @@ client.connect_signal(
 	'unmanage',
 	function(c)
 		if c.fullscreen then
-			c.screen.selected_tag.fullscreenMode = false
+			c.screen.selected_tag.fullscreen_mode = false
 			update_bars_visibility()
 		end
 	end

@@ -36,13 +36,14 @@ local return_button = function()
 				1,
 				nil,
 				function()
-					screen.primary.left_panel:toggle()
+					if screen.primary.left_panel.opened then
+						screen.primary.left_panel:toggle()
+					end
 					awful.spawn(apps.default.rofiappmenu, false)
 				end
 			)
 		)
 	)
-
 
 	return widget_button
 end

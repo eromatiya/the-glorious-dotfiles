@@ -49,7 +49,9 @@ local clear_all_button_wrapped = wibox.widget {
 	nil,
 	{
 		clear_all_button,
-		bg = beautiful.groups_bg, 
+		bg = beautiful.groups_bg,
+		border_width = dpi(1),
+		border_color = beautiful.groups_title_bg,
 		shape = gears.shape.circle,
 		widget = wibox.container.background
 	},

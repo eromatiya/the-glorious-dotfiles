@@ -84,7 +84,7 @@ local create_profile = function()
 	)
 
 	local profile_name = wibox.widget {
-		font = 'SF Pro Text Regular 10',
+		font = 'Inter Regular 10',
 		markup = 'User',
 		align = 'left',
 		valign = 'center',

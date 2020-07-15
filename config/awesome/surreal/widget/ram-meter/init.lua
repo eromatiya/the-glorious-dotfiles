@@ -9,7 +9,7 @@ local icons = require('theme.icons')
 
 local meter_name = wibox.widget {
 	text = 'RAM',
-	font = 'SF Pro Text Bold 10',
+	font = 'Inter Bold 10',
 	align = 'left',
 	widget = wibox.widget.textbox
 }

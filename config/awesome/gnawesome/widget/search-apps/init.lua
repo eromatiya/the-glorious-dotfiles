@@ -1,9 +1,3 @@
--------------------------------------------------
--- Rofi toggler widget for Awesome Window Manager
--- Shows the application list
--- Use rofi-git master branch
--------------------------------------------------
-
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')

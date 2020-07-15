@@ -30,7 +30,7 @@ local calculator_screen = wibox.widget {
 	{
 		id = 'calcu_screen',
 		text = '0',
-		font = 'SF Pro Text Regular 20',
+		font = 'Inter Regular 20',
 		align = 'right',
 		valign = 'center',
 		widget = wibox.widget.textbox,
@@ -207,7 +207,7 @@ local build_button_widget = function(text, rcp, rad)
 		{
 			id = 'btn_name',
 			text =  value,
-			font = 'SF Pro Text 12',
+			font = 'Inter 12',
 			align = 'center',
 			valign = 'center',
 			widget = wibox.widget.textbox,

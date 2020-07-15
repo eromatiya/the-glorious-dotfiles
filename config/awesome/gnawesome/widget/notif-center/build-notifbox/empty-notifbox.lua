@@ -26,14 +26,14 @@ local empty_notifbox = wibox.widget {
 		},
 		{
 			text = 'Wow, such empty.',
-			font = 'SF Pro Text Bold 14',
+			font = 'Inter Bold 14',
 			align = 'center',
 			valign = 'center',
 			widget = wibox.widget.textbox
 		},
 		{
 			text = 'Come back later.',
-			font = 'SF Pro Text Regular 10',
+			font = 'Inter Regular 10',
 			align = 'center',
 			valign = 'center',
 			widget = wibox.widget.textbox
@@ -54,9 +54,9 @@ local separator_for_empty_msg =  wibox.widget
 
 -- Make empty_notifbox center
 local centered_empty_notifbox = wibox.widget {
+	layout = wibox.layout.align.vertical,
 	forced_height = dpi(500),
 	expand = 'none',
-	layout = wibox.layout.align.vertical,
 	separator_for_empty_msg,
 	empty_notifbox,
 	separator_for_empty_msg

@@ -33,7 +33,7 @@ local return_button = function()
 	local battery_percentage_text = wibox.widget {
 		id = 'percent_text',
 		text = '100%',
-		font = 'SF Pro Text Bold 11',
+		font = 'Inter Bold 11',
 		align = 'center',
 		valign = 'center',
 		visible = false,
@@ -79,7 +79,8 @@ local return_button = function()
 		align = 'right',
 		margin_leftright = dpi(8),
 		margin_topbottom = dpi(8),
-		preferred_positions = {'right', 'left', 'top', 'bottom'}
+		preferred_positions = {'right', 'left', 'top', 'bottom'},
+		preferred_alignments = {'front', 'back', 'middle'}
 	}
 
 	-- Get battery info script

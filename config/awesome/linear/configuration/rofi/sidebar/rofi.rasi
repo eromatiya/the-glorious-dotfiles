@@ -1,5 +1,5 @@
 configuration {
-	font:                       	"SF Pro Text Regular 10";
+	font:                       	"Inter Regular 10";
 	show-icons:                		true;
 	fullscreen:                     false;
 	sidebar-mode:               	true;
@@ -73,7 +73,7 @@ button {
 
 
 entry {
-	font:            				"SF Pro Text Regular 12";
+	font:            				"Inter Regular 12";
 	background-color:               @background;
 	placeholder-color:          	@foreground;
 	placeholder:                	"Global Search";
@@ -120,7 +120,7 @@ element-icon {
 }
 
 element-text {
-	font:                      		"SF Pro Text Regular 11";
+	font:                      		"Inter Regular 11";
 	expand:                        	true;
 	horizontal-align:              	0.0;
 	vertical-align: 				0.5;

@@ -8,7 +8,7 @@ local blue_light_state = nil
 
 local action_name = wibox.widget {
 	text = 'Blue Light',
-	font = 'SF Pro Text Regular 11',
+	font = 'Inter Regular 11',
 	align = 'left',
 	widget = wibox.widget.textbox
 }

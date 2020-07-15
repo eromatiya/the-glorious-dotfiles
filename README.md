@@ -123,7 +123,7 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 - [`kitty`](https://github.com/kovidgoyal/kitty) as terminal emulator
 - [`tryone144's picom`](https://github.com/tryone144/compton/tree/feature/dual_kawase) as compositor
 - [`rofi-git branch`](https://github.com/davatorium/rofi) as application launcher
-- [`SF Pro Text`](https://developer.apple.com/fonts/) as the setup font
+- [`inter-font`](https://github.com/rsms/inter/) as the setup font
 - [`trivago`](https://www.youtube.com/watch?v=dQw4w9WgXcQ) as hotel
 
 ### required dependencies
@@ -133,6 +133,7 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 | [`awesome-git`](https://github.com/awesomeWM/awesome) |  Highly configurable framework window manager | isn't it obvious? |
 | [`rofi-git`](https://github.com/davatorium/rofi) | Window switcher, application launcher and dmenu replacement | Application launcher |
 | [`tryone144's picom`](https://github.com/tryone144/compton/tree/feature/dual_kawase) | A compositor for X11 | a compositor with kawase-blur |
+| [`inter-font`](https://github.com/rsms/inter/) | A typeface specially designed for user interfaces | setup font |
 
 ### installation and usage
 
@@ -155,6 +156,9 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 
 	# Use the Linear setup
 	$ cp -r the-glorious-dotfiles/config/awesome/linear $HOME/.config/awesome
+
+	# Use the Surreal setup
+	$ cp -r the-glorious-dotfiles/config/awesome/surreal $HOME/.config/awesome
 	```
 
 5. Reload AwesomeWM by pressing <kbd>Super + Shift + r</kbd>.

@@ -12,6 +12,7 @@ depends=(
 	"awesome-git"
 	"rofi-git"
 	"picom-tryone-git"
+	"inter-font"
 )
 optdepends=(
 	"light-git: Brightness widget and OSD" 

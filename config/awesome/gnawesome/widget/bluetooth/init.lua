@@ -1,14 +1,7 @@
--------------------------------------------------
--- Bluetooth Widget for Awesome Window Manager
--- Shows the bluetooth status using the bluetoothctl command
--- Better with Blueman Manager
--------------------------------------------------
-
 local awful = require('awful')
+local wibox = require('wibox')
 local gears = require('gears')
 local naughty = require('naughty')
-local wibox = require('wibox')
-
 local watch = awful.widget.watch
 local dpi = require('beautiful').xresources.apply_dpi
 

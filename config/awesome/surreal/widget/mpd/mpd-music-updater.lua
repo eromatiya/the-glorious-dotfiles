@@ -170,7 +170,6 @@ local check_if_playing = function()
 			local play_button_img = media_buttons.play_button_image.play
 			if not (stdout == nil or stdout == '') then
 				play_button_img:set_image(widget_icon_dir .. 'pause.svg')
-				update_volume_slider()
 			else
 				play_button_img:set_image(widget_icon_dir .. 'play.svg')
 			end
@@ -184,21 +183,6 @@ local update_all_content = function()
 	update_cover()
 	check_if_playing()
 end
-
-local startup_update_quota = 0
-
-gears.timer.start_new(
-	3,
-	function()
-		update_all_content()
-		startup_update_quota = startup_update_quota + 1
-		if startup_update_quota <= 5 then
-			return true
-		else
-			return false
-		end
-	end
-)
 
 local mpd_startup = [[
 # Let's make sure that MPD is running.
@@ -225,6 +209,7 @@ awful.spawn.easy_async_with_shell(
 		awful.spawn.easy_async_with_shell(
 			kill_mpd_change_event_listener, 
 			function ()
+				update_all_content()
 			    awful.spawn.with_line_callback(
 			    	mpd_change_event_listener, {
 			        stdout = function(line)

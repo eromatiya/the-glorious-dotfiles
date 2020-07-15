@@ -1,8 +1,8 @@
+local wibox = require('wibox')
 local awful = require('awful')
 local beautiful = require('beautiful')
-local wibox = require('wibox')
+local dpi = beautiful.xresources.apply_dpi
 local apps = require('configuration.apps')
-local dpi = require('beautiful').xresources.apply_dpi
 
 local left_panel = function(screen)
 	
@@ -59,8 +59,11 @@ local left_panel = function(screen)
 	local open_panel = function(should_run_rofi)
 		panel.width = action_bar_width + panel_content_width
 		backdrop.visible = true
+		
+		-- A hack that will put the backdrop behind the left panel
 		panel.visible = false
 		panel.visible = true
+
 		panel:get_children_by_id('panel_content')[1].visible = true
 		if should_run_rofi then
 			panel:run_rofi()

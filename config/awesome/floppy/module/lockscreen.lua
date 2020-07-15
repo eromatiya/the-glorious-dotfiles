@@ -65,7 +65,7 @@ local time = wibox.widget.textclock(
 
 local wanted_text = wibox.widget {
 	markup = 'INTRUDER ALERT!',
-	font   = 'SFNS Pro Text Bold 12',
+	font   = 'Inter Bold 12',
 	align  = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -93,7 +93,7 @@ local msg_table = {
 
 local wanted_msg = wibox.widget {
 	markup = 'This incident will be reported!',
-	font   = 'SFNS Pro Text Regular 10',
+	font   = 'Inter Regular 10',
 	align  = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox

@@ -1,16 +1,12 @@
-local awful = require('awful')
-local beautiful = require('beautiful')
-local naughty = require('naughty')
 local wibox = require('wibox')
+local awful = require('awful')
 local gears = require('gears')
-
+local naughty = require('naughty')
+local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
-
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/weather/icons/'
-
 local clickable_container = require('widget.clickable-container')
-
 local secrets = require('configuration.secrets')
 
 local key     = secrets.weather.key
@@ -91,8 +87,8 @@ local refresh_widget = wibox.widget {
 local weather_desc_temp = wibox.widget {
 	{
 		id 	   = 'description',
-		markup = 'dust and clouds, -1000°C',
-		font   = 'SF Pro Text Bold 12',
+		markup = 'Dust and clouds, -1000°C',
+		font   = 'Inter Regular 10',
 		align  = 'left',
 		valign = 'center',
 		widget = wibox.widget.textbox
@@ -112,7 +108,7 @@ local weather_location = wibox.widget {
 	{
 		id 	   = 'location',
 		markup = 'Earth, Milky Way',
-		font   = 'SF Pro Text Regular 12',
+		font   = 'Inter Regular 10',
 		align  = 'left',
 		valign = 'center',
 		widget = wibox.widget.textbox
@@ -129,24 +125,24 @@ local weather_location = wibox.widget {
 }
 
 local weather_sunrise = wibox.widget {
-	markup = "00:00",
-	font   = 'SF Pro Text Regular 10',
+	markup = '00:00',
+	font   = 'Inter Regular 10',
 	align  = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
 }
 
 local weather_sunset = wibox.widget {
-	markup = "00:00",
-	font   = 'SF Pro Text Regular 10',
+	markup = '00:00',
+	font   = 'Inter Regular 10',
 	align  = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
 }
 
 local weather_data_time = wibox.widget {
-	markup = "00:00",
-	font   = 'SF Pro Text Regular 10',
+	markup = '00:00',
+	font   = 'Inter Regular 10',
 	align  = 'center',
 	valign = 'center',
 	widget = wibox.widget.textbox
@@ -170,7 +166,6 @@ local weather_report =  wibox.widget {
 				nil,
 				{
 					layout = wibox.layout.fixed.vertical,
-					spacing = dpi(3),
 					weather_location,
 					weather_desc_temp,
 					{
@@ -210,17 +205,17 @@ local weather_report =  wibox.widget {
 	widget = wibox.container.background	
 }
 
-if units == "metric" then
-	weather_temperature_symbol = "°C"
-elseif units == "imperial" then
-	weather_temperature_symbol = "°F"
+if units == 'metric' then
+	weather_temperature_symbol = '°C'
+elseif units == 'imperial' then
+	weather_temperature_symbol = '°F'
 end
 
 --  Weather script using your API KEY
 local weather_details_script = [[
-KEY="]]..key..[["
-CITY="]]..city_id..[["
-UNITS="]]..units..[["
+KEY="]] .. key .. [["
+CITY="]] .. city_id .. [["
+UNITS="]] .. units .. [["
 
 weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
 
@@ -257,9 +252,9 @@ awesome.connect_signal(
 
 				local weather_data_tbl = {}
 
-				for data in stdout:gmatch("[^\n]+") do
-					local key = data:match("(.*)=")
-					local value = data:match("=(.*)")
+				for data in stdout:gmatch('[^\n]+') do
+					local key = data:match('(.*)=')
+					local value = data:match('=(.*)')
 					weather_data_tbl[key] = value
 				end
 
@@ -267,9 +262,10 @@ awesome.connect_signal(
 
 				if icon_code == '...' then
 
-					awesome.emit_signal("widget::weather_update", 
+					awesome.emit_signal(
+						'widget::weather_update', 
 						icon_code, 
-						'dust and clouds, -1000°C', 
+						'Dust and clouds, -1000°C', 
 						'Earth, Milky Way', 
 						'00:00', 
 						'00:00', 
@@ -289,7 +285,8 @@ awesome.connect_signal(
 					local weather_description = description .. ', ' .. temperature .. weather_temperature_symbol
 					local weather_location = location .. ', ' .. country
 					
-					awesome.emit_signal("widget::weather_update", 
+					awesome.emit_signal(
+						'widget::weather_update', 
 						icon_code, 
 						weather_description, 
 						weather_location, 
@@ -299,9 +296,10 @@ awesome.connect_signal(
 					)
 				end
 				collectgarbage('collect')
-		end
-	)
-end)
+			end
+		)
+	end
+)
 
 local update_widget_timer = gears.timer {
 	timeout = update_interval,
@@ -326,7 +324,7 @@ awesome.connect_signal(
 )
 
 awesome.connect_signal(
-	"widget::weather_update", 
+	'widget::weather_update', 
 	function(code, desc, location, sunrise, sunset, data_receive)
 		local widget_icon_name = 'weather-error'
 

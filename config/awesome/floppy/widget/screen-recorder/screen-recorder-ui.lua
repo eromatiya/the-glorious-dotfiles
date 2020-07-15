@@ -31,7 +31,7 @@ record_tbl.screen_rec_toggle_button = wibox.widget {
 
 record_tbl.screen_rec_countdown_txt = wibox.widget {
 	id = 'countdown_text',
-	font = 'SF Pro Text Bold 64',
+	font = 'Inter Bold 64',
 	text = '4',
 	align = 'center',
 	valign = 'bottom',

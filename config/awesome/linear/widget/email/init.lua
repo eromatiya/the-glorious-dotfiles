@@ -3,12 +3,9 @@ local gears = require('gears')
 local wibox = require('wibox')
 local naughty = require('naughty')
 local beautiful = require('beautiful')
-
 local dpi = beautiful.xresources.apply_dpi
-
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/email/icons/'
-
 local secrets = require('configuration.secrets')
 
 local email_account   = secrets.email.address
@@ -47,16 +44,15 @@ local email_icon_widget = wibox.widget {
 }
 
 local email_from_text = wibox.widget {
-	font = 'SF Pro Text Bold 10',
+	font = 'Inter Regular 10',
 	markup = 'From:',
 	align = 'left',
 	valign = 'center',
 	widget = wibox.widget.textbox
 }
 
-
 local email_recent_from = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'loading@stdout.sh',
 	align = 'left',
 	valign = 'center',
@@ -64,7 +60,7 @@ local email_recent_from = wibox.widget {
 }
 
 local email_subject_text = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Subject:',
 	align = 'left',
 	valign = 'center',
@@ -72,7 +68,7 @@ local email_subject_text = wibox.widget {
 }
 
 local email_recent_subject = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Loading data',
 	align = 'left',
 	valign = 'center',
@@ -80,7 +76,7 @@ local email_recent_subject = wibox.widget {
 }
 
 local email_date_text = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Local Date:',
 	align = 'left',
 	valign = 'center',
@@ -88,7 +84,7 @@ local email_date_text = wibox.widget {
 }
 
 local email_recent_date = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Loading date...',
 	align = 'left',
 	valign = 'center',
@@ -139,11 +135,13 @@ local email_report = wibox.widget{
 		widget = wibox.container.margin
 	},
 	forced_height = dpi(92),
+	border_width = dpi(1),
+	border_color = beautiful.groups_title_bg,
 	bg = beautiful.groups_bg,
 	shape = function(cr, width, height)
-		gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius)
-	end,
-	widget = wibox.container.background
+	gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius)
+end,
+widget = wibox.container.background
 }
 
 local email_details_tooltip = awful.tooltip
@@ -261,7 +259,7 @@ end
 
 local set_email_data_tooltip = function(email_data)
 	local email_data = email_data:match('(From:.*)')
-	local counter = "<span font='SF Pro Text Bold 10'>Unread Count: </span>" .. unread_email_count
+	local counter = "<span font='Inter Regular 10'>Unread Count: </span>" .. unread_email_count
 	email_details_tooltip:set_markup(counter .. '\n\n' .. email_data)
 end
 
@@ -280,7 +278,7 @@ local set_no_connection_msg = function()
 	set_widget_markup(
 		'message@stderr.sh',
 		'Check network connection!',
-		os.date("%d-%m-%Y %H:%M:%S"),
+		os.date('%d-%m-%Y %H:%M:%S'),
 		'No internet connection!'		
 	)
 end
@@ -289,7 +287,7 @@ local set_invalid_credentials_msg = function()
 	set_widget_markup(
 		'message@stderr.sh',
 		'Invalid Credentials!',
-		os.date("%d-%m-%Y %H:%M:%S"),
+		os.date('%d-%m-%Y %H:%M:%S'),
 		'You have an invalid credentials!'
 	)
 end
@@ -323,7 +321,7 @@ local set_empty_inbox_msg = function()
 	set_widget_markup(
 		'empty@stdout.sh',
 		'Empty inbox',
-		os.date("%d-%m-%Y %H:%M:%S"),
+		os.date('%d-%m-%Y %H:%M:%S'),
 		'Empty inbox.'
 	)
 end
@@ -334,13 +332,13 @@ local fetch_email_data = function()
 		function(stdout)
 			stdout = gears.string.xml_escape(stdout:sub(1, -2))
 
-			if stdout:match("Temporary failure in name resolution") then
+			if stdout:match('Temporary failure in name resolution') then
 				set_no_connection_msg()
 				return
-			elseif stdout:match("Invalid credentials") then
+			elseif stdout:match('Invalid credentials') then
 				set_invalid_credentials_msg()
 				return
-			elseif stdout:match("Unread Count: 0") then
+			elseif stdout:match('Unread Count: 0') then
 				email_icon_widget.icon:set_image(widget_icon_dir .. 'email.svg')
 				set_empty_inbox_msg()
 				return
@@ -365,7 +363,7 @@ local set_missing_secrets_msg = function()
 	set_widget_markup(
 		'message@stderr.sh',
 		'Credentials are missing!',
-		os.date("%d-%m-%Y %H:%M:%S"),
+		os.date('%d-%m-%Y %H:%M:%S'),
 		'Missing credentials!'
 	)
 end
@@ -390,9 +388,8 @@ local update_widget_timer = gears.timer {
 	end
 }
 
-
 email_report:connect_signal(
-	"mouse::enter",
+	'mouse::enter',
 	function()
 		check_secrets()
 	end

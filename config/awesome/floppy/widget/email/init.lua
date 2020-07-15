@@ -44,7 +44,7 @@ local email_icon_widget = wibox.widget {
 }
 
 local email_from_text = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'From:',
 	align = 'left',
 	valign = 'center',
@@ -52,7 +52,7 @@ local email_from_text = wibox.widget {
 }
 
 local email_recent_from = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'loading@stdout.sh',
 	align = 'left',
 	valign = 'center',
@@ -60,7 +60,7 @@ local email_recent_from = wibox.widget {
 }
 
 local email_subject_text = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Subject:',
 	align = 'left',
 	valign = 'center',
@@ -68,7 +68,7 @@ local email_subject_text = wibox.widget {
 }
 
 local email_recent_subject = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Loading data',
 	align = 'left',
 	valign = 'center',
@@ -76,7 +76,7 @@ local email_recent_subject = wibox.widget {
 }
 
 local email_date_text = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Local Date:',
 	align = 'left',
 	valign = 'center',
@@ -84,7 +84,7 @@ local email_date_text = wibox.widget {
 }
 
 local email_recent_date = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Loading date...',
 	align = 'left',
 	valign = 'center',
@@ -257,7 +257,7 @@ end
 
 local set_email_data_tooltip = function(email_data)
 	local email_data = email_data:match('(From:.*)')
-	local counter = "<span font='SF Pro Text Regular 10'>Unread Count: </span>" .. unread_email_count
+	local counter = "<span font='Inter Regular 10'>Unread Count: </span>" .. unread_email_count
 	email_details_tooltip:set_markup(counter .. '\n\n' .. email_data)
 end
 

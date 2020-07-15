@@ -44,12 +44,6 @@ midnight_schedule = '24:00:00'
 -- Don't stretch wallpaper on multihead setups if true
 local dont_stretch_wallpaper = false
 
--- Update 3rd party application lockscreen background
-local update_ls_bg = false
-
--- Update 3rd party application lockscreen background command
-local update_ls_cmd = 'mantablockscreen --image'
-
 --  ========================================
 -- 				   Processes
 --	    Don't touch it if it's working
@@ -64,7 +58,7 @@ end
 -- In seconds
 the_countdown = nil
 
--- We will use an array for hour change and wallpaper string
+-- We will use a table for hour change and wallpaper string
 -- Element 0 errm 1 will store the incoming/next scheduled time
 -- Geez why the f is lua's array starts with `1`? lol
 -- Element 2 will have the wallpaper file name
@@ -94,29 +88,31 @@ local time_diff = function(current, schedule)
 	return diff
 end
 
+-- Set wallpaper
+local set_wallpaper = function(path)
+	if dont_stretch_wallpaper then
+		for s in screen do
+			-- Update wallpaper based on the data in the array
+			gears.wallpaper.maximized (path, s)
+		end
+	else
+		-- Update wallpaper based on the data in the array
+		gears.wallpaper.maximized (path)
+	end
+end
+
 -- Update wallpaper (used by the manage_timer function)
 -- I think the gears.wallpaper.maximized is too fast or being ran asynchronously
 -- So the wallpaper is not being updated on awesome (re)start without this timer
 -- We need some delay.
 -- Hey it's working, so whatever
 local update_wallpaper = function(wall_name)
-	gears.timer.start_new(0, function()
-		local wall_dir = wall_dir .. wall_name
-		gears.wallpaper.maximized (wall_dir, s)
+	local wall_dir = wall_dir .. wall_name
+	set_wallpaper(wall_dir)
 
-		-- Overwrite the default wallpaper
-		-- This is important in case we add an extra monitor
-		beautiful.wallpaper = wall_dir
-
-		if update_ls_bg then
-			awful.spawn.easy_async_with_shell(
-				update_ls_cmd .. ' ' .. wall_dir,
-				function() 
-				--
-				end
-			)
-		end
-	end)
+	-- Overwrite the default wallpaper
+	-- This is important in case we add an extra monitor
+	beautiful.wallpaper = wall_dir
 end
 
 -- Updates variables
@@ -191,15 +187,7 @@ local wall_updater = gears.timer {
 awesome.connect_signal(
 	'module::change_wallpaper',
 	function()
-		if dont_stretch_wallpaper then
-			for s in screen do
-				-- Update wallpaper based on the data in the array
-				gears.wallpaper.maximized (wall_dir .. wall_data[2], s)
-			end
-		else
-			-- Update wallpaper based on the data in the array
-			gears.wallpaper.maximized (wall_dir .. wall_data[2])
-		end
+		set_wallpaper(wall_dir .. wall_data[2])
 
 		-- Update values for the next specified schedule
 		manage_timer()

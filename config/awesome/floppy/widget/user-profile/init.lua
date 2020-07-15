@@ -89,7 +89,7 @@ profile_imagebox:buttons(
 )
 
 local profile_name = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'User',
 	align = 'left',
 	valign = 'center',
@@ -97,7 +97,7 @@ local profile_name = wibox.widget {
 }
 
 local distro_name = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'GNU/Linux',
 	align = 'left',
 	valign = 'center',
@@ -105,7 +105,7 @@ local distro_name = wibox.widget {
 }
 
 local kernel_version = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'Linux',
 	align = 'left',
 	valign = 'center',
@@ -113,7 +113,7 @@ local kernel_version = wibox.widget {
 }
 
 local uptime_time = wibox.widget {
-	font = 'SF Pro Text Regular 10',
+	font = 'Inter Regular 10',
 	markup = 'up 1 minute',
 	align = 'left',
 	valign = 'center',
