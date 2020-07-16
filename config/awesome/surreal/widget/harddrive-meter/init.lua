@@ -67,7 +67,7 @@ watch(
 	end
 )
 
-local brightness_setting = wibox.widget {
+local harddrive_meter = wibox.widget {
 	layout = wibox.layout.fixed.vertical,
 	spacing = dpi(5),
 	meter_name,
@@ -90,4 +90,4 @@ local brightness_setting = wibox.widget {
 	}
 }
 
-return brightness_setting
+return harddrive_meter

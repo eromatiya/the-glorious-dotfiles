@@ -1,11 +1,10 @@
 local wibox = require('wibox')
+local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
-
-local watch = require('awful.widget.watch')
-local icons = require('theme.icons')
-
+local watch = awful.widget.watch
 local dpi = beautiful.xresources.apply_dpi
+local icons = require('theme.icons')
 
 local slider = wibox.widget {
 	nil,
@@ -26,16 +25,42 @@ local slider = wibox.widget {
 
 local max_temp = 80
 
-watch(
-	'bash -c "cat /sys/class/thermal/thermal_zone0/temp"',
-	5,
-	function(_, stdout)
-		local temp = stdout:match('(%d+)')
-		slider.temp_status:set_value((temp / 1000) / max_temp * 100)
-		collectgarbage('collect')
+awful.spawn.easy_async_with_shell(
+	[[
+	temp_path=null
+	for i in /sys/class/hwmon/hwmon*/temp*_input;
+	do
+		temp_path="$(echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null ||
+			echo $(basename ${i%_*})) $(readlink -f $i)");"
+
+		label="$(echo $temp_path | awk '{print $2}')"
+
+		if [ "$label" = "Package" ];
+		then
+			echo ${temp_path} | awk '{print $5}' | tr -d ';\n'
+			exit;
+		fi
+	done
+	]],
+	function(stdout)
+		local temp_path = stdout:gsub('%\n', '')
+		if temp_path == '' or not temp_path then
+			temp_path = '/sys/class/thermal/thermal_zone0/temp'
+		end
+
+		watch(
+			[[
+			sh -c "cat ]] .. temp_path .. [["
+			]],
+			10,
+			function(_, stdout)
+				local temp = stdout:match('(%d+)')
+				slider.temp_status:set_value((temp / 1000) / max_temp * 100)
+				collectgarbage('collect')
+			end
+		)
 	end
 )
-
 
 local temperature_meter = wibox.widget {
 	{
