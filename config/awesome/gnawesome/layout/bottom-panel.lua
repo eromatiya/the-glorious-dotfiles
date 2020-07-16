@@ -85,8 +85,8 @@ local bottom_panel = function(s)
 					spacing = dpi(10),
 					s.systray,
 					s.tray_toggler,
-					s.bluetooth,
 					s.network,
+					s.bluetooth,
 					s.battery,
 					layout_box,
 					separator
