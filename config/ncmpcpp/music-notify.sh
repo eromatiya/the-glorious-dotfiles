@@ -67,7 +67,7 @@ if [[ ! -z "$CHECK_EXIFTOOL" ]]; then
 	fi
 
 	# Extract album cover using perl-image-exiftool
-	exiftool -b $PICTURE_TAG $SONG  > "$TMP_COVER_PATH"
+	exiftool -b "$PICTURE_TAG" "$SONG"  > "$TMP_COVER_PATH"
 
 else
 
