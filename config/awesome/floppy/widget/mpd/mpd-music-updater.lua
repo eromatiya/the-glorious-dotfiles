@@ -15,7 +15,7 @@ local apps = require('configuration.apps')
 
 local update_cover = function()
 	
-	local extract_script = [[
+	local extract_script = [=[
 		MUSIC_DIR="$(xdg-user-dir MUSIC)"
 		TMP_DIR="/tmp/awesomewm/${USER}/"
 		TMP_COVER_PATH=${TMP_DIR}"cover.jpg"
@@ -29,9 +29,15 @@ local update_cover = function()
 
 		if [ ! -z "$CHECK_EXIFTOOL" ]; then
 
+            SONG="$mpd_music_path/$(mpc -p 6600 --format "%file%" current)"
+            PICTURE_TAG="-Picture"
+
+            if [[ $SONG == *".m4a" ]]; then
+                PICTURE_TAG="-CoverArt"
+            fi
+
 			# Extract album cover using perl-image-exiftool
-		 	exiftool -b -Picture \
-		 	"$MUSIC_DIR/$(mpc -p 6600 --format "%file%" current)" > "$TMP_COVER_PATH"
+            exiftool -b $PICTURE_TAG $SONG  > "$TMP_COVER_PATH"
 
 		else
 
@@ -59,7 +65,7 @@ local update_cover = function()
 		if [ -f $TMP_COVER_PATH ]; then 
 			echo $TMP_COVER_PATH; 
 		fi
-	]]
+	]=]
 
 	awful.spawn.easy_async_with_shell(
 		extract_script, 
