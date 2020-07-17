@@ -130,10 +130,10 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 
 | Name | Description | Why/Where is it needed? |
 | --- | --- | --- |
-| [`awesome-git`](https://github.com/awesomeWM/awesome) |  Highly configurable framework window manager | isn't it obvious? |
+| [`awesome-git`](https://github.com/awesomeWM/awesome) |  Highly configurable framework window manager | Isn't it obvious? |
 | [`rofi-git`](https://github.com/davatorium/rofi) | Window switcher, application launcher and dmenu replacement | Application launcher |
-| [`tryone144's picom`](https://github.com/tryone144/compton/tree/feature/dual_kawase) | A compositor for X11 | a compositor with kawase-blur |
-| [`inter-font`](https://github.com/rsms/inter/) | A typeface specially designed for user interfaces | setup font |
+| [`tryone144's picom`](https://github.com/tryone144/compton/tree/feature/dual_kawase) | A compositor for X11 | A compositor with kawase-blur |
+| [`inter-font`](https://github.com/rsms/inter/) | A typeface specially designed for user interfaces | Setup font | 
 
 ### installation and usage
 
@@ -248,7 +248,7 @@ Some of these are outdated, so it is better if you try them yourself.
 
 | [thunderblurred CSS theme for Thunderbird](https://github.com/manilarome/thunderblurred) |
 | --- |
-| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/thunderblurred.webp)
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/thunderblurred.webp) |
 
 <br>
 
