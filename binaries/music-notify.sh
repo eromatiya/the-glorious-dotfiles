@@ -59,9 +59,15 @@ function get_desktop_env() {
 # Extract album cover
 if [[ ! -z "$CHECK_EXIFTOOL" ]]; then
 
+	SONG="$MUSIC_DIR/$(mpc -p 6600 --format "%file%" current)"
+	PICTURE_TAG="-Picture"
+			
+	if [[ "$SONG" == *".m4a" ]]; then
+		PICTURE_TAG="-CoverArt"
+	fi
+
 	# Extract album cover using perl-image-exiftool
- 	exiftool -b -Picture \
- 	"${MUSIC_DIR}/$(mpc -p 6600 --format "%file%" current)" > "$TMP_COVER_PATH"
+	exiftool -b $PICTURE_TAG $SONG  > "$TMP_COVER_PATH"
 
 else
 
