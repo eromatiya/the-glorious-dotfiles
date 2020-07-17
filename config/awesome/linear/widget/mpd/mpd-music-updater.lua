@@ -15,7 +15,7 @@ local apps = require('configuration.apps')
 
 local update_cover = function()
 	
-	local extract_script = [[
+	local extract_script = [=[
 		MUSIC_DIR="$(xdg-user-dir MUSIC)"
 		TMP_DIR="/tmp/awesomewm/${USER}/"
 		TMP_COVER_PATH=${TMP_DIR}"cover.jpg"
@@ -29,9 +29,15 @@ local update_cover = function()
 
 		if [ ! -z "$CHECK_EXIFTOOL" ]; then
 
+			SONG="$MUSIC_DIR/$(mpc -p 6600 --format "%file%" current)"
+			PICTURE_TAG="-Picture"
+			
+			if [[ "$SONG" == *".m4a" ]]; then
+				PICTURE_TAG="-CoverArt"
+			fi
+
 			# Extract album cover using perl-image-exiftool
-		 	exiftool -b -Picture \
-		 	"$MUSIC_DIR/$(mpc -p 6600 --format "%file%" current)" > "$TMP_COVER_PATH"
+			exiftool -b $PICTURE_TAG $SONG  > "$TMP_COVER_PATH"
 
 		else
 
@@ -40,11 +46,11 @@ local update_cover = function()
 
 			ffmpeg \
 			-hide_banner \
-		    -loglevel 0 \
-		    -y \
-		    -i "$TMP_SONG" \
-		    -vf scale=300:-1 \
-		    "$TMP_COVER_PATH" > /dev/null 2>&1
+			-loglevel 0 \
+			-y \
+			-i "$TMP_SONG" \
+			-vf scale=300:-1 \
+			"$TMP_COVER_PATH" > /dev/null 2>&1
 
 			rm "$TMP_SONG"
 		fi
@@ -52,14 +58,14 @@ local update_cover = function()
 		img_data=$(identify $TMP_COVER_PATH 2>&1)
 
 		# Delete the cover.jpg if it's not a valid image
-		if [[ $img_data == *"insufficient"* ]] .. ']]' .. [[; then
+		if [[ $img_data == *"insufficient"* ]]; then
 			rm $TMP_COVER_PATH
 		fi
 
 		if [ -f $TMP_COVER_PATH ]; then 
 			echo $TMP_COVER_PATH; 
 		fi
-	]]
+	]=]
 
 	awful.spawn.easy_async_with_shell(
 		extract_script, 
@@ -365,14 +371,14 @@ awful.spawn.easy_async_with_shell(
 			kill_mpd_change_event_listener, 
 			function ()
 				update_all_content()
-			    awful.spawn.with_line_callback(
-			    	mpd_change_event_listener,
-			    	{
-			        	stdout = function(line)
-			        		update_all_content()
-			        	end
-			    	}
-			    )
+				awful.spawn.with_line_callback(
+					mpd_change_event_listener,
+					{
+						stdout = function(line)
+							update_all_content()
+						end
+					}
+				)
 			end
 		)
 	end
