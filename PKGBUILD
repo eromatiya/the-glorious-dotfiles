@@ -2,7 +2,7 @@
 # Contributor: demostanis worlds <demostanis@protonmail.com>
 
 pkgname=the-glorious-dotfiles
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A glorified personal dot files"
 arch=("x86_64")
@@ -29,8 +29,6 @@ optdepends=(
 	"redshift: Blue light widget" 
 	"xfce4-power-manager: Default launch application for battery widget" 
 	"upower: Battery widget" 
-	"archlinux-xdg-menu: Menu Module/Useful for generating app list manually" 
-	"awesome-freedesktop-git: Menu Module/Useful for generating app list automatically" 
 	"jq: Read weather" 
 	"noto-fonts-emoji: Emoji support for notification center" 
 	"nerd-fonts-fantasque-sans-mono: Rofi unicode font" 
