@@ -291,10 +291,10 @@ function icon_file_type(){
 }
 
 
-# Pass the argument to python scrupt
+# Pass the argument to python script
 function web_search() {
 	# Pass the search query to web-search script
-	python "${MY_PATH}/web-search.py" "${1}"
+	"${MY_PATH}/web-search.py" "${1}"
 	exit;
 }
 

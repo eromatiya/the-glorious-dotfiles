@@ -40,9 +40,9 @@ return {
 		-- Rofi Web Search
 		rofiglobal				= 'rofi -dpi ' .. screen.primary.dpi .. 
 									' -show "Global Search" -modi "Global Search":' .. config_dir .. 
-									'/configuration/rofi/sidebar/rofi-spotlight.sh' .. 
+									'/configuration/rofi/global/rofi-spotlight.sh' .. 
 									' -theme ' .. config_dir ..
-									'/configuration/rofi/sidebar/rofi.rasi',
+									'/configuration/rofi/global/rofi.rasi',
 
 		-- Application Menu
 		rofiappmenu 			= 'rofi -dpi ' .. screen.primary.dpi ..
