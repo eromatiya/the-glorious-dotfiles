@@ -35,6 +35,7 @@ root.keys(require('configuration.keys.global'))
 
 require('module.notifications')
 require('module.auto-start')
+require('module.backdrop')
 require('module.decorate-client')
 require('module.exit-screen')
 require('module.quake-terminal')
