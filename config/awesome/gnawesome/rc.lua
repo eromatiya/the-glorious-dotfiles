@@ -1,10 +1,9 @@
--- ░█▀█░█░█░█▀▀░█▀▀░█▀█░█▄█░█▀▀░█░█░█▄█
--- ░█▀█░█▄█░█▀▀░▀▀█░█░█░█░█░█▀▀░█▄█░█░█
--- ░▀░▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░▀░▀
+-- ░█▀▀░█▀█░█▀█░█░█░█▀▀░█▀▀░█▀█░█▄█░█▀▀
+-- ░█░█░█░█░█▀█░█▄█░█▀▀░▀▀█░█░█░█░█░█▀▀
+-- ░▀▀▀░▀░▀░▀░▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
 -- Banner generated using `toilet -f pagga AwesomeWM"
 
 local gears = require('gears')
-local awful = require('awful')
 local beautiful = require('beautiful')
 require('awful.autofocus')
 
