@@ -113,18 +113,6 @@ local return_button = function()
         })
     end
 
-    local show_dead_batt_msg = true
-    local show_battery_dead_literally_msg = function()
-        naughty.notification ({
-            icon = widget_icon_dir .. 'battery-alert-red.svg',
-            app_name = 'System notification',
-            title = 'Battery is dying, literally!',
-            message = 'Your battery said that it is fully-charged but the percentage is less than 100.' ..
-            	' I think it\'s time to replace it before it goes kaboom!',
-            urgency = 'critical'
-        })
-    end
-
 	local update_battery = function(status)
 
 		awful.spawn.easy_async_with_shell(
@@ -139,20 +127,6 @@ local return_button = function()
 				battery_percentage_text:set_text(battery_percentage .. '%')
 
 				local icon_name = 'battery'
-
-				-- Dead battery literally
-				if status == 'fully-charged' and battery_percentage < 100 then
-					if not show_dead_batt_msg then return end
-					show_dead_batt_msg = false
-					icon_name = icon_name .. '-' .. 'alert-red'
-					if os.difftime(os.time(), last_battery_check) > 300 or notify_critcal_battery then
-						last_battery_check = os.time()
-						notify_critcal_battery = false
-						show_battery_dead_literally_msg()
-					end
-					battery_imagebox.icon:set_image(gears.surface.load_uncached(widget_icon_dir .. icon_name .. '.svg'))
-					return
-				end
 
 				-- Fully charged
 				if (status == 'fully-charged' or status == 'charging') and battery_percentage == 100 then
