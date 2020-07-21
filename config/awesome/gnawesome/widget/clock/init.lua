@@ -4,12 +4,12 @@ local gears = require('gears')
 local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require('widget.clickable-container')
-local military_clock = false
+local military_mode = false
 
 local create_clock = function(s)
 
 	local clock_format = nil
-	if not military_clock then
+	if not military_mode then
 		clock_format = '<span font="Inter Bold 11">%I:%M %p</span>'
 	else
 		clock_format = '<span font="Inter Bold 11">%H:%M</span>'

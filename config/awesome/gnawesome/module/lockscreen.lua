@@ -195,7 +195,9 @@ local locker = function(s)
 
 	-- Update username textbox
 	awful.spawn.easy_async_with_shell(
-		'sh -c "getent passwd `whoami` | cut -d : -f 5 | tr -d \'\\n\'"',
+		[[
+		sh -c "getent passwd `whoami` | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d '\n'"
+		]],
 		function(stdout)
 			-- No full name, use username
 			if not stdout or stdout == '' then
