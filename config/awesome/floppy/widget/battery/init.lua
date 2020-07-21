@@ -113,12 +113,13 @@ local return_button = function()
         })
     end
 
+    local show_dead_batt_msg = true
     local show_battery_dead_literally_msg = function()
         naughty.notification ({
             icon = widget_icon_dir .. 'battery-alert-red.svg',
             app_name = 'System notification',
-            title = 'Battery is dead, literally!',
-            message = 'Hey, your battery said that it is fully-charged but the percentage is less than 100.' ..
+            title = 'Battery is dying, literally!',
+            message = 'Your battery said that it is fully-charged but the percentage is less than 100.' ..
             	' I think it\'s time to replace it before it goes kaboom!',
             urgency = 'critical'
         })
@@ -141,6 +142,8 @@ local return_button = function()
 
 				-- Dead battery literally
 				if status == 'fully-charged' and battery_percentage < 100 then
+					if not show_dead_batt_msg then return end
+					show_dead_batt_msg = false
 					icon_name = icon_name .. '-' .. 'alert-red'
 					if os.difftime(os.time(), last_battery_check) > 300 or notify_critcal_battery then
 						last_battery_check = os.time()
