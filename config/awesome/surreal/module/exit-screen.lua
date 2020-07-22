@@ -60,13 +60,23 @@ update_profile_pic()
 
 local update_user_name = function()
 	awful.spawn.easy_async_with_shell(
-		'printf \"$(whoami)@$(hostname)\"',
-		function(stdout) 
-			local stdout = stdout:gsub('%\n','')
-			local username = stdout:match('(.*)@')
-			username = username:sub(1, 1):upper() .. username:sub(2)
-			greeter_message:set_markup('Choose wisely, ' .. username .. '!')
+		[[
+		sh -c '
+		fullname="$(getent passwd `whoami` | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d '\n')"
+		if [ -z "$fullname" ];
+		then
+			printf "$(whoami)@$(hostname)"
+		else
+			printf "$fullname"
+		fi
+		'
+		]],
+		function(stdout)
+			stdout = stdout:gsub('%\n','')
+			local first_name = stdout:match('(.*)@') or stdout:match('(.*)%s')
+			first_name = first_name:sub(1, 1):upper() .. first_name:sub(2)
 			profile_name:set_markup(stdout)
+			greeter_message:set_markup('Choose wisely, ' .. first_name .. '!')
 		end
 	)
 end

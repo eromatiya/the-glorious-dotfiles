@@ -196,21 +196,18 @@ local locker = function(s)
 	-- Update username textbox
 	awful.spawn.easy_async_with_shell(
 		[[
-		sh -c "getent passwd `whoami` | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d '\n'"
+		sh -c '
+		fullname="$(getent passwd `whoami` | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d '\n')"
+		if [ -z "$fullname" ];
+		then
+			printf "$(whoami)@$(hostname)"
+		else
+			printf "$fullname"
+		fi
+		'
 		]],
 		function(stdout)
-			-- No full name, use username
-			if not stdout or stdout == '' then
-				awful.spawn.easy_async_with_shell(
-					'sh -c "whoami | tr -d \'\\n\'"',
-					function(stdout)
-						uname_text.markup = stdout
-					end
-				)
-				return
-			end
-
-			-- Set fullname markup
+			stdout = stdout:gsub('%\n','')
 			uname_text.markup = stdout
 		end
 	)
