@@ -117,7 +117,7 @@ local function list_update(w, buttons, label, data, objects)
 	end
 end
 
-local TagList = function(s)
+local tag_list = function(s)
 	return awful.widget.taglist(
 		s,
 		awful.widget.taglist.filter.all,
@@ -169,4 +169,4 @@ local TagList = function(s)
 		wibox.layout.fixed.vertical()
 	)
 end
-return TagList
+return tag_list

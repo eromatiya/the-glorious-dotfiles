@@ -234,7 +234,7 @@ local tasklist_buttons =
 	)
 )
 
-local TaskList = function(s)
+local task_list = function(s)
 	return awful.widget.tasklist(
 		s,
 		awful.widget.tasklist.filter.currenttags,
@@ -245,4 +245,4 @@ local TaskList = function(s)
 	)
 end
 
-return TaskList
+return task_list
