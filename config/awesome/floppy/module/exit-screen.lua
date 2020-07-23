@@ -62,7 +62,7 @@ local update_user_name = function()
 	awful.spawn.easy_async_with_shell(
 		[[
 		sh -c '
-		fullname="$(getent passwd `whoami` | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d '\n')"
+		fullname="$(getent passwd `whoami` | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d "\n")"
 		if [ -z "$fullname" ];
 		then
 			printf "$(whoami)@$(hostname)"
@@ -73,7 +73,7 @@ local update_user_name = function()
 		]],
 		function(stdout)
 			stdout = stdout:gsub('%\n','')
-			local first_name = stdout:match('(.*)@') or stdout:match('(.*)%s')
+			local first_name = stdout:match('(.*)@') or stdout:match('(.-)%s')
 			first_name = first_name:sub(1, 1):upper() .. first_name:sub(2)
 			profile_name:set_markup(stdout)
 			greeter_message:set_markup('Choose wisely, ' .. first_name .. '!')
@@ -280,71 +280,74 @@ screen.connect_signal(
 		)
 
 		s.exit_screen : setup {
+			layout = wibox.layout.align.vertical,
+			expand = 'none',
 			nil,
 			{
-				nil,
+				layout = wibox.layout.align.vertical,
 				{
+					nil,
 					{
-						nil,
+						layout = wibox.layout.fixed.vertical,
+						spacing = dpi(5),
 						{
-							layout = wibox.layout.fixed.vertical,
-							spacing = dpi(5),
+							profile_imagebox_bg,
 							{
-								profile_imagebox_bg,
+								layout = wibox.layout.align.vertical,
+								expand = 'none',
+								nil,
 								{
-									layout = wibox.layout.align.vertical,
+									layout = wibox.layout.align.horizontal,
 									expand = 'none',
 									nil,
-									{
-										layout = wibox.layout.align.horizontal,
-										expand = 'none',
-										nil,
-										profile_imagebox,
-										nil
-									},
+									profile_imagebox,
 									nil
 								},
-								layout = wibox.layout.stack
+								nil
 							},
-							profile_name
+							layout = wibox.layout.stack
 						},
-						nil,
-						expand = 'none',
-						layout = wibox.layout.align.horizontal
+						profile_name
 					},
+					nil,
+					expand = 'none',
+					layout = wibox.layout.align.horizontal
+				},
+				{
+					layout = wibox.layout.align.horizontal,
+					expand = 'none',
+					nil,
 					{
-						layout = wibox.layout.align.horizontal,
-						expand = 'none',
-						nil,
+						widget = wibox.container.margin,
+						margins = dpi(15),
+						greeter_message
+					},
+					nil
+				},
+				{
+					layout = wibox.layout.align.horizontal,
+					expand = 'none',
+					nil,
+					{
 						{
 							{
-								greeter_message,
-								{
-									poweroff,
-									reboot,
-									suspend,
-									exit,
-									lock,
-									layout = wibox.layout.fixed.horizontal
-								},
-								spacing = dpi(30),
-								layout = wibox.layout.fixed.vertical
+								poweroff,
+								reboot,
+								suspend,
+								exit,
+								lock,
+								layout = wibox.layout.fixed.horizontal
 							},
-							spacing = dpi(40),
+							spacing = dpi(30),
 							layout = wibox.layout.fixed.vertical
 						},
-						nil
+						widget = wibox.container.margin,
+						margins = dpi(15)
 					},
-					spacing = dpi(40),
-					layout = wibox.layout.fixed.vertical
-				},
-				nil,
-				expand = 'none',
-				layout = wibox.layout.align.horizontal
+					nil
+				}
 			},
-			nil,
-			expand = 'none',
-			layout = wibox.layout.align.vertical
+			nil
 		}
 
 	end
