@@ -197,7 +197,7 @@ local locker = function(s)
 	awful.spawn.easy_async_with_shell(
 		[[
 		sh -c '
-		fullname="$(getent passwd `whoami` | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d '\n')"
+		fullname="$(getent passwd `whoami` | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d "\n")"
 		if [ -z "$fullname" ];
 		then
 			printf "$(whoami)@$(hostname)"
