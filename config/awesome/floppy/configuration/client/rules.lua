@@ -131,7 +131,7 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Browsers
+		-- Browsers and chats
 		ruled.client.append_rule {
 			id         = 'web_browsers',
 			rule_any   = { 
@@ -148,7 +148,7 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- text editors
+		-- Text editors and word processing
 		ruled.client.append_rule {
 			id         = 'text_editors',
 			rule_any   = {  
@@ -204,7 +204,7 @@ ruled.client.connect_signal(
 		-- Gaming
 		ruled.client.append_rule {
 			id         = 'gaming',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'Wine',
 					'dolphin-emu',
@@ -212,7 +212,7 @@ ruled.client.connect_signal(
 					'Citra',
 					'SuperTuxKart'
 				},
-			name = { 'Steam' }
+				name = { 'Steam' }
 			},
 			properties = { 
 				tag = '6',
@@ -225,7 +225,7 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Graphics Editing
+		-- Multimedia Editing
 		ruled.client.append_rule {
 			id         = 'graphics_editors',
 			rule_any   = {  
@@ -320,28 +320,6 @@ ruled.client.connect_signal(
 			}
 		}
 		
-		-- Fullsreen
-		ruled.client.append_rule {
-			id       = 'fullscreen',
-			rule_any = {
-				class    = {
-					'SuperTuxKart'
-				}
-			},
-			properties = { 
-				skip_decoration = true,
-				round_corners = false,
-				ontop = true,
-				floating = false,
-				fullscreen = true,
-				draw_backdrop = false,
-				raise = true,
-				keys = client_keys,
-				buttons = client_buttons,
-				placement = awful.placement.centered
-			}
-		}
-
 	end
 )
 
@@ -381,8 +359,15 @@ client.connect_signal(
 				c:move_to_tag(t)
 			end
 		elseif c.class == 'SuperTuxKart' then
-			-- Disable fullscreen first
-			c.fullscreen = false
+			local window_mode = false
+
+			-- Check if fullscreen or window mode
+			if c.fullscreen then
+				window_mode = false
+				c.fullscreen = false
+			else
+				window_mode = true
+			end
 
 			-- Check if SuperTuxKart is already open
 			local stk = function (c)
@@ -402,12 +387,17 @@ client.connect_signal(
 					c:jump_to(false)
 				end
 			else
-				-- Move the instance to specified tag tag on this screen
+				-- Move the instance to specified tag on this screen
 				local t = awful.tag.find_by_name(awful.screen.focused(), '6')
 				c:move_to_tag(t)
 				t:view_only()
-				-- Enable fullscreeen again
-				c.fullscreen = true
+
+				-- Fullscreen mode if not window mode
+				if not window_mode then
+					c.fullscreen = true
+				else
+					c.floating = true
+				end
 			end
 		end
 
