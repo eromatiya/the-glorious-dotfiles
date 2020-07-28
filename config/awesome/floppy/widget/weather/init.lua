@@ -243,7 +243,7 @@ awesome.connect_signal(
 
 					awesome.emit_signal(
 						'widget::weather_update', 
-						'icon_code', 
+						'...', 
 						'Dust and clouds, -1000°C', 
 						'Earth, Milky Way', 
 						'00:00', 
