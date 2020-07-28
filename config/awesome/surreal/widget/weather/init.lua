@@ -7,6 +7,7 @@ local dpi = beautiful.xresources.apply_dpi
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/weather/icons/'
 local clickable_container = require('widget.clickable-container')
+local json = require('library.json')
 local secrets = require('configuration.secrets')
 
 local key     = secrets.weather.key
@@ -178,7 +179,6 @@ local weather_report =  wibox.widget {
 					nil,
 					{
 						layout = wibox.layout.fixed.vertical,
-						spacing = dpi(3),
 						weather_location,
 						weather_desc_temp,
 						{
@@ -219,10 +219,14 @@ local weather_report =  wibox.widget {
 	widget = wibox.container.background	
 }
 
-if units == 'metric' then
-	weather_temperature_symbol = '°C'
-elseif units == 'imperial' then
-	weather_temperature_symbol = '°F'
+-- Return weather symbol
+local get_weather_symbol = function()
+	local symbol_tbl = {
+		['metric'] = '°C',
+		['imperial'] = '°F'
+	}
+
+	return symbol_tbl[units]
 end
 
 --  Weather script using your API KEY
@@ -234,25 +238,9 @@ UNITS="]] .. units .. [["
 weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
 
 if [ ! -z "$weather" ]; then
-	weather_icon="icon=$(printf "$weather" | jq -r ".weather[].icon" | head -1)"
-	
-	weather_location="location=$(printf "$weather" | jq -r ".name")"
-	weather_country="country=$(printf "$weather" | jq -r ".sys.country")"
-	
-	weather_sunrise="sunrise=$(printf "$weather" | jq -r ".sys.sunrise" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
-	weather_sunset="sunset=$(printf "$weather" | jq -r ".sys.sunset" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
-	
-	weather_data_time="update=$(printf "$weather" | jq -r ".dt" | xargs -0 -L1 -I '$' echo '@$' | xargs date +"%H:%M" -d)"
-	
-	weather_temp="temperature=$(printf "$weather" | jq ".main.temp" | cut -d "." -f 1)"
-	
-	weather_description="details=$(printf "$weather" | jq -r ".weather[].description" | head -1)"
-
-	DATA="${weather_icon}\n${weather_location}\n${weather_country}\n${weather_sunrise}\n${weather_sunset}\n${weather_data_time}\n${weather_temp}\n${weather_description}\n"
-	printf "${DATA}"
-
+	printf "${weather}"
 else
-	printf "icon=..."
+	printf "error"
 fi	
 ]]
 
@@ -264,21 +252,11 @@ awesome.connect_signal(
 			weather_details_script,
 			function(stdout)
 
-				local weather_data_tbl = {}
-
-				for data in stdout:gmatch('[^\n]+') do
-					local key = data:match('(.*)=')
-					local value = data:match('=(.*)')
-					weather_data_tbl[key] = value
-				end
-
-				local icon_code = weather_data_tbl['icon']
-
-				if icon_code == '...' then
+				if stdout:match('error') then
 
 					awesome.emit_signal(
 						'widget::weather_update', 
-						icon_code, 
+						'...', 
 						'Dust and clouds, -1000°C', 
 						'Earth, Milky Way', 
 						'00:00', 
@@ -287,26 +265,37 @@ awesome.connect_signal(
 					)
 					
 				else
-					local location = weather_data_tbl['location']
-					local country = weather_data_tbl['country']
-					local sunrise = weather_data_tbl['sunrise']
-					local sunset = weather_data_tbl['sunset']
-					local update_time = weather_data_tbl['update']
-					local temperature = weather_data_tbl['temperature']
-					local details = weather_data_tbl['details']
 
-					local description = details:sub(1, 1):upper() .. details:sub(2)
-					local weather_description = description .. ', ' .. temperature .. weather_temperature_symbol
+					-- Parse JSON string
+					local weather_data = json.parse(stdout)
+
+					-- Process weather data
+					local location = weather_data.name
+					local country = weather_data.sys.country
+					local sunrise = os.date('%H:%M', weather_data.sys.sunrise)
+					local sunset = os.date('%H:%M', weather_data.sys.sunset)
+					local refresh = os.date('%H:%M', weather_data.dt)
+					local temperature = math.floor(weather_data.main.temp + 0.5)
+					local weather = weather_data.weather[1].description
+					local weather_icon = weather_data.weather[1].icon
+
+					-- Capitalize weather description
+					local weather = weather:sub(1, 1):upper() .. weather:sub(2)
+
+					-- Contantenate weather description and symbol
+					local weather_description = weather .. ', ' .. temperature .. get_weather_symbol()
+
+					-- Contantenate city and country
 					local weather_location = location .. ', ' .. country
-					
+
 					awesome.emit_signal(
 						'widget::weather_update', 
-						icon_code, 
+						weather_icon, 
 						weather_description, 
 						weather_location, 
 						sunrise, 
 						sunset, 
-						update_time
+						refresh
 					)
 				end
 				collectgarbage('collect')
