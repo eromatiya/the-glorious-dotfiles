@@ -73,6 +73,7 @@ refresh_button:buttons(
 			nil,
 			function()
 				awesome.emit_signal('widget::weather_fetch')
+				awesome.emit_signal('widget::forecast_fetch')
 			end
 		)
 	)
@@ -154,7 +155,7 @@ local weather_forecast_tooltip = awful.tooltip {
 	objects = {weather_icon_widget},
 	mode = 'outside',
 	align = 'right',
-	preferred_positions = {'top', 'bottom', 'left', 'right'},
+	preferred_positions = {'left', 'right', 'top', 'bottom'},
 	margin_leftright = dpi(8),
 	margin_topbottom = dpi(8)
 }
@@ -246,36 +247,39 @@ local create_weather_script = function(mode)
 	return weather_script
 end
 
-local forecast_fetch = function()
-	awful.spawn.easy_async_with_shell(
-		create_weather_script('forecast'),
-		function(stdout)
-			if stdout:match('error') then
-				weather_forecast_tooltip:set_markup('Can\'t retrieve data!')
-			else
-				local forecast_data = json.parse(stdout)
-				local forecast = ''
+awesome.connect_signal(
+	'widget::forecast_fetch',
+	function()
+		awful.spawn.easy_async_with_shell(
+			create_weather_script('forecast'),
+			function(stdout)
+				if stdout:match('error') then
+					weather_forecast_tooltip:set_markup('Can\'t retrieve data!')
+				else
+					local forecast_data = json.parse(stdout)
+					local forecast = ''
 
-				for i = 8, 40, 8 do
-					local day = os.date('%A @ %H:%M', forecast_data.list[i].dt)
-					local temp = math.floor(forecast_data.list[i].main.temp + 0.5)
-					local feels_like = math.floor(forecast_data.list[i].main.feels_like + 0.5)
-					local weather = forecast_data.list[i].weather[1].description
+					for i = 8, 40, 8 do
+						local day = os.date('%A @ %H:%M', forecast_data.list[i].dt)
+						local temp = math.floor(forecast_data.list[i].main.temp + 0.5)
+						local feels_like = math.floor(forecast_data.list[i].main.feels_like + 0.5)
+						local weather = forecast_data.list[i].weather[1].description
 
-					-- Capitalize weather description
-					weather = weather:sub(1, 1):upper() .. weather:sub(2)
+						-- Capitalize weather description
+						weather = weather:sub(1, 1):upper() .. weather:sub(2)
 
-					forecast = forecast .. '<b>' .. day .. '</b>\n' ..
-					'Weather: ' .. weather .. '\n' ..
-					'Temperature: ' .. temp .. get_weather_symbol() .. '\n' ..
-					'Feels like: ' .. feels_like .. get_weather_symbol() .. '\n\n'
+						forecast = forecast .. '<b>' .. day .. '</b>\n' ..
+						'Weather: ' .. weather .. '\n' ..
+						'Temperature: ' .. temp .. get_weather_symbol() .. '\n' ..
+						'Feels like: ' .. feels_like .. get_weather_symbol() .. '\n\n'
 
-					weather_forecast_tooltip:set_markup(forecast:sub(1, -2))
+						weather_forecast_tooltip:set_markup(forecast:sub(1, -2))
+					end
 				end
 			end
-		end
-	)
-end
+		)
+	end
+)
 
 awesome.connect_signal(
 	'widget::weather_fetch',
@@ -284,7 +288,6 @@ awesome.connect_signal(
 			create_weather_script('weather'),
 			function(stdout)
 				if stdout:match('error') then
-
 					awesome.emit_signal(
 						'widget::weather_update', 
 						'...', 
@@ -294,12 +297,7 @@ awesome.connect_signal(
 						'00:00', 
 						'00:00'
 					)
-					
 				else
-
-					-- Fetch forecast data
-					forecast_fetch()
-
 					-- Parse JSON string
 					local weather_data = json.parse(stdout)
 
@@ -344,6 +342,7 @@ local update_widget_timer = gears.timer {
 	single_shot = false,
 	callback  = function()
 		awesome.emit_signal('widget::weather_fetch')
+		awesome.emit_signal('widget::forecast_fetch')
 	end
 }
 
@@ -351,6 +350,7 @@ awesome.connect_signal(
 	'system::wifi_connected',
 	function() 
 		awesome.emit_signal('widget::weather_fetch')
+		awesome.emit_signal('widget::forecast_fetch')
 	end
 )
 
