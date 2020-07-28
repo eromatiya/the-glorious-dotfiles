@@ -149,6 +149,16 @@ local weather_data_time = wibox.widget {
 	widget = wibox.widget.textbox
 }
 
+local weather_forecast_tooltip = awful.tooltip {
+	text = 'Loading...',
+	objects = {weather_icon_widget},
+	mode = 'outside',
+	align = 'right',
+	preferred_positions = {'top', 'bottom', 'left', 'right'},
+	margin_leftright = dpi(8),
+	margin_topbottom = dpi(8)
+}
+
 local weather_report =  wibox.widget {
 	{
 		{
@@ -216,29 +226,63 @@ local get_weather_symbol = function()
 	return symbol_tbl[units]
 end
 
---  Weather script using your API KEY
-local weather_details_script = [[
-KEY="]] .. key .. [["
-CITY="]] .. city_id .. [["
-UNITS="]] .. units .. [["
+-- Create openweathermap script based on pass mode
+-- Mode must be `forecast` or `weather`
+local create_weather_script = function(mode)
+	local weather_script = [[
+		KEY="]] .. key .. [["
+		CITY="]] .. city_id .. [["
+		UNITS="]] .. units .. [["
 
-weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
+		weather=$(curl -sf "http://api.openweathermap.org/data/2.5/]] .. mode .. [[?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
 
-if [ ! -z "$weather" ]; then
-	printf "${weather}"
-else
-	printf "error"
-fi	
-]]
+		if [ ! -z "$weather" ]; then
+			printf "${weather}"
+		else
+			printf "error"
+		fi
+	]]
+
+	return weather_script
+end
+
+local forecast_fetch = function()
+	awful.spawn.easy_async_with_shell(
+		create_weather_script('forecast'),
+		function(stdout)
+			if stdout:match('error') then
+				weather_forecast_tooltip:set_markup('Can\'t retrieve data!')
+			else
+				local forecast_data = json.parse(stdout)
+				local forecast = ''
+
+				for i = 8, 40, 8 do
+					local day = os.date('%A @ %H:%M', forecast_data.list[i].dt)
+					local temp = math.floor(forecast_data.list[i].main.temp + 0.5)
+					local feels_like = math.floor(forecast_data.list[i].main.feels_like + 0.5)
+					local weather = forecast_data.list[i].weather[1].description
+
+					-- Capitalize weather description
+					weather = weather:sub(1, 1):upper() .. weather:sub(2)
+
+					forecast = forecast .. '<b>' .. day .. '</b>\n' ..
+					'Weather: ' .. weather .. '\n' ..
+					'Temperature: ' .. temp .. get_weather_symbol() .. '\n' ..
+					'Feels like: ' .. feels_like .. get_weather_symbol() .. '\n\n'
+
+					weather_forecast_tooltip:set_markup(forecast:sub(1, -2))
+				end
+			end
+		end
+	)
+end
 
 awesome.connect_signal(
 	'widget::weather_fetch',
-	function() 
-
+	function()
 		awful.spawn.easy_async_with_shell(
-			weather_details_script,
+			create_weather_script('weather'),
 			function(stdout)
-
 				if stdout:match('error') then
 
 					awesome.emit_signal(
@@ -252,6 +296,9 @@ awesome.connect_signal(
 					)
 					
 				else
+
+					-- Fetch forecast data
+					forecast_fetch()
 
 					-- Parse JSON string
 					local weather_data = json.parse(stdout)
@@ -285,7 +332,6 @@ awesome.connect_signal(
 						refresh
 					)
 				end
-				collectgarbage('collect')
 			end
 		)
 	end
@@ -304,12 +350,7 @@ local update_widget_timer = gears.timer {
 awesome.connect_signal(
 	'system::wifi_connected',
 	function() 
-		gears.timer.start_new(
-			5,
-			function() 
-				awesome.emit_signal('widget::weather_fetch')
-			end
-		)
+		awesome.emit_signal('widget::weather_fetch')
 	end
 )
 

@@ -226,39 +226,29 @@ local get_weather_symbol = function()
 	return symbol_tbl[units]
 end
 
---  Weather script using your API KEY
-local weather_details_script = [[
-KEY="]] .. key .. [["
-CITY="]] .. city_id .. [["
-UNITS="]] .. units .. [["
+-- Create openweathermap script based on pass mode
+-- Mode must be `forecast` or `weather`
+local create_weather_script = function(mode)
+	local weather_script = [[
+		KEY="]] .. key .. [["
+		CITY="]] .. city_id .. [["
+		UNITS="]] .. units .. [["
 
-weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
+		weather=$(curl -sf "http://api.openweathermap.org/data/2.5/]] .. mode .. [[?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
 
-if [ ! -z "$weather" ]; then
-	printf "${weather}"
-else
-	printf "error"
-fi
-]]
+		if [ ! -z "$weather" ]; then
+			printf "${weather}"
+		else
+			printf "error"
+		fi
+	]]
 
---  Forecast script using your API KEY
-local weather_forecast_script = [[
-KEY="]] .. key .. [["
-CITY="]] .. city_id .. [["
-UNITS="]] .. units .. [["
-
-weather=$(curl -sf "https://api.openweathermap.org/data/2.5/forecast?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
-
-if [ ! -z "$weather" ]; then
-	printf "${weather}"
-else
-	printf "error"
-fi	
-]]
+	return weather_script
+end
 
 local forecast_fetch = function()
 	awful.spawn.easy_async_with_shell(
-		weather_forecast_script,
+		create_weather_script('forecast'),
 		function(stdout)
 			if stdout:match('error') then
 				weather_forecast_tooltip:set_markup('Can\'t retrieve data!')
@@ -291,7 +281,7 @@ awesome.connect_signal(
 	'widget::weather_fetch',
 	function()
 		awful.spawn.easy_async_with_shell(
-			weather_details_script,
+			create_weather_script('weather'),
 			function(stdout)
 				if stdout:match('error') then
 
