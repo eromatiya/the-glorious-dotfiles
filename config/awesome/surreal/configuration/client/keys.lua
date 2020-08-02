@@ -3,8 +3,8 @@ local gears = require('gears')
 
 require('awful.autofocus')
 
-local modkey = require('configuration.keys.mod').modKey
-local altkey = require('configuration.keys.mod').altKey
+local modkey = require('configuration.keys.mod').mod_key
+local altkey = require('configuration.keys.mod').alt_key
 
 local dpi = require('beautiful').xresources.apply_dpi
 
