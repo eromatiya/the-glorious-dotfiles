@@ -277,6 +277,14 @@ local globalKeys = awful.util.table.join(
 		{description = 'arandr', group = 'hotkeys'}
 	),
 	awful.key(
+		{modkey, 'Shift'},
+		'q',
+		function()
+			awesome.emit_signal('module::exit_screen_show')
+		end,
+		{description = 'toggle exit screen', group = 'hotkeys'}
+	),
+	awful.key(
 		{modkey},
 		'`',
 		function()
