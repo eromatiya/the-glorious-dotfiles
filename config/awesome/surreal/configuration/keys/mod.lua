@@ -1,4 +1,4 @@
 return {
-    modKey = 'Mod4',
-    altKey = 'Mod1'
+    mod_key = 'Mod4',
+    alt_key = 'Mod1'
 }

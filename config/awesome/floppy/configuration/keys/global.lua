@@ -5,8 +5,8 @@ require('awful.autofocus')
 
 local hotkeys_popup = require('awful.hotkeys_popup').widget
 
-local modkey = require('configuration.keys.mod').modKey
-local altkey = require('configuration.keys.mod').altKey
+local modkey = require('configuration.keys.mod').mod_key
+local altkey = require('configuration.keys.mod').alt_key
 local apps = require('configuration.apps')
 
 -- Key bindings
