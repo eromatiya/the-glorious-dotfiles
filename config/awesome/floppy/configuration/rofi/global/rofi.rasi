@@ -33,18 +33,17 @@ window {
 
 mainbox {
 	background-color:				@background;
-	spacing:  						0px;
 	padding: 						5px 5px 5px 5px;
 	width:							200px;
 	expand: 						true;
-	spacing: 12px;
+	spacing:						12px;
 	children: 						[ inputbar, listview];
 }
 
 scrollbar {
 	background-color: 				@background-alt;
-	handle-width:					10px;
-	margin: 						0px 0px 5px 0px;
+	handle-width:					0;
+	margin: 						0 0 5px 0;
 	border-radius:  				9px;
 }
 
@@ -85,8 +84,9 @@ entry {
 
 entry-wrapper {
     orientation:                    horizontal;
+    margin:							0 12px 0 12px;
+    spacing:                        24px;
     vertical-align:                 0.5;
-    spacing:                        4px;
     background-color:               @background;
     children:                       [ button, entry ];
 }
@@ -107,16 +107,17 @@ element {
     background-color:               @background;
     text-color:                     @foreground;
     orientation:                    horizontal;
-    border-radius:                  0px;
-    padding:                        10px 12px 10px 12px;
-    border: 						0 0 2px;
+    padding:                        10px 24px 10px 24px;
+    spacing:						24px;
+    border: 						0 0 0 0;
 	border-color: 					@background-alt;
+    border-radius:                  6px;
 }
 
 element-icon {
-	size:                          	16px;
+	size:                          	24px;
 	border-color:					@background;
-	border:                        	2px;
+	border:                        	0;
 }
 
 element-text {
