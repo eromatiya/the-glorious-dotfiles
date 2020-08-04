@@ -169,7 +169,7 @@ local return_button = function()
 					local widget_icon_name = 'wifi-strength'
 					if not stdout:match('Connected but no internet') then
 						if startup or reconnect_startup then
-							awesome.emit_signal('system::wifi_connected')
+							awesome.emit_signal('system::network_connected')
 						end
 						widget_icon_name = widget_icon_name .. '-' .. tostring(strength)
 						update_wireless_data(wifi_strength_rounded, true)
@@ -230,7 +230,7 @@ local return_button = function()
 				else
 					update_tooltip('Ethernet Interface: <b>' .. lan_interface .. '</b>')
 					if startup or reconnect_startup then
-						awesome.emit_signal('system::wifi_connected')
+						awesome.emit_signal('system::network_connected')
 						notify_connected()
 						update_startup(false)
 					end

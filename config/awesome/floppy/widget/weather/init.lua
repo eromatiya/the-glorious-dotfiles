@@ -347,7 +347,7 @@ local update_widget_timer = gears.timer {
 }
 
 awesome.connect_signal(
-	'system::wifi_connected',
+	'system::network_connected',
 	function() 
 		awesome.emit_signal('widget::weather_fetch')
 		awesome.emit_signal('widget::forecast_fetch')

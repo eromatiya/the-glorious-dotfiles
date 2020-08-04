@@ -394,7 +394,7 @@ email_report:connect_signal(
 )
 
 awesome.connect_signal(
-	'system::wifi_connected',
+	'system::network_connected',
 	function()
 		gears.timer.start_new(
 			5,
