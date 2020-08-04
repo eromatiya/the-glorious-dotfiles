@@ -362,7 +362,7 @@ local update_widget_timer = gears.timer {
 }
 
 awesome.connect_signal(
-	'system::wifi_connected',
+	'system::network_connected',
 	function() 
 		gears.timer.start_new(
 			5,
