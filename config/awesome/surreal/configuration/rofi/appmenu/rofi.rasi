@@ -2,12 +2,12 @@ configuration {
 	font:                           "Inter Regular 10";
 	show-icons:                     true;
 	drun-display-format:            "{name}";
-	fullscreen:                     true;
+	fullscreen:                     false;
 	threads:                        0;
-	matching:						"fuzzy";
+	matching:                      "fuzzy";
 	scroll-method:                  0;
 	disable-history:                false;
-	monitor:                        "primary";
+	fullscreen:                     true;
 	window-thumbnail:				true;
 }
 
@@ -41,7 +41,7 @@ button {
 	expand:                         false;
 	text-color:                     @foreground;
 	background-color:               @background;
-	vertical-align:                 0.5;
+	vertical-align:                 0.7;
 	horizontal-align:               0.5;
 }
 
@@ -51,7 +51,7 @@ entry {
 	text-color:                     @foreground;
 	expand:                         true;
 	vertical-align:                 0.5;
-	horizontal-align:               0.0;
+	horizontal-align:               0.5;
 	placeholder:                    "Type to search";
 	placeholder-color:              @foreground;
 	blink:                          true;
@@ -69,7 +69,7 @@ entry-wrapper {
 	vertical-align:                 0.5;
 	spacing:                        4px;
 	background-color:               @background;
-	children:                       [ case-indicator, entry, button ];
+	children:                       [ button, entry, case-indicator ];
 }
 
 inputbar {
@@ -77,7 +77,7 @@ inputbar {
 	text-color:                     @foreground;
 	expand:                         false;
 	border-radius:                  6px;
-	margin:                         0px 435px 0px 435px;
+	margin:                         0px calc((100% - 510px) / 2) 0px calc((100% - 510px) / 2);
 	padding:                        10px 10px 10px 10px;
 	position:                       north;
 	children:                       [ entry-wrapper ];
@@ -96,7 +96,7 @@ mainbox {
 	background-color:               @background-color;
 	children:                       [ inputbar, listview ];
 	spacing:                        25px;
-	padding:                        45px 135px 45px 135px;
+	padding:                        70px 135px 45px 135px;
 }
 
 element {
@@ -109,7 +109,7 @@ element {
 
 element-icon {
 	size:                           64px;
-	border:                         0px;
+	border:                         0;
 }
 
 element-text {
