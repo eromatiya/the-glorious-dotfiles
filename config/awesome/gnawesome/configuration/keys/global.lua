@@ -414,7 +414,7 @@ local globalKeys = awful.util.table.join(
 			if focused.central_panel then
 				focused.central_panel:hide_dashboard()
 			end
-			awful.spawn(apps.default.rofiappmenu, false)
+			awful.spawn(apps.default.rofi_appmenu, false)
 		end,
 		{description = 'open application drawer', group = 'launcher'}
 	),
@@ -427,7 +427,7 @@ local globalKeys = awful.util.table.join(
 			if focused.central_panel then
 				focused.central_panel:hide_dashboard()
 			end
-			awful.spawn(apps.default.rofiappmenu, false)
+			awful.spawn(apps.default.rofi_appmenu, false)
 		end,
 		{description = 'open application drawer', group = 'launcher'}
 	),
@@ -438,7 +438,7 @@ local globalKeys = awful.util.table.join(
 			if awful.screen.focused().central_panel.visible then
 				awful.screen.focused().central_panel:toggle()
 			end
-			awful.spawn(apps.default.rofiglobal, false)
+			awful.spawn(apps.default.rofi_global, false)
 		end,
 		{description = 'open sidebar and global search', group = 'launcher'}
 	),

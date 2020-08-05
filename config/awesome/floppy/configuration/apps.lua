@@ -38,14 +38,14 @@ return {
 		quake 					= 'kitty --name QuakeTerminal',
 
 		-- Rofi Web Search
-		rofiglobal				= 'rofi -dpi ' .. screen.primary.dpi .. 
+		rofi_global				= 'rofi -dpi ' .. screen.primary.dpi .. 
 									' -show "Global Search" -modi "Global Search":' .. config_dir .. 
 									'/configuration/rofi/global/rofi-spotlight.sh' .. 
 									' -theme ' .. config_dir ..
 									'/configuration/rofi/global/rofi.rasi',
 
 		-- Application Menu
-		rofiappmenu 			= 'rofi -dpi ' .. screen.primary.dpi ..
+		rofi_appmenu 			= 'rofi -dpi ' .. screen.primary.dpi ..
 									' -show drun -theme ' .. config_dir ..
 									'/configuration/rofi/appmenu/rofi.rasi'
 

@@ -8,6 +8,7 @@ configuration {
     scroll-method:                  0;
     disable-history:                false;
     monitor:                        "primary";
+    fullscreen:                     true;
     window-thumbnail:       true;
 }
 
@@ -26,12 +27,8 @@ window {
     transparency:                   "real";
     background-color:               @background;
     text-color:                     @foreground;
-    height:                         740px;
-    width:                          1321px;
     location:                       northwest;
     anchor:                         northwest;
-    x-offset:                       45;
-    y-offset:                       28;
 }
 
 prompt {
@@ -81,7 +78,7 @@ inputbar {
     text-color:                     @foreground;
     expand:                         false;
     border-radius:                  6px;
-    margin:                         0px 405px 0px 405px;
+    margin:                         0px 430px 0px 430px;
     padding:                        10px 10px 10px 10px;
     position:                       north;
     children:                       [ entry-wrapper ];

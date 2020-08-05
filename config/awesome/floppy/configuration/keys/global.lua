@@ -419,7 +419,7 @@ local globalKeys = awful.util.table.join(
 				focused.right_panel:hide_dashboard()
 				focused.right_panel.opened = false
 			end
-			awful.spawn(apps.default.rofiappmenu, false)
+			awful.spawn(apps.default.rofi_appmenu, false)
 		end,
 		{description = 'open application drawer', group = 'launcher'}
 	),
@@ -437,7 +437,7 @@ local globalKeys = awful.util.table.join(
 				focused.right_panel:hide_dashboard()
 				focused.right_panel.opened = false
 			end
-			awful.spawn(apps.default.rofiappmenu, false)
+			awful.spawn(apps.default.rofi_appmenu, false)
 		end,
 		{description = 'open application drawer', group = 'launcher'}
 	),

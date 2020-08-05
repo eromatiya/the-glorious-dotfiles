@@ -35,7 +35,7 @@ local left_panel = function(screen)
 
 	function panel:run_rofi()
 		awesome.spawn(
-			apps.default.rofiglobal,
+			apps.default.rofi_global,
 			false,
 			false,
 			false,

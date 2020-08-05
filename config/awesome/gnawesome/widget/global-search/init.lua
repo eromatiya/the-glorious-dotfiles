@@ -38,7 +38,7 @@ local return_button = function()
 					if awful.screen.focused().central_panel.visible then
 						awful.screen.focused().central_panel:toggle()
 					end
-					awful.spawn(apps.default.rofiglobal, false)
+					awful.spawn(apps.default.rofi_global, false)
 				end
 			)
 		)

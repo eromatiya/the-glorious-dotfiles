@@ -409,7 +409,7 @@ local globalKeys = awful.util.table.join(
 				focused.info_center:hide_dashboard()
 				focused.info_center.opened = false
 			end
-			awful.spawn(apps.default.rofiappmenu, false)
+			awful.spawn(apps.default.rofi_appmenu, false)
 		end,
 		{description = 'open application drawer', group = 'launcher'}
 	),
@@ -427,7 +427,7 @@ local globalKeys = awful.util.table.join(
 				focused.info_center:hide_dashboard()
 				focused.info_center.opened = false
 			end
-			awful.spawn(apps.default.rofiappmenu, false)
+			awful.spawn(apps.default.rofi_appmenu, false)
 		end,
 		{description = 'open application drawer', group = 'launcher'}
 	),
@@ -435,7 +435,7 @@ local globalKeys = awful.util.table.join(
 		{modkey, 'Shift'},
 		'x',
 		function()
-			awful.spawn(apps.default.rofiglobal, false)
+			awful.spawn(apps.default.rofi_global, false)
 		end,
 		{description = 'open global search', group = 'launcher'}
 	),

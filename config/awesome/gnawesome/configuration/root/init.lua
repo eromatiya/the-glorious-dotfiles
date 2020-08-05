@@ -27,7 +27,7 @@ root.buttons(
 			{},
 			2,
 			function ()
-				awful.util.spawn(apps.default.rofiappmenu)
+				awful.util.spawn(apps.default.rofi_appmenu)
 			end
 		),
 		awful.button(
