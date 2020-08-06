@@ -39,7 +39,24 @@ return {
 
 		key           = '',
 		city_id       = '',
-		units         = 'metric'
+		units         = 'metric',
+		auto_geoinfo  = true
 
+	},
+
+	geoinfo = {
+		ipstack_key		= "",
+		proxy_for_check_ip = false,
+		proxy_for_ipstack = false,
+		proxy_host = "",
+		proxy_port = "",
+
+		-- items which do not change
+		latitude = nil,
+		longitude = nil,
+		sunrise = nil,
+		sunset = nil,
+		snoon = nil   -- sloar noon
 	}
+
 }

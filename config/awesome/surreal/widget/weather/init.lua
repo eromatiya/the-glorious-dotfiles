@@ -13,6 +13,7 @@ local secrets = require('configuration.secrets')
 local key     = secrets.weather.key
 local city_id = secrets.weather.city_id
 local units   = secrets.weather.units
+local auto_geoinfo = secrets.weather.auto_geoinfo
 
 local update_interval = 1200
 
@@ -243,32 +244,53 @@ end
 -- Create openweathermap script based on pass mode
 -- Mode must be `forecast` or `weather`
 local create_weather_script = function(mode)
-	local weather_script = [[
-		KEY="]] .. key .. [["
-		CITY="]] .. city_id .. [["
-		UNITS="]] .. units .. [["
+	local weather_script = ""
+	if auto_geoinfo then
+		weather_script = [[
+			KEY="]] .. key .. [["
+			lat="]] .. secrets.geoinfo.latitude .. [["
+			lon="]] .. secrets.geoinfo.longitude .. [["
+			UNITS="]] .. units .. [["
 
-		weather=$(curl -sf "http://api.openweathermap.org/data/2.5/]] .. mode .. [[?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
+			weather=$(curl -sf "http://api.openweathermap.org/data/2.5/]] .. mode .. [[?APPID="${KEY}"&lat="${lat}"&lon="${lon}"&units="${UNITS}"")
 
-		if [ ! -z "$weather" ]; then
-			printf "${weather}"
-		else
-			printf "error"
-		fi
-	]]
+			if [ ! -z "$weather" ]; then
+				printf "${weather}"
+			else
+				printf "error"
+			fi
+		]]
+	else
+		weather_script = [[
+			KEY="]] .. key .. [["
+			CITY="]] .. city_id .. [["
+			UNITS="]] .. units .. [["
 
+			weather=$(curl -sf "http://api.openweathermap.org/data/2.5/]] .. mode .. [[?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
+
+			if [ ! -z "$weather" ]; then
+				printf "${weather}"
+			else
+				printf "error"
+			fi
+		]]
+	end
 	return weather_script
 end
 
 awesome.connect_signal(
 	'widget::forecast_fetch',
 	function()
-		awful.spawn.easy_async_with_shell(
+		if auto_geoinfo and secrets.geoinfo.latitude == nil then
+			weather_forecast_tooltip:set_markup('Can\'t retrieve data!')
+		else
+						awful.spawn.easy_async_with_shell(
 			create_weather_script('forecast'),
 			function(stdout)
 				if stdout:match('error') then
 					weather_forecast_tooltip:set_markup('Can\'t retrieve data!')
 				else
+					print(stdout)
 					local forecast_data = json.parse(stdout)
 					local forecast = ''
 
@@ -290,15 +312,27 @@ awesome.connect_signal(
 					end
 				end
 			end
-		)
+			)
+		end
 	end
 )
 
 awesome.connect_signal(
 	'widget::weather_fetch',
 	function() 
-
-		awful.spawn.easy_async_with_shell(
+		if auto_geoinfo and secrets.geoinfo.latitude == nil then
+			awesome.emit_signal(
+			'widget::weather_update', 
+			'...', 
+			'Dust and clouds, -1000°C', 
+			'Earth, Milky Way', 
+			'00:00', 
+			'00:00', 
+			'00:00'
+			)
+			awesome.emit_signal('module::update_geoinfo')
+		else
+			awful.spawn.easy_async_with_shell(
 			create_weather_script('weather'),
 			function(stdout)
 				if stdout:match('error') then
@@ -346,7 +380,8 @@ awesome.connect_signal(
 				end
 				collectgarbage('collect')
 			end
-		)
+			)
+		end
 	end
 )
 
@@ -361,18 +396,33 @@ local update_widget_timer = gears.timer {
 	end
 }
 
-awesome.connect_signal(
-	'system::network_connected',
-	function() 
-		gears.timer.start_new(
-			5,
-			function() 
-				awesome.emit_signal('widget::weather_fetch')
-				awesome.emit_signal('widget::forecast_fetch')
-			end
-		)
-	end
-)
+if auto_geoinfo then
+	awesome.connect_signal(
+		'module::geoinfo_updated',
+		function()
+			gears.timer.start_new(
+				5,
+				function() 
+					awesome.emit_signal('widget::weather_fetch')
+					awesome.emit_signal('widget::forecast_fetch')
+				end
+			)
+		end
+	)
+else
+	awesome.connect_signal(
+		'system::network_connected',
+		function() 
+			gears.timer.start_new(
+				5,
+				function() 
+					awesome.emit_signal('widget::weather_fetch')
+					awesome.emit_signal('widget::forecast_fetch')
+				end
+			)
+		end
+	)
+end
 
 awesome.connect_signal(
 	'widget::weather_update', 

@@ -32,6 +32,7 @@ root.keys(require('configuration.keys.global'))
 -- ░█░█░█░█░█░█░█░█░█░░░█▀▀░▀▀█
 -- ░▀░▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀▀▀
 
+require('module.geoinfo')
 require('module.notifications')
 require('module.auto-start')
 require('module.backdrop')
