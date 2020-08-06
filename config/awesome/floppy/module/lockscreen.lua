@@ -552,8 +552,6 @@ local locker = function(s)
 				if input_password ~= nil then
 					-- If lua-pam library is 'okay'
 					if module_check('liblua_pam') then
-						naughty.notification({message=_VERSION})
-						gears.timer.start_new(10, function() generalkenobi_ohhellothere() end)
 						local pam = require('liblua_pam')
 						authenticated = pam:auth_current_user(input_password)
 					else
