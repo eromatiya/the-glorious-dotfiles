@@ -9,13 +9,22 @@ local dpi = beautiful.xresources.apply_dpi
 local apps = require('configuration.apps')
 local widget_icon_dir = config_dir .. 'configuration/user-profile/'
 
-package.cpath = package.cpath .. ';' .. config_dir .. '/library/?.so;'
-local pam = require('liblua_pam')
+-- Add paths to package.cpath
+package.cpath = package.cpath .. ';' .. config_dir .. '/library/?.so;' .. '/usr/lib/lua-pam/?.so;'
 
 -- Configuration table
 local config = {
+	-- Fallback Password
+	-- THIS EXIST TO PREVENT THE ERROR CAUSED BY THE DIFFERENCE OF LUA VERSIONS USED ON COMPILING THE LUA_PAM LIB
+	-- READ THE WIKI - ABOUT MODULE SECTION; TO FIX THE LIBRAY ERROR IF YOU HAVE ONE
+	-- ONLY USE THIS AS A TEMPORARY SUBSTITUTE TO LUA_PAM
+	fallback_password = function()
+		-- Set your password here
+		return 'toor'
+	end,
+
 	-- General Configuration
-	-- Capture a picture using webcam 
+	-- Capture a picture using webcam
 	capture_intruder = true,
 
 	-- Save location, auto creates
@@ -34,7 +43,6 @@ local config = {
 	-- /tmp directory
 	tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'
 }
-
 
 -- Useful variables (DO NOT TOUCH THESE)
 local input_password = nil
@@ -452,6 +460,22 @@ local locker = function(s)
 		generalkenobi_ohhellothere()
 	end
 
+	-- Check module if valid
+	local module_check = function(name)
+		if package.loaded[name] then
+			return true
+		else
+			for _, searcher in ipairs(package.searchers or package.loaders) do
+				local loader = searcher(name)
+				if type(loader) == 'function' then
+					package.preload[name] = loader
+					return true
+				end
+			end
+			return false
+		end
+	end
+
 	-- Password/key grabber
 	local password_grabber = awful.keygrabber {
 		auto_start          = true,
@@ -524,14 +548,50 @@ local locker = function(s)
 			if key == 'Return' then
 
 				-- Validate password
-				local pam_auth = false
+				local authenticated = false
 				if input_password ~= nil then
-					pam_auth = pam:auth_current_user(input_password)
-				else
-					return
+					-- If lua-pam library is 'okay'
+					if module_check('liblua_pam') then
+						local pam = require('liblua_pam')
+						authenticated = pam:auth_current_user(input_password)
+					else
+						-- Library doesn't exist or returns an error due to some reasons (read the manual)
+						-- Use fallback password data
+						authenticated = input_password == config.fallback_password()
+
+						local rtfm = naughty.action {
+							name = 'Read Manual',
+						   	icon_only = false
+						}
+
+						local dismiss = naughty.action {
+							name = 'Dismiss',
+						   	icon_only = false
+						}
+
+						rtfm:connect_signal(
+							'invoked',
+							function()
+								awful.spawn(
+									[[sh -c "
+									xdg-open 'https://github.com/manilarome/the-glorious-dotfiles/wiki/About-Modules#lockscreen-module'
+									"]],
+									false
+								)
+							end
+						)
+
+						naughty.notification({
+							app_name = 'Security',
+							title = 'WARNING',
+							message = 'You\'re using the fallback password! It\'s better if you fix the library error.',
+							urgency = 'critical',
+							actions = { rtfm, dismiss }
+						})
+					end
 				end
 
-				if pam_auth then
+				if authenticated then
 					-- Come in!
 					self:stop()
 					generalkenobi_ohhellothere()
