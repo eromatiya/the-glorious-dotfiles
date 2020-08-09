@@ -122,6 +122,11 @@ local return_button = function()
 			function(stdout)
 				local battery_percentage = tonumber(stdout)
 
+				-- Stop if null
+				if not battery_percentage then
+					return
+				end
+				
 				battery_widget.spacing = dpi(5)
 				battery_percentage_text.visible = true
 				battery_percentage_text:set_text(battery_percentage .. '%')
