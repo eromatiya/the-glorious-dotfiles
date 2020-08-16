@@ -17,6 +17,7 @@
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
+local filesystem = gears.filesystem
 
 
 --  ========================================
@@ -57,7 +58,8 @@ local update_ls_bg = false
 -- Update lockscreen background command
 local update_ls_cmd = 'mantablockscreen --image'
 
-
+-- Don't stretch wallpaper on multihead setups if true
+local dont_stretch_wallpaper = false
 
 --  ========================================
 -- 				   Processes
@@ -275,6 +277,18 @@ else --Schedule is list of keywords
 	wallpaper_schedule = auto_schedule(ordered_pictures)
 end
 
+-- Set wallpaper
+local set_wallpaper = function(path)
+	if dont_stretch_wallpaper then
+		for s in screen do
+			-- Update wallpaper based on the data in the array
+			gears.wallpaper.maximized (path, s)
+		end
+	else
+		-- Update wallpaper based on the data in the array
+		gears.wallpaper.maximized (path)
+	end
+end
 
 -- Update wallpaper (used by the manage_timer function)
 -- I think the gears.wallpaper.maximized is too fast or being ran asynchronously
@@ -285,20 +299,9 @@ local update_wallpaper = function(wall_name)
 	local wall_dir = wall_dir .. wall_name
 	set_wallpaper(wall_dir)
 
-		local wall_full_path = wall_dir .. wall_name
-
-		gears.wallpaper.maximized (wall_full_path, s)
-
-		-- Overwrite the default wallpaper
-		-- This is important in case we add an extra monitor
-		beautiful.wallpaper = wall_full_path
-
-		if update_ls_bg then
-			awful.spawn.easy_async_with_shell(update_ls_cmd .. ' ' .. wall_full_path, function() 
-				--
-			end)
-		end
-	end)
+	-- Overwrite the default wallpaper
+	-- This is important in case we add an extra monitor
+	beautiful.wallpaper = wall_dir
 end
 
 -- Updates variables
@@ -375,15 +378,18 @@ local wall_updater = gears.timer {
 }
 
 -- Update wallpaper here and update the timeout for the next schedule
-awesome.connect_signal("module::change_wallpaper", function()
-	
-	-- Update values for the next specified schedule
-	manage_timer()
+awesome.connect_signal(
+	'module::change_wallpaper',
+	function()
+		set_wallpaper(wall_dir .. wall_data[2])
 
-	-- Update timer timeout for the next specified schedule
-	wall_updater.timeout = the_countdown
+		-- Update values for the next specified schedule
+		manage_timer()
 
-	-- Restart timer
-	wall_updater:again()
+		-- Update timer timeout for the next specified schedule
+		wall_updater.timeout = the_countdown
 
-end)
+		-- Restart timer
+		wall_updater:again()
+	end
+)
