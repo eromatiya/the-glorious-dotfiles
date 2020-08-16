@@ -28,11 +28,11 @@ local beautiful = require('beautiful')
 local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
 -- local wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
 
+-- If there's a picture format that awesome accepts and i missed
+-- (which i probably did) feel free to add it right here
 local valid_picture_formats = {"jpg", "png", "jpeg"}
 
 -- Table mapping schedule to wallpaper filename
--- Note:
--- Default image format is jpg
 local wallpaper_schedule = {
 ----[[
 	['00:00:00'] = 'midnight-wallpaper.jpg',
@@ -40,6 +40,7 @@ local wallpaper_schedule = {
 	['12:00:00'] = 'noon-wallpaper.jpg',
 	['17:58:00'] = 'night-wallpaper.jpg'
 --]]
+-- Example of just using auto-scheduling with keywords
 --[[
 	'midnight',
 	'morning',
