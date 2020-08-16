@@ -52,12 +52,6 @@ local wallpaper_schedule = {
 --]]
 }
 
--- Update lockscreen background
-local update_ls_bg = false
-
--- Update lockscreen background command
-local update_ls_cmd = 'mantablockscreen --image'
-
 -- Don't stretch wallpaper on multihead setups if true
 local dont_stretch_wallpaper = false
 
