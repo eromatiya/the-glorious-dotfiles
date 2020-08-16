@@ -139,6 +139,7 @@ local function split(str, pat)
 	return t
 end
 
+-- Returns a table containing all file paths in a directory
 local function get_dir_contents(dir)
 	-- Command to give list of files in directory
 	local dir_explore = 'find ' .. dir .. ' -printf "%f\\n"'
@@ -150,6 +151,7 @@ local function get_dir_contents(dir)
 	return files
 end
 
+-- Returns a table of all the files that were one of the valid file formats
 local function filter_files_by_format(files, valid_file_formats)
 	local valid_files = {}
 	for _, file in ipairs(files) do
@@ -164,6 +166,7 @@ local function filter_files_by_format(files, valid_file_formats)
 	return valid_files
 end
 
+-- Returns a table of files that contained any of the keywords, in the same order as the words themselves
 local function find_files_containing_keywords(files, keywords)
 	local found_files = {}
 
