@@ -378,7 +378,7 @@ local wall_updater = gears.timer {
 awesome.connect_signal(
 	'module::change_wallpaper',
 	function()
-		set_wallpaper(wall_dir .. wall_data[2])
+		--set_wallpaper(wall_dir .. wall_data[2])
 
 		-- Update values for the next specified schedule
 		manage_timer()
