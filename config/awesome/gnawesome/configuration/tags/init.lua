@@ -107,3 +107,20 @@ tag.connect_signal(
 		end
 	end
 )
+
+-- Focus on urgent clients
+awful.tag.attached_connect_signal(
+	s,
+	'property::selected',
+	function()
+		local urgent_clients = function (c)
+			return awful.rules.match(c, {urgent = true})
+		end
+		for c in awful.client.iterate(urgent_clients) do
+			if c.first_tag == mouse.screen.selected_tag then
+				client.focus = c
+				c:raise()
+			end
+		end
+	end
+)
