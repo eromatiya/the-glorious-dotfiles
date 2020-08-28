@@ -1,53 +1,90 @@
+# ░▀▄░░░▄▀░▄▀░░▄▀░░▄▀░░▀░▀▄░░░░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀
+# ░░▄▀░▀▄░░█░░░█░░░█░░░░░░▄▀░░░█▀▀░█▀▄░█░█░█░█░█▀▀░░█░
+# ░▀░░░░░▀░░▀░░░▀░░░▀░░░░▀░░░░░▀░░░▀░▀░▀▀▀░▀░▀░▀░░░░▀░
+#
+# Prompt made by manilarome
+# Inspired by pastfish
+
 function git_dirty
 	echo (command git status -s --ignore-submodules=dirty ^/dev/null)
 end
 
+function git_directory
+	if test -d .git
+		echo true
+	end
+end
+
 function background_normal
-	# Prevents background color to "overflow"
+	# Prevents background color to "overflow".
+	# A bit of a hack, but hey, it works. PR for improvement.
 	echo (set_color -b normal)
 end
 
-function distro_icon
-	# TODO: Automatically detect distro and set its logo
+function distro_prompt
 	#  Tux
-	#  Archlinux
-	#  Debian
-	#  Ubuntu
-	#  Manjaro
-	#  Centos
-	#  Fedora
-	#  Mint
-	#  Alpine
-	#  Devuan
-	#  Apple
-	#  Docker
-	#  Opensuse
-	#  Slackware
-	#  Redhat
-	#  Elementary
-	#  Fire
 	# Sauce: https://nerdfonts.com/cheat-sheet
 
-	set icon '  '
+	# Get distro, tested only on Archlinux
+	set distro_name (find /etc/ -maxdepth 1 -name '*release' 2> /dev/null |
+		sed 's/\/etc\///' | sed 's/-release//' | head -1)
+	set distro_name (string lower $distro_name)
+
+	switch "$distro_name"
+		case '*'arch'*'
+			set icon '  '
+		case '*'debian'*'
+			set icon '  '
+		case '*'ubuntu'*'
+			set icon '  '
+		case '*'manjaro'*'
+			set icon '  '
+		case '*'centos'*'
+			set icon '  '
+		case '*'fedora'*'
+			set icon '  '
+		case '*'mint'*'
+			set icon '  '
+		case '*'alpine'*'
+			set icon '  '
+		case '*'devuan'*'
+			set icon '  '
+		case '*'opensuse'*'
+			set icon '  '
+		case '*'slackware'*'
+			set icon '  '
+		case '*'redhat'*'
+			set icon '  '
+		case '*'elementary'*'
+			set icon '  '
+		case "*"
+			set icon '  '
+	end
+
 	set prompt_distro (set_color -b $blue $white)$icon
 	echo $prompt_distro
 end
 
-function interval
-	math "abs($argv[1] - $argv[2])"
-end
 
-function get_time
-	set sec (math "round("(date +%H)"*12 + "(date +%M)"/5)")
-	set r (echo "obase=16; "(math (interval $sec 144)"+ 111") | bc)
-	set g (echo "obase=16; "(math (interval (math "($sec + 96) % 288") 144 )"+ 111") | bc)
-	set b (echo "obase=16; "(math (interval (math "($sec + 192) % 288") 144 )"+ 111") | bc)
-	set bg $r$g$b
-	set prompt_time (set_color -b $bg -o $black)' '(date +%H:%M)' '
+function time_prompt
+	function interval
+		math "abs($argv[1] - $argv[2])"
+	end
+	switch $TERM;
+		case 256'*' '*'kitty'*';
+			set min_today (math "round("(date +%H)"*12 + "(date +%M)"/5)")
+			set color_r (echo "obase=16; "(math (interval $min_today 144)"+ 111") | bc)
+			set color_g (echo "obase=16; "(math (interval (math "($min_today + 96) % 288") 144 )"+ 111") | bc)
+			set color_b (echo "obase=16; "(math (interval (math "($min_today + 192) % 288") 144 )"+ 111") | bc)
+			set rgb $color_r$color_g$color_b
+		case '*';
+ 			set rgb $green
+ 	end
+	set prompt_time (set_color -b $rgb -o $black)' '(date +%H:%M)' '
 	echo $prompt_time
 end
 
-function user_host
+function user_host_prompt
 	# User is root.
 	if [ $USER = 'root' ]
 		set -g user_bg $red
@@ -72,48 +109,52 @@ function git_prompt
 end
 
 function pwd_prompt
-	set prompt_pwd (set_color -b $black -o $blue)' '(prompt_pwd)' '
+	# Check working directory if writable
+	if test -w $PWD
+		# Check if git directory
+		if [ (git_directory) ]
+			# Check if dirty
+			if [ (git_dirty) ]
+				set pwd_color $yellow
+			else
+				set pwd_color $green
+			end
+		else
+			set pwd_color $white
+		end
+	else
+		set pwd_color $red
+	end
+	set prompt_pwd (set_color -b $black -o $pwd_color)' '(prompt_pwd)' '
 	echo $prompt_pwd
 end
 
-function last_status
+function status_prompt
 	if not test $prev_status -eq 0
 		set_color $fish_color_error
 		echo -n (set_color -b $red $yellow) '✖ '
 	else
-		echo -n (set_color -b $cyan $black) '✔ '
+		echo -n (set_color -b $black $green) '✔ '
 	end
 	set_color normal
 end
 
 function fish_prompt
 	set -g prev_status $status
-	# # Check working directory
-	# if test -w $PWD
-	# 	# if has write permission
-	# 	if [ (git_dirty) ]
-	# 		# if git modified
-	# 		set arrow_color $yellow
-	# 	else
-	# 		set arrow_color $white
-	# 	end
-	# else
-	# 	set arrow_color $red
-	# end
 
 	# Window title
 	switch $TERM;
 		case xterm'*' vte'*';
-			printf '\033]0;['(prompt_pwd)']\007';
+			printf '\033]0;[ '(prompt_pwd)' ]\007';
 		case screen'*';
- 			printf '\033k['(prompt_pwd)']\033\\';
+ 			printf '\033k[ '(prompt_pwd)' ]\033\\';
  	end
 
  	# Print prompt
-	printf '%s%s%s%s ' (distro_icon) (user_host) (pwd_prompt) (background_normal) (__fish_git_prompt) (background_normal)
+	printf '%s%s%s%s ' (distro_prompt) (user_host_prompt) (pwd_prompt) (background_normal) (__fish_git_prompt) (background_normal)
 end
 
 function fish_right_prompt
 	# Print right prompt
-	printf '%s%s' (background_normal)(last_status) (get_time)(background_normal)
+	printf '%s%s%s%s' (background_normal)(status_prompt) (time_prompt)(background_normal)
 end

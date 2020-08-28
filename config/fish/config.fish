@@ -29,15 +29,13 @@ set -g __fish_git_prompt_color_prefix $white
 set -g __fish_git_prompt_color_suffix $white
 
 # Get terminal emulator
-set TERM_EMULATOR (basename "/"(ps -f -p (cat /proc/(echo %self)/stat | cut -d \  -f 4) | tail -1 | sed 's/^.* //'))
+set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print $11}')
 
 # Neofetch
 switch "$TERM_EMULATOR"
 case '*kitty*'
 	neofetch --backend 'kitty'
-case '*tmux*'
-	neofetch --backend 'w3m' --ascii_distro 'arch_small' 
-case '*login*'
+case '*tmux*' '*login*'
 	neofetch --backend 'w3m' --ascii_distro 'arch_small' 
 case '*'
 	neofetch --backend 'w3m' --xoffset 40 --yoffset 40 --gap 0
@@ -48,6 +46,13 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
 alias d='dirs -v'
+
+# ░█░░░█▀█░█▀▀░█▀█░█░░░█▀▀
+# ░█░░░█░█░█░░░█▀█░█░░░█▀▀
+# ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 # Exports
 export VISUAL="vim"
@@ -64,14 +69,3 @@ end
 # User aliases
 alias ytmp3='youtube-dl --extract-audio --audio-format mp3'
 alias cls='clear'
-
-export GREP_OPTIONS="--color=auto"; # make grep colorful
-export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD; # make ls more colorful as well
-export HISTSIZE=32768; # Larger bash history (allow 32³ entries; default is 500)
-export HISTFILESIZE=$HISTSIZE;
-export HISTCONTROL=ignoredups; # Remove duplicates from history. I use `git status` a lot.
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"; # Make some commands not show up in history
-export LANG="en_US.UTF-8"; # Language formatting is still important
-export LC_ALL="en_US.UTF-8"; # byte-wise sorting and force language for those pesky apps
-export MANPAGER="less -X"; # Less is more
-export GPG_TTY=(tty); # for gpg key management
