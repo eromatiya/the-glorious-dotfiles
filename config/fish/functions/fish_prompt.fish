@@ -1,27 +1,30 @@
-# ░▀▄░░░▄▀░▄▀░░▄▀░░▄▀░░▀░▀▄░░░░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀
-# ░░▄▀░▀▄░░█░░░█░░░█░░░░░░▄▀░░░█▀▀░█▀▄░█░█░█░█░█▀▀░░█░
-# ░▀░░░░░▀░░▀░░░▀░░░▀░░░░▀░░░░░▀░░░▀░▀░▀▀▀░▀░▀░▀░░░░▀░
+# ░░█░░▀▄░░░▄▀░▄▀░░▄▀░░▄▀░░▀░▀▄░░░░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀
+# ░░█░░░▄▀░▀▄░░█░░░█░░░█░░░░░░▄▀░░░█▀▀░█▀▄░█░█░█░█░█▀▀░░█░
+# ░░▀░░▀░░░░░▀░░▀░░░▀░░░▀░░░░▀░░░░░▀░░░▀░▀░▀▀▀░▀░▀░▀░░░░▀░
 #
 # Prompt made by manilarome
-# Inspired by pastfish
+
+# ░█░█░█▀▀░█░░░█▀█░█▀▀░█▀▄░█▀▀
+# ░█▀█░█▀▀░█░░░█▀▀░█▀▀░█▀▄░▀▀█
+# ░▀░▀░▀▀▀░▀▀▀░▀░░░▀▀▀░▀░▀░▀▀▀
 
 # Is git dirty?
-function git_dirty
+function _git_dirty
 	echo (command git status -s --ignore-submodules=dirty ^/dev/null)
 end
 
-# Is pwd a git directory?
-function git_directory
-	if test -d .git
-		echo true
+# Is PWD a git directory?
+function _git_directory
+	if git rev-parse --git-dir > /dev/null 2>&1
+		echo 0
 	end
 end
 
 # Set git status color
-function git_status
-	if [ (git_directory) ]
+function _git_status
+	if [ (_git_directory) ]
 		# Check if dirty
-		if [ (git_dirty) ]
+		if [ (_git_dirty) ]
 			set git_color $yellow
 		else
 			set git_color $green
@@ -32,23 +35,23 @@ function git_status
 	echo $git_color
 end
 
-# Prevents background color to "overflow".
-# A bit of a hack, but hey, it works. PR for improvement.
-function background_normal
-	echo (set_color -b normal)''
+# OS type
+function _os_type
+	set os_type ($SHELL -c "echo \$OSTYPE")
+	echo $os_type
 end
 
-# Icon
-function distro_prompt
-	#  Tux
-	# Sauce: https://nerdfonts.com/cheat-sheet
-
-	# Get distro, tested only on Archlinux
+# Distro name
+function _distro_name
 	set distro_name (find /etc/ -maxdepth 1 -name '*release' 2> /dev/null |
 		sed 's/\/etc\///' | sed 's/-release//' | head -1)
 	set distro_name (string lower $distro_name)
+	echo $distro_name
+end
 
-	switch "$distro_name"
+# Distro icon
+function _distro_icon
+	switch (_distro_name)
 		case '*'arch'*'
 			set icon '  '
 		case '*'debian'*'
@@ -78,25 +81,57 @@ function distro_prompt
 		case "*"
 			set icon '  '
 	end
+	echo $icon
+end
 
-	set prompt_distro (set_color -b $blue $white)$icon
+# OS icon
+function _os_icon
+	# Icons sauce: https://nerdfonts.com/cheat-sheet
+	switch (_os_type)
+		case linux-gnu
+			set icon (_distro_icon)
+		case darwin
+			set icon '  '
+		case msys win32
+			set icon '  '
+		case freebsd
+			set icon '  '
+		case "*"
+			set icon '  '
+	end
+	echo $icon
+end
+
+# Prevents background color to "overflow".
+# A bit of a hack, but hey, it works. PR for improvement.
+function _background_normal
+	echo (set_color -b normal)
+end
+
+# ░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀░█▀▀
+# ░█▀▀░█▀▄░█░█░█░█░█▀▀░░█░░▀▀█
+# ░▀░░░▀░▀░▀▀▀░▀░▀░▀░░░░▀░░▀▀▀
+
+# Distro prompt
+function _distro_prompt
+	set prompt_distro (set_color -b $blue $white)(_os_icon)
 	echo $prompt_distro
 end
 
-# Set time prompt
-function time_prompt
-	function color_time_bg
+# Time prompt
+function _time_prompt
+	function _color_time_bg
 		set hour (date +%H)
 		if test $hour -ge 6 && test $hour -lt 12
 			echo $blue
 		else if test $hour -ge 12 && test $hour -lt 18
-			echo $green
+			echo $magenta
 		else
 			echo $black	
 		end
 	end
 
-	function color_time_fg
+	function _color_time_fg
 		set hour (date +%H)
 		if test $hour -ge 6 && test $hour -lt 12
 			echo $white
@@ -107,17 +142,15 @@ function time_prompt
 		end
 	end
 
-	set prompt_time (set_color -b (color_time_bg) -o (color_time_fg))' '(date +%H:%M)' '
+	set prompt_time (set_color -b (_color_time_bg) -o (_color_time_fg))' '(date +%H:%M)' '
 	echo $prompt_time
 end
 
-# Host and user prompt
-function user_host_prompt
-	# User is root.
+# user@host prompt
+function _user_host_prompt
 	if [ $USER = 'root' ]
 		set -g user_bg $red
 	else if [ $USER != (logname) ]
-		# User is not login user.
 		set -g user_bg $yellow
 	else
 		set -g user_bg $white
@@ -132,10 +165,10 @@ function user_host_prompt
 end
 
 # PWD prompt
-function pwd_prompt
+function _pwd_prompt
 	# Check working directory if writable
 	if test -w $PWD
-		set pwd_color (git_status)
+		set pwd_color (_git_status)
 	else
 		set pwd_color $red
 	end
@@ -143,8 +176,8 @@ function pwd_prompt
 	echo $prompt_pwd
 end
 
-# Last command status
-function status_prompt
+# Status prompt
+function _status_prompt
 	if not test $prev_status -eq 0
 		set_color $fish_color_error
 		echo -n (set_color -b $red $yellow) '✖ '
@@ -154,9 +187,9 @@ function status_prompt
 	set_color normal
 end
 
-function git_prompt
+function _git_prompt
 	if [ (__fish_git_prompt) ]
-		set git_bg (git_status)
+		set git_bg (_git_status)
 		set prompt (__fish_git_prompt) ' '
 	else
 		set git_bg normal
@@ -164,6 +197,19 @@ function git_prompt
 	end
 	echo (set_color -b $git_bg -o $black) $prompt
 end
+
+function _private_prompt
+	if  not test -z $fish_private_mode
+		set prompt (set_color -b $black $white) '﫸'
+	else
+		set prompt
+	end
+	echo $prompt
+end
+
+# ░█░░░█▀▀░█▀▀░▀█▀░░░░░█░█░█▀█░█▀█░█▀▄░░░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀
+# ░█░░░█▀▀░█▀▀░░█░░▄▄▄░█▀█░█▀█░█░█░█░█░░░█▀▀░█▀▄░█░█░█░█░█▀▀░░█░
+# ░▀▀▀░▀▀▀░▀░░░░▀░░░░░░▀░▀░▀░▀░▀░▀░▀▀░░░░▀░░░▀░▀░▀▀▀░▀░▀░▀░░░░▀░
 
 # Left-hand prompt
 function fish_prompt
@@ -178,10 +224,14 @@ function fish_prompt
  	end
 
  	# Print right-hand prompt
-	printf '%s%s%s%s ' (distro_prompt) (user_host_prompt) (pwd_prompt) (background_normal)
+	printf '%s%s%s%s ' (_distro_prompt) (_user_host_prompt) (_pwd_prompt) (_background_normal)
 end
+
+# ░█▀▄░▀█▀░█▀▀░█░█░▀█▀░░░░░█░█░█▀█░█▀█░█▀▄░░░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀
+# ░█▀▄░░█░░█░█░█▀█░░█░░▄▄▄░█▀█░█▀█░█░█░█░█░░░█▀▀░█▀▄░█░█░█░█░█▀▀░░█░
+# ░▀░▀░▀▀▀░▀▀▀░▀░▀░░▀░░░░░░▀░▀░▀░▀░▀░▀░▀▀░░░░▀░░░▀░▀░▀▀▀░▀░▀░▀░░░░▀░
 
 # Right-hand prompt
 function fish_right_prompt
-	printf '%s%s%s%s' (status_prompt) (git_prompt) (time_prompt) (background_normal)
+	printf '%s%s%s%s%s' (_status_prompt) (_git_prompt) (_time_prompt) (_private_prompt) (_background_normal)
 end

@@ -1,18 +1,23 @@
 # Global colors - mostly used by fish_prompt.fish
 set -g foreground		'#F8F8F2'
-set -g black					'#3D4C5F'
-set -g red						'#EE4F84'
-set -g green					'#53E2AE'
+set -g black				'#3D4C5F'
+set -g red					'#EE4F84'
+set -g green				'#53E2AE'
 set -g yellow				'#F1FF52'
 set -g blue					'#6498EF'
 set -g magenta			'#985EFF'
 set -g cyan					'#24D1E7'
-set -g white					'#E5E5E5'
+set -g white				'#E5E5E5'
+
+# Fish colors
+set -g fish_color_command $green
+set -g fish_color_error $red
+set -g fish_color_quote $yellow
+set -g fish_color_param $foreground
+set -g fish_pager_color_selected_completion $foreground
 
 # Some config
 set -g fish_greeting
-set -g theme_nerd_fonts yes
-set -g theme display_user yes
 
 # Git config
 set -g __fish_git_prompt_show_informative_status 1
@@ -61,9 +66,23 @@ end
 # User aliases
 alias ytmp3='youtube-dl --extract-audio --audio-format mp3'
 alias cls='clear'
+alias h='history'
 alias upd='yay'
 alias please='sudo'
 alias shinei='kill -9'
 alias sayonara='shutdown now'
 alias ar='awesome-client "awesome.restart()"'
 alias kv='kill -9 (pgrep vlc)'
+alias priv='fish --private'
+
+# Source plugins
+function _source_plugins
+	source ~/.local/share/omf/pkg/colorman/init.fish
+end
+
+# Check Oh My Fish if installed
+if test -d "$HOME/.local/share/omf"
+	if test -d "$HOME/.local/share/omf/pkg/colorman/"
+		_source_plugins
+	end
+end
