@@ -18,7 +18,7 @@ end
 function background_normal
 	# Prevents background color to "overflow".
 	# A bit of a hack, but hey, it works. PR for improvement.
-	echo (set_color -b normal)
+	echo (set_color -b normal)''
 end
 
 function distro_prompt
@@ -67,20 +67,29 @@ end
 
 
 function time_prompt
-	function interval
-		math "abs($argv[1] - $argv[2])"
+	function color_time_bg
+		set hour (date +%H)
+		if test $hour -ge 6 && test $hour -lt 12
+			echo $yellow
+		else if test $hour -ge 12 && test $hour -lt 6
+			echo $green
+		else
+			echo $black	
+		end
 	end
-	switch $TERM;
-		case 256'*' '*'kitty'*';
-			set min_today (math "round("(date +%H)"*12 + "(date +%M)"/5)")
-			set color_r (echo "obase=16; "(math (interval $min_today 144)"+ 111") | bc)
-			set color_g (echo "obase=16; "(math (interval (math "($min_today + 96) % 288") 144 )"+ 111") | bc)
-			set color_b (echo "obase=16; "(math (interval (math "($min_today + 192) % 288") 144 )"+ 111") | bc)
-			set rgb $color_r$color_g$color_b
-		case '*';
- 			set rgb $green
- 	end
-	set prompt_time (set_color -b $rgb -o $black)' '(date +%H:%M)' '
+
+	function color_time_fg
+		set hour (date +%H)
+		if test $hour -ge 6 && test $hour -lt 12
+			echo $black
+		else if test $hour -ge 12 && test $hour -lt 6
+			echo $black
+		else
+			echo $white	
+		end
+	end
+
+	set prompt_time (set_color -b (color_time_bg) -o (color_time_fg))' '(date +%H:%M)' '
 	echo $prompt_time
 end
 
@@ -103,10 +112,10 @@ function user_host_prompt
 	echo $prompt_user
 end
 
-function git_prompt
-	set prompt_git (set_color -b normal)(fish_git_prompt)
-	echo $prompt_git
-end
+# function git_prompt
+# 	set prompt_git (set_color -b normal)(fish_git_prompt)
+# 	echo $prompt_git
+# end
 
 function pwd_prompt
 	# Check working directory if writable
@@ -139,6 +148,19 @@ function status_prompt
 	set_color normal
 end
 
+function git_prompt
+	if [ (__fish_git_prompt) ]
+		if [ (git_dirty) ]
+			set git_bg $yellow
+		else
+			set git_bg $green
+		end
+	else
+		set git_bg normal
+	end
+	echo (set_color -b $git_bg $black) (__fish_git_prompt) (background_normal)
+end
+
 function fish_prompt
 	set -g prev_status $status
 
@@ -151,10 +173,10 @@ function fish_prompt
  	end
 
  	# Print prompt
-	printf '%s%s%s%s ' (distro_prompt) (user_host_prompt) (pwd_prompt) (background_normal) (__fish_git_prompt) (background_normal)
+	printf '%s%s%s%s ' (distro_prompt) (user_host_prompt) (pwd_prompt) (git_prompt)
 end
 
 function fish_right_prompt
 	# Print right prompt
-	printf '%s%s%s%s' (background_normal)(status_prompt) (time_prompt)(background_normal)
+	printf '%s%s%s' (status_prompt) (time_prompt) (background_normal)
 end

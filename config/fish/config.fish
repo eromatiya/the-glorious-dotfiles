@@ -16,17 +16,10 @@ set -g theme display_user yes
 
 # Git config
 set -g __fish_git_prompt_show_informative_status 1
-set -g __fish_git_prompt_color_branch $magenta
 set -g __fish_git_prompt_showupstream "informative"
 set -g __fish_git_prompt_showdirtystate "yes"
 set -g __fish_git_prompt_char_stateseparator ' '
-set -g __fish_git_prompt_color_stagedstate $yellow
-set -g __fish_git_prompt_color_invalidstate $red
 set -g __fish_git_prompt_char_cleanstate '✔'
-set -g __fish_git_prompt_color_cleanstate $green
-set -g __fish_git_prompt_color_branch $white
-set -g __fish_git_prompt_color_prefix $white
-set -g __fish_git_prompt_color_suffix $white
 
 # Get terminal emulator
 set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print $11}')
@@ -42,15 +35,14 @@ case '*'
 end
 
 # Directory aliases
+alias l='ls'
 alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
-alias d='dirs -v'
+alias d='dirs'
+alias h='cd $HOME'
 
-# ░█░░░█▀█░█▀▀░█▀█░█░░░█▀▀
-# ░█░░░█░█░█░░░█▀█░█░░░█▀▀
-# ░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀
-
+# Locale
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
@@ -69,3 +61,9 @@ end
 # User aliases
 alias ytmp3='youtube-dl --extract-audio --audio-format mp3'
 alias cls='clear'
+alias upd='yay'
+alias please='sudo'
+alias shinei='kill -9'
+alias sayonara='shutdown now'
+alias ar='awesome-client "awesome.restart()"'
+alias kv='kill -9 (pgrep vlc)'
