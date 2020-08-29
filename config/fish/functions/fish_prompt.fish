@@ -5,22 +5,40 @@
 # Prompt made by manilarome
 # Inspired by pastfish
 
+# Is git dirty?
 function git_dirty
 	echo (command git status -s --ignore-submodules=dirty ^/dev/null)
 end
 
+# Is pwd a git directory?
 function git_directory
 	if test -d .git
 		echo true
 	end
 end
 
+# Set git status color
+function git_status
+	if [ (git_directory) ]
+		# Check if dirty
+		if [ (git_dirty) ]
+			set git_color $yellow
+		else
+			set git_color $green
+		end
+	else
+		set git_color $white
+	end
+	echo $git_color
+end
+
+# Prevents background color to "overflow".
+# A bit of a hack, but hey, it works. PR for improvement.
 function background_normal
-	# Prevents background color to "overflow".
-	# A bit of a hack, but hey, it works. PR for improvement.
 	echo (set_color -b normal)''
 end
 
+# Icon
 function distro_prompt
 	#  Tux
 	# Sauce: https://nerdfonts.com/cheat-sheet
@@ -65,13 +83,13 @@ function distro_prompt
 	echo $prompt_distro
 end
 
-
+# Set time prompt
 function time_prompt
 	function color_time_bg
 		set hour (date +%H)
 		if test $hour -ge 6 && test $hour -lt 12
-			echo $yellow
-		else if test $hour -ge 12 && test $hour -lt 6
+			echo $blue
+		else if test $hour -ge 12 && test $hour -lt 18
 			echo $green
 		else
 			echo $black	
@@ -81,8 +99,8 @@ function time_prompt
 	function color_time_fg
 		set hour (date +%H)
 		if test $hour -ge 6 && test $hour -lt 12
-			echo $black
-		else if test $hour -ge 12 && test $hour -lt 6
+			echo $white
+		else if test $hour -ge 12 && test $hour -lt 18
 			echo $black
 		else
 			echo $white	
@@ -93,6 +111,7 @@ function time_prompt
 	echo $prompt_time
 end
 
+# Host and user prompt
 function user_host_prompt
 	# User is root.
 	if [ $USER = 'root' ]
@@ -112,25 +131,11 @@ function user_host_prompt
 	echo $prompt_user
 end
 
-# function git_prompt
-# 	set prompt_git (set_color -b normal)(fish_git_prompt)
-# 	echo $prompt_git
-# end
-
+# PWD prompt
 function pwd_prompt
 	# Check working directory if writable
 	if test -w $PWD
-		# Check if git directory
-		if [ (git_directory) ]
-			# Check if dirty
-			if [ (git_dirty) ]
-				set pwd_color $yellow
-			else
-				set pwd_color $green
-			end
-		else
-			set pwd_color $white
-		end
+		set pwd_color (git_status)
 	else
 		set pwd_color $red
 	end
@@ -138,6 +143,7 @@ function pwd_prompt
 	echo $prompt_pwd
 end
 
+# Last command status
 function status_prompt
 	if not test $prev_status -eq 0
 		set_color $fish_color_error
@@ -150,17 +156,16 @@ end
 
 function git_prompt
 	if [ (__fish_git_prompt) ]
-		if [ (git_dirty) ]
-			set git_bg $yellow
-		else
-			set git_bg $green
-		end
+		set git_bg (git_status)
+		set prompt (__fish_git_prompt) ' '
 	else
 		set git_bg normal
+		set prompt (__fish_git_prompt)
 	end
-	echo (set_color -b $git_bg $black) (__fish_git_prompt) (background_normal)
+	echo (set_color -b $git_bg -o $black) $prompt
 end
 
+# Left-hand prompt
 function fish_prompt
 	set -g prev_status $status
 
@@ -172,11 +177,11 @@ function fish_prompt
  			printf '\033k[ '(prompt_pwd)' ]\033\\';
  	end
 
- 	# Print prompt
-	printf '%s%s%s%s ' (distro_prompt) (user_host_prompt) (pwd_prompt) (git_prompt)
+ 	# Print right-hand prompt
+	printf '%s%s%s%s ' (distro_prompt) (user_host_prompt) (pwd_prompt) (background_normal)
 end
 
+# Right-hand prompt
 function fish_right_prompt
-	# Print right prompt
-	printf '%s%s%s' (status_prompt) (time_prompt) (background_normal)
+	printf '%s%s%s%s' (status_prompt) (git_prompt) (time_prompt) (background_normal)
 end
