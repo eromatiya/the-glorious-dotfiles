@@ -2,18 +2,13 @@ local awful = require('awful')
 local gears = require('gears')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
-
 local dpi = beautiful.xresources.apply_dpi
-
 local clickable_container = require('widget.clickable-container')
-
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/screen-recorder/icons/'
-
 local record_tbl = {}
 
 -- Panel UI
-
 record_tbl.screen_rec_toggle_imgbox = wibox.widget {
 	image = widget_icon_dir .. 'start-recording-button' .. '.svg',
 	resize = true,
@@ -64,7 +59,6 @@ record_tbl.screen_rec_main_button = wibox.widget {
 	margins = dpi(24),
 	widget = wibox.container.margin
 }
-
 
 record_tbl.screen_rec_audio_imgbox = wibox.widget {
 	image = widget_icon_dir .. 'audio' .. '.svg',
@@ -229,7 +223,6 @@ record_tbl.screen_rec_res_txtbox = wibox.widget {
 		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius) 
 	end,
 	widget = wibox.container.background
-
 }
 
 record_tbl.screen_rec_offset_txt = wibox.widget {
@@ -242,7 +235,6 @@ record_tbl.screen_rec_offset_txt = wibox.widget {
 	},
 	margins = dpi(5),
 	widget = wibox.container.margin
-
 }
 
 record_tbl.screen_rec_offset_txtbox = wibox.widget {
@@ -269,7 +261,6 @@ record_tbl.screen_rec_offset_txtbox = wibox.widget {
 		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius) 
 	end,
 	widget = wibox.container.background
-
 }
 
 screen.connect_signal("request::desktop_decoration", function(s)

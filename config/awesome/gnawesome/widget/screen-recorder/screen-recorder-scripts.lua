@@ -1,10 +1,7 @@
 local awful = require('awful')
 local naughty = require('naughty')
-
 local user_config = require('widget.screen-recorder.screen-recorder-config')
-
 local scripts_tbl = {}
-
 local ffmpeg_pid = nil
 
 -- Get user settings
@@ -31,10 +28,10 @@ end
 local create_save_directory = function()
 
 	local create_dir_cmd = [[
-	dir=]] .. scripts_tbl.user_dir .. [[
+	dir="]] .. scripts_tbl.user_dir .. [["
 
-	if [ ! -d $dir ]; then
-		mkdir -p $dir
+	if [ ! -d "$dir" ]; then
+		mkdir -p "$dir"
 	fi
 	]]
 
@@ -42,7 +39,6 @@ local create_save_directory = function()
 		create_dir_cmd, 
 		function(stdout) end
 	)
-
 end
 
 create_save_directory()
@@ -51,9 +47,8 @@ local kill_existing_recording_ffmpeg = function()
 	-- Let's killall ffmpeg instance first after awesome (re)-starts if there's any
 	awful.spawn.easy_async_with_shell(
 		[[
-		sh -c "
 		ps x | grep 'ffmpeg -video_size' | grep -v grep | awk '{print $1}' | xargs kill
-		"]], 
+		]], 
 		function(stdout) end
 	)
 end
@@ -71,8 +66,12 @@ local turn_on_the_mic = function()
 end
 
 local ffmpeg_stop_recording = function()
-	awesome.kill(
-		ffmpeg_pid, awesome.unix_signal.SIGINT
+	-- Let's killall ffmpeg instance first after awesome (re)-starts if there's any
+	awful.spawn.easy_async_with_shell(
+		[[
+		ps x | grep 'ffmpeg -video_size' | grep -v grep | awk '{print $1}' | xargs kill -2
+		]], 
+		function(stdout) end
 	)
 end
 
@@ -111,12 +110,11 @@ local create_notification = function(file_dir)
 end
 
 local ffmpeg_start_recording = function(audio, filename)
-
 	local add_audio_str = ' ' 
 
 	if audio then
 		turn_on_the_mic()
-		add_audio_str = ' -f pulse -ac 2 -i default ' 
+		add_audio_str = '-f pulse -ac 2 -i default' 
 	end
 
 	ffmpeg_pid = awful.spawn.easy_async_with_shell(
@@ -124,10 +122,9 @@ local ffmpeg_start_recording = function(audio, filename)
 		file_name=]] .. filename .. [[
 
 		ffmpeg -video_size ]] .. scripts_tbl.user_resolution .. [[ -framerate ]] .. scripts_tbl.user_fps .. [[ -f x11grab \
-		-i :0.0+]] .. scripts_tbl.user_offset .. add_audio_str .. [[ -c:v libx264 -crf 20 -profile:v baseline -level 3.0 -pix_fmt yuv420p $file_name
+		-i :0.0+]] .. scripts_tbl.user_offset .. ' ' .. add_audio_str .. [[ -c:v libx264 -crf 20 -profile:v baseline -level 3.0 -pix_fmt yuv420p $file_name
 		]], 
 		function(stdout, stderr)
-
 			if stderr and stderr:match('Invalid argument') then
 				naughty.notification({
 					app_name = 'Screen Recorder',
@@ -147,11 +144,11 @@ end
 local create_unique_filename = function(audio)
 	awful.spawn.easy_async_with_shell(
 		[[
-		dir=]] .. scripts_tbl.user_dir .. [[
+		dir="]] .. scripts_tbl.user_dir .. [["
 		date=$(date '+%Y-%m-%d_%H-%M-%S')
 		format=.mp4
 
-		echo ${dir}${date}${format} | tr -d '\n'
+		echo "${dir}${date}${format}" | tr -d '\n'
 		]],
 		function(stdout) 
 			local filename = stdout
@@ -168,6 +165,5 @@ end
 scripts_tbl.stop_recording = function()
 	ffmpeg_stop_recording()
 end
-
 
 return scripts_tbl
