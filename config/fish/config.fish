@@ -1,20 +1,9 @@
-# Global colors
-set -g foreground		'#F8F8F2'
-set -g black				'#3D4C5F'
-set -g red					'#EE4F84'
-set -g green				'#53E2AE'
-set -g yellow				'#F1FF52'
-set -g blue					'#6498EF'
-set -g magenta			'#985EFF'
-set -g cyan					'#24D1E7'
-set -g white				'#E5E5E5'
-
 # Fish colors
-set -g fish_color_command --bold $green
-set -g fish_color_error $red
-set -g fish_color_quote $yellow
-set -g fish_color_param $foreground
-set -g fish_pager_color_selected_completion $blue
+set -g fish_color_command --bold green
+set -g fish_color_error red
+set -g fish_color_quote yellow
+set -g fish_color_param white
+set -g fish_pager_color_selected_completion blue
 
 # Some config
 set -g fish_greeting
@@ -34,9 +23,9 @@ switch "$TERM_EMULATOR"
 case '*kitty*'
 	neofetch --backend 'kitty'
 case '*tmux*' '*login*' '*sshd*'
-	neofetch --backend 'w3m' --ascii_distro 'arch_small' 
+	neofetch --backend 'ascii' --ascii_distro 'arch_small' 
 case '*'
-	neofetch --backend 'w3m' --xoffset 40 --yoffset 40 --gap 0
+	neofetch --backend 'w3m' --xoffset 34 --yoffset 34 --gap 0
 end
 
 # Directory aliases

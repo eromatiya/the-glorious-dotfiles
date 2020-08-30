@@ -25,12 +25,12 @@ function _git_status
 	if [ (_git_directory) ]
 		# Check if dirty
 		if [ (_git_dirty) ]
-			set git_color $yellow
+			set git_color yellow
 		else
-			set git_color $green
+			set git_color green
 		end
 	else
-		set git_color $white
+		set git_color white
 	end
 	echo $git_color
 end
@@ -39,11 +39,11 @@ end
 function _time_bg
 	set hour (date +%H)
 	if test $hour -ge 6 && test $hour -lt 12
-		echo $blue
+		echo brblue
 	else if test $hour -ge 12 && test $hour -lt 18
-		echo $magenta
+		echo brgreen
 	else
-		echo $black	
+		echo brblack	
 	end
 end
 
@@ -114,43 +114,49 @@ function _os_icon
 	echo $icon
 end
 
-# Prevents background color to "overflow".
-# A bit of a hack, but hey, it works. PR for improvement.
-function _background_normal
-	echo (set_color -b normal)
-end
-
 # ░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀░█▀▀
 # ░█▀▀░█▀▄░█░█░█░█░█▀▀░░█░░▀▀█
 # ░▀░░░▀░▀░▀▀▀░▀░▀░▀░░░░▀░░▀▀▀
 
+# SSH Prompt
+function _ssh_prompt
+	set prompt
+	if set -q SSH_TTY
+		set prompt (set_color -b bryellow -o black)' SSH '
+	end
+	echo $prompt
+end
+
 # Distro prompt
 function _distro_prompt
-	set prompt_distro (set_color -b $blue $white)(_os_icon)
+	set prompt_distro (set_color -b blue white)(_os_icon)
 	echo $prompt_distro
 end
 
 # Time prompt
 function _time_prompt
-	set prompt_time (set_color -b (_time_bg) -o $black)' '(date +%H:%M)' '
+	set prompt_time (set_color -b (_time_bg) -o black)' '(date +%H:%M)' '
 	echo $prompt_time
 end
 
 # user@host prompt
 function _user_host_prompt
+	set -l user_hostname $USER@(prompt_hostname)
 	if [ $USER = 'root' ]
-		set -g user_bg $red
+		set user_bg red
 	else if [ $USER != (logname) ]
-		set -g user_bg $yellow
+		set user_bg yellow
 	else
-		set -g user_bg $white
+		set user_bg white
 	end
-	set prompt_user (set_color -b $user_bg -o black)' '(whoami)@(hostname)' '
+	
+	# If we're running via SSH.
+	if set -q SSH_TTY
+		set user_bg brblack
+		set user_hostname (set_color -o brblue)$USER(set_color -o brred)@(set_color -o brgreen)(prompt_hostname)
+	end
 
-	# Connected on remote machine, via ssh (good).
-	if [ $SSH_CONNECTION ]
-		set prompt_user  $prompt_user(set_color -b $cyan -o black)' '(hostname)' '
-	end
+	set prompt_user (set_color -b $user_bg -o black)' '$user_hostname' '
 	echo $prompt_user
 end
 
@@ -160,9 +166,9 @@ function _pwd_prompt
 	if test -w $PWD
 		set pwd_color (_git_status)
 	else
-		set pwd_color $red
+		set pwd_color red
 	end
-	set prompt_pwd (set_color -b $black -o $pwd_color)' '(prompt_pwd)' '
+	set prompt_pwd (set_color -b black -o $pwd_color)' '(prompt_pwd)' '
 	echo $prompt_pwd
 end
 
@@ -170,9 +176,9 @@ end
 function _status_prompt
 	if not test $prev_status -eq 0
 		set_color $fish_color_error
-		echo -n (set_color -b $red $yellow) '✖ '
+		echo -n (set_color -b red yellow) '✘ '
 	else
-		echo -n (set_color -b $black $green) '✔ '
+		echo -n (set_color -b black green) '✔ '
 	end
 	set_color normal
 end
@@ -185,12 +191,12 @@ function _git_prompt
 		set git_bg normal
 		set prompt (__fish_git_prompt)
 	end
-	echo (set_color -b $git_bg -o $black) $prompt
+	echo (set_color -b $git_bg -o black) $prompt
 end
 
 function _private_prompt
 	if  not test -z $fish_private_mode
-		set prompt (set_color -b $black $white) '﫸'
+		set prompt (set_color -b black white) '﫸'
 	else
 		set prompt
 	end
@@ -214,7 +220,7 @@ function fish_prompt
  	end
 
  	# Print right-hand prompt
-	printf '%s%s%s%s ' (_distro_prompt) (_user_host_prompt) (_pwd_prompt) (_background_normal)
+	printf '%s%s%s%s%s ' (_distro_prompt) (_ssh_prompt) (_user_host_prompt) (_pwd_prompt) (set_color normal)
 end
 
 # ░█▀▄░▀█▀░█▀▀░█░█░▀█▀░░░░░█░█░█▀█░█▀█░█▀▄░░░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀
@@ -223,5 +229,6 @@ end
 
 # Right-hand prompt
 function fish_right_prompt
-	printf '%s%s%s%s%s' (_status_prompt) (_git_prompt) (_time_prompt) (_private_prompt) (_background_normal)
+	printf '%s%s%s%s%s' (_status_prompt) (_git_prompt) (_time_prompt) (_private_prompt)
+	set_color normal
 end
