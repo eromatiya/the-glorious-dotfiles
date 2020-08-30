@@ -47,6 +47,18 @@ function _time_bg
 	end
 end
 
+# Set time foreground color
+function _time_fg
+	set hour (date +%H)
+	if test $hour -ge 6 && test $hour -lt 12
+		echo black
+	else if test $hour -ge 12 && test $hour -lt 18
+		echo black
+	else
+		echo white	
+	end
+end
+
 # OS type
 function _os_type
 	set os_type ($SHELL -c "echo \$OSTYPE")
@@ -135,7 +147,7 @@ end
 
 # Time prompt
 function _time_prompt
-	set prompt_time (set_color -b (_time_bg) -o black)' '(date +%H:%M)' '
+	set prompt_time (set_color -b (_time_bg) -o (_time_fg))' '(date +%H:%M)' '
 	echo $prompt_time
 end
 
