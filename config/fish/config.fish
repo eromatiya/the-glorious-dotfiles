@@ -1,4 +1,4 @@
-# Global colors - mostly used by fish_prompt.fish
+# Global colors
 set -g foreground		'#F8F8F2'
 set -g black				'#3D4C5F'
 set -g red					'#EE4F84'
@@ -10,11 +10,11 @@ set -g cyan					'#24D1E7'
 set -g white				'#E5E5E5'
 
 # Fish colors
-set -g fish_color_command $green
+set -g fish_color_command --bold $green
 set -g fish_color_error $red
 set -g fish_color_quote $yellow
 set -g fish_color_param $foreground
-set -g fish_pager_color_selected_completion $foreground
+set -g fish_pager_color_selected_completion $blue
 
 # Some config
 set -g fish_greeting
@@ -33,7 +33,7 @@ set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print 
 switch "$TERM_EMULATOR"
 case '*kitty*'
 	neofetch --backend 'kitty'
-case '*tmux*' '*login*'
+case '*tmux*' '*login*' '*sshd*'
 	neofetch --backend 'w3m' --ascii_distro 'arch_small' 
 case '*'
 	neofetch --backend 'w3m' --xoffset 40 --yoffset 40 --gap 0
@@ -76,13 +76,6 @@ alias kv='kill -9 (pgrep vlc)'
 alias priv='fish --private'
 
 # Source plugins
-function _source_plugins
+if test -d "$HOME/.local/share/omf/pkg/colorman/"
 	source ~/.local/share/omf/pkg/colorman/init.fish
-end
-
-# Check Oh My Fish if installed
-if test -d "$HOME/.local/share/omf"
-	if test -d "$HOME/.local/share/omf/pkg/colorman/"
-		_source_plugins
-	end
 end

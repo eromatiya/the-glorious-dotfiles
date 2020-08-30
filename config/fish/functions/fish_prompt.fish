@@ -35,6 +35,18 @@ function _git_status
 	echo $git_color
 end
 
+# Set time background color
+function _time_bg
+	set hour (date +%H)
+	if test $hour -ge 6 && test $hour -lt 12
+		echo $blue
+	else if test $hour -ge 12 && test $hour -lt 18
+		echo $magenta
+	else
+		echo $black	
+	end
+end
+
 # OS type
 function _os_type
 	set os_type ($SHELL -c "echo \$OSTYPE")
@@ -120,29 +132,7 @@ end
 
 # Time prompt
 function _time_prompt
-	function _color_time_bg
-		set hour (date +%H)
-		if test $hour -ge 6 && test $hour -lt 12
-			echo $blue
-		else if test $hour -ge 12 && test $hour -lt 18
-			echo $magenta
-		else
-			echo $black	
-		end
-	end
-
-	function _color_time_fg
-		set hour (date +%H)
-		if test $hour -ge 6 && test $hour -lt 12
-			echo $white
-		else if test $hour -ge 12 && test $hour -lt 18
-			echo $black
-		else
-			echo $white	
-		end
-	end
-
-	set prompt_time (set_color -b (_color_time_bg) -o (_color_time_fg))' '(date +%H:%M)' '
+	set prompt_time (set_color -b (_time_bg) -o $black)' '(date +%H:%M)' '
 	echo $prompt_time
 end
 
