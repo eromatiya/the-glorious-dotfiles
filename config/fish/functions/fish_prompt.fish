@@ -67,8 +67,19 @@ end
 
 # Distro name
 function _distro_name
-	set distro_name (find /etc/ -maxdepth 1 -name '*release' 2> /dev/null |
-		sed 's/\/etc\///' | sed 's/-release//' | head -1)
+	set distro_name
+	if test -z $distro_name && test -r "/etc/os-release"
+		set distro_name (awk -F '=' '$1=="ID" { print $2 ;}' "/etc/os-release")
+	end
+	if test -z $distro_name && test -r "/usr/lib/os-release"
+		set distro_name (awk -F '=' '$1=="ID" { print $2 ;}' "/usr/lib/os-release")
+	end
+	if test -z $distro_name && [ (command -v lsb_release) ]
+		set distro_name (lsb_release -i)
+	end
+	if test -z $distro_name
+		set distro_name "unknown"
+	end
 	set distro_name (string lower $distro_name)
 	echo $distro_name
 end
@@ -76,34 +87,29 @@ end
 # Distro icon
 function _distro_icon
 	switch (_distro_name)
-		case '*'arch'*'
-			set icon '  '
-		case '*'debian'*'
-			set icon '  '
-		case '*'ubuntu'*'
-			set icon '  '
-		case '*'manjaro'*'
-			set icon '  '
-		case '*'centos'*'
-			set icon '  '
-		case '*'fedora'*'
-			set icon '  '
-		case '*'mint'*'
-			set icon '  '
-		case '*'alpine'*'
-			set icon '  '
-		case '*'devuan'*'
-			set icon '  '
-		case '*'opensuse'*'
-			set icon '  '
-		case '*'slackware'*'
-			set icon '  '
-		case '*'redhat'*'
-			set icon '  '
-		case '*'elementary'*'
-			set icon '  '
-		case "*"
-			set icon '  '
+		case '*arch*';												set icon ''
+		case '*debian*';											set icon ''
+		case '*ubuntu*';											set icon ''
+		case '*raspbian*';										set icon ''
+		case '*mint*';												set icon ''
+		case '*manjaro*';										set icon ''
+		case '*elementary*';									set icon ''
+		case '*fedora*';											set icon ''
+		case '*coreos*';											set icon ''
+		case '*gentoo*';											set icon ''
+		case '*centos*';											set icon ''
+		case '*mageia*';											set icon ''
+		case '*opensuse*' '*tumbleweed*';		set icon ''
+		case '*sabayon*';										set icon ''
+		case '*slackware*';									set icon ''
+		case '*alpine*';											set icon ''
+		case '*devuan*';										set icon ''
+		case '*redhat*';											set icon ''
+		case '*aosc*';												set icon ''
+		case '*nixos*';											set icon ''
+		case '*void*';												set icon ''
+		case '*artix*';												set icon ''
+		case '*';														set icon ''
 	end
 	echo $icon
 end
@@ -112,16 +118,12 @@ end
 function _os_icon
 	# Icons sauce: https://nerdfonts.com/cheat-sheet
 	switch (_os_type)
-		case linux-gnu
-			set icon (_distro_icon)
-		case darwin
-			set icon '  '
-		case msys win32
-			set icon '  '
-		case freebsd
-			set icon '  '
-		case "*"
-			set icon '  '
+		case linux-gnu;											set icon (_distro_icon)
+		case darwin;												set icon ''
+		case CYGWIN_NT-'*' MSYS_NT-'*';		set icon ''
+		case freebsd openbsd dragonfly;			set icon ''
+		case sunos;												set icon ''
+		case '*';														set icon ''
 	end
 	echo $icon
 end
@@ -141,7 +143,7 @@ end
 
 # Distro prompt
 function _distro_prompt
-	set prompt_distro (set_color -b blue white)(_os_icon)
+	set prompt_distro (set_color -b blue white)' '(_os_icon)' '
 	echo $prompt_distro
 end
 
@@ -228,10 +230,10 @@ function fish_prompt
 		case xterm'*' vte'*';
 			printf '\033]0;[ '(prompt_pwd)' ]\007';
 		case screen'*';
- 			printf '\033k[ '(prompt_pwd)' ]\033\\';
- 	end
+			printf '\033k[ '(prompt_pwd)' ]\033\\';
+	end
 
- 	# Print right-hand prompt
+	# Print right-hand prompt
 	printf '%s%s%s%s%s ' (_distro_prompt) (_ssh_prompt) (_user_host_prompt) (_pwd_prompt) (set_color normal)
 end
 

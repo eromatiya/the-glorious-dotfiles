@@ -28,13 +28,13 @@ case '*'
 	neofetch --backend 'w3m' --xoffset 34 --yoffset 34 --gap 0
 end
 
-# Directory aliases
-alias l='ls'
-alias la='ls -a'
-alias ll='ls -l'
-alias lal='ls -al'
-alias d='dirs'
-alias h='cd $HOME'
+# Directory abbreviations
+abbr -a -g l 'ls'
+abbr -a -g la 'ls -a'
+abbr -a -g ll 'ls -l'
+abbr -a -g lal 'ls -al'
+abbr -a -g d 'dirs'
+abbr -a -g h 'cd $HOME'
 
 # Locale
 export LANG="en_US.UTF-8"
@@ -52,17 +52,29 @@ case '*'
 	export TERM='xterm-256color'
 end
 
-# User aliases
-alias ytmp3='youtube-dl --extract-audio --audio-format mp3'
-alias cls='clear'
-alias h='history'
-alias upd='yay'
-alias please='sudo'
-alias shinei='kill -9'
-alias sayonara='shutdown now'
-alias ar='awesome-client "awesome.restart()"'
-alias kv='kill -9 (pgrep vlc)'
-alias priv='fish --private'
+# User abbreviations
+abbr -a -g ytmp3 'youtube-dl --extract-audio --audio-format mp3'		# Convert/Download YT videos as mp3
+abbr -a -g cls 'clear'																								# Clear
+abbr -a -g h 'history'																								# Show history
+abbr -a -g upd 'yay'																								# Update everything
+abbr -a -g please 'sudo'																						# Polite way to sudo
+abbr -a -g fucking 'sudo'																						# Rude way to sudo
+abbr -a -g sayonara 'shutdown now'																	# Epic way to shutdown
+abbr -a -g stahp 'shutdown now'																		# Panik - stonk man
+abbr -a -g ar 'echo "awesome.restart()" | awesome-client'							# Reload AwesomeWM
+abbr -a -g shinei 'kill -9'																						# Kill ala DIO
+abbr -a -g kv 'kill -9 (pgrep vlc)'																			# Kill zombie vlc
+abbr -a -g priv 'fish --private'																				# Fish incognito mode
+abbr -a -g sshon 'sudo systemctl start sshd.service'									# Start ssh service
+abbr -a -g sshoff 'sudo systemctl stop sshd.service'									# Stop ssh service
+abbr -a -g untar 'tar -zxvf'																					# Untar
+abbr -a -g genpass 'openssl rand -base64 20'												# Generate a random, 20-charactered password
+abbr -a -g sha 'shasum -a 256'																			# Test checksum
+abbr -a -g cn 'ping -c 5 8.8.8.8'																			# Ping google, checking network
+abbr -a -g ipe 'curl ifconfig.co'																			# Get external IP address
+abbr -a -g ips 'ip link show'																					# Get network interfaces information
+abbr -a -g wloff 'rfkill block wlan'																		# Block wlan, killing wifi connection
+abbr -a -g wlon 'rfkill unblock wlan'																	# Unblock wlan, start wifi connection
 
 # Source plugins
 if test -d "$HOME/.local/share/omf/pkg/colorman/"
