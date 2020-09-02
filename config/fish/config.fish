@@ -10,10 +10,20 @@ set -g fish_greeting
 
 # Git config
 set -g __fish_git_prompt_show_informative_status 1
-set -g __fish_git_prompt_showupstream "informative"
-set -g __fish_git_prompt_showdirtystate "yes"
+set -g __fish_git_prompt_showupstream informative
+set -g __fish_git_prompt_showdirtystate yes
 set -g __fish_git_prompt_char_stateseparator ' '
 set -g __fish_git_prompt_char_cleanstate '✔'
+set -g __fish_git_prompt_char_dirtystate '✚'
+set -g __fish_git_prompt_char_invalidstate '✖'
+set -g __fish_git_prompt_char_stagedstate '●'
+set -g __fish_git_prompt_char_stashstate '⚑'
+set -g __fish_git_prompt_char_untrackedfiles '?'
+set -g __fish_git_prompt_char_upstream_ahead ''
+set -g __fish_git_prompt_char_upstream_behind ''
+set -g __fish_git_prompt_char_upstream_diverged 'ﱟ'
+set -g __fish_git_prompt_char_upstream_equal ''
+set -g __fish_git_prompt_char_upstream_prefix ''''
 
 # Get terminal emulator
 set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print $11}')
@@ -53,7 +63,7 @@ case '*'
 end
 
 # User abbreviations
-abbr -a -g ytmp3 'youtube-dl --extract-audio --audio-format mp3'		# Convert/Download YT videos as mp3
+abbr -a -g ytmp3 'youtube-dl --extract-audio --audio-format mp3'				# Convert/Download YT videos as mp3
 abbr -a -g cls 'clear'																								# Clear
 abbr -a -g h 'history'																								# Show history
 abbr -a -g upd 'yay'																								# Update everything
@@ -65,18 +75,25 @@ abbr -a -g ar 'echo "awesome.restart()" | awesome-client'							# Reload Awesome
 abbr -a -g shinei 'kill -9'																						# Kill ala DIO
 abbr -a -g kv 'kill -9 (pgrep vlc)'																			# Kill zombie vlc
 abbr -a -g priv 'fish --private'																				# Fish incognito mode
-abbr -a -g sshon 'sudo systemctl start sshd.service'									# Start ssh service
-abbr -a -g sshoff 'sudo systemctl stop sshd.service'									# Stop ssh service
+abbr -a -g sshon 'sudo systemctl start sshd.service'										# Start ssh service
+abbr -a -g sshoff 'sudo systemctl stop sshd.service'										# Stop ssh service
 abbr -a -g untar 'tar -zxvf'																					# Untar
-abbr -a -g genpass 'openssl rand -base64 20'												# Generate a random, 20-charactered password
+abbr -a -g genpass 'openssl rand -base64 20'													# Generate a random, 20-charactered password
 abbr -a -g sha 'shasum -a 256'																			# Test checksum
 abbr -a -g cn 'ping -c 5 8.8.8.8'																			# Ping google, checking network
-abbr -a -g ipe 'curl ifconfig.co'																			# Get external IP address
+abbr -a -g ipe 'curl ifconfig.co'																				# Get external IP address
 abbr -a -g ips 'ip link show'																					# Get network interfaces information
-abbr -a -g wloff 'rfkill block wlan'																		# Block wlan, killing wifi connection
-abbr -a -g wlon 'rfkill unblock wlan'																	# Unblock wlan, start wifi connection
+abbr -a -g wloff 'rfkill block wlan'																			# Block wlan, killing wifi connection
+abbr -a -g wlon 'rfkill unblock wlan'																		# Unblock wlan, start wifi connection
+abbr -a -g ff 'firefox'																								# Launch firefox
 
 # Source plugins
+# Useful plugins: archlinux bang-bang cd colorman sudope vcs
 if test -d "$HOME/.local/share/omf/pkg/colorman/"
 	source ~/.local/share/omf/pkg/colorman/init.fish
+end
+
+# Make su launch fish
+function su
+   command su --shell=/usr/bin/fish $argv
 end
