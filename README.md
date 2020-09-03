@@ -159,8 +159,6 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 
 5. Reload AwesomeWM by pressing <kbd>Super + Shift + r</kbd>.
 
-This repo is also available in [AUR](https://aur.archlinux.org/packages/the-glorious-dotfiles/).
-
 ```
 $ yay -S the-glorious-dotfiles
 ```
