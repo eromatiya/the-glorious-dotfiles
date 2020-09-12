@@ -25,7 +25,7 @@ function close_quake()
 	quake_client.hidden = true
 end
 
-toggle_quake = function()
+local toggle_quake = function()
 	opened = not opened
 	if not quake_client then
 		create_shell()
@@ -37,6 +37,13 @@ toggle_quake = function()
 		end
 	end
 end
+
+awesome.connect_signal(
+	'module::quake_toggle',
+	function()
+		toggle_quake();
+	end
+)
 
 client.connect_signal(
 	'manage',
