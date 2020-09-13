@@ -19,6 +19,7 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 local filesystem = gears.filesystem
+local config = require('configuration.config')
 
 --  ========================================
 -- 				Configuration
@@ -26,25 +27,24 @@ local filesystem = gears.filesystem
 --  ========================================
 
 local wall_config = {
-
 	-- Wallpaper directory. The default is:
 	-- local wall_config.wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
-	wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/',
+	wall_dir = filesystem.get_configuration_dir() .. (config.module.dynamic_wallpaper.wall_dir or 'theme/wallpapers/'),
 
 	-- Wallpapers filename and extension
-	wallpaper_morning = 'morning-wallpaper.jpg',
-	wallpaper_noon = 'noon-wallpaper.jpg',
-	wallpaper_night = 'night-wallpaper.jpg',
-	wallpaper_midnight = 'midnight-wallpaper.jpg',
+	wallpaper_morning = config.module.dynamic_wallpaper.wallpaper_morning or 'morning-wallpaper.jpg',
+	wallpaper_noon = config.module.dynamic_wallpaper.wallpaper_noon or 'noon-wallpaper.jpg',
+	wallpaper_night = config.module.dynamic_wallpaper.wallpaper_night or 'night-wallpaper.jpg',
+	wallpaper_midnight = config.module.dynamic_wallpaper.wallpaper_midnight or 'midnight-wallpaper.jpg',
 
 	-- Change the wallpaper on scheduled time
-	morning_schedule = '06:22:00',
-	noon_schedule = '12:00:00',
-	night_schedule = '17:58:00',
-	midnight_schedule = '24:00:00',
+	morning_schedule = config.module.dynamic_wallpaper.morning_schedule or '06:22:00',
+	noon_schedule = config.module.dynamic_wallpaper.noon_schedule or '12:00:00',
+	night_schedule = config.module.dynamic_wallpaper.night_schedule or '17:58:00',
+	midnight_schedule = config.module.dynamic_wallpaper.midnight_schedule or '24:00:00',
 
 	-- Don't stretch wallpaper on multihead setups if true
-	stretch = false
+	stretch = config.module.dynamic_wallpaper.stretch or false
 }
 
 --  ========================================

@@ -4,8 +4,8 @@
 local awful = require('awful')
 local naughty = require('naughty')
 local apps = require('configuration.apps')
-
-local debugger_mode = false
+local config = require('configuration.config')
+local debug_mode = config.module.auto_start.debug_mode or false
 
 local run_once = function(cmd)
     local findme = cmd
@@ -17,7 +17,7 @@ local run_once = function(cmd)
         string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd),
         function(stdout, stderr)
             -- Debugger 
-            if not stderr or stderr == '' or not debugger_mode then
+            if not stderr or stderr == '' or not debug_mode then
                 return 
             end
             naughty.notification({
