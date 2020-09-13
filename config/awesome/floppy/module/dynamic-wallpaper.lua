@@ -25,24 +25,27 @@ local filesystem = gears.filesystem
 --	     Change your preference here
 --  ========================================
 
--- Wallpaper directory. The default is:
-local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
--- local wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
+local wall_config = {
 
--- Wallpapers filename and extension
-wallpaper_morning = 'morning-wallpaper.jpg'
-wallpaper_noon = 'noon-wallpaper.jpg'
-wallpaper_night = 'night-wallpaper.jpg'
-wallpaper_midnight = 'midnight-wallpaper.jpg'
+	-- Wallpaper directory. The default is:
+	-- local wall_config.wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
+	wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/',
 
--- Change the wallpaper on scheduled time
-morning_schedule = '06:22:00'
-noon_schedule = '12:00:00'
-night_schedule = '17:58:00'
-midnight_schedule = '24:00:00'
+	-- Wallpapers filename and extension
+	wallpaper_morning = 'morning-wallpaper.jpg',
+	wallpaper_noon = 'noon-wallpaper.jpg',
+	wallpaper_night = 'night-wallpaper.jpg',
+	wallpaper_midnight = 'midnight-wallpaper.jpg',
 
--- Don't stretch wallpaper on multihead setups if true
-local dont_stretch_wallpaper = false
+	-- Change the wallpaper on scheduled time
+	morning_schedule = '06:22:00',
+	noon_schedule = '12:00:00',
+	night_schedule = '17:58:00',
+	midnight_schedule = '24:00:00',
+
+	-- Don't stretch wallpaper on multihead setups if true
+	stretch = false
+}
 
 --  ========================================
 -- 				   Processes
@@ -90,7 +93,7 @@ end
 
 -- Set wallpaper
 local set_wallpaper = function(path)
-	if dont_stretch_wallpaper then
+	if not wall_config.stretch then
 		for s in screen do
 			-- Update wallpaper based on the data in the array
 			gears.wallpaper.maximized (path, s)
@@ -101,18 +104,14 @@ local set_wallpaper = function(path)
 	end
 end
 
--- Update wallpaper (used by the manage_timer function)
--- I think the gears.wallpaper.maximized is too fast or being ran asynchronously
--- So the wallpaper is not being updated on awesome (re)start without this timer
--- We need some delay.
--- Hey it's working, so whatever
+-- Update wallpaper
 local update_wallpaper = function(wall_name)
-	local wall_dir = wall_dir .. wall_name
-	set_wallpaper(wall_dir)
+	wall_config.wall_dir = wall_config.wall_dir .. wall_name
+	set_wallpaper(wall_config.wall_dir)
 
 	-- Overwrite the default wallpaper
 	-- This is important in case we add an extra monitor
-	beautiful.wallpaper = wall_dir
+	beautiful.wallpaper = wall_config.wall_dir
 end
 
 -- Updates variables
@@ -121,9 +120,9 @@ local manage_timer = function()
 	local time_now = parse_to_seconds(current_time())
 
 	-- Parse the schedules to seconds
-	local parsed_morning = parse_to_seconds(morning_schedule)
-	local parsed_noon = parse_to_seconds(noon_schedule)
-	local parsed_night = parse_to_seconds(night_schedule)
+	local parsed_morning = parse_to_seconds(wall_config.morning_schedule)
+	local parsed_noon = parse_to_seconds(wall_config.noon_schedule)
+	local parsed_night = parse_to_seconds(wall_config.night_schedule)
 	local parsed_midnight = parse_to_seconds('00:00:00')
 
 	-- Note that we will use '00:00:00' instead of '24:00:00' as midnight
@@ -133,36 +132,36 @@ local manage_timer = function()
 		-- Midnight time
 
 		-- Update Wallpaper
-		update_wallpaper(wallpaper_midnight)
+		update_wallpaper(wall_config.wallpaper_midnight)
 
 		-- Set the data for the next scheduled time
-		wall_data = {morning_schedule, wallpaper_morning}
+		wall_data = {wall_config.morning_schedule, wall_config.wallpaper_morning}
 
 	elseif time_now >= parsed_morning and time_now < parsed_noon then
 		-- Morning time
 
 		-- Update Wallpaper
-		update_wallpaper(wallpaper_morning)
+		update_wallpaper(wall_config.wallpaper_morning)
 
 		-- Set the data for the next scheduled time
-		wall_data = {noon_schedule, wallpaper_noon}
+		wall_data = {wall_config.noon_schedule, wall_config.wallpaper_noon}
 
 	elseif time_now >= parsed_noon and time_now < parsed_night then
 		-- Noon time
 
 		-- Update Wallpaper
-		update_wallpaper(wallpaper_noon)
+		update_wallpaper(wall_config.wallpaper_noon)
 
 		-- Set the data for the next scheduled time
-		wall_data = {night_schedule, wallpaper_night}
+		wall_data = {wall_config.night_schedule, wall_config.wallpaper_night}
 	else
 		-- Night time
 
 		-- Update Wallpaper
-		update_wallpaper(wallpaper_night)
+		update_wallpaper(wall_config.wallpaper_night)
 
 		-- Set the data for the next scheduled time
-		wall_data = {midnight_schedule, wallpaper_midnight}
+		wall_data = {wall_config.midnight_schedule, wall_config.wallpaper_midnight}
 	end
 	
 	-- Get the time difference to set as timeout for the wall_updater timer below
@@ -187,7 +186,7 @@ local wall_updater = gears.timer {
 awesome.connect_signal(
 	'module::change_wallpaper',
 	function()
-		set_wallpaper(wall_dir .. wall_data[2])
+		set_wallpaper(wall_config.wall_dir .. wall_data[2])
 
 		-- Update values for the next specified schedule
 		manage_timer()
