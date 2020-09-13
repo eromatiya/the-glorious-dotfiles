@@ -8,13 +8,14 @@ local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/weather/icons/'
 local clickable_container = require('widget.clickable-container')
 local json = require('library.json')
-local secrets = require('configuration.secrets')
 
-local key     = secrets.weather.key
-local city_id = secrets.weather.city_id
-local units   = secrets.weather.units
-
-local update_interval = 1200
+local config = require('configuration.config')
+local secrets = {
+	key = config.widget.weather.key,
+	city_id = config.widget.weather.city_id,
+	units = config.widget.weather.units,
+	update_interval = config.widget.weather.update_interval
+}
 
 local weather_icon_widget = wibox.widget {
 	{
@@ -223,19 +224,19 @@ local get_weather_symbol = function()
 		['metric'] = '°C',
 		['imperial'] = '°F'
 	}
-
-	return symbol_tbl[units]
+	return symbol_tbl[secrets.units]
 end
 
 -- Create openweathermap script based on pass mode
 -- Mode must be `forecast` or `weather`
 local create_weather_script = function(mode)
 	local weather_script = [[
-		KEY="]] .. key .. [["
-		CITY="]] .. city_id .. [["
-		UNITS="]] .. units .. [["
+		KEY="]] .. secrets.key .. [["
+		CITY="]] .. secrets.city_id .. [["
+		UNITS="]] .. secrets.units .. [["
 
-		weather=$(curl -sf "http://api.openweathermap.org/data/2.5/]] .. mode .. [[?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
+		weather=$(curl -sf "http://api.openweathermap.org/data/2.5/]] .. mode ..
+			[[?APPID="${KEY}"&id="${CITY}"&units="${UNITS}"")
 
 		if [ ! -z "$weather" ]; then
 			printf "${weather}"
@@ -336,7 +337,7 @@ awesome.connect_signal(
 )
 
 local update_widget_timer = gears.timer {
-	timeout = update_interval,
+	timeout = secrets.update_interval,
 	autostart = true,
 	call_now  = true,
 	single_shot = false,
@@ -391,7 +392,6 @@ awesome.connect_signal(
 		weather_sunrise:set_markup(sunrise)
 		weather_sunset:set_markup(sunset)
 		weather_data_time:set_markup(data_receive)
-
 	end
 )
 

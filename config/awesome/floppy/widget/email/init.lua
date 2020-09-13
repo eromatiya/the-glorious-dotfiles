@@ -6,12 +6,14 @@ local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/email/icons/'
-local secrets = require('configuration.secrets')
 
-local email_account   = secrets.email.address
-local app_password    = secrets.email.app_password
-local imap_server     = secrets.email.imap_server
-local port            = secrets.email.port
+local config = require('configuration.config')
+local secrets = {
+	email_address = config.widget.email.address,
+	app_password = config.widget.email.app_password,
+	imap_server = config.widget.email.imap_server,
+	port = config.widget.email.port
+}
 
 local unread_email_count = 0
 local startup_show = true
@@ -191,8 +193,8 @@ def process_mailbox(M):
 
 
 try:
-	M=imaplib.IMAP4_SSL("]] .. imap_server .. [[", ]] .. port .. [[)
-	M.login("]] .. email_account .. [[","]] .. app_password .. [[")
+	M=imaplib.IMAP4_SSL("]] .. secrets.imap_server .. [[", ]] .. secrets.port .. [[)
+	M.login("]] .. secrets.email_address .. [[","]] .. secrets.app_password .. [[")
 
 	status, counts = M.status("INBOX","(MESSAGES UNSEEN)")
 
@@ -367,7 +369,7 @@ local set_missing_secrets_msg = function()
 end
 
 local check_secrets = function()
-	if email_account == '' or app_password == '' or imap_server == '' or port == '' then
+	if secrets.email_address == '' or secrets.app_password == '' or secrets.imap_server == '' or secrets.port == '' then
 		set_missing_secrets_msg()
 		return
 	else
