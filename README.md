@@ -56,7 +56,7 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 ### Starring
 
 - [`archlinux`](https://www.archlinux.org/download/) as distribution
-- [`fish`] as shell
+- [`fish`](https://fishshell.com/) as shell
 - [`awesomewm`](https://awesomewm.org) as window manager
 - [`kitty`](https://github.com/kovidgoyal/kitty) as terminal emulator
 - [`picom-git`](https://github.com/yshui/picom) as compositor
