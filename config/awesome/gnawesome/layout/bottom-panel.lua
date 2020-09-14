@@ -8,39 +8,24 @@ local clickable_container = require('widget.clickable-container')
 
 local tag_list = require('widget.tag-list')
 
+local build_widget = function(widget)
+	return wibox.widget {
+		{
+			widget,
+			bg = beautiful.groups_title_bg,
+			shape = function(cr, w, h)
+				gears.shape.rounded_rect(cr, w, h, dpi(6))
+			end,
+			widget = wibox.container.background
+		},
+		top = dpi(10),
+		bottom = dpi(10),
+		widget = wibox.container.margin
+	}
+end
+
 local bottom_panel = function(s)
 
-	local build_widget = function(widget)
-		return wibox.widget {
-			{
-				widget,
-				bg = beautiful.groups_title_bg,
-				shape = function(cr, w, h)
-					gears.shape.rounded_rect(cr, w, h, dpi(6))
-				end,
-				widget = wibox.container.background
-			},
-			top = dpi(10),
-			bottom = dpi(10),
-			widget = wibox.container.margin
-		}
-	end
-
-	local build_widget = function(widget)
-		return wibox.widget {
-			{
-				widget,
-				bg = beautiful.groups_title_bg,
-				shape = function(cr, w, h)
-					gears.shape.rounded_rect(cr, w, h, dpi(6))
-				end,
-				widget = wibox.container.background
-			},
-			top = dpi(10),
-			bottom = dpi(10),
-			widget = wibox.container.margin
-		}
-	end
 
 	s.systray = wibox.widget {
 		{

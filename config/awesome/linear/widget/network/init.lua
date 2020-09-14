@@ -19,11 +19,12 @@ local clickable_container = require('widget.clickable-container')
 
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/network/icons/'
+local config = require('configuration.config')
 
 -- Configuration
 local interfaces = {
-	wlan_interface = 'wlp3s0',
-	lan_interface = 'enp0s25'
+	wlan_interface = config.widget.network.wireless_interface or 'wlan0',
+	lan_interface = config.widget.network.wired_interface or 'enp0s25'
 }
 
 local network_mode = nil

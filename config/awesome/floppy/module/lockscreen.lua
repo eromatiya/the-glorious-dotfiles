@@ -8,47 +8,48 @@ local config_dir = filesystem.get_configuration_dir()
 local dpi = beautiful.xresources.apply_dpi
 local apps = require('configuration.apps')
 local widget_icon_dir = config_dir .. 'configuration/user-profile/'
+local config = require('configuration.config')
 
 -- Add paths to package.cpath
 package.cpath = package.cpath .. ';' .. config_dir .. '/library/?.so;' .. '/usr/lib/lua-pam/?.so;'
 
 -- Configuration table
-local config = {
+local locker_config = {
 	-- Fallback Password
 	-- THIS EXIST TO PREVENT THE ERROR CAUSED BY THE DIFFERENCE OF LUA VERSIONS USED ON COMPILING THE LUA_PAM LIB
 	-- READ THE WIKI - ABOUT MODULE SECTION; TO FIX THE LIBRAY ERROR IF YOU HAVE ONE
 	-- ONLY USE THIS AS A TEMPORARY SUBSTITUTE TO LUA_PAM
 	fallback_password = function()
 		-- Set your password here
-		return 'toor'
+		return config.module.lockscreen.fallback_password or 'toor'
 	end,
 
 	-- General Configuration
 	-- Capture a picture using webcam
-	capture_intruder = true,
+	capture_intruder = config.module.lockscreen.capture_intruder or false,
 
 	-- Save location, auto creates
-	face_capture_dir = '$(xdg-user-dir PICTURES)/Intruders/',
+	face_capture_dir = config.module.lockscreen.face_capture_dir or '$(xdg-user-dir PICTURES)/Intruders/',
 
 	-- Background Mode Configuration
 	-- True to blur the background
-	blur_background = true,
+	blur_background = config.module.lockscreen.blur_background or false,
 	
 	-- Wallpaper directory
-	wall_dir = config_dir .. 'theme/wallpapers/',
+	wall_dir = config_dir .. (config.module.lockscreen.wall_dir or 'theme/wallpapers/'),
 
 	-- Default wallpaper
-	default_wall_name = 'morning-wallpaper.jpg',
+	default_wall_name = config.module.lockscreen.default_wall_name or 'morning-wallpaper.jpg',
 
 	-- /tmp directory
-	tmp_wall_dir = '/tmp/awesomewm/' .. os.getenv('USER') .. '/'
+	tmp_wall_dir = config.module.lockscreen.tmp_wall_dir or '/tmp/awesomewm/' .. os.getenv('USER') .. '/'
 }
 
 -- Useful variables (DO NOT TOUCH THESE)
 local input_password = nil
 local lock_again = nil
 local type_again = true
-local capture_now = config.capture_intruder
+local capture_now = locker_config.capture_intruder
 local locked_tag = nil
 
 local uname_text = wibox.widget {
@@ -330,7 +331,7 @@ local locker = function(s)
 		awful.spawn.easy_async_with_shell(
 			'ls -l /dev/video* | grep /dev/video0',
 			function(stdout)
-				if not config.capture_intruder then
+				if not locker_config.capture_intruder then
 					capture_now = false
 					return
 				end
@@ -349,7 +350,7 @@ local locker = function(s)
 	-- Snap an image of the intruder
 	local intruder_capture = function()
 		local capture_image = [[
-		save_dir="]] .. config.face_capture_dir .. [["
+		save_dir="]] .. locker_config.face_capture_dir .. [["
 		date="$(date +%Y%m%d_%H%M%S)"
 		file_loc="${save_dir}SUSPECT-${date}.png"
 
@@ -557,7 +558,7 @@ local locker = function(s)
 					else
 						-- Library doesn't exist or returns an error due to some reasons (read the manual)
 						-- Use fallback password data
-						authenticated = input_password == config.fallback_password()
+						authenticated = input_password == locker_config.fallback_password()
 
 						local rtfm = naughty.action {
 							name = 'Read Manual',
@@ -800,18 +801,18 @@ local filter_bg_image = function(wall_name, index, ap, width, height)
 
 	-- Checks if the blur has to be blurred
 	local blur_filter_param = ''
-	if config.blur_background then
+	if locker_config.blur_background then
 		blur_filter_param = '-filter Gaussian -blur 0x10'
 	end
 	
 	-- Create imagemagick command
 	local magic = [[
 	sh -c "
-	if [ ! -d ]] .. config.tmp_wall_dir ..[[ ]; then mkdir -p ]] .. config.tmp_wall_dir .. [[; fi
+	if [ ! -d ]] .. locker_config.tmp_wall_dir ..[[ ]; then mkdir -p ]] .. locker_config.tmp_wall_dir .. [[; fi
 
-	convert -quality 100 -brightness-contrast -20x0 ]] .. ' '  .. blur_filter_param .. ' '.. config.wall_dir .. wall_name .. 
+	convert -quality 100 -brightness-contrast -20x0 ]] .. ' '  .. blur_filter_param .. ' '.. locker_config.wall_dir .. wall_name .. 
 	[[ -gravity center -crop ]] .. ap .. [[:1 +repage -resize ]] .. width .. 'x' .. height .. 
-	[[! ]] .. config.tmp_wall_dir .. index .. wall_name .. [[
+	[[! ]] .. locker_config.tmp_wall_dir .. index .. wall_name .. [[
 	"]]
 
 	return magic
@@ -841,7 +842,7 @@ local apply_ls_bg_image = function(wall_name)
 			awful.spawn.easy_async_with_shell(
 				cmd,
 				function()
-					s.lockscreen.bgimage = config.tmp_wall_dir .. index .. wall_name
+					s.lockscreen.bgimage = locker_config.tmp_wall_dir .. index .. wall_name
 				end
 			)
 		else
@@ -849,7 +850,7 @@ local apply_ls_bg_image = function(wall_name)
 			awful.spawn.easy_async_with_shell(
 				cmd,
 				function() 
-					s.lockscreen_extended.bgimage = config.tmp_wall_dir .. index .. wall_name
+					s.lockscreen_extended.bgimage = locker_config.tmp_wall_dir .. index .. wall_name
 				end
 			)
 		end
@@ -861,7 +862,7 @@ screen.connect_signal(
 	'request::desktop_decoration',
 	function(s)
 		create_lock_screens(s)
-		apply_ls_bg_image(config.default_wall_name)
+		apply_ls_bg_image(locker_config.default_wall_name)
 	end
 )
 
@@ -870,7 +871,7 @@ screen.connect_signal(
 	'added', 
 	function(s)
 		create_lock_screens(s)
-		apply_ls_bg_image(config.default_wall_name)
+		apply_ls_bg_image(locker_config.default_wall_name)
 	end
 
 )
@@ -880,6 +881,6 @@ screen.connect_signal(
 	'removed',
 	function(s)
 		create_lock_screens(s)
-		apply_ls_bg_image(config.default_wall_name)
+		apply_ls_bg_image(locker_config.default_wall_name)
 	end
 )

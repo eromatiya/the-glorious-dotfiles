@@ -288,7 +288,7 @@ local globalKeys = awful.util.table.join(
 		{modkey},
 		'`',
 		function()
-			_G.toggle_quake()
+			awesome.emit_signal('module::quake_toggle')
 		end,
 		{description = 'dropdown application', group = 'launcher'}
 	),
@@ -488,7 +488,7 @@ local globalKeys = awful.util.table.join(
 				_G.right_panel_mode = 'today_mode'
 			end
 		end,
-		{description = 'open notification center', group = 'launcher'}
+		{description = 'open today pane', group = 'launcher'}
 	),
 	awful.key(
 		{modkey}, 
@@ -511,7 +511,7 @@ local globalKeys = awful.util.table.join(
 				_G.right_panel_mode = 'notif_mode'
 			end
 		end,
-		{description = 'open today pane', group = 'launcher'}
+		{description = 'open notification center', group = 'launcher'}
 	)
 )
 

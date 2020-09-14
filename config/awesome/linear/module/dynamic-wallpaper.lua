@@ -18,6 +18,7 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 local filesystem = gears.filesystem
+local config = require('configuration.config')
 
 
 --  ========================================
@@ -25,35 +26,26 @@ local filesystem = gears.filesystem
 --	     Change your preference here
 --  ========================================
 
--- Wallpaper directory. The default is:
-local wall_dir = filesystem.get_configuration_dir() .. 'theme/wallpapers/'
--- local wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
+local wall_config = {
+	-- Wallpaper directory. The default is:
+	-- local wall_config.wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
+	wall_dir = filesystem.get_configuration_dir() .. (config.module.dynamic_wallpaper.wall_dir or 'theme/wallpapers/'),
 
--- If there's a picture format that awesome accepts and i missed
--- (which i probably did) feel free to add it right here
-local valid_picture_formats = {"jpg", "png", "jpeg"}
+	-- If there's a picture format that awesome accepts and i missed
+	-- (which i probably did) feel free to add it right here
+	valid_picture_formats = config.module.dynamic_wallpaper.valid_picture_formats or {"jpg", "png", "jpeg"},
 
--- Table mapping schedule to wallpaper filename
-local wallpaper_schedule = {
-----[[
-	['00:00:00'] = 'midnight-wallpaper.jpg',
-	['06:22:00'] = 'morning-wallpaper.jpg',
-	['12:00:00'] = 'noon-wallpaper.jpg',
-	['17:58:00'] = 'night-wallpaper.jpg'
---]]
--- Example of just using auto-scheduling with keywords
---[[
-	'midnight',
-	'morning',
-	'noon',
-	'afternoon',
-	'evening',
-	'night'
---]]
+	-- Table mapping schedule to wallpaper filename
+	wallpaper_schedule = config.module.dynamic_wallpaper.wallpaper_schedule or {
+		['00:00:00'] = 'midnight-wallpaper.jpg',
+		['06:22:00'] = 'morning-wallpaper.jpg',
+		['12:00:00'] = 'noon-wallpaper.jpg',
+		['17:58:00'] = 'night-wallpaper.jpg'
+	},
+
+	-- Don't stretch wallpaper on multihead setups if true
+	stretch = config.module.dynamic_wallpaper.stretch or false
 }
-
--- Don't stretch wallpaper on multihead setups if true
-local dont_stretch_wallpaper = false
 
 --  ========================================
 -- 				   Processes
@@ -179,16 +171,16 @@ local function auto_schedule(wall_list)
 end
 
 -- Reformat whatever schedule was specified into an actual schedule
-if #wallpaper_schedule == 0 then
+if #wall_config.wallpaper_schedule == 0 then
 	local count = 0
 	-- Determine if empty or if manual schedule
-	for k, v in pairs(wallpaper_schedule) do
+	for k, v in pairs(wall_config.wallpaper_schedule) do
 		count = count + 1
 	end
 
 	if count == 0 then --Schedule is actually empty
 		-- Get all pictures
-		local pictures = filter_files_by_format(get_dir_contents(wall_dir), valid_picture_formats)
+		local pictures = filter_files_by_format(get_dir_contents(wall_config.wall_dir), wall_config.valid_picture_formats)
 
 		--Sort pictures as sanely as possible
 		local function order_pictures(a, b) --Attempts to mimic default sort but numbers aren't compared as strings
@@ -200,12 +192,12 @@ if #wallpaper_schedule == 0 then
 		end
 		table.sort(pictures, order_pictures)
 
-		wallpaper_schedule = auto_schedule(pictures)
+		wall_config.wallpaper_schedule = auto_schedule(pictures)
 
 	else --Schedule is manually timed
 		-- Get times as list
 		local ordered_times = {}
-		for time, _ in pairs(wallpaper_schedule) do
+		for time, _ in pairs(wall_config.wallpaper_schedule) do
 			table.insert(ordered_times, time)
 		end
 
@@ -218,28 +210,28 @@ if #wallpaper_schedule == 0 then
 		-- Get ordered list of keywords from ordered times
 		local keywords = {}
 		for index, time in ipairs(ordered_times) do
-			keywords[index] = wallpaper_schedule[time]
+			keywords[index] = wall_config.wallpaper_schedule[time]
 		end
 
 		-- Get any pictures that match keywords
-		local pictures = filter_files_by_format(get_dir_contents(wall_dir), valid_picture_formats)
+		local pictures = filter_files_by_format(get_dir_contents(wall_config.wall_dir), wall_config.valid_picture_formats)
 		pictures = find_files_containing_keywords(pictures, keywords)
 		
 		-- Replace keywords with files
 		for index, time in ipairs(ordered_times) do
-			local word = wallpaper_schedule[time]
+			local word = wall_config.wallpaper_schedule[time]
 			if pictures[word] ~= nil then
-				wallpaper_schedule[time] = pictures[word]
+				wall_config.wallpaper_schedule[time] = pictures[word]
 			else --To avoid crashes, we'll remove entries with invalid keywords
-				wallpaper_schedule[time] = nil
+				wall_config.wallpaper_schedule[time] = nil
 			end
 		end
 	end
 else --Schedule is list of keywords
-	local keywords = wallpaper_schedule
+	local keywords = wall_config.wallpaper_schedule
 
 	-- Get any pictures that match keywords
-	local pictures = filter_files_by_format(get_dir_contents(wall_dir), valid_picture_formats)
+	local pictures = filter_files_by_format(get_dir_contents(wall_config.wall_dir), wall_config.valid_picture_formats)
 	pictures = find_files_containing_keywords(pictures, keywords)
 	
 	-- Order files by keyword (if a file was found for the keyword)
@@ -251,12 +243,12 @@ else --Schedule is list of keywords
 		end
 	end
 
-	wallpaper_schedule = auto_schedule(ordered_pictures)
+	wall_config.wallpaper_schedule = auto_schedule(ordered_pictures)
 end
 
 -- Set wallpaper
 local set_wallpaper = function(path)
-	if dont_stretch_wallpaper then
+	if not wall_config.stretch then
 		for s in screen do
 			-- Update wallpaper based on the data in the array
 			gears.wallpaper.maximized (path, s)
@@ -267,13 +259,9 @@ local set_wallpaper = function(path)
 	end
 end
 
--- Update wallpaper (used by the manage_timer function)
--- I think the gears.wallpaper.maximized is too fast or being ran asynchronously
--- So the wallpaper is not being updated on awesome (re)start without this timer
--- We need some delay.
--- Hey it's working, so whatever
+-- Update wallpaper
 local update_wallpaper = function(wall_name)
-	local wall_dir = wall_dir .. wall_name
+	local wall_dir = wall_config.wall_dir .. wall_name
 	set_wallpaper(wall_dir)
 
 	-- Overwrite the default wallpaper
@@ -293,7 +281,7 @@ local manage_timer = function()
 	local last_time = '00:00:00' --Last scheduled time registered (to be found)
 
 	-- Find previous_time
-	for time, wallpaper in pairs(wallpaper_schedule) do
+	for time, wallpaper in pairs(wall_config.wallpaper_schedule) do
 		local parsed_time = parse_to_seconds(time)
 		if previous_time == '' or parsed_time > parse_to_seconds(previous_time) then
 			if parsed_time <= time_now then
@@ -313,7 +301,7 @@ local manage_timer = function()
 	end
 
 	--Find next_time
-	for time, wallpaper in pairs(wallpaper_schedule) do
+	for time, wallpaper in pairs(wall_config.wallpaper_schedule) do
 		local parsed_time = parse_to_seconds(time)
 		if next_time == '' or parsed_time < parse_to_seconds(next_time) then
 			if parsed_time > time_now then
@@ -333,7 +321,7 @@ local manage_timer = function()
 	end
 
 	-- Update Wallpaper
-	update_wallpaper(wallpaper_schedule[previous_time])
+	update_wallpaper(wall_config.wallpaper_schedule[previous_time])
 	
 	-- Get the time difference to set as timeout for the wall_updater timer below
 	the_countdown = time_diff(next_time, current_time())
