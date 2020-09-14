@@ -34,9 +34,9 @@
 <p align='center'>
 	<img alt='glorious' src='https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/glorious.gif'/>
 	<br/>
-	<h3>
+	<b>
 		Welcome to the glorious dotfiles!
-	</h3>
+	</b>
 </p>
 
 <p align='center'>
