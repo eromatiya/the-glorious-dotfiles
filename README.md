@@ -1,34 +1,35 @@
-<div align="center">
+<div align='center'>
     <h3>
-    	<img src="images/banner-glorious.png" align="center" height="200px">
+    	<img src='images/banner-glorious.png' align='center' height='200px'>
     </h3>
-    <p align="center">
+    <p align='center'>
     	<strong>
     		a glorified dotfiles
     	</strong>
     </p>
 </div>
 
-<div align="center">
-	
+<div align='center'>
+
 [![maintained](https://img.shields.io/maintenance/yes/2020?label=maintained&style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/commits/master) [![contributions](https://img.shields.io/badge/contribution-welcome-brightgreen&?style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/pulls) [![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
 
 </div>
 
-<div align="center">
-	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki">
-		<img src="images/button-wiki.png" width="100px">
+<div align='center'>
+	<a href='https://github.com/manilarome/the-glorious-dotfiles/wiki'>
+		<img src='images/button-wiki.png' width='100px'>
 	</a>
-	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies">
-		<img src="images/button-depends.png" width="100px">
+	<a href='https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies'>
+		<img src='images/button-depends.png' width='100px'>
 	</a>
-	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started">
-		<img src="images/button-install.png" width="100px">
+	<a href='https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started'>
+		<img src='images/button-install.png' width='100px'>
 	</a>
-	<a href="https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery">
-		<img src="images/button-gallery.png" width="100px">
+	<a href='https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery'>
+		<img src='images/button-gallery.png' width='100px'>
 	</a>
-	<br><br>
+	<br>
+	<br>
 </div>
 
 <p align='center'>
@@ -75,7 +76,7 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 
 ### Installation and usage
 
-1. Install the [required dependencies](#required-dependencies). Note that there's also an [optional dependencies](https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies#optional-dependencies).
+1. Install the [required dependencies](#required-dependencies). Note that there's also an [optional dependencies](#optional-dependencies).
 2. Clone this repository.
 
 	```bash
@@ -99,11 +100,9 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 	$ cp -r the-glorious-dotfiles/config/awesome/surreal $HOME/.config/awesome
 	```
 
-5. Reload AwesomeWM by pressing <kbd>Super + Shift + r</kbd>.
+4. Change the global configuration in `$HOME/.config/awesome/configuration/config.lua`.
 
-```
-$ yay -S the-glorious-dotfiles
-```
+5. Reload AwesomeWM by pressing <kbd>Super + Shift + r</kbd>.
 
 ## TODOs
 
@@ -148,21 +147,59 @@ I don't really rice just to make it beautiful, I want it to be also functional s
 
 Some of these are outdated, so it is better if you try them yourself. 
 
-| Floppy |
-| --- |
-| ![screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/floppy.webp) |
+<p align='center'>
+	<img alt='glorious' src='https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/floppy.webp'/>
+	<br/>
+	<b>
+		Floppy
+	</b>
+</p>
 
-| GNawesOME |
-| --- |
-| ![screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/gnawesome.webp) |
+<p align='center'>
+	<br/>
+	Floppy was meant to be a clone of the infamous <a href='https://www.reddit.com/r/unixporn/comments/apktsx/flurry_i_know_you_like_tiling_managers_and_i_want/'>Flurry Desktop</a>. I named it Floppy because I thought it would flop when I first <a href='https://www.reddit.com/r/unixporn/comments/de0m3v/awesome_floppy/'>posted it on r/unixporn</a>. This is my favorite.
+</p>
 
-| Linear |
-| --- |
-| ![screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/linear.webp) |
+<p align='center'>
+	<img alt='glorious' src='https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/gnawesome.webp'/>
+	<br/>
+	<b>
+		GNawesOME
+	</b>
+</p>
 
-| Surreal |
-| --- |
-| ![screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/surreal.webp) |
+<p align='center'>
+	<br/>
+	Yes, GNawesOME is a weird name. GNawesOME was meant to be a GNOME clone. Instead, it became a hybrid of macOS, iOS, GNOME, and Deepin. I regret nothing.
+</p>
+
+<p align='center'>
+	<img alt='glorious' src='https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/linear.webp'/>
+	<br/>
+	<b>
+		Linear
+	</b>
+</p>
+
+<p align='center'>
+	<br/>
+	A setup full of borders and lines. And yes, that's the Windows 10 titlebar window control buttons. I chose it because it is perfect for the setup called "Linear".
+</p>
+
+<p align='center'>
+	<img alt='glorious' src='https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/surreal.webp'/>
+	<br/>
+	<b>
+		Surreal
+	</b>
+</p>
+
+<p align='center'>
+	<br/>
+	Yes, I copied the macOS Big Sur design. Many linux elitists will hate it but I don't care. Cry me a river.
+</p>
+
+#### More screenshots
 
 | Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam) |
 | --- |
@@ -192,6 +229,10 @@ Some of these are outdated, so it is better if you try them yourself.
 | --- |
 | ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/thunderblurred.webp) |
 
-<br>
+## Credits
 
-## Thanks to all the contributors here! And also to the awesomewm devs! Appreciate it! <3
+Grazie
+
+- Contributors
+- awesomewm devs
+- The community of course
