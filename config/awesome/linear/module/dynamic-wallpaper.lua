@@ -123,22 +123,6 @@ local time_diff = function(future, past)
 	return diff
 end
 
--- Split string based on pattern
-local function split(str, pat)
-	local t = {}
-	local i = 0
-	local j = string.find(str, pat)
-	while j ~= nil do
-		table.insert(t, string.sub(str, i + 1, j - 1))
-
-		i = j
-		j = string.find(str, pat, i + 1)
-	end
-	table.insert(t, string.sub(str, i + 1, #str))
-
-	return t
-end
-
 -- Returns a table containing all file paths in a directory
 local function get_dir_contents(dir)
 	-- Command to give list of files in directory
@@ -170,16 +154,12 @@ end
 local function find_files_containing_keywords(files, keywords)
 	local found_files = {}
 
-	-- Looks for words (in order)
 	for _, word in ipairs(keywords) do --Preserves keyword order inherently, conveniently
 		for _, file in ipairs(files) do
-			-- Split into non-letter parts here to prevent things like
-			-- midnight and night both matching night
-			for _, part in ipairs(split(file, "[^%a]")) do
-				if file == word or part == word then
-					found_files[word] = file
-					break
-				end
+			-- Check if file is word, contains word at beginning or contains word between 2 non-alphanumeric characters
+			if file == word or string.find(file, "^" .. word .. "[^%a]") or string.find(file, "[^%a]" .. word .. "[^%a]") then
+				found_files[word] = file
+				break --Only return 1 file per word
 			end
 		end
 	end
