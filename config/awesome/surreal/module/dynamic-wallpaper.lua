@@ -93,7 +93,7 @@ end
 
 -- Set wallpaper
 local set_wallpaper = function(path)
-	if not wall_config.stretch then
+	if wall_config.stretch then
 		for s in screen do
 			-- Update wallpaper based on the data in the array
 			gears.wallpaper.maximized (path, s)
@@ -104,14 +104,18 @@ local set_wallpaper = function(path)
 	end
 end
 
--- Update wallpaper
+-- Update wallpaper (used by the manage_timer function)
+-- I think the gears.wallpaper.maximized is too fast or being ran asynchronously
+-- So the wallpaper is not being updated on awesome (re)start without this timer
+-- We need some delay.
+-- Hey it's working, so whatever
 local update_wallpaper = function(wall_name)
-	wall_config.wall_dir = wall_config.wall_dir .. wall_name
-	set_wallpaper(wall_config.wall_dir)
+	local wall_dir = wall_config.wall_dir .. wall_name
+	set_wallpaper(wall_dir)
 
 	-- Overwrite the default wallpaper
 	-- This is important in case we add an extra monitor
-	beautiful.wallpaper = wall_config.wall_dir
+	beautiful.wallpaper = wall_dir
 end
 
 -- Updates variables
