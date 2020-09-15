@@ -97,7 +97,6 @@ client.connect_signal(
 client.connect_signal(
 	'property::maximized',
 	function(c)
-		require('naughty').notification({message=tostring(c.maximized)})
 		if c.maximized then
 			c.shape = function(cr, width, height)
 				gears.shape.rectangle(cr, width, height)
