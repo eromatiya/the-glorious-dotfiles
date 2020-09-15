@@ -29,7 +29,27 @@ ruled.client.connect_signal(
 				keys = client_keys,
 				buttons = client_buttons,
 				screen    = awful.screen.preferred,
+				shape = function(cr, width, height)
+					gears.shape.rectangle(cr, width, height)
+				end,
 				placement = awful.placement.no_overlap + awful.placement.no_offscreen
+			}
+		}
+
+		-- Titlebar rules
+		ruled.client.append_rule {
+			id 		= 'titlebars',
+			rule_any   = {
+				type = {
+					'normal',
+					'dialog'
+				}
+			},
+			except_any = {
+				instance = { 'QuakeTerminal' }
+			},
+			properties = {
+				titlebars_enabled = true
 			}
 		}
 
@@ -81,7 +101,6 @@ ruled.client.connect_signal(
 			properties = { 
 				titlebars_enabled = false,
 				floating = true,
-				hide_titlebars = true,
 				draw_backdrop = false,
 				skip_decoration = true,
 				placement = awful.placement.centered
@@ -98,7 +117,6 @@ ruled.client.connect_signal(
 				titlebars_enabled = false,
 				floating = true,
 				above = true,
-				hide_titlebars = true,
 				draw_backdrop = false,
 				skip_decoration = true,
 				shape = function(cr, width, height)
@@ -108,7 +126,7 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- terminal emulators
+		-- Terminal emulators
 		ruled.client.append_rule {
 			id         = 'terminals',
 			rule_any   = { 
@@ -127,7 +145,18 @@ ruled.client.connect_signal(
 				tag = '1',
 				switch_to_tags = true,
 				draw_backdrop = false,
-				size_hints_honor = false
+				size_hints_honor = false,
+				titlebars_enabled = true
+			}
+		}
+
+		ruled.client.append_rule {
+			id         = 'terminals',
+			rule_any   = {
+				instance = { 'QuakeTerminal' }
+			},
+			properties = {
+				titlebars_enabled = false
 			}
 		}
 
@@ -220,7 +249,6 @@ ruled.client.connect_signal(
 				draw_backdrop = false,
 				switch_to_tags = true,
 				floating = true,
-				hide_titlebars = true,
 				placement = awful.placement.centered
 			}
 		}
@@ -271,26 +299,6 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Image viewers with splash-like behaviour
-		ruled.client.append_rule {
-			id        = 'splash_like',
-			rule_any  = {
-				class    = {
-					'feh',
-					'Pqiv',
-					'Sxiv'
-				},
-				name = {'Discord Updater'}
-			},
-			properties = { 
-				skip_decoration = true,
-				hide_titlebars = true,
-				floating = true,
-				ontop = true,
-				placement = awful.placement.centered
-			}
-		}
-
 		-- Splash-like but with titlebars enabled
 		ruled.client.append_rule {
 			id       = 'instances',
@@ -308,7 +316,6 @@ ruled.client.connect_signal(
 			},
 				properties = { 
 				skip_decoration = true,
-				round_corners = true,
 				ontop = true,
 				floating = true,
 				draw_backdrop = false,
