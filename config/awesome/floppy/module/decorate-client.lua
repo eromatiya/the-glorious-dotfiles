@@ -2,7 +2,7 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 
-local function render_client(client, mode)
+local render_client = function(client, mode)
 	
 	if client.skip_decoration or (client.rendering_mode == mode) then
 		return
@@ -34,7 +34,7 @@ end
 
 local changes_on_screen_called = false
 
-local function changes_on_screen(current_screen)
+local changes_on_screen = function(current_screen)
 
 	local tag_is_max = current_screen.selected_tag ~= nil and 
 		current_screen.selected_tag.layout == awful.layout.suit.max
@@ -60,7 +60,7 @@ local function changes_on_screen(current_screen)
 end
 
 
-function client_callback(client)
+local client_callback = function(client)
 	if not changes_on_screen_called then
 		if not client.skip_decoration and client.screen then
 			changes_on_screen_called = true
@@ -74,7 +74,7 @@ function client_callback(client)
 	end
 end
 
-function tag_callback(tag)
+local tag_callback = function(tag)
 	if not changes_on_screen_called then
 		if tag.screen then
 			changes_on_screen_called = true
@@ -95,6 +95,8 @@ client.connect_signal('unmanage', client_callback)
 client.connect_signal('property::hidden', client_callback)
 
 client.connect_signal('property::minimized', client_callback)
+
+client.connect_signal('property::floating', client_callback)
 
 client.connect_signal(
 	'property::fullscreen',
