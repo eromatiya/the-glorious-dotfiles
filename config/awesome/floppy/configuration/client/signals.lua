@@ -10,6 +10,15 @@ local beautiful = require('beautiful')
 client.connect_signal(
 	'manage',
 	function(c)
+		-- Focus, raise and activate
+		c:emit_signal(
+			'request::activate',
+			'mouse_enter',
+			{
+				raise = true
+			}
+		)
+
 		-- Set the windows at the slave,
 		-- i.e. put it at the end of others instead of setting it master.
 		if not awesome.startup then
