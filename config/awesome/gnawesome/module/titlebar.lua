@@ -141,7 +141,5 @@ client.connect_signal(
 		else
 			create_vertical_bar(c, buttons, 'left', '#000000AA', beautiful.titlebar_size)
 		end
-
 	end
 )
-
