@@ -64,7 +64,7 @@ local create_horizontal_bar = function(c, buttons, pos, bg, size)
 
 	-- Check if passed position is valid for this position
 	if (pos == 'left' or pos == 'right') then
-		pos = 'left'
+		pos = 'top'
 		bg = '#FF00FF'
 	end 
 
