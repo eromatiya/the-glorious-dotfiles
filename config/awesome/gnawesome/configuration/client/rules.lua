@@ -1,8 +1,6 @@
 local awful = require('awful')
 local gears = require('gears')
 local ruled = require('ruled')
-local beautiful = require('beautiful')
-
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
 
@@ -29,7 +27,27 @@ ruled.client.connect_signal(
 				keys = client_keys,
 				buttons = client_buttons,
 				screen    = awful.screen.preferred,
+				shape = function(cr, width, height)
+					gears.shape.rectangle(cr, width, height)
+				end,
 				placement = awful.placement.no_overlap + awful.placement.no_offscreen
+			}
+		}
+
+		-- Titlebar rules
+		ruled.client.append_rule {
+			id 		= 'titlebars',
+			rule_any   = {
+				type = {
+					'normal',
+					'dialog'
+				}
+			},
+			except_any = {
+				instance = { 'QuakeTerminal' }
+			},
+			properties = {
+				titlebars_enabled = true
 			}
 		}
 
@@ -46,9 +64,6 @@ ruled.client.connect_signal(
 				above = true,
 				draw_backdrop = true,
 				skip_decoration = true,
-				shape = function(cr, width, height)
-							gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-						end,
 				placement = awful.placement.centered
 			}
 		}
@@ -65,9 +80,6 @@ ruled.client.connect_signal(
 				above = true,
 				draw_backdrop = true,
 				skip_decoration = true,
-				shape = function(cr, width, height)
-							gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-						end,
 				placement = awful.placement.centered
 			}
 		}
@@ -81,7 +93,6 @@ ruled.client.connect_signal(
 			properties = { 
 				titlebars_enabled = false,
 				floating = true,
-				hide_titlebars = true,
 				draw_backdrop = false,
 				skip_decoration = true,
 				placement = awful.placement.centered
@@ -94,21 +105,18 @@ ruled.client.connect_signal(
 			rule_any   = { 
 				type = { 'splash' }
 			},
-			properties = { 
+			properties = {
 				titlebars_enabled = false,
+				round_corners = false,
 				floating = true,
 				above = true,
-				hide_titlebars = true,
 				draw_backdrop = false,
 				skip_decoration = true,
-				shape = function(cr, width, height)
-							gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-						end,
 				placement = awful.placement.centered
 			}
 		}
 
-		-- terminal emulators
+		-- Terminal emulators
 		ruled.client.append_rule {
 			id         = 'terminals',
 			rule_any   = { 
@@ -127,7 +135,18 @@ ruled.client.connect_signal(
 				tag = '1',
 				switch_to_tags = true,
 				draw_backdrop = false,
-				size_hints_honor = false
+				size_hints_honor = false,
+				titlebars_enabled = true
+			}
+		}
+
+		ruled.client.append_rule {
+			id         = 'terminals',
+			rule_any   = {
+				instance = { 'QuakeTerminal' }
+			},
+			properties = {
+				titlebars_enabled = false
 			}
 		}
 
@@ -151,7 +170,7 @@ ruled.client.connect_signal(
 		-- Text editors and word processing
 		ruled.client.append_rule {
 			id         = 'text_editors',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'Geany',
 					'Atom',
@@ -171,7 +190,7 @@ ruled.client.connect_signal(
 		-- File managers
 		ruled.client.append_rule {
 			id         = 'file_managers',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'dolphin',
 					'ark',
@@ -188,7 +207,7 @@ ruled.client.connect_signal(
 		-- Multimedia
 		ruled.client.append_rule {
 			id         = 'multimedia',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'vlc',
 					'Spotify'
@@ -210,7 +229,7 @@ ruled.client.connect_signal(
 					'dolphin-emu',
 					'Steam',
 					'Citra',
-					'SuperTuxKart'
+					'supertuxkart'
 				},
 				name = { 'Steam' }
 			},
@@ -220,7 +239,6 @@ ruled.client.connect_signal(
 				draw_backdrop = false,
 				switch_to_tags = true,
 				floating = true,
-				hide_titlebars = true,
 				placement = awful.placement.centered
 			}
 		}
@@ -228,7 +246,7 @@ ruled.client.connect_signal(
 		-- Multimedia Editing
 		ruled.client.append_rule {
 			id         = 'graphics_editors',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'Gimp-2.10',
 					'Inkscape',
@@ -243,7 +261,7 @@ ruled.client.connect_signal(
 		-- Sandboxes and VMs
 		ruled.client.append_rule {
 			id         = 'sandbox',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'VirtualBox Manage',
 					'VirtualBox Machine'
@@ -257,12 +275,13 @@ ruled.client.connect_signal(
 		-- IDEs and Tools
 		ruled.client.append_rule {
 			id         = 'ide',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'Oomox',
 					'Unity',
 					'UnityHub',
-					'jetbrains-studio'
+					'jetbrains-studio',
+					'Ettercap'
 				}
 			},
 			properties = { 
@@ -271,29 +290,44 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Image viewers with splash-like behaviour
+		-- Image viewers
 		ruled.client.append_rule {
-			id        = 'splash_like',
+			id        = 'image_viewers',
 			rule_any  = {
 				class    = {
 					'feh',
 					'Pqiv',
 					'Sxiv'
 				},
+			},
+			properties = { 
+				titlebars_enabled = true,
+				skip_decoration = true,
+				floating = true,
+				ontop = false,
+				placement = awful.placement.centered
+			}
+		}
+
+		-- Discord updater
+		ruled.client.append_rule {
+			id        = 'discord_updater',
+			rule_any  = {
 				name = {'Discord Updater'}
 			},
 			properties = { 
+				round_corners = false,
 				skip_decoration = true,
-				hide_titlebars = true,
+				titlebars_enabled = false,
 				floating = true,
 				ontop = true,
 				placement = awful.placement.centered
 			}
 		}
 
-		-- Splash-like but with titlebars enabled
+		-- Floating
 		ruled.client.append_rule {
-			id       = 'instances',
+			id       = 'floating',
 			rule_any = {
 				instance    = {
 					'file_progress',
@@ -306,9 +340,9 @@ ruled.client.connect_signal(
 					'Pulseeffects'
 				}
 			},
-				properties = { 
+			properties = { 
+				titlebars_enabled = true,
 				skip_decoration = true,
-				round_corners = true,
 				ontop = true,
 				floating = true,
 				draw_backdrop = false,
@@ -324,41 +358,17 @@ ruled.client.connect_signal(
 )
 
 
--- Normally we'd do this with a rule, but other apps like spotify and supertuxkart doesn't set its class or name
+-- Normally we'd do this with a rule, but some program like spotify doesn't set its class or name
 -- until after it starts up, so we need to catch that signal.
 
 -- If the application is fullscreen in its settings, make sure to set `c.fullscreen = false` first
 -- before moving to the desired tag or else the tag where the program spawn will cause panels to hide. 
 -- After moving the program to specified tag you can set `c.fullscreen = true` now
--- See what I did in `SuperTuxKart`
 
 client.connect_signal(
 	'property::class',
 	function(c)
 		if c.class == 'Spotify' then
-			-- Check if Spotify is already open
-			local spotify = function (c)
-				return ruled.client.match(c, { class = 'Spotify' })
-			end
-
-			local spotify_count = 0
-			for c in awful.client.iterate(spotify) do
-				spotify_count = spotify_count + 1
-			end
-
-			-- If Spotify is already open, don't open a new instance
-			if spotify_count > 1 then
-				c:kill()
-				-- Switch to previous instance
-				for c in awful.client.iterate(spotify) do
-					c:jump_to(false)
-				end
-			else
-				-- Move the Spotify instance to '5' tag on this screen
-				local t = awful.tag.find_by_name(awful.screen.focused(), '5')
-				c:move_to_tag(t)
-			end
-		elseif c.class == 'SuperTuxKart' then
 			local window_mode = false
 
 			-- Check if fullscreen or window mode
@@ -369,9 +379,9 @@ client.connect_signal(
 				window_mode = true
 			end
 
-			-- Check if SuperTuxKart is already open
+			-- Check if Spotify is already open
 			local stk = function (c)
-				return ruled.client.match(c, { class = 'SuperTuxKart' })
+				return ruled.client.match(c, { class = 'Spotify' })
 			end
 
 			local stk_count = 0
@@ -379,7 +389,7 @@ client.connect_signal(
 				stk_count = stk_count + 1
 			end
 
-			-- If SuperTuxKart is already open, don't open a new instance
+			-- If Spotify is already open, don't open a new instance
 			if stk_count > 1 then
 				c:kill()
 				-- Switch to previous instance
@@ -400,6 +410,5 @@ client.connect_signal(
 				end
 			end
 		end
-
 	end
 )
