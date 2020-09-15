@@ -52,7 +52,7 @@ The wiki will guide you to replicate my setups. So read the frickin' manual! If 
 
 ## Summary and details
 
-If you're too lazy to open the wiki, here's some of the details you need to know.
+If you're too lazy to read the wiki, here's some of the details you need to know.
 
 ### Starring
 
@@ -76,7 +76,7 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 
 ### Installation and usage
 
-1. Install the [required dependencies](#required-dependencies). Note that there's also an [optional dependencies](#optional-dependencies).
+1. Install the [required dependencies](#required-dependencies). Note that there's also an [optional dependencies](https://github.com/manilarome/the-glorious-dotfiles/wiki#optional-dependencies).
 2. Clone this repository.
 
 	```bash
@@ -101,7 +101,6 @@ If you're too lazy to open the wiki, here's some of the details you need to know
 	```
 
 4. Change the global configuration in `$HOME/.config/awesome/configuration/config.lua`.
-
 5. Reload AwesomeWM by pressing <kbd>Super + Shift + r</kbd>.
 
 ## TODOs
@@ -153,11 +152,9 @@ Some of these are outdated, so it is better if you try them yourself.
 	<b>
 		Floppy
 	</b>
-</p>
-
-<p align='center'>
-	<br/>
+	<br>
 	Floppy was meant to be a clone of the infamous <a href='https://www.reddit.com/r/unixporn/comments/apktsx/flurry_i_know_you_like_tiling_managers_and_i_want/'>Flurry Desktop</a>. I named it Floppy because I thought it would flop when I first <a href='https://www.reddit.com/r/unixporn/comments/de0m3v/awesome_floppy/'>posted it on r/unixporn</a>. This is my favorite.
+	<br>
 </p>
 
 <p align='center'>
@@ -166,11 +163,9 @@ Some of these are outdated, so it is better if you try them yourself.
 	<b>
 		GNawesOME
 	</b>
-</p>
-
-<p align='center'>
-	<br/>
+	<br>
 	Yes, GNawesOME is a weird name. GNawesOME was meant to be a GNOME clone. Instead, it became a hybrid of macOS, iOS, GNOME, and Deepin. I regret nothing.
+	<br>
 </p>
 
 <p align='center'>
@@ -179,11 +174,9 @@ Some of these are outdated, so it is better if you try them yourself.
 	<b>
 		Linear
 	</b>
-</p>
-
-<p align='center'>
-	<br/>
+	<br>
 	A setup full of borders and lines. And yes, that's the Windows 10 titlebar window control buttons. I chose it because it is perfect for the setup called "Linear".
+	<br>
 </p>
 
 <p align='center'>
@@ -192,11 +185,9 @@ Some of these are outdated, so it is better if you try them yourself.
 	<b>
 		Surreal
 	</b>
-</p>
-
-<p align='center'>
-	<br/>
+	<br>
 	Yes, I copied the macOS Big Sur design. Many linux elitists will hate it but I don't care. Cry me a river.
+	<br>
 </p>
 
 #### More screenshots
@@ -233,6 +224,6 @@ Some of these are outdated, so it is better if you try them yourself.
 
 Grazie
 
-- Contributors
-- awesomewm devs
+- [Contributors](https://github.com/manilarome/the-glorious-dotfiles/graphs/contributors)
+- [awesomewm devs](https://github.com/awesomeWM/awesome/graphs/contributors)
 - The community of course
