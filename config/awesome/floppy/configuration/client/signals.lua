@@ -24,7 +24,9 @@ client.connect_signal(
 		end
 
 		-- Spawn client with rounded corners (of course it will follow the theme.client_radius)
-		if not c.round_corners then return end
+		-- if selected_tag is not maximized and round_corners = false
+		local current_layout = awful.tag.getproperty(awful.screen.focused().selected_tag, 'layout')
+		if not c.round_corners or current_layout == awful.layout.suit.max then return end
 		c.shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
 		end
