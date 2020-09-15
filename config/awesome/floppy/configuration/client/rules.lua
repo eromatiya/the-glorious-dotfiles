@@ -1,8 +1,6 @@
 local awful = require('awful')
 local gears = require('gears')
 local ruled = require('ruled')
-local beautiful = require('beautiful')
-
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
 
@@ -66,9 +64,6 @@ ruled.client.connect_signal(
 				above = true,
 				draw_backdrop = true,
 				skip_decoration = true,
-				shape = function(cr, width, height)
-							gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-						end,
 				placement = awful.placement.centered
 			}
 		}
@@ -85,9 +80,6 @@ ruled.client.connect_signal(
 				above = true,
 				draw_backdrop = true,
 				skip_decoration = true,
-				shape = function(cr, width, height)
-							gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-						end,
 				placement = awful.placement.centered
 			}
 		}
@@ -113,15 +105,13 @@ ruled.client.connect_signal(
 			rule_any   = { 
 				type = { 'splash' }
 			},
-			properties = { 
+			properties = {
 				titlebars_enabled = false,
+				round_corners = false,
 				floating = true,
 				above = true,
 				draw_backdrop = false,
 				skip_decoration = true,
-				shape = function(cr, width, height)
-							gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-						end,
 				placement = awful.placement.centered
 			}
 		}
@@ -239,7 +229,7 @@ ruled.client.connect_signal(
 					'dolphin-emu',
 					'Steam',
 					'Citra',
-					'SuperTuxKart'
+					'supertuxkart'
 				},
 				name = { 'Steam' }
 			},
@@ -299,9 +289,44 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Splash-like but with titlebars enabled
+		-- Image viewers
 		ruled.client.append_rule {
-			id       = 'instances',
+			id        = 'image_viewers',
+			rule_any  = {
+				class    = {
+					'feh',
+					'Pqiv',
+					'Sxiv'
+				},
+			},
+			properties = { 
+				titlebars_enabled = true,
+				skip_decoration = true,
+				floating = true,
+				ontop = false,
+				placement = awful.placement.centered
+			}
+		}
+
+		-- Discord updater
+		ruled.client.append_rule {
+			id        = 'discord_updater',
+			rule_any  = {
+				name = {'Discord Updater'}
+			},
+			properties = { 
+				round_corners = false,
+				skip_decoration = true,
+				titlebars_enabled = false,
+				floating = true,
+				ontop = true,
+				placement = awful.placement.centered
+			}
+		}
+
+		-- Floating
+		ruled.client.append_rule {
+			id       = 'floating',
 			rule_any = {
 				instance    = {
 					'file_progress',
@@ -314,7 +339,8 @@ ruled.client.connect_signal(
 					'Pulseeffects'
 				}
 			},
-				properties = { 
+			properties = { 
+				titlebars_enabled = true,
 				skip_decoration = true,
 				ontop = true,
 				floating = true,
@@ -331,41 +357,17 @@ ruled.client.connect_signal(
 )
 
 
--- Normally we'd do this with a rule, but other apps like spotify and supertuxkart doesn't set its class or name
+-- Normally we'd do this with a rule, but some program like spotify doesn't set its class or name
 -- until after it starts up, so we need to catch that signal.
 
 -- If the application is fullscreen in its settings, make sure to set `c.fullscreen = false` first
 -- before moving to the desired tag or else the tag where the program spawn will cause panels to hide. 
 -- After moving the program to specified tag you can set `c.fullscreen = true` now
--- See what I did in `SuperTuxKart`
 
 client.connect_signal(
 	'property::class',
 	function(c)
 		if c.class == 'Spotify' then
-			-- Check if Spotify is already open
-			local spotify = function (c)
-				return ruled.client.match(c, { class = 'Spotify' })
-			end
-
-			local spotify_count = 0
-			for c in awful.client.iterate(spotify) do
-				spotify_count = spotify_count + 1
-			end
-
-			-- If Spotify is already open, don't open a new instance
-			if spotify_count > 1 then
-				c:kill()
-				-- Switch to previous instance
-				for c in awful.client.iterate(spotify) do
-					c:jump_to(false)
-				end
-			else
-				-- Move the Spotify instance to '5' tag on this screen
-				local t = awful.tag.find_by_name(awful.screen.focused(), '5')
-				c:move_to_tag(t)
-			end
-		elseif c.class == 'SuperTuxKart' then
 			local window_mode = false
 
 			-- Check if fullscreen or window mode
@@ -376,9 +378,9 @@ client.connect_signal(
 				window_mode = true
 			end
 
-			-- Check if SuperTuxKart is already open
+			-- Check if Spotify is already open
 			local stk = function (c)
-				return ruled.client.match(c, { class = 'SuperTuxKart' })
+				return ruled.client.match(c, { class = 'Spotify' })
 			end
 
 			local stk_count = 0
@@ -386,7 +388,7 @@ client.connect_signal(
 				stk_count = stk_count + 1
 			end
 
-			-- If SuperTuxKart is already open, don't open a new instance
+			-- If Spotify is already open, don't open a new instance
 			if stk_count > 1 then
 				c:kill()
 				-- Switch to previous instance
@@ -407,6 +409,5 @@ client.connect_signal(
 				end
 			end
 		end
-
 	end
 )
