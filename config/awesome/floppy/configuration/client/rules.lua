@@ -170,7 +170,7 @@ ruled.client.connect_signal(
 		-- Text editors and word processing
 		ruled.client.append_rule {
 			id         = 'text_editors',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'Geany',
 					'Atom',
@@ -190,7 +190,7 @@ ruled.client.connect_signal(
 		-- File managers
 		ruled.client.append_rule {
 			id         = 'file_managers',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'dolphin',
 					'ark',
@@ -207,7 +207,7 @@ ruled.client.connect_signal(
 		-- Multimedia
 		ruled.client.append_rule {
 			id         = 'multimedia',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'vlc',
 					'Spotify'
@@ -246,7 +246,7 @@ ruled.client.connect_signal(
 		-- Multimedia Editing
 		ruled.client.append_rule {
 			id         = 'graphics_editors',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'Gimp-2.10',
 					'Inkscape',
@@ -261,7 +261,7 @@ ruled.client.connect_signal(
 		-- Sandboxes and VMs
 		ruled.client.append_rule {
 			id         = 'sandbox',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'VirtualBox Manage',
 					'VirtualBox Machine'
@@ -275,12 +275,13 @@ ruled.client.connect_signal(
 		-- IDEs and Tools
 		ruled.client.append_rule {
 			id         = 'ide',
-			rule_any   = {  
+			rule_any   = {
 				class = {
 					'Oomox',
 					'Unity',
 					'UnityHub',
-					'jetbrains-studio'
+					'jetbrains-studio',
+					'Ettercap'
 				}
 			},
 			properties = { 

@@ -139,7 +139,7 @@ client.connect_signal(
 		elseif c.type == 'dialog' or c.type == 'modal' then
 			create_horizontal_bar(c, buttons, 'top', '#000000AA', beautiful.titlebar_size)
 		else
-			create_vertical_bar(c, buttons, 'top', '#000000AA', beautiful.titlebar_size)
+			create_vertical_bar(c, buttons, 'left', '#000000AA', beautiful.titlebar_size)
 		end
 
 	end
