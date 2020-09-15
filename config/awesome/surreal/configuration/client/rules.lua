@@ -125,7 +125,7 @@ ruled.client.connect_signal(
 			},
 			properties = {
 				tag = '1',
-				switchtotag = true,
+				switch_to_tags = true,
 				draw_backdrop = false,
 				size_hints_honor = false
 			}
@@ -181,7 +181,7 @@ ruled.client.connect_signal(
 			},
 			properties = { 
 				tag = '4',
-				switchtotag = true
+				switch_to_tags = true
 			}
 		}
 
@@ -196,7 +196,7 @@ ruled.client.connect_signal(
 			},
 			properties = { 
 				tag = '5',
-				switchtotag = true,
+				switch_to_tags = true,
 				draw_backdrop = false
 			}
 		}
@@ -218,7 +218,7 @@ ruled.client.connect_signal(
 				tag = '6',
 				skip_decoration = true,
 				draw_backdrop = false,
-				switchtotag = true,
+				switch_to_tags = true,
 				floating = true,
 				hide_titlebars = true,
 				placement = awful.placement.centered
