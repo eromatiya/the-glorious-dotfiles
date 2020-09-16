@@ -14,12 +14,12 @@
 
 -- Limitations: 
 -- Timeout paused when laptop/pc is suspended or in sleep mode, and there's probably some bugs too so whatever
-
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 local filesystem = gears.filesystem
 local config = require('configuration.config')
+
 
 --  ========================================
 -- 				Configuration
@@ -31,17 +31,17 @@ local wall_config = {
 	-- local wall_config.wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
 	wall_dir = filesystem.get_configuration_dir() .. (config.module.dynamic_wallpaper.wall_dir or 'theme/wallpapers/'),
 
-	-- Wallpapers filename and extension
-	wallpaper_morning = config.module.dynamic_wallpaper.wallpaper_morning or 'morning-wallpaper.jpg',
-	wallpaper_noon = config.module.dynamic_wallpaper.wallpaper_noon or 'noon-wallpaper.jpg',
-	wallpaper_night = config.module.dynamic_wallpaper.wallpaper_night or 'night-wallpaper.jpg',
-	wallpaper_midnight = config.module.dynamic_wallpaper.wallpaper_midnight or 'midnight-wallpaper.jpg',
+	-- If there's a picture format that awesome accepts and i missed
+	-- (which i probably did) feel free to add it right here
+	valid_picture_formats = config.module.dynamic_wallpaper.valid_picture_formats or {"jpg", "png", "jpeg"},
 
-	-- Change the wallpaper on scheduled time
-	morning_schedule = config.module.dynamic_wallpaper.morning_schedule or '06:22:00',
-	noon_schedule = config.module.dynamic_wallpaper.noon_schedule or '12:00:00',
-	night_schedule = config.module.dynamic_wallpaper.night_schedule or '17:58:00',
-	midnight_schedule = config.module.dynamic_wallpaper.midnight_schedule or '24:00:00',
+	-- Table mapping schedule to wallpaper filename
+	wallpaper_schedule = config.module.dynamic_wallpaper.wallpaper_schedule or {
+		['00:00:00'] = 'midnight-wallpaper.jpg',
+		['06:22:00'] = 'morning-wallpaper.jpg',
+		['12:00:00'] = 'noon-wallpaper.jpg',
+		['17:58:00'] = 'night-wallpaper.jpg'
+	},
 
 	-- Don't stretch wallpaper on multihead setups if true
 	stretch = config.module.dynamic_wallpaper.stretch or false
@@ -59,36 +59,191 @@ end
 
 -- Countdown variable
 -- In seconds
-the_countdown = nil
+local the_countdown = nil
 
--- We will use a table for hour change and wallpaper string
--- Element 0 errm 1 will store the incoming/next scheduled time
--- Geez why the f is lua's array starts with `1`? lol
--- Element 2 will have the wallpaper file name
-local wall_data = {}
--- > Why array, you say? 
--- Because why not? I'm new to lua and I'm experimenting with it
+-- Parse seconds to HH:MM:SS
+local function parse_to_time(seconds)
+	-- DST ruined me :(
+	--return os.date("%H:%M:%S", seconds)
+
+	local function format(str)
+		while #str < 2 do
+			str = '0' .. str
+		end
+
+		return str
+	end
+
+	local function convert(num)
+		return format(tostring(num))
+	end
+
+	local hours = convert(math.floor(seconds / 3600))
+	seconds = seconds - (hours * 3600)
+
+	local minutes = convert(math.floor(seconds / 60))
+	seconds = seconds - (minutes * 60)
+
+	local seconds = convert(math.floor(seconds))
+
+	return (hours .. ':' .. minutes .. ':' .. seconds)
+
+end
 
 -- Parse HH:MM:SS to seconds
 local parse_to_seconds = function(time)
 
   	-- Convert HH in HH:MM:SS
-  	hour_sec = tonumber(string.sub(time, 1, 2)) * 3600
+  	local hour_sec = tonumber(string.sub(time, 1, 2)) * 3600
 
   	-- Convert MM in HH:MM:SS
-  	min_sec = tonumber(string.sub(time, 4, 5)) * 60
+  	local min_sec = tonumber(string.sub(time, 4, 5)) * 60
 
 	-- Get SS in HH:MM:SS
-	get_sec = tonumber(string.sub(time, 7, 8))
+	local get_sec = tonumber(string.sub(time, 7, 8))
 
 	-- Return computed seconds
     return (hour_sec + min_sec + get_sec)
 end
 
 -- Get time difference
-local time_diff = function(current, schedule)
-	local diff = parse_to_seconds(current) - parse_to_seconds(schedule)
+local time_diff = function(future, past)
+	local diff = parse_to_seconds(future) - parse_to_seconds(past)
+	if diff < 0 then
+		diff = diff + (24 * 3600) --If time difference is negative, the future is meant for tomorrow
+	end
 	return diff
+end
+
+-- Returns a table containing all file paths in a directory
+local function get_dir_contents(dir)
+	-- Command to give list of files in directory
+	local dir_explore = 'find ' .. dir .. ' -printf "%f\\n"'
+	local lines = io.popen(dir_explore):lines() --Done synchronously because we literally can't continue without files
+	local files = {}
+	for line in lines do
+		table.insert(files, line)
+	end
+	return files
+end
+
+-- Returns a table of all the files that were one of the valid file formats
+local function filter_files_by_format(files, valid_file_formats)
+	local valid_files = {}
+	for _, file in ipairs(files) do
+		for _, format in ipairs(valid_file_formats) do
+			if string.match(file, ".+%." .. format) ~= nil then
+				table.insert(valid_files, file)
+				break --No need to check other formats
+			end
+		end
+	end
+
+	return valid_files
+end
+
+-- Returns a table of files that contained any of the keywords, in the same order as the words themselves
+local function find_files_containing_keywords(files, keywords)
+	local found_files = {}
+
+	for _, word in ipairs(keywords) do --Preserves keyword order inherently, conveniently
+		for _, file in ipairs(files) do
+			-- Check if file is word, contains word at beginning or contains word between 2 non-alphanumeric characters
+			if file == word or string.find(file, "^" .. word .. "[^%a]") or string.find(file, "[^%a]" .. word .. "[^%a]") then
+				found_files[word] = file
+				break --Only return 1 file per word
+			end
+		end
+	end
+
+	return found_files
+end
+
+-- Turn an ordered list of files into a scheduled list of files
+local function auto_schedule(wall_list)
+	local sched = {}
+	for index, file in ipairs(wall_list) do
+		local auto_time = parse_to_time(parse_to_seconds("24:00:00") * (index - 1) / #wall_list)
+		sched[auto_time] = file
+	end
+
+	return sched
+end
+
+-- Reformat whatever schedule was specified into an actual schedule
+if #wall_config.wallpaper_schedule == 0 then
+	local count = 0
+	-- Determine if empty or if manual schedule
+	for k, v in pairs(wall_config.wallpaper_schedule) do
+		count = count + 1
+	end
+
+	if count == 0 then --Schedule is actually empty
+		-- Get all pictures
+		local pictures = filter_files_by_format(get_dir_contents(wall_config.wall_dir), wall_config.valid_picture_formats)
+
+		--Sort pictures as sanely as possible
+		local function order_pictures(a, b) --Attempts to mimic default sort but numbers aren't compared as strings
+			if tonumber(a) ~= nil and tonumber(b) ~= nil then
+				return tonumber(a) < tonumber(b)
+			else
+				return a < b
+			end
+		end
+		table.sort(pictures, order_pictures)
+
+		wall_config.wallpaper_schedule = auto_schedule(pictures)
+
+	else --Schedule is manually timed
+		-- Get times as list
+		local ordered_times = {}
+		for time, _ in pairs(wall_config.wallpaper_schedule) do
+			table.insert(ordered_times, time)
+		end
+
+		-- Sort times using seconds as comparison
+		local function order_time_asc(a, b)
+			return parse_to_seconds(a) < parse_to_seconds(b)
+		end
+		table.sort(ordered_times, order_time_asc)
+
+		-- Get ordered list of keywords from ordered times
+		local keywords = {}
+		for index, time in ipairs(ordered_times) do
+			keywords[index] = wall_config.wallpaper_schedule[time]
+		end
+
+		-- Get any pictures that match keywords
+		local pictures = filter_files_by_format(get_dir_contents(wall_config.wall_dir), wall_config.valid_picture_formats)
+		pictures = find_files_containing_keywords(pictures, keywords)
+		
+		-- Replace keywords with files
+		for index, time in ipairs(ordered_times) do
+			local word = wall_config.wallpaper_schedule[time]
+			if pictures[word] ~= nil then
+				wall_config.wallpaper_schedule[time] = pictures[word]
+			else --To avoid crashes, we'll remove entries with invalid keywords
+				wall_config.wallpaper_schedule[time] = nil
+			end
+		end
+	end
+else --Schedule is list of keywords
+	local keywords = wall_config.wallpaper_schedule
+
+	-- Get any pictures that match keywords
+	local pictures = filter_files_by_format(get_dir_contents(wall_config.wall_dir), wall_config.valid_picture_formats)
+	pictures = find_files_containing_keywords(pictures, keywords)
+	
+	-- Order files by keyword (if a file was found for the keyword)
+	local ordered_pictures = {}
+	for _, word in ipairs(keywords) do
+		local file = pictures[word]
+		if file ~= nil then
+			table.insert(ordered_pictures, file)
+		end
+	end
+
+	wall_config.wallpaper_schedule = auto_schedule(ordered_pictures)
 end
 
 -- Set wallpaper
@@ -123,53 +278,58 @@ local manage_timer = function()
 	-- Get current time
 	local time_now = parse_to_seconds(current_time())
 
-	-- Parse the schedules to seconds
-	local parsed_morning = parse_to_seconds(wall_config.morning_schedule)
-	local parsed_noon = parse_to_seconds(wall_config.noon_schedule)
-	local parsed_night = parse_to_seconds(wall_config.night_schedule)
-	local parsed_midnight = parse_to_seconds('00:00:00')
+	local previous_time = '' --Scheduled time that should activate now
+	local next_time = '' --Time that should activate next
 
-	-- Note that we will use '00:00:00' instead of '24:00:00' as midnight
-	-- As the latter causes an error. The time_diff() returns a negative value
+	local first_time = '24:00:00' --First scheduled time registered (to be found)
+	local last_time = '00:00:00' --Last scheduled time registered (to be found)
 
-	if time_now >= parsed_midnight and time_now < parsed_morning then
-		-- Midnight time
+	-- Find previous_time
+	for time, wallpaper in pairs(wall_config.wallpaper_schedule) do
+		local parsed_time = parse_to_seconds(time)
+		if previous_time == '' or parsed_time > parse_to_seconds(previous_time) then
+			if parsed_time <= time_now then
+				previous_time = time
+			end
+		end
 
-		-- Update Wallpaper
-		update_wallpaper(wall_config.wallpaper_midnight)
-
-		-- Set the data for the next scheduled time
-		wall_data = {wall_config.morning_schedule, wall_config.wallpaper_morning}
-
-	elseif time_now >= parsed_morning and time_now < parsed_noon then
-		-- Morning time
-
-		-- Update Wallpaper
-		update_wallpaper(wall_config.wallpaper_morning)
-
-		-- Set the data for the next scheduled time
-		wall_data = {wall_config.noon_schedule, wall_config.wallpaper_noon}
-
-	elseif time_now >= parsed_noon and time_now < parsed_night then
-		-- Noon time
-
-		-- Update Wallpaper
-		update_wallpaper(wall_config.wallpaper_noon)
-
-		-- Set the data for the next scheduled time
-		wall_data = {wall_config.night_schedule, wall_config.wallpaper_night}
-	else
-		-- Night time
-
-		-- Update Wallpaper
-		update_wallpaper(wall_config.wallpaper_night)
-
-		-- Set the data for the next scheduled time
-		wall_data = {wall_config.midnight_schedule, wall_config.wallpaper_midnight}
+		if parsed_time > parse_to_seconds(last_time) then
+			last_time = time
+		end
 	end
+
+	-- Previous time being blank = no scheduled time today. Therefore
+	-- the last time was yesterday's latest time
+	if previous_time == '' then
+		previous_time = last_time
+	end
+
+	--Find next_time
+	for time, wallpaper in pairs(wall_config.wallpaper_schedule) do
+		local parsed_time = parse_to_seconds(time)
+		if next_time == '' or parsed_time < parse_to_seconds(next_time) then
+			if parsed_time > time_now then
+				next_time = time
+			end
+		end
+
+		if parsed_time < parse_to_seconds(first_time) then
+			first_time = time
+		end
+	end
+
+	-- Next time being blank means that there is no scheduled times left for
+	-- the current day. So next scheduled time is tomorrow's first time
+	if next_time == '' then
+		next_time = first_time
+	end
+
+	-- Update Wallpaper
+	update_wallpaper(wall_config.wallpaper_schedule[previous_time])
 	
 	-- Get the time difference to set as timeout for the wall_updater timer below
-	the_countdown = time_diff(wall_data[1], current_time())
+	the_countdown = time_diff(next_time, current_time())
+
 end
 
 -- Update values at startup
@@ -190,7 +350,7 @@ local wall_updater = gears.timer {
 awesome.connect_signal(
 	'module::change_wallpaper',
 	function()
-		set_wallpaper(wall_config.wall_dir .. wall_data[2])
+		--set_wallpaper(wall_dir .. wall_data[2])
 
 		-- Update values for the next specified schedule
 		manage_timer()

@@ -40,14 +40,23 @@ return {
 
 		dynamic_wallpaper = {
 			wall_dir = 'theme/wallpapers/',
-			wallpaper_morning = 'morning-wallpaper.jpg',
-			wallpaper_noon = 'noon-wallpaper.jpg',
-			wallpaper_night = 'night-wallpaper.jpg',
-			wallpaper_midnight = 'midnight-wallpaper.jpg',
-			morning_schedule = '06:22:00',
-			noon_schedule = '12:00:00',
-			night_schedule = '17:58:00',
-			midnight_schedule = '24:00:00',
+			valid_picture_formats = {"jpg", "png", "jpeg"},
+			-- Leave this table empty for full auto scheduling
+			wallpaper_schedule = {
+				['00:00:00'] = 'midnight-wallpaper.jpg',
+				['06:22:00'] = 'morning-wallpaper.jpg',
+				['12:00:00'] = 'noon-wallpaper.jpg',
+				['17:58:00'] = 'night-wallpaper.jpg'
+			-- Example of just using auto-scheduling with keywords
+			--[[
+				'midnight',
+				'morning',
+				'noon',
+				'afternoon',
+				'evening',
+				'night'
+			--]]
+			},
 			stretch = false
 		},
 
