@@ -19,13 +19,13 @@ HIST_FILE="${MY_PATH}/history.txt"
 
 OPENER=xdg-open
 TERM_EMU=kitty
-TEXT_EDITOR=${EDITOR}
-FILE_MANAGER=dolphin
+TEXT_EDITOR=$EDITOR
+FILE_MANAGER=xdg-open
 BLUETOOTH_SEND=blueman-sendto
 
 CUR_DIR=$PWD
-
 NEXT_DIR=""
+FD_INSTALLED=$(command -v fd)
 
 SHOW_HIDDEN=false
 
@@ -106,7 +106,7 @@ COMBINED_OPTIONS=(
 
 # Remove duplicates
 while IFS= read -r -d '' x; do
-    ALL_OPTIONS+=("$x")
+	ALL_OPTIONS+=("$x")
 done < <(printf "%s\0" "${COMBINED_OPTIONS[@]}" | sort -uz)
 
 # Create tmp dir for rofi
@@ -287,8 +287,9 @@ function icon_file_type(){
 			;;
 	esac
 
-	echo "${1}""\0icon\x1f""${icon_name}""\n"
+	echo -en "$1\0icon\x1f$icon_name\n"
 }
+export -f icon_file_type
 
 
 # Pass the argument to python script
@@ -330,42 +331,47 @@ then
 	exit;
 fi
 
+function find_query() {
+    QUERY=${1}
+
+    if [[ ! "${QUERY}" =~ ( |\') ]]
+    then
+        if [ -z "$FD_INSTALLED" ];
+		then
+            find "${HOME}" -iname *"${QUERY}"* | sed "s/\/home\/$USER/\~/" |
+            	awk -v MY_PATH="${MY_PATH}" '{print $0"\0icon\x1f"MY_PATH"/icons/result.svg"}'
+		else
+            fd -H ${QUERY} ${HOME} | sed "s/\/home\/$USER/\~/" |
+            	awk -v MY_PATH="${MY_PATH}" '{print $0"\0icon\x1f"MY_PATH"/icons/result.svg"}'
+		fi
+    fi
+}
+
 # File and calls to the web search
-if [ ! -z "$@" ] && ([[ "$@" == /* ]] || [[ "$@" == \?* ]] || [[ "$@" == \!* ]])
+if [ ! -z "$@" ] && ([[ "$@" == ?(\~)/* ]] || [[ "$@" == \?* ]] || [[ "$@" == \!* ]])
 then
 	QUERY=$@
 
 	echo "${QUERY}" >> "${HIST_FILE}"
 
-	if [[ "$@" == /* ]]
+    if [[ "$@" == ?(\~)/* ]]
 	then
-	
-		if [[ "$@" == *\?\? ]]
-		then
-			coproc ( ${OPENER} "${QUERY%\/* \?\?}"  > /dev/null 2>&1 )
-			exec 1>&-
-			exit;
-		else
-			coproc ( ${OPENER} "$@"  > /dev/null 2>&1 )
-			exec 1>&-
-			exit;
-		fi
+        [[ "$*" = \~* ]] && QUERY="${QUERY//"~"/"$HOME"}"
+
+		${OPENER} "${QUERY}" > /dev/null 2>&1 |
+		exec 1>&-
+		exit
 
 	elif [[ "$@" == \?* ]]
 	then
-		while read -r line
-		do
-			echo "$line" \?\?
-		done <<< $(find "${HOME}" -iname *"${QUERY#\?}"* 2>&1 | grep -v 'Permission denied\|Input/output error')
+	    find_query ${QUERY#\?}	
 
 	else
 		# Find the file
-		find "${HOME}" -iname *"${QUERY#!}"* -exec echo -ne \
-		"{}\0icon\x1f${MY_PATH}/icons/result.svg\n" \; 2>&1 | 
-		grep -av 'Permission denied\|Input/output error'
+        find_query ${QUERY#!}
 
 		# Web search
-		web_search "${QUERY}"
+		web_search "! ${QUERY#!}"
 	fi
 	exit;
 fi
@@ -413,48 +419,61 @@ function navigate_to() {
 	fi
 
 	printf "..\0icon\x1fup\n"
-	
-	if [[ ${SHOW_HIDDEN} == true ]]
-	then
 
-		for i in .*/
-		do
-			if [[ -d "${i}" ]] && ([[ "${i}" != "./" ]] && [[ "${i}" != "../"* ]])
-			then
-				printf "$(icon_file_type "${i}")";
-			fi
-		done
-
-		for i in .*
-		do 
-			if [[ -f "${i}" ]]
-			then
-				printf "$(icon_file_type "${i}")";
-			fi
-		done
-
-	fi
-
-	for i in */
-	do 
-		if [[ -d "${i}" ]]
-		then
-			printf "$(icon_file_type "${i}")";
-		fi
-	done
-
-	for i in *
-	do 
-		if [[ -f "${i}" ]]
-		then
-			printf "$(icon_file_type "${i}")";
-		fi
-	done
+    if [[ -z "$FD_INSTALLED" ]]
+    then
+        #Group directories
+        if [[ ${SHOW_HIDDEN} == true ]]
+	    then
+		    for i in .*/
+		    do
+			    if [[ -d "${i}" ]] && ([[ "${i}" != "./" ]] && [[ "${i}" != "../"* ]])
+			    then
+				    icon_file_type "${i}"
+			    fi
+		    done
+	    fi
+	    for i in */
+	    do 
+		    if [[ -d "${i}" ]]
+		    then
+			    icon_file_type "${i}"
+		    fi
+	    done
+        #Group files
+	    if [[ ${SHOW_HIDDEN} == true ]]
+	    then
+		    for i in .*
+		    do 
+			    if [[ -f "${i}" ]]
+			    then
+				    icon_file_type "${i}"
+			    fi
+		    done
+        fi
+	    for i in *
+	    do 
+		    if [[ -f "${i}" ]]
+		    then
+			    icon_file_type "${i}"
+		    fi
+	    done
+    else
+        THREADS=$(getconf _NPROCESSORS_ONLN)
+        if [[ ${SHOW_HIDDEN} == true ]]
+        then
+            fd -Ht d -d 1 -x bash -c 'icon_file_type "$0/"' {} | sort -V --parallel=$THREADS 
+            fd -Ht f -d 1 -x bash -c 'icon_file_type $0' {} | sort -V --parallel=$THREADS
+        else
+            fd -t d -d 1 -x bash -c 'icon_file_type "$0/"' {} | sort -V --parallel=$THREADS 
+            fd -t f -d 1 -x bash -c 'icon_file_type $0' {} | sort -V --parallel=$THREADS
+	    fi
+    fi	
 }
 
 # Set XDG dir
 function return_xdg_dir() {
-	target_dir=$(echo "$1" | tr "[:lower:]" "[:upper:]")
+	target_dir=${1^^}
 
 	if [[ "HOME" == *"${target_dir}"* ]]
 	then
@@ -720,10 +739,8 @@ function context_menu() {
 			QUERY="${CUR_DIR//*\/\//}"
 
 			echo "${QUERY}" >> "${HIST_FILE}"
-
-			find "${HOME}" -iname *"${QUERY#!}"* -exec echo -ne \
-			"{}\0icon\x1f${MY_PATH}/icons/result.svg\n" \; 2>&1 | 
-			grep -av 'Permission denied\|Input/output error'
+            
+            find_query ${QUERY#!}
 
 			web_search "!${QUERY}"
 		else
