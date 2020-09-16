@@ -93,7 +93,6 @@ ruled.client.connect_signal(
 			properties = { 
 				titlebars_enabled = false,
 				floating = true,
-				draw_backdrop = false,
 				skip_decoration = true,
 				placement = awful.placement.centered
 			}
@@ -110,7 +109,6 @@ ruled.client.connect_signal(
 				round_corners = false,
 				floating = true,
 				above = true,
-				draw_backdrop = false,
 				skip_decoration = true,
 				placement = awful.placement.centered
 			}
@@ -134,7 +132,6 @@ ruled.client.connect_signal(
 			properties = {
 				tag = '1',
 				switch_to_tags = true,
-				draw_backdrop = false,
 				size_hints_honor = false,
 				titlebars_enabled = true
 			}
@@ -236,7 +233,6 @@ ruled.client.connect_signal(
 			properties = { 
 				tag = '6',
 				skip_decoration = true,
-				draw_backdrop = false,
 				switch_to_tags = true,
 				floating = true,
 				placement = awful.placement.centered
@@ -345,7 +341,6 @@ ruled.client.connect_signal(
 				skip_decoration = true,
 				ontop = true,
 				floating = true,
-				draw_backdrop = false,
 				focus = awful.client.focus.filter,
 				raise = true,
 				keys = client_keys,
