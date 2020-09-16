@@ -110,3 +110,22 @@ client.connect_signal(
 		end
 	end
 )
+
+-- Manipulate client shape on floating
+client.connect_signal(
+	'property::floating',
+	function(c)
+		local current_layout = awful.tag.getproperty(awful.screen.focused().selected_tag, 'layout')
+		if c.floating and not c.maximized then
+			c.shape = function(cr, width, height)
+				gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
+			end
+		else
+			if current_layout == awful.layout.suit.max then
+				c.shape = function(cr, width, height)
+					gears.shape.rectangle(cr, width, height)
+				end
+			end
+		end
+	end
+)
