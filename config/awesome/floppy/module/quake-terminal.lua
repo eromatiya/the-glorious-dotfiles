@@ -58,13 +58,12 @@ client.connect_signal(
 			c.sticky = true
 			c.hidden = not opened
 			c.maximized_horizontal = true
-			c.hide_titlebars = true
+			c.titlebars_enabled = false
 			c.skip_center = true
 			c.round_corners = false
 			c.shape = function(cr, w, h)
 				gears.shape.rectangle(cr, w, h)
 			end
-		-- awful.placement.top(c)
 		end
 	end
 )

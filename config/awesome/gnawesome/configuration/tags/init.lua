@@ -1,7 +1,6 @@
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
-
 local icons = require('theme.icons')
 
 local tags = {
@@ -26,7 +25,7 @@ local tags = {
 	{
 		icon = icons.file_manager,
 		type = 'files',
-		default_app = 'nemo',
+		default_app = 'dolphin',
 		screen = 1
 	},
 	{
@@ -67,43 +66,61 @@ local tags = {
 	-- }
 }
 
-
-tag.connect_signal("request::default_layouts", function()
-    awful.layout.append_default_layouts({
-		awful.layout.suit.spiral.dwindle,
-		awful.layout.suit.tile,
-		awful.layout.suit.max
-    })
-end)
-
-
-screen.connect_signal("request::desktop_decoration", function(s)
-	for i, tag in pairs(tags) do
-		awful.tag.add(
-			i,
-			{
-				icon = tag.icon,
-				icon_only = true,
-				layout = awful.layout.suit.spiral.dwindle,
-				gap_single_client = false,
-				gap = beautiful.useless_gap,
-				screen = s,
-				default_app = tag.default_app,
-				selected = i == 1
-			}
-		)
+tag.connect_signal(
+	'request::default_layouts',
+	function()
+	    awful.layout.append_default_layouts({
+			awful.layout.suit.spiral.dwindle,
+			awful.layout.suit.tile,
+			awful.layout.suit.floating,
+			awful.layout.suit.max
+	    })
 	end
-end)
+)
 
+screen.connect_signal(
+	'request::desktop_decoration',
+	function(s)
+		for i, tag in pairs(tags) do
+			awful.tag.add(
+				i,
+				{
+					icon = tag.icon,
+					icon_only = true,
+					layout = awful.layout.suit.spiral.dwindle,
+					gap_single_client = true,
+					gap = beautiful.useless_gap,
+					screen = s,
+					default_app = tag.default_app,
+					selected = i == 1
+				}
+			)
+		end
+	end
+)
 
+-- Change tag's client's shape and gap on change
 tag.connect_signal(
 	'property::layout',
 	function(t)
-		local currentLayout = awful.tag.getproperty(t, 'layout')
-		if (currentLayout == awful.layout.suit.max) then
+		local current_layout = awful.tag.getproperty(t, 'layout')
+		if (current_layout == awful.layout.suit.max) then
+			-- Set clients gap to 0 and shape to rectangle if maximized
 			t.gap = 0
+			for _, c in ipairs(t:clients()) do
+				c.shape = function(cr, width, height)
+					gears.shape.rectangle(cr, width, height)
+				end
+			end
 		else
+			-- Set clients gap and shape
 			t.gap = beautiful.useless_gap
+			for _, c in ipairs(t:clients()) do
+				if not c.round_corners then return end
+				c.shape = function(cr, width, height)
+					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
+				end
+			end
 		end
 	end
 )
