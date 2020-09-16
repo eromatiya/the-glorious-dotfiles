@@ -97,9 +97,15 @@ client.connect_signal(
 client.connect_signal(
 	'property::maximized',
 	function(c)
+		local current_layout = awful.tag.getproperty(awful.screen.focused().selected_tag, 'layout')
 		if c.maximized then
 			c.shape = function(cr, width, height)
 				gears.shape.rectangle(cr, width, height)
+			end
+		else
+			if current_layout == awful.layout.suit.max then return end
+			c.shape = function(cr, width, height)
+				gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
 			end
 		end
 	end
