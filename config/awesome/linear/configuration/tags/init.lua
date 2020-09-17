@@ -12,7 +12,7 @@ local tags = {
 	},
 	{
 		icon = icons.web_browser,
-		type = 'chrome',
+		type = 'internet',
 		default_app = 'firefox',
 		screen = 1
 	},
@@ -36,7 +36,7 @@ local tags = {
 	},
 	{
 		icon = icons.games,
-		type = 'game',
+		type = 'games',
 		default_app = 'supertuxkart',
 		screen = 1
 	},
@@ -48,7 +48,7 @@ local tags = {
 	},
 	{
 		icon = icons.sandbox,
-		type = 'virtualbox',
+		type = 'sandbox',
 		default_app = 'virtualbox',
 		screen = 1
 	},
@@ -116,7 +116,7 @@ tag.connect_signal(
 			-- Set clients gap and shape
 			t.gap = beautiful.useless_gap
 			for _, c in ipairs(t:clients()) do
-				if not c.round_corners then return end
+				if not c.round_corners or c.maximized then return end
 				c.shape = function(cr, width, height)
 					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
 				end
