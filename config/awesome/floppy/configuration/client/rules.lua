@@ -43,9 +43,6 @@ ruled.client.connect_signal(
 					'dialog'
 				}
 			},
-			except_any = {
-				instance = { 'QuakeTerminal' }
-			},
 			properties = {
 				titlebars_enabled = true
 			}
@@ -126,24 +123,11 @@ ruled.client.connect_signal(
 					'K3rmit'
 				}
 			},
-			except_any = {
-				instance = { 'QuakeTerminal' }
-			},
 			properties = {
 				tag = '1',
 				switch_to_tags = true,
 				size_hints_honor = false,
 				titlebars_enabled = true
-			}
-		}
-
-		ruled.client.append_rule {
-			id         = 'terminals',
-			rule_any   = {
-				instance = { 'QuakeTerminal' }
-			},
-			properties = {
-				titlebars_enabled = false
 			}
 		}
 

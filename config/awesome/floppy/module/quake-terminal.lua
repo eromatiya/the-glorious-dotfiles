@@ -11,7 +11,9 @@ function create_shell()
 		spawn(
 		app,
 		{
-			skip_decoration = true
+			skip_decoration = true,
+			titlebars_enabled = false,
+			switch_to_tags = false
 		}
 	)
 end
@@ -58,7 +60,6 @@ client.connect_signal(
 			c.sticky = true
 			c.hidden = not opened
 			c.maximized_horizontal = true
-			c.titlebars_enabled = false
 			c.skip_center = true
 			c.round_corners = false
 			c.shape = function(cr, w, h)
