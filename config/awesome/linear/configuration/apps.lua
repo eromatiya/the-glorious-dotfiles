@@ -1,6 +1,6 @@
 local filesystem = require('gears.filesystem')
 local config_dir = filesystem.get_configuration_dir()
-local bin_dir = config_dir .. 'binaries/'
+local bin_dir = config_dir .. 'utilities/'
 
 return {
 
@@ -94,7 +94,7 @@ return {
 
 	-- List of binaries/shell scripts that will execute a certain task
 
-	bins = {
+	utils = {
 
 		-- Full Screenshot
 		full_screenshot = bin_dir .. 'snap full',

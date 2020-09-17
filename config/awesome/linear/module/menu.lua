@@ -201,7 +201,7 @@ local screenshot_menu = {
 			gears.timer.start_new(
 				0.1,
 				function()
-					awful.spawn.easy_async_with_shell(apps.bins.full_screenshot)
+					awful.spawn.easy_async_with_shell(apps.utils.full_screenshot)
 				end
 			)
 		end,
@@ -213,7 +213,7 @@ local screenshot_menu = {
 			gears.timer.start_new(
 				0.1,
 				function()
-					awful.spawn.easy_async_with_shell(apps.bins.area_screenshot)
+					awful.spawn.easy_async_with_shell(apps.utils.area_screenshot)
 				end,
 				menubar.utils.lookup_icon('accessories-screenshot')
 			)

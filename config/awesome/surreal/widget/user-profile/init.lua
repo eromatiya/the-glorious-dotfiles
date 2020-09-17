@@ -93,7 +93,7 @@ local create_profile = function()
 
 	local update_profile_image = function()
 		awful.spawn.easy_async_with_shell(
-			apps.bins.update_profile,
+			apps.utils.update_profile,
 			function(stdout)
 				stdout = stdout:gsub('%\n','')
 				if not stdout:match('default') then

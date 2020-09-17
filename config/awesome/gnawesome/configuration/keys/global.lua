@@ -306,7 +306,7 @@ local globalKeys = awful.util.table.join(
 		{ }, 
 		'Print',
 		function ()
-			awful.spawn.easy_async_with_shell(apps.bins.full_screenshot,function() end)
+			awful.spawn.easy_async_with_shell(apps.utils.full_screenshot,function() end)
 		end,
 		{description = 'fullscreen screenshot', group = 'Utility'}
 	),
@@ -314,7 +314,7 @@ local globalKeys = awful.util.table.join(
 		{modkey, 'Shift'}, 
 		's',
 		function ()
-			awful.spawn.easy_async_with_shell(apps.bins.area_screenshot,function() end)
+			awful.spawn.easy_async_with_shell(apps.utils.area_screenshot,function() end)
 		end,
 		{description = 'area/selected screenshot', group = 'Utility'}
 	),
