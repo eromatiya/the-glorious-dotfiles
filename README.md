@@ -61,7 +61,7 @@ If you're too lazy to read the wiki, here's some of the details you need to know
 - [`awesomewm`](https://awesomewm.org) as window manager
 - [`kitty`](https://github.com/kovidgoyal/kitty) as terminal emulator
 - [`picom-git`](https://github.com/yshui/picom) as compositor
-- [`rofi-git branch`](https://github.com/davatorium/rofi) as application launcher
+- [`rofi`](https://github.com/davatorium/rofi) as application launcher
 - [`inter-font`](https://github.com/rsms/inter/) as the setup font
 - [`trivago`](https://www.youtube.com/watch?v=dQw4w9WgXcQ) as hotel
 
@@ -70,7 +70,7 @@ If you're too lazy to read the wiki, here's some of the details you need to know
 | Name | Description | Why/Where is it needed? |
 | --- | --- | --- |
 | [`awesome-git`](https://github.com/awesomeWM/awesome) |  Highly configurable framework window manager | Isn't it obvious? |
-| [`rofi-git`](https://github.com/davatorium/rofi) | Window switcher, application launcher and dmenu replacement | Application launcher |
+| [`rofi`](https://github.com/davatorium/rofi) | Window switcher, application launcher and dmenu replacement | Application launcher |
 | [`picom-git`](https://github.com/yshui/picom) | A compositor for X11 | A compositor with kawase-blur |
 | [`inter-font`](https://github.com/rsms/inter/) | A typeface specially designed for user interfaces | Setup font | 
 
