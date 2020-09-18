@@ -95,12 +95,27 @@ local globalKeys = awful.util.table.join(
 		{description = 'select previous layout', group = 'layout'}
 	),
 	awful.key(
+		{modkey},
+		'o',
+		function()
+			awful.tag.incgap(1)
+		end,
+		{description = 'increase gap', group = 'layout'}
+	),
+	awful.key(
+		{modkey, 'Shift'},
+		'o',
+		function()
+			awful.tag.incgap(-1)
+		end,
+		{description = 'decrease gap', group = 'layout'}
+	),
+	awful.key(
 		{modkey}, 
 		'w', 
 		awful.tag.viewprev, 
 		{description = 'view previous tag', group = 'tag'}
 	),
-	
 	awful.key(
 		{modkey}, 
 		's', 
