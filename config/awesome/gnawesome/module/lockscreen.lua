@@ -15,24 +15,21 @@ package.cpath = package.cpath .. ';' .. config_dir .. '/library/?.so;' .. '/usr/
 
 -- Configuration table
 local locker_config = {
-	-- Fallback Password
-	-- THIS EXIST TO PREVENT THE ERROR CAUSED BY THE DIFFERENCE OF LUA VERSIONS USED ON COMPILING THE LUA_PAM LIB
-	-- READ THE WIKI - ABOUT MODULE SECTION; TO FIX THE LIBRAY ERROR IF YOU HAVE ONE
-	-- ONLY USE THIS AS A TEMPORARY SUBSTITUTE TO LUA_PAM
+	-- Clock mode
+	military_clock = config.module.lockscreen.military_clock or false,
+
+	-- Fallback password
 	fallback_password = function()
-		-- Set your password here
 		return config.module.lockscreen.fallback_password or 'toor'
 	end,
 
-	-- General Configuration
 	-- Capture a picture using webcam
 	capture_intruder = config.module.lockscreen.capture_intruder or false,
 
 	-- Save location, auto creates
 	face_capture_dir = config.module.lockscreen.face_capture_dir or '$(xdg-user-dir PICTURES)/Intruders/',
 
-	-- Background Mode Configuration
-	-- True to blur the background
+	-- Blur background
 	blur_background = config.module.lockscreen.blur_background or false,
 	
 	-- Wallpaper directory
@@ -81,8 +78,13 @@ local profile_imagebox = wibox.widget {
 	widget = wibox.widget.imagebox
 }
 
+local clock_format = '<span font="Inter Bold 52">%H:%M</span>'
+if not locker_config.military_clock then
+	clock_format = '<span font="Inter Bold 52">%I:%M %p</span>'
+end
+
 local time = wibox.widget.textclock(
-	'<span font=\'Inter Bold 56\'>%I:%M %p</span>',
+	clock_format,
 	1
 )
 

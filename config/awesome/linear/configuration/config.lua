@@ -61,6 +61,7 @@ return {
 		},
 
 		lockscreen = {
+			military_clock = true,
 			fallback_password = 'toor',
 			capture_intruder = true,
 			face_capture_dir = '$(xdg-user-dir PICTURES)/Intruders/',
