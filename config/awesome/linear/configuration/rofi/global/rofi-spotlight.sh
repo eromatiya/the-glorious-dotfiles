@@ -166,7 +166,6 @@ fi
 
 # Return the icon string
 function icon_file_type(){
-
 	icon_name=""
 	mime_type=$(file --mime-type -b "${1}")
 
@@ -460,13 +459,14 @@ function navigate_to() {
 	    done
     else
         THREADS=$(getconf _NPROCESSORS_ONLN)
+        export CUR_DIR
         if [[ ${SHOW_HIDDEN} == true ]]
         then
-            fd -Ht d -d 1 -x bash -c 'icon_file_type "$0/"' {} | sort -V --parallel=$THREADS 
-            fd -Ht f -d 1 -x bash -c 'icon_file_type $0' {} | sort -V --parallel=$THREADS
+            fd -Ht d -d 1 -x bash -c 'icon_file_type "$1/"' _ {} \ | sort -V --parallel=$THREADS 
+            fd -Ht f -d 1 -x bash -c 'icon_file_type "$1"' _ {} \ | sort -V --parallel=$THREADS
         else
-            fd -t d -d 1 -x bash -c 'icon_file_type "$0/"' {} | sort -V --parallel=$THREADS 
-            fd -t f -d 1 -x bash -c 'icon_file_type $0' {} | sort -V --parallel=$THREADS
+            fd -t d -d 1 -x bash -c 'icon_file_type "$1/"' _ {} \ | sort -V --parallel=$THREADS 
+            fd -t f -d 1 -x bash -c 'icon_file_type "$1"' _ {} \ | sort -V --parallel=$THREADS
 	    fi
     fi	
 }
