@@ -175,7 +175,7 @@ Some of these are outdated, so it is better if you try them yourself.
 		Linear
 	</b>
 	<br>
-	A setup full of borders and lines. And yes, that's the Windows 10 titlebar window control buttons. I chose it because it is perfect for the setup called "Linear".
+	A setup full of borders and lines. Awesome right?
 	<br>
 </p>
 
