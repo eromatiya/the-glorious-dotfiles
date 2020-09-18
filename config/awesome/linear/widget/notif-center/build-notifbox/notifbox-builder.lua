@@ -111,8 +111,6 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 			widget = wibox.container.margin
 		},
 		bg = bgcolor,
-		border_width = dpi(1),
-		border_color = beautiful.groups_title_bg,
 		shape = function(cr, width, height)
 			gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius)
 		end,

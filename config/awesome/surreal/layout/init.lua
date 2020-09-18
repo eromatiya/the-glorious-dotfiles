@@ -8,7 +8,6 @@ local info_center = require('layout.info-center')
 screen.connect_signal(
 	'request::desktop_decoration',
 		function(s)
-
 		s.top_panel = top_panel(s)
 		s.bottom_panel = bottom_panel(s)
 		s.control_center = control_center(s)

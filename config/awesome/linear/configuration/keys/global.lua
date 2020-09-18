@@ -308,16 +308,6 @@ local globalKeys = awful.util.table.join(
 		{description = 'dropdown application', group = 'launcher'}
 	),
 	awful.key(
-		{modkey}, 
-		'm',
-		function()
-			if awful.screen.focused().musicpop then
-				awesome.emit_signal('widget::music', 'keyboard')
-			end
-		end,
-		{description = 'toggle music widget', group = 'launcher'}
-	),
-	awful.key(
 		{ }, 
 		'Print',
 		function ()
@@ -426,13 +416,13 @@ local globalKeys = awful.util.table.join(
 		function()
 			local focused = awful.screen.focused()
 
-			if focused.left_panel then
-				focused.left_panel:hide_dashboard()
-				focused.left_panel.opened = false
+			if focused.control_center then
+				focused.control_center:hide_dashboard()
+				focused.control_center.opened = false
 			end
-			if focused.right_panel then
-				focused.right_panel:hide_dashboard()
-				focused.right_panel.opened = false
+			if focused.info_center then
+				focused.info_center:hide_dashboard()
+				focused.info_center.opened = false
 			end
 			awful.spawn(apps.default.rofi_appmenu, false)
 		end,
@@ -444,89 +434,49 @@ local globalKeys = awful.util.table.join(
 		function()
 			local focused = awful.screen.focused()
 
-			if focused.left_panel then
-				focused.left_panel:hide_dashboard()
-				focused.left_panel.opened = false
+			if focused.control_center then
+				focused.control_center:hide_dashboard()
+				focused.control_center.opened = false
 			end
-			if focused.right_panel then
-				focused.right_panel:hide_dashboard()
-				focused.right_panel.opened = false
+			if focused.info_center then
+				focused.info_center:hide_dashboard()
+				focused.info_center.opened = false
 			end
 			awful.spawn(apps.default.rofi_appmenu, false)
 		end,
 		{description = 'open application drawer', group = 'launcher'}
 	),
 	awful.key(
+		{modkey, 'Shift'},
+		'x',
+		function()
+			awful.spawn(apps.default.rofi_global, false)
+		end,
+		{description = 'open global search', group = 'launcher'}
+	),
+	awful.key(
 		{modkey},
 		'r',
 		function()
 			local focused = awful.screen.focused()
-
-			if focused.right_panel and focused.right_panel.visible then
-				focused.right_panel.visible = false
+			if focused.info_center and focused.info_center.visible then
+				focused.info_center:toggle()
 			end
-			screen.primary.left_panel:toggle()
+			focused.control_center:toggle()
 		end,
-		{description = 'open sidebar', group = 'launcher'}
+		{description = 'open control center', group = 'launcher'}
 	),
 	awful.key(
 		{modkey, 'Shift'},
 		'r',
 		function()
 			local focused = awful.screen.focused()
-
-			if focused.right_panel and focused.right_panel.visible then
-				focused.right_panel.visible = false
+			if focused.control_center and focused.control_center.visible then
+				focused.control_center:toggle()
 			end
-			screen.primary.left_panel:toggle(true)
+			focused.info_center:toggle()
 		end,
-		{description = 'open sidebar and global search', group = 'launcher'}
-	),
-	awful.key(
-		{modkey}, 
-		'F2',
-		function()
-			local focused = awful.screen.focused()
-
-			if focused.left_panel and focused.left_panel.opened then
-				focused.left_panel:toggle()
-			end
-
-			if focused.right_panel then
-				if _G.right_panel_mode == 'today_mode' or not focused.right_panel.visible then
-					focused.right_panel:toggle()
-					switch_rdb_pane('today_mode')
-				else
-					switch_rdb_pane('today_mode')
-				end
-
-				_G.right_panel_mode = 'today_mode'
-			end
-		end,
-		{description = 'open today pane', group = 'launcher'}
-	),
-	awful.key(
-		{modkey}, 
-		'F3',
-		function()
-			local focused = awful.screen.focused()
-
-			if focused.left_panel and focused.left_panel.opened then
-				focused.left_panel:toggle()
-			end
-
-			if focused.right_panel then
-				if _G.right_panel_mode == 'notif_mode' or not focused.right_panel.visible then
-					focused.right_panel:toggle()
-					switch_rdb_pane('notif_mode')
-				else
-					switch_rdb_pane('notif_mode')
-				end
-
-				_G.right_panel_mode = 'notif_mode'
-			end
-		end,
-		{description = 'open notification center', group = 'launcher'}
+		{description = 'open info center', group = 'launcher'}
 	)
 )
 

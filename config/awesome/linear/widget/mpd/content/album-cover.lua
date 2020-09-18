@@ -1,7 +1,7 @@
 local gears = require('gears')
 local awful = require('awful')
 local wibox = require('wibox')
-
+local dpi = require('beautiful').xresources.apply_dpi
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. 'widget/mpd/icons/'
 
@@ -15,5 +15,6 @@ local album_cover_img = wibox.widget {
 	},
 	layout = wibox.layout.fixed.vertical
 }
+
 
 return album_cover_img

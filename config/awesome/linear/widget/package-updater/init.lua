@@ -74,8 +74,7 @@ local return_button = function()
 				end
 			
 			end,
-			preferred_positions = {'right', 'left', 'top', 'bottom'},
-			preferred_alignments = {'front', 'back', 'middle'}
+			preferred_positions = {'right', 'left', 'top', 'bottom'}
 		}
 	)
 

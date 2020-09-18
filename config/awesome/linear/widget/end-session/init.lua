@@ -1,15 +1,17 @@
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
-local clickable_container = require('widget.clickable-container')
-local dpi = require('beautiful').xresources.apply_dpi
+local beautiful = require('beautiful')
+local dpi = beautiful.xresources.apply_dpi
 local icons = require('theme.icons')
+local clickable_container = require('widget.clickable-container')
 
 local return_button = function()
+
 	local widget = wibox.widget {
 		{
 			id = 'icon',
-			image = icons.logout,
+			image = icons.power,
 			resize = true,
 			widget = wibox.widget.imagebox
 		},
@@ -18,11 +20,16 @@ local return_button = function()
 
 	local widget_button = wibox.widget {
 		{
-			widget,
-			margins = dpi(7),
-			widget = wibox.container.margin
+			{
+				widget,
+				margins = dpi(5),
+				widget = wibox.container.margin
+			},
+			widget = clickable_container
 		},
-		widget = clickable_container
+		bg = beautiful.transparent,
+		shape = gears.shape.circle,
+		widget = wibox.container.background
 	}
 
 	widget_button:buttons(
@@ -33,6 +40,7 @@ local return_button = function()
 				nil,
 				function()
 					awesome.emit_signal('module::exit_screen_show')
+					awful.screen.focused().control_center:toggle()
 				end
 			)
 		)

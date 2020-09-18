@@ -1,17 +1,17 @@
 local awful = require('awful')
 local bottom_panel = require('layout.bottom-panel')
-local right_panel = require('layout.right-panel')
-local left_panel = require('layout.left-panel')
+local control_center = require('layout.control-center')
+local info_center = require('layout.info-center')
 
 -- Create a wibox panel for each screen and add it
 screen.connect_signal(
 	'request::desktop_decoration',
 	function(s)
 		s.bottom_panel = bottom_panel(s)
-		s.right_panel = right_panel(s)
-		s.left_panel = left_panel(s)
-		s.right_panel_show_again = false
-		s.left_panel_show_again = false
+		s.control_center = control_center(s)
+		s.info_center = info_center(s)
+		s.control_center_show_again = false
+		s.info_center_show_again = false
 	end
 )
 
@@ -23,28 +23,30 @@ function update_bars_visibility()
 			local fullscreen = s.selected_tag.fullscreen_mode
 			-- Order matter here for shadow
 			s.bottom_panel.visible = not fullscreen
-			if s.right_panel then
-				if fullscreen and focused.right_panel.visible then
-					focused.right_panel:toggle()
-					focused.right_panel_show_again = true
+			if s.control_center then
+				if fullscreen and focused.control_center.visible then
+					focused.control_center:toggle()
+					focused.control_center_show_again = true
+
 				elseif not fullscreen and
-					not focused.right_panel.visible and
-					focused.right_panel_show_again then
+					not focused.control_center.visible and
+					focused.control_center_show_again then
 					
-					focused.right_panel:toggle()
-					focused.right_panel_show_again = false
+					focused.control_center:toggle()
+					focused.control_center_show_again = false
 				end
 			end
-			if s.left_panel then
-				if fullscreen and focused.left_panel.visible then
-					focused.left_panel:toggle()
-					focused.left_panel_show_again = true
+			if s.info_center then
+				if fullscreen and focused.info_center.visible then
+					focused.info_center:toggle()
+					focused.info_center_show_again = true
+
 				elseif not fullscreen and
-					not focused.left_panel.visible and
-					focused.left_panel_show_again then
+					not focused.info_center.visible and
+					focused.info_center_show_again then
 					
-					focused.left_panel:toggle()
-					focused.left_panel_show_again = false
+					focused.info_center:toggle()
+					focused.info_center_show_again = false
 				end
 			end
 		end

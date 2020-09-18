@@ -1,73 +1,33 @@
-local gears = require('gears')
 local awful = require('awful')
 local wibox = require('wibox')
-local dpi = require('beautiful').xresources.apply_dpi
-local config_dir = gears.filesystem.get_configuration_dir()
-local widget_icon_dir = config_dir .. 'widget/mpd/icons/'
-local clickable_container = require('widget.clickable-container')
-local music_box = require('widget.mpd.music-box')
-local toggle_music_box = music_box.toggle_music_box
+local gears = require('gears')
+local beautiful = require('beautiful')
+local dpi = beautiful.xresources.apply_dpi
+local ui_content = require('widget.mpd.content')
+local album = ui_content.album_cover
+local song_info = ui_content.song_info.music_info
+local media_buttons = ui_content.media_buttons.navigate_buttons
 
-local return_button = function()
-	local widget = wibox.widget {
-		{
-			id = 'icon',
-			image = widget_icon_dir .. 'music.svg',
-			widget = wibox.widget.imagebox,
-			resize = true
-		},
-		layout = wibox.layout.align.horizontal
-	}
-
-	local widget_button = wibox.widget {
-		{
-			widget,
-			margins = dpi(7),
-			widget = wibox.container.margin
-		},
-		widget = clickable_container
-	}
-
-	local music_tooltip =  awful.tooltip
+local music_box = wibox.widget {
+	layout = wibox.layout.align.horizontal,
+	forced_height = dpi(46),
 	{
-		objects = {widget_button},
-		text = 'None',
-		mode = 'outside',
-		margin_leftright = dpi(8),
-		margin_topbottom = dpi(8),
-		align = 'right',
-		preferred_positions = {'right', 'left', 'top', 'bottom'}
+		layout = wibox.layout.fixed.horizontal,
+		spacing = dpi(10),
+		album,
+		song_info
+	},
+	nil,
+	{
+		layout = wibox.layout.align.vertical,
+		expand = 'none',
+		nil,
+		media_buttons,
+		nil
 	}
+}
 
-	widget_button:buttons(
-		gears.table.join(
-			awful.button(
-				{},
-				1,
-				nil,
-				function()
-					music_tooltip.visible = false
-					awesome.emit_signal('widget::music', 'mouse')
-				end
-			)
-		)
-	)
+-- Mpd widget updater
+require('widget.mpd.mpd-music-updater')
 
-	widget_button:connect_signal(
-		"mouse::enter", 
-		function() 
-			awful.spawn.easy_async_with_shell(
-				'mpc status',
-				function(stdout) 
-				music_tooltip.text = string.gsub(stdout, '\n$', '')
-				end
-			)
-		end
-	)
-
-
-	return widget_button
-
-end
-
-return return_button
+return music_box

@@ -45,6 +45,14 @@ local email_icon_widget = wibox.widget {
 	layout = wibox.layout.fixed.horizontal
 }
 
+local email_header = wibox.widget {
+	text   = 'Email',
+	font   = 'Inter Bold 14',
+	align  = 'left',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
 local email_from_text = wibox.widget {
 	font = 'Inter Regular 10',
 	markup = 'From:',
@@ -52,6 +60,7 @@ local email_from_text = wibox.widget {
 	valign = 'center',
 	widget = wibox.widget.textbox
 }
+
 
 local email_recent_from = wibox.widget {
 	font = 'Inter Regular 10',
@@ -96,54 +105,59 @@ local email_recent_date = wibox.widget {
 local email_report = wibox.widget{
 	{
 		{
-			layout = wibox.layout.fixed.horizontal,
+			layout = wibox.layout.fixed.vertical,
 			spacing = dpi(10),
+			email_header,
 			{
-				layout = wibox.layout.align.vertical,
-				expand = 'none',
-				nil,
-				email_icon_widget,
-				nil
-			},
-			{
-				layout = wibox.layout.align.vertical,
-				expand = 'none',
-				nil,
+				layout = wibox.layout.fixed.horizontal,
+				spacing = dpi(10),
 				{
-					layout = wibox.layout.fixed.vertical,
-					{
-						email_from_text,
-						scroll_container(email_recent_from),
-						spacing = dpi(5),
-						layout = wibox.layout.fixed.horizontal
-					},
-					{
-						email_subject_text,
-						scroll_container(email_recent_subject),
-						spacing = dpi(5),
-						layout = wibox.layout.fixed.horizontal
-					},
-					{
-						email_date_text,
-						scroll_container(email_recent_date),
-						spacing = dpi(5),
-						layout = wibox.layout.fixed.horizontal
-					}
+					layout = wibox.layout.align.vertical,
+					expand = 'none',
+					nil,
+					email_icon_widget,
+					nil
 				},
-				nil
+				{
+					layout = wibox.layout.align.vertical,
+					expand = 'none',
+					nil,
+					{
+						layout = wibox.layout.fixed.vertical,
+						{
+							email_from_text,
+							scroll_container(email_recent_from),
+							spacing = dpi(5),
+							layout = wibox.layout.fixed.horizontal
+						},
+						{
+							email_subject_text,
+							scroll_container(email_recent_subject),
+							spacing = dpi(5),
+							layout = wibox.layout.fixed.horizontal
+						},
+						{
+							email_date_text,
+							scroll_container(email_recent_date),
+							spacing = dpi(5),
+							layout = wibox.layout.fixed.horizontal
+						}
+					},
+					nil
+				}
 			}
 		},
 		margins = dpi(10),
 		widget = wibox.container.margin
 	},
-	forced_height = dpi(92),
-	border_width = dpi(1),
-	border_color = beautiful.groups_title_bg,
+	forced_height = dpi(110),
+	border_width	= 	dpi(1),
+	border_color 	= 	beautiful.groups_title_bg,
 	bg = beautiful.groups_bg,
 	shape = function(cr, width, height)
-	gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius)
-end,
-widget = wibox.container.background
+		gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.groups_radius)
+	end,
+	widget = wibox.container.background
 }
 
 local email_details_tooltip = awful.tooltip

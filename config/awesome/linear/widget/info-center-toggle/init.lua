@@ -35,7 +35,7 @@ local return_button = function()
 				1,
 				nil,
 				function()
-					awful.screen.focused().right_panel:toggle()
+					awful.screen.focused().info_center:toggle()
 				end
 			)
 		)

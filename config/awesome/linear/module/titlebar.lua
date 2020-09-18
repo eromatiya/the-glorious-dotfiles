@@ -39,7 +39,7 @@ local create_vertical_bar = function(c, buttons, pos, bg, size)
 				spacing = dpi(7),
 				layout  = wibox.layout.fixed.vertical
 			},
-			margins = dpi(5),
+			margins = dpi(10),
 			widget = wibox.container.margin
 		},
 		{
@@ -53,7 +53,7 @@ local create_vertical_bar = function(c, buttons, pos, bg, size)
 				spacing = dpi(7),
 				layout  = wibox.layout.fixed.vertical
 			},
-			margins = dpi(5),
+			margins = dpi(10),
 			widget = wibox.container.margin
 		},
 		layout = wibox.layout.align.vertical
@@ -77,7 +77,7 @@ local create_horizontal_bar = function(c, buttons, pos, bg, size)
 				spacing = dpi(7),
 				layout  = wibox.layout.fixed.horizontal
 			},
-			margins = dpi(5),
+			margins = dpi(10),
 			widget = wibox.container.margin
 		},
 		{
@@ -91,7 +91,7 @@ local create_horizontal_bar = function(c, buttons, pos, bg, size)
 				spacing = dpi(7),
 				layout  = wibox.layout.fixed.horizontal
 			},
-			margins = dpi(5),
+			margins = dpi(10),
 			widget = wibox.container.margin
 		},
 		layout = wibox.layout.align.horizontal
@@ -135,11 +135,11 @@ client.connect_signal(
 		elseif c.class == 'Nemo' then
 			create_horizontal_bar(c, buttons, 'top', beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
 		elseif c.type == 'normal' then
-			create_horizontal_bar(c, buttons, 'top', '#000000AA', beautiful.titlebar_size)
+			create_vertical_bar(c, buttons, 'left', '#000000AA', beautiful.titlebar_size)
 		elseif c.type == 'dialog' or c.type == 'modal' then
 			create_horizontal_bar(c, buttons, 'top', '#000000AA', beautiful.titlebar_size)
 		else
-			create_horizontal_bar(c, buttons, 'top', '#000000AA', beautiful.titlebar_size)
+			create_vertical_bar(c, buttons, 'left', '#000000AA', beautiful.titlebar_size)
 		end
 	end
 )
