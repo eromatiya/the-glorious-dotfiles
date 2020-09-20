@@ -1,20 +1,11 @@
 #!/usr/bin/env bash
 
-# ----------------------------------------------------------------------------
-# --- Rofi File Browser
-# --
-# --
-# -- @author manilarome &lt;gerome.matilla07@gmail.com&gt;
-# -- @copyright 2020 manilarome
-# -- @script rofi-spotlight.sh
-# ----------------------------------------------------------------------------
-
 TMP_DIR="/tmp/rofi/${USER}/"
 
 PREV_LOC_FILE="${TMP_DIR}rofi_fb_prevloc"
 CURRENT_FILE="${TMP_DIR}rofi_fb_current_file"
 
-MY_PATH="$(dirname "${0}")"
+MY_PATH="$(realpath "$0" | xargs dirname)"
 HIST_FILE="${MY_PATH}/history.txt"
 
 OPENER=xdg-open
@@ -288,8 +279,8 @@ function icon_file_type(){
 
 	echo -en "$1\0icon\x1f$icon_name\n"
 }
-export -f icon_file_type
 
+export -f icon_file_type
 
 # Pass the argument to python script
 function web_search() {
@@ -331,19 +322,18 @@ then
 fi
 
 function find_query() {
-    QUERY=${1}
-
-    if [[ ! "${QUERY}" =~ ( |\') ]]
-    then
-        if [ -z "$FD_INSTALLED" ];
+	QUERY=${1}
+	if [[ ! "${QUERY}" =~ ( |\') ]]
+	then
+		if [ -z "$FD_INSTALLED" ];
 		then
-            find "${HOME}" -iname *"${QUERY}"* | sed "s/\/home\/$USER/\~/" |
-            	awk -v MY_PATH="${MY_PATH}" '{print $0"\0icon\x1f"MY_PATH"/icons/result.svg"}'
+			find "${HOME}" -iname *"${QUERY}"* | sed "s/\/home\/$USER/\~/" |
+				awk -v MY_PATH="${MY_PATH}" '{print $0"\0icon\x1f"MY_PATH"/icons/result.svg\n"}'
 		else
-            fd -H ${QUERY} ${HOME} | sed "s/\/home\/$USER/\~/" |
-            	awk -v MY_PATH="${MY_PATH}" '{print $0"\0icon\x1f"MY_PATH"/icons/result.svg"}'
+			fd -H ${QUERY} ${HOME} | sed "s/\/home\/$USER/\~/" |
+				awk -v MY_PATH="${MY_PATH}" '{print $0"\0icon\x1f"MY_PATH"/icons/result.svg\n"}'
 		fi
-    fi
+	fi
 }
 
 # File and calls to the web search
@@ -353,9 +343,9 @@ then
 
 	echo "${QUERY}" >> "${HIST_FILE}"
 
-    if [[ "$@" == ?(\~)/* ]]
+	if [[ "$@" == ?(\~)/* ]]
 	then
-        [[ "$*" = \~* ]] && QUERY="${QUERY//"~"/"$HOME"}"
+		[[ "$*" = \~* ]] && QUERY="${QUERY//"~"/"$HOME"}"
 
 		${OPENER} "${QUERY}" > /dev/null 2>&1 |
 		exec 1>&-
@@ -363,11 +353,11 @@ then
 
 	elif [[ "$@" == \?* ]]
 	then
-	    find_query ${QUERY#\?}	
+		find_query ${QUERY#\?}	
 
 	else
 		# Find the file
-        find_query ${QUERY#!}
+		find_query ${QUERY#!}
 
 		# Web search
 		web_search "! ${QUERY#!}"
@@ -419,56 +409,56 @@ function navigate_to() {
 
 	printf "..\0icon\x1fup\n"
 
-    if [[ -z "$FD_INSTALLED" ]]
-    then
-        #Group directories
-        if [[ ${SHOW_HIDDEN} == true ]]
-	    then
-		    for i in .*/
-		    do
-			    if [[ -d "${i}" ]] && ([[ "${i}" != "./" ]] && [[ "${i}" != "../"* ]])
-			    then
-				    icon_file_type "${i}"
-			    fi
-		    done
-	    fi
-	    for i in */
-	    do 
-		    if [[ -d "${i}" ]]
-		    then
-			    icon_file_type "${i}"
-		    fi
-	    done
-        #Group files
-	    if [[ ${SHOW_HIDDEN} == true ]]
-	    then
-		    for i in .*
-		    do 
-			    if [[ -f "${i}" ]]
-			    then
-				    icon_file_type "${i}"
-			    fi
-		    done
-        fi
-	    for i in *
-	    do 
-		    if [[ -f "${i}" ]]
-		    then
-			    icon_file_type "${i}"
-		    fi
-	    done
-    else
-        THREADS=$(getconf _NPROCESSORS_ONLN)
-        export CUR_DIR
-        if [[ ${SHOW_HIDDEN} == true ]]
-        then
-            fd -Ht d -d 1 -x bash -c 'icon_file_type "$1/"' _ {} \ | sort -V --parallel=$THREADS 
-            fd -Ht f -d 1 -x bash -c 'icon_file_type "$1"' _ {} \ | sort -V --parallel=$THREADS
-        else
-            fd -t d -d 1 -x bash -c 'icon_file_type "$1/"' _ {} \ | sort -V --parallel=$THREADS 
-            fd -t f -d 1 -x bash -c 'icon_file_type "$1"' _ {} \ | sort -V --parallel=$THREADS
-	    fi
-    fi	
+	if [[ -z "$FD_INSTALLED" ]]
+	then
+		#Group directories
+		if [[ ${SHOW_HIDDEN} == true ]]
+		then
+			for i in .*/
+			do
+				if [[ -d "${i}" ]] && ([[ "${i}" != "./" ]] && [[ "${i}" != "../"* ]])
+				then
+					icon_file_type "${i}"
+				fi
+			done
+		fi
+		for i in */
+		do 
+			if [[ -d "${i}" ]]
+			then
+				icon_file_type "${i}"
+			fi
+		done
+		#Group files
+		if [[ ${SHOW_HIDDEN} == true ]]
+		then
+			for i in .*
+			do 
+				if [[ -f "${i}" ]]
+				then
+					icon_file_type "${i}"
+				fi
+			done
+		fi
+		for i in *
+		do 
+			if [[ -f "${i}" ]]
+			then
+				icon_file_type "${i}"
+			fi
+		done
+	else
+		THREADS=$(getconf _NPROCESSORS_ONLN)
+		export CUR_DIR
+		if [[ ${SHOW_HIDDEN} == true ]]
+		then
+			fd -Ht d -d 1 -x bash -c 'icon_file_type "$1/"' _ {} \ | sort -V --parallel=$THREADS 
+			fd -Ht f -d 1 -x bash -c 'icon_file_type "$1"' _ {} \ | sort -V --parallel=$THREADS
+		else
+			fd -t d -d 1 -x bash -c 'icon_file_type "$1/"' _ {} \ | sort -V --parallel=$THREADS 
+			fd -t f -d 1 -x bash -c 'icon_file_type "$1"' _ {} \ | sort -V --parallel=$THREADS
+		fi
+	fi	
 }
 
 # Set XDG dir
@@ -539,7 +529,6 @@ then
 	done <<< "${hist}"
 	
 	exit;
-
 elif [ ! -z "$@" ] && ([[ "$@" == ":ch" ]] || [[ "$@" == ":clear_hist" ]])
 then
 	:> "${HIST_FILE}"
@@ -554,7 +543,7 @@ fi
 if [[ ! -z "$@" ]] && [[ "$@" == ":xdg"* ]]
 then
 
-	NEXT_DIR=$(echo "$@" | awk '{print $2}')
+	NEXT_DIR="$(echo "$@" | awk '{print $2}')"
 
 	if [[ ! -z "$NEXT_DIR" ]]
 	then
@@ -562,13 +551,12 @@ then
 	else
 		return_xdg_dir "${HOME}"
 	fi
-
 fi
 
 # Read last location, otherwise we default to PWD.
 if [ -f "${PREV_LOC_FILE}" ]
 then
-	CUR_DIR=$(cat "${PREV_LOC_FILE}")
+	CUR_DIR="$(cat "${PREV_LOC_FILE}")"
 fi
 
 if [[ ! -z "$@" ]] && ([[ "$@" == ":h" ]] || [[ "$@" == ":hidden" ]])
@@ -635,7 +623,7 @@ then
 			kill -9 $(pgrep rofi)
 			;;
 		"Back" )
-			CUR_DIR=$(cat "${PREV_LOC_FILE}")
+			CUR_DIR="$(cat "${PREV_LOC_FILE}")"
 			navigate_to
 			;;
 	esac
@@ -697,7 +685,7 @@ function print_context_menu() {
 
 function context_menu() {
 
-	type=$(file --mime-type -b "${CUR_DIR}")
+	type="$(file --mime-type -b "${CUR_DIR}")"
 	
 	if [ -w "${CUR_DIR}" ] && [[ "${type}" == "text/x-shellscript" ]]
 	then
@@ -739,8 +727,8 @@ function context_menu() {
 			QUERY="${CUR_DIR//*\/\//}"
 
 			echo "${QUERY}" >> "${HIST_FILE}"
-            
-            find_query ${QUERY#!}
+			
+			find_query "${QUERY#!}"
 
 			web_search "!${QUERY}"
 		else
@@ -748,7 +736,6 @@ function context_menu() {
 		fi
 	fi
 	exit;
-
 }
 
 # If argument is not a directory/folder
