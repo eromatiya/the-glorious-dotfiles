@@ -10,8 +10,16 @@ return awful.util.table.join(
 			c:raise()
 		end
 	),
-	awful.button({modkey}, 1, awful.mouse.client.move),
-	awful.button({modkey}, 3, awful.mouse.client.resize),
+	awful.button(
+		{modkey},
+		1,
+		awful.mouse.client.move
+	),
+	awful.button(
+		{modkey},
+		3,
+		awful.mouse.client.resize
+	),
 	awful.button(
 		{modkey},
 		4,
