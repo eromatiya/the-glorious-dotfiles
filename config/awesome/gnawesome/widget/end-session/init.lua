@@ -32,7 +32,7 @@ local return_button = function()
 				1,
 				nil,
 				function()
-					awesome.emit_signal('module::exit_screen_show')
+					awesome.emit_signal('module::exit_screen:show')
 				end
 			)
 		)

@@ -56,7 +56,7 @@ local create_widget = function()
 				nil,
 				function()
 					screen.primary.left_panel:toggle()
-					awesome.emit_signal("module::exit_screen_show")
+					awesome.emit_signal('module::exit_screen:show')
 				end
 			)
 		)
