@@ -13,7 +13,20 @@ function create_shell()
 		{
 			skip_decoration = true,
 			titlebars_enabled = false,
-			switch_to_tags = false
+			switch_to_tags = false,
+			opacity = 0.95,
+			floating = true,
+			skip_taskbar = true,
+			ontop = true,
+			above = true,
+			sticky = true,
+			hidden = not opened,
+			maximized_horizontal = true,
+			skip_center = true,
+			round_corners = false,
+			shape = function(cr, w, h)
+				gears.shape.rectangle(cr, w, h)
+			end
 		}
 	)
 end
@@ -41,7 +54,7 @@ local toggle_quake = function()
 end
 
 awesome.connect_signal(
-	'module::quake_toggle',
+	'module::quake_terminal:toggle',
 	function()
 		toggle_quake();
 	end
@@ -52,19 +65,6 @@ client.connect_signal(
 	function(c)
 		if c.pid == quake_id then
 			quake_client = c
-			c.opacity = 0.95
-			c.floating = true
-			c.skip_taskbar = true
-			c.ontop = true
-			c.above = true
-			c.sticky = true
-			c.hidden = not opened
-			c.maximized_horizontal = true
-			c.skip_center = true
-			c.round_corners = false
-			c.shape = function(cr, w, h)
-				gears.shape.rectangle(cr, w, h)
-			end
 		end
 	end
 )

@@ -128,7 +128,7 @@ local build_button = function(icon, name)
 end
 
 local suspend_command = function()
-	awesome.emit_signal('module::exit_screen_hide')
+	awesome.emit_signal('module::exit_screen:hide')
 	awful.spawn.with_shell(apps.default.lock .. ' & systemctl suspend')
 end
 
@@ -137,18 +137,18 @@ local exit_command = function()
 end
 
 local lock_command = function()
-	awesome.emit_signal('module::exit_screen_hide')
+	awesome.emit_signal('module::exit_screen:hide')
 	awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock)
 end
 
 local poweroff_command = function()
 	awful.spawn.with_shell('poweroff')
-	awesome.emit_signal('module::exit_screen_hide')
+	awesome.emit_signal('module::exit_screen:hide')
 end
 
 local reboot_command = function()
 	awful.spawn.with_shell('reboot')
-	awesome.emit_signal('module::exit_screen_hide')
+	awesome.emit_signal('module::exit_screen:hide')
 end
 
 local poweroff = build_button(icons.power, 'Shutdown')
@@ -210,7 +210,7 @@ screen.connect_signal(
 		}
 
 		local exit_screen_hide = function()
-			awesome.emit_signal('module::exit_screen_hide')
+			awesome.emit_signal('module::exit_screen:hide')
 		end
 
 		local exit_screen_grabber = awful.keygrabber {
@@ -234,13 +234,13 @@ screen.connect_signal(
 					reboot_command()
 
 				elseif key == 'Escape' or key == 'q' or key == 'x' then
-					awesome.emit_signal('module::exit_screen_hide')
+					awesome.emit_signal('module::exit_screen:hide')
 				end
 			end
 		}
 
 		awesome.connect_signal(
-			'module::exit_screen_show',
+			'module::exit_screen:show',
 			function() 
 				for s in screen do
 					s.exit_screen.visible = false
@@ -251,7 +251,7 @@ screen.connect_signal(
 		)
 
 		awesome.connect_signal(
-			'module::exit_screen_hide',
+			'module::exit_screen:hide',
 			function()
 				exit_screen_grabber:stop()
 				for s in screen do
@@ -266,14 +266,14 @@ screen.connect_signal(
 					{},
 					2,
 					function()
-						awesome.emit_signal('module::exit_screen_hide')
+						awesome.emit_signal('module::exit_screen:hide')
 					end
 				),
 				awful.button(
 					{},
 					3,
 					function()
-						awesome.emit_signal('module::exit_screen_hide')
+						awesome.emit_signal('module::exit_screen:hide')
 					end
 				)
 			)

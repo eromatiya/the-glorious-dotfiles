@@ -279,7 +279,7 @@ local globalKeys = awful.util.table.join(
 		{},
 		'XF86PowerOff',
 		function()
-			awesome.emit_signal('module::exit_screen_show')
+			awesome.emit_signal('module::exit_screen:show')
 		end,
 		{description = 'toggle exit screen', group = 'hotkeys'}
 	),
@@ -295,7 +295,7 @@ local globalKeys = awful.util.table.join(
 		{modkey, 'Shift'},
 		'q',
 		function()
-			awesome.emit_signal('module::exit_screen_show')
+			awesome.emit_signal('module::exit_screen:show')
 		end,
 		{description = 'toggle exit screen', group = 'hotkeys'}
 	),
@@ -303,7 +303,7 @@ local globalKeys = awful.util.table.join(
 		{modkey},
 		'`',
 		function()
-			awesome.emit_signal('module::quake_toggle')
+			awesome.emit_signal('module::quake_terminal:toggle')
 		end,
 		{description = 'dropdown application', group = 'launcher'}
 	),
