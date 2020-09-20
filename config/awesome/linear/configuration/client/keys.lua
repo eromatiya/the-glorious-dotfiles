@@ -90,7 +90,7 @@ local client_keys = awful.util.table.join(
 				honor_workarea = true
 			})
 		end,
-		{description = 'align a client to the center of the focused screen.', group = 'client'}
+		{description = 'align a client to the center of the focused screen', group = 'client'}
 	),
 	awful.key(
 		{modkey},
