@@ -108,8 +108,14 @@ tag.connect_signal(
 			-- Set clients gap to 0 and shape to rectangle if maximized
 			t.gap = 0
 			for _, c in ipairs(t:clients()) do
-				c.shape = function(cr, width, height)
-					gears.shape.rectangle(cr, width, height)
+				if not c.floating then
+					c.shape = function(cr, width, height)
+						gears.shape.rectangle(cr, width, height)
+					end
+				else
+					c.shape = function(cr, width, height)
+						gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
+					end
 				end
 			end
 		else

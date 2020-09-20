@@ -2,10 +2,6 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 
--- ░█▀▀░█░░░▀█▀░█▀▀░█▀█░▀█▀
--- ░█░░░█░░░░█░░█▀▀░█░█░░█░
--- ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░░▀░
-
 -- Signal function to execute when a new client appears.
 client.connect_signal(
 	'manage',
@@ -35,14 +31,14 @@ client.connect_signal(
 		-- Spawn client with rounded corners (of course it will follow the theme.client_radius)
 		-- if selected_tag is not maximized and round_corners = false
 		local current_layout = awful.tag.getproperty(awful.screen.focused().selected_tag, 'layout')
-		if not c.round_corners or current_layout == awful.layout.suit.max then return end
+		if not c.round_corners or (current_layout == awful.layout.suit.max and not c.floating) then return end
 		c.shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
 		end
 	end
 )
 
--- Enable sloppy focus, so that focus follows mouse.
+-- Enable sloppy focus, so that focus follows mouse then raises it.
 client.connect_signal(
 	'mouse::enter',
 	function(c)
