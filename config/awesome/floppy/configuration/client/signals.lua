@@ -29,8 +29,8 @@ client.connect_signal(
 		end
 
 		-- Spawn client with rounded corners (of course it will follow the theme.client_radius)
-		-- if selected_tag is not maximized and round_corners = false
-		local current_layout = awful.tag.getproperty(awful.screen.focused().selected_tag, 'layout')
+		-- if client's first_tag is not maximized and round_corners = false
+		local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
 		if not c.round_corners or (current_layout == awful.layout.suit.max and not c.floating) then return end
 		c.shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
@@ -75,7 +75,7 @@ client.connect_signal(
 				gears.shape.rectangle(cr, width, height)
 			end
 		else
-			local current_layout = awful.tag.getproperty(awful.screen.focused().selected_tag, 'layout')
+			local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
 			if (current_layout == awful.layout.suit.max) then
 				c.shape = function(cr, width, height)
 					gears.shape.rectangle(cr, width, height)
@@ -93,7 +93,7 @@ client.connect_signal(
 client.connect_signal(
 	'property::maximized',
 	function(c)
-		local current_layout = awful.tag.getproperty(awful.screen.focused().selected_tag, 'layout')
+		local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
 		if c.maximized then
 			c.shape = function(cr, width, height)
 				gears.shape.rectangle(cr, width, height)
@@ -111,7 +111,7 @@ client.connect_signal(
 client.connect_signal(
 	'property::floating',
 	function(c)
-		local current_layout = awful.tag.getproperty(awful.screen.focused().selected_tag, 'layout')
+		local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
 		if c.floating and not c.maximized then
 			c.shape = function(cr, width, height)
 				gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
