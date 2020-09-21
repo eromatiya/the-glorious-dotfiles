@@ -20,66 +20,48 @@ FD_INSTALLED=$(command -v fd)
 
 SHOW_HIDDEN=false
 
-declare -a SHELL_OPTIONS=(
-	"Run"
-	"Execute in ${TERM_EMU}"
-	"Edit"
+# Setup menu options
+declare -a OPEN_FILE_LOCATION=(
 	"Open file location in ${TERM_EMU}"
 	"Open file location in ${FILE_MANAGER}"
+)
+declare -a RUN_COMMANDS=(
+	"Run"
+	"Execute in ${TERM_EMU}"
+)
+declare -a STANDARD_CONTROLS=(
 	"Move to trash"
 	"Delete"
 	"Back"
 )
-
 declare -a SHELL_NO_X_OPTIONS=(
 	"Edit"
-	"Open file location in ${TERM_EMU}"
-	"Open file location in ${FILE_MANAGER}"
-	"Move to trash"
-	"Delete"
-	"Back"
+	"${OPEN_FILE_LOCATION[@]}"
+    "${STANDARD_CONTROLS[@]}"
 )
-
-declare -a BIN_OPTIONS=(
-	"Run"
-	"Execute in ${TERM_EMU}"
-	"Open file location in ${TERM_EMU}"
-	"Open file location in ${FILE_MANAGER}"
-	"Back"
+declare -a SHELL_OPTIONS=(
+    "${RUN_COMMANDS[@]}"
+    "${SHELL_NO_X_OPTIONS[@]}"
 )
-
 declare -a BIN_NO_X_OPTIONS=(
-	"Open file location in ${TERM_EMU}"
-	"Open file location in ${FILE_MANAGER}"
+	"${OPEN_FILE_LOCATION[@]}"
 	"Back"
 )
-
-declare -a TEXT_OPTIONS=(
-	"Edit"
-	"Open file location in ${TERM_EMU}"
-	"Open file location in ${FILE_MANAGER}"
-	"Move to trash"
-	"Delete"
-	"Back"
+declare -a BIN_OPTIONS=(
+    "${RUN_COMMANDS[@]}"
+    "${BIN_NO_X_OPTIONS[@]}"
 )
-
+declare -a TEXT_OPTIONS=("${SHELL_NO_X_OPTIONS[@]}")
 declare -a XCF_SVG_OPTIONS=(
 	"Open"
-	"Open file location in ${TERM_EMU}"
-	"Open file location in ${FILE_MANAGER}"
-	"Move to trash"
-	"Delete"
-	"Back"
+	"${OPEN_FILE_LOCATION[@]}"
+    "${STANDARD_CONTROLS[@]}"
 )
-
 declare -a IMAGE_OPTIONS=(
 	"Open"
 	"Send via Bluetooth"
-	"Open file location in ${TERM_EMU}"
-	"Open file location in ${FILE_MANAGER}"
-	"Move to trash"
-	"Delete"
-	"Back"
+	"${OPEN_FILE_LOCATION[@]}"
+    "${STANDARD_CONTROLS[@]}"
 )
 
 declare -a ALL_OPTIONS=()
@@ -87,72 +69,59 @@ declare -a ALL_OPTIONS=()
 # Combine all context menu
 COMBINED_OPTIONS=(
 	"${SHELL_OPTIONS[@]}"
-	"${SHELL_NO_X_OPTIONS[@]}"
-	"${BIN_OPTIONS[@]}"
-	"${BIN_NO_X_OPTIONS[@]}"
-	"${TEXT_OPTIONS[@]}"
-	"${XCF_SVG_OPTIONS[@]}"
 	"${IMAGE_OPTIONS[@]}"
 )
 
 # Remove duplicates
-while IFS= read -r -d '' x; do
-	ALL_OPTIONS+=("$x")
-done < <(printf "%s\0" "${COMBINED_OPTIONS[@]}" | sort -uz)
+ALL_OPTIONS=("$(printf '%s\n' "${COMBINED_OPTIONS[@]}" | sort -u)")
 
 # Create tmp dir for rofi
-if [ ! -d "${TMP_DIR}" ]
-then
-	mkdir -p "${TMP_DIR}";
-fi
+[ ! -d "${TMP_DIR}" ] && mkdir -p "${TMP_DIR}";
 
 # Create hist file if it doesn't exist
-if [ ! -f "${HIST_FILE}" ]
-then
-	touch "${HIST_FILE}"
-fi
+[ ! -f "${HIST_FILE}" ] && touch "${HIST_FILE}"
 
 # Help message
-if [[ ! -z "$@" ]] && [[ "$@" == ":help" ]]
+if [ -n "$*" ] && [[ "$*" = ":help" ]]
 then
+    echo -en "Rofi Spotlight
+A Rofi with file and web searching functionality
+ 
+Commands:
+:help to print this help message
+:h or :hidden to show hidden files/dirs
+:sh or :show_hist to show search history
+:ch or :clear_hist to clear search history
+:xdg to jump to an xdg directory
+Examples:
+	:xdg DOCUMENTS
+	:xdg DOWNLOADS
+Also supports incomplete path:
+Examples:
+	:xdg doc
+	:xdg down
+For more info about XDG dirs, see:
+\`man xdg-user-dir\`
+ 
+File search syntaxes:
+!<search_query> to search for a file and web suggestions
+?<search_query> to search parent directories
+Examples:
+	!half-life 3
+ 	?portal 3
+ 
+Web search syntaxes:
+!<search_query> to gets search suggestions
+:web/:w <search_query> to also to gets search suggestions
+:webbro/:wb <search_query> to search directly from your browser
+Examples:
+	!how to install archlinux
+	:web how to install gentoo
+	:w how to make a nuclear fission
+	:webbro how to install wine in windowsxp
+Back\0icon\x1fdraw-arrow-back\n"
 
-	echo "Rofi Spotlight"
-	echo "A Rofi with file and web searching functionality"
-	echo " "
-	echo "Commands:"
-	echo ":help to print this help message"
-	echo ":h or :hidden to show hidden files/dirs"
-	echo ":sh or :show_hist to show search history"
-	echo ":ch or :clear_hist to clear search history"
-	echo ":xdg to jump to an xdg directory"
-	echo "Examples:"
-	echo "	:xdg DOCUMENTS"
-	echo "	:xdg DOWNLOADS"
-	echo "Also supports incomplete path:"
-	echo "Examples:"
-	echo "	:xdg doc"
-	echo "	:xdg down"
-	echo "For more info about XDG dirs, see:"
-	echo "\`man xdg-user-dir\`"
-	echo " "
-	echo "File search syntaxes:"
-	echo "!<search_query> to search for a file and web suggestions"
-	echo "?<search_query> to search parent directories"
-	echo "Examples:"
-	echo "	!half-life 3"
-	echo " 	?portal 3"
-	echo " "
-	echo "Web search syntaxes:"
-	echo "!<search_query> to gets search suggestions"
-	echo ":web/:w <search_query> to also to gets search suggestions"
-	echo ":webbro/:wb <search_query> to search directly from your browser"
-	echo "Examples:"
-	echo "	!how to install archlinux"
-	echo "	:web how to install gentoo"
-	echo "	:w how to make a nuclear fission"
-	echo "	:webbro how to install wine in windowsxp"
-
-	exit;
+	exit
 fi
 
 # Return the icon string
@@ -293,13 +262,7 @@ function web_search() {
 if [ ! -z "$@" ] && ([[ "$@" == ":webbro"* ]] || [[ "$@" == ":wb"* ]])
 then
 	remove=''
-
-	if [[ "$@" == ":webbro"* ]]
-	then
-		remove=":webbro"
-	else
-		remove=":wb"
-	fi
+	[[ "$*" = ":webbro"* ]] && remove=":webbro" || remove=":wb"
 
 	# Search directly from your web browser
 	web_search "$(printf '%s\n' "${1//$remove/}")"
@@ -308,13 +271,7 @@ then
 elif [ ! -z "$@" ] && ([[ "$@" == ":web"* ]] || [[ "$@" == ":w"* ]])
 then
 	remove=''
-
-	if [[ "$@" == ":web"* ]]
-	then
-		remove=":web"
-	else
-		remove=":w"
-	fi
+	[[ "$*" = ":web"* ]] && remove=":web" || remove=":w"
 
 	# Get search suggestions
 	web_search "!$(printf '%s\n' "${1//$remove/}")"
@@ -347,7 +304,7 @@ then
 	then
 		[[ "$*" = \~* ]] && QUERY="${QUERY//"~"/"$HOME"}"
 
-		${OPENER} "${QUERY}" > /dev/null 2>&1 |
+		coproc ${OPENER} "${QUERY}" > /dev/null 2>&1
 		exec 1>&-
 		exit
 
@@ -367,27 +324,28 @@ fi
 
 # Create notification if there's an error
 function create_notification() {
-	if [[ "${1}" == "denied" ]]
-	then
-		notify-send -a "Global Search" "<b>Permission denied!</b>" \
-		'You have no permission to access '"<b>${CUR_DIR}</b>!"
-	elif [[ "${1}" == "deleted" ]]
-	then
-		notify-send -a "Global Search" "<b>Success!</b>" \
-		'File deleted!'
-	elif [[ "${1}" == "trashed" ]]
-	then
-		notify-send -a "Global Search" "<b>Success!</b>" \
-		'The file has been moved to trash!'	
-	elif [[ "${1}" == "cleared" ]]
-	then
-		notify-send -a "Global Search" "<b>Success!</b>" \
-		'Search history has been successfully cleared!'
-
-	else
-		notify-send -a "Global Search" "<b>Somethings wrong I can feel it!</b>" \
-		'This incident will be reported!'
-	fi
+    case "${1}" in
+        "denied" )
+		    notify-send -a "Global Search" "Permission denied!" \
+		    'You have no permission to access '"${CUR_DIR}!"
+            ;;
+        "deleted" )
+		    notify-send -a "Global Search" "Success!" \
+		    'File deleted!'
+            ;;
+        "trashed" )
+		    notify-send -a "Global Search" "Success!" \
+		    'The file has been moved to trash!'	
+            ;;
+        "cleared" )
+		    notify-send -a "Global Search" "Success!" \
+		    'Search history has been successfully cleared!'
+            ;;
+        * )
+		    notify-send -a "Global Search" "Somethings wrong I can feel it!" \
+		    'This incident will be reported!'
+            ;;
+    esac
 }
 
 # Show the files in the current directory
@@ -404,7 +362,7 @@ function navigate_to() {
 		else
 			echo "${CUR_DIR}/" > "${PREV_LOC_FILE}"
 		fi
-		pushd "${CUR_DIR}" >/dev/null
+		pushd "${CUR_DIR}" >/dev/null || exit
 	fi
 
 	printf "..\0icon\x1fup\n"
@@ -416,36 +374,24 @@ function navigate_to() {
 		then
 			for i in .*/
 			do
-				if [[ -d "${i}" ]] && ([[ "${i}" != "./" ]] && [[ "${i}" != "../"* ]])
-				then
-					icon_file_type "${i}"
-				fi
+				[[ -d "${i}" ]] && ([[ "${i}" != "./" ]] && [[ "${i}" != "../"* ]]) && icon_file_type "${i}"
 			done
 		fi
 		for i in */
 		do 
-			if [[ -d "${i}" ]]
-			then
-				icon_file_type "${i}"
-			fi
+			[[ -d "${i}" ]] && icon_file_type "${i}"
 		done
 		#Group files
-		if [[ ${SHOW_HIDDEN} == true ]]
+		if [[ ${SHOW_HIDDEN} = true ]]
 		then
 			for i in .*
 			do 
-				if [[ -f "${i}" ]]
-				then
-					icon_file_type "${i}"
-				fi
+				[[ -f "${i}" ]] && icon_file_type "${i}"
 			done
 		fi
 		for i in *
 		do 
-			if [[ -f "${i}" ]]
-			then
-				icon_file_type "${i}"
-			fi
+			[[ -f "${i}" ]] && icon_file_type "${i}"
 		done
 	else
 		THREADS=$(getconf _NPROCESSORS_ONLN)
@@ -517,15 +463,12 @@ if [ ! -z "$@" ] && ([[ "$@" == ":sh" ]] || [[ "$@" == ":show_hist" ]])
 then
 	hist=$(tac "${HIST_FILE}")
 
-	if [ ! -n "${hist}" ]
-	then
-		printf ".\0icon\x1fback\n"
-		printf "No history, yet.\0icon\x1ftext-plain\n"
-	fi
+    echo -en "Back\0icon\x1fdraw-arrow-back\n"
+	[ -z "${hist}" ] && echo -en "No History Yet\0icon\x1ftext-plain\n"
 
 	while IFS= read -r line; 
 	do 
-		printf "${line}\0icon\x1f${MY_PATH}/icons/history.svg\n"; 
+		echo -en "${line}\0icon\x1f${MY_PATH}/icons/history.svg\n"; 
 	done <<< "${hist}"
 	
 	exit;
@@ -542,22 +485,13 @@ fi
 # Accepts XDG command
 if [[ ! -z "$@" ]] && [[ "$@" == ":xdg"* ]]
 then
+	NEXT_DIR=${*//":xdg "/}
 
-	NEXT_DIR="$(echo "$@" | awk '{print $2}')"
-
-	if [[ ! -z "$NEXT_DIR" ]]
-	then
-		return_xdg_dir "${NEXT_DIR}"
-	else
-		return_xdg_dir "${HOME}"
-	fi
+	[[ -n "$NEXT_DIR" ]] && return_xdg_dir "${NEXT_DIR}" || return_xdg_dir "${HOME}"
 fi
 
 # Read last location, otherwise we default to PWD.
-if [ -f "${PREV_LOC_FILE}" ]
-then
-	CUR_DIR="$(cat "${PREV_LOC_FILE}")"
-fi
+[ -f "${PREV_LOC_FILE}" ] && CUR_DIR=$(< "${PREV_LOC_FILE}")
 
 if [[ ! -z "$@" ]] && ([[ "$@" == ":h" ]] || [[ "$@" == ":hidden" ]])
 then
@@ -567,63 +501,59 @@ then
 fi
 
 # Handle argument.
-if [ -n "$@" ]
-then
-	CUR_DIR="${CUR_DIR}/$@"
-fi
-
+[ -n "$*" ] && CUR_DIR="${CUR_DIR}/$*"
 
 # Context Menu
-if [[ ! -z "$@" ]] && [[ "${ALL_OPTIONS[*]} " == *"${1}"* ]]
+if [ -n "$*" ] && [[ "${ALL_OPTIONS[*]} " = *"$*"* ]]
 then
 	case "${1}" in
 		"Run" )
-			coproc ( eval "$(cat "${CURRENT_FILE}")" & > /dev/null 2>&1 )
+			coproc ( eval "$(< ${CURRENT_FILE})" & > /dev/null 2>&1 )
 			kill -9 $(pgrep rofi)
 			;;
 		"Execute in ${TERM_EMU}" )
-			coproc ( eval "${TERM_EMU} "$(cat "${CURRENT_FILE}")"" & > /dev/null 2>&1 )
+			coproc ( eval "${TERM_EMU} \"$(< ${CURRENT_FILE})\"" & > /dev/null 2>&1 )
 			kill -9 $(pgrep rofi)
 			;;
 		"Open" )
-			coproc ( eval "${OPENER} "$(cat "${CURRENT_FILE}")"" & > /dev/null 2>&1 )
+			coproc ( eval "${OPENER} \"$(< ${CURRENT_FILE})\"" & > /dev/null 2>&1 )
 			kill -9 $(pgrep rofi)
 			;;
 		"Open file location in ${TERM_EMU}" )
-			file_path="$(cat "${CURRENT_FILE}")"
-			coproc ( ${TERM_EMU} bash -c "cd "${file_path%/*}" ; ${SHELL}" & > /dev/null 2>&1 )
+			file_path="$(< ${CURRENT_FILE})"
+			coproc ( ${TERM_EMU} bash -c "cd ${file_path%/*} ; ${SHELL}" & > /dev/null 2>&1 )
 			kill -9 $(pgrep rofi)
 			;;
 		"Open file location in ${FILE_MANAGER}" )
-			file_path="$(cat "${CURRENT_FILE}")"
+			file_path="$(< "${CURRENT_FILE}")"
 			coproc ( eval "${FILE_MANAGER} "${file_path%/*}"" & > /dev/null 2>&1 )
 			kill -9 $(pgrep rofi)
 			;;
 		"Edit" )
-			coproc ( eval "${TERM_EMU} ${TEXT_EDITOR} $(cat "${CURRENT_FILE}")" & > /dev/null 2>&1 )
+			coproc ( eval "${TERM_EMU} ${TEXT_EDITOR} \"$(< ${CURRENT_FILE})\"" & > /dev/null 2>&1 )
 			kill -9 $(pgrep rofi)
 			;;
 		"Move to trash" )
-			coproc( gio trash "$(cat "${CURRENT_FILE}")" & > /dev/null 2>&1 )
+			coproc( gio trash "$(< ${CURRENT_FILE})" & > /dev/null 2>&1 )
 			create_notification "trashed"
-			CUR_DIR="$(dirname $(cat "${CURRENT_FILE}"))"
+			CUR_DIR="$(dirname "$(< ${CURRENT_FILE})")"
 			navigate_to
 			;;
 		"Delete" )
-			shred "$(cat "${CURRENT_FILE}")"
-			rm "$(cat "${CURRENT_FILE}")"
+			shred "$(< ${CURRENT_FILE})"
+			rm "$(< ${CURRENT_FILE})"
 			create_notification "deleted"
-			CUR_DIR="$(dirname $(cat "${CURRENT_FILE}"))"
+			CUR_DIR="$(dirname "$(< ${CURRENT_FILE})")"
 			navigate_to
 			;;
 		"Send via Bluetooth" )
 			rfkill unblock bluetooth &&	bluetoothctl power on 
 			sleep 1
-			blueman-sendto "$(cat "${CURRENT_FILE}")" & > /dev/null 2>&1
+			blueman-sendto "$(< ${CURRENT_FILE})" & > /dev/null 2>&1
 			kill -9 $(pgrep rofi)
 			;;
 		"Back" )
-			CUR_DIR="$(cat "${PREV_LOC_FILE}")"
+			CUR_DIR="$(< ${PREV_LOC_FILE})"
 			navigate_to
 			;;
 	esac
