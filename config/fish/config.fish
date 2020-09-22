@@ -32,7 +32,7 @@ set TERM_EMULATOR (ps -aux | grep (ps -p $fish_pid -o ppid=) | awk 'NR==1{print 
 switch "$TERM_EMULATOR"
 case '*kitty*'
 	neofetch --backend 'kitty'
-case '*tmux*' '*login*' '*sshd*'
+case '*tmux*' '*login*' '*sshd*' '*konsole*'
 	neofetch --backend 'ascii' --ascii_distro 'arch_small' 
 case '*'
 	neofetch --backend 'w3m' --xoffset 34 --yoffset 34 --gap 0
@@ -66,7 +66,7 @@ end
 abbr -a -g ytmp3 'youtube-dl --extract-audio --audio-format mp3'				# Convert/Download YT videos as mp3
 abbr -a -g cls 'clear'																								# Clear
 abbr -a -g h 'history'																								# Show history
-abbr -a -g upd 'yay'																								# Update everything
+abbr -a -g upd 'yay -Syu --noconfirm'																								# Update everything
 abbr -a -g please 'sudo'																						# Polite way to sudo
 abbr -a -g fucking 'sudo'																						# Rude way to sudo
 abbr -a -g sayonara 'shutdown now'																	# Epic way to shutdown
