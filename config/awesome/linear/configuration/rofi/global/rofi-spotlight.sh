@@ -52,6 +52,12 @@ declare -a BIN_OPTIONS=(
     "${BIN_NO_X_OPTIONS[@]}"
 )
 declare -a TEXT_OPTIONS=("${SHELL_NO_X_OPTIONS[@]}")
+declare -a HTML_OPTIONS=(
+	"Open"
+	"Edit"
+	"${OPEN_FILE_LOCATION[@]}"
+    "${STANDARD_CONTROLS[@]}"
+)
 declare -a XCF_SVG_OPTIONS=(
 	"Open"
 	"${OPEN_FILE_LOCATION[@]}"
@@ -227,6 +233,9 @@ function icon_file_type(){
 			;;
 		"text/x-shellscript" )
 			icon_name='application-x-shellscript'
+			;;
+		"text/html" )
+			icon_name='text-html'
 			;;
 		"font/sfnt" | "application/vnd.ms-opentype" )
 			icon_name='application-x-font-ttf'
@@ -638,6 +647,10 @@ function context_menu() {
 	elif [[ "${type}" == "text/plain" ]]
 	then
 		print_context_menu TEXT_OPTIONS[@]
+
+	elif [[ "${type}" == "text/html" ]]
+	then
+		print_context_menu HTML_OPTIONS[@]
 	
 	elif [[ "${type}" == "image/jpeg" ]] || [[ "${type}" == "image/png" ]]
 	then
