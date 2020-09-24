@@ -5,67 +5,74 @@ local icons = require('theme.icons')
 
 local tags = {
 	{
-		icon = icons.terminal,
 		type = 'terminal',
+		icon = icons.terminal,
 		default_app = 'kitty',
-		screen = 1
+		gap = beautiful.useless_gap
 	},
 	{
-		icon = icons.web_browser,
 		type = 'internet',
+		icon = icons.web_browser,
 		default_app = 'firefox',
-		screen = 1
+		gap = beautiful.useless_gap
 	},
 	{
-		icon = icons.text_editor,
 		type = 'code',
+		icon = icons.text_editor,
 		default_app = 'subl3',
-		screen = 1
+		gap = beautiful.useless_gap
 	},
 	{
-		icon = icons.file_manager,
 		type = 'files',
+		icon = icons.file_manager,
 		default_app = 'dolphin',
-		screen = 1
+		gap = beautiful.useless_gap,
+		layout = awful.layout.suit.tile
 	},
 	{
-		icon = icons.multimedia,
 		type = 'music',
+		icon = icons.multimedia,
 		default_app = 'vlc',
-		screen = 1
+		gap = beautiful.useless_gap,
+		layout = awful.layout.suit.max,
+		gap = 0
 	},
 	{
-		icon = icons.games,
 		type = 'games',
+		icon = icons.games,
 		default_app = 'supertuxkart',
-		screen = 1
+		gap = beautiful.useless_gap,
+		layout = awful.layout.suit.floating
 	},
 	{
-		icon = icons.graphics,
 		type = 'art',
+		icon = icons.graphics,
 		default_app = 'gimp-2.10',
-		screen = 1
+		gap = beautiful.useless_gap
 	},
 	{
-		icon = icons.sandbox,
 		type = 'sandbox',
+		icon = icons.sandbox,
 		default_app = 'virtualbox',
-		screen = 1
+		layout = awful.layout.suit.max,
+		gap = 0
 	},
 	{
-		icon = icons.development,
 		type = 'any',
+		icon = icons.development,
 		default_app = '',
-		screen = 1
+		gap = beautiful.useless_gap,
+		layout = awful.layout.suit.floating
 	}
 	-- {
-	--   icon = icons.social,
 	--   type = 'social',
+	--   icon = icons.social,
 	--   default_app = 'discord',
-	--   screen = 1
+	--   gap = beautiful.useless_gap
 	-- }
 }
 
+-- Set tags layout
 tag.connect_signal(
 	'request::default_layouts',
 	function()
@@ -78,6 +85,7 @@ tag.connect_signal(
 	end
 )
 
+-- Create tags for each screen
 screen.connect_signal(
 	'request::desktop_decoration',
 	function(s)
@@ -87,9 +95,9 @@ screen.connect_signal(
 				{
 					icon = tag.icon,
 					icon_only = true,
-					layout = awful.layout.suit.spiral.dwindle,
+					layout = tag.layout or awful.layout.suit.spiral.dwindle,
 					gap_single_client = true,
-					gap = beautiful.useless_gap,
+					gap = tag.gap,
 					screen = s,
 					default_app = tag.default_app,
 					selected = i == 1
@@ -122,9 +130,14 @@ tag.connect_signal(
 			-- Set clients gap and shape
 			t.gap = beautiful.useless_gap
 			for _, c in ipairs(t:clients()) do
-				if not c.round_corners or c.maximized then return end
-				c.shape = function(cr, width, height)
-					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
+				if not c.round_corners or c.maximized then
+					c.shape = function(cr, width, height)
+						gears.shape.rectangle(cr, width, height)
+					end
+				else
+					c.shape = function(cr, width, height)
+						gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
+					end
 				end
 			end
 		end
