@@ -10,7 +10,7 @@ local altkey = require('configuration.keys.mod').alt_key
 local apps = require('configuration.apps')
 
 -- Key bindings
-local globalKeys = awful.util.table.join(
+local global_keys = awful.util.table.join(
 
 	-- Hotkeys
 	awful.key(
@@ -542,9 +542,9 @@ for i = 1, 9 do
 		descr_move = {description = 'move focused client to tag #', group = 'tag'}
 		descr_toggle_focus = {description = 'toggle focused client on tag #', group = 'tag'}
 	end
-	globalKeys =
+	global_keys =
 		awful.util.table.join(
-		globalKeys,
+		global_keys,
 		-- View tag only.
 		awful.key(
 			{modkey},
@@ -602,4 +602,4 @@ for i = 1, 9 do
 	)
 end
 
-return globalKeys
+return global_keys
