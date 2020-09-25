@@ -76,7 +76,7 @@ client.connect_signal(
 			end
 		else
 			local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
-			if (current_layout == awful.layout.suit.max) then
+			if (current_layout == awful.layout.suit.max) and (not c.floating or not c.round_corners or c.maximized) then
 				c.shape = function(cr, width, height)
 					gears.shape.rectangle(cr, width, height)
 				end
@@ -99,7 +99,8 @@ client.connect_signal(
 				gears.shape.rectangle(cr, width, height)
 			end
 		else
-			if current_layout == awful.layout.suit.max then return end
+			if (current_layout == awful.layout.suit.max) and
+				(not c.floating or not c.round_corners or c.maximized) then return end
 			c.shape = function(cr, width, height)
 				gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
 			end

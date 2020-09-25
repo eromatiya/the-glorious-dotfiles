@@ -244,7 +244,8 @@ ruled.client.connect_signal(
 			rule_any   = {
 				class = {
 					'VirtualBox Manage',
-					'VirtualBox Machine'
+					'VirtualBox Machine',
+					'Gnome-boxes'
 				}
 			},
 			properties = { 
@@ -284,7 +285,7 @@ ruled.client.connect_signal(
 				titlebars_enabled = true,
 				skip_decoration = true,
 				floating = true,
-				ontop = false,
+				ontop = true,
 				placement = awful.placement.centered
 			}
 		}
@@ -377,7 +378,7 @@ client.connect_signal(
 				end
 			else
 				-- Move the instance to specified tag on this screen
-				local t = awful.tag.find_by_name(awful.screen.focused(), '6')
+				local t = awful.tag.find_by_name(awful.screen.focused(), '5')
 				c:move_to_tag(t)
 				t:view_only()
 
