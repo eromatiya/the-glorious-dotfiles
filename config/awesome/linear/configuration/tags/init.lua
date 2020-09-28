@@ -8,7 +8,8 @@ local tags = {
 		type = 'terminal',
 		icon = icons.terminal,
 		default_app = 'kitty',
-		gap = beautiful.useless_gap
+		gap = beautiful.useless_gap,
+		layout = awful.layout.suit.floating
 	},
 	{
 		type = 'internet',
@@ -107,40 +108,53 @@ screen.connect_signal(
 	end
 )
 
+local update_gap_and_shape = function(t)
+	-- Get current tag layout
+	local current_layout = awful.tag.getproperty(t, 'layout')
+	-- If the current layout is awful.layout.suit.max
+	if (current_layout == awful.layout.suit.max) then
+		-- Set clients gap to 0 and shape to rectangle if maximized
+		t.gap = 0
+		for _, c in ipairs(t:clients()) do
+			if not c.floating or not c.round_corners or c.maximized then
+				c.shape = function(cr, width, height)
+					gears.shape.rectangle(cr, width, height)
+				end
+			else
+				c.shape = function(cr, width, height)
+					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
+				end
+			end
+		end
+	else
+		t.gap = beautiful.useless_gap
+		for _, c in ipairs(t:clients()) do
+			if not c.round_corners or c.maximized then
+				c.shape = function(cr, width, height)
+					gears.shape.rectangle(cr, width, height)
+				end
+			else
+				c.shape = function(cr, width, height)
+					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
+				end
+			end
+		end
+	end
+end
+
 -- Change tag's client's shape and gap on change
 tag.connect_signal(
 	'property::layout',
 	function(t)
-		local current_layout = awful.tag.getproperty(t, 'layout')
-		if (current_layout == awful.layout.suit.max) then
-			-- Set clients gap to 0 and shape to rectangle if maximized
-			t.gap = 0
-			for _, c in ipairs(t:clients()) do
-				if not c.floating or not c.round_corners or c.maximized then
-					c.shape = function(cr, width, height)
-						gears.shape.rectangle(cr, width, height)
-					end
-				else
-					c.shape = function(cr, width, height)
-						gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-					end
-				end
-			end
-		else
-			-- Set clients gap and shape
-			t.gap = beautiful.useless_gap
-			for _, c in ipairs(t:clients()) do
-				if not c.round_corners or c.maximized then
-					c.shape = function(cr, width, height)
-						gears.shape.rectangle(cr, width, height)
-					end
-				else
-					c.shape = function(cr, width, height)
-						gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-					end
-				end
-			end
-		end
+		update_gap_and_shape(t)
+	end
+)
+
+-- Change tag's client's shape and gap on move to tag
+tag.connect_signal(
+	'tagged',
+	function(t)
+		update_gap_and_shape(t)
 	end
 )
 
