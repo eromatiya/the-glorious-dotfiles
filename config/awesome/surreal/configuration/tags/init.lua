@@ -8,8 +8,7 @@ local tags = {
 		type = 'terminal',
 		icon = icons.terminal,
 		default_app = 'kitty',
-		gap = beautiful.useless_gap,
-		layout = awful.layout.suit.floating
+		gap = beautiful.useless_gap
 	},
 	{
 		type = 'internet',
