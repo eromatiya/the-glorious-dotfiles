@@ -1,6 +1,7 @@
 local awful = require('awful')
 local gears = require('gears')
 local ruled = require('ruled')
+local beautiful = require('beautiful')
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
 
@@ -28,7 +29,7 @@ ruled.client.connect_signal(
 				buttons = client_buttons,
 				screen    = awful.screen.preferred,
 				shape = function(cr, width, height)
-					gears.shape.rectangle(cr, width, height)
+					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
 				end,
 				placement = awful.placement.no_overlap + awful.placement.no_offscreen
 			}
@@ -52,14 +53,13 @@ ruled.client.connect_signal(
 		ruled.client.append_rule {
 			id         = 'dialog',
 			rule_any   = { 
-				type  = { 'dialog' },
-				class = { 'Wicd-client.py', 'calendar.google.com' }
+				type  = {'dialog'},
+				class = {'Wicd-client.py', 'calendar.google.com'}
 			},
 			properties = { 
 				titlebars_enabled = true,
 				floating = true,
 				above = true,
-				draw_backdrop = true,
 				skip_decoration = true,
 				placement = awful.placement.centered
 			}
@@ -67,15 +67,14 @@ ruled.client.connect_signal(
 
 		-- Modals
 		ruled.client.append_rule {
-			id         = 'dialog',
+			id         = 'modal',
 			rule_any   = { 
-				type = { 'modal' }
+				type = {'modal'}
 			},
 			properties = { 
 				titlebars_enabled = true,
 				floating = true,
 				above = true,
-				draw_backdrop = true,
 				skip_decoration = true,
 				placement = awful.placement.centered
 			}
@@ -85,7 +84,7 @@ ruled.client.connect_signal(
 		ruled.client.append_rule {
 			id         = 'utility',
 			rule_any   = { 
-				type = { 'utility' }
+				type = {'utility'}
 			},
 			properties = { 
 				titlebars_enabled = false,
@@ -99,7 +98,7 @@ ruled.client.connect_signal(
 		ruled.client.append_rule {
 			id         = 'splash',
 			rule_any   = { 
-				type = { 'splash' }
+				type = {'splash'}
 			},
 			properties = {
 				titlebars_enabled = false,
@@ -196,8 +195,7 @@ ruled.client.connect_signal(
 			},
 			properties = { 
 				tag = '5',
-				switch_to_tags = true,
-				draw_backdrop = false
+				switch_to_tags = true
 			}
 		}
 
@@ -212,13 +210,12 @@ ruled.client.connect_signal(
 					'Citra',
 					'supertuxkart'
 				},
-				name = { 'Steam' }
+				name = {'Steam'}
 			},
 			properties = { 
 				tag = '6',
 				skip_decoration = true,
 				switch_to_tags = true,
-				floating = true,
 				placement = awful.placement.centered
 			}
 		}
@@ -245,7 +242,8 @@ ruled.client.connect_signal(
 				class = {
 					'VirtualBox Manage',
 					'VirtualBox Machine',
-					'Gnome-boxes'
+					'Gnome-boxes',
+					'Virt-manager'
 				}
 			},
 			properties = { 
@@ -308,7 +306,7 @@ ruled.client.connect_signal(
 
 		-- Floating
 		ruled.client.append_rule {
-			id       = 'floating',
+			id       = 'force_floating',
 			rule_any = {
 				instance    = {
 					'file_progress',
@@ -333,18 +331,11 @@ ruled.client.connect_signal(
 				placement = awful.placement.centered
 			}
 		}
-		
 	end
 )
 
-
 -- Normally we'd do this with a rule, but some program like spotify doesn't set its class or name
 -- until after it starts up, so we need to catch that signal.
-
--- If the application is fullscreen in its settings, make sure to set `c.fullscreen = false` first
--- before moving to the desired tag or else the tag where the program spawn will cause panels to hide. 
--- After moving the program to specified tag you can set `c.fullscreen = true` now
-
 client.connect_signal(
 	'property::class',
 	function(c)
@@ -360,20 +351,20 @@ client.connect_signal(
 			end
 
 			-- Check if Spotify is already open
-			local stk = function (c)
-				return ruled.client.match(c, { class = 'Spotify' })
+			local app = function (c)
+				return ruled.client.match(c, {class = 'Spotify'})
 			end
 
-			local stk_count = 0
-			for c in awful.client.iterate(stk) do
-				stk_count = stk_count + 1
+			local app_count = 0
+			for c in awful.client.iterate(app) do
+				app_count = app_count + 1
 			end
 
 			-- If Spotify is already open, don't open a new instance
-			if stk_count > 1 then
+			if app_count > 1 then
 				c:kill()
 				-- Switch to previous instance
-				for c in awful.client.iterate(stk) do
+				for c in awful.client.iterate(app) do
 					c:jump_to(false)
 				end
 			else
