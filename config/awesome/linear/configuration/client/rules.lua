@@ -8,7 +8,6 @@ local client_buttons = require('configuration.client.buttons')
 ruled.client.connect_signal(
 	'request::rules',
 	function()
-
 		-- All clients will match this rule.
 		ruled.client.append_rule {
 			id         = 'global',
@@ -24,14 +23,29 @@ ruled.client.connect_signal(
 				sticky = false,
 				maximized_horizontal = false,
 				maximized_vertical = false,
-				round_corners = true,
 				keys = client_keys,
 				buttons = client_buttons,
 				screen    = awful.screen.preferred,
+				placement = awful.placement.no_overlap + awful.placement.no_offscreen
+			}
+		}
+
+		ruled.client.append_rule {
+			id         = 'round_clients',
+			rule_any   = {
+				type = {
+					'normal',
+					'dialog'
+				}
+			},
+			except_any  = {
+				name = {'Discord Updater'}
+			},
+			properties = {
+				round_corners = true,
 				shape = function(cr, width, height)
 					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-				end,
-				placement = awful.placement.no_overlap + awful.placement.no_offscreen
+				end
 			}
 		}
 
@@ -41,7 +55,9 @@ ruled.client.connect_signal(
 			rule_any   = {
 				type = {
 					'normal',
-					'dialog'
+					'dialog',
+					'modal',
+					'utility'
 				}
 			},
 			properties = {
@@ -98,7 +114,8 @@ ruled.client.connect_signal(
 		ruled.client.append_rule {
 			id         = 'splash',
 			rule_any   = { 
-				type = {'splash'}
+				type = {'splash'},
+				name = {'Discord Updater'}
 			},
 			properties = {
 				titlebars_enabled = false,
@@ -132,7 +149,7 @@ ruled.client.connect_signal(
 
 		-- Browsers and chats
 		ruled.client.append_rule {
-			id         = 'web_browsers',
+			id         = 'internet',
 			rule_any   = { 
 				class = {
 					'firefox',
@@ -149,7 +166,7 @@ ruled.client.connect_signal(
 
 		-- Text editors and word processing
 		ruled.client.append_rule {
-			id         = 'text_editors',
+			id         = 'text',
 			rule_any   = {
 				class = {
 					'Geany',
@@ -169,7 +186,7 @@ ruled.client.connect_signal(
 
 		-- File managers
 		ruled.client.append_rule {
-			id         = 'file_managers',
+			id         = 'files',
 			rule_any   = {
 				class = {
 					'dolphin',
@@ -222,7 +239,7 @@ ruled.client.connect_signal(
 
 		-- Multimedia Editing
 		ruled.client.append_rule {
-			id         = 'graphics_editors',
+			id         = 'graphics',
 			rule_any   = {
 				class = {
 					'Gimp-2.10',
@@ -253,14 +270,15 @@ ruled.client.connect_signal(
 
 		-- IDEs and Tools
 		ruled.client.append_rule {
-			id         = 'ide',
+			id         = 'development',
 			rule_any   = {
 				class = {
 					'Oomox',
 					'Unity',
 					'UnityHub',
 					'jetbrains-studio',
-					'Ettercap'
+					'Ettercap',
+					'scrcpy'
 				}
 			},
 			properties = { 
@@ -288,25 +306,9 @@ ruled.client.connect_signal(
 			}
 		}
 
-		-- Discord updater
-		ruled.client.append_rule {
-			id        = 'discord_updater',
-			rule_any  = {
-				name = {'Discord Updater'}
-			},
-			properties = { 
-				round_corners = false,
-				skip_decoration = true,
-				titlebars_enabled = false,
-				floating = true,
-				ontop = true,
-				placement = awful.placement.centered
-			}
-		}
-
 		-- Floating
 		ruled.client.append_rule {
-			id       = 'force_floating',
+			id       = 'floating',
 			rule_any = {
 				instance    = {
 					'file_progress',
@@ -314,9 +316,14 @@ ruled.client.connect_signal(
 					'nm-connection-editor',
 				},
 				class = { 
-					'scrcpy' ,
+					'scrcpy',
 					'Mugshot',
 					'Pulseeffects'
+				},
+				role    = {
+					'AlarmWindow',
+					'ConfigManager',
+					'pop-up'
 				}
 			},
 			properties = { 
