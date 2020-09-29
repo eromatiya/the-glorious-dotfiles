@@ -30,6 +30,21 @@ local quake_properties = function()
 	}
 end
 
+ruled.client.connect_signal(
+	'request::rules',
+	function()
+		ruled.client.append_rule {
+			id         = 'quake_terminal',
+			rule_any   = { 
+				instance = { 
+					'QuakeTerminal'
+				}
+			},
+			properties = quake_properties()
+		}
+	end
+)
+
 local create_quake = function()
 	-- Check if there's already an instance of 'QuakeTerminal'.
 	-- If yes, recover it - use it again.
