@@ -116,7 +116,7 @@ local update_gap_and_shape = function(t)
 		-- Set clients gap to 0 and shape to rectangle if maximized
 		t.gap = 0
 		for _, c in ipairs(t:clients()) do
-			if not c.floating or not c.round_corners or c.maximized then
+			if not c.floating or not c.round_corners or c.maximized or c.fullscreen then
 				c.shape = function(cr, width, height)
 					gears.shape.rectangle(cr, width, height)
 				end
@@ -129,7 +129,7 @@ local update_gap_and_shape = function(t)
 	else
 		t.gap = beautiful.useless_gap
 		for _, c in ipairs(t:clients()) do
-			if not c.round_corners or c.maximized then
+			if not c.round_corners or c.maximized or c.fullscreen then
 				c.shape = function(cr, width, height)
 					gears.shape.rectangle(cr, width, height)
 				end
