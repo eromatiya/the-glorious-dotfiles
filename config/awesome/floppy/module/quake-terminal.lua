@@ -1,54 +1,71 @@
+local awful = require('awful')
 local gears = require('gears')
-local spawn = require('awful.spawn')
+local ruled = require('ruled')
 local app = require('configuration.apps').default.quake
--- local awful = require('awful')
+local client_keys = require('configuration.client.keys')
+local client_buttons = require('configuration.client.buttons')
+local quake_id = nil
+local quake_client = nil
+local quake_opened = false
 
-local quake_id = 'notnil'
-local quake_client
-local opened = false
-function create_shell()
-	quake_id =
-		spawn(
-		app,
-		{
-			skip_decoration = true,
-			titlebars_enabled = false,
-			switch_to_tags = false,
-			opacity = 0.95,
-			floating = true,
-			skip_taskbar = true,
-			ontop = true,
-			above = true,
-			sticky = true,
-			hidden = not opened,
-			maximized_horizontal = true,
-			skip_center = true,
-			round_corners = false,
-			shape = function(cr, w, h)
-				gears.shape.rectangle(cr, w, h)
-			end
-		}
-	)
+local quake_properties = function()
+	return {
+		skip_decoration = true,
+		titlebars_enabled = false,
+		switch_to_tags = false,
+		opacity = 0.95,
+		floating = true,
+		skip_taskbar = true,
+		ontop = true,
+		above = true,
+		sticky = true,
+		hidden = not quake_opened,
+		maximized_horizontal = true,
+		skip_center = true,
+		round_corners = false,
+		keys = client_keys,
+		buttons = client_buttons,
+		placement = awful.placement.top,
+		shape = gears.shape.rectangle
+	}
 end
 
-function open_quake()
+local create_quake = function()
+	-- Check if there's already an instance of 'QuakeTerminal'.
+	-- If yes, recover it - use it again.
+	local quake_term = function (c)
+		return ruled.client.match(c, {instance = 'QuakeTerminal'})
+	end
+	for c in awful.client.iterate(quake_term) do
+		-- 'QuakeTerminal' instance detected
+		-- Re-apply its properties
+		ruled.client.execute(c, quake_properties())
+		quake_id = c.pid
+		c:emit_signal('request::activate')
+		return
+	end
+	-- No 'QuakeTerminal' instance, spawn one
+	quake_id = awful.spawn(app, quake_properties())
+end
+
+local quake_open = function()
 	quake_client.hidden = false
 	quake_client:emit_signal('request::activate')
 end
 
-function close_quake()
+local quake_close = function()
 	quake_client.hidden = true
 end
 
-local toggle_quake = function()
-	opened = not opened
+local quake_toggle = function()
+	quake_opened = not quake_opened
 	if not quake_client then
-		create_shell()
+		create_quake()
 	else
-		if opened then
-			open_quake()
+		if quake_opened then
+			quake_open()
 		else
-			close_quake()
+			quake_close()
 		end
 	end
 end
@@ -56,7 +73,7 @@ end
 awesome.connect_signal(
 	'module::quake_terminal:toggle',
 	function()
-		toggle_quake();
+		quake_toggle();
 	end
 )
 
@@ -73,7 +90,7 @@ client.connect_signal(
 	'unmanage',
 	function(c)
 		if c.pid == quake_id then
-			opened = false
+			quake_opened = false
 			quake_client = nil
 		end
 	end
