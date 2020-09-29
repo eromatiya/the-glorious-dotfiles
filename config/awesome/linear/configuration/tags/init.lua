@@ -2,65 +2,66 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 local icons = require('theme.icons')
+local apps = require('configuration.apps')
 
 local tags = {
 	{
 		type = 'terminal',
 		icon = icons.terminal,
-		default_app = 'kitty',
+		default_app = apps.default.terminal,
 		gap = beautiful.useless_gap
 	},
 	{
 		type = 'internet',
 		icon = icons.web_browser,
-		default_app = 'firefox',
+		default_app = apps.default.web_browser,
 		gap = beautiful.useless_gap
 	},
 	{
 		type = 'code',
 		icon = icons.text_editor,
-		default_app = 'subl3',
+		default_app = apps.default.text_editor,
 		gap = beautiful.useless_gap
 	},
 	{
 		type = 'files',
 		icon = icons.file_manager,
-		default_app = 'dolphin',
+		default_app = apps.default.file_manager,
 		gap = beautiful.useless_gap,
 		layout = awful.layout.suit.tile
 	},
 	{
-		type = 'music',
+		type = 'multimedia',
 		icon = icons.multimedia,
-		default_app = 'vlc',
+		default_app = apps.default.multimedia,
 		gap = beautiful.useless_gap,
-		layout = awful.layout.suit.max,
+		layout = awful.layout.suit.floating,
 		gap = 0
 	},
 	{
 		type = 'games',
 		icon = icons.games,
-		default_app = 'supertuxkart',
+		default_app = apps.default.game,
 		gap = beautiful.useless_gap,
 		layout = awful.layout.suit.floating
 	},
 	{
-		type = 'art',
+		type = 'graphics',
 		icon = icons.graphics,
-		default_app = 'gimp-2.10',
+		default_app = apps.default.graphics,
 		gap = beautiful.useless_gap
 	},
 	{
 		type = 'sandbox',
 		icon = icons.sandbox,
-		default_app = 'virtualbox',
+		default_app = apps.default.sandbox,
 		layout = awful.layout.suit.max,
 		gap = 0
 	},
 	{
 		type = 'any',
 		icon = icons.development,
-		default_app = '',
+		default_app = apps.default.development,
 		gap = beautiful.useless_gap,
 		layout = awful.layout.suit.floating
 	}
