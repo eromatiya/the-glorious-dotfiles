@@ -365,9 +365,9 @@ function navigate_to() {
 		CUR_DIR=$(readlink -e "${CUR_DIR}")
 		if [ ! -d "${CUR_DIR}" ] || [ ! -r "${CUR_DIR}" ]
 		then
-			echo "${HOME}" > "${PREV_LOC_FILE}"
 			create_notification "denied"
-	
+			CUR_DIR=$(realpath ${CUR_DIR} | xargs dirname)
+			echo "${CUR_DIR}" > "${PREV_LOC_FILE}"
 		else
 			echo "${CUR_DIR}/" > "${PREV_LOC_FILE}"
 		fi
