@@ -23,17 +23,24 @@ client.connect_signal(
 
 		if awesome.startup and not c.size_hints.user_position and
 			not c.size_hints.program_position then
-			
 			-- Prevent clients from being unreachable after screen count changes.
 			awful.placement.no_offscreen(c)
 		end
 
-		-- Spawn client with rounded corners (of course it will follow the theme.client_radius)
-		-- if client's first_tag is not maximized and round_corners = false
+		-- Set client's shape based on its tag's layout and status (floating, maximized, etc.)
 		local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
-		if not c.round_corners or (current_layout == awful.layout.suit.max and not c.floating) then return end
-		c.shape = function(cr, width, height)
-			gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
+		if current_layout == awful.layout.suit.max then
+			c.shape = gears.shape.rectangle
+		elseif (not c.floating) and (c.maximized or c.fullscreen) then
+			c.shape = gears.shape.rectangle
+		elseif (not c.round_corners) then
+			c.shape = function(cr, width, height)
+				gears.shape.rectangle(cr, width, height)
+			end
+		else
+			c.shape = function(cr, width, height)
+				gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
+			end
 		end
 	end
 )
@@ -82,7 +89,7 @@ client.connect_signal(
 				end
 			else
 				c.shape = function(cr, width, height)
-					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
+					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
 				end
 			end
 		end
