@@ -10,11 +10,11 @@ ruled.client.connect_signal(
 	function()
 		-- All clients will match this rule.
 		ruled.client.append_rule {
-			id         = 'global',
-			rule       = { },
+			id = 'global',
+			rule = {},
 			properties = {
-				focus     = awful.client.focus.filter,
-				raise     = true,
+				focus = awful.client.focus.filter,
+				raise = true,
 				floating = false,
 				maximized = false,
 				above = false,
@@ -25,14 +25,14 @@ ruled.client.connect_signal(
 				maximized_vertical = false,
 				keys = client_keys,
 				buttons = client_buttons,
-				screen    = awful.screen.preferred,
+				screen = awful.screen.preferred,
 				placement = awful.placement.no_overlap + awful.placement.no_offscreen
 			}
 		}
 
 		ruled.client.append_rule {
-			id         = 'round_clients',
-			rule_any   = {
+			id = 'round_clients',
+			rule_any = {
 				type = {
 					'normal',
 					'dialog'
@@ -52,7 +52,7 @@ ruled.client.connect_signal(
 		-- Titlebar rules
 		ruled.client.append_rule {
 			id 		= 'titlebars',
-			rule_any   = {
+			rule_any = {
 				type = {
 					'normal',
 					'dialog',
@@ -67,12 +67,12 @@ ruled.client.connect_signal(
 
 		-- Dialogs
 		ruled.client.append_rule {
-			id         = 'dialog',
-			rule_any   = { 
+			id = 'dialog',
+			rule_any = {
 				type  = {'dialog'},
 				class = {'Wicd-client.py', 'calendar.google.com'}
 			},
-			properties = { 
+			properties = {
 				titlebars_enabled = true,
 				floating = true,
 				above = true,
@@ -83,11 +83,11 @@ ruled.client.connect_signal(
 
 		-- Modals
 		ruled.client.append_rule {
-			id         = 'modal',
-			rule_any   = { 
+			id = 'modal',
+			rule_any = {
 				type = {'modal'}
 			},
-			properties = { 
+			properties = {
 				titlebars_enabled = true,
 				floating = true,
 				above = true,
@@ -98,11 +98,11 @@ ruled.client.connect_signal(
 
 		-- Utilities
 		ruled.client.append_rule {
-			id         = 'utility',
-			rule_any   = { 
+			id = 'utility',
+			rule_any = {
 				type = {'utility'}
 			},
-			properties = { 
+			properties = {
 				titlebars_enabled = false,
 				floating = true,
 				skip_decoration = true,
@@ -112,8 +112,8 @@ ruled.client.connect_signal(
 
 		-- Splash
 		ruled.client.append_rule {
-			id         = 'splash',
-			rule_any   = { 
+			id = 'splash',
+			rule_any = {
 				type = {'splash'},
 				name = {'Discord Updater'}
 			},
@@ -129,9 +129,9 @@ ruled.client.connect_signal(
 
 		-- Terminal emulators
 		ruled.client.append_rule {
-			id         = 'terminals',
-			rule_any   = { 
-				class = { 
+			id = 'terminals',
+			rule_any = {
+				class = {
 					'URxvt',
 					'XTerm',
 					'UXTerm',
@@ -149,8 +149,8 @@ ruled.client.connect_signal(
 
 		-- Browsers and chats
 		ruled.client.append_rule {
-			id         = 'internet',
-			rule_any   = { 
+			id = 'internet',
+			rule_any = {
 				class = {
 					'firefox',
 					'Tor Browser',
@@ -159,15 +159,15 @@ ruled.client.connect_signal(
 					'Google-chrome'
 				}
 			},
-			properties = { 
+			properties = {
 				tag = '2'
 			}
 		}
 
 		-- Text editors and word processing
 		ruled.client.append_rule {
-			id         = 'text',
-			rule_any   = {
+			id = 'text',
+			rule_any = {
 				class = {
 					'Geany',
 					'Atom',
@@ -179,15 +179,15 @@ ruled.client.connect_signal(
 					'libreoffice'
 				}
 			},
-			properties = { 
+			properties = {
 				tag = '3'
 			}
 		}
 
 		-- File managers
 		ruled.client.append_rule {
-			id         = 'files',
-			rule_any   = {
+			id = 'files',
+			rule_any = {
 				class = {
 					'dolphin',
 					'ark',
@@ -195,7 +195,7 @@ ruled.client.connect_signal(
 					'File-roller'
 				}
 			},
-			properties = { 
+			properties = {
 				tag = '4',
 				switch_to_tags = true
 			}
@@ -203,23 +203,24 @@ ruled.client.connect_signal(
 
 		-- Multimedia
 		ruled.client.append_rule {
-			id         = 'multimedia',
-			rule_any   = {
+			id = 'multimedia',
+			rule_any = {
 				class = {
 					'vlc',
 					'Spotify'
 				}
 			},
-			properties = { 
+			properties = {
 				tag = '5',
-				switch_to_tags = true
+				switch_to_tags = true,
+				placement = awful.placement.centered
 			}
 		}
 
 		-- Gaming
 		ruled.client.append_rule {
-			id         = 'gaming',
-			rule_any   = {
+			id = 'gaming',
+			rule_any = {
 				class = {
 					'Wine',
 					'dolphin-emu',
@@ -229,7 +230,7 @@ ruled.client.connect_signal(
 				},
 				name = {'Steam'}
 			},
-			properties = { 
+			properties = {
 				tag = '6',
 				skip_decoration = true,
 				switch_to_tags = true,
@@ -239,23 +240,23 @@ ruled.client.connect_signal(
 
 		-- Multimedia Editing
 		ruled.client.append_rule {
-			id         = 'graphics',
-			rule_any   = {
+			id = 'graphics',
+			rule_any = {
 				class = {
 					'Gimp-2.10',
 					'Inkscape',
 					'Flowblade'
 				}
 			},
-			properties = { 
+			properties = {
 				tag = '7'
 			}
 		}
 
 		-- Sandboxes and VMs
 		ruled.client.append_rule {
-			id         = 'sandbox',
-			rule_any   = {
+			id = 'sandbox',
+			rule_any = {
 				class = {
 					'VirtualBox Manage',
 					'VirtualBox Machine',
@@ -263,15 +264,15 @@ ruled.client.connect_signal(
 					'Virt-manager'
 				}
 			},
-			properties = { 
+			properties = {
 				tag = '8'
 			}
 		}
 
 		-- IDEs and Tools
 		ruled.client.append_rule {
-			id         = 'development',
-			rule_any   = {
+			id = 'development',
+			rule_any = {
 				class = {
 					'Oomox',
 					'Unity',
@@ -281,7 +282,7 @@ ruled.client.connect_signal(
 					'scrcpy'
 				}
 			},
-			properties = { 
+			properties = {
 				tag = '9',
 				skip_decoration = true
 			}
@@ -297,7 +298,7 @@ ruled.client.connect_signal(
 					'Sxiv'
 				},
 			},
-			properties = { 
+			properties = {
 				titlebars_enabled = true,
 				skip_decoration = true,
 				floating = true,
@@ -315,7 +316,7 @@ ruled.client.connect_signal(
 					'Popup',
 					'nm-connection-editor',
 				},
-				class = { 
+				class = {
 					'scrcpy',
 					'Mugshot',
 					'Pulseeffects'
@@ -326,7 +327,7 @@ ruled.client.connect_signal(
 					'pop-up'
 				}
 			},
-			properties = { 
+			properties = {
 				titlebars_enabled = true,
 				skip_decoration = true,
 				ontop = true,
@@ -385,6 +386,7 @@ client.connect_signal(
 					c.fullscreen = true
 				else
 					c.floating = true
+					awful.placement.centered(c, {honor_workarea = true})
 				end
 			end
 		end

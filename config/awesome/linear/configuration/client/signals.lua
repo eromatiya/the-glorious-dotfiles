@@ -2,6 +2,22 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 
+local update_client = function(c)
+	-- Set client's shape based on its tag's layout and status (floating, maximized, etc.)
+	local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
+	if current_layout == awful.layout.suit.max then
+		c.shape = gears.shape.rectangle
+	elseif (not c.floating) and (c.maximized or c.fullscreen) then
+		c.shape = gears.shape.rectangle
+	elseif (not c.round_corners) then
+		c.shape = gears.shape.rectangle
+	else
+		c.shape = function(cr, width, height)
+			gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
+		end
+	end
+end
+
 -- Signal function to execute when a new client appears.
 client.connect_signal(
 	'manage',
@@ -27,21 +43,8 @@ client.connect_signal(
 			awful.placement.no_offscreen(c)
 		end
 
-		-- Set client's shape based on its tag's layout and status (floating, maximized, etc.)
-		local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
-		if current_layout == awful.layout.suit.max then
-			c.shape = gears.shape.rectangle
-		elseif (not c.floating) and (c.maximized or c.fullscreen) then
-			c.shape = gears.shape.rectangle
-		elseif (not c.round_corners) then
-			c.shape = function(cr, width, height)
-				gears.shape.rectangle(cr, width, height)
-			end
-		else
-			c.shape = function(cr, width, height)
-				gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-			end
-		end
+		-- Update client shape
+		update_client(c)
 	end
 )
 
@@ -82,16 +85,7 @@ client.connect_signal(
 				gears.shape.rectangle(cr, width, height)
 			end
 		else
-			local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
-			if (current_layout == awful.layout.suit.max) and (not c.floating or not c.round_corners or c.maximized) then
-				c.shape = function(cr, width, height)
-					gears.shape.rectangle(cr, width, height)
-				end
-			else
-				c.shape = function(cr, width, height)
-					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-				end
-			end
+			update_client(c)
 		end
 	end
 )
@@ -106,11 +100,7 @@ client.connect_signal(
 				gears.shape.rectangle(cr, width, height)
 			end
 		else
-			if (current_layout == awful.layout.suit.max) and
-				(not c.floating or not c.round_corners or c.maximized) then return end
-			c.shape = function(cr, width, height)
-				gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
-			end
+			update_client(c)
 		end
 	end
 )
