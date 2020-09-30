@@ -5,9 +5,9 @@ local beautiful = require('beautiful')
 local update_client = function(c)
 	-- Set client's shape based on its tag's layout and status (floating, maximized, etc.)
 	local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
-	if current_layout == awful.layout.suit.max then
+	if current_layout == awful.layout.suit.max and (not c.floating) then
 		c.shape = gears.shape.rectangle
-	elseif (not c.floating) and (c.maximized or c.fullscreen) then
+	elseif c.maximized or c.fullscreen then
 		c.shape = gears.shape.rectangle
 	elseif (not c.round_corners) then
 		c.shape = gears.shape.rectangle
