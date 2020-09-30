@@ -34,10 +34,11 @@ return {
 	-- List of apps to start once on start-up
 	-- auto-start.lua module will start these
 	run_on_start_up = {
-		'picom -b --experimental-backends --dbus --config ' .. config_dir .. '/configuration/picom.conf',		-- Compositor
+		'picom -b --experimental-backends --dbus --config ' ..
+		config_dir .. '/configuration/picom.conf',		-- Compositor
 		'blueman-applet',		-- Blueman applet
 		'mpd',		-- Music server
-		'/usr/lib/polkit-kde-authentication-agent-1 &' ..
+		'/usr/bin/lxqt-policykit-agent &' ..
 		' eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)',		-- Polkit and keyring
 		'xrdb $HOME/.Xresources',		-- Load X colors
 		'pulseeffects --gapplication-service',		-- Audio equalizer
