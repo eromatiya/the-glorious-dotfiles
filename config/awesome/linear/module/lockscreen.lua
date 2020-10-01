@@ -868,16 +868,6 @@ screen.connect_signal(
 	end
 )
 
--- Regenerate lockscreens and its background if a screen was added to avoid errors
-screen.connect_signal(
-	'added', 
-	function(s)
-		create_lock_screens(s)
-		apply_ls_bg_image(locker_config.default_wall_name)
-	end
-
-)
-
 -- Regenerate lockscreens and its background if a screen was removed to avoid errors
 screen.connect_signal(
 	'removed',
