@@ -323,7 +323,7 @@ local locker = function(s)
 		rotate_container.direction = direction
 		locker_arc.bg = color
 
-		rotate_container:emit_signal('widget:redraw_needed')
+		rotate_container:emit_signal('widget::redraw_needed')
 		locker_arc:emit_signal('widget::redraw_needed')
 		locker_widget:emit_signal('widget::redraw_needed')
 	end
