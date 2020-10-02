@@ -196,12 +196,12 @@ local placement_placer = function()
 		
 	local info_center = focused.info_center
 	local control_center = focused.control_center
-	local volume_osd = focused.brightness_osd_overlay
+	local brightness_osd = focused.brightness_osd_overlay
 
 	if info_center and control_center then
 		if info_center.visible then
 			awful.placement.bottom_left(
-				focused.brightness_osd_overlay,
+				brightness_osd,
 				{
 					margins = { 
 						left = osd_margin,
@@ -219,7 +219,7 @@ local placement_placer = function()
 	if info_center then
 		if info_center.visible then
 			awful.placement.bottom_left(
-				focused.brightness_osd_overlay,
+				brightness_osd,
 				{
 					margins = { 
 						left = osd_margin,
@@ -235,7 +235,7 @@ local placement_placer = function()
 	end
 
 	awful.placement.bottom_right(
-		focused.brightness_osd_overlay,
+		brightness_osd,
 		{
 			margins = { 
 				left = 0,
