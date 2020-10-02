@@ -196,12 +196,12 @@ local placement_placer = function()
 		
 	local right_panel = focused.right_panel
 	local left_panel = focused.left_panel
-	local volume_osd = focused.brightness_osd_overlay
+	local brightness_osd = focused.brightness_osd_overlay
 
 	if right_panel and left_panel then
 		if right_panel.visible then
 			awful.placement.bottom_left(
-				focused.brightness_osd_overlay,
+				brightness_osd,
 				{
 					margins = { 
 						left = osd_margin,
@@ -219,7 +219,7 @@ local placement_placer = function()
 	if right_panel then
 		if right_panel.visible then
 			awful.placement.bottom_left(
-				focused.brightness_osd_overlay,
+				brightness_osd,
 				{
 					margins = { 
 						left = osd_margin,
@@ -235,7 +235,7 @@ local placement_placer = function()
 	end
 
 	awful.placement.bottom_right(
-		focused.brightness_osd_overlay,
+		brightness_osd,
 		{
 			margins = { 
 				left = 0,

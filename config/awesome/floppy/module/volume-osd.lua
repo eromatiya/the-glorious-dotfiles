@@ -201,7 +201,7 @@ local placement_placer = function()
 	if right_panel and left_panel then
 		if right_panel.visible then
 			awful.placement.bottom_left(
-				focused.volume_osd_overlay,
+				volume_osd,
 				{
 					margins = { 
 						left = osd_margin,
@@ -219,7 +219,7 @@ local placement_placer = function()
 	if right_panel then
 		if right_panel.visible then
 			awful.placement.bottom_left(
-				focused.volume_osd_overlay,
+				volume_osd,
 				{
 					margins = { 
 						left = osd_margin,
@@ -235,7 +235,7 @@ local placement_placer = function()
 	end
 
 	awful.placement.bottom_right(
-		focused.volume_osd_overlay,
+		volume_osd,
 		{
 			margins = { 
 				left = 0,
