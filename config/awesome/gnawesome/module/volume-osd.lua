@@ -196,7 +196,7 @@ local placement_placer = function()
 	local volume_osd = focused.volume_osd_overlay
 
 	awful.placement.bottom_right(
-		focused.volume_osd_overlay,
+		volume_osd,
 		{
 			margins = { 
 				left = 0,

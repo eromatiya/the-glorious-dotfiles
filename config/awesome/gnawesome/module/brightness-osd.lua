@@ -193,10 +193,10 @@ awesome.connect_signal(
 
 local placement_placer = function()
 	local focused = awful.screen.focused()
-	local volume_osd = focused.brightness_osd_overlay
+	local brightness_osd = focused.brightness_osd_overlay
 
 	awful.placement.bottom_right(
-		focused.brightness_osd_overlay,
+		brightness_osd,
 		{
 			margins = { 
 				left = 0,
