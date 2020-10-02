@@ -194,12 +194,12 @@ awesome.connect_signal(
 local placement_placer = function()
 	local focused = awful.screen.focused()
 		
-	local right_panel = focused.right_panel
-	local left_panel = focused.left_panel
+	local info_center = focused.info_center
+	local control_center = focused.control_center
 	local volume_osd = focused.volume_osd_overlay
 
-	if right_panel and left_panel then
-		if right_panel.visible then
+	if info_center and control_center then
+		if info_center.visible then
 			awful.placement.bottom_left(
 				focused.volume_osd_overlay,
 				{
@@ -216,8 +216,8 @@ local placement_placer = function()
 		end
 	end
 
-	if right_panel then
-		if right_panel.visible then
+	if info_center then
+		if info_center.visible then
 			awful.placement.bottom_left(
 				focused.volume_osd_overlay,
 				{
