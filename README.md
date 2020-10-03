@@ -216,7 +216,7 @@ Some of these are outdated, so it is better if you try them yourself.
 | --- |
 | ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/blurredfox.webp) |
 
-| [glorious - lightdm-webkit2-theme](github.com/manilarome/lightdm-webkit2-theme-glorious/) |
+| [glorious - lightdm-webkit2-theme](https://github.com/manilarome/lightdm-webkit2-theme-glorious/) |
 | --- |
 | ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/lightdm.webp) |
 
