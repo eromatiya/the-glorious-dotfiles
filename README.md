@@ -214,7 +214,11 @@ Some of these are outdated, so it is better if you try them yourself.
 
 | [blurredfox CSS theme for Firefox](https://github.com/manilarome/blurredfox/) |
 | --- |
-| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/blurredfox.webp)
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/blurredfox.webp) |
+
+| [glorious - lightdm-webkit2-theme](github.com/manilarome/lightdm-webkit2-theme-glorious/) |
+| --- |
+| ![Screenshot](https://raw.githubusercontent.com/manilarome/the-glorious-screenshots/master/lightdm.webp) |
 
 | [thunderblurred CSS theme for Thunderbird](https://github.com/manilarome/thunderblurred) |
 | --- |
