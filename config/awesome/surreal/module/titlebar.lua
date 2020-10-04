@@ -22,7 +22,37 @@ local double_click_event_handler = function(double_click_event)
 	)
 end
 
-local create_vertical_bar = function(c, buttons, pos, bg, size)
+local create_click_events = function(c)
+	-- Titlebar button/click events
+	local buttons = gears.table.join(
+		awful.button(
+			{},
+			1,
+			function()
+				double_click_event_handler(function()
+					if c.floating then
+						c.floating = false
+						return
+					end
+					c.maximized = not c.maximized
+					c:raise()
+					return
+				end)
+				c:activate {context = 'titlebar', action = 'mouse_move'}
+			end
+		),
+		awful.button(
+			{},
+			3,
+			function()
+				c:activate {context = 'titlebar', action = 'mouse_resize'}
+			end
+		)
+	)
+	return buttons
+end
+
+local create_vertical_bar = function(c, pos, bg, size)
 
 	-- Check if passed position is valid for this position
 	if (pos == 'top' or pos == 'bottom') then
@@ -43,7 +73,7 @@ local create_vertical_bar = function(c, buttons, pos, bg, size)
 			widget = wibox.container.margin
 		},
 		{
-			buttons = buttons,
+			buttons = create_click_events(c),
 			layout = wibox.layout.flex.vertical
 		},
 		{
@@ -60,7 +90,7 @@ local create_vertical_bar = function(c, buttons, pos, bg, size)
 	}
 end
 
-local create_horizontal_bar = function(c, buttons, pos, bg, size)
+local create_horizontal_bar = function(c, pos, bg, size)
 
 	-- Check if passed position is valid for this position
 	if (pos == 'left' or pos == 'right') then
@@ -81,7 +111,7 @@ local create_horizontal_bar = function(c, buttons, pos, bg, size)
 			widget = wibox.container.margin
 		},
 		{
-			buttons = buttons,
+			buttons = create_click_events(c),
 			layout = wibox.layout.flex.horizontal
 		},
 		{
@@ -98,48 +128,120 @@ local create_horizontal_bar = function(c, buttons, pos, bg, size)
 	}
 end
 
--- Client is requesting for a titlebar, titlebars_enabled in its property/rules
+local create_vertical_bar_dialog = function(c, pos, bg, size)
+
+	-- Check if passed position is valid for this position
+	if (pos == 'top' or pos == 'bottom') then
+		pos = 'left'
+		bg = '#FF00FF'
+	end 
+
+	awful.titlebar(c, {position = pos, bg = bg, size = size}) : setup {
+		{
+			{
+				awful.titlebar.widget.closebutton(c),
+				awful.titlebar.widget.minimizebutton(c),
+				awful.titlebar.widget.ontopbutton(c),
+				spacing = dpi(7),
+				layout  = wibox.layout.fixed.vertical
+			},
+			margins = dpi(10),
+			widget = wibox.container.margin
+		},
+		{
+			buttons = create_click_events(c),
+			layout = wibox.layout.flex.vertical
+		},
+		nil,
+		layout = wibox.layout.align.vertical
+	}
+end
+
+local create_horizontal_bar_dialog = function(c, pos, bg, size)
+
+	-- Check if passed position is valid for this position
+	if (pos == 'left' or pos == 'right') then
+		pos = 'top'
+		bg = '#FF00FF'
+	end 
+
+	awful.titlebar(c, {position = pos, bg = bg, size = size}) : setup {
+		{
+			{
+				awful.titlebar.widget.closebutton(c),
+				awful.titlebar.widget.ontopbutton(c),
+				awful.titlebar.widget.minimizebutton(c),
+				spacing = dpi(7),
+				layout  = wibox.layout.fixed.horizontal
+			},
+			margins = dpi(10),
+			widget = wibox.container.margin
+		},
+		{
+			buttons = create_click_events(c),
+			layout = wibox.layout.flex.horizontal
+		},
+		nil,
+		layout = wibox.layout.align.horizontal
+	}
+end
+
 client.connect_signal(
 	'request::titlebars',
 	function(c)
-		-- Titlebar button/click events
-		local buttons = gears.table.join(
-			awful.button(
-				{}, 
-				1, 
-				function()
-					double_click_event_handler(function()
-						if c.floating then
-							c.floating = false
-							return
-						end
-						c.maximized = not c.maximized
-						c:raise()
-						return
-					end)
-					c:activate {context = 'titlebar', action = 'mouse_move'}
-				end
-			),
-			awful.button(
-				{}, 
-				3, 
-				function()
-					c:activate {context = 'titlebar', action = 'mouse_resize'}
-				end
-			)
-		)
-
+		
 		-- Customize here
-		if c.class == 'XTerm' or c.class == 'UXTerm' then
-			create_horizontal_bar(c, buttons, 'top', beautiful.xresources.get_current_theme().background, beautiful.titlebar_size)
-		elseif c.class == 'Nemo' then
-			create_horizontal_bar(c, buttons, 'top', beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
-		elseif c.type == 'normal' then
-			create_vertical_bar(c, buttons, 'left', '#000000AA', beautiful.titlebar_size)
-		elseif c.type == 'dialog' or c.type == 'modal' then
-			create_horizontal_bar(c, buttons, 'top', '#000000AA', beautiful.titlebar_size)
+		if c.type == 'normal' then
+
+			if c.class == 'kitty' then
+				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+
+			elseif c.class == 'firefox' then
+				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+
+			elseif c.class == 'XTerm' or c.class == 'UXTerm' then
+				create_horizontal_bar(c, 'top',
+					beautiful.xresources.get_current_theme().background, beautiful.titlebar_size)
+
+			elseif c.class == 'ark' or c.class == 'dolphin' then
+				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+
+			elseif c.instance == 'transmission-qt' then
+				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+
+			elseif c.class == 'Nemo' then
+				create_horizontal_bar(c, 'top',
+					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
+
+			elseif c.class == 'Ettercap' then
+				create_vertical_bar(c, 'left',
+					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
+
+			elseif c.class == 'Gimp-2.10' or c.class == 'Inkscape' then
+				create_vertical_bar(c, 'left',
+					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
+
+			elseif c.class == 'Google-chrome' then
+				create_vertical_bar(c, 'left',
+					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
+			else
+				create_vertical_bar(c, 'left', beautiful.background, beautiful.titlebar_size)
+			end
+
+		elseif c.type == 'dialog' then
+
+			if c.role == 'GtkFileChooserDialog' then
+				create_vertical_bar_dialog(c, 'left',
+					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
+				return
+			end
+			create_vertical_bar_dialog(c, 'left', '#000000AA', beautiful.titlebar_size)
+
+		elseif c.type == 'modal' then
+			create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+
 		else
-			create_vertical_bar(c, buttons, 'left', '#000000AA', beautiful.titlebar_size)
+			create_vertical_bar(c, 'left', beautiful.background, beautiful.titlebar_size)
 		end
 	end
 )
