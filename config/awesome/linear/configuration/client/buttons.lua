@@ -6,7 +6,7 @@ return awful.util.table.join(
 		{},
 		1,
 		function(c)
-			client.focus = c
+			c:emit_signal('request::activate')
 			c:raise()
 		end
 	),

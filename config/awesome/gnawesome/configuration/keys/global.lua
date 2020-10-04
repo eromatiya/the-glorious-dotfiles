@@ -179,7 +179,7 @@ local global_keys = awful.util.table.join(
 			local c = awful.client.restore()
 			-- Focus restored client
 			if c then
-				client.focus = c
+				c:emit_signal('request::activate')
 				c:raise()
 			end
 		end,

@@ -433,7 +433,7 @@ local locker = function(s)
 				end
 				local c = awful.client.restore()
 				if c then
-					client.focus = c
+					c:emit_signal('request::activate')
 					c:raise()
 				end
 			end

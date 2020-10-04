@@ -168,7 +168,7 @@ awful.tag.attached_connect_signal(
 		end
 		for c in awful.client.iterate(urgent_clients) do
 			if c.first_tag == mouse.screen.selected_tag then
-				client.focus = c
+				c:emit_signal('request::activate')
 				c:raise()
 			end
 		end
