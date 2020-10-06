@@ -43,9 +43,7 @@ ruled.client.connect_signal(
 			},
 			properties = {
 				round_corners = true,
-				shape = function(cr, width, height)
-					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-				end
+				shape = beautiful.client_shape_rounded
 			}
 		}
 

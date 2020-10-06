@@ -136,8 +136,10 @@ local awesome_overrides = function(theme)
 	theme.border_radius = dpi(12)
 
 	-- Decorations
-	theme.client_radius = dpi(9)
 	theme.useless_gap = dpi(4)
+	theme.client_shape_rounded = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, dpi(12))
+	end
 
 	-- Menu
 	theme.menu_font = 'Inter Regular 11'

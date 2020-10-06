@@ -1,6 +1,6 @@
 local awful = require('awful')
-local gears = require('gears')
 local ruled = require('ruled')
+local beautiful = require('beautiful')
 local app = require('configuration.apps').default.quake
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
@@ -26,7 +26,7 @@ local quake_properties = function()
 		keys = client_keys,
 		buttons = client_buttons,
 		placement = awful.placement.top,
-		shape = gears.shape.rectangle
+		shape = beautiful.client_shape_rectangle
 	}
 end
 

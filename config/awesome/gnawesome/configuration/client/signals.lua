@@ -6,15 +6,13 @@ local update_client = function(c)
 	-- Set client's shape based on its tag's layout and status (floating, maximized, etc.)
 	local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
 	if current_layout == awful.layout.suit.max and (not c.floating) then
-		c.shape = gears.shape.rectangle
+		c.shape = beautiful.client_shape_rectangle
 	elseif c.maximized or c.fullscreen then
-		c.shape = gears.shape.rectangle
+		c.shape = beautiful.client_shape_rectangle
 	elseif (not c.round_corners) then
-		c.shape = gears.shape.rectangle
+		c.shape = beautiful.client_shape_rectangle
 	else
-		c.shape = function(cr, width, height)
-			gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
-		end
+		c.shape = beautiful.client_shape_rounded
 	end
 end
 
@@ -81,7 +79,7 @@ client.connect_signal(
 	'property::fullscreen',
 	function(c)
 		if c.fullscreen then
-			c.shape = gears.shape.rectangle
+			c.shape = beautiful.client_shape_rectangle
 		else
 			update_client(c)
 		end
@@ -94,7 +92,7 @@ client.connect_signal(
 	function(c)
 		local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
 		if c.maximized then
-			c.shape = gears.shape.rectangle
+			c.shape = beautiful.client_shape_rectangle
 		else
 			update_client(c)
 		end
@@ -107,12 +105,10 @@ client.connect_signal(
 	function(c)
 		local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
 		if c.floating and not c.maximized then
-			c.shape = function(cr, width, height)
-				gears.shape.rounded_rect(cr, width, height, beautiful.client_radius or 6)
-			end
+			c.shape = beautiful.client_shape_rounded
 		else
 			if current_layout == awful.layout.suit.max then
-				c.shape = gears.shape.rectangle
+				c.shape = beautiful.client_shape_rectangle
 			end
 		end
 	end
