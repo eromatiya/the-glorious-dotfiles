@@ -1,7 +1,6 @@
 local awful = require('awful')
 local wibox = require('wibox')
 local dpi = require('beautiful').xresources.apply_dpi
-local capi = {button = button}
 local gears = require('gears')
 local clickable_container = require('widget.clickable-container')
 local icons = require('theme.icons')
@@ -9,7 +8,7 @@ local icons = require('theme.icons')
 --- Common method to create buttons.
 -- @tab buttons
 -- @param object
--- @treturn table
+-- @return table
 local function create_buttons(buttons, object)
 	if buttons then
 		local btns = {}
@@ -18,22 +17,18 @@ local function create_buttons(buttons, object)
 			-- press and release events, and will propagate them to the
 			-- button object the user provided, but with the object as
 			-- argument.
-			local btn = capi.button {modifiers = b.modifiers, button = b.button}
-			btn:connect_signal(
-				'press',
-				function()
+			local btn = awful.button {
+				modifiers = b.modifiers,
+				button = b.button,
+				on_press = function()
 					b:emit_signal('press', object)
-				end
-			)
-			btn:connect_signal(
-				'release',
-				function()
+				end,
+				on_release = function()
 					b:emit_signal('release', object)
 				end
-			)
+			}
 			btns[#btns + 1] = btn
 		end
-
 		return btns
 	end
 end
