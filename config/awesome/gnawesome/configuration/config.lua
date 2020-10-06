@@ -31,7 +31,7 @@ return {
 
 		clock = {
 			-- Clock widget format
-			military_mode = false,
+			military_mode = false
 		},
 
 		screen_recorder = {
@@ -52,12 +52,12 @@ return {
 
 	module = {
 		auto_start = {
-			-- WIll create notification if true
+			-- Will create notification if true
 			debug_mode = false
 		},
 
 		dynamic_wallpaper = {
-			-- Will look for background images here
+			-- Will look for wallpapers here
 			wall_dir = 'theme/wallpapers/',
 			-- Image formats
 			valid_picture_formats = {'jpg', 'png', 'jpeg'},
@@ -92,7 +92,7 @@ return {
 			face_capture_dir = '$(xdg-user-dir PICTURES)/Intruders/',
 			-- Background directory - Defaults to 'awesome/config/theme/wallpapers/' if null
 			bg_dir = nil,
-			-- Will look for an image under 'bg_dir'
+			-- Will look for this image file under 'bg_dir'
 			bg_image = 'locksreen-bg.jpg',
 			-- Blur lockscreen background
 			blur_background = false,
