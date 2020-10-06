@@ -117,9 +117,7 @@ local update_gap_and_shape = function(t)
 		t.gap = 0
 		for _, c in ipairs(t:clients()) do
 			if not c.floating or not c.round_corners or c.maximized or c.fullscreen then
-				c.shape = function(cr, width, height)
-					gears.shape.rectangle(cr, width, height)
-				end
+				c.shape = gears.shape.rectangle
 			else
 				c.shape = function(cr, width, height)
 					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)
@@ -130,9 +128,7 @@ local update_gap_and_shape = function(t)
 		t.gap = beautiful.useless_gap
 		for _, c in ipairs(t:clients()) do
 			if not c.round_corners or c.maximized or c.fullscreen then
-				c.shape = function(cr, width, height)
-					gears.shape.rectangle(cr, width, height)
-				end
+				c.shape = gears.shape.rectangle
 			else
 				c.shape = function(cr, width, height)
 					gears.shape.rounded_rect(cr, width, height, beautiful.client_radius)

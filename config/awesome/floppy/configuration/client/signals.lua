@@ -81,9 +81,7 @@ client.connect_signal(
 	'property::fullscreen',
 	function(c)
 		if c.fullscreen then
-			c.shape = function(cr, width, height)
-				gears.shape.rectangle(cr, width, height)
-			end
+			c.shape = gears.shape.rectangle
 		else
 			update_client(c)
 		end
@@ -96,9 +94,7 @@ client.connect_signal(
 	function(c)
 		local current_layout = awful.tag.getproperty(c.first_tag, 'layout')
 		if c.maximized then
-			c.shape = function(cr, width, height)
-				gears.shape.rectangle(cr, width, height)
-			end
+			c.shape = gears.shape.rectangle
 		else
 			update_client(c)
 		end
@@ -116,9 +112,7 @@ client.connect_signal(
 			end
 		else
 			if current_layout == awful.layout.suit.max then
-				c.shape = function(cr, width, height)
-					gears.shape.rectangle(cr, width, height)
-				end
+				c.shape = gears.shape.rectangle
 			end
 		end
 	end
