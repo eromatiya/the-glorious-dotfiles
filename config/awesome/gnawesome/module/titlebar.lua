@@ -237,6 +237,11 @@ client.connect_signal(
 			if c.role == 'GtkFileChooserDialog' then
 				create_vertical_bar_dialog(c, 'left',
 					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
+				
+			elseif c.class == 'Gimp-2.10' then
+				create_vertical_bar(c, 'left',
+					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
+
 			else
 				create_vertical_bar_dialog(c, 'left', '#000000AA', beautiful.titlebar_size)
 			end
