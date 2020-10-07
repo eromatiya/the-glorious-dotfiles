@@ -154,7 +154,8 @@ ruled.client.connect_signal(
 					'Tor Browser',
 					'discord',
 					'Chromium',
-					'Google-chrome'
+					'Google-chrome',
+					'TelegramDesktop'
 				}
 			},
 			properties = {

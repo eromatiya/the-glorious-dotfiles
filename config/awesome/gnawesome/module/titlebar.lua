@@ -209,10 +209,6 @@ client.connect_signal(
 			elseif c.instance == 'transmission-qt' then
 				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
 
-			elseif c.class == 'Nemo' then
-				create_horizontal_bar(c, 'top',
-					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
-
 			elseif c.class == 'Ettercap' then
 				create_vertical_bar(c, 'left',
 					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
@@ -224,6 +220,14 @@ client.connect_signal(
 			elseif c.class == 'Google-chrome' then
 				create_vertical_bar(c, 'left',
 					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
+				
+			elseif c.class == 'TelegramDesktop' then
+				create_vertical_bar(c, 'left', '#17212b', beautiful.titlebar_size)
+
+			elseif c.class == 'Nemo' then
+				create_horizontal_bar(c, 'top',
+					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
+
 			else
 				create_vertical_bar(c, 'left', beautiful.background, beautiful.titlebar_size)
 			end
@@ -233,9 +237,9 @@ client.connect_signal(
 			if c.role == 'GtkFileChooserDialog' then
 				create_vertical_bar_dialog(c, 'left',
 					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
-				return
+			else
+				create_vertical_bar_dialog(c, 'left', '#000000AA', beautiful.titlebar_size)
 			end
-			create_vertical_bar_dialog(c, 'left', '#000000AA', beautiful.titlebar_size)
 
 		elseif c.type == 'modal' then
 			create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
