@@ -39,15 +39,13 @@ local create_open_default_button = function(s)
 					awful.spawn(
 						awful.screen.focused().selected_tag.default_app,
 						{
-							tag = mouse.screen.selected_tag,
-							placement = awful.placement.bottom_right
+							tag = mouse.screen.selected_tag
 						}
 					)
 				end
 			)
 		)
 	)
-
 	return s.add_button
 end
 
