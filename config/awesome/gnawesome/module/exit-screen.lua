@@ -42,7 +42,8 @@ local msg_table = {
 	'Delete your browser history!',
 	'See you, Space Cowboy!',
 	'Change da world. My final message. Goodbye.',
-	'Find out on the next episode of Dragonball Z...'
+	'Find out on the next episode of Dragonball Z...',
+	'Choose wisely!'
 }
 
 local greeter_message = wibox.widget {
@@ -116,16 +117,16 @@ end
 
 update_greeter_msg()
 
-local build_button = function(icon, name)
-	local button_text = wibox.widget {
+local build_power_button = function(name, icon, callback)
+	local power_button_label= wibox.widget {
 		text = name,
-		font = beautiful.font,
+		font = 'Inter Regular 10',
 		align = 'center',
 		valign = 'center',
 		widget = wibox.widget.textbox
 	}
 
-	local a_button = wibox.widget {
+	local power_button = wibox.widget {
 		{
 			{
 				{
@@ -149,13 +150,20 @@ local build_button = function(icon, name)
 		widget = wibox.container.margin
 	}
 
-	local build_a_button = wibox.widget {
+	local exit_screen_item = wibox.widget {
 		layout = wibox.layout.fixed.vertical,
 		spacing = dpi(5),
-		a_button,
-		button_text
+		power_button,
+		power_button_label
 	}
-	return build_a_button
+
+	exit_screen_item:connect_signal(
+		'button::release',
+		function()
+			callback()
+		end
+	)
+	return exit_screen_item
 end
 
 local suspend_command = function()
@@ -169,7 +177,7 @@ end
 
 local lock_command = function()
 	awesome.emit_signal('module::exit_screen:hide')
-	awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock)
+	awful.spawn.with_shell(apps.default.lock)
 end
 
 local poweroff_command = function()
@@ -182,45 +190,11 @@ local reboot_command = function()
 	awesome.emit_signal('module::exit_screen:hide')
 end
 
-local poweroff = build_button(icons.power, 'Shutdown')
-poweroff:connect_signal(
-	'button::release',
-	function()
-		poweroff_command()
-	end
-)
-
-local reboot = build_button(icons.restart, 'Restart')
-reboot:connect_signal(
-	'button::release',
-	function()
-		reboot_command()
-	end
-)
-
-local suspend = build_button(icons.sleep, 'Sleep')
-suspend:connect_signal(
-	'button::release',
-	function()
-		suspend_command()
-	end
-)
-
-local exit = build_button(icons.logout, 'Logout')
-exit:connect_signal(
-	'button::release',
-	function()
-		logout_command()
-	end
-)
-
-local lock = build_button(icons.lock, 'Lock')
-lock:connect_signal(
-	'button::release',
-	function()
-		lock_command()
-	end
-)
+local poweroff = build_power_button('Shutdown', icons.power, poweroff_command)
+local reboot = build_power_button('Restart', icons.restart, reboot_command)
+local suspend = build_power_button('Sleep', icons.sleep, suspend_command)
+local logout = build_power_button('Logout', icons.logout, logout_command)
+local lock = build_power_button('Lock', icons.lock, lock_command)
 
 local create_exit_screen = function(s)
 	s.exit_screen = wibox
@@ -307,7 +281,7 @@ local create_exit_screen = function(s)
 							poweroff,
 							reboot,
 							suspend,
-							exit,
+							logout,
 							lock,
 							layout = wibox.layout.fixed.horizontal
 						},
@@ -342,25 +316,25 @@ local exit_screen_grabber = awful.keygrabber {
 	auto_start = true,
 	stop_event = 'release',
 	keypressed_callback = function(self, mod, key, command) 
-	if key == 's' then
-		suspend_command()
+		if key == 's' then
+			suspend_command()
 
-	elseif key == 'e' then
-		logout_command()
+		elseif key == 'e' then
+			logout_command()
 
-	elseif key == 'l' then
-		lock_command()
+		elseif key == 'l' then
+			lock_command()
 
-	elseif key == 'p' then
-		poweroff_command()
+		elseif key == 'p' then
+			poweroff_command()
 
-	elseif key == 'r' then
-		reboot_command()
+		elseif key == 'r' then
+			reboot_command()
 
-	elseif key == 'Escape' or key == 'q' or key == 'x' then
-		awesome.emit_signal('module::exit_screen:hide')
+		elseif key == 'Escape' or key == 'q' or key == 'x' then
+			awesome.emit_signal('module::exit_screen:hide')
+		end
 	end
-end
 }
 
 awesome.connect_signal(
