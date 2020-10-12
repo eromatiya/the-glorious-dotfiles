@@ -54,7 +54,7 @@ end
 
 local create_vertical_bar = function(c, pos, bg, size)
 
-	-- Check if passed position is valid for this position
+	-- Check if passed position is valid
 	if (pos == 'top' or pos == 'bottom') then
 		pos = 'left'
 		bg = '#FF00FF'
@@ -92,7 +92,7 @@ end
 
 local create_horizontal_bar = function(c, pos, bg, size)
 
-	-- Check if passed position is valid for this position
+	-- Check if passed position is valid
 	if (pos == 'left' or pos == 'right') then
 		pos = 'top'
 		bg = '#FF00FF'
@@ -130,7 +130,7 @@ end
 
 local create_vertical_bar_dialog = function(c, pos, bg, size)
 
-	-- Check if passed position is valid for this position
+	-- Check if passed position is valid
 	if (pos == 'top' or pos == 'bottom') then
 		pos = 'left'
 		bg = '#FF00FF'
@@ -159,7 +159,7 @@ end
 
 local create_horizontal_bar_dialog = function(c, pos, bg, size)
 
-	-- Check if passed position is valid for this position
+	-- Check if passed position is valid
 	if (pos == 'left' or pos == 'right') then
 		pos = 'top'
 		bg = '#FF00FF'
@@ -197,7 +197,7 @@ client.connect_signal(
 				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
 
 			elseif c.class == 'firefox' then
-				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+				create_vertical_bar(c, 'left', beautiful.background, beautiful.titlebar_size)
 
 			elseif c.class == 'XTerm' or c.class == 'UXTerm' then
 				create_horizontal_bar(c, 'top',
@@ -209,15 +209,23 @@ client.connect_signal(
 			elseif c.instance == 'transmission-qt' then
 				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
 
-			elseif c.class == 'Ettercap' then
-				create_vertical_bar(c, 'left',
-					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
-
 			elseif c.class == 'Gimp-2.10' or c.class == 'Inkscape' then
 				create_vertical_bar(c, 'left',
 					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
 
-			elseif c.class == 'Google-chrome' then
+			elseif c.class == 'Com.github.johnfactotum.Foliate' then
+				create_vertical_bar(c, 'left',
+					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
+
+			elseif c.class == 'Arandr' then
+				create_vertical_bar(c, 'left',
+					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
+
+			elseif c.class == 'Ettercap' then
+				create_vertical_bar(c, 'left',
+					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
+
+			elseif c.class == 'Google-chrome' or c.class == 'Chromium' then
 				create_vertical_bar(c, 'left',
 					beautiful.gtk.get_theme_variables().base_color, beautiful.titlebar_size)
 				
@@ -237,8 +245,16 @@ client.connect_signal(
 			if c.role == 'GtkFileChooserDialog' then
 				create_vertical_bar_dialog(c, 'left',
 					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
-				
+
+			elseif c.class == 'firefox' then
+				create_vertical_bar_dialog(c, 'left',
+					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
+
 			elseif c.class == 'Gimp-2.10' then
+				create_vertical_bar_dialog(c, 'left',
+					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
+
+			elseif c.class == 'Arandr' then
 				create_vertical_bar(c, 'left',
 					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
 
