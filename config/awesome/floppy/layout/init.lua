@@ -22,7 +22,6 @@ screen.connect_signal(
 -- Hide bars when app go fullscreen
 function update_bars_visibility()
 	for s in screen do
-		focused = awful.screen.focused()
 		if s.selected_tag then
 			local fullscreen = s.selected_tag.fullscreen_mode
 			-- Order matter here for shadow
@@ -31,15 +30,12 @@ function update_bars_visibility()
 				s.left_panel.visible = not fullscreen
 			end
 			if s.right_panel then
-				if fullscreen and focused.right_panel.visible then
-					focused.right_panel:toggle()
-					focused.right_panel_show_again = true
-				elseif not fullscreen and
-					not focused.right_panel.visible and
-					focused.right_panel_show_again then
-					
-					focused.right_panel:toggle()
-					focused.right_panel_show_again = false
+				if fullscreen and s.right_panel.visible then
+					s.right_panel:toggle()
+					s.right_panel_show_again = true
+				elseif not fullscreen and not s.right_panel.visible and s.right_panel_show_again then
+					s.right_panel:toggle()
+					s.right_panel_show_again = false
 				end
 			end
 		end
