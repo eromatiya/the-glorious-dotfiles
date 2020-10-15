@@ -194,7 +194,7 @@ client.connect_signal(
 		if c.type == 'normal' then
 
 			if c.class == 'kitty' then
-				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+				create_vertical_bar(c, 'left', '#00000099', beautiful.titlebar_size)
 
 			elseif c.class == 'firefox' then
 				create_vertical_bar(c, 'left', beautiful.background, beautiful.titlebar_size)
@@ -204,10 +204,10 @@ client.connect_signal(
 					beautiful.xresources.get_current_theme().background, beautiful.titlebar_size)
 
 			elseif c.class == 'ark' or c.class == 'dolphin' then
-				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+				create_vertical_bar(c, 'left', '#00000099', beautiful.titlebar_size)
 
 			elseif c.instance == 'transmission-qt' then
-				create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+				create_vertical_bar(c, 'left', '#00000099', beautiful.titlebar_size)
 
 			elseif c.class == 'Gimp-2.10' or c.class == 'Inkscape' then
 				create_vertical_bar(c, 'left',
@@ -231,6 +231,12 @@ client.connect_signal(
 				
 			elseif c.class == 'TelegramDesktop' then
 				create_vertical_bar(c, 'left', '#17212b', beautiful.titlebar_size)
+
+			elseif c.class == 'Kvantum Manager' then
+				create_vertical_bar(c, 'left', '#00000099', beautiful.titlebar_size)
+
+			elseif c.class == 'qt5ct' then
+				create_vertical_bar(c, 'left', '#00000099', beautiful.titlebar_size)
 
 			elseif c.class == 'Nemo' then
 				create_horizontal_bar(c, 'top',
@@ -259,11 +265,11 @@ client.connect_signal(
 					beautiful.gtk.get_theme_variables().bg_color, beautiful.titlebar_size)
 
 			else
-				create_vertical_bar_dialog(c, 'left', '#000000AA', beautiful.titlebar_size)
+				create_vertical_bar_dialog(c, 'left', '#00000099', beautiful.titlebar_size)
 			end
 
 		elseif c.type == 'modal' then
-			create_vertical_bar(c, 'left', '#000000AA', beautiful.titlebar_size)
+			create_vertical_bar(c, 'left', '#00000099', beautiful.titlebar_size)
 
 		else
 			create_vertical_bar(c, 'left', beautiful.background, beautiful.titlebar_size)
