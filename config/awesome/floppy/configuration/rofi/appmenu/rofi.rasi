@@ -77,7 +77,7 @@ inputbar {
 	text-color: @foreground;
 	expand: false;
 	border-radius: 6px;
-	margin: 0px calc((100% - 510px) / 2) 0px calc((100% - 510px) / 2);
+	margin: 0px calc((100% - 640px) / 2) 0px calc((100% - 640px) / 2);
 	padding: 10px 10px 10px 10px;
 	position: north;
 	children: [ entry-wrapper ];
@@ -85,7 +85,7 @@ inputbar {
 
 listview {
 	background-color: @transparent;
-	columns: 7;
+	columns: 6;
 	spacing: 5px;
 	cycle: false;
 	dynamic: true;
@@ -96,7 +96,8 @@ mainbox {
 	background-color: @background-black;
 	children: [ inputbar, listview ];
 	spacing: 25px;
-	padding: 70px 135px 0 135px;
+	padding: 70px 15% 0 15%;
+	/*padding: 70px 135px 0 135px;*/
 }
 
 element {
