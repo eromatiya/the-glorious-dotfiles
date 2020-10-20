@@ -1,8 +1,0 @@
-[Plymouth Theme]
-Name=arch10
-Description=Arch a la Windows 10 boot splash theme
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/arch10
-ScriptFile=/usr/share/plymouth/themes/arch10/arch10.script
