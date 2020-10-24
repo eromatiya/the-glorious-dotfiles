@@ -93,11 +93,11 @@ local current_month = calendar:get_date().month
 
 local update_focus_bg = function(month)
 	if current_month == month then
-			styles.focus.bg_color = beautiful.accent
-			styles.focus.markup = function(t) return '<b>' .. t .. '</b>' end
-		else
-			styles.focus.bg_color = beautiful.transparent
-			styles.focus.markup = function(t) return t end
+		styles.focus.bg_color = beautiful.accent
+		styles.focus.markup = function(t) return '<b>' .. t .. '</b>' end
+	else
+		styles.focus.bg_color = beautiful.transparent
+		styles.focus.markup = function(t) return t end
 	end
 end
 
