@@ -1,9 +1,9 @@
 local wibox = require('wibox')
+local awful = require('awful')
 local gears = require('gears')
 local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
 
--- Calendar theme
 local styles = {}
 
 local rounded_shape = function(size, partial)
@@ -19,36 +19,35 @@ local rounded_shape = function(size, partial)
 	end
 end
 
-styles.month   = { 
+styles.month = { 
 	padding = 5,
-	bg_color = '#00000000'
+	bg_color = beautiful.transparent
 }
 
-styles.normal  = {
+styles.normal = {
 	fg_color = '#f2f2f2',
-	bg_color = '#00000000'
+	bg_color = beautiful.transparent
 }
 
-styles.focus   = {
+styles.focus = {
 	fg_color = '#f2f2f2',
 	bg_color = beautiful.accent,
-	markup   = function(t) return '<b>' .. t .. '</b>' end,
-	shape 	 = function(cr, width, height)
-					gears.shape.partially_rounded_rect(
-						cr, width, height, true, true, true, true, dpi(4))
-				end
+	markup = function(t) return '<b>' .. t .. '</b>' end,
+	shape = function(cr, width, height)
+		gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, dpi(4))
+	end
 }
 
-styles.header  = {
+styles.header = {
 	fg_color = '#f2f2f2',
-	bg_color = '#00000000',
-	markup   = function(t) return '<b>' .. t .. '</b>' end
+	bg_color = beautiful.transparent,
+	markup = function(t) return '<b>' .. t .. '</b>' end
 }
 
 styles.weekday = { 
 	fg_color = '#ffffff',
-	bg_color = '#00000000',
-	markup   = function(t) return '<b>' .. t .. '</b>' end
+	bg_color = beautiful.transparent,
+	markup = function(t) return '<b>' .. t .. '</b>' end
 }
 
 local decorate_cell = function(widget, flag, date)
@@ -68,30 +67,71 @@ local decorate_cell = function(widget, flag, date)
 		{
 			widget,
 			margins = (props.padding or 2) + (props.border_width or 0),
-			widget  = wibox.container.margin
+			widget = wibox.container.margin
 		},
-		shape              = props.shape,
+		shape = props.shape,
 		shape_border_color = props.border_color or '#b9214f',
 		shape_border_width = props.border_width or 0,
-		fg                 = props.fg_color or '#999999',
-		bg                 = props.bg_color or default_bg,
-		widget             = wibox.container.background
+		fg = props.fg_color or '#999999',
+		bg = props.bg_color or default_bg,
+		widget = wibox.container.background
 	}
 	return ret
 end
 
 local calendar = wibox.widget {
+	font = 'Inter Regular 12',
+	date = os.date('*t'),
+	spacing = dpi(10),
+	start_sunday = true,
+	long_weekdays = false,
+	fn_embed = decorate_cell,
+	widget = wibox.widget.calendar.month
+}
+
+local current_month = calendar:get_date().month
+
+local update_focus_bg = function(month)
+	if current_month == month then
+			styles.focus.bg_color = beautiful.accent
+			styles.focus.markup = function(t) return '<b>' .. t .. '</b>' end
+		else
+			styles.focus.bg_color = beautiful.transparent
+			styles.focus.markup = function(t) return t end
+	end
+end
+
+local update_active_month = function(i)
+	local date = calendar:get_date()
+	date.month = date.month + i
+	update_focus_bg(date.month)
+	calendar:set_date(nil)
+	calendar:set_date(date)
+end
+
+calendar:buttons(
+	gears.table.join(
+		awful.button(
+			{},
+			4,
+			function()
+				update_active_month(-1)
+			end
+		),
+		awful.button(
+			{},
+			5,
+			function()
+				update_active_month(1)
+			end
+		)
+	)
+)
+
+local widget = wibox.widget {
 	{
 
-		{
-			font = 'Inter Regular 12',
-			date = os.date('*t'),
-			spacing = dpi(10),
-			start_sunday = true,
-			long_weekdays = false,
-			fn_embed = decorate_cell,
-			widget = wibox.widget.calendar.month
-		},
+		calendar,
 		top = dpi(15),
 		right = dpi(10),
 		left = dpi(10),
@@ -104,4 +144,4 @@ local calendar = wibox.widget {
 	widget = wibox.container.background
 }
 
-return calendar
+return widget
