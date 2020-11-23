@@ -1,99 +1,103 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Simple ncmpcpp notification script by Gerome Matilla;
 # gerome.matilla07@gmail.com
 #	Depends:
 #		- mpc, mpd, ncmpcpp, imagemagick, ffmpeg or perl-image-exiftool
 
-MUSIC_DIR="${HOME}/Music"
-TMP_DIR="/tmp/ncmpcpp_${USER}"
-TMP_COVER_PATH="${TMP_DIR}/ncmpcpp_cover.jpg"
-TMP_SONG="/tmp/current-song"
-CHECK_EXIFTOOL=$(command -v exiftool)
-CHECK_DUNST=$(command -v dunst)
-CHECK_AWESOME_CLIENT=$(command -v awesome-client)
-
-current_title="$(mpc -f %title% current | tr -d '"')"
-current_artist="$(mpc -f %artist% current | tr -d '"')"
-
-# Exit if $USER is in TTY
-if [[ "$(ps -h -o comm -p "$PPID")" == *"login"* ]]; then
-  exit 1
+# Exit if on tty
+# Uhh... we don't need a notification while on tty
+if [[ tty == "/dev/tty"* ]];
+then
+	exit 1;
 fi
 
-if [[ ! -d "$TMP_DIR" ]]; then
-	mkdir -p "$TMP_DIR"
-fi
+music_dir="$(xdg-user-dir MUSIC)"
+ncmpcpp_tmp_dir="/tmp/ncmpcpp_tmp/${USER}"
+ncmpcpp_tmp_dir_cover="${ncmpcpp_tmp_dir}/ncmpcpp_cover.jpg"
+ncmpcpp_tmp_dir_song="${ncmpcpp_tmp_dir}/current-song"
 
-# Remove file extension name
-function check_mpc_data() {
-	if [[ -z "$current_title" ]]; then
+mpd_current_music_title="$(mpc -f %title% current | tr -d '"')"
+mpd_current_music_artist="$(mpc -f %artist% current | tr -d '"')"
+
+# Create ncmpcpp temporary directory
+function create_tmp_dir() {
+	if [[ ! -d "$ncmpcpp_tmp_dir" ]];
+	then
+		mkdir -p "$ncmpcpp_tmp_dir"
+	fi
+}
+
+create_tmp_dir
+
+# Check if metadata is missing the song title and artist
+function check_missing_metadata() {
+	if [[ -z "$mpd_current_music_title" ]];
+	then
 		file_name="$(mpc -f %file% current | tr -d '"')"
 		file_name=${file_name::-4}
-		current_title="${file_name}"
-		current_artist='unknown artist'
+		mpd_current_music_title="${file_name}"
+	fi
+	if [[ -z "$mpd_current_music_artist" ]];
+	then
+		mpd_current_music_artist="unknown artist"
 	fi
 }
 
-check_mpc_data
+check_missing_metadata
 
-# This function is unused right now
-function display_album_art() {
-	if [[ "$TERM" == "kitty" ]]; then
-	  kitty +kitten icat --clear
-	  kitty +kitten icat --transfer-mode stream --place 25x25@0x0 "$TMP_COVER_PATH"
+function delete_cover_art() {
+	if [[  -e "$ncmpcpp_tmp_dir_cover" ]];
+	then
+		rm "$ncmpcpp_tmp_dir_cover" > /dev/null 2>&1
 	fi
 }
 
-# Check DE/WM
-function get_desktop_env() {
-	# Identify environment
-	DE="${DESKTOP_STARTUP_ID}"
-	if [[ ! -z "$DE" && "$DE" == *"awesome"* ]] || [[ ! -z "$CHECK_AWESOME_CLIENT" ]]; then
-		echo "AWESOME"
-		return
-	fi
-	echo "NOT_AWESOME"
-}
+# Delete the previous album art,
+# so we can distinguish if the current music file has one
+delete_cover_art
 
 # Extract album cover
-if [[ ! -z "$CHECK_EXIFTOOL" ]]; then
+function extract_cover_art() {
+	# Use exiftool
+	if [[ ! -z "$(command -v exiftool)" ]];
+	then
+		current_song="${music_dir}/$(mpc -p 6600 --format "%file%" current)"
+		picture_tag="-Picture"
+				
+		if [[ "$current_song" == *".m4a" ]];
+		then
+			picture_tag="-CoverArt"
+		fi
 
-	SONG="$MUSIC_DIR/$(mpc -p 6600 --format "%file%" current)"
-	PICTURE_TAG="-Picture"
-			
-	if [[ "$SONG" == *".m4a" ]]; then
-		PICTURE_TAG="-CoverArt"
-	fi
+		# Extract album cover using perl-image-exiftool
+		exiftool -b "$picture_tag" "$current_song"  > "$ncmpcpp_tmp_dir_cover"
+	else
+		# Extract image using ffmpeg
+		cp "${music_dir}/$(mpc --format %file% current)" "$ncmpcpp_tmp_dir_song"
 
-	# Extract album cover using perl-image-exiftool
-	exiftool -b "$PICTURE_TAG" "$SONG"  > "$TMP_COVER_PATH"
-
-else
-
-	#Extract image using ffmpeg
-	cp "$MUSIC_DIR/$(mpc --format %file% current)" "$TMP_SONG"
-
-	ffmpeg \
-	-hide_banner \
-    -loglevel 0 \
-    -y \
-    -i "$TMP_SONG" \
-    -vf scale=300:-1 \
-    "$TMP_COVER_PATH" > /dev/null 2>&1
-
-	rm "$TMP_SONG"
-fi
-
-# Check if image is valid
-function check_album_data() {
-	img_data=$(identify "$TMP_COVER_PATH" 2>&1)
-	if [[ "$img_data" == *"insufficient"* ]]; then
-		TMP_COVER_PATH="${HOME}/.config/ncmpcpp/vinyl.svg"
+		ffmpeg \
+		-hide_banner \
+		-loglevel 0 \
+		-y \
+		-i "$ncmpcpp_tmp_dir_song" \
+		-vf scale=300:-1 \
+		"$ncmpcpp_tmp_dir_cover" > /dev/null 2>&1
 	fi
 }
 
-check_album_data
+extract_cover_art
+
+# Check if image is valid or existing
+function check_cover_art_validity() {
+	img_data=$(identify "$ncmpcpp_tmp_dir_cover" 2>&1)
+	if [[ "$img_data" == *"insufficient"* ]] || [[ ! -e  "$ncmpcpp_tmp_dir_cover" ]];
+	then
+		ncmpcpp_tmp_dir_cover="${HOME}/.config/ncmpcpp/vinyl.svg"
+	fi
+}
+
+check_cover_art_validity
 
 # Create a notification using AwesomeWM API
 function notify_awesome() {
@@ -126,41 +130,59 @@ function notify_awesome() {
 		awful.spawn('mpc next', false)
 	end)
 
-    for k, noti in ipairs(naughty.active) do
-      if noti.app_name == 'ncmpcpp' then
-        noti.message = \"${current_artist}\"
-        noti.title = \"${current_title}\"
-        noti.icon = gears.surface.load_uncached(\"${TMP_COVER_PATH}\")
-        noti.urgency = 'normal'
-        return
-      end
-    end
+	for k, noti in ipairs(naughty.active) do
+		if noti.app_name == 'ncmpcpp' then
+			noti.message = \"${mpd_current_music_artist}\"
+			noti.title = \"${mpd_current_music_title}\"
+			noti.icon = gears.surface.load_uncached(\"${ncmpcpp_tmp_dir_cover}\")
+			noti.urgency = 'normal'
+			return
+		end
+	end
 
 	naughty.notification({
 		app_name = 'ncmpcpp',
-		message = \"${current_artist}\",
-		title = \"${current_title}\",
-		icon = gears.surface.load_uncached(\"${TMP_COVER_PATH}\"),
+		message = \"${mpd_current_music_artist}\",
+		title = \"${mpd_current_music_title}\",
+		icon = gears.surface.load_uncached(\"${ncmpcpp_tmp_dir_cover}\"),
 		urgency = 'normal',
 		actions = { prev, pause, next }
 	})
 	"
 }
 
-# Create a notification
-function notify_non_awesome() {
-	if [[ ! -z "$CHECK_DUNST" ]]; then
+# Create a notification for DE/WM without a native notification system
+function notify_fallback() {
+	# Check if dunst is installed
+	if [[ ! -z "$(command -v dunst)" ]];
+	then
 		dunstify --urgency 'normal' --appname "ncmpcpp" \
-		--replace 3 --icon "$TMP_COVER_PATH" "$current_title" "$current_artist"
+		--replace 3 --icon "$ncmpcpp_tmp_dir_cover" \
+		"$mpd_current_music_title" "$mpd_current_music_artist"
 	else
 		notify-send --urgency "normal" --app-name "ncmpcpp" \
-		--icon "$TMP_COVER_PATH" "$current_title" "$current_artist"
+		--icon "$ncmpcpp_tmp_dir_cover" \
+		"$mpd_current_music_title" "$mpd_current_music_artist"
 	fi
 }
 
-# Call to create a notification
-if [[ "$(get_desktop_env)" == "AWESOME" ]]; then
+# Check environment
+function get_desktop_env() {
+	# Identify environment
+	desktop_env="${DESKTOP_STARTUP_ID}"
+
+	# Awesome wm
+	if [[ ! -z "$desktop_env" && "$desktop_env" == *"awesome"* ]] && [[ ! -z "$(command -v awesome-client)" ]];
+	then
+		echo "AWESOME"
+		return
+	fi
+}
+
+# Create a notification
+if [[ "$(get_desktop_env)" == "AWESOME" ]];
+then
 	notify_awesome
 else
-	notify_non_awesome
+	notify_fallback
 fi
