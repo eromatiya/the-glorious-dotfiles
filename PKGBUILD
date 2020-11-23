@@ -11,7 +11,7 @@ license=("AGPL3")
 depends=(
 	"awesome-git"
 	"rofi-git"
-	"picom-tryone-git"
+	"picom-git"
 	"inter-font"
 )
 optdepends=(
