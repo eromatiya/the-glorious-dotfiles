@@ -313,7 +313,7 @@ local return_button = function()
 				then
 					wireless_state="$(cat "${net}${wireless}/operstate")"
 				fi
-				if [ -n "${wired}"] && [ -d "${net}${wired}" ]; then
+				if [ -n "${wired}" ] && [ -d "${net}${wired}" ]; then
 					wired_state="$(cat "${net}${wired}/operstate")"
 				fi
 				check_network_state
