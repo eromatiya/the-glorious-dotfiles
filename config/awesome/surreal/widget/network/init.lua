@@ -284,7 +284,7 @@ local return_button = function()
 
 	local check_network_mode = function()
 		awful.spawn.easy_async_with_shell(
-			[=[
+[=[
 			wireless="]=] .. tostring(interfaces.wlan_interface) .. [=["
 			wired="]=] .. tostring(interfaces.lan_interface) .. [=["
 			net="/sys/class/net/"
@@ -294,12 +294,12 @@ local return_button = function()
 			network_mode=""
 
 			# Check network state based on interface's operstate value
-			function check_network_state() {
+			check_network_state() {
 				# Check what interface is up
-				if [[ "${wireless_state}" == "up" ]];
+				if [ "${wireless_state}" = "up" ];
 				then
 					network_mode='wireless'
-				elif [[ "${wired_state}" == "up" ]];
+				elif [ "${wired_state}" = "up" ];
 				then
 					network_mode='wired'
 				else
@@ -308,19 +308,19 @@ local return_button = function()
 			}
 
 			# Check if network directory exist
-			function check_network_directory() {
-				if [[ -n "${wireless}" && -d "${net}${wireless}" ]];
+			check_network_directory() {
+				if [ -n "${wireless}" ] && [ -d "${net}${wireless}" ];
 				then
 					wireless_state="$(cat "${net}${wireless}/operstate")"
 				fi
-				if [[ -n "${wired}" && -d "${net}${wired}" ]]; then
+				if [ -n "${wired}" ] && [ -d "${net}${wired}" ]; then
 					wired_state="$(cat "${net}${wired}/operstate")"
 				fi
 				check_network_state
 			}
 
 			# Start script
-			function print_network_mode() {
+			print_network_mode() {
 				# Call to check network dir
 				check_network_directory
 				# Print network mode
