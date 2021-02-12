@@ -251,11 +251,11 @@ local set_wallpaper = function(path)
 	if wall_config.stretch then
 		for s in screen do
 			-- Update wallpaper based on the data in the array
-			gears.wallpaper.maximized (path, s)
+			gears.wallpaper.maximized (path, s,true)
 		end
 	else
 		-- Update wallpaper based on the data in the array
-		gears.wallpaper.maximized (path)
+		gears.wallpaper.maximized (path,nil,true)
 	end
 end
 
