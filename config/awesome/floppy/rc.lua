@@ -68,7 +68,7 @@ screen.connect_signal(
 
 				elseif beautiful.wallpaper:sub(1, #'/') == '/' then
 					-- If beautiful.wallpaper is path/image
-					gears.wallpaper.maximized(beautiful.wallpaper, s)
+					gears.wallpaper.maximized(beautiful.wallpaper, s,true)
 				end
 			else
 				beautiful.wallpaper(s)
