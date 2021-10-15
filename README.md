@@ -69,6 +69,7 @@ If you're too lazy to read the wiki, here's some of the details you need to know
 
 | Name | Description | Why/Where is it needed? |
 | --- | --- | --- |
+| [`gtk3`](http://www.gtk.org/) | A graphical toolkit | Needed for gtk_variable |
 | [`awesome-git`](https://github.com/awesomeWM/awesome) |  Highly configurable framework window manager | Isn't it obvious? |
 | [`rofi`](https://github.com/davatorium/rofi) | Window switcher, application launcher and dmenu replacement | Application launcher |
 | [`picom-git`](https://github.com/yshui/picom) | A compositor for X11 | A compositor with kawase-blur |
