@@ -1,38 +1,37 @@
-local awful = require('awful')
-local wibox = require('wibox')
-local gears = require('gears')
-local dpi = require('beautiful').xresources.apply_dpi
-local clickable_container = require('widget.blue-light.clickable-container')
-local icons = require('theme.icons')
+local awful = require("awful")
+local wibox = require("wibox")
+local gears = require("gears")
+local dpi = require("beautiful").xresources.apply_dpi
+local clickable_container = require("widget.blue-light.clickable-container")
+local icons = require("theme.icons")
 local blue_light_state = nil
 
-local action_name = wibox.widget {
-	text = 'Blue Light',
-	font = 'Inter Regular 11',
-	align = 'left',
-	widget = wibox.widget.textbox
-}
+local action_name = wibox.widget({
+	text = "Blue Light",
+	font = "Inter Regular 11",
+	align = "left",
+	widget = wibox.widget.textbox,
+})
 
-local button_widget = wibox.widget {
+local button_widget = wibox.widget({
 	{
-		id = 'icon',
+		id = "icon",
 		image = icons.toggled_off,
 		widget = wibox.widget.imagebox,
-		resize = true
+		resize = true,
 	},
-	layout = wibox.layout.align.horizontal
-}
+	layout = wibox.layout.align.horizontal,
+})
 
-local widget_button = wibox.widget {
+local widget_button = wibox.widget({
 	{
 		button_widget,
 		top = dpi(7),
 		bottom = dpi(7),
-		widget = wibox.container.margin
+		widget = wibox.container.margin,
 	},
-	widget = clickable_container
-}
-
+	widget = clickable_container,
+})
 
 local update_imagebox = function()
 	local button_icon = button_widget.icon
@@ -74,7 +73,7 @@ local toggle_action = function()
 		fi
 		]],
 		function(stdout)
-			if stdout:match('ON') then
+			if stdout:match("ON") then
 				blue_light_state = true
 			else
 				blue_light_state = false
@@ -82,23 +81,13 @@ local toggle_action = function()
 			update_imagebox()
 		end
 	)
-
 end
 
-widget_button:buttons(
-	gears.table.join(
-		awful.button(
-			{},
-			1,
-			nil,
-			function()
-				toggle_action()
-			end
-		)
-	)
-)
+widget_button:buttons(gears.table.join(awful.button({}, 1, nil, function()
+	toggle_action()
+end)))
 
-local action_widget =  wibox.widget {
+local action_widget = wibox.widget({
 	{
 		action_name,
 		nil,
@@ -111,14 +100,11 @@ local action_widget =  wibox.widget {
 	left = dpi(24),
 	right = dpi(24),
 	forced_height = dpi(48),
-	widget = wibox.container.margin
-}
+	widget = wibox.container.margin,
+})
 
-awesome.connect_signal(
-	'widget::blue_light:toggle',
-	function() 
-		toggle_action()
-	end
-)
+awesome.connect_signal("widget::blue_light:toggle", function()
+	toggle_action()
+end)
 
 return action_widget

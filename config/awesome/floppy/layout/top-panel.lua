@@ -54,6 +54,7 @@ local top_panel = function(s, offset)
 	local clock 			= require('widget.clock')(s)
 	local layout_box 		= require('widget.layoutbox')(s)
 	local add_button 		= require('widget.open-default-app')(s)
+	s.keyboard_layout   = require('widget.keyboard-layout')()
 	s.tray_toggler  		= require('widget.tray-toggle')
 	s.updater 				= require('widget.package-updater')()
 	s.screen_rec 			= require('widget.screen-recorder')()
@@ -87,6 +88,7 @@ local top_panel = function(s, offset)
 			s.network,
 			s.bluetooth,
 			s.battery,
+      s.keyboard_layout,
 			layout_box,
 			s.info_center_toggle
 		}
