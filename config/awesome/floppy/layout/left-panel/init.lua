@@ -4,6 +4,8 @@ local gears = require('gears')
 local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
 local apps = require('configuration.apps')
+local dashboard = require('layout.left-panel.dashboard')
+local action_bar = require('layout.left-panel.action-bar')
 
 local left_panel = function(screen)
 	
@@ -83,7 +85,7 @@ local left_panel = function(screen)
 		c_shape:finish()
 
 		wibox_backdrop.shape_bounding = shape._native
-		shape:finish()
+
 		wibox_backdrop:draw()
 	end
 
@@ -142,11 +144,11 @@ local left_panel = function(screen)
 			visible = false,
 			forced_width = panel_content_width,
 			{
-				require('layout.left-panel.dashboard')(screen, panel),
+				dashboard(screen, panel),
 				layout = wibox.layout.stack
 			}
 		},
-		require('layout.left-panel.action-bar')(screen, panel, action_bar_width)
+		action_bar(screen, panel, action_bar_width)
 	}
 	return panel
 end

@@ -101,6 +101,8 @@ local update_user_name = function()
 		function(stdout)
 			stdout = stdout:gsub('%\n','')
 			local first_name = stdout:match('(.*)@') or stdout:match('(.-)%s')
+      if not first_name then
+        return end
 			first_name = first_name:sub(1, 1):upper() .. first_name:sub(2)
 			profile_name:set_markup(stdout)
 			profile_name:emit_signal('widget::redraw_needed')

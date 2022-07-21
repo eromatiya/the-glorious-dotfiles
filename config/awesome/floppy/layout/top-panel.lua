@@ -2,6 +2,7 @@ local awful = require('awful')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
 local gears = require('gears')
+local debug = require('gears.debug')
 local icons = require('theme.icons')
 local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require('widget.clickable-container')
@@ -35,7 +36,7 @@ local top_panel = function(s, offset)
 
 	panel:connect_signal(
 		'mouse::enter',
-		function() 
+		function()
 			local w = mouse.current_wibox
 			if w then
 				w.cursor = 'left_ptr'
@@ -51,18 +52,18 @@ local top_panel = function(s, offset)
 		widget = wibox.widget.systray
 	}
 
-	local clock 			= require('widget.clock')(s)
-	local layout_box 		= require('widget.layoutbox')(s)
-	local add_button 		= require('widget.open-default-app')(s)
-	s.keyboard_layout   = require('widget.keyboard-layout')()
+	local clock 			= require('widget.clock')
+	local layout_box 		= require('widget.layoutbox')
+	local add_button 		= require('widget.open-default-app')
+	s.keyboard_layout   = require('widget.keyboard-layout')
 	s.tray_toggler  		= require('widget.tray-toggle')
-	s.updater 				= require('widget.package-updater')()
-	s.screen_rec 			= require('widget.screen-recorder')()
-	s.mpd       			= require('widget.mpd')()
-	s.bluetooth   			= require('widget.bluetooth')()
-	s.battery     			= require('widget.battery')()
-	s.network       		= require('widget.network')()
-	s.info_center_toggle	= require('widget.info-center-toggle')()
+	s.updater 				= require('widget.package-updater')
+	s.screen_rec 			= require('widget.screen-recorder')
+	s.mpd       			= require('widget.mpd')
+	s.bluetooth   			= require('widget.bluetooth')
+	s.battery     			= require('widget.battery')
+	s.network       		= require('widget.network')
+	s.info_center_toggle	= require('widget.info-center-toggle')
 
 	panel : setup {
 		layout = wibox.layout.align.horizontal,
@@ -70,9 +71,9 @@ local top_panel = function(s, offset)
 		{
 			layout = wibox.layout.fixed.horizontal,
 			task_list(s),
-			add_button
-		}, 
-		clock,
+			add_button(s)
+		},
+		clock(s),
 		{
 			layout = wibox.layout.fixed.horizontal,
 			spacing = dpi(5),
@@ -82,15 +83,15 @@ local top_panel = function(s, offset)
 				widget = wibox.container.margin
 			},
 			s.tray_toggler,
-			s.updater,
-			s.screen_rec,
-			s.mpd,
-			s.network,
-			s.bluetooth,
-			s.battery,
-      s.keyboard_layout,
-			layout_box,
-			s.info_center_toggle
+			s.updater(),
+			s.screen_rec(),
+			s.mpd(),
+			s.network(),
+			s.bluetooth(),
+			s.battery(),
+      s.keyboard_layout(),
+			layout_box(s),
+			s.info_center_toggle()
 		}
 	}
 

@@ -1,9 +1,13 @@
 local awful = require('awful')
 local wibox = require('wibox')
+local debug = require('gears.debug')
 local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
 panel_visible = false
+local notif_panel = require('widget.notif-center')
 
+nf_string = debug.dump_return(notif_panel)
+debug.print_warning(nf_string)
 local right_panel = function(s)
 
 	-- Set right panel geometry
@@ -150,7 +154,7 @@ local right_panel = function(s)
 				{
 					id = 'notif_id',
 					visible = false,
-					require('widget.notif-center')(s),
+					notif_panel(s)[2],
 					layout = wibox.layout.fixed.vertical,
 				}
 			},
