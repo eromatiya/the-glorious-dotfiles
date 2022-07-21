@@ -83,6 +83,7 @@ local left_panel = function(screen)
 		cr:set_source_rgba(0, 0, 0, 0)
 		cr:mask_surface(c_shape, c_geo.x + wibox_panel.border_width - geo.x, c_geo.y + wibox_panel.border_width - geo.y)
 		c_shape:finish()
+    shape:finish()
 
 		wibox_backdrop.shape_bounding = shape._native
 
