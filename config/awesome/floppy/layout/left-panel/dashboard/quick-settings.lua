@@ -38,11 +38,11 @@ return wibox.widget {
 			{
 				{
 					layout = wibox.layout.fixed.vertical,
-					require('widget.brightness-slider'),
-					require('widget.volume-slider'),
-					require('widget.airplane-mode'),
-					require('widget.bluetooth-toggle'),
-					require('widget.blue-light')
+					require('widget.brightness-slider')[1],
+					require('widget.volume-slider')[1],
+					require('widget.airplane-mode')[1],
+					require('widget.bluetooth-toggle')[1],
+					require('widget.blue-light')[1]
 				},
 				bg = beautiful.groups_bg,
 				shape = function(cr, width, height)
@@ -53,8 +53,8 @@ return wibox.widget {
 			{
 				{
 					layout = wibox.layout.fixed.vertical,
-					require('widget.blur-slider'),
-					require('widget.blur-toggle')
+					require('widget.blur-slider')[1],
+					require('widget.blur-toggle')[1]
 				},
 				bg = beautiful.groups_bg,
 				shape = function(cr, width, height)

@@ -23,23 +23,22 @@ return wibox.widget {
 		},
 		bg = beautiful.groups_title_bg,
 		shape = function(cr, width, height)
-			gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.groups_radius) 
+			gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, beautiful.groups_radius)
 		end,
 		forced_height = dpi(35),
 		widget = wibox.container.background
-		
 	},
 	{
 		{
 			layout = wibox.layout.fixed.vertical,
-			require('widget.cpu-meter'),
-			require('widget.ram-meter'),
-			require('widget.temperature-meter'),
-			require('widget.harddrive-meter')
+			require('widget.cpu-meter')[1],
+			require('widget.ram-meter')[1],
+			require('widget.temperature-meter')[1],
+			require('widget.harddrive-meter')[1]
 		},
 		bg = beautiful.groups_bg,
 		shape = function(cr, width, height)
-			gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.groups_radius) 
+			gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true, beautiful.groups_radius)
 		end,
 		widget = wibox.container.background
 	}

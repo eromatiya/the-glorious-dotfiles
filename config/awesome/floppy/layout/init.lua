@@ -13,8 +13,8 @@ screen.connect_signal(
 		else
 			s.top_panel = top_panel(s, false)
 		end
-		-- s.right_panel = right_panel(s)
-		-- s.right_panel_show_again = false
+		s.right_panel = right_panel(s)
+		s.right_panel_show_again = false
 	end
 )
 
@@ -29,15 +29,15 @@ function update_bars_visibility()
 			if s.left_panel then
 				s.left_panel.visible = not fullscreen
 			end
-			-- if s.right_panel then
-			-- 	if fullscreen and s.right_panel.visible then
-			-- 		s.right_panel:toggle()
-			-- 		s.right_panel_show_again = true
-			-- 	elseif not fullscreen and not s.right_panel.visible and s.right_panel_show_again then
-			-- 		s.right_panel:toggle()
-			-- 		s.right_panel_show_again = false
-			-- 	end
-			-- end
+			if s.right_panel then
+				if fullscreen and s.right_panel.visible then
+					s.right_panel:toggle()
+					s.right_panel_show_again = true
+				elseif not fullscreen and not s.right_panel.visible and s.right_panel_show_again then
+					s.right_panel:toggle()
+					s.right_panel_show_again = false
+				end
+			end
 		end
 	end
 end
