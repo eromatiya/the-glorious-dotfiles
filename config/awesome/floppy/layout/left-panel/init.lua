@@ -1,66 +1,57 @@
-local wibox = require('wibox')
-local awful = require('awful')
-local gears = require('gears')
-local beautiful = require('beautiful')
+local wibox = require("wibox")
+local awful = require("awful")
+local gears = require("gears")
+local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local apps = require('configuration.apps')
-local dashboard = require('layout.left-panel.dashboard')
-local action_bar = require('layout.left-panel.action-bar')
-
+local apps = require("configuration.apps")
 local left_panel = function(screen)
-	
 	local action_bar_width = dpi(45)
 	local panel_content_width = dpi(350)
 
-	local panel = wibox {
+	local panel = wibox({
 		screen = screen,
 		width = action_bar_width,
-		type = 'dock',
+		type = "dock",
 		height = screen.geometry.height,
 		x = screen.geometry.x,
 		y = screen.geometry.y,
 		ontop = true,
 		shape = gears.shape.rectangle,
 		bg = beautiful.background,
-		fg = beautiful.fg_normal
-	}
+		fg = beautiful.fg_normal,
+	})
 
+	local left_panel_action_bar = require("layout.left-panel.action-bar")(screen, panel, action_bar_width)
+	local left_panel_dashboard = require("layout.left-panel.dashboard")(screen, panel)
 	panel.opened = false
 
-	panel:struts {
-		left = action_bar_width
-	}
+	panel:struts({
+		left = action_bar_width,
+	})
 
-	local backdrop = wibox {
+	local backdrop = wibox({
 		ontop = true,
 		screen = screen,
 		bg = beautiful.transparent,
-		type = 'utility',
+		type = "utility",
 		x = screen.geometry.x,
 		y = screen.geometry.y,
 		width = screen.geometry.width,
-		height = screen.geometry.height
-	}
+		height = screen.geometry.height,
+	})
 
 	function panel:run_rofi()
-		awesome.spawn(
-			apps.default.rofi_global,
-			false,
-			false,
-			false,
-			false,
-			function()
-				panel:toggle()
-			end
-		)
-		
+		awesome.spawn(apps.default.rofi_global, false, false, false, false, function()
+			panel:toggle()
+		end)
+
 		-- Hide panel content if rofi global search is opened
-		panel:get_children_by_id('panel_content')[1].visible = false
+		panel:get_children_by_id("panel_content")[1].visible = false
 	end
 
 	-- "Punch a hole" on backdrop to show the left dashboard
 	local update_backdrop = function(wibox_backdrop, wibox_panel)
-		local cairo = require('lgi').cairo
+		local cairo = require("lgi").cairo
 		local geo = wibox_panel.screen.geometry
 
 		wibox_backdrop.x = geo.x
@@ -73,7 +64,7 @@ local left_panel = function(screen)
 		local cr = cairo.Context(shape)
 
 		-- Fill with "completely opaque"
-		cr.operator = 'SOURCE'
+		cr.operator = "SOURCE"
 		cr:set_source_rgba(1, 1, 1, 1)
 		cr:paint()
 
@@ -85,7 +76,7 @@ local left_panel = function(screen)
 		c_shape:finish()
 
 		wibox_backdrop.shape_bounding = shape._native
-    shape:finish()
+		shape:finish()
 
 		wibox_backdrop:draw()
 	end
@@ -94,19 +85,19 @@ local left_panel = function(screen)
 		panel.width = action_bar_width + panel_content_width
 		backdrop.visible = true
 		update_backdrop(backdrop, panel)
-		panel:get_children_by_id('panel_content')[1].visible = true
+		panel:get_children_by_id("panel_content")[1].visible = true
 		if should_run_rofi then
 			panel:run_rofi()
 		end
-		panel:emit_signal('opened')
+		panel:emit_signal("opened")
 	end
 
 	local close_panel = function()
 		panel.width = action_bar_width
-		panel:get_children_by_id('panel_content')[1].visible = false
+		panel:get_children_by_id("panel_content")[1].visible = false
 		backdrop.visible = false
 		update_backdrop(backdrop, panel)
-		panel:emit_signal('closed')
+		panel:emit_signal("closed")
 	end
 
 	-- Hide this panel when app dashboard is called.
@@ -123,34 +114,27 @@ local left_panel = function(screen)
 		end
 	end
 
-	backdrop:buttons(
-		awful.util.table.join(
-			awful.button(
-				{},
-				1,
-				function()
-					panel:toggle()
-				end
-			)
-		)
-	)
+	backdrop:buttons(awful.util.table.join(awful.button({}, 1, function()
+		panel:toggle()
+	end)))
 
-	panel:setup {
+	panel:setup({
 		layout = wibox.layout.align.horizontal,
 		nil,
 		{
-			id = 'panel_content',
+			id = "panel_content",
 			bg = beautiful.transparent,
 			widget = wibox.container.background,
 			visible = false,
 			forced_width = panel_content_width,
 			{
-				dashboard(screen, panel),
-				layout = wibox.layout.stack
-			}
+
+				left_panel_dashboard,
+				layout = wibox.layout.stack,
+			},
 		},
-		action_bar(screen, panel, action_bar_width)
-	}
+		left_panel_action_bar,
+	})
 	return panel
 end
 
