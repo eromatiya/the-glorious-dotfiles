@@ -2,13 +2,14 @@ configuration {
 	font: "Inter Regular 10";
 	show-icons: true;
 	drun-display-format: "{name}";
-	fullscreen: false;
 	threads: 0;
 	matching: "fuzzy";
 	scroll-method: 0;
 	disable-history: false;
 	fullscreen: true;
 	window-thumbnail: true;
+        cycle: true;
+        icon-theme: "Papirus";
 }
 
 * {
@@ -26,8 +27,10 @@ window {
 	transparency: "real";
 	background-color: @transparent;
 	text-color: @foreground;
-	location: northwest;
-	anchor: northwest;
+        width: 100%;
+        height: 100%;
+	/* location: northwest; */
+	/* anchor: northwest; */
 }
 
 prompt {
@@ -77,7 +80,7 @@ inputbar {
 	text-color: @foreground;
 	expand: false;
 	border-radius: 6px;
-	margin: 0px calc((100% - 640px) / 2) 0px calc((100% - 640px) / 2);
+	margin: 0px 25%  0px 25%;
 	padding: 10px 10px 10px 10px;
 	position: north;
 	children: [ entry-wrapper ];
@@ -90,11 +93,13 @@ listview {
 	cycle: false;
 	dynamic: true;
 	layout: vertical;
+        /* scrollbar : true; */
+        lines : 4;
 }
 
 mainbox {
 	background-color: @background-black;
-	children: [ inputbar, listview ];
+	children: [ inputbar, listview];
 	spacing: 25px;
 	padding: 70px 15% 0 15%;
 	/*padding: 70px 135px 0 135px;*/
@@ -109,11 +114,14 @@ element {
 }
 
 element-icon {
-	size: 72px;
 	border: 0;
+        background-color: @transparent;
+	size: 72px;
 }
 
 element-text {
+	background-color: @transparent;
+	text-color: white;
 	expand: true;
 	horizontal-align: 0.5;
 	vertical-align: 0.5;
