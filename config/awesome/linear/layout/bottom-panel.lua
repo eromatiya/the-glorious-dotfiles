@@ -23,6 +23,7 @@ local clock_w = require("widget.clock")
 local layout_box_w = require("widget.layoutbox")
 local battery = require("widget.battery")
 local info_center_toggle_w = require("widget.info-center-toggle")
+local keyboard_layout = require("widget.keyboard-layout")
 
 local bottom_panel = function(s)
 	local panel = wibox({
@@ -88,6 +89,7 @@ local bottom_panel = function(s)
 	s.tray_toggler = build_widget(tray_toggle)
 	s.updater = build_widget(package_updater())
 	s.screen_rec = build_widget(screen_recorder())
+	s.keyboard_layout = build_widget(keyboard_layout())
 	s.bluetooth = build_widget(bluetooth())
 	s.network = build_widget(network())
 	local clock = build_widget(clock_w(s))
@@ -123,6 +125,7 @@ local bottom_panel = function(s)
 				s.screen_rec,
 				s.network,
 				s.bluetooth,
+				s.keyboard_layout,
 				s.battery,
 				clock,
 				layout_box,

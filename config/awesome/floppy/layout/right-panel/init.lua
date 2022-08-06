@@ -135,11 +135,11 @@ local right_panel = function(s)
 					{
 						layout = wibox.layout.fixed.vertical,
 						spacing = dpi(7),
-						user_profile,
-						weather,
-						email,
-						social_media,
-						calculator,
+						-- user_profile,
+						-- weather,
+						-- email,
+						-- social_media,
+						-- calculator,
 					},
 				},
 				-- Notification Center

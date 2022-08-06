@@ -6,6 +6,13 @@ local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme.icons")
 local clickable_container = require("widget.clickable-container")
 local task_list = require("widget.task-list")
+local clock = require("widget.clock")
+local updater = require("widget.package-updater")
+local screen_recorder = require("widget.screen-recorder")
+local mpd = require("widget.mpd")
+local end_session = require("widget.end-session")
+local global_search = require("widget.global-search")
+local keyboard_layout = require("widget.keyboard-layout")
 
 local top_panel = function(s)
 	local panel = wibox({
@@ -33,12 +40,12 @@ local top_panel = function(s)
 	end)
 
 	local add_button = require("widget.open-default-app")(s)
-	local clock = require("widget.clock")
-	s.updater = require("widget.package-updater")()
-	s.screen_rec = require("widget.screen-recorder")()
-	s.mpd = require("widget.mpd")()
-	s.end_session = require("widget.end-session")()
-	s.global_search = require("widget.global-search")()
+	s.updater = updater()
+	s.screen_rec = screen_recorder()
+	s.mpd = mpd()
+	s.keyboard_layout = keyboard_layout()
+	s.end_session = end_session()
+	s.global_search = global_search()
 
 	panel:setup({
 		layout = wibox.layout.align.horizontal,
@@ -55,6 +62,7 @@ local top_panel = function(s)
 			s.updater,
 			s.screen_rec,
 			s.global_search,
+			s.keyboard_layout,
 			s.mpd,
 			s.end_session,
 		},

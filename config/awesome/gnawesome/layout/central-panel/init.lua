@@ -9,7 +9,7 @@ local weather = require("widget.weather")
 local email = require("widget.email")
 local calendar = require("widget.calendar")
 local notification_center = require("widget.notif-center")
-local central_panel_settings = require("layout.central-panel.settings")()
+local central_panel_settings = require("layout.central-panel.settings")
 
 local panel_visible = false
 
