@@ -11,7 +11,11 @@
 
 <div align='center'>
 
-[![maintained](https://img.shields.io/maintenance/yes/2020?label=maintained&style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/commits/master) [![contributions](https://img.shields.io/badge/contribution-welcome-brightgreen&?style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/pulls) [![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
+[![maintained](https://shields.io/github/last-commit/frostedpenguin/the-glorious-dotfiles)](https://github.com/manilarome/the-glorious-dotfiles/commits/master) 
+[![contributions](https://img.shields.io/badge/contribution-welcome-brightgreen&?style=flat-square)](https://github.com/manilarome/the-glorious-dotfiles/pulls) 
+[![HitCount](http://hits.dwyl.com/manilarome/Glorified-Dotfiles.svg)](http://hits.dwyl.com/manilarome/the-glorified-dotfiles)
+![issues](https://shields.io/github/issues/frostedpenguin/the-glorious-dotfiles)
+
 
 </div>
 
