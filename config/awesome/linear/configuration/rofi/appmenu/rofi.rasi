@@ -8,8 +8,9 @@ configuration {
 	disable-history: false;
 	fullscreen: true;
 	window-thumbnail: true;
-        cycle: true;
+        cycle: false;
         icon-theme: "Papirus";
+        modi: "window,run,ssh,drun";
 }
 
 * {
@@ -88,17 +89,18 @@ inputbar {
 
 listview {
 	background-color: @transparent;
-	columns: 6;
-	spacing: 5px;
-	cycle: false;
+	columns: 7;
+	spacing: 5%;
+	cycle: true;
 	dynamic: true;
 	layout: vertical;
+        lines: 1;
         /* scrollbar : true; */
-        lines : 4;
 }
 
 mainbox {
 	background-color: @background-black;
+        /* lines : 1; */
 	children: [ inputbar, listview];
 	spacing: 25px;
 	padding: 70px 15% 0 15%;
@@ -110,13 +112,13 @@ element {
 	text-color: @foreground;
 	orientation: vertical;
 	border-radius: 12px;
-	padding: 25px 0 25px 0;
+	/* padding: 4% 0 4% 0; */
 }
 
 element-icon {
 	border: 0;
         background-color: @transparent;
-	size: 72px;
+	size: 10%;
 }
 
 element-text {
@@ -154,4 +156,4 @@ element selected.urgent {
 element selected.active {
 	background-color: @background-active;
 	color: @foreground-selected;
-}
+}  

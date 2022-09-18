@@ -293,7 +293,7 @@ function find_query() {
 	then
 		if [ -z "$FD_INSTALLED" ];
 		then
-			find "${HOME}" -iname *"${QUERY}"* | sed "s/\/home\/$USER/\~/" |
+			find . -iname *"${QUERY}"* | sed "s/\/home\/$USER/\~/" |
 				awk -v MY_PATH="${MY_PATH}" '{print $0"\0icon\x1f"MY_PATH"/icons/result.svg\n"}'
 		else
 			fd -H ${QUERY} ${HOME} | sed "s/\/home\/$USER/\~/" |

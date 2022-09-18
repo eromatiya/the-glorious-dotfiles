@@ -6,7 +6,8 @@ configuration {
     threads: 0;
     matching: "fuzzy";
     scroll-method: 0;
-    monitor: "primary";
+    /* monitor: "primary"; */
+    icon-theme: "Papirus";
 }
 
 * {
@@ -85,6 +86,7 @@ listview {
     cycle: true;
     dynamic: true;
     scrollbar: true;
+    lines :3;
 }
 
 mainbox {
@@ -116,12 +118,15 @@ element {
 }
 
 element-icon {
+    background-color: @transparent;
     size: 24px;
     border: 0;
     border-color: @transparent;
 }
 
 element-text {
+    background-color: @transparent;
+    text-color: white;
     font: "Inter Regular 11";
     expand: true;
     horizontal-align: 0;
