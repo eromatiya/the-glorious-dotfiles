@@ -1,22 +1,21 @@
 local Path = require("module.path")
+local config_dir = require("module.get-workspace-dir")
+print("cc" .. config_dir())
 --- @type {["floppy"]: string}
 local titlebar_themes = {
 	["floppy"] = "spotlight",
 }
 
-local gears = require("gears")
-local filesystem = require("gears.filesystem")
-
-local config_dir = Path:new(nil, { filesystem.get_xdg_config_home(), "awesome" })
-local theme_dir = Path:new(nil, { "theme", THEME })
-local icons = Path:new(nil, { "icons" })
-local titlebar = Path:new(nil, { "titlebar", titlebar_themes[THEME] })
+local theme_dir = config_dir + Path:new(nil, { "theme", THEME })
+local icons = theme_dir + Path:new(nil, { "icons" })
+local titlebar = icons + Path:new(nil, { "titlebar", titlebar_themes[THEME] })
 
 -- @type {["root"]: string,["icons"]: string , ["titlebar_icons"]: string}
 local directories = {
-	["root"] = (config_dir + theme_dir)(),
-	["icons"] = (config_dir + theme_dir + icons)(),
-	["titlebar_icons"] = (config_dir + theme_dir + icons + titlebar)(),
+	["root"] = theme_dir(),
+	["icons"] = icons(),
+	["titlebar_icons"] = titlebar(),
 }
+print(directories.titlebar_icons)
 
 return directories

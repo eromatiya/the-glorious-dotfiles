@@ -5,7 +5,7 @@ function Path:new(o, path)
 	o = o or {}
 	setmetatable(o, self)
 	self.__index = self
-	self.path = path
+	o.path = path or {}
 	return o
 end
 

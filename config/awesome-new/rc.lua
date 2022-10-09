@@ -3,7 +3,6 @@
 -- ░▀░░░▀▀▀░▀▀▀░▀░░░▀░░░░▀░
 -- Banner generated using `toilet -f pagga AwesomeWM
 THEME = "floppy"
-require("module.path")
 
 local gears = require("gears")
 local beautiful = require("beautiful")
