@@ -4,7 +4,7 @@ local beautiful = require("beautiful")
 local filesystem = gears.filesystem
 local dpi = beautiful.xresources.apply_dpi
 local gtk_variable = beautiful.gtk.get_theme_variables
-local theme_directories = require("theme.directories")
+local theme_directories = require("theme.directories")()
 
 local tip = theme_directories.titlebar_icons
 
