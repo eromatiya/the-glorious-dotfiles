@@ -4,9 +4,10 @@ local beautiful = require("beautiful")
 local filesystem = gears.filesystem
 local dpi = beautiful.xresources.apply_dpi
 local gtk_variable = beautiful.gtk.get_theme_variables
-local theme_directories = require("theme.directories")()
+local theme_directories = require("theme.directories")
 
 local tip = theme_directories.titlebar_icons
+print(theme_directories.icons)
 
 -- Create theme table
 local theme = {}
@@ -20,10 +21,11 @@ theme.icon_theme = "Tela-blue-dark"
 
 local awesome_overrides = function(theme)
 	theme.dir = theme_directories.root
-	theme.icons = theme_directories.root .. "/icons/"
+	theme.icons = theme_directories.icons
 
 	-- Default wallpaper path
-	theme.wallpaper = theme.dir .. "/wallpapers/morning-wallpaper.jpg"
+	-- TODO add Default wallpaper type
+	theme.wallpaper = theme_directories.wallpaper .. "morning-wallpaper.jpg"
 
 	-- Default font
 	theme.font = "Inter Regular 10"
