@@ -9,10 +9,14 @@ local sanitize = function(path)
 	end
 	return path
 end
---- insert path in {"path1", "path2", "path3"} format
+--- path class for easier path manipulation
 --- @class Path
 --- @field path table
 local Path = {}
+--- insert path in {"path1", "path2", "path3"} format
+---@param o any
+---@param path table
+---@return Path
 function Path:new(o, path)
 	o = o or {}
 	setmetatable(o, self)

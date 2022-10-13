@@ -2,7 +2,7 @@
 -- ░█▀▀░█░░░█░█░█▀▀░█▀▀░░█░
 -- ░▀░░░▀▀▀░▀▀▀░▀░░░▀░░░░▀░
 -- Banner generated using `toilet -f pagga AwesomeWM
-THEME = "floppy"
+THEME = "linear"
 
 local gears = require("gears")
 local beautiful = require("beautiful")
@@ -19,7 +19,7 @@ awful.util.shell = "sh"
 -- ░░█░░█▀█░█▀▀░█░█░█▀▀
 -- ░░▀░░▀░▀░▀▀▀░▀░▀░▀▀▀
 
-beautiful.init(require("theme." .. THEME))
+beautiful.init(require("theme"))
 
 -- ░█░░░█▀█░█░█░█▀█░█░█░▀█▀
 -- ░█░░░█▀█░░█░░█░█░█░█░░█░

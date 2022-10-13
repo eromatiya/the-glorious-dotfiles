@@ -1,4 +1,3 @@
-local filesystem = require("gears.filesystem")
 local directories = require("theme.directories")
 
 local theme = {}
