@@ -5,6 +5,8 @@ local filesystem = require("gears.filesystem")
 local titlebar_themes = {
 	["floppy"] = "spotlight",
 	["gnawesome"] = "spotlight",
+	["linear"] = "spotlight",
+	["surreal"] = "spotlight",
 }
 
 local config_dir = Path:new(nil, { filesystem.get_configuration_dir() })

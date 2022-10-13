@@ -1,13 +1,13 @@
 local gtable = require("gears.table")
 
 ---sanitizing path so it doesn.t
----@param path string
----@return string
-local sanitize = function(path)
-	if path:sub(-1) == "/" then
-		return path:sub(1, -2)
+local check_for_delimeters = function(folders)
+	for i, path in ipairs(folders) do
+		if path:sub(-1) == "/" then
+			error("Path:" .. path .. " has a trailing slash")
+		end
 	end
-	return path
+	return folders
 end
 --- path class for easier path manipulation
 --- @class Path
@@ -21,6 +21,7 @@ function Path:new(o, path)
 	o = o or {}
 	setmetatable(o, self)
 	self.__index = self
+	pcall(check_for_delimeters(path))
 	o.path = path or {}
 	return o
 end
