@@ -5,7 +5,7 @@ local dpi = beautiful.xresources.apply_dpi
 
 local create_xdg_widgets = function()
 	local separator =  wibox.widget {
-		orientation = 'horizontal',
+		orientation = 'vertical',
 		forced_height = dpi(1),
 		forced_width = dpi(1),
 		span_ratio = 0.55,
@@ -13,17 +13,17 @@ local create_xdg_widgets = function()
 	}
 
 	return wibox.widget {
-		layout = wibox.layout.align.vertical,
+		layout = wibox.layout.align.horizontal,
 	  	{
 			separator,
 			require('widget.xdg-folders.home')(),
 			require('widget.xdg-folders.documents')(),
 			require('widget.xdg-folders.downloads')(),
-			-- require('widget.xdg-folders.pictures')(),
-			-- require('widget.xdg-folders.videos')(),
+			require('widget.xdg-folders.pictures')(),
+			require('widget.xdg-folders.videos')(),
 			separator,
 			require('widget.xdg-folders.trash')(),
-			layout = wibox.layout.fixed.vertical,
+			layout = wibox.layout.fixed.horizontal,
 	  	},
 	}
 end

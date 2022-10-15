@@ -26,7 +26,7 @@ function Path:new(...)
 end
 
 function Path:__add(other)
-	return Path:new(nil, gtable.join(self.path, other.path))
+	return Path:new(table.unpack(gtable.join(self.path, other.path)))
 end
 --- @param ... string
 function Path:join(...)

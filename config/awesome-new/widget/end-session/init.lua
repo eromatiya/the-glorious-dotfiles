@@ -3,66 +3,50 @@ local wibox = require('wibox')
 local gears = require('gears')
 local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
-local clickable_container = require('widget.clickable-container')
 local icons = require('theme.icons')
+local clickable_container = require('widget.clickable-container')
 
-local create_widget = function()
-	local exit_widget = {
+local return_button = function()
+
+	local widget = wibox.widget {
 		{
-			{
-				{
-					image = icons.logout,
-					resize = true,
-					widget = wibox.widget.imagebox
-				},
-				top = dpi(12),
-				bottom = dpi(12),
-				widget = wibox.container.margin
-			},
-			{
-				text = 'End work session',
-				font = 'Inter Regular 12',
-				align = 'left',
-				valign = 'center',
-				widget = wibox.widget.textbox
-			},
-			spacing = dpi(24),
-			layout = wibox.layout.fixed.horizontal
+			id = 'icon',
+			image = icons.power,
+			resize = true,
+			widget = wibox.widget.imagebox
 		},
-		left = dpi(24),
-		right = dpi(24),
-		forced_height = dpi(48),
-		widget = wibox.container.margin
+		layout = wibox.layout.align.horizontal
 	}
 
-	local exit_button = wibox.widget {
+	local widget_button = wibox.widget {
 		{
-			exit_widget,
+			{
+				widget,
+				margins = dpi(5),
+				widget = wibox.container.margin
+			},
 			widget = clickable_container
-
 		},
-		bg = beautiful.groups_bg,
-		shape = function(cr, width, height)
-			gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius) 
-		end,
+		bg = beautiful.transparent,
+		shape = gears.shape.circle,
 		widget = wibox.container.background
 	}
 
-	exit_button:buttons(
-		awful.util.table.join(
+	widget_button:buttons(
+		gears.table.join(
 			awful.button(
 				{},
 				1,
 				nil,
 				function()
-					screen.primary.left_panel:toggle()
 					awesome.emit_signal('module::exit_screen:show')
+					awful.screen.focused().control_center:toggle()
 				end
 			)
 		)
 	)
 
-	return exit_button
+	return widget_button
 end
 
-return create_widget
+return return_button

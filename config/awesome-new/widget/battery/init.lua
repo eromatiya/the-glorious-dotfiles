@@ -126,7 +126,7 @@ local return_button = function()
 				if not battery_percentage then
 					return
 				end
-				
+
 				battery_widget.spacing = dpi(5)
 				battery_percentage_text.visible = true
 				battery_percentage_text:set_text(battery_percentage .. '%')

@@ -16,8 +16,8 @@ local clear_all_imagebox = wibox.widget {
 	{
 		image = widget_icon_dir .. 'clear_all.svg',
 		resize = true,
-		forced_height = dpi(20),
-		forced_width = dpi(20),
+		forced_height = dpi(17),
+		forced_width = dpi(17),
 		widget = wibox.widget.imagebox,
 	},
 	layout = wibox.layout.fixed.horizontal
@@ -26,7 +26,7 @@ local clear_all_imagebox = wibox.widget {
 local clear_all_button = wibox.widget {
 	{
 		clear_all_imagebox,
-		margins = dpi(7),
+		margins = dpi(5),
 		widget = wibox.container.margin
 	},
 	widget = clickable_container
@@ -49,7 +49,7 @@ local clear_all_button_wrapped = wibox.widget {
 	nil,
 	{
 		clear_all_button,
-		bg = beautiful.groups_bg, 
+		bg = beautiful.transparent,
 		shape = gears.shape.circle,
 		widget = wibox.container.background
 	},

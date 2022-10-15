@@ -17,7 +17,7 @@ notif_core.remove_notifbox_empty = true
 
 notif_core.notifbox_layout = wibox.widget {
 	layout = wibox.layout.fixed.vertical,
-	spacing = dpi(7),
+	spacing = dpi(10),
 	empty_notifbox
 }
 
@@ -63,7 +63,7 @@ end
 naughty.connect_signal(
 	'request::display',
 	function(n)
-		local notifbox_color = beautiful.groups_bg
+		local notifbox_color = beautiful.transparent
 		if n.urgency == 'critical' then
 			notifbox_color = n.bg .. '66'
 		end

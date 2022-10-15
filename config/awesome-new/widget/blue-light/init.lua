@@ -1,44 +1,70 @@
-local awful = require("awful")
-local wibox = require("wibox")
-local gears = require("gears")
-local dpi = require("beautiful").xresources.apply_dpi
-local clickable_container = require("widget.blue-light.clickable-container")
-local icons = require("theme.icons")
-local blue_light_state = nil
+local awful = require('awful')
+local wibox = require('wibox')
+local gears = require('gears')
+local beautiful = require('beautiful')
+local dpi = beautiful.xresources.apply_dpi
+local clickable_container = require('widget.clickable-container')
+local config_dir = gears.filesystem.get_configuration_dir()
+local widget_dir = config_dir .. 'widget/blue-light/'
+local widget_icon_dir = widget_dir .. 'icons/'
+local icons = require('theme.icons')
+local device_state = false
 
-local action_name = wibox.widget({
-	text = "Blue Light",
-	font = "Inter Regular 11",
-	align = "left",
-	widget = wibox.widget.textbox,
-})
+local action_name = wibox.widget {
+	text = 'Blue Light',
+	font = 'Inter Bold 10',
+	align = 'left',
+	widget = wibox.widget.textbox
+}
 
-local button_widget = wibox.widget({
+local action_status = wibox.widget {
+	text = 'Off',
+	font = 'Inter Regular 10',
+	align = 'left',
+	widget = wibox.widget.textbox
+}
+
+local action_info = wibox.widget {
+	layout = wibox.layout.fixed.vertical,
+	action_name,
+	action_status
+}
+
+local button_widget = wibox.widget {
 	{
-		id = "icon",
-		image = icons.toggled_off,
+		id = 'icon',
+		image = widget_icon_dir .. 'blue-light-off.svg',
 		widget = wibox.widget.imagebox,
-		resize = true,
+		resize = true
 	},
-	layout = wibox.layout.align.horizontal,
-})
+	layout = wibox.layout.align.horizontal
+}
 
-local widget_button = wibox.widget({
+local widget_button = wibox.widget {
 	{
-		button_widget,
-		top = dpi(7),
-		bottom = dpi(7),
-		widget = wibox.container.margin,
+		{
+			button_widget,
+			margins = dpi(15),
+			forced_height = dpi(48),
+			forced_width = dpi(48),
+			widget = wibox.container.margin
+		},
+		widget = clickable_container
 	},
-	widget = clickable_container,
-})
+	bg = beautiful.groups_bg,
+	shape = gears.shape.circle,
+	widget = wibox.container.background
+}
 
-local update_imagebox = function()
-	local button_icon = button_widget.icon
+local update_widget = function()
 	if blue_light_state then
-		button_icon:set_image(icons.toggled_on)
+		action_status:set_text('On')
+		widget_button.bg = beautiful.accent
+		button_widget.icon:set_image(widget_icon_dir .. 'blue-light.svg')
 	else
-		button_icon:set_image(icons.toggled_off)
+		action_status:set_text('Off')
+		widget_button.bg = beautiful.groups_bg
+		button_widget.icon:set_image(widget_icon_dir .. 'blue-light-off.svg')
 	end
 end
 
@@ -52,7 +78,7 @@ local kill_state = function()
 			stdout = tonumber(stdout)
 			if stdout then
 				blue_light_state = false
-				update_imagebox()
+				update_widget()
 			end
 		end
 	)
@@ -73,38 +99,61 @@ local toggle_action = function()
 		fi
 		]],
 		function(stdout)
-			if stdout:match("ON") then
+			if stdout:match('ON') then
 				blue_light_state = true
 			else
 				blue_light_state = false
 			end
-			update_imagebox()
+			update_widget()
 		end
 	)
 end
 
-widget_button:buttons(gears.table.join(awful.button({}, 1, nil, function()
-	toggle_action()
-end)))
+widget_button:buttons(
+	gears.table.join(
+		awful.button(
+			{},
+			1,
+			nil,
+			function()
+				toggle_action()
+			end
+		)
+	)
+)
 
-local action_widget = wibox.widget({
+action_info:buttons(
+	gears.table.join(
+		awful.button(
+			{},
+			1,
+			nil,
+			function()
+				toggle_action()
+			end
+		)
+	)
+)
+
+local action_widget =  wibox.widget {
+	layout = wibox.layout.fixed.horizontal,	
+	spacing = dpi(10),
+	widget_button,
 	{
-		action_name,
+		layout = wibox.layout.align.vertical,
+		expand = 'none',
 		nil,
-		{
-			widget_button,
-			layout = wibox.layout.fixed.horizontal,
-		},
-		layout = wibox.layout.align.horizontal,
-	},
-	left = dpi(24),
-	right = dpi(24),
-	forced_height = dpi(48),
-	widget = wibox.container.margin,
-})
+		action_info,
+		nil
+	}
 
-awesome.connect_signal("widget::blue_light:toggle", function()
-	toggle_action()
-end)
+}
+
+awesome.connect_signal(
+	'widget::blue_light:toggle',
+	function() 
+		toggle_action()
+	end
+)
 
 return action_widget

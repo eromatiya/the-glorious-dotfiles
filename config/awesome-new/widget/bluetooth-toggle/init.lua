@@ -1,26 +1,40 @@
 local awful = require('awful')
 local wibox = require('wibox')
 local gears = require('gears')
-local naughty = require('naughty')
+local beautiful = require('beautiful')
 local watch = awful.widget.watch
-local dpi = require('beautiful').xresources.apply_dpi
-local clickable_container = require('widget.bluetooth-toggle.clickable-container')
+local dpi = beautiful.xresources.apply_dpi
+local clickable_container = require('widget.clickable-container')
 local config_dir = gears.filesystem.get_configuration_dir()
-local widget_icon_dir = config_dir .. 'widget/bluetooth-toggle/icons/'
+local widget_dir = config_dir .. 'widget/bluetooth-toggle/'
+local widget_icon_dir = widget_dir .. 'icons/'
 local icons = require('theme.icons')
 local device_state = false
 
 local action_name = wibox.widget {
-	text = 'Bluetooth Connection',
-	font = 'Inter Regular 11',
+	text = 'Bluetooth',
+	font = 'Inter Bold 10',
 	align = 'left',
 	widget = wibox.widget.textbox
+}
+
+local action_status = wibox.widget {
+	text = 'Off',
+	font = 'Inter Regular 10',
+	align = 'left',
+	widget = wibox.widget.textbox
+}
+
+local action_info = wibox.widget {
+	layout = wibox.layout.fixed.vertical,
+	action_name,
+	action_status
 }
 
 local button_widget = wibox.widget {
 	{
 		id = 'icon',
-		image = icons.toggled_off,
+		image = widget_icon_dir .. 'bluetooth-off.svg',
 		widget = wibox.widget.imagebox,
 		resize = true
 	},
@@ -29,57 +43,49 @@ local button_widget = wibox.widget {
 
 local widget_button = wibox.widget {
 	{
-		button_widget,
-		top = dpi(7),
-		bottom = dpi(7),
-		widget = wibox.container.margin
-	},
-	widget = clickable_container
-}
-
-local action_widget =  wibox.widget {
-	{
-		action_name,
-		nil,
 		{
-			widget_button,
-			layout = wibox.layout.fixed.horizontal,
+			button_widget,
+			margins = dpi(15),
+			forced_height = dpi(48),
+			forced_width = dpi(48),
+			widget = wibox.container.margin
 		},
-		layout = wibox.layout.align.horizontal,
+		widget = clickable_container
 	},
-	left = dpi(24),
-	right = dpi(24),
-	forced_height = dpi(48),
-	widget = wibox.container.margin
+	bg = beautiful.groups_bg,
+	shape = gears.shape.circle,
+	widget = wibox.container.background
 }
 
-
-local update_imagebox = function()
+local update_widget = function()
 	if device_state then
-		button_widget.icon:set_image(icons.toggled_on)
+		action_status:set_text('On')
+		widget_button.bg = beautiful.accent
+		button_widget.icon:set_image(widget_icon_dir .. 'bluetooth.svg')
 	else
-		button_widget.icon:set_image(icons.toggled_off)
+		action_status:set_text('Off')
+		widget_button.bg = beautiful.groups_bg
+		button_widget.icon:set_image(widget_icon_dir .. 'bluetooth-off.svg')
 	end
 end
-
 
 local check_device_state = function()
 	awful.spawn.easy_async_with_shell(
 		'rfkill list bluetooth', 
 		function(stdout)
+		
 			if stdout:match('Soft blocked: yes') then
 				device_state = false
 			else
 				device_state = true
 			end
-			update_imagebox()
+		
+			update_widget()
 		end
 	)
 end
 
 check_device_state()
-
-
 local power_on_cmd = [[
 	rfkill unblock bluetooth
 
@@ -116,29 +122,40 @@ local power_off_cmd = [[
 	"
 ]]
 
-
 local toggle_action = function()
 	if device_state then
-		device_state = false
 		awful.spawn.easy_async_with_shell(
 			power_off_cmd, 
-			function(stdout)
-				update_imagebox()
+			function(stdout) 
+				device_state = false
+				update_widget()
 			end
 		)
 	else
-		device_state = true
 		awful.spawn.easy_async_with_shell(
-			power_on_cmd, 
+			power_on_cmd,
 			function(stdout)
-				update_imagebox()
+				device_state = true
+				update_widget()
 			end
 		)
 	end
 end
 
-
 widget_button:buttons(
+	gears.table.join(
+		awful.button(
+			{},
+			1,
+			nil,
+			function()
+				toggle_action()
+			end
+		)
+	)
+)
+
+action_info:buttons(
 	gears.table.join(
 		awful.button(
 			{},
@@ -160,5 +177,18 @@ watch(
 	end
 )
 
+local action_widget =  wibox.widget {
+	layout = wibox.layout.fixed.horizontal,	
+	spacing = dpi(10),
+	widget_button,
+	{
+		layout = wibox.layout.align.vertical,
+		expand = 'none',
+		nil,
+		action_info,
+		nil
+	}
+
+}
 
 return action_widget

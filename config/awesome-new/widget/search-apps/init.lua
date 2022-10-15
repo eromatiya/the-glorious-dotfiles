@@ -23,7 +23,7 @@ local return_button = function()
 	local widget_button = wibox.widget {
 		{
 			widget,
-			margins = dpi(10),
+			margins = dpi(7),
 			widget = wibox.container.margin
 		},
 		widget = clickable_container
@@ -36,9 +36,6 @@ local return_button = function()
 				1,
 				nil,
 				function()
-					if screen.primary.left_panel.opened then
-						screen.primary.left_panel:toggle()
-					end
 					awful.spawn(apps.default.rofi_appmenu, false)
 				end
 			)
