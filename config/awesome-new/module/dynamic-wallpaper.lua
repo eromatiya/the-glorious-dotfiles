@@ -29,7 +29,7 @@ local directories = require("theme.directories")
 local wall_config = {
 	-- Wallpaper directory. The default is:
 	-- local wall_config.wall_dir = os.getenv('HOME') .. 'Pictures/Wallpapers/'
-	wall_dir = directories.wallpaper,
+	wall_dir = directories.wallpapers,
 
 	-- If there's a picture format that awesome accepts and i missed
 	-- (which i probably did) feel free to add it right here

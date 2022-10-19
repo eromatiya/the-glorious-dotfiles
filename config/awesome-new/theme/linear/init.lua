@@ -40,9 +40,6 @@ theme.background = "#000000" .. "66"
 -- Transparent
 theme.transparent = "#00000000"
 
--- Awesome icon
-theme.awesome_icon = theme.icons .. "awesome.svg"
-
 local awesome_overrides = function(theme) end
 
 return {

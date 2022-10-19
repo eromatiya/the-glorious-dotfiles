@@ -13,14 +13,15 @@ local theme_root_dir = Path:new(filesystem.get_configuration_dir():gsub("/$", ""
 local curr_theme_dir = theme_root_dir:join(THEME)
 local wallpaper_dir = curr_theme_dir:join("wallpapers")
 local icons = theme_root_dir:join("icons")
+print("icons", icons())
 local titlebar = icons + Path:new("titlebar", titlebar_themes[THEME])
 
---- @type {"root": string,["curr_theme"]: string,["icons"]: string, ["titlebar_icons"]: string, ["wallpapers"]: string}
+--- @type {[ "root" ]: string,["curr_theme"]: string,["icons"]: string, ["titlebar_icons"]: string, ["wallpapers"]: string}
 local directories = {
 	["root"] = theme_root_dir(),
 	["curr_theme"] = theme_root_dir(),
 	["icons"] = icons(),
 	["titlebar_icons"] = titlebar(),
-	["wallpaper"] = wallpaper_dir(),
+	["wallpapers"] = wallpaper_dir(),
 }
 return directories

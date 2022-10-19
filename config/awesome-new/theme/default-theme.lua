@@ -25,7 +25,7 @@ local awesome_overrides = function(theme)
 
 	-- Default wallpaper path
 	-- TODO add Default wallpaper type
-	theme.wallpaper = theme_directories.wallpaper .. "morning-wallpaper.jpg"
+	theme.wallpaper = theme_directories.wallpapers .. "morning-wallpaper.jpg"
 
 	-- Default font
 	theme.font = "Inter Regular 10"

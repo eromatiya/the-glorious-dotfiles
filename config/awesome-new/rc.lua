@@ -4,7 +4,7 @@
 -- Banner generated using `toilet -f pagga AwesomeWM
 -- TODO localize
 --- @type "linear"| "gnawesome" | "surreal" | "floppy"
-THEME = "linear"
+THEME = "gnawesome"
 
 local gears = require("gears")
 local beautiful = require("beautiful")
