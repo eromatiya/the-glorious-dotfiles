@@ -1,28 +1,31 @@
 local gtable = require("gears.table")
-
+local pretty = require("pl.pretty")
 ---sanitizing path so it doesn.t
 local check_for_delimeters = function(folders)
 	for _, path in ipairs(folders) do
-		local last_char = path:sub(-1)
-		if last_char == "/" then
+		if path:match("/$") then
 			error("Path:" .. path .. " has a trailing backslash")
 		end
+		-- $$$$local last_char = path:sub(-1)
+		-- if last_char == "/" then
+		-- 	error("Path:" .. path .. " has a trailing backslash")
+		-- end
 	end
 	return folders
 end
 --- path class for easier path manipulation
 --- @class Path
 --- @field path table
-local Path = {}
+local Path = { path = {} }
 --- insert path in ( "path1", "path2", "path3" ) format
 ---@param ... string
 ---@return Path
 function Path:new(...)
 	local o = {}
 	setmetatable(o, self)
-	o.__index = self
-	pcall(check_for_delimeters({ ... }))
+	self.__index = self
 	o.path = { ... }
+	pcall(check_for_delimeters(o.path))
 	return o
 end
 
@@ -35,6 +38,7 @@ function Path:join(...)
 	local new_table = gtable.join(self.path, { ... })
 	return Path:new(table.unpack(new_table))
 end
+
 ---@param delimeter "." | "/"| nil
 function Path:__call(delimeter)
 	delimeter = delimeter or "/"

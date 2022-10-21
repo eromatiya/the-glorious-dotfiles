@@ -28,51 +28,52 @@ local central_panel = function(s)
 	})
 
 	local panel = awful.popup({
+		-- widget = {},
 		widget = {
+			-- {
+			-- {
+			expand = "none",
+			layout = wibox.layout.fixed.vertical,
 			{
+				layout = wibox.layout.align.horizontal,
+				expand = "none",
+				nil,
+				central_panel_switch,
+				nil,
+			},
+			separator,
+			{
+				layout = wibox.layout.stack,
+				-- 	-- Today Pane
 				{
-					expand = "none",
+					-- id = "pane_id",
+					visible = true,
 					layout = wibox.layout.fixed.vertical,
 					{
-						layout = wibox.layout.align.horizontal,
-						expand = "none",
-						nil,
-						central_panel_switch,
-						nil,
-					},
-					separator,
-					{
-						layout = wibox.layout.stack,
-						-- Today Pane
+						layout = wibox.layout.flex.horizontal,
+						spacing = dpi(7),
 						{
-							id = "pane_id",
-							visible = true,
 							layout = wibox.layout.fixed.vertical,
-							{
-								layout = wibox.layout.flex.horizontal,
-								spacing = dpi(7),
-								{
-									layout = wibox.layout.fixed.vertical,
-									spacing = dpi(7),
-									user_profile,
-									weather,
-									email,
-									calendar,
-								},
-								notification_center(s),
-							},
+							spacing = dpi(7),
+							user_profile(),
+							-- weather,
+							-- email,
+							-- calendar,
 						},
-						{
-							id = "settings_id",
-							visible = false,
-							layout = wibox.layout.fixed.vertical,
-							central_panel_settings(),
-						},
+						notification_center(s),
 					},
 				},
-				margins = dpi(16),
-				widget = wibox.container.margin,
+				-- 	-- 				-- {
+				-- 	-- 				-- 	id = "settings_id",
+				-- 	-- 				-- 	visible = false,
+				-- 	-- 				-- 	layout = wibox.layout.fixed.vertical,
+				-- 	-- 				-- 	central_panel_settings(),
+				-- 	-- 				-- },
+				-- 	-- 			},
 			},
+			-- 		margins = dpi(16),
+			-- 		widget = wibox.container.margin,
+			-- },
 			bg = beautiful.background,
 			shape = function(cr, w, h)
 				gears.shape.rounded_rect(cr, w, h, beautiful.groups_radius)

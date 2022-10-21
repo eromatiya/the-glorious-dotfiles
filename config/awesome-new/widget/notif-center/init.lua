@@ -3,7 +3,7 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local clear_all = require("widget.notif-center.clear-all")
-local notif_box = require("widget.notif-center.build-notifbox")
+local notifbox_box = require("widget.notif-center.build-notifbox")
 
 local notif_header = wibox.widget({
 	text = "Notification Center",
