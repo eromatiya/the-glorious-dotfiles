@@ -1,19 +1,20 @@
 local gears = require("gears")
+---@module "widget.clock"
+local calendar = require("widget.calendar")
 local awful = require("awful")
---- @type {["floppy"]: function, ["gnawesome"]: function}
-local control_center_button = screen.clock_widget:buttons(
-		gears.table.join(
-			awful.button(
-				{},
-				1,
-				nil,
-				function()
-					awful.screen.focused().central_panel:toggle()
-				end
-			)
-		)
-	)
+--- @type {["floppy"]: function, ["gnawesome"]: function, ["surreal"] : function, ["linear"] : function}
 
-local buttons = {
-	["floppy"] = 	["gnawesome"] = "string",
+return {
+	["gnawesome"] = function()
+		awful.screen.focused().central_panel:toggle()
+	end,
+	["floppy"] = function()
+		calendar(s)
+	end,
+	["surreal"] = function()
+		calendar(s)
+	end,
+	["linear"] = function()
+		calendar(s)
+	end,
 }

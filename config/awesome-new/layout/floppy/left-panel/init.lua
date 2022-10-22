@@ -4,6 +4,11 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local apps = require("configuration.apps")
+local path_to_file = ...
+local left_panel_action_bar = require(path_to_file .. ".action-bar")
+local left_panel_dashboard = require(path_to_file .. ".dashboard")
+local lgi = require("lgi")
+
 local left_panel = function(screen)
 	local action_bar_width = dpi(45)
 	local panel_content_width = dpi(350)
@@ -21,8 +26,6 @@ local left_panel = function(screen)
 		fg = beautiful.fg_normal,
 	})
 
-	local left_panel_action_bar = require("layout.left-panel.action-bar")(screen, panel, action_bar_width)
-	local left_panel_dashboard = require("layout.left-panel.dashboard")(screen, panel)
 	panel.opened = false
 
 	panel:struts({
@@ -51,7 +54,7 @@ local left_panel = function(screen)
 
 	-- "Punch a hole" on backdrop to show the left dashboard
 	local update_backdrop = function(wibox_backdrop, wibox_panel)
-		local cairo = require("lgi").cairo
+		local cairo = lgi.cairo
 		local geo = wibox_panel.screen.geometry
 
 		wibox_backdrop.x = geo.x
@@ -129,11 +132,11 @@ local left_panel = function(screen)
 			forced_width = panel_content_width,
 			{
 
-				left_panel_dashboard,
+				left_panel_dashboard(screen, panel),
 				layout = wibox.layout.stack,
 			},
 		},
-		left_panel_action_bar,
+		left_panel_action_bar(screen, panel, action_bar_width),
 	})
 	return panel
 end

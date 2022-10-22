@@ -5,20 +5,20 @@ local bottom_panel = require(path_to_file .. ".bottom-panel")
 local central_panel = require(path_to_file .. ".central-panel")
 
 -- Create a wibox panel for each screen and add it
-awful.screen.connect_for_each_screen(function(s)
-	print("decor")
-	-- Create the top panel
-	s.top_panel = top_panel(s)
-	-- Create the bottom panel
-	s.bottom_panel = bottom_panel(s)
-	-- Create the central panel
-	s.central_panel = central_panel(s)
-end)
--- screen.connect_signal("request::desktop_decoration", function(s)
+-- awful.screen.connect_for_each_screen(function(s)
+-- 	print("decor")
+-- 	-- Create the top panel
 -- 	s.top_panel = top_panel(s)
+-- 	-- Create the bottom panel
 -- 	s.bottom_panel = bottom_panel(s)
+-- 	-- Create the central panel
 -- 	s.central_panel = central_panel(s)
 -- end)
+screen.connect_signal("request::desktop_decoration", function(s)
+	s.top_panel = top_panel(s)
+	s.bottom_panel = bottom_panel(s)
+	s.central_panel = central_panel(s)
+end)
 
 -- Hide bars when app go fullscreen
 function update_bars_visibility()

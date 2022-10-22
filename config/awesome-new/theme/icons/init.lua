@@ -1,42 +1,41 @@
 -- Icons directory
-local dir = os.getenv('HOME') .. '/.config/awesome/theme/icons/'
-
+local directories = require("theme.directories")
+-- local dir = directories.icons
 
 return {
 
 	-- Action Bar
-	web_browser 		= dir .. 'tag-list/' .. 'web-browser.svg',
-	text_editor			= dir .. 'tag-list/' .. 'text-editor.svg',
-	social				= dir .. 'tag-list/' .. 'social.svg',
-	file_manager 		= dir .. 'tag-list/' .. 'file-manager.svg',
-	multimedia 			= dir .. 'tag-list/' .. 'multimedia.svg',
-	games 				= dir .. 'tag-list/' .. 'games.svg',
-	development 		= dir .. 'tag-list/' .. 'development.svg',
-	sandbox 			= dir .. 'tag-list/' .. 'sandbox.svg',
-	terminal 			= dir .. 'tag-list/' .. 'terminal.svg',
-	graphics 			= dir .. 'tag-list/' .. 'graphics.svg',
-	menu 				= dir .. 'tag-list/' .. 'menu.svg',
-	close_small 		= dir .. 'tag-list/' .. 'close-small.svg',
+	web_browser = directories.icons_tag_list .. "web-browser.svg",
+	text_editor = directories.icons_tag_list .. "text-editor.svg",
+	social = directories.icons_tag_list .. "social.svg",
+	file_manager = directories.icons_tag_list .. "file-manager.svg",
+	multimedia = directories.icons_tag_list .. "multimedia.svg",
+	games = directories.icons_tag_list .. "games.svg",
+	development = directories.icons_tag_list .. "development.svg",
+	sandbox = directories.icons_tag_list .. "sandbox.svg",
+	terminal = directories.icons_tag_list .. "terminal.svg",
+	graphics = directories.icons_tag_list .. "graphics.svg",
+	menu = directories.icons_tag_list .. "menu.svg",
+	close_small = directories.icons_tag_list .. "close-small.svg",
 
 	-- Others/System UI
-	close 				= dir .. 'close.svg',
-	logout				= dir .. 'logout.svg',
-	sleep 				= dir .. 'power-sleep.svg',
-	power 				= dir .. 'power.svg',
-	lock 				= dir .. 'lock.svg',
-	restart 			= dir .. 'restart.svg',
-	search 				= dir .. 'magnify.svg',
-	volume 				= dir .. 'volume-high.svg',
-	brightness 			= dir .. 'brightness-7.svg',
-	effects 			= dir .. 'effects.svg',
-	chart 				= dir .. 'chart-areaspline.svg',
-	memory 				= dir .. 'memory.svg',
-	harddisk 			= dir .. 'harddisk.svg',
-	thermometer 		= dir .. 'thermometer.svg',
-	plus 				= dir .. 'plus.svg',
-	batt_charging 		= dir .. 'battery-charge.svg',
-	batt_discharging	= dir .. 'battery-discharge.svg',
-	toggled_on 			= dir .. 'toggled-on.svg',
-	toggled_off			= dir .. 'toggled-off.svg'
-
+	close = directories.icons .. "close.svg",
+	logout = directories.icons .. "logout.svg",
+	sleep = directories.icons .. "power-sleep.svg",
+	power = directories.icons .. "power.svg",
+	lock = directories.icons .. "lock.svg",
+	restart = directories.icons .. "restart.svg",
+	search = directories.icons .. "magnify.svg",
+	volume = directories.icons .. "volume-high.svg",
+	brightness = directories.icons .. "brightness-7.svg",
+	effects = directories.icons .. "effects.svg",
+	chart = directories.icons .. "chart-areaspline.svg",
+	memory = directories.icons .. "memory.svg",
+	harddisk = directories.icons .. "harddisk.svg",
+	thermometer = directories.icons .. "thermometer.svg",
+	plus = directories.icons .. "plus.svg",
+	batt_charging = directories.icons .. "battery-charge.svg",
+	batt_discharging = directories.icons .. "battery-discharge.svg",
+	toggled_on = directories.icons .. "toggled-on.svg",
+	toggled_off = directories.icons .. "toggled-off.svg",
 }

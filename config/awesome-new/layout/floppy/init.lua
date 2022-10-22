@@ -1,7 +1,8 @@
 local awful = require("awful")
-local left_panel = require("layout." .. THEME .. ".left-panel")
-local top_panel = require("layout.top-panel")
-local right_panel = require("layout.right-panel")
+local path_to_file = ...
+local left_panel = require(path_to_file .. ".left-panel")
+local top_panel = require(path_to_file .. ".top-panel")
+local right_panel = require(path_to_file .. ".right-panel")
 
 -- Create a wibox panel for each screen and add it
 screen.connect_signal("request::desktop_decoration", function(s)

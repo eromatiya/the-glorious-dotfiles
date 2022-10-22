@@ -128,7 +128,6 @@ calendar:buttons(gears.table.join(
 
 local widget = wibox.widget({
 	{
-
 		calendar,
 		top = dpi(15),
 		right = dpi(10),
