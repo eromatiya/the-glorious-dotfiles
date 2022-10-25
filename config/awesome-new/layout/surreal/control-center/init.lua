@@ -1,179 +1,169 @@
-local awful = require('awful')
-local wibox = require('wibox')
-local gears = require('gears')
-local beautiful = require('beautiful')
+local awful = require("awful")
+local wibox = require("wibox")
+local gears = require("gears")
+local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local user_profile = require("widget.user-profile")
+local user_profile = require("widget.user-profile")
+local cpu_meter = require("widget.cpu-meter")
+local ram_meter = require("widget.ram-meter")
+local temperature_meter = require("widget.temperature-meter")
+local harddrive_meter = require("widget.harddrive-meter")
+local mpd = require("widget.mpd")
+local volume_slider = require("widget.volume-slider")
+local brightness_slider = require("widget.brightness-slider")
+local blur_slider = require("widget.blur-slider")
+local airplane_mode = require("widget.airplane-mode")
+local bluetooth_toggle = require("widget.bluetooth-toggle")
+local blue_light = require("widget.blue-light")
+local end_session = require("widget.end-session")
+local control_center_switch = require("widget.control-center-switch")
+
 panel_visible = false
 
 local format_item = function(widget)
-	return wibox.widget {
+	return wibox.widget({
 		{
 			{
 				layout = wibox.layout.align.vertical,
-				expand = 'none',
+				expand = "none",
 				nil,
 				widget,
-				nil
+				nil,
 			},
 			margins = dpi(10),
-			widget = wibox.container.margin
+			widget = wibox.container.margin,
 		},
 		forced_height = dpi(88),
 		bg = beautiful.groups_bg,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
 		end,
-		widget = wibox.container.background
-	}
+		widget = wibox.container.background,
+	})
 end
 
 local format_item_no_fix_height = function(widget)
-	return wibox.widget {
+	return wibox.widget({
 		{
 			{
 				layout = wibox.layout.align.vertical,
-				expand = 'none',
+				expand = "none",
 				nil,
 				widget,
-				nil
+				nil,
 			},
 			margins = dpi(10),
-			widget = wibox.container.margin
+			widget = wibox.container.margin,
 		},
 		bg = beautiful.groups_bg,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
 		end,
-		widget = wibox.container.background
-	}
+		widget = wibox.container.background,
+	})
 end
 
-local vertical_separator =  wibox.widget {
-	orientation = 'vertical',
+local vertical_separator = wibox.widget({
+	orientation = "vertical",
 	forced_height = dpi(1),
 	forced_width = dpi(1),
 	span_ratio = 0.55,
-	widget = wibox.widget.separator
-}
+	widget = wibox.widget.separator,
+})
 
-local control_center_row_one = wibox.widget {
+local control_center_row_one = wibox.widget({
 	layout = wibox.layout.align.horizontal,
 	forced_height = dpi(48),
 	nil,
-	format_item(
-		require('widget.user-profile')()
-	),
+	format_item(user_profile()),
 	{
-		format_item(
-			{
-				layout = wibox.layout.fixed.horizontal,
-				spacing = dpi(10),
-				require('widget.control-center-switch')(),
-				vertical_separator,
-				require('widget.end-session')()
-			}
-		),
+		format_item({
+			layout = wibox.layout.fixed.horizontal,
+			spacing = dpi(10),
+			control_center_switch(),
+			vertical_separator,
+			end_session(),
+		}),
 		left = dpi(10),
-		widget = wibox.container.margin
-	}
-}
+		widget = wibox.container.margin,
+	},
+})
 
-local main_control_row_two = wibox.widget {
+local main_control_row_two = wibox.widget({
 	layout = wibox.layout.flex.horizontal,
 	spacing = dpi(10),
-	format_item_no_fix_height(
-		{
-			layout = wibox.layout.fixed.vertical,
-			spacing = dpi(5),
-			require('widget.airplane-mode'),
-			require('widget.bluetooth-toggle'),
-			require('widget.blue-light')
-		}
-	),
+	format_item_no_fix_height({
+		layout = wibox.layout.fixed.vertical,
+		spacing = dpi(5),
+		airplane_mode,
+		bluetooth_toggle,
+		blue_light,
+	}),
 	{
 		layout = wibox.layout.flex.vertical,
 		spacing = dpi(10),
-		format_item_no_fix_height(
-			{
-				layout = wibox.layout.align.vertical,
-				expand = 'none',
-				nil,
-				require('widget.dont-disturb'),
-				nil
-			}
-		),
-		format_item_no_fix_height(
-			{
-				layout = wibox.layout.align.vertical,
-				expand = 'none',
-				nil,
-				require('widget.blur-toggle'),
-				nil
-			}
-		)
-	}
-}
+		format_item_no_fix_height({
+			layout = wibox.layout.align.vertical,
+			expand = "none",
+			nil,
+			require("widget.dont-disturb"),
+			nil,
+		}),
+		format_item_no_fix_height({
+			layout = wibox.layout.align.vertical,
+			expand = "none",
+			nil,
+			require("widget.blur-toggle"),
+			nil,
+		}),
+	},
+})
 
-local main_control_row_sliders = wibox.widget {
+local main_control_row_sliders = wibox.widget({
 	layout = wibox.layout.fixed.vertical,
 	spacing = dpi(10),
-	format_item(
-		{
-			require('widget.blur-slider'),
-			margins = dpi(10),
-			widget = wibox.container.margin
-		}
-	),
-	format_item(
-		{
-			require('widget.brightness-slider'),
-			margins = dpi(10),
-			widget = wibox.container.margin
-		}
-	),
-	format_item(
-		{
-			require('widget.volume-slider'),
-			margins = dpi(10),
-			widget = wibox.container.margin
-		}
-	)
-}
+	format_item({
+		blur_slider,
+		margins = dpi(10),
+		widget = wibox.container.margin,
+	}),
+	format_item({
+		brightness_slider,
+		margins = dpi(10),
+		widget = wibox.container.margin,
+	}),
+	format_item({
+		volume_slider,
+		margins = dpi(10),
+		widget = wibox.container.margin,
+	}),
+})
 
-local main_control_music_box = wibox.widget {
+local main_control_music_box = wibox.widget({
 	layout = wibox.layout.fixed.vertical,
-	format_item(
-		{
-			require('widget.mpd'),
-			margins = dpi(10),
-			widget = wibox.container.margin
-		}
-	)
-}
+	format_item({
+		mpd,
+		margins = dpi(10),
+		widget = wibox.container.margin,
+	}),
+})
 
-local monitor_control_row_progressbars = wibox.widget {
+local monitor_control_row_progressbars = wibox.widget({
 	layout = wibox.layout.fixed.vertical,
 	spacing = dpi(10),
-	format_item(
-		require('widget.cpu-meter')
-	),
-	format_item(
-		require('widget.ram-meter')
-	),
-	format_item(
-		require('widget.temperature-meter')
-	),
-	format_item(
-		require('widget.harddrive-meter')
-	)
-}
+	format_item(cpu_meter),
+	format_item(ram_meter),
+	format_item(temperature_meter),
+	format_item(harddrive_meter),
+})
 
 local control_center = function(s)
 	-- Set the control center geometry
 	local panel_width = dpi(400)
 	local panel_margins = dpi(5)
 
-	local panel = awful.popup {
+	local panel = awful.popup({
 		widget = {
 			{
 				{
@@ -183,35 +173,35 @@ local control_center = function(s)
 					{
 						layout = wibox.layout.stack,
 						{
-							id = 'main_control',
+							id = "main_control",
 							visible = true,
 							layout = wibox.layout.fixed.vertical,
 							spacing = dpi(10),
 							main_control_row_two,
 							main_control_row_sliders,
-							main_control_music_box
+							main_control_music_box,
 						},
 						{
-							id = 'monitor_control',
+							id = "monitor_control",
 							visible = false,
 							layout = wibox.layout.fixed.vertical,
 							spacing = dpi(10),
-							monitor_control_row_progressbars
-						}
-					}
+							monitor_control_row_progressbars,
+						},
+					},
 				},
 				margins = dpi(16),
-				widget = wibox.container.margin
+				widget = wibox.container.margin,
 			},
-			id = 'control_center',
+			id = "control_center",
 			bg = beautiful.background,
-			shape =function(cr, w, h)
+			shape = function(cr, w, h)
 				gears.shape.rounded_rect(cr, w, h, beautiful.groups_radius)
 			end,
-			widget = wibox.container.background
+			widget = wibox.container.background,
 		},
 		screen = s,
-		type = 'dock',
+		type = "dock",
 		visible = false,
 		ontop = true,
 		width = dpi(panel_width),
@@ -219,34 +209,31 @@ local control_center = function(s)
 		maximum_height = dpi(s.geometry.height - 38),
 		bg = beautiful.transparent,
 		fg = beautiful.fg_normal,
-		shape = gears.shape.rectangle
-	}
+		shape = gears.shape.rectangle,
+	})
 
-	awful.placement.top_right(
-		panel,
-		{
-			honor_workarea = true,
-			parent = s,
-			margins = {
-				top = dpi(33),
-				right = dpi(5)
-			}
-		}
-	)
+	awful.placement.top_right(panel, {
+		honor_workarea = true,
+		parent = s,
+		margins = {
+			top = dpi(33),
+			right = dpi(5),
+		},
+	})
 
 	panel.opened = false
 
-	s.backdrop_control_center = wibox {
+	s.backdrop_control_center = wibox({
 		ontop = true,
 		screen = s,
 		bg = beautiful.transparent,
-		type = 'utility',
+		type = "utility",
 		x = s.geometry.x,
 		y = s.geometry.y,
 		width = s.geometry.width,
-		height = s.geometry.height
-	}
-	
+		height = s.geometry.height,
+	})
+
 	local open_panel = function()
 		local focused = awful.screen.focused()
 		panel_visible = true
@@ -254,7 +241,7 @@ local control_center = function(s)
 		focused.backdrop_control_center.visible = true
 		focused.control_center.visible = true
 
-		panel:emit_signal('opened')
+		panel:emit_signal("opened")
 	end
 
 	local close_panel = function()
@@ -263,8 +250,8 @@ local control_center = function(s)
 
 		focused.control_center.visible = false
 		focused.backdrop_control_center.visible = false
-		
-		panel:emit_signal('closed')
+
+		panel:emit_signal("closed")
 	end
 
 	-- Hide this panel when app dashboard is called.
@@ -281,18 +268,9 @@ local control_center = function(s)
 		end
 	end
 
-	s.backdrop_control_center:buttons(
-		awful.util.table.join(
-			awful.button(
-				{},
-				1,
-				nil,
-				function()
-					panel:toggle()
-				end
-			)
-		)
-	)
+	s.backdrop_control_center:buttons(awful.util.table.join(awful.button({}, 1, nil, function()
+		panel:toggle()
+	end)))
 
 	return panel
 end

@@ -5,9 +5,10 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require("widget.clickable-container")
 local icons = require("theme.icons")
-local hardware_monitor = require("layout.left-panel.dashboard.hardware-monitor")
-local quick_settings = require("layout.left-panel.dashboard.quick-settings")
-local end_session = require("widget.end-session")()
+local path_to_file = ...
+local hardware_monitor = require(path_to_file .. ".hardware-monitor")
+local quick_settings = require(path_to_file .. ".quick-settings")
+local end_session = require("widget.end-session")
 
 return function(_, panel)
 	local search_widget = wibox.widget({
@@ -65,7 +66,7 @@ return function(_, panel)
 				quick_settings,
 			},
 			nil,
-			end_session,
+			end_session(),
 			layout = wibox.layout.align.vertical,
 		},
 		margins = dpi(16),

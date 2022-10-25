@@ -1,9 +1,10 @@
 local awful = require("awful")
-local directories = require("directories")
-local top_panel = require(directories.layout .. "top-panel")
-local bottom_panel = require(directories.layout .. "bottom-panel")
-local control_center = require("layout.control-center")
-local info_center = require("layout.info-center")
+local path_to_file = ...
+
+local top_panel = require(path_to_file .. ".top-panel")
+local bottom_panel = require(path_to_file .. ".bottom-panel")
+local control_center = require(path_to_file .. ".control-center")
+local info_center = require(path_to_file .. ".info-center")
 
 -- Create a wibox panel for each screen and add it
 screen.connect_signal("request::desktop_decoration", function(s)

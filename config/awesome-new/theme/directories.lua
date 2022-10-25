@@ -17,6 +17,7 @@ local icons_tag_list = icons:join("tag-list")
 print("icons", icons())
 local titlebar = icons:join("titlebar", titlebar_themes[THEME])
 
+---@alias themeDirectories "root" | "icons" | "titlebar_icons" | "wallpaper_dir"
 --- @type {[ "root" ]: string,["curr_theme"]: string,["icons"]: string, ["titlebar_icons"]: string, ["wallpapers"]: string, ['icons_tag_list']: string}
 local directories = {
 	["root"] = theme_root_dir(),
@@ -26,4 +27,5 @@ local directories = {
 	["wallpapers"] = wallpaper_dir(),
 	["icons_tag_list"] = icons_tag_list(),
 }
+
 return directories
