@@ -8,6 +8,7 @@ local config = require("configuration.config")
 local military_mode = config.widget.clock.military_mode or false
 local path_to_file = ...
 local callbacks = require(path_to_file .. ".callbacks")
+local calendar_popup = require("widget.calendar-popup")
 
 local create_clock = function(s)
 	local clock_format = nil
@@ -94,7 +95,19 @@ local create_clock = function(s)
 			s.clock_tooltip.visible = false
 		end
 	end)
-	s.clock_widget:buttons(gears.table.join(awful.button({}, 1, nil, callbacks[THEME])))
+
+	-- 🔧 TODO: Add a better way to change the clock format
+	s.clock_widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
+		if THEME == "floppy" then
+			calendar_popup(s)
+			return
+		end
+		if THEME == "gnawesome" then
+			awful.screen.focused().central_panel:toggle()
+			return
+		end
+		-- ➕ add default case
+	end)))
 
 	return s.clock_widget
 end
