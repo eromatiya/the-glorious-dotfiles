@@ -53,7 +53,7 @@ local top_panel = function(s, offset)
 	s.tray_toggler = require("widget.tray-toggle")
 	s.updater = require("widget.package-updater")
 	s.screen_rec = require("widget.screen-recorder")
-	-- s.mpd = require("widget.mpd")
+	s.mpd = require("widget.mpd")
 	s.bluetooth = require("widget.bluetooth")
 	s.battery = require("widget.battery")
 	s.network = require("widget.network")
@@ -79,7 +79,7 @@ local top_panel = function(s, offset)
 			s.tray_toggler,
 			s.updater(),
 			s.screen_rec(),
-			-- s.mpd(),
+			s.mpd,
 			s.network(),
 			s.bluetooth(),
 			s.battery(),
