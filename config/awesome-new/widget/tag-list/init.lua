@@ -1,8 +1,10 @@
-local awful = require('awful')
-local wibox = require('wibox')
-local dpi = require('beautiful').xresources.apply_dpi
-local clickable_container = require('widget.clickable-container')
-local icons = require('theme.icons')
+local awful = require("awful")
+local wibox = require("wibox")
+local dpi = require("beautiful").xresources.apply_dpi
+local clickable_container = require("widget.clickable-container")
+local icons = require("theme.icons")
+local path_to_file = ...
+local settings = require(path_to_file .. ".settings")
 
 --- Common method to create buttons.
 -- @tab buttons
@@ -16,16 +18,16 @@ local function create_buttons(buttons, object)
 			-- press and release events, and will propagate them to the
 			-- button object the user provided, but with the object as
 			-- argument.
-			local btn = awful.button {
+			local btn = awful.button({
 				modifiers = b.modifiers,
 				button = b.button,
 				on_press = function()
-					b:emit_signal('press', object)
+					b:emit_signal("press", object)
 				end,
 				on_release = function()
-					b:emit_signal('release', object)
-				end
-			}
+					b:emit_signal("release", object)
+				end,
+			})
 			btns[#btns + 1] = btn
 		end
 		return btns
@@ -48,17 +50,17 @@ local function list_update(w, buttons, label, data, objects)
 			ib = wibox.widget.imagebox()
 			tb = wibox.widget.textbox()
 			bgb = wibox.container.background()
-			tbm = wibox.widget {
+			tbm = wibox.widget({
 				tb,
 				left = dpi(4),
 				right = dpi(16),
-				widget = wibox.container.margin
-			}
-			ibm = wibox.widget {
+				widget = wibox.container.margin,
+			})
+			ibm = wibox.widget({
 				ib,
 				margins = dpi(5),
-				widget = wibox.container.margin
-			}
+				widget = wibox.container.margin,
+			})
 			l = wibox.layout.fixed.horizontal()
 			bg_clickable = clickable_container()
 
@@ -78,7 +80,7 @@ local function list_update(w, buttons, label, data, objects)
 				tb = tb,
 				bgb = bgb,
 				tbm = tbm,
-				ibm = ibm
+				ibm = ibm,
 			}
 		end
 
@@ -86,15 +88,15 @@ local function list_update(w, buttons, label, data, objects)
 		args = args or {}
 
 		-- The text might be invalid, so use pcall.
-		if text == nil or text == '' then
+		if text == nil or text == "" then
 			tbm:set_margins(0)
 		else
 			if not tb:set_markup_silently(text) then
-				tb:set_markup('<i>&lt;Invalid text&gt;</i>')
+				tb:set_markup("<i>&lt;Invalid text&gt;</i>")
 			end
 		end
 		bgb:set_bg(bg)
-		if type(bg_image) == 'function' then
+		if type(bg_image) == "function" then
 			-- TODO: Why does this pass nil as an argument?
 			bg_image = bg_image(tb, o, nil, objects, i)
 		end
@@ -118,51 +120,31 @@ local tag_list = function(s)
 		s,
 		awful.widget.taglist.filter.all,
 		awful.util.table.join(
-			awful.button(
-				{},
-				1,
-				function(t)
+			awful.button({}, 1, function(t)
+				t:view_only()
+			end),
+			awful.button({ modkey }, 1, function(t)
+				if _G.client.focus then
+					_G.client.focus:move_to_tag(t)
 					t:view_only()
 				end
-			),
-			awful.button(
-				{modkey},
-				1,
-				function(t)
-					if _G.client.focus then
-						_G.client.focus:move_to_tag(t)
-						t:view_only()
-					end
-				end
-			),
+			end),
 			awful.button({}, 3, awful.tag.viewtoggle),
-			awful.button(
-				{modkey},
-				3,
-				function(t)
-					if _G.client.focus then
-						_G.client.focus:toggle_tag(t)
-					end
+			awful.button({ modkey }, 3, function(t)
+				if _G.client.focus then
+					_G.client.focus:toggle_tag(t)
 				end
-			),
-			awful.button(
-				{},
-				4,
-				function(t)
-					awful.tag.viewprev(t.screen)
-				end
-			),
-			awful.button(
-				{},
-				5,
-				function(t)
-					awful.tag.viewnext(t.screen)
-				end
-			)
+			end),
+			awful.button({}, 4, function(t)
+				awful.tag.viewprev(t.screen)
+			end),
+			awful.button({}, 5, function(t)
+				awful.tag.viewnext(t.screen)
+			end)
 		),
 		{},
 		list_update,
-		wibox.layout.fixed.horizontal()
+		(settings[THEME].layout_fixed)()
 	)
 end
 return tag_list

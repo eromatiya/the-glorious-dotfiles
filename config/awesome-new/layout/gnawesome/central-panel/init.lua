@@ -12,6 +12,7 @@ local notification_center = require("widget.notif-center")
 local path_to_file = ...
 local central_panel_settings = require(path_to_file .. ".settings")
 
+-- 🔧 TODO: fix central panel focus currently hides all other elements
 local panel_visible = false
 
 local central_panel = function(s)
@@ -95,7 +96,7 @@ local central_panel = function(s)
 
 	awful.placement.centered(panel, {
 		margins = {
-			-- right = panel_margins,
+			right = panel_margins,
 			top = s.geometry.y + dpi(65),
 		},
 		parent = s,

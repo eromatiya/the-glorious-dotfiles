@@ -5,7 +5,7 @@
 -- TODO localize
 --- @alias themeNames "linear"| "gnawesome" | "surreal" | "floppy"
 ---@type themeNames
-THEME = "gnawesome"
+THEME = "floppy"
 
 local gears = require("gears")
 local beautiful = require("beautiful")
