@@ -9,7 +9,7 @@ local song_info = ui_content.song_info.music_info
 local media_buttons = ui_content.media_buttons.navigate_buttons
 local top_panel_button = require("widget.mpd.top-panel-widget")
 
-if THEME == "floppy" then
+if THEME ~= "linear" then
 	return top_panel_button
 end
 
@@ -33,6 +33,6 @@ local music_box = wibox.widget({
 })
 
 -- Mpd widget updater
-require("widget.mpd.mpd-music-updater")
+-- require("widget.mpd.mpd-music-updater")
 
 return music_box

@@ -1,105 +1,57 @@
-local wibox = require('wibox')
-local awful = require('awful')
-local gears = require('gears')
-local beautiful = require('beautiful')
+local wibox = require("wibox")
+local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local clickable_container = require('widget.clickable-container')
-local config_dir = gears.filesystem.get_configuration_dir()
-local widget_icon_dir = config_dir .. 'widget/mpd/icons/'
-local media_buttons = {}
+local gears_table = require("gears.table")
+local media_button_images = require(... .. ".button-images")
+local media_button = require("widget.mpd.content.media-buttons.media_button")
+local pl = require("pl.pretty")
 
-media_buttons.play_button_image = wibox.widget {
+local media_buttons = gears_table.join({
+	play_button = media_button:new(media_button_images.play_button_image, nil),
+	next_button = media_button:new(media_button_images.next_button_image, nil),
+	prev_button = media_button:new(media_button_images.prev_button_image, nil),
+	repeat_button = media_button:new(media_button_images.rep_button_image, nil),
+	random_button = media_button:new(media_button_images.rand_button_image, dpi(10)),
+}, media_button_images)
+
+media_buttons.navigate_buttons = wibox.widget({
+	expand = "none",
+	layout = wibox.layout.align.horizontal,
+	media_buttons.repeat_button,
 	{
-		id = 'play',
-		image = widget_icon_dir .. 'play.svg',
-		resize = true,
-		opacity = 0.8,
-		widget = wibox.widget.imagebox
+		layout = wibox.layout.fixed.horizontal,
+		media_buttons.prev_button,
+		media_buttons.play_button,
+		media_buttons.next_button,
+		forced_height = dpi(35),
 	},
-	layout = wibox.layout.align.horizontal
+	media_buttons.random_button,
+	forced_height = dpi(35),
+})
+
+-- 🔧 TODO: add correct map for themes
+local theme_map = {
+	floppy = media_buttons,
+	default = gears_table.join({
+		play_button = media_buttons.play_button,
+		next_button = media_buttons.next_button,
+		prev_button = media_buttons.prev_button,
+		navigate_buttons = media_buttons.navigate_buttons,
+	}, media_button_images),
 }
-
-media_buttons.next_button_image = wibox.widget {
-	{
-		id = 'next',
-		image = widget_icon_dir .. 'next.svg',
-		resize = true,
-		opacity = 0.8,
-		widget = wibox.widget.imagebox
-	},
-	layout = wibox.layout.align.horizontal
-}
-
-media_buttons.prev_button_image = wibox.widget {
-	{
-		id = 'prev',
-		image = widget_icon_dir .. 'prev.svg',
-		resize = true,
-		opacity = 0.8,
-		widget = wibox.widget.imagebox
-	},
-	layout = wibox.layout.align.horizontal
-}
-
-media_buttons.play_button = wibox.widget {
-	{
-		{
-			media_buttons.play_button_image,
-			margins = dpi(7),
-			widget = wibox.container.margin
-		},
-		widget = clickable_container
-	},
-	forced_width = dpi(36),
-	forced_height = dpi(36),
-	bg = beautiful.transparent,
-	shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
+local mt = {
+	__index = function()
+		return theme_map.default
 	end,
-	widget = wibox.container.background
 }
-
-media_buttons.next_button = wibox.widget {
-	{
-		{
-			media_buttons.next_button_image,
-			margins = dpi(10),
-			widget = wibox.container.margin
-		},
-		widget = clickable_container
-	},
-	forced_width = dpi(36),
-	forced_height = dpi(36),
-	bg = beautiful.transparent,
-	shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
-	end,
-	widget = wibox.container.background
+local tmp = {
+	default = gears_table.crush({
+		play_button = media_buttons.play_button,
+		next_button = media_buttons.next_button,
+		prev_button = media_buttons.prev_button,
+	}, media_button_images),
 }
+setmetatable(theme_map, mt)
 
-media_buttons.prev_button = wibox.widget {
-	{
-		{
-			media_buttons.prev_button_image,
-			margins = dpi(10),
-			widget = wibox.container.margin
-		},
-		widget = clickable_container
-	},
-	forced_width = dpi(36),
-	forced_height = dpi(36),
-	bg = beautiful.transparent,
-	shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
-	end,
-	widget = wibox.container.background
-}
-
-media_buttons.navigate_buttons = wibox.widget {
-	layout = wibox.layout.fixed.horizontal,
-	media_buttons.prev_button,
-	media_buttons.play_button,
-	media_buttons.next_button
-}
-
-return media_buttons
+-- pl.dump(theme_map[THEME])
+return theme_map[THEME]

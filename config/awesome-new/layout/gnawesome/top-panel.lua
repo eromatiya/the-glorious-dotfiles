@@ -43,7 +43,7 @@ local top_panel = function(s)
 	s.updater = updater()
 	s.screen_rec = screen_recorder()
 	--TODO debug mpd widget
-	-- s.mpd = mpd() or {}
+	s.mpd = mpd
 	s.keyboard_layout = keyboard_layout()
 	s.end_session = end_session()
 	s.global_search = global_search()
@@ -64,7 +64,7 @@ local top_panel = function(s)
 			s.screen_rec,
 			s.global_search,
 			s.keyboard_layout,
-			-- s.mpd,
+			s.mpd,
 			s.end_session,
 		},
 	})

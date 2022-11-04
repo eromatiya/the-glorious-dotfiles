@@ -10,17 +10,17 @@ local dirs = require("widget.mpd.content.directories")
 -- 	},
 -- 	layout = wibox.layout.align.horizontal,
 -- })
----@class media_button
+---@class media_button_image
 ---@field id string
 ---@field image string
 ---@field layout string
 
----@type media_button
-local media_button = { resize = true, opacity = 0.8, widget = wibox.widget.imagebox }
-function media_button:new(id, image, layout)
-	self.id = id or ""
-	self.image = image or ""
+---@type media_button_image
+local media_button_image = { { resize = true, opacity = 0.8, widget = wibox.widget.imagebox } }
+function media_button_image:new(id, image, layout)
+	self[1].id = id or ""
+	self[1].image = image or ""
 	self.layout = layout or wibox.layout.align.horizontal
-	return self
+	return wibox.widget(self)
 end
-return media_button
+return media_button_image
