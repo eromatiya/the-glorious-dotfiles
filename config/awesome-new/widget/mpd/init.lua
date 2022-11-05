@@ -9,10 +9,6 @@ local song_info = ui_content.song_info.music_info
 local media_buttons = ui_content.media_buttons.navigate_buttons
 local top_panel_button = require("widget.mpd.top-panel-widget")
 
-if THEME ~= "linear" then
-	return top_panel_button
-end
-
 local music_box = wibox.widget({
 	layout = wibox.layout.align.horizontal,
 	forced_height = dpi(46),
@@ -32,7 +28,14 @@ local music_box = wibox.widget({
 	},
 })
 
--- Mpd widget updater
--- require("widget.mpd.mpd-music-updater")
+---@type theme_dictionary<any>
+local theme_map = {
+	surreal = music_box,
+	linear = music_box,
+	floppy = top_panel_button,
+	gnawesome = top_panel_button,
+}
 
-return music_box
+-- Mpd widget updater
+require("widget.mpd.mpd-music-updater")
+return theme_map[THEME]

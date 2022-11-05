@@ -32,26 +32,27 @@ media_buttons.navigate_buttons = wibox.widget({
 -- 🔧 TODO: add correct map for themes
 local theme_map = {
 	floppy = media_buttons,
+	gnawesome = media_buttons,
 	default = gears_table.join({
 		play_button = media_buttons.play_button,
 		next_button = media_buttons.next_button,
 		prev_button = media_buttons.prev_button,
-		navigate_buttons = media_buttons.navigate_buttons,
+		-- navigate_buttons = media_buttons.navigate_buttons,
 	}, media_button_images),
 }
+theme_map.default.navigate_buttons = wibox.widget({
+	layout = wibox.layout.fixed.horizontal,
+	media_buttons.prev_button,
+	media_buttons.play_button,
+	media_buttons.next_button,
+})
+
 local mt = {
 	__index = function()
 		return theme_map.default
 	end,
 }
-local tmp = {
-	default = gears_table.crush({
-		play_button = media_buttons.play_button,
-		next_button = media_buttons.next_button,
-		prev_button = media_buttons.prev_button,
-	}, media_button_images),
-}
 setmetatable(theme_map, mt)
 
--- pl.dump(theme_map[THEME])
+-- pl.dump(theme_map[THEME].navigate_buttons)
 return theme_map[THEME]
