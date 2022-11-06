@@ -9,8 +9,10 @@ local song_info = ui_content.song_info.music_info
 local media_buttons = ui_content.media_buttons.navigate_buttons
 local top_panel_button = require("widget.mpd.top-panel-widget")
 
+require("widget.mpd.mpd-music-updater")
+
 local music_box = wibox.widget({
-	layout = wibox.layout.align.horizontal,
+	layout = wibox.layout.align.vertical,
 	forced_height = dpi(46),
 	{
 		layout = wibox.layout.fixed.horizontal,
@@ -18,9 +20,8 @@ local music_box = wibox.widget({
 		album,
 		song_info,
 	},
-	nil,
 	{
-		layout = wibox.layout.align.vertical,
+		layout = wibox.layout.align.horizontal,
 		expand = "none",
 		nil,
 		media_buttons,
@@ -37,5 +38,4 @@ local theme_map = {
 }
 
 -- Mpd widget updater
-require("widget.mpd.mpd-music-updater")
 return theme_map[THEME]

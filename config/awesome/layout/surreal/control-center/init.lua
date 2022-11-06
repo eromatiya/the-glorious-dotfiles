@@ -4,7 +4,6 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local user_profile = require("widget.user-profile")
-local user_profile = require("widget.user-profile")
 local cpu_meter = require("widget.cpu-meter")
 local ram_meter = require("widget.ram-meter")
 local temperature_meter = require("widget.temperature-meter")
@@ -179,7 +178,8 @@ local control_center = function(s)
 							spacing = dpi(10),
 							main_control_row_two,
 							main_control_row_sliders,
-							main_control_music_box,
+							-- 🔧 TODO: format mpd
+							mpd,
 						},
 						{
 							id = "monitor_control",
