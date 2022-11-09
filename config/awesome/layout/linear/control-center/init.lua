@@ -183,7 +183,7 @@ local control_center = function(s)
 							spacing = dpi(10),
 							main_control_row_two,
 							main_control_row_sliders,
-							main_control_music_box,
+							mpd,
 						},
 						{
 							id = "monitor_control",

@@ -11,6 +11,7 @@ local top_panel_button = require("widget.mpd.top-panel-widget")
 
 require("widget.mpd.mpd-music-updater")
 
+-- 🔧 TODO: fix music box widget
 local music_box = wibox.widget({
 	layout = wibox.layout.align.vertical,
 	forced_height = dpi(46),
@@ -19,13 +20,7 @@ local music_box = wibox.widget({
 		spacing = dpi(10),
 		album,
 		song_info,
-	},
-	{
-		layout = wibox.layout.align.horizontal,
-		expand = "none",
-		nil,
 		media_buttons,
-		nil,
 	},
 })
 
@@ -38,4 +33,4 @@ local theme_map = {
 }
 
 -- Mpd widget updater
-return theme_map[THEME]
+return music_box
