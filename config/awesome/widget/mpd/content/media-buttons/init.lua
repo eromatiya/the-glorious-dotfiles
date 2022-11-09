@@ -5,17 +5,17 @@ local gears_table = require("gears.table")
 local media_button_images = require(... .. ".button-images")
 local media_button = require("widget.mpd.content.media-buttons.media_button")
 local pl = require("pl.pretty")
-local image_sides = {
-	surreal = 32,
-	linear = 32,
+local margins = {
+	-- surreal = dpi(8),
+	-- linear = dpi(8),
 }
 
 local media_buttons = gears_table.join({
-	play_button = media_button:new(media_button_images.play_button_image, nil, image_sides[THEME]),
-	next_button = media_button:new(media_button_images.next_button_image, nil, image_sides[THEME]),
-	prev_button = media_button:new(media_button_images.prev_button_image, nil, image_sides[THEME]),
-	repeat_button = media_button:new(media_button_images.rep_button_image, nil, nil),
-	random_button = media_button:new(media_button_images.rand_button_image, dpi(10), nil),
+	play_button = media_button:new(media_button_images.play_button_image, margins[THEME]),
+	next_button = media_button:new(media_button_images.next_button_image, margins[THEME]),
+	prev_button = media_button:new(media_button_images.prev_button_image, margins[THEME]),
+	repeat_button = media_button:new(media_button_images.rep_button_image, nil),
+	random_button = media_button:new(media_button_images.rand_button_image, dpi(10)),
 }, media_button_images)
 
 media_buttons.navigate_buttons = wibox.widget({

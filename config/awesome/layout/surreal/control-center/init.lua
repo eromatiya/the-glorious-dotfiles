@@ -179,7 +179,7 @@ local control_center = function(s)
 							main_control_row_two,
 							main_control_row_sliders,
 							-- 🔧 TODO: format mpd
-							mpd,
+							format_item(mpd),
 						},
 						{
 							id = "monitor_control",
@@ -206,7 +206,7 @@ local control_center = function(s)
 		ontop = true,
 		width = dpi(panel_width),
 		maximum_width = dpi(panel_width),
-		maximum_height = dpi(s.geometry.height - 38),
+		maximum_height = dpi(s.geometry.height),
 		bg = beautiful.transparent,
 		fg = beautiful.fg_normal,
 		shape = gears.shape.rectangle,

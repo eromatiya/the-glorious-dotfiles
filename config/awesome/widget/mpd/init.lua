@@ -17,6 +17,7 @@ local music_box = wibox.widget({
 	forced_height = dpi(46),
 	{
 		layout = wibox.layout.fixed.horizontal,
+		halign = "center",
 		spacing = dpi(10),
 		album,
 		song_info,
