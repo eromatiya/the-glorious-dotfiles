@@ -1,14 +1,13 @@
 local wibox = require("wibox")
-local gears = require("gears")
 local awful = require("awful")
+local gears = require("gears")
 local beautiful = require("beautiful")
 local watch = awful.widget.watch
-local spawn = awful.spawn
 local dpi = beautiful.xresources.apply_dpi
-local icons = require("theme.icons")
+local icons = require("theme." .. THEME .. ".icons")
 
 local meter_name = wibox.widget({
-	text = "CPU",
+	text = "Temperature",
 	font = "Inter Bold 10",
 	align = "left",
 	widget = wibox.widget.textbox,
@@ -19,7 +18,7 @@ local icon = wibox.widget({
 	expand = "none",
 	nil,
 	{
-		image = icons.chart,
+		image = icons.thermometer,
 		resize = true,
 		widget = wibox.widget.imagebox,
 	},
@@ -42,7 +41,7 @@ local meter_icon = wibox.widget({
 local slider = wibox.widget({
 	nil,
 	{
-		id = "cpu_usage",
+		id = "temp_status",
 		max_value = 100,
 		value = 29,
 		forced_height = dpi(24),
@@ -53,37 +52,10 @@ local slider = wibox.widget({
 	},
 	nil,
 	expand = "none",
-	forced_height = dpi(24),
+	forced_height = dpi(36),
 	layout = wibox.layout.align.vertical,
 })
-
-local total_prev = 0
-local idle_prev = 0
-
-watch(
-	[[bash -c "
-	cat /proc/stat | grep '^cpu '
-	"]],
-	10,
-	function(_, stdout)
-		local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice =
-			stdout:match("(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s")
-
-		local total = user + nice + system + idle + iowait + irq + softirq + steal
-
-		local diff_idle = idle - idle_prev
-		local diff_total = total - total_prev
-		local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
-
-		slider.cpu_usage:set_value(diff_usage)
-
-		total_prev = total
-		idle_prev = idle
-		collectgarbage("collect")
-	end
-)
-
-local cpu_meter = wibox.widget({
+local temp_meter = wibox.widget({
 	layout = wibox.layout.fixed.vertical,
 	spacing = dpi(5),
 	meter_name,
@@ -105,5 +77,3 @@ local cpu_meter = wibox.widget({
 		slider,
 	},
 })
-
-return cpu_meter

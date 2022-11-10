@@ -61,7 +61,6 @@ return function(_, panel)
 				layout = wibox.layout.fixed.vertical,
 				spacing = dpi(7),
 				search_button,
-
 				hardware_monitor,
 				quick_settings,
 			},

@@ -34,4 +34,4 @@ local theme_map = {
 }
 
 -- Mpd widget updater
-return music_box
+return theme_map[THEME]
