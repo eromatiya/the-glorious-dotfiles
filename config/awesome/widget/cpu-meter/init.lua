@@ -6,6 +6,8 @@ local watch = awful.widget.watch
 local spawn = awful.spawn
 local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme.icons")
+local slider_class = require("widget.meters.entities.slider")
+local slider = slider_class:new("cpu_usage")
 
 local meter_name = wibox.widget({
 	text = "CPU",
@@ -37,24 +39,6 @@ local meter_icon = wibox.widget({
 		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
 	end,
 	widget = wibox.container.background,
-})
-
-local slider = wibox.widget({
-	nil,
-	{
-		id = "cpu_usage",
-		max_value = 100,
-		value = 29,
-		forced_height = dpi(24),
-		color = "#f2f2f2EE",
-		background_color = "#ffffff20",
-		shape = gears.shape.rounded_rect,
-		widget = wibox.widget.progressbar,
-	},
-	nil,
-	expand = "none",
-	forced_height = dpi(24),
-	layout = wibox.layout.align.vertical,
 })
 
 local total_prev = 0

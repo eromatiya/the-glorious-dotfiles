@@ -1,0 +1,10 @@
+local meter_icon = require("widget.meters.entities.icon")
+local meter_name = require("widget.meters.entities.name")
+local slider = require("widget.meters.entities.slider")
+local meter = require("widget.meters.entities.meter")
+local icons = require("theme." .. THEME .. ".icons")
+
+local temp_name = meter_name:new("Temperature", _, _)
+local temp_icon = meter_icon:new(icons.thermometer, _)
+local temp_slider = slider:new("Temperature", _)
+return meter(temp_name, temp_icon, temp_slider)

@@ -9,7 +9,7 @@ local slider = {
 		id = "",
 		max_value = 100,
 		value = 0,
-		forced_height = dpi(24),
+		forced_height = _,
 		color = "#f2f2f2EE",
 		background_color = "#ffffff20",
 		shape = gears.shape.rounded_rect,
@@ -20,10 +20,14 @@ local slider = {
 	forced_height = dpi(36),
 	layout = wibox.layout.align.vertical,
 }
+local height_map = {
+	floppy = dpi(2),
+}
 ---@param id string
----@param height number
-function slider:new(id, height)
-	self[1][1].id = id
-	self[1][1].forced_height = height
+function slider:new(id)
+	self[2].id = id
+	self[2].forced_height = height_map[THEME] or dpi(24)
+	return wibox.widget(self)
 end
+
 return slider

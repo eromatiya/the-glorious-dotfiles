@@ -5,6 +5,7 @@ local beautiful = require("beautiful")
 local watch = awful.widget.watch
 local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme." .. THEME .. ".icons")
+local slider_class = require("widget.meters.entities.slider")
 
 local meter_name = wibox.widget({
 	text = "Temperature",
@@ -38,23 +39,24 @@ local meter_icon = wibox.widget({
 	widget = wibox.container.background,
 })
 
-local slider = wibox.widget({
-	nil,
-	{
-		id = "temp_status",
-		max_value = 100,
-		value = 29,
-		forced_height = dpi(24),
-		color = "#f2f2f2EE",
-		background_color = "#ffffff20",
-		shape = gears.shape.rounded_rect,
-		widget = wibox.widget.progressbar,
-	},
-	nil,
-	expand = "none",
-	forced_height = dpi(36),
-	layout = wibox.layout.align.vertical,
-})
+local slider = slider_class:new("temp_status")
+-- local slider = wibox.widget({
+-- 	nil,
+-- 	{
+-- 		id = "temp_status",
+-- 		max_value = 100,
+-- 		value = 29,
+-- 		forced_height = dpi(24),
+-- 		color = "#f2f2f2EE",
+-- 		background_color = "#ffffff20",
+-- 		shape = gears.shape.rounded_rect,
+-- 		widget = wibox.widget.progressbar,
+-- 	},
+-- 	nil,
+-- 	expand = "none",
+-- 	forced_height = dpi(36),
+-- 	layout = wibox.layout.align.vertical,
+-- })
 
 local max_temp = 80
 

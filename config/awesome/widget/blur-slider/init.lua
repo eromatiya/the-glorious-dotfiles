@@ -6,6 +6,12 @@ local spawn = awful.spawn
 local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme.icons")
 local clickable_container = require("widget.clickable-container")
+local height_map = {
+	floppy = dpi(2),
+}
+local handle_width_map = {
+	floppy = dpi(15),
+}
 
 local action_name = wibox.widget({
 	text = "Blur Strength",
@@ -46,12 +52,12 @@ local slider = wibox.widget({
 	{
 		id = "blur_strength_slider",
 		bar_shape = gears.shape.rounded_rect,
-		bar_height = dpi(24),
+		bar_height = height_map[THEME] or dpi(24),
 		bar_color = "#ffffff20",
 		bar_active_color = "#f2f2f2EE",
 		handle_color = "#ffffff",
 		handle_shape = gears.shape.circle,
-		handle_width = dpi(24),
+		handle_width = handle_width_map[THEME] or dpi(24),
 		handle_border_color = "#00000012",
 		handle_border_width = dpi(1),
 		maximum = 100,

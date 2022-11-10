@@ -4,7 +4,6 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local watch = awful.widget.watch
 local dpi = beautiful.xresources.apply_dpi
-local icons = require("theme." .. THEME .. ".icons")
 
 -- local meter_name = wibox.widget({
 -- 	text = "Temperature",
@@ -24,7 +23,6 @@ local icons = require("theme." .. THEME .. ".icons")
 -- 	},
 -- 	nil,
 -- })
-
 -- local meter_icon = wibox.widget({
 -- 	{
 -- 		icon,
@@ -55,25 +53,31 @@ local icons = require("theme." .. THEME .. ".icons")
 -- 	forced_height = dpi(36),
 -- 	layout = wibox.layout.align.vertical,
 -- })
-local meter = {
-	layout = wibox.layout.fixed.vertical,
-	spacing = dpi(5),
-	meter_name,
-	{
-		layout = wibox.layout.fixed.horizontal,
+---@param meter_name unknown
+---@param meter_icon unknown
+---@param meter_slider unknown
+local return_button = function(meter_name, meter_icon, meter_slider)
+	return wibox.widget({
+		layout = wibox.layout.fixed.vertical,
 		spacing = dpi(5),
+		meter_name,
 		{
-			layout = wibox.layout.align.vertical,
-			expand = "none",
-			nil,
+			layout = wibox.layout.fixed.horizontal,
+			spacing = dpi(5),
 			{
-				layout = wibox.layout.fixed.horizontal,
-				forced_height = dpi(24),
-				forced_width = dpi(24),
-				meter_icon,
+				layout = wibox.layout.align.vertical,
+				expand = "none",
+				nil,
+				{
+					layout = wibox.layout.fixed.horizontal,
+					forced_height = dpi(24),
+					forced_width = dpi(24),
+					meter_icon,
+				},
+				nil,
 			},
-			nil,
+			meter_slider,
 		},
-		slider,
-	},
-}
+	})
+end
+return return_button
