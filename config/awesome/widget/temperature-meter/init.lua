@@ -6,6 +6,7 @@ local watch = awful.widget.watch
 local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme." .. THEME .. ".icons")
 local slider_class = require("widget.meters.entities.slider")
+local icon_class = require("widget.meters.entities.icon")
 
 local meter_name = wibox.widget({
 	text = "Temperature",
@@ -14,49 +15,33 @@ local meter_name = wibox.widget({
 	widget = wibox.widget.textbox,
 })
 
-local icon = wibox.widget({
-	layout = wibox.layout.align.vertical,
-	expand = "none",
-	nil,
-	{
-		image = icons.thermometer,
-		resize = true,
-		widget = wibox.widget.imagebox,
-	},
-	nil,
-})
-
-local meter_icon = wibox.widget({
-	{
-		icon,
-		margins = dpi(5),
-		widget = wibox.container.margin,
-	},
-	bg = beautiful.groups_bg,
-	shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
-	end,
-	widget = wibox.container.background,
-})
-
-local slider = slider_class:new("temp_status")
--- local slider = wibox.widget({
+-- local icon = wibox.widget({
+-- 	layout = wibox.layout.align.vertical,
+-- 	expand = "none",
 -- 	nil,
 -- 	{
--- 		id = "temp_status",
--- 		max_value = 100,
--- 		value = 29,
--- 		forced_height = dpi(24),
--- 		color = "#f2f2f2EE",
--- 		background_color = "#ffffff20",
--- 		shape = gears.shape.rounded_rect,
--- 		widget = wibox.widget.progressbar,
+-- 		image = icons.thermometer,
+-- 		resize = true,
+-- 		widget = wibox.widget.imagebox,
 -- 	},
 -- 	nil,
--- 	expand = "none",
--- 	forced_height = dpi(36),
--- 	layout = wibox.layout.align.vertical,
 -- })
+
+-- local meter_icon = wibox.widget({
+-- 	{
+-- 		icon,
+-- 		margins = dpi(5),
+-- 		widget = wibox.container.margin,
+-- 	},
+-- 	bg = beautiful.groups_bg,
+-- 	shape = function(cr, width, height)
+-- 		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
+-- 	end,
+-- 	widget = wibox.container.background,
+-- })
+
+local slider = slider_class:new("temp_status")
+local meter_icon = icon_class:new(icons.thermometer, _)
 
 local max_temp = 80
 

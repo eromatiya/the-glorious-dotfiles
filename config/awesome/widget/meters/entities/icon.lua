@@ -15,16 +15,19 @@ local icon = {
 	},
 	nil,
 }
+local themes_without_icon_bg = {
+	floppy = true,
+}
 
 ---@param image_path string
 ---@param margins unknown
 function icon:new(image_path, margins)
-	local o = {}
-	o.image = image_path
-	setmetatable(o, self)
-	self.__index = self
+	self[2].image = image_path
+	if themes_without_icon_bg[THEME] then
+		return wibox.widget(self)
+	end
 	local image_with_margins = {
-		o,
+		self,
 		margins = margins or dpi(5),
 		widget = wibox.container.margin,
 	}
