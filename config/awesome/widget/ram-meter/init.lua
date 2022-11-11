@@ -8,6 +8,7 @@ local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme.icons")
 local slider_class = require("widget.meters.entities.slider")
 local slider = slider_class:new("ram_usage")
+local icon_class = require("widget.meters.entities.icon")
 
 local meter_name = wibox.widget({
 	text = "RAM",
@@ -15,31 +16,7 @@ local meter_name = wibox.widget({
 	align = "left",
 	widget = wibox.widget.textbox,
 })
-
-local icon = wibox.widget({
-	layout = wibox.layout.align.vertical,
-	expand = "none",
-	nil,
-	{
-		image = icons.memory,
-		resize = true,
-		widget = wibox.widget.imagebox,
-	},
-	nil,
-})
-
-local meter_icon = wibox.widget({
-	{
-		icon,
-		margins = dpi(5),
-		widget = wibox.container.margin,
-	},
-	bg = beautiful.groups_bg,
-	shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
-	end,
-	widget = wibox.container.background,
-})
+local meter_icon = icon_class:new(icons.memory, _)
 
 watch('bash -c "free | grep -z Mem.*Swap.*"', 10, function(_, stdout)
 	local total, used, free, shared, buff_cache, available, total_swap, used_swap, free_swap =

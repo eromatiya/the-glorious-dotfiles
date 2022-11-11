@@ -4,6 +4,8 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local watch = awful.widget.watch
 local dpi = beautiful.xresources.apply_dpi
+
+local clickable_container = require("widget.clickable-container")
 local icon = {
 	layout = wibox.layout.align.vertical,
 	expand = "none",
@@ -21,7 +23,8 @@ local themes_without_icon_bg = {
 
 ---@param image_path string
 ---@param margins unknown
-function icon:new(image_path, margins)
+---@param clickable boolean
+function icon:new(image_path, margins, clickable)
 	self[2].image = image_path
 	if themes_without_icon_bg[THEME] then
 		return wibox.widget(self)
@@ -31,6 +34,9 @@ function icon:new(image_path, margins)
 		margins = margins or dpi(5),
 		widget = wibox.container.margin,
 	}
+	if clickable then
+		image_with_margins = { image_with_margins, widget = clickable_container }
+	end
 	local image_with_bkg = {
 		image_with_margins,
 		bg = beautiful.groups_bg,

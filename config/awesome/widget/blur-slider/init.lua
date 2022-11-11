@@ -2,10 +2,11 @@ local wibox = require("wibox")
 local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
-local spawn = awful.spawn
 local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme.icons")
 local clickable_container = require("widget.clickable-container")
+local icon_class = require("widget.meters.entities.icon")
+
 local height_map = {
 	floppy = dpi(2),
 }
@@ -20,17 +21,7 @@ local action_name = wibox.widget({
 	widget = wibox.widget.textbox,
 })
 
-local icon = wibox.widget({
-	layout = wibox.layout.align.vertical,
-	expand = "none",
-	nil,
-	{
-		image = icons.effects,
-		resize = true,
-		widget = wibox.widget.imagebox,
-	},
-	nil,
-})
+local icon = icon_class:new(icons.volume, _, true)
 
 local action_level = wibox.widget({
 	{
