@@ -3,6 +3,7 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local watch = awful.widget.watch
 local slider = {
 	nil,
 	{
@@ -23,11 +24,19 @@ local slider = {
 local height_map = {
 	floppy = dpi(2),
 }
+---@see make a new slider with a funcution to update it
 ---@param id string
-function slider:new(id)
+---@param update_scirpt string | nil
+---@param update_interval number | nil
+---@param update_callback function | nil
+function slider:new(id, update_scirpt, update_interval, update_callback)
 	self[2].id = id
 	self[2].forced_height = height_map[THEME] or dpi(24)
-	return wibox.widget(self)
+	local sl = wibox.widget(self)
+	if update_scirpt then
+		watch(update_scirpt, update_interval, update_callback, sl)
+	end
+	return sl
 end
 
 return slider

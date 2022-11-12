@@ -6,6 +6,9 @@ local meter_name = {
 	align = "left",
 	widget = wibox.widget.textbox,
 }
+---@param text string
+---@param font string
+---@param align unknown
 function meter_name:new(text, font, align)
 	local o = {}
 	o.text = text or self.text
