@@ -2,6 +2,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local crate_meter = require("widget.meters")
 
 local hardware_header = wibox.widget({
 	text = "Hardware Monitor",
@@ -10,7 +11,7 @@ local hardware_header = wibox.widget({
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
-local cpu_meter = require("widget.cpu-meter")
+local cpu_meter = crate_meter("cpu")
 local ram_meter = require("widget.ram-meter")
 local temperature_meter = require("widget.temperature-meter")
 local harddrive_meter = require("widget.harddrive-meter")
