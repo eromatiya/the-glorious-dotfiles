@@ -13,8 +13,8 @@ local hardware_header = wibox.widget({
 })
 local cpu_meter = create_meter("cpu")
 local ram_meter = create_meter("ram")
-local temperature_meter = require("widget.temperature-meter")
-local harddrive_meter = require("widget.harddrive-meter")
+local temperature_meter = create_meter("temperature")
+local harddrive_meter = create_meter("disk")
 
 return wibox.widget({
 	layout = wibox.layout.fixed.vertical,

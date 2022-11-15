@@ -26,7 +26,7 @@ local height_map = {
 }
 ---@see make a new slider with a funcution to update it
 ---@param id string
----@param update_scirpt string | nil
+---@param update_scirpt string| table | nil
 ---@param update_interval number | nil
 ---@param update_callback function | nil
 function slider:new(id, update_scirpt, update_interval, update_callback)

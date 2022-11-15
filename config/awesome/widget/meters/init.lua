@@ -16,7 +16,7 @@ local meter_factory = function(args)
 	local meter_icon = icon_class:new(args.icon, args.icon_margins, args.clickable)
 	return meter(meter_name, meter_icon, slider)
 end
----@param name "cpu" | "ram" | "swap" | "disk" | "network"
+---@param name "cpu" | "ram" | "temperature" | "disk" | "network"
 local create_widget = function(name)
 	local meter_args = meter_repo[name]
 	return meter_factory(meter_args)

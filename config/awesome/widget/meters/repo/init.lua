@@ -20,7 +20,6 @@ local cpu = {
 	update_interval = 10,
 	update_callback = function(widget, stdout)
 		local percentage_num = tonumber(stdout)
-		print(percentage_num)
 		widget.cpu_usage:set_value(percentage_num)
 	end,
 }
@@ -34,19 +33,46 @@ local ram = {
 	slider_id = "ram_usage",
 	--script gets first 2 lines of file (MemTotal and MemFree) and calculates their ratio
 	-- 🔧 TODO: add "Mem" regex on awk
-	update_script = [[awk 'NR==1, NR==2 {if(NR==2)sum=$2/sum;else sum=$2;} END {print sum}' /proc/meminfo]],
+	update_script = [[awk 'NR==1, NR==2 {if(NR==2)sum=$2/sum;else sum=$2;} END {print sum * 100}' /proc/meminfo]],
 	update_interval = 10,
 	update_callback = function(widget, stdout)
 		local value = tonumber(stdout)
-		widget.ram_usage:set_value(value * 100)
+		widget.ram_usage:set_value(value)
 	end,
 }
--- update_script = {
--- 		"bash",
--- 		"-c",
--- 		[[ sensors -j | jq '."coretemp-isa-0000"' | jq '."Package id 0"' | jq 'map(.)| .[0] / .[2] * 100' ]],
--- 	},
+---@type meter_args
+local temperature = {
 
----@type {cpu: meter_args, ram: meter_args, swap: meter_args, disk: meter_args, network: meter_args}
-local meter_map = { cpu = cpu, ram = ram }
+	name = "Temperature",
+	icon = icons.thermometer,
+	icon_margins = _,
+	clickable = false,
+	slider_id = "temperature_usage",
+	update_script = {
+		"bash",
+		"-c",
+		[[ sensors -j | jq '."coretemp-isa-0000"' | jq '."Package id 0"' | jq 'map(.)| .[0] / .[2] * 100' ]],
+	},
+	update_interval = 10,
+	update_callback = function(widget, stdout)
+		local value = tonumber(stdout)
+		widget.temperature_usage:set_value(value)
+	end,
+}
+local hard_drive = {
+	name = "Hard Drive",
+	icon = icons.harddisk,
+	icon_margins = _,
+	clickable = false,
+	slider_id = "hard_drive_usage",
+	update_script = [[bash -c "df -h /home|grep '^/' | awk '{print $5}'"]],
+	update_interval = 10,
+	update_callback = function(widget, stdout)
+		local space_consumed = stdout:match("(%d+)")
+		widget.hard_drive_usage:set_value(tonumber(space_consumed))
+	end,
+}
+
+---@type {cpu: meter_args, ram: meter_args, temperature: meter_args, disk: meter_args}
+local meter_map = { cpu = cpu, ram = ram, temperature = temperature, disk = hard_drive }
 return meter_map
