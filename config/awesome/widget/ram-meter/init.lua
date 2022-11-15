@@ -19,11 +19,9 @@ local meter_name = wibox.widget({
 local meter_icon = icon_class:new(icons.memory, _, _)
 
 -- awk 'NR==1, NR==2 {if(NR==2)sum=$2/sum;else sum=$2;} END {print sum}' /proc/meminfo
-watch('bash -c "free | grep -z Mem.*Swap.*"', 10, function(_, stdout)
-	local total, used, free, shared, buff_cache, available, total_swap, used_swap, free_swap =
-		stdout:match("(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*Swap:%s*(%d+)%s*(%d+)%s*(%d+)")
-	slider.ram_usage:set_value(used / total * 100)
-	collectgarbage("collect")
+watch("awk 'NR==1, NR==2 {if(NR==2)sum=$2/sum;else sum=$2;} END {print sum}' /proc/meminfo", 10, function(_, stdout)
+	local value = tonumber(stdout)
+	slider.ram_usage:set_value(value * 100)
 end)
 
 local ram_meter = wibox.widget({
