@@ -1,9 +1,5 @@
-local cpu_meter = require("widget.cpu-meter")
 local mpd = require("widget.mpd")
 local volume_slider = require("widget.volume-slider")
-local ram_meter = require("widget.ram-meter")
-local temperature_meter = require("widget.temperature-meter")
-local harddrive_meter = require("widget.harddrive-meter")
 local brightness_slider = require("widget.brightness-slider")
 local blur_slider = require("widget.blur-slider")
 local awful = require("awful")
@@ -19,6 +15,11 @@ local bluetooth_toggle = require("widget.bluetooth-toggle")
 local blue_light = require("widget.blue-light")
 local dont_disturb = require("widget.dont-disturb")
 local blur_toggle = require("widget.blur-toggle")
+local create_meter = require("widget.meters")
+local cpu_meter = create_meter("cpu")
+local ram_meter = create_meter("ram")
+local temperature_meter = create_meter("temperature")
+local harddrive_meter = create_meter("disk")
 
 panel_visible = false
 
