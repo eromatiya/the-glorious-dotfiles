@@ -6,6 +6,7 @@ local spawn = awful.spawn
 local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme.icons")
 local icon_class = require("widget.meters.entities.icon")
+local name_class = require("widget.meters.entities.name")
 
 local height_map = {
 	floppy = dpi(2),
@@ -14,13 +15,7 @@ local handle_width_map = {
 	floppy = dpi(15),
 }
 
-local action_name = wibox.widget({
-	text = "Volume",
-	font = "Inter Bold 10",
-	align = "left",
-	widget = wibox.widget.textbox,
-})
-
+local action_name = name_class:new("Volume", _, _)
 local icon = icon_class:new(icons.volume, _, true)
 
 local action_level = wibox.widget({

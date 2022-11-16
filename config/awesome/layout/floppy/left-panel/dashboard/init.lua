@@ -65,7 +65,7 @@ return function(_, panel)
 				quick_settings,
 			},
 			nil,
-			end_session(),
+			-- end_session(),
 			layout = wibox.layout.align.vertical,
 		},
 		margins = dpi(16),

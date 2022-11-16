@@ -9,6 +9,7 @@ local config_dir = gears.filesystem.get_configuration_dir()
 local widget_dir = config_dir .. "widget/airplane-mode/"
 local widget_icon_dir = widget_dir .. "icons/"
 local icons = require("theme.icons")
+local toggle_component = require("widget.shared.components.toggle")
 local ap_state = false
 
 local action_name = wibox.widget({
@@ -75,15 +76,17 @@ local button_theme_map = {
 	default = button_widget,
 }
 
-local widget_button = wibox.widget({
-	{
-		button_theme_map[THEME] or button_theme_map.default,
-		widget = clickable_container,
-	},
-	bg = beautiful.groups_bg,
-	shape = gears.shape.circle,
-	widget = wibox.container.background,
-})
+-- local widget_button = wibox.widget({
+-- 	{
+-- 		button_theme_map[THEME] or button_theme_map.default,
+-- 		widget = clickable_container,
+-- 	},
+-- 	bg = beautiful.groups_bg,
+-- 	shape = gears.shape.circle,
+-- 	widget = wibox.container.background,
+-- })
+local widget_button = toggle_component:new(_)
+print(widget_button)
 
 -- 🔧 refactor this 
 local update_imagebox = function()
@@ -177,13 +180,13 @@ local toggle_action = function()
 	end
 end
 
-widget_button:buttons(gears.table.join(awful.button({}, 1, nil, function()
-	toggle_action()
-end)))
+-- widget_button:buttons(gears.table.join(awful.button({}, 1, nil, function()
+-- 	toggle_action()
+-- end)))
 
-action_info:buttons(gears.table.join(awful.button({}, 1, nil, function()
-	toggle_action()
-end)))
+-- action_info:buttons(gears.table.join(awful.button({}, 1, nil, function()
+-- 	toggle_action()
+-- end)))
 
 gears.timer({
 	timeout = 5,
@@ -224,4 +227,5 @@ local toggle_action_widget = wibox.widget({
 local action_widget_map = {
 	floppy = toggle_action_widget,
 }
-return action_widget_map[THEME] or action_widget
+-- return action_widget_map[THEME] or action_widget
+return wibox.widget({ toggle_component:new(_, _), layout = wibox.layout.fixed.vertical })
