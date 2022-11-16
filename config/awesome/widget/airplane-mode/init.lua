@@ -10,7 +10,39 @@ local widget_dir = config_dir .. "widget/airplane-mode/"
 local widget_icon_dir = widget_dir .. "icons/"
 local icons = require("theme.icons")
 local toggle_component = require("widget.shared.components.toggle")
+local circular_toggle_component = require("widget.shared.components.circular_toggle")
 local ap_state = false
+local naughty = require("naughty")
+local airplane_mode_off_icon = widget_icon_dir .. "airplane-mode-off.svg"
+local airplane_mode_on_icon = widget_icon_dir .. "airplane-mode.svg"
+
+local ap_off_cmd = [[
+	rfkill unblock wlan
+]]
+
+local ap_on_cmd = [[
+	rfkill block wlan
+]]
+local ap_off_callback = function()
+	awful.spawn.easy_async_with_shell(ap_off_cmd, function()
+		naughty.notification({
+			app_name = "Network Manager",
+			title = "<b>Airplane mode disabled!</b>",
+			message = "Enabling radio devices",
+			icon = airplane_mode_off_icon,
+		})
+	end)
+end
+local ap_on_callback = function()
+	awful.spawn.easy_async_with_shell(ap_on_cmd, function()
+		naughty.notification({
+			app_name = "Network Manager",
+			title = "<b>Airplane mode enabled!</b>",
+			message = "Disabling radio devices",
+			icon = airplane_mode_on_icon,
+		})
+	end)
+end
 
 local action_name = wibox.widget({
 	text = "Airplane Mode",
@@ -72,22 +104,19 @@ local toggle_widget = wibox.widget({
 	widget = wibox.container.margin,
 })
 local button_theme_map = {
-	floppy = toggle_widget,
+	floppy = circular_toggle_component:new(airplane_mode_on_icon, airplane_mode_off_icon, _, _),
 	default = button_widget,
 }
 
--- local widget_button = wibox.widget({
--- 	{
--- 		button_theme_map[THEME] or button_theme_map.default,
--- 		widget = clickable_container,
--- 	},
--- 	bg = beautiful.groups_bg,
--- 	shape = gears.shape.circle,
--- 	widget = wibox.container.background,
--- })
-local widget_button = toggle_component:new(_)
-print(widget_button)
-
+local widget_button = wibox.widget({
+	{
+		button_theme_map[THEME] or button_theme_map.default,
+		widget = clickable_container,
+	},
+	bg = beautiful.groups_bg,
+	shape = gears.shape.circle,
+	widget = wibox.container.background,
+})
 -- 🔧 refactor this 
 local update_imagebox = function()
 	if ap_state then
@@ -131,40 +160,6 @@ local check_airplane_mode_state = function()
 end
 
 check_airplane_mode_state()
-
-local ap_off_cmd = [[
-	
-	rfkill unblock wlan
-
-	# Create an AwesomeWM Notification
-	awesome-client "
-	naughty = require('naughty')
-	naughty.notification({
-		app_name = 'Network Manager',
-		title = '<b>Airplane mode disabled!</b>',
-		message = 'Initializing network devices',
-		icon = ']] .. widget_icon_dir .. "airplane-mode-off" .. ".svg" .. [['
-	})
-	"
-	]] .. "echo false > " .. widget_dir .. "airplane_mode" .. [[
-]]
-
-local ap_on_cmd = [[
-
-	rfkill block wlan
-
-	# Create an AwesomeWM Notification
-	awesome-client "
-	naughty = require('naughty')
-	naughty.notification({
-		app_name = 'Network Manager',
-		title = '<b>Airplane mode enabled!</b>',
-		message = 'Disabling radio devices',
-		icon = ']] .. widget_icon_dir .. "airplane-mode" .. ".svg" .. [['
-	})
-	"
-	]] .. "echo true > " .. widget_dir .. "airplane_mode" .. [[
-]]
 
 local toggle_action = function()
 	if ap_state then
@@ -227,5 +222,5 @@ local toggle_action_widget = wibox.widget({
 local action_widget_map = {
 	floppy = toggle_action_widget,
 }
--- return action_widget_map[THEME] or action_widget
-return wibox.widget({ toggle_component:new(_, _), layout = wibox.layout.fixed.vertical })
+return action_widget_map[THEME] or action_widget
+-- return toggle_action_widget

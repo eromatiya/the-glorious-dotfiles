@@ -5,6 +5,7 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local icons = require("theme.icons")
 local icon = require("widget.shared.components.icon")
+local name = require("widget.shared.components.name")
 local clickable_container = require("widget.clickable-container")
 
 ---@class toggle_comp
@@ -17,15 +18,27 @@ local clickable_container = require("widget.clickable-container")
 local toggle = {
 	widget_params = {
 		{
-			id = "icon",
-			widget = wibox.widget.imagebox,
-			image = icons.toggled_off,
-			resize = true,
+			{
+				{
+					id = "icon",
+					image = _,
+					widget = wibox.widget.imagebox,
+					resize = true,
+				},
+				layout = wibox.layout.align.horizontal,
+			},
+			id = "margins",
+			margins = dpi(15),
+			forced_height = dpi(48),
+			forced_width = dpi(48),
+			widget = wibox.container.margin,
 		},
-		margins = dpi(5),
-		widget = wibox.container.margin,
+		bg = beautiful.groups_bg,
+		shape = gears.shape.circle,
+		widget = wibox.container.background,
 	},
 	toggle_on = false,
+	status = name:new("On", _, _),
 }
 
 ---@param toggle_on_callback function
@@ -38,6 +51,13 @@ function toggle:new(toggle_on_icon, toggle_off_icon, toggle_on_callback, toggle_
 	o.toggled_off_icon = toggle_off_icon or icons.toggled_off
 	self.__index = self
 	setmetatable(o, self)
+	local status = {
+		layout = wibox.layout.align.vertical,
+		expand = "none",
+		nil,
+		o.status,
+		nil,
+	}
 	o.wibox_widget = wibox.widget(o.widget_params)
 	o.wibox_widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
 		o:toggle()
@@ -46,12 +66,15 @@ function toggle:new(toggle_on_icon, toggle_off_icon, toggle_on_callback, toggle_
 end
 function toggle:toggle()
 	local wibox_widget = self.wibox_widget
-	print("toggle_on_icon")
 	if not self.toggle_on then
-		wibox_widget.icon:set_image(self.toggled_on_icon)
+		wibox_widget.margins.icon:set_image(self.toggled_on_icon)
+		wibox_widget.bg = beautiful.accent
+		-- self.status:set_text("On")
 		self.toggle_on_callback()
 	else
 		wibox_widget.icon:set_image(self.toggled_off_icon)
+		wibox_widget.bg = beautiful.groups_bg
+		-- self.status:set_text("Off")
 		self.toggle_off_callback()
 	end
 	self.toggle_on = not self.toggle_on
