@@ -185,4 +185,4 @@ local action_widget_map = {
 	floppy = toggle_action_widget,
 }
 -- return action_widget_map[THEME] or action_widget
-return toggles.airplane_mode
+return toggles.bluetooth
