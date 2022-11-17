@@ -15,6 +15,7 @@ local ap_state = false
 local naughty = require("naughty")
 local airplane_mode_off_icon = widget_icon_dir .. "airplane-mode-off.svg"
 local airplane_mode_on_icon = widget_icon_dir .. "airplane-mode.svg"
+local toggles = require("widget.toggles")
 
 local ap_off_cmd = [[
 	rfkill unblock wlan
@@ -104,8 +105,13 @@ local toggle_widget = wibox.widget({
 	widget = wibox.container.margin,
 })
 local button_theme_map = {
-	floppy = circular_toggle_component:new(airplane_mode_on_icon, airplane_mode_off_icon, _, _),
-	default = button_widget,
+	floppy = toggle_component:new(ap_on_callback, ap_off_callback),
+	default = circular_toggle_component:new(
+		airplane_mode_on_icon,
+		airplane_mode_off_icon,
+		ap_on_callback,
+		ap_off_callback
+	),
 }
 
 local widget_button = wibox.widget({
@@ -118,28 +124,6 @@ local widget_button = wibox.widget({
 	widget = wibox.container.background,
 })
 -- 🔧 refactor this 
-local update_imagebox = function()
-	if ap_state then
-		icon:set_image(icons.toggled_on)
-	else
-		icon:set_image(icons.toggled_off)
-	end
-end
-local update_widget = function()
-	if THEME == "floppy" then
-		update_imagebox()
-		return
-	end
-	if ap_state then
-		action_status:set_text("On")
-		widget_button.bg = beautiful.accent
-		icon:set_image(widget_icon_dir .. "airplane-mode.svg")
-	else
-		action_status:set_text("Off")
-		widget_button.bg = beautiful.groups_bg
-		icon:set_image(widget_icon_dir .. "airplane-mode-off.svg")
-	end
-end
 
 local check_airplane_mode_state = function()
 	local cmd = "cat " .. widget_dir .. "airplane_mode"
@@ -155,34 +139,12 @@ local check_airplane_mode_state = function()
 			ap_state = false
 			awful.spawn.easy_async_with_shell('echo "false" > ' .. widget_dir .. "airplane_mode", function(stdout) end)
 		end
-		update_widget()
 	end)
 end
 
 check_airplane_mode_state()
 
-local toggle_action = function()
-	if ap_state then
-		awful.spawn.easy_async_with_shell(ap_off_cmd, function(stdout)
-			ap_state = false
-			update_widget()
-		end)
-	else
-		awful.spawn.easy_async_with_shell(ap_on_cmd, function(stdout)
-			ap_state = true
-			update_widget()
-		end)
-	end
-end
-
--- widget_button:buttons(gears.table.join(awful.button({}, 1, nil, function()
--- 	toggle_action()
--- end)))
-
--- action_info:buttons(gears.table.join(awful.button({}, 1, nil, function()
--- 	toggle_action()
--- end)))
-
+-- TODO: what?
 gears.timer({
 	timeout = 5,
 	autostart = true,
@@ -222,5 +184,5 @@ local toggle_action_widget = wibox.widget({
 local action_widget_map = {
 	floppy = toggle_action_widget,
 }
-return action_widget_map[THEME] or action_widget
--- return toggle_action_widget
+-- return action_widget_map[THEME] or action_widget
+return toggles.airplane_mode
