@@ -12,7 +12,8 @@ local create = function(args)
 		args.toggle_on_icon,
 		args.toggle_off_icon,
 		args.toggle_on_callback,
-		args.toggle_off_callback
+		args.toggle_off_callback,
+		args.watch_script
 	)
 	---@diagnostic disable-next-line: deprecated
 	local toggle_widget, status_widget = table.unpack(toggle_widget_components)

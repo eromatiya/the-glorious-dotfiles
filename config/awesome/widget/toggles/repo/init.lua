@@ -8,6 +8,7 @@ local airplane_mode_icon_dir = widget_dir .. "airplane-mode/icons/"
 local airplane_mode_off_icon = airplane_mode_icon_dir .. "airplane-mode-off.svg"
 local airplane_mode_on_icon = airplane_mode_icon_dir .. "airplane-mode.svg"
 local icons = require("widget.toggles.icons")
+local scripts = require("widget.toggles.scripts")
 
 ---@class toggle_widget_args
 ---@field name string
@@ -15,6 +16,7 @@ local icons = require("widget.toggles.icons")
 ---@field toggle_off_callback function
 ---@field toggle_on_icon string
 ---@field toggle_off_icon string
+---@field watch_script table | string | nil
 
 -- 🔧 TODO: add function that checks the initial state of wlan and sets the toggle properly
 ---@type toggle_widget_args
@@ -42,12 +44,14 @@ local airplane_mode = {
 	end,
 	toggle_on_icon = airplane_mode_on_icon,
 	toggle_off_icon = airplane_mode_off_icon,
+	watch_script = _,
 }
 
+---@type toggle_widget_args
 local bluetooth = {
 	name = "Bluetooth",
 	toggle_off_callback = function()
-		awful.spawn.easy_async_with_shell("rfkill block bluetooth", function()
+		awful.spawn.easy_async_with_shell(scripts.bluetooth.toggle_off_script, function()
 			naughty.notification({
 				app_name = "Bluetooth Manager",
 				title = "<b> System Notification</b>",
@@ -57,7 +61,7 @@ local bluetooth = {
 		end)
 	end,
 	toggle_on_callback = function()
-		awful.spawn.easy_async_with_shell("rfkill block bluetooth", function()
+		awful.spawn.easy_async_with_shell(scripts.bluetooth.toggle_on_script, function()
 			naughty.notification({
 				app_name = "Bluetooth Manager",
 				title = "<b> System Notification</b>",
@@ -68,6 +72,7 @@ local bluetooth = {
 	end,
 	toggle_on_icon = icons.bluetooth.on,
 	toggle_off_icon = icons.bluetooth.off,
+	watch_script = scripts.bluetooth.watch_script,
 }
 ---@alias toggle_widgets "airplane_mode" | "bluetooth"
 ---@type table<toggle_widgets, any>
