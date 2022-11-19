@@ -6,8 +6,7 @@ local scripts = {
 		watch_script = {
 			"bash",
 			"-c",
-			"rfkill -J",
-			[[  jq -c  '.rfkilldevices | map(select(.type | test( "bluetooth"; "i"))) | map(select(.soft == "unblocked")) | if length != 0 then true else false end']],
+			[[rfkill -J |  jq -c  '.rfkilldevices | map(select(.type | test( "bluetooth"; "i"))) | map(select(.soft == "unblocked")) | if length != 0 then true else false end']],
 		},
 		toggle_off_callback = "rfkill block bluetooth",
 		toggle_on_callback = "rfkill unblock bluetooth",

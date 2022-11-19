@@ -17,7 +17,6 @@ local get_circular_toggles = function()
 end
 
 ---@type toggle_widgets
-local toggle_widgets = get_circular_toggles()
-print(toggle_widgets["airplane_mode"])
+local toggle_widgets = get_basic_toggles()
 
 return toggle_widgets

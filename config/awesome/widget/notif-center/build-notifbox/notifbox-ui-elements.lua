@@ -2,12 +2,12 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local gears = require("gears")
-local directories = require("directories")
+local directories = require("module.directories")
 
 local dpi = beautiful.xresources.apply_dpi
 
-local config_dir = directories.config_dir
-local widget_icon_dir = config_dir:join("widget", "notif-center", "icons")
+local config_dir = directories.config
+local widget_icon_dir = config_dir .. "widget/notif-center/icons"
 widget_icon_dir = tostring(widget_icon_dir)
 
 local clickable_container = require("widget.clickable-container")

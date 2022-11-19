@@ -14,6 +14,7 @@ local clickable_container = require("widget.clickable-container")
 ---@field toggle_off_callback function
 ---@field toggle_on_icon unknown
 ---@field toggle_off_icon unknown
+---@field watch_script string
 local toggle = {
 	widget_params = {
 		{
@@ -32,27 +33,49 @@ local toggle = {
 
 ---@param toggle_on_callback function
 ---@param toggle_off_callback function
-function toggle:new(toggle_on_callback, toggle_off_callback)
+---@param watch_script string
+function toggle:new(toggle_on_callback, toggle_off_callback, watch_script)
 	local o = {}
 	o.toggle_on_callback = toggle_on_callback or function() end
 	o.toggle_off_callback = toggle_off_callback or function() end
+	o.watch_script = watch_script or nil
 	self.__index = self
 	setmetatable(o, self)
 	o.wibox_widget = wibox.widget(o.widget_params)
 	o.wibox_widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
-		o:toggle()
+		o:toggle(false)
 	end)))
 	return o.wibox_widget
 end
-function toggle:toggle()
+function toggle:toggle(silent)
 	local wibox_widget = self.wibox_widget
 	if not self.toggle_on then
 		wibox_widget.icon:set_image(self.toggle_on_icon)
-		self.toggle_on_callback()
+		if not silent then
+			self.toggle_on_callback()
+		end
 	else
 		wibox_widget.icon:set_image(self.toggle_off_icon)
-		self.toggle_off_callback()
+		if not silent then
+			self.toggle_off_callback()
+		end
 	end
 	self.toggle_on = not self.toggle_on
 end
+function toggle:register_watch_script()
+	awful.widget.watch(self.watch_script, 60, function(_, stdout)
+		if stdout:match("true") then
+			self.toggle_on = true
+		elseif stdout:match("false") then
+			self.toggle_on = false
+		else
+			pcall(function()
+				error("Invalid watch script output: must be on or off")
+			end)
+			return
+		end
+		self:toggle(true)
+	end)
+end
+
 return toggle

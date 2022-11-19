@@ -79,7 +79,7 @@ function toggle:new(toggle_on_icon, toggle_off_icon, toggle_on_callback, toggle_
 
 	-- buttons
 	o.wibox_widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
-		o:toggle()
+		o:toggle(false)
 	end)))
 
 	if watch_script then
@@ -88,34 +88,39 @@ function toggle:new(toggle_on_icon, toggle_off_icon, toggle_on_callback, toggle_
 
 	return { o.wibox_widget, o.status_widget }
 end
-function toggle:toggle()
+---@param silent boolean
+function toggle:toggle(silent)
 	local wibox_widget = self.wibox_widget
-	if not self.toggle_on then
+	if self.toggle_on then
 		self.icon_widget:set_image(self.toggled_on_icon)
 		wibox_widget.bg = beautiful.accent
 		self.status_widget.name:set_text("On")
-		self.toggle_on_callback()
+		if not silent then
+			self.toggle_on_callback()
+		end
 	else
 		self.icon_widget:set_image(self.toggled_off_icon)
 		wibox_widget.bg = beautiful.groups_bg
 		self.status_widget.name:set_text("Off")
-		self.toggle_off_callback()
+		if not silent then
+			self.toggle_off_callback()
+		end
 	end
 	self.toggle_on = not self.toggle_on
 end
 function toggle:register_watch_script()
-	awful.widget.watch(self.watch_script, 120, function(stdout)
-		if stdout:match("on") then
+	awful.widget.watch(self.watch_script, 60, function(_, stdout)
+		if stdout:match("true") then
 			self.toggle_on = true
-		elseif stdout:match("off") then
+		elseif stdout:match("false") then
 			self.toggle_on = false
 		else
 			pcall(function()
-				error("Invalid watch script output: must be 'on' or 'off'")
+				error("Invalid watch script output: must be on or off")
 			end)
 			return
 		end
-		self:toggle()
+		self:toggle(true)
 	end)
 end
 return toggle

@@ -4,8 +4,8 @@ local wibox = require("wibox")
 
 local dpi = require("beautiful").xresources.apply_dpi
 
-local directories = require("directories")
-local widget_icon_dir = directories.config_dir:join("widget", "notif-center", "icons")
+local directories = require("module.directories")
+local widget_icon_dir = directories.config .. "widget/notif-center/icons/"
 widget_icon_dir = tostring(widget_icon_dir)
 
 local empty_notifbox = wibox.widget({
