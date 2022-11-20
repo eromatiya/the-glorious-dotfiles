@@ -3,6 +3,7 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local bar_color = beautiful.groups_bg
 local dpi = beautiful.xresources.apply_dpi
+local toggles = require("widget.toggles")
 
 local quick_header = wibox.widget({
 	text = "Quick Settings",
@@ -13,9 +14,9 @@ local quick_header = wibox.widget({
 })
 local brightness_slider = require("widget.brightness-slider")
 local volume_slider = require("widget.volume-slider")
-local airplane_mode = require("widget.airplane-mode")
-local bluetooth_toggle = require("widget.bluetooth-toggle")
-local blue_light = require("widget.blue-light")
+-- local airplane_mode = require("widget.airplane-mode")
+-- local bluetooth_toggle = require("widget.bluetooth-toggle")
+-- local blue_light = require("widget.blue-light")
 local blur_slider = require("widget.blur-slider")
 local blur_toggle = require("widget.blur-toggle")
 return wibox.widget({
@@ -45,9 +46,9 @@ return wibox.widget({
 					layout = wibox.layout.fixed.vertical,
 					brightness_slider,
 					volume_slider,
-					airplane_mode,
-					bluetooth_toggle,
-					blue_light,
+					toggles.airplane_mode.circular,
+					toggles.bluetooth.circular,
+					toggles.blue_light.circular,
 				},
 				bg = beautiful.groups_bg,
 				shape = function(cr, width, height)

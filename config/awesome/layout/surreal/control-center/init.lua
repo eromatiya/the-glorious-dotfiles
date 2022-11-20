@@ -13,9 +13,10 @@ local mpd = require("widget.mpd")
 local volume_slider = require("widget.volume-slider")
 local brightness_slider = require("widget.brightness-slider")
 local blur_slider = require("widget.blur-slider")
-local airplane_mode = require("widget.airplane-mode")
-local bluetooth_toggle = require("widget.bluetooth-toggle")
-local blue_light = require("widget.blue-light")
+-- local airplane_mode = require("widget.airplane-mode")
+-- local bluetooth_toggle = require("widget.bluetooth-toggle")
+-- local blue_light = require("widget.blue-light")
+local toggle_widgets = require("widget.toggles")
 local end_session = require("widget.end-session")
 local control_center_switch = require("widget.control-center-switch")
 
@@ -96,9 +97,9 @@ local main_control_row_two = wibox.widget({
 	format_item_no_fix_height({
 		layout = wibox.layout.fixed.vertical,
 		spacing = dpi(5),
-		airplane_mode,
-		bluetooth_toggle,
-		blue_light,
+		toggle_widgets.airplane_mode.circular,
+		toggle_widgets.bluetooth.circular,
+		toggle_widgets.blue_light.circular,
 	}),
 	{
 		layout = wibox.layout.flex.vertical,

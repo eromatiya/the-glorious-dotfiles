@@ -14,7 +14,7 @@ local clickable_container = require("widget.clickable-container")
 ---@field toggle_off_callback function
 ---@field toggle_on_icon unknown
 ---@field toggle_off_icon unknown
----@field watch_script string
+---@field watch_script string| string[] | nil
 local toggle = {
 	widget_params = {
 		{
@@ -33,7 +33,7 @@ local toggle = {
 
 ---@param toggle_on_callback function
 ---@param toggle_off_callback function
----@param watch_script string
+---@param watch_script string| string[] | nil
 function toggle:new(toggle_on_callback, toggle_off_callback, watch_script)
 	local o = {}
 	o.toggle_on_callback = toggle_on_callback or function() end

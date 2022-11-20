@@ -7,7 +7,7 @@ local directories = require("module.directories")
 local dpi = beautiful.xresources.apply_dpi
 
 local config_dir = directories.config
-local widget_icon_dir = config_dir .. "widget/notif-center/icons"
+local widget_icon_dir = config_dir .. "widget/notif-center/icons/"
 widget_icon_dir = tostring(widget_icon_dir)
 
 local clickable_container = require("widget.clickable-container")

@@ -18,12 +18,12 @@ local create = function(args)
 	---@diagnostic disable-next-line: deprecated
 	local toggle_widget, status_widget = table.unpack(toggle_widget_components)
 	local name_widget = name_component:new(args.name, _, _)
-	local name_and_status_widget = {
+	local name_and_status_widget = wibox.widget({
 		layout = wibox.layout.fixed.vertical,
 		spacing = dpi(5),
 		name_widget,
 		status_widget,
-	}
+	})
 	return wibox.widget({
 		layout = wibox.layout.fixed.horizontal,
 		spacing = dpi(10),

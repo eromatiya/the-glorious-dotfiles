@@ -10,5 +10,9 @@ local icons = {
 		on = toggle_icon_dir .. "bluetooth.svg",
 		off = toggle_icon_dir .. "bluetooth-off.svg",
 	},
+	blue_light = {
+		on = toggle_icon_dir .. "blue-light.svg",
+		off = toggle_icon_dir .. "blue-light-off.svg",
+	},
 }
 return icons

@@ -17,20 +17,9 @@ local clickable_container = require("widget.clickable-container")
 ---@field toggled_off_icon unknown
 ---@field icon_widget unknown
 ---@field watch_script string| table | nil
-local toggle = {
-	widget_params = {
-		{
-			margins = dpi(15),
-			forced_height = dpi(48),
-			forced_width = dpi(48),
-			widget = wibox.container.margin,
-		},
-		bg = beautiful.groups_bg,
-		shape = gears.shape.circle,
-		widget = wibox.container.background,
-	},
+local circular_toggle = {
 	toggle_on = false,
-	status_widget = wibox.widget({
+	status_widget = {
 		layout = wibox.layout.align.vertical,
 		expand = "none",
 		nil,
@@ -42,13 +31,10 @@ local toggle = {
 			widget = wibox.widget.textbox,
 		},
 		nil,
-	}),
-	icon_widget = wibox.widget({
-		id = "icon",
-		image = _,
-		widget = wibox.widget.imagebox,
-		resize = true,
-	}),
+	},
+	icon_widget = _,
+	margins = dpi(15),
+	icon_diameter = dpi(24),
 }
 
 ---@param toggle_on_icon string
@@ -56,26 +42,36 @@ local toggle = {
 ---@param toggle_on_callback function
 ---@param toggle_off_callback function
 ---@param watch_script table | string | nil
-function toggle:new(toggle_on_icon, toggle_off_icon, toggle_on_callback, toggle_off_callback, watch_script)
+function circular_toggle:new(toggle_on_icon, toggle_off_icon, toggle_on_callback, toggle_off_callback, watch_script)
 	---@type circular_toggle
 	local o = {}
 
 	o.toggle_on_callback = toggle_on_callback or function() end
 	o.toggle_off_callback = toggle_off_callback or function() end
-	o.toggled_on_icon = toggle_on_icon or icons.toggled_on
-	o.toggled_off_icon = toggle_off_icon or icons.toggled_off
+	o.toggled_on_icon = toggle_on_icon
+	o.toggled_off_icon = toggle_off_icon
 	o.watch_script = watch_script
+	o.status_widget = wibox.widget(self.status_widget)
+	o.icon_widget = wibox.widget({
+		image = o.toggled_off_icon,
+		widget = wibox.widget.imagebox,
+		resize = true,
+		forced_height = self.icon_diameter,
+		forced_width = self.icon_diameter,
+	})
 
 	self.__index = self
 	setmetatable(o, self)
 	-- icon
-	o.icon_widget:set_image(toggle_off_icon)
 	-- layout
 	local layout_widget = wibox.layout.fixed.horizontal()
 	layout_widget:add(o.icon_widget)
+
+	local margin_widget = wibox.container.margin(layout_widget)
+	margin_widget.margins = o.margins
+	local background_widget = wibox.container.background(margin_widget, beautiful.groups_bg, gears.shape.circle)
 	-- adding icon margins and bg
-	table.insert(o.widget_params[1], layout_widget)
-	o.wibox_widget = wibox.widget(o.widget_params)
+	o.wibox_widget = background_widget
 
 	-- buttons
 	o.wibox_widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
@@ -89,9 +85,9 @@ function toggle:new(toggle_on_icon, toggle_off_icon, toggle_on_callback, toggle_
 	return { o.wibox_widget, o.status_widget }
 end
 ---@param silent boolean
-function toggle:toggle(silent)
+function circular_toggle:toggle(silent)
 	local wibox_widget = self.wibox_widget
-	if self.toggle_on then
+	if not self.toggle_on then
 		self.icon_widget:set_image(self.toggled_on_icon)
 		wibox_widget.bg = beautiful.accent
 		self.status_widget.name:set_text("On")
@@ -108,19 +104,22 @@ function toggle:toggle(silent)
 	end
 	self.toggle_on = not self.toggle_on
 end
-function toggle:register_watch_script()
+function circular_toggle:register_watch_script()
 	awful.widget.watch(self.watch_script, 60, function(_, stdout)
+		-- 🔧 TODO: improve this
 		if stdout:match("true") then
-			self.toggle_on = true
-		elseif stdout:match("false") then
+			-- so it toggles to true
 			self.toggle_on = false
+		elseif stdout:match("false") then
+			-- so it toggles to false
+			self.toggle_on = true
 		else
 			pcall(function()
-				error("Invalid watch script output: must be on or off")
+				error("Invalid watch script output: must be true or false")
 			end)
 			return
 		end
 		self:toggle(true)
 	end)
 end
-return toggle
+return circular_toggle

@@ -23,7 +23,7 @@ local scripts = require("widget.toggles.scripts")
 local airplane_mode = {
 	name = "Airplane Mode",
 	toggle_off_callback = function()
-		awful.spawn.easy_async_with_shell("rfkill unblock wlan", function()
+		awful.spawn.easy_async_with_shell(scripts.airplane_mode.toggle_off_script, function()
 			naughty.notification({
 				app_name = "Network Manager",
 				title = "<b>Airplane mode disbaled!</b>",
@@ -33,7 +33,7 @@ local airplane_mode = {
 		end)
 	end,
 	toggle_on_callback = function()
-		awful.spawn.easy_async_with_shell("rfkill block wlan", function()
+		awful.spawn.easy_async_with_shell(scripts.airplane_mode.toggle_on_script, function()
 			naughty.notification({
 				app_name = "Network Manager",
 				title = "<b>Airplane mode enabled!</b>",
@@ -44,7 +44,7 @@ local airplane_mode = {
 	end,
 	toggle_on_icon = airplane_mode_on_icon,
 	toggle_off_icon = airplane_mode_off_icon,
-	watch_script = _,
+	watch_script = scripts.airplane_mode.watch_script,
 }
 
 ---@type toggle_widget_args
@@ -74,10 +74,66 @@ local bluetooth = {
 	toggle_off_icon = icons.bluetooth.off,
 	watch_script = scripts.bluetooth.watch_script,
 }
----@alias toggle_widgets "airplane_mode" | "bluetooth"
+
+---@type toggle_widget_args
+local blue_light = {
+	name = "Blue Light",
+	toggle_off_callback = function()
+		awful.spawn.easy_async_with_shell(scripts.blue_light.toggle_off_script, function()
+			naughty.notification({
+				app_name = "Blue Light Manager",
+				title = "<b> System Notification</b>",
+				message = "Blue light has been disabled!",
+				icon = icons.blue_light.off,
+			})
+		end)
+	end,
+	toggle_on_callback = function()
+		awful.spawn.easy_async_with_shell(scripts.blue_light.toggle_on_script, function()
+			naughty.notification({
+				app_name = "Blue Light Manager",
+				title = "<b> System Notification</b>",
+				message = "Blue light has been enabled!",
+				icon = icons.blue_light.on,
+			})
+		end)
+	end,
+	toggle_on_icon = icons.blue_light.on,
+	toggle_off_icon = icons.blue_light.off,
+	watch_script = scripts.blue_light.watch_script,
+}
+---@type toggle_widget_args
+local blur_effects = {
+	name = "Blur Effects",
+	toggle_off_callback = function()
+		awful.spawn.easy_async_with_shell(scripts.blue_light.toggle_off_script, function()
+			naughty.notification({
+				app_name = "Blue Light Manager",
+				title = "<b> System Notification</b>",
+				message = "Blue light has been disabled!",
+				icon = icons.blue_light.off,
+			})
+		end)
+	end,
+	toggle_on_callback = function()
+		awful.spawn.easy_async_with_shell(scripts.blue_light.toggle_on_script, function()
+			naughty.notification({
+				app_name = "Blue Light Manager",
+				title = "<b> System Notification</b>",
+				message = "Blue light has been enabled!",
+				icon = icons.blue_light.on,
+			})
+		end)
+	end,
+	toggle_on_icon = icons.blue_light.on,
+	toggle_off_icon = icons.blue_light.off,
+	watch_script = scripts.blue_light.watch_script,
+}
+---@alias toggle_widgets "airplane_mode" | "blue_light" |"bluetooth"
 ---@type table<toggle_widgets, any>
 local toggle_widgets = {
 	airplane_mode = airplane_mode,
 	bluetooth = bluetooth,
+	blue_light = blue_light,
 }
 return toggle_widgets
