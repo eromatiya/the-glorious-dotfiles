@@ -4,9 +4,6 @@ local gears = require("gears")
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_dir = config_dir .. "widget/"
 -- 🔧 TODO: move those into icons of this dir
-local airplane_mode_icon_dir = widget_dir .. "airplane-mode/icons/"
-local airplane_mode_off_icon = airplane_mode_icon_dir .. "airplane-mode-off.svg"
-local airplane_mode_on_icon = airplane_mode_icon_dir .. "airplane-mode.svg"
 local icons = require("widget.toggles.icons")
 local scripts = require("widget.toggles.scripts")
 
@@ -28,7 +25,7 @@ local airplane_mode = {
 				app_name = "Network Manager",
 				title = "<b>Airplane mode disbaled!</b>",
 				message = "Enabling radio devices",
-				icon = airplane_mode_off_icon,
+				icon = icons.airplane_mode.off,
 			})
 		end)
 	end,
@@ -38,12 +35,12 @@ local airplane_mode = {
 				app_name = "Network Manager",
 				title = "<b>Airplane mode enabled!</b>",
 				message = "Disabling radio devices",
-				icon = airplane_mode_on_icon,
+				icon = icons.airplane_mode.on,
 			})
 		end)
 	end,
-	toggle_on_icon = airplane_mode_on_icon,
-	toggle_off_icon = airplane_mode_off_icon,
+	toggle_on_icon = icons.airplane_mode.on,
+	toggle_off_icon = icons.airplane_mode.off,
 	watch_script = scripts.airplane_mode.watch_script,
 }
 
@@ -106,34 +103,37 @@ local blue_light = {
 local blur_effects = {
 	name = "Blur Effects",
 	toggle_off_callback = function()
-		awful.spawn.easy_async_with_shell(scripts.blue_light.toggle_off_script, function()
+		awful.spawn.easy_async_with_shell(scripts.blur_effects.toggle_off_script, function()
 			naughty.notification({
-				app_name = "Blue Light Manager",
+				app_name = "Blur Effect Manager",
 				title = "<b> System Notification</b>",
-				message = "Blue light has been disabled!",
-				icon = icons.blue_light.off,
+				message = "Blur effect has been disabled!",
+				icon = icons.blur_effects.off,
 			})
 		end)
 	end,
 	toggle_on_callback = function()
-		awful.spawn.easy_async_with_shell(scripts.blue_light.toggle_on_script, function()
+		awful.spawn.easy_async_with_shell(scripts.blur_effects.toggle_on_script, function(_, stdout, stderr)
+			print(stderr)
 			naughty.notification({
-				app_name = "Blue Light Manager",
+				app_name = "Blur Effect Manager",
 				title = "<b> System Notification</b>",
-				message = "Blue light has been enabled!",
-				icon = icons.blue_light.on,
+				message = "Blur effect has been enabled!",
+				icon = icons.blur_effects.on,
 			})
 		end)
 	end,
-	toggle_on_icon = icons.blue_light.on,
-	toggle_off_icon = icons.blue_light.off,
-	watch_script = scripts.blue_light.watch_script,
+	toggle_on_icon = icons.blur_effects.on,
+	toggle_off_icon = icons.blur_effects.off,
+	watch_script = scripts.blur_effects.watch_script,
 }
----@alias toggle_widgets "airplane_mode" | "blue_light" |"bluetooth"
+
+---@alias toggle_widgets "airplane_mode" | "blue_light" |"bluetooth" | "blur_effects"
 ---@type table<toggle_widgets, any>
 local toggle_widgets = {
 	airplane_mode = airplane_mode,
 	bluetooth = bluetooth,
 	blue_light = blue_light,
+	blur_effects = blur_effects,
 }
 return toggle_widgets

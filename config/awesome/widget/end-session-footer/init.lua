@@ -5,17 +5,13 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require("widget.clickable-container")
 local icons = require("theme.icons")
-local path_to_file = ...
-local hardware_monitor = require(path_to_file .. ".hardware-monitor")
-local quick_settings = require(path_to_file .. ".quick-settings")
-local end_session = require("widget.end-session-footer")
 
-return function(_, panel)
-	local search_widget = wibox.widget({
+local create_widget = function()
+	local exit_widget = {
 		{
 			{
 				{
-					image = icons.search,
+					image = icons.logout,
 					resize = true,
 					widget = wibox.widget.imagebox,
 				},
@@ -24,7 +20,7 @@ return function(_, panel)
 				widget = wibox.container.margin,
 			},
 			{
-				text = "Global Search",
+				text = "End work session",
 				font = "Inter Regular 12",
 				align = "left",
 				valign = "center",
@@ -37,11 +33,11 @@ return function(_, panel)
 		right = dpi(24),
 		forced_height = dpi(48),
 		widget = wibox.container.margin,
-	})
+	}
 
-	search_button = wibox.widget({
+	local exit_button = wibox.widget({
 		{
-			search_widget,
+			exit_widget,
 			widget = clickable_container,
 		},
 		bg = beautiful.groups_bg,
@@ -51,24 +47,12 @@ return function(_, panel)
 		widget = wibox.container.background,
 	})
 
-	search_button:buttons(awful.util.table.join(awful.button({}, 1, function()
-		panel:run_rofi()
+	exit_button:buttons(awful.util.table.join(awful.button({}, 1, nil, function()
+		screen.primary.left_panel:toggle()
+		awesome.emit_signal("module::exit_screen:show")
 	end)))
 
-	return wibox.widget({
-		{
-			{
-				layout = wibox.layout.fixed.vertical,
-				spacing = dpi(7),
-				search_button,
-				hardware_monitor,
-				quick_settings,
-			},
-			nil,
-			end_session(),
-			layout = wibox.layout.align.vertical,
-		},
-		margins = dpi(16),
-		widget = wibox.container.margin,
-	})
+	return exit_button
 end
+
+return create_widget

@@ -1,11 +1,8 @@
--- ░█▀▀░█░░░█▀█░█▀█░█▀█░█░█
--- ░█▀▀░█░░░█░█░█▀▀░█▀▀░░█░
--- ░▀░░░▀▀▀░▀▀▀░▀░░░▀░░░░▀░
 -- Banner generated using `toilet -f pagga AwesomeWM
 -- TODO localize
 --- @alias themeNames "linear"| "gnawesome" | "surreal" | "floppy"
 ---@type themeNames
-THEME = "floppy"
+THEME = "linear"
 
 local gears = require("gears")
 local beautiful = require("beautiful")

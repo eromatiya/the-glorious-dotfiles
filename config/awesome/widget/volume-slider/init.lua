@@ -16,16 +16,7 @@ local handle_width_map = {
 }
 
 local action_name = name_class:new("Volume", _, _)
-local icon = icon_class:new(icons.volume, _, true)
-
-local action_level = wibox.widget({
-	icon,
-	bg = beautiful.groups_bg,
-	shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, beautiful.groups_radius)
-	end,
-	widget = wibox.container.background,
-})
+local icon = icon_class:new(icons.volume, _, true, _)
 
 local slider = wibox.widget({
 	nil,
@@ -101,7 +92,7 @@ local action_jump = function()
 	volume_slider:set_value(new_value)
 end
 
-action_level:buttons(awful.util.table.join(awful.button({}, 1, nil, function()
+icon:buttons(awful.util.table.join(awful.button({}, 1, nil, function()
 	action_jump()
 end)))
 
@@ -131,7 +122,7 @@ local volume_setting = wibox.widget({
 				layout = wibox.layout.fixed.horizontal,
 				forced_height = dpi(24),
 				forced_width = dpi(24),
-				action_level,
+				icon,
 			},
 			nil,
 		},

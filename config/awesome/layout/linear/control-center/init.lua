@@ -8,13 +8,11 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local end_session = require("widget.end-session")
+
+local toggle_widgets = require("widget.toggles")
 local control_center_switch = require("widget.control-center-switch")
 local user_profile = require("widget.user-profile")
-local airplane_mode = require("widget.airplane-mode")
-local bluetooth_toggle = require("widget.bluetooth-toggle")
-local blue_light = require("widget.blue-light")
 local dont_disturb = require("widget.dont-disturb")
-local blur_toggle = require("widget.blur-toggle")
 local create_meter = require("widget.meters")
 local cpu_meter = create_meter("cpu")
 local ram_meter = create_meter("ram")
@@ -102,9 +100,9 @@ local main_control_row_two = wibox.widget({
 	format_item_no_fix_height({
 		layout = wibox.layout.fixed.vertical,
 		spacing = dpi(5),
-		airplane_mode,
-		bluetooth_toggle,
-		blue_light,
+		toggle_widgets.airplane_mode.circular,
+		toggle_widgets.bluetooth.circular,
+		toggle_widgets.blue_light.circular,
 	}),
 	{
 		layout = wibox.layout.flex.vertical,

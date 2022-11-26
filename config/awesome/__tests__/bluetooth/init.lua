@@ -4,6 +4,7 @@ local utils = require("__tests__.utils")
 local bluetooth_scripts = scripts.bluetooth
 local watch_script = bluetooth_scripts.watch_script[3]
 local luaunit = require("luaunit")
+print(utils.script_path())
 
 TestLogger = {}
 -- 🔧 TODO: make error handler for io.popen
