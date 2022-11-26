@@ -62,4 +62,18 @@ naughty.connect_signal("request::display", function(n)
 	notifbox_add_expired(n, notif_icon, notifbox_color)
 end)
 
+-- make this work with signal
+local notifbox_delete = function(notifbox)
+	notif_core.notifbox_layout:remove_widgets(notifbox, true)
+end
+
+awesome.connect_signal("notifbox::delete", function(notifbox)
+	if #notif_core.notifbox_layout.children == 1 then
+		notif_core.reset_notifbox_layout()
+	else
+		notifbox_delete(notifbox)
+	end
+	collectgarbage("collect")
+end)
+
 return notif_core

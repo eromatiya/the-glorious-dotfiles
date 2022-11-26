@@ -42,7 +42,6 @@ local top_panel = function(s)
 	local add_button = require("widget.open-default-app")(s)
 	s.updater = updater()
 	s.screen_rec = screen_recorder()
-	--TODO debug mpd widget
 	s.mpd = mpd
 	s.keyboard_layout = keyboard_layout()
 	s.end_session = end_session()

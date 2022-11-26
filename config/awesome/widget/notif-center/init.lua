@@ -45,4 +45,18 @@ local notif_center = function(s)
 	})
 end
 
+local notifbox_delete = function()
+	notifbox_layout:remove_widgets(notifbox, true)
+end
+
+-- Delete notifbox on LMB
+-- notifbox:buttons(awful.util.table.join(awful.button({}, 1, function()
+-- 	if #notifbox_layout.children == 1 then
+-- 		reset_notifbox_layout()
+-- 	else
+-- 		notifbox_delete()
+-- 	end
+-- 	collectgarbage("collect")
+-- end)))
+
 return notif_center

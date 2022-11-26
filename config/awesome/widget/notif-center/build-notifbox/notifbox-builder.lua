@@ -4,13 +4,7 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 
 local dpi = beautiful.xresources.apply_dpi
-
 local builder = require("widget.notif-center.build-notifbox.notifbox-ui-elements")
--- local notifbox_core = require("widget.notif-center.build-notifbox")
-
--- local notifbox_layout = notifbox_core.notifbox_layout
--- local remove_notifbox_empty = notifbox_core.remove_notifbox_empty
--- local reset_notifbox_layout = notifbox_core.reset_notifbox_layout
 
 local return_date_time = function(format)
 	return os.date(format)
@@ -119,21 +113,9 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 		widget = wibox.container.background,
 	})
 
-	-- Delete notification box
-	-- make this work with signal
-	-- local notifbox_delete = function()
-	-- 	notifbox_layout:remove_widgets(notifbox, true)
-	-- end
-
-	-- Delete notifbox on LMB
-	-- notifbox:buttons(awful.util.table.join(awful.button({}, 1, function()
-	-- 	if #notifbox_layout.children == 1 then
-	-- 		reset_notifbox_layout()
-	-- 	else
-	-- 		notifbox_delete()
-	-- 	end
-	-- 	collectgarbage("collect")
-	-- end)))
+	notifbox:buttons(awful.util.table.join(awful.button({}, 1, function()
+		awesome.emit_signal("notifbox::delete", notifbox)
+	end)))
 
 	-- Add hover, and mouse leave events
 	notifbox_template:connect_signal("mouse::enter", function()
