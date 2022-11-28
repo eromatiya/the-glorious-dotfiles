@@ -1,14 +1,15 @@
 local awful = require("awful")
-local theme = "linear"
 local bottom_panel = require("layout.linear.bottom-panel")
 local control_center = require("layout.linear.control-center")
 local info_center = require("layout.linear.info-center")
+local theme_picker = require("widget.theme-picker")
 
 -- Create a wibox panel for each screen and add it
 screen.connect_signal("request::desktop_decoration", function(s)
 	s.bottom_panel = bottom_panel(s)
 	s.control_center = control_center(s)
 	s.info_center = info_center(s)
+	s.theme_picker = theme_picker(s)
 	s.control_center_show_again = false
 	s.info_center_show_again = false
 end)
