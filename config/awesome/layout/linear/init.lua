@@ -30,6 +30,7 @@ function update_bars_visibility()
 					s.control_center_show_again = false
 				end
 			end
+
 			if s.info_center then
 				if fullscreen and s.info_center.visible then
 					s.info_center:toggle()

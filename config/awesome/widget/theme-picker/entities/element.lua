@@ -3,11 +3,14 @@ local regular_text = require("widget.shared.components.regular-text")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local awful = require("awful")
 local gears = require("gears")
 local element = {
 	margin = dpi(5),
 	bg = beautiful.groups_bg,
+	selected_bg = "#FFFFFF",
 	fg = beautiful.fg_modal,
+	selected_fg = "#000000",
 	border_width = dpi(1),
 	border_color = beautiful.border_modal,
 	spacing = dpi(5),
@@ -29,7 +32,29 @@ function element:new(name, description)
 	})
 	local margin_widget = wibox.container.margin(layout_widget)
 	margin_widget.margins = o.margin
-	local background_widget = wibox.container.background(margin_widget, o.bg, gears.shape.rounded_rect)
-	return background_widget
+	o.widget = wibox.container.background(margin_widget, o.bg, _)
+	o:register_events()
+	o.widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
+		print(name)
+	end)))
+
+	return o
 end
+function element:select()
+	self.widget.bg = self.selected_bg
+	self.widget.fg = self.selected_fg
+end
+function element:deselect()
+	self.widget.bg = self.bg
+	self.widget.fg = self.fg
+end
+function element:register_events()
+	self.widget:connect_signal("mouse::enter", function()
+		self:select()
+	end)
+	self.widget:connect_signal("mouse::leave", function()
+		self:deselect()
+	end)
+end
+
 return element

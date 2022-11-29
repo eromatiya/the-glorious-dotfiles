@@ -20,6 +20,7 @@ local screen_recorder = require("widget.screen-recorder")
 local bluetooth = require("widget.bluetooth")
 local network = require("widget.network")
 local clock_w = require("widget.clock")
+local theme_picker_toggle = require("widget.theme-picker-toggle")
 local layout_box_w = require("widget.layoutbox")
 local battery = require("widget.battery")
 local info_center_toggle_w = require("widget.info-center-toggle")
@@ -90,6 +91,7 @@ local bottom_panel = function(s)
 	s.updater = build_widget(package_updater())
 	s.screen_rec = build_widget(screen_recorder())
 	s.keyboard_layout = build_widget(keyboard_layout())
+	s.theme_picker_toggle = build_widget(theme_picker_toggle())
 	s.bluetooth = build_widget(bluetooth())
 	s.network = build_widget(network())
 	local clock = build_widget(clock_w(s))
@@ -125,6 +127,7 @@ local bottom_panel = function(s)
 				s.screen_rec,
 				s.network,
 				s.bluetooth,
+				s.theme_picker_toggle,
 				s.keyboard_layout,
 				s.battery,
 				clock,
