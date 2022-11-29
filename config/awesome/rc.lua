@@ -1,8 +1,9 @@
 -- Banner generated using `toilet -f pagga AwesomeWM
 -- TODO localize
+local setter = require("widget.theme-setter")
 --- @alias themeNames "linear"| "gnawesome" | "surreal" | "floppy"
 ---@type themeNames
-THEME = "linear"
+THEME = setter:get()
 
 local gears = require("gears")
 local beautiful = require("beautiful")

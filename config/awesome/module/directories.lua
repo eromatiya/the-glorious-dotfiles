@@ -7,7 +7,7 @@ local c = Path:new(cfg)
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_dir = config_dir .. "widget/"
 
----@alias folders  "widgets" | "config"
+---@alias folders  "widget" | "config"
 ---@type table<folders, string>
 local dirs = {
 	config = config_dir,

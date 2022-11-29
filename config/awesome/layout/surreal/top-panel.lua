@@ -13,6 +13,7 @@ local keyboard_layout = require("widget.keyboard-layout")
 local bluetooth = require("widget.bluetooth")
 local battery = require("widget.battery")
 local network = require("widget.network")
+local theme_picker_toggle = require("widget.theme-picker-toggle")
 local control_center_toggle = require("widget.control-center-toggle")
 local global_search = require("widget.global-search")
 local info_center_toggle = require("widget.info-center-toggle")
@@ -63,6 +64,7 @@ local top_panel = function(s)
 	s.control_center_toggle = control_center_toggle()
 	s.global_search = global_search()
 	s.info_center_toggle = info_center_toggle()
+	s.theme_picker_toggle = theme_picker_toggle()
 
 	panel:setup({
 		layout = wibox.layout.align.horizontal,
@@ -90,6 +92,7 @@ local top_panel = function(s)
 			s.control_center_toggle,
 			s.global_search,
 			s.keyboard_layout,
+			s.theme_picker_toggle,
 			layout_box,
 			s.info_center_toggle,
 		},

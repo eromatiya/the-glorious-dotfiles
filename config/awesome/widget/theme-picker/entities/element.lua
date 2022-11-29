@@ -1,5 +1,6 @@
 local name_class = require("widget.shared.components.name")
 local regular_text = require("widget.shared.components.regular-text")
+local setter = require("widget.theme-setter")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
@@ -35,7 +36,11 @@ function element:new(name, description)
 	o.widget = wibox.container.background(margin_widget, o.bg, _)
 	o:register_events()
 	o.widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
-		print(name)
+		setter:set(string.lower(name))
+		-- Hm, no idea how to get the wibox from this signal's arguments...
+		-- local s = mouse.screen
+		-- s.cursor = "watch"
+		awful.spawn.with_shell("awesome-client 'awesome.restart()'")
 	end)))
 
 	return o

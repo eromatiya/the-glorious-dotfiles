@@ -29,7 +29,7 @@ local return_button = function()
 	widget_button:buttons(gears.table.join(awful.button({}, 1, nil, function()
 		local theme_picker = awful.screen.focused().theme_picker
 		if theme_picker.visible then
-		--this is implmented
+			theme_picker.visible = false
 		else
 			theme_picker.visible = true
 		end

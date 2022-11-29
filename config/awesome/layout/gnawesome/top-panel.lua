@@ -13,6 +13,7 @@ local mpd = require("widget.mpd")
 local end_session = require("widget.end-session")
 local global_search = require("widget.global-search")
 local keyboard_layout = require("widget.keyboard-layout")
+local theme_picker_toggle = require("widget.theme-picker-toggle")
 
 local top_panel = function(s)
 	local panel = wibox({
@@ -46,6 +47,7 @@ local top_panel = function(s)
 	s.keyboard_layout = keyboard_layout()
 	s.end_session = end_session()
 	s.global_search = global_search()
+	s.theme_picker_toggle = theme_picker_toggle()
 
 	panel:setup({
 		layout = wibox.layout.align.horizontal,
@@ -63,6 +65,7 @@ local top_panel = function(s)
 			s.screen_rec,
 			s.global_search,
 			s.keyboard_layout,
+			s.theme_picker_toggle,
 			s.mpd,
 			s.end_session,
 		},

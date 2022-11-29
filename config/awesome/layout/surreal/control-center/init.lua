@@ -115,7 +115,7 @@ local main_control_row_two = wibox.widget({
 			layout = wibox.layout.align.vertical,
 			expand = "none",
 			nil,
-			require("widget.blur-toggle"),
+			toggle_widgets.blur_effects.circular,
 			nil,
 		}),
 	},
