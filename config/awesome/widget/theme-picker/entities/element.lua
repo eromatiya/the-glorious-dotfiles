@@ -37,9 +37,9 @@ function element:new(name, description)
 	o:register_events()
 	o.widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
 		setter:set(string.lower(name))
-		-- Hm, no idea how to get the wibox from this signal's arguments...
-		-- local s = mouse.screen
-		-- s.cursor = "watch"
+		-- TODO: do this for screen if possible
+		local w = mouse.current_wibox
+		w.cursor = "watch"
 		awful.spawn.with_shell("awesome-client 'awesome.restart()'")
 	end)))
 

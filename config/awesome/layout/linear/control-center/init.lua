@@ -118,7 +118,7 @@ local main_control_row_two = wibox.widget({
 			layout = wibox.layout.align.vertical,
 			expand = "none",
 			nil,
-			blur_toggle,
+			toggle_widgets.blur_effects.circular,
 			nil,
 		}),
 	},
@@ -156,7 +156,7 @@ local main_control_music_box = wibox.widget({
 local monitor_control_row_progressbars = wibox.widget({
 	layout = wibox.layout.fixed.vertical,
 	spacing = dpi(10),
-	format_item(),
+	format_item(cpu_meter),
 	format_item(ram_meter),
 	format_item(temperature_meter),
 	format_item(harddrive_meter),

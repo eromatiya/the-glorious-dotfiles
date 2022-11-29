@@ -19,7 +19,6 @@ return function(s)
 	for index, theme in ipairs(themes) do
 		local curr_el = element_class:new(theme.name, theme.description)
 		table.insert(elements, curr_el)
-		-- curr_el.bg = "#000000"
 		container:add(curr_el.widget)
 	end
 	local popup = awful.popup({
