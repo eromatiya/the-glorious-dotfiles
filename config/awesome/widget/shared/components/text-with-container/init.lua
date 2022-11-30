@@ -15,17 +15,23 @@ function text_with_container:new(text, margins)
 	setmetatable(o, self)
 	self.__index = self
 	if type(text) == table then
-		---@param text table
 		text = table.concat(text, ", ")
 	end
-	o.text_widget = text_class:new(text, _, _)
-	local margin_widget = wibox.container.margin(o.text_widget.widget)
-	margin_widget.margins = margins or o.margins
+	o.text_widget = wibox.widget({
+		text = text,
+		font = "Inter Bold 10",
+		align = "center",
+		widget = wibox.widget.textbox,
+	})
+	-- local margin_widget = wibox.container.margin(o.text_widget)
+	-- margin_widget.margins = margins or o.margins
 	o.widget = wibox.widget({
-		layout = wibox.container.background,
+		o.text_widget,
 		bg = o.bg,
 		shape = gears.shape.rounded_rect,
+		widget = wibox.container.background,
 	})
-	return o.widget
+	local margin_widget = wibox.container.margin(o.widget, dpi(50), dpi(50), _, _)
+	return margin_widget
 end
 return text_with_container

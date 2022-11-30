@@ -22,7 +22,8 @@ function element:new(name, description)
 	local o = {}
 	setmetatable(o, self)
 	self.__index = self
-	o.name_widget = name_class:new(name, _, _)
+	o.name = name
+	o.name_widget = name_class:new(o.name, _, _)
 	o.description_widget = regular_text:new(description or "N/A", _, _)
 	local layout_widget = wibox.widget({
 		o.name_widget,
@@ -36,14 +37,17 @@ function element:new(name, description)
 	o.widget = wibox.container.background(margin_widget, o.bg, _)
 	o:register_events()
 	o.widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
-		setter:set(string.lower(name))
-		-- TODO: do this for screen if possible
-		local w = mouse.current_wibox
-		w.cursor = "watch"
-		awful.spawn.with_shell("awesome-client 'awesome.restart()'")
+		o:confirm()
 	end)))
 
 	return o
+end
+function element:confirm()
+	setter:set(string.lower(self.name))
+	-- TODO: do this for screen if possible
+	-- local w = mouse.current_wibox
+	-- self.widget.cursor = "watch"
+	awful.spawn.with_shell("awesome-client 'awesome.restart()'")
 end
 function element:select()
 	self.widget.bg = self.selected_bg

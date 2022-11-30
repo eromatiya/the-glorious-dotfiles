@@ -58,7 +58,7 @@ local function list_update(w, buttons, label, data, objects)
 			})
 			ibm = wibox.widget({
 				ib,
-				margins = dpi(5),
+				margins = dpi(10),
 				widget = wibox.container.margin,
 			})
 			l = wibox.layout.fixed.horizontal()
@@ -104,7 +104,7 @@ local function list_update(w, buttons, label, data, objects)
 		if icon then
 			ib.image = icon
 		else
-			ibm:set_margins(0)
+			ibm:set_margins(1)
 		end
 
 		bgb.shape = args.shape

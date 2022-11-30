@@ -2,14 +2,14 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
-
 local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require("widget.clickable-container")
 
 local tag_list = require("widget.tag-list")
 
 local search_apps = require("widget.search-apps")
-local xdg_folders = require("widget.xdg-folders")
+-- local xdg_folders = require("widget.xdg-folders")
+local xdg_folders_builder = require("widget.xdg-folders.builder")
 local bottom_panel = function(s)
 	local build_widget = function(widget)
 		return wibox.widget({
@@ -47,7 +47,15 @@ local bottom_panel = function(s)
 				s.search,
 				separator,
 				tag_list(s),
-				xdg_folders(),
+				xdg_folders_builder
+					:with_separator()
+					:with_home()
+					:with_downloads()
+					:with_documents()
+					:with_separator()
+					:with_trash()
+					:horizontal()
+					:build(),
 			},
 			bg = beautiful.background,
 			shape = function(cr, w, h)

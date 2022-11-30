@@ -10,14 +10,14 @@ local text_with_container = require("widget.shared.components.text-with-containe
 local clickable_container = require("widget.clickable-container")
 local config_dir = filesystem.get_configuration_dir()
 local widget_icon_dir = config_dir .. "configuration/user-profile/"
----@alias  exit_commands "power_off"| "reboot"| "suspend"| "logout"| "lock" | "exit"
+---@alias  exit_commands "shutdown"| "reboot"| "suspend"| "logout"| "lock" | "exit"
 ---@type table<exit_commands, string | table>
 local hot_keys = {
-	suspend = "s",
+	sleep = "s",
 	logout = "e",
 	lock = "l",
-	power_off = "p",
-	reboot = "r",
+	shutdown = "p",
+	restart = "r",
 	exit = { "Escape", "q", "x" },
 }
 
@@ -92,9 +92,7 @@ local update_profile_pic = function()
 		profile_imagebox:emit_signal("widget::redraw_needed")
 	end)
 end
-
 update_profile_pic()
-
 local update_user_name = function()
 	awful.spawn.easy_async_with_shell(
 		[[
@@ -128,8 +126,8 @@ end
 
 update_greeter_msg()
 
-local build_power_button = function(name, icon, callback)
-	local power_button_label = wibox.widget({
+local build_button = function(name, icon, callback)
+	local label = wibox.widget({
 		text = name,
 		font = "Inter Regular 10",
 		align = "center",
@@ -137,7 +135,7 @@ local build_power_button = function(name, icon, callback)
 		widget = wibox.widget.textbox,
 	})
 
-	local power_button = wibox.widget({
+	local button = wibox.widget({
 		{
 			{
 				{
@@ -160,13 +158,15 @@ local build_power_button = function(name, icon, callback)
 		right = dpi(24),
 		widget = wibox.container.margin,
 	})
-	local hotkey_box = text_with_container:new(hot_keys[name], _)
+	local name_lc = string.lower(name)
+	local hotkey_box = text_with_container:new(hot_keys[name_lc], _)
 
 	local exit_screen_item = wibox.widget({
 		layout = wibox.layout.fixed.vertical,
 		spacing = dpi(5),
-		power_button,
-		power_button_label,
+		button,
+		label,
+		hotkey_box,
 	})
 
 	exit_screen_item:connect_signal("button::release", function()
@@ -199,11 +199,11 @@ local reboot_command = function()
 	awesome.emit_signal("module::exit_screen:hide")
 end
 
-local poweroff = build_power_button("Shutdown", icons.power, poweroff_command)
-local reboot = build_power_button("Restart", icons.restart, reboot_command)
-local suspend = build_power_button("Sleep", icons.sleep, suspend_command)
-local logout = build_power_button("Logout", icons.logout, logout_command)
-local lock = build_power_button("Lock", icons.lock, lock_command)
+local poweroff = build_button("Shutdown", icons.power, poweroff_command)
+local reboot = build_button("Restart", icons.restart, reboot_command)
+local suspend = build_button("Sleep", icons.sleep, suspend_command)
+local logout = build_button("Logout", icons.logout, logout_command)
+local lock = build_button("Lock", icons.lock, lock_command)
 
 local create_exit_screen = function(s)
 	s.exit_screen = wibox({
@@ -308,15 +308,15 @@ local exit_screen_grabber = awful.keygrabber({
 	auto_start = true,
 	stop_event = "release",
 	keypressed_callback = function(self, mod, key, command)
-		if key == hot_keys.suspend then
+		if key == hot_keys.sleep then
 			suspend_command()
 		elseif key == hot_keys.logout then
 			logout_command()
 		elseif key == hot_keys.lock then
 			lock_command()
-		elseif key == hot_keys.power_off then
+		elseif key == hot_keys.shutdown then
 			poweroff_command()
-		elseif key == hot_keys.reboot then
+		elseif key == hot_keys.restart then
 			reboot_command()
 		elseif hot_keys.exit[key] then
 			awesome.emit_signal("module::exit_screen:hide")

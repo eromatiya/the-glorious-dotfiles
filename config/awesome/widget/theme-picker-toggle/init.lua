@@ -30,8 +30,10 @@ local return_button = function()
 		local theme_picker = awful.screen.focused().theme_picker
 		if theme_picker.visible then
 			theme_picker.visible = false
+			awesome.emit_signal("theme-picker::closed")
 		else
 			theme_picker.visible = true
+			awesome.emit_signal("theme-picker::opened")
 		end
 	end)))
 
