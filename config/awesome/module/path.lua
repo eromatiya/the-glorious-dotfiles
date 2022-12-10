@@ -1,5 +1,4 @@
 local gtable = require("gears.table")
-local pretty = require("pl.pretty")
 ---sanitizing path so it doesn.t
 local check_for_delimeters = function(folders)
 	for _, path in ipairs(folders) do
