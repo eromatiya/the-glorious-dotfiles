@@ -75,8 +75,8 @@ local hard_drive = {
   update_interval = 10,
   update_callback = function(widget, stdout, err)
     error_handler(err)
-    local value = tonumber(assert(stdout))
     local space_consumed = stdout:match("(%d+)")
+    local value = tonumber(assert(space_consumed))
     widget.hard_drive_usage:set_value(value)
   end,
 }

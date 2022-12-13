@@ -1,6 +1,6 @@
 -- 🔧 TODO: add _naughty_ notification here
 local error_handler = function(err)
-  if err ~= nil then
+  if err ~= "" then
     -- here the level is 4 cause the first is the error
     -- the second the callback the third the pcall and
     -- the fourth the function that called error_handler
