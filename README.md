@@ -20,16 +20,16 @@
 </div>
 
 <div align='center'>
-	<a href='https://github.com/manilarome/the-glorious-dotfiles/wiki'>
+	<a href='https://github.com/frostedpenguin/the-glorious-dotfiles/wiki'>
 		<img src='images/button-wiki.png' width='100px'>
 	</a>
-	<a href='https://github.com/manilarome/the-glorious-dotfiles/wiki/Dependencies'>
+	<a href='https://github.com/frostedpenguin/the-glorious-dotfiles/wiki/#dependencies'>
 		<img src='images/button-depends.png' width='100px'>
 	</a>
-	<a href='https://github.com/manilarome/the-glorious-dotfiles/wiki/Getting-Started'>
+	<a href='https://github.com/frostedpenguin/the-glorious-dotfiles#installation-and-usage'>
 		<img src='images/button-install.png' width='100px'>
 	</a>
-	<a href='https://github.com/manilarome/the-glorious-dotfiles/wiki/Gallery'>
+	<a href='https://github.com/frostedpenguin/the-glorious-dotfiles#gallery'>
 		<img src='images/button-gallery.png' width='100px'>
 	</a>
 	<br>
@@ -50,7 +50,7 @@
 </p>
 
 
-## [Wiki here](https://github.com/manilarome/the-glorious-dotfiles/wiki)
+## [Wiki here](https://github.com/frostedpenguin/the-glorious-dotfiles/wiki)
 
 The wiki will guide you to replicate my setups. So read the frickin' manual! If you post an issue that can be solve by reading it, I'll drop kick you.
 
