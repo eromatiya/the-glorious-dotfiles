@@ -1,0 +1,11 @@
+{
+  "rfkilldevices": [
+    {
+      "id": 2,
+      "type": "wlan",
+      "device": "phy0",
+      "soft": "unblocked",
+      "hard": "unblocked"
+    }
+  ]
+}

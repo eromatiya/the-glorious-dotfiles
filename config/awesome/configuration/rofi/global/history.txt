@@ -1,0 +1,6 @@
+brave
+!hello
+rofi.rasi
+cmake
+?cmake
+!brave

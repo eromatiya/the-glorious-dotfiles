@@ -1,0 +1,25 @@
+{
+  "rfkilldevices": [
+    {
+      "id": 0,
+      "type": "bluetooth",
+      "device": "tpacpi_bluetooth_sw",
+      "soft": "blocked",
+      "hard": "blocked"
+    },
+    {
+      "id": 2,
+      "type": "wlan",
+      "device": "phy0",
+      "soft": "unblocked",
+      "hard": "unblocked"
+    },
+    {
+      "id": 5,
+      "type": "bluetooth",
+      "device": "hci0",
+      "soft": "unblocked",
+      "hard": "unblocked"
+    }
+  ]
+}
